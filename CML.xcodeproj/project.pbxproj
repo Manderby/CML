@@ -1,0 +1,1232 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B90034351462FAC700E50D75 /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = B90034341462FAC700E50D75 /* CMLInternal.c */; };
+		B925EA0615655470004D2462 /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */; };
+		B925EA0715655470004D2462 /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */; };
+		B925EA0815655470004D2462 /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FB15655470004D2462 /* CMLColorMachine.c */; };
+		B925EA0A15655470004D2462 /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FD15655470004D2462 /* CMLGrayColorspace.c */; };
+		B925EA0B15655470004D2462 /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FE15655470004D2462 /* CMLIllumination.c */; };
+		B925EA0C15655470004D2462 /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FF15655470004D2462 /* CMLLabColorspace.c */; };
+		B925EA0D15655470004D2462 /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0015655470004D2462 /* CMLObserver.c */; };
+		B925EA0E15655470004D2462 /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0115655470004D2462 /* CMLRGBColorspace.c */; };
+		B925EA1D15655518004D2462 /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = B925EA1C15655518004D2462 /* CMLColorMachine.h */; };
+		B9476D6417C1523F00540771 /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = B9476D6317C1523F00540771 /* CMLObserver.h */; };
+		B9476D6917C1526B00540771 /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B9476D6817C1526B00540771 /* CMLObserver.c */; };
+		B9476F9E17C3738D00540771 /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = B9476F9C17C3738D00540771 /* CMLIllumination.h */; };
+		B9476F9F17C3738D00540771 /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B9476F9D17C3738D00540771 /* CMLIllumination.c */; };
+		B949154D15DEF26B00CC33C0 /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = B9F9A90215A333A9003BFFB8 /* CMLTypes.h */; };
+		B955D7D415946A26003FCEB1 /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
+		B9566EEC15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */; };
+		B9566EED15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */; };
+		B9566EEE15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */; };
+		B9566EEF15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */; };
+		B966912E159A0DFC00E43EF0 /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */; };
+		B966912F159A0E0000E43EF0 /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */; };
+		B97B46FA15B7701300B902CC /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B97B46F915B7701300B902CC /* CMLYuvConversions.c */; };
+		B97B46FB15B7701300B902CC /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B97B46F915B7701300B902CC /* CMLYuvConversions.c */; };
+		B97D27D4156E939800BCF5F1 /* internaltestmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */; };
+		B98F4D6415E405DF0080C96E /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B98F4D6315E405DF0080C96E /* cppexample.cpp */; };
+		B98F4D6C15E405FD0080C96E /* libcml.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B99F4BBF13F8AC4C009465D9 /* libcml.dylib */; };
+		B98F4DA115E40A4C0080C96E /* CMLCMYKColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */; };
+		B98F4DA215E40A4D0080C96E /* CMLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */; };
+		B98F4DA315E40A4E0080C96E /* CMLGrayColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */; };
+		B98F4DA415E40A4E0080C96E /* CMLHSLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */; };
+		B98F4DA515E40A4F0080C96E /* CMLHSVColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */; };
+		B98F4DA615E40A500080C96E /* CMLLabColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */; };
+		B98F4DA715E40A510080C96E /* CMLLchColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */; };
+		B98F4DA815E40A520080C96E /* CMLLuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */; };
+		B98F4DA915E40A530080C96E /* CMLRGBColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */; };
+		B98F4DAA15E40A530080C96E /* CMLSpectralColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */; };
+		B98F4DAB15E40A560080C96E /* CMLXYZColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */; };
+		B98F4DAC15E40A560080C96E /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */; };
+		B98F4DAD15E40A570080C96E /* CMLYupvpColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */; };
+		B98F4DAE15E40A580080C96E /* CMLYuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */; };
+		B98F4DAF15E40A590080C96E /* CMLYxyColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */; };
+		B995CB7215F7CBC700EBD67E /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B995CB7115F7CBC700EBD67E /* example.cpp */; };
+		B9A5C98A15841A8C00C8B697 /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A5C98915841A8C00C8B697 /* CMLConstants.h */; };
+		B9A5C98B15841A8C00C8B697 /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A5C98915841A8C00C8B697 /* CMLConstants.h */; };
+		B9BCD789154D8DE100C76B0E /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA200F145D52F6009FC44A /* CML.h */; };
+		B9BCD78A154D8DE200C76B0E /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA2010145D52F6009FC44A /* CMLDefinitions.h */; };
+		B9BCD78D154D8DE600C76B0E /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA201F145D52F6009FC44A /* CMLFunctions.h */; };
+		B9BCD79C154D8E0000C76B0E /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA200F145D52F6009FC44A /* CML.h */; };
+		B9BCD79D154D8E0000C76B0E /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA2010145D52F6009FC44A /* CMLDefinitions.h */; };
+		B9BCD7A0154D8E0300C76B0E /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA201F145D52F6009FC44A /* CMLFunctions.h */; };
+		B9C6F2FE1579628100B33E6E /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = B925EA1C15655518004D2462 /* CMLColorMachine.h */; };
+		B9C6F2FF1579628600B33E6E /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */; };
+		B9C6F3001579628600B33E6E /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */; };
+		B9C6F3011579628700B33E6E /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FB15655470004D2462 /* CMLColorMachine.c */; };
+		B9C6F3021579628700B33E6E /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FD15655470004D2462 /* CMLGrayColorspace.c */; };
+		B9C6F3031579628800B33E6E /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FE15655470004D2462 /* CMLIllumination.c */; };
+		B9C6F3041579628900B33E6E /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FF15655470004D2462 /* CMLLabColorspace.c */; };
+		B9C6F3051579628900B33E6E /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0015655470004D2462 /* CMLObserver.c */; };
+		B9C6F3061579628A00B33E6E /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0115655470004D2462 /* CMLRGBColorspace.c */; };
+		B9C6F3071579628B00B33E6E /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E87BD01576904E00049DEF /* CMLColorMachineState.c */; };
+		B9CA204C145D52F6009FC44A /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA201E145D52F6009FC44A /* CMLFunctions.c */; };
+		B9CA204E145D52F6009FC44A /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA2020145D52F6009FC44A /* CMLStrings.c */; };
+		B9E38BB917A5DBC500B39CE8 /* CMLResponseCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */; };
+		B9E38BBA17A5DBC500B39CE8 /* CMLResponseCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */; };
+		B9E87BD21576904E00049DEF /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E87BD01576904E00049DEF /* CMLColorMachineState.c */; };
+		B9E8E416154D780E00A4C836 /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA2020145D52F6009FC44A /* CMLStrings.c */; };
+		B9E8E418154D780E00A4C836 /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA201E145D52F6009FC44A /* CMLFunctions.c */; };
+		B9E8E41B154D781000A4C836 /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = B90034341462FAC700E50D75 /* CMLInternal.c */; };
+		B9F9A9D415A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */; };
+		B9F9A9D515A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */; };
+		B9FC3E9F1565598600AFAC92 /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8E1565598600AFAC92 /* CMLClamp.c */; };
+		B9FC3EA01565598600AFAC92 /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */; };
+		B9FC3EA11565598600AFAC92 /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */; };
+		B9FC3EA21565598600AFAC92 /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */; };
+		B9FC3EA31565598600AFAC92 /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */; };
+		B9FC3EA41565598600AFAC92 /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */; };
+		B9FC3EA51565598600AFAC92 /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */; };
+		B9FC3EA61565598600AFAC92 /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E951565598600AFAC92 /* CMLInvert.c */; };
+		B9FC3EA71565598600AFAC92 /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E961565598600AFAC92 /* CMLLabConversions.c */; };
+		B9FC3EA81565598600AFAC92 /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E971565598600AFAC92 /* CMLLchConversions.c */; };
+		B9FC3EA91565598600AFAC92 /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */; };
+		B9FC3EAA1565598600AFAC92 /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */; };
+		B9FC3EAB1565598600AFAC92 /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */; };
+		B9FC3EAC1565598600AFAC92 /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */; };
+		B9FC3EAD1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */; };
+		B9FC3EAF1565598600AFAC92 /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */; };
+		B9FC3EB01565598600AFAC92 /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8E1565598600AFAC92 /* CMLClamp.c */; };
+		B9FC3EB11565598600AFAC92 /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */; };
+		B9FC3EB21565598600AFAC92 /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */; };
+		B9FC3EB31565598600AFAC92 /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */; };
+		B9FC3EB41565598600AFAC92 /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */; };
+		B9FC3EB51565598600AFAC92 /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */; };
+		B9FC3EB61565598600AFAC92 /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */; };
+		B9FC3EB71565598600AFAC92 /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E951565598600AFAC92 /* CMLInvert.c */; };
+		B9FC3EB81565598600AFAC92 /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E961565598600AFAC92 /* CMLLabConversions.c */; };
+		B9FC3EB91565598600AFAC92 /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E971565598600AFAC92 /* CMLLchConversions.c */; };
+		B9FC3EBA1565598600AFAC92 /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */; };
+		B9FC3EBB1565598600AFAC92 /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */; };
+		B9FC3EBC1565598600AFAC92 /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */; };
+		B9FC3EBD1565598600AFAC92 /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */; };
+		B9FC3EBE1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */; };
+		B9FC3EC01565598600AFAC92 /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B955D7D515946A3C003FCEB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B99F4BA513F8ABFF009465D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9E8E3F0154D77D500A4C836;
+			remoteInfo = libcmldebug;
+		};
+		B972DAF8142347940015D6F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B99F4BA513F8ABFF009465D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B99F4BBE13F8AC4C009465D9;
+			remoteInfo = CML;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B90034341462FAC700E50D75 /* CMLInternal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CMLInternal.c; path = ../CMLInternal.c; sourceTree = "<group>"; };
+		B91C460416CBCC540065FB47 /* CMLConverterMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMLConverterMacros.h; sourceTree = "<group>"; };
+		B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLChromaticAdaptation.c; sourceTree = "<group>"; };
+		B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKColorspace.c; sourceTree = "<group>"; };
+		B925E9FB15655470004D2462 /* CMLColorMachine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachine.c; sourceTree = "<group>"; };
+		B925E9FD15655470004D2462 /* CMLGrayColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayColorspace.c; sourceTree = "<group>"; };
+		B925E9FE15655470004D2462 /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
+		B925E9FF15655470004D2462 /* CMLLabColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabColorspace.c; sourceTree = "<group>"; };
+		B925EA0015655470004D2462 /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
+		B925EA0115655470004D2462 /* CMLRGBColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBColorspace.c; sourceTree = "<group>"; };
+		B925EA1C15655518004D2462 /* CMLColorMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachine.h; sourceTree = "<group>"; };
+		B92855C51578EB4600C6C210 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		B92B8A8B146BF3AD00E8258C /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.txt; path = stuff/Readme.txt; sourceTree = SOURCE_ROOT; };
+		B92F506F140A76D100075896 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9476D6317C1523F00540771 /* CMLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLObserver.h; sourceTree = "<group>"; };
+		B9476D6817C1526B00540771 /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
+		B9476F9C17C3738D00540771 /* CMLIllumination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLIllumination.h; sourceTree = "<group>"; };
+		B9476F9D17C3738D00540771 /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
+		B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLBaseAPI.h; sourceTree = "<group>"; };
+		B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLBaseAPI.c; sourceTree = "<group>"; };
+		B956B6091577F522006ACA9B /* CMLInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLInternal.h; sourceTree = "<group>"; };
+		B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLNormedConversions.c; sourceTree = "<group>"; };
+		B9669125159A0D8700E43EF0 /* CMLNormedConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLNormedConversions.h; sourceTree = "<group>"; };
+		B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLCMYKColor.cpp; sourceTree = "<group>"; };
+		B97A8E1D15B953AC00D5E32C /* CMLCMYKColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLCMYKColor.h; sourceTree = "<group>"; };
+		B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLColor.cpp; sourceTree = "<group>"; };
+		B97A8E1F15B953AC00D5E32C /* CMLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColor.h; sourceTree = "<group>"; };
+		B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLGrayColor.cpp; sourceTree = "<group>"; };
+		B97A8E2115B953AC00D5E32C /* CMLGrayColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLGrayColor.h; sourceTree = "<group>"; };
+		B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSLColor.cpp; sourceTree = "<group>"; };
+		B97A8E2315B953AC00D5E32C /* CMLHSLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSLColor.h; sourceTree = "<group>"; };
+		B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSVColor.cpp; sourceTree = "<group>"; };
+		B97A8E2515B953AC00D5E32C /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
+		B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLabColor.cpp; sourceTree = "<group>"; };
+		B97A8E2715B953AC00D5E32C /* CMLLabColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLabColor.h; sourceTree = "<group>"; };
+		B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLchColor.cpp; sourceTree = "<group>"; };
+		B97A8E2915B953AC00D5E32C /* CMLLchColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLchColor.h; sourceTree = "<group>"; };
+		B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLuvColor.cpp; sourceTree = "<group>"; };
+		B97A8E2B15B953AC00D5E32C /* CMLLuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLuvColor.h; sourceTree = "<group>"; };
+		B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLRGBColor.cpp; sourceTree = "<group>"; };
+		B97A8E2D15B953AC00D5E32C /* CMLRGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLRGBColor.h; sourceTree = "<group>"; };
+		B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLSpectralColor.cpp; sourceTree = "<group>"; };
+		B97A8E2F15B953AC00D5E32C /* CMLSpectralColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLSpectralColor.h; sourceTree = "<group>"; };
+		B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLXYZColor.cpp; sourceTree = "<group>"; };
+		B97A8E3115B953AC00D5E32C /* CMLXYZColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLXYZColor.h; sourceTree = "<group>"; };
+		B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
+		B97A8E3315B953AC00D5E32C /* CMLYCbCrColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYCbCrColor.h; sourceTree = "<group>"; };
+		B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYupvpColor.cpp; sourceTree = "<group>"; };
+		B97A8E3515B953AC00D5E32C /* CMLYupvpColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYupvpColor.h; sourceTree = "<group>"; };
+		B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYuvColor.cpp; sourceTree = "<group>"; };
+		B97A8E3715B953AC00D5E32C /* CMLYuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYuvColor.h; sourceTree = "<group>"; };
+		B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYxyColor.cpp; sourceTree = "<group>"; };
+		B97A8E3915B953AC00D5E32C /* CMLYxyColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYxyColor.h; sourceTree = "<group>"; };
+		B97A915D15B9752C00D5E32C /* CMLunused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLunused.h; sourceTree = "<group>"; };
+		B97B46F915B7701300B902CC /* CMLYuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYuvConversions.c; sourceTree = "<group>"; };
+		B97D27CB156E936000BCF5F1 /* InternalTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InternalTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = internaltestmain.cpp; sourceTree = "<group>"; };
+		B98F4D5D15E4059C0080C96E /* cppexample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cppexample; sourceTree = BUILT_PRODUCTS_DIR; };
+		B98F4D6315E405DF0080C96E /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
+		B995CB7115F7CBC700EBD67E /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
+		B99F4BBF13F8AC4C009465D9 /* libcml.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcml.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A5C98915841A8C00C8B697 /* CMLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConstants.h; sourceTree = "<group>"; };
+		B9A71AD214731F3300150B1B /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMLChangelog.txt; path = stuff/CMLChangelog.txt; sourceTree = SOURCE_ROOT; };
+		B9CA200F145D52F6009FC44A /* CML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CML.h; sourceTree = "<group>"; };
+		B9CA2010145D52F6009FC44A /* CMLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLDefinitions.h; sourceTree = "<group>"; };
+		B9CA201E145D52F6009FC44A /* CMLFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLFunctions.c; sourceTree = "<group>"; };
+		B9CA201F145D52F6009FC44A /* CMLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLFunctions.h; sourceTree = "<group>"; };
+		B9CA2020145D52F6009FC44A /* CMLStrings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLStrings.c; sourceTree = "<group>"; };
+		B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLResponseCurve.c; sourceTree = "<group>"; };
+		B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLResponseCurve.h; sourceTree = "<group>"; };
+		B9E87BCF1576904E00049DEF /* CMLColorMachineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachineState.h; sourceTree = "<group>"; };
+		B9E87BD01576904E00049DEF /* CMLColorMachineState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineState.c; sourceTree = "<group>"; };
+		B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcmldebug.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9F9A90215A333A9003BFFB8 /* CMLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLTypes.h; sourceTree = "<group>"; };
+		B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYupvpConversions.c; sourceTree = "<group>"; };
+		B9FC3E8E1565598600AFAC92 /* CMLClamp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLClamp.c; sourceTree = "<group>"; };
+		B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKConversions.c; sourceTree = "<group>"; };
+		B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineConversions.c; sourceTree = "<group>"; };
+		B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayConversions.c; sourceTree = "<group>"; };
+		B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSLConversions.c; sourceTree = "<group>"; };
+		B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSVConversions.c; sourceTree = "<group>"; };
+		B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInputOutputConversions.c; sourceTree = "<group>"; };
+		B9FC3E951565598600AFAC92 /* CMLInvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInvert.c; sourceTree = "<group>"; };
+		B9FC3E961565598600AFAC92 /* CMLLabConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabConversions.c; sourceTree = "<group>"; };
+		B9FC3E971565598600AFAC92 /* CMLLchConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLchConversions.c; sourceTree = "<group>"; };
+		B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLuvConversions.c; sourceTree = "<group>"; };
+		B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBConversions.c; sourceTree = "<group>"; };
+		B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLSpectralConversions.c; sourceTree = "<group>"; };
+		B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLXYZConversions.c; sourceTree = "<group>"; };
+		B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYCbCrConversions.c; sourceTree = "<group>"; };
+		B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYxyConversions.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B92F506D140A76D100075896 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B97D27C9156E936000BCF5F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B955D7D415946A26003FCEB1 /* libcmldebug.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98F4D5B15E4059C0080C96E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98F4D6C15E405FD0080C96E /* libcml.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99F4BBD13F8AC4C009465D9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E8E3EF154D77D500A4C836 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B925E9F815655470004D2462 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */,
+				B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */,
+				B925E9FB15655470004D2462 /* CMLColorMachine.c */,
+				B925E9FD15655470004D2462 /* CMLGrayColorspace.c */,
+				B925E9FE15655470004D2462 /* CMLIllumination.c */,
+				B925E9FF15655470004D2462 /* CMLLabColorspace.c */,
+				B925EA0015655470004D2462 /* CMLObserver.c */,
+				B925EA0115655470004D2462 /* CMLRGBColorspace.c */,
+				B956B6091577F522006ACA9B /* CMLInternal.h */,
+				B90034341462FAC700E50D75 /* CMLInternal.c */,
+				B91C460416CBCC540065FB47 /* CMLConverterMacros.h */,
+				B9669125159A0D8700E43EF0 /* CMLNormedConversions.h */,
+				B9E87BCF1576904E00049DEF /* CMLColorMachineState.h */,
+				B9E87BD01576904E00049DEF /* CMLColorMachineState.c */,
+			);
+			path = StateMachine;
+			sourceTree = "<group>";
+		};
+		B97A8E1B15B953AC00D5E32C /* ColorClasses */ = {
+			isa = PBXGroup;
+			children = (
+				B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */,
+				B97A8E1D15B953AC00D5E32C /* CMLCMYKColor.h */,
+				B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */,
+				B97A8E1F15B953AC00D5E32C /* CMLColor.h */,
+				B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */,
+				B97A8E2115B953AC00D5E32C /* CMLGrayColor.h */,
+				B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */,
+				B97A8E2315B953AC00D5E32C /* CMLHSLColor.h */,
+				B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */,
+				B97A8E2515B953AC00D5E32C /* CMLHSVColor.h */,
+				B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */,
+				B97A8E2715B953AC00D5E32C /* CMLLabColor.h */,
+				B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */,
+				B97A8E2915B953AC00D5E32C /* CMLLchColor.h */,
+				B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */,
+				B97A8E2B15B953AC00D5E32C /* CMLLuvColor.h */,
+				B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */,
+				B97A8E2D15B953AC00D5E32C /* CMLRGBColor.h */,
+				B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */,
+				B97A8E2F15B953AC00D5E32C /* CMLSpectralColor.h */,
+				B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */,
+				B97A8E3115B953AC00D5E32C /* CMLXYZColor.h */,
+				B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */,
+				B97A8E3315B953AC00D5E32C /* CMLYCbCrColor.h */,
+				B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */,
+				B97A8E3515B953AC00D5E32C /* CMLYupvpColor.h */,
+				B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */,
+				B97A8E3715B953AC00D5E32C /* CMLYuvColor.h */,
+				B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */,
+				B97A8E3915B953AC00D5E32C /* CMLYxyColor.h */,
+			);
+			name = ColorClasses;
+			path = src/ColorClasses;
+			sourceTree = "<group>";
+		};
+		B99F4BA313F8ABFF009465D9 = {
+			isa = PBXGroup;
+			children = (
+				B9CA200E145D52F6009FC44A /* src */,
+				B97A8E1B15B953AC00D5E32C /* ColorClasses */,
+				B99F4BB513F8AC31009465D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B99F4BB513F8AC31009465D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B99F4BBF13F8AC4C009465D9 /* libcml.dylib */,
+				B92F506F140A76D100075896 /* Test */,
+				B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */,
+				B97D27CB156E936000BCF5F1 /* InternalTest */,
+				B98F4D5D15E4059C0080C96E /* cppexample */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9CA200E145D52F6009FC44A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B925E9F815655470004D2462 /* StateMachine */,
+				B9FC3E8D1565598600AFAC92 /* Conversions */,
+				B9CA200F145D52F6009FC44A /* CML.h */,
+				B9A5C98915841A8C00C8B697 /* CMLConstants.h */,
+				B9CA2010145D52F6009FC44A /* CMLDefinitions.h */,
+				B9F9A90215A333A9003BFFB8 /* CMLTypes.h */,
+				B925EA1C15655518004D2462 /* CMLColorMachine.h */,
+				B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */,
+				B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */,
+				B9CA201E145D52F6009FC44A /* CMLFunctions.c */,
+				B9CA201F145D52F6009FC44A /* CMLFunctions.h */,
+				B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */,
+				B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */,
+				B9CA2020145D52F6009FC44A /* CMLStrings.c */,
+				B995CB7115F7CBC700EBD67E /* example.cpp */,
+				B98F4D6315E405DF0080C96E /* cppexample.cpp */,
+				B92855C51578EB4600C6C210 /* Timer.h */,
+				B9A71AD214731F3300150B1B /* CMLChangelog.txt */,
+				B92B8A8B146BF3AD00E8258C /* Readme.txt */,
+				B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */,
+				B97A915D15B9752C00D5E32C /* CMLunused.h */,
+				B9476D6317C1523F00540771 /* CMLObserver.h */,
+				B9476D6817C1526B00540771 /* CMLObserver.c */,
+				B9476F9C17C3738D00540771 /* CMLIllumination.h */,
+				B9476F9D17C3738D00540771 /* CMLIllumination.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B9FC3E8D1565598600AFAC92 /* Conversions */ = {
+			isa = PBXGroup;
+			children = (
+				B9FC3E8E1565598600AFAC92 /* CMLClamp.c */,
+				B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */,
+				B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */,
+				B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */,
+				B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */,
+				B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */,
+				B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */,
+				B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */,
+				B9FC3E951565598600AFAC92 /* CMLInvert.c */,
+				B9FC3E961565598600AFAC92 /* CMLLabConversions.c */,
+				B9FC3E971565598600AFAC92 /* CMLLchConversions.c */,
+				B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */,
+				B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */,
+				B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */,
+				B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */,
+				B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */,
+				B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */,
+				B97B46F915B7701300B902CC /* CMLYuvConversions.c */,
+				B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */,
+			);
+			path = Conversions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B99F4BBB13F8AC4C009465D9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9BCD789154D8DE100C76B0E /* CML.h in Headers */,
+				B9BCD78A154D8DE200C76B0E /* CMLDefinitions.h in Headers */,
+				B9BCD78D154D8DE600C76B0E /* CMLFunctions.h in Headers */,
+				B925EA1D15655518004D2462 /* CMLColorMachine.h in Headers */,
+				B9A5C98A15841A8C00C8B697 /* CMLConstants.h in Headers */,
+				B9566EEC15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */,
+				B949154D15DEF26B00CC33C0 /* CMLTypes.h in Headers */,
+				B9E38BBA17A5DBC500B39CE8 /* CMLResponseCurve.h in Headers */,
+				B9476D6417C1523F00540771 /* CMLObserver.h in Headers */,
+				B9476F9E17C3738D00540771 /* CMLIllumination.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E8E3ED154D77D500A4C836 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9BCD79C154D8E0000C76B0E /* CML.h in Headers */,
+				B9BCD79D154D8E0000C76B0E /* CMLDefinitions.h in Headers */,
+				B9BCD7A0154D8E0300C76B0E /* CMLFunctions.h in Headers */,
+				B9C6F2FE1579628100B33E6E /* CMLColorMachine.h in Headers */,
+				B9A5C98B15841A8C00C8B697 /* CMLConstants.h in Headers */,
+				B9566EEE15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B92F506E140A76D100075896 /* example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B92F5076140A76DA00075896 /* Build configuration list for PBXNativeTarget "example" */;
+			buildPhases = (
+				B92F506C140A76D100075896 /* Sources */,
+				B92F506D140A76D100075896 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B972DAF9142347940015D6F7 /* PBXTargetDependency */,
+			);
+			name = example;
+			productName = Test;
+			productReference = B92F506F140A76D100075896 /* Test */;
+			productType = "com.apple.product-type.tool";
+		};
+		B97D27CA156E936000BCF5F1 /* InternalTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B97D27D5156E939800BCF5F1 /* Build configuration list for PBXNativeTarget "InternalTest" */;
+			buildPhases = (
+				B97D27C8156E936000BCF5F1 /* Sources */,
+				B97D27C9156E936000BCF5F1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B955D7D615946A3C003FCEB1 /* PBXTargetDependency */,
+			);
+			name = InternalTest;
+			productName = InternalTest;
+			productReference = B97D27CB156E936000BCF5F1 /* InternalTest */;
+			productType = "com.apple.product-type.tool";
+		};
+		B98F4D5C15E4059C0080C96E /* cppexample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "cppexample" */;
+			buildPhases = (
+				B98F4D5A15E4059C0080C96E /* Sources */,
+				B98F4D5B15E4059C0080C96E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cppexample;
+			productName = cppexample;
+			productReference = B98F4D5D15E4059C0080C96E /* cppexample */;
+			productType = "com.apple.product-type.tool";
+		};
+		B99F4BBE13F8AC4C009465D9 /* libcml */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B99F4BC313F8AC53009465D9 /* Build configuration list for PBXNativeTarget "libcml" */;
+			buildPhases = (
+				B99F4BBB13F8AC4C009465D9 /* Headers */,
+				B99F4BBC13F8AC4C009465D9 /* Sources */,
+				B99F4BBD13F8AC4C009465D9 /* Frameworks */,
+				B9602B51154D538500095654 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libcml;
+			productName = CMLDynamic;
+			productReference = B99F4BBF13F8AC4C009465D9 /* libcml.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		B9E8E3F0154D77D500A4C836 /* libcmldebug */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9E8E3F8154D77F600A4C836 /* Build configuration list for PBXNativeTarget "libcmldebug" */;
+			buildPhases = (
+				B9E8E3ED154D77D500A4C836 /* Headers */,
+				B9E8E3EE154D77D500A4C836 /* Sources */,
+				B9E8E3EF154D77D500A4C836 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libcmldebug;
+			productName = libcmldebug;
+			productReference = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B99F4BA513F8ABFF009465D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Manderim GmbH";
+			};
+			buildConfigurationList = B99F4BA813F8ABFF009465D9 /* Build configuration list for PBXProject "CML" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = B99F4BA313F8ABFF009465D9;
+			productRefGroup = B99F4BB513F8AC31009465D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B99F4BBE13F8AC4C009465D9 /* libcml */,
+				B92F506E140A76D100075896 /* example */,
+				B9E8E3F0154D77D500A4C836 /* libcmldebug */,
+				B97D27CA156E936000BCF5F1 /* InternalTest */,
+				B98F4D5C15E4059C0080C96E /* cppexample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B9602B51154D538500095654 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf $CONFIGURATION_BUILD_DIR/CML\nmkdir $CONFIGURATION_BUILD_DIR/CML\nrm -rf $CONFIGURATION_BUILD_DIR/CML/ColorClasses\nmkdir $CONFIGURATION_BUILD_DIR/CML/ColorClasses\ncp $PROJECT_DIR/src/CML.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLConstants.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLDefinitions.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLBaseAPI.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLTypes.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLColorMachine.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLFunctions.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLObserver.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLIllumination.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLResponseCurve.h $CONFIGURATION_BUILD_DIR/CML/\ncp -r $PROJECT_DIR/src/ColorClasses/ $CONFIGURATION_BUILD_DIR/CML/ColorClasses\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B92F506C140A76D100075896 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B995CB7215F7CBC700EBD67E /* example.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B97D27C8156E936000BCF5F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B97D27D4156E939800BCF5F1 /* internaltestmain.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98F4D5A15E4059C0080C96E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B98F4D6415E405DF0080C96E /* cppexample.cpp in Sources */,
+				B98F4DA115E40A4C0080C96E /* CMLCMYKColor.cpp in Sources */,
+				B98F4DA215E40A4D0080C96E /* CMLColor.cpp in Sources */,
+				B98F4DA315E40A4E0080C96E /* CMLGrayColor.cpp in Sources */,
+				B98F4DA415E40A4E0080C96E /* CMLHSLColor.cpp in Sources */,
+				B98F4DA515E40A4F0080C96E /* CMLHSVColor.cpp in Sources */,
+				B98F4DA615E40A500080C96E /* CMLLabColor.cpp in Sources */,
+				B98F4DA715E40A510080C96E /* CMLLchColor.cpp in Sources */,
+				B98F4DA815E40A520080C96E /* CMLLuvColor.cpp in Sources */,
+				B98F4DA915E40A530080C96E /* CMLRGBColor.cpp in Sources */,
+				B98F4DAA15E40A530080C96E /* CMLSpectralColor.cpp in Sources */,
+				B98F4DAB15E40A560080C96E /* CMLXYZColor.cpp in Sources */,
+				B98F4DAC15E40A560080C96E /* CMLYCbCrColor.cpp in Sources */,
+				B98F4DAD15E40A570080C96E /* CMLYupvpColor.cpp in Sources */,
+				B98F4DAE15E40A580080C96E /* CMLYuvColor.cpp in Sources */,
+				B98F4DAF15E40A590080C96E /* CMLYxyColor.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B99F4BBC13F8AC4C009465D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9CA204C145D52F6009FC44A /* CMLFunctions.c in Sources */,
+				B9CA204E145D52F6009FC44A /* CMLStrings.c in Sources */,
+				B90034351462FAC700E50D75 /* CMLInternal.c in Sources */,
+				B925EA0615655470004D2462 /* CMLChromaticAdaptation.c in Sources */,
+				B925EA0715655470004D2462 /* CMLCMYKColorspace.c in Sources */,
+				B925EA0815655470004D2462 /* CMLColorMachine.c in Sources */,
+				B925EA0A15655470004D2462 /* CMLGrayColorspace.c in Sources */,
+				B925EA0B15655470004D2462 /* CMLIllumination.c in Sources */,
+				B925EA0C15655470004D2462 /* CMLLabColorspace.c in Sources */,
+				B925EA0D15655470004D2462 /* CMLObserver.c in Sources */,
+				B925EA0E15655470004D2462 /* CMLRGBColorspace.c in Sources */,
+				B9FC3E9F1565598600AFAC92 /* CMLClamp.c in Sources */,
+				B9FC3EA01565598600AFAC92 /* CMLCMYKConversions.c in Sources */,
+				B9FC3EA11565598600AFAC92 /* CMLColorMachineConversions.c in Sources */,
+				B9FC3EA21565598600AFAC92 /* CMLGrayConversions.c in Sources */,
+				B9FC3EA31565598600AFAC92 /* CMLHSLConversions.c in Sources */,
+				B9FC3EA41565598600AFAC92 /* CMLHSVConversions.c in Sources */,
+				B9FC3EA51565598600AFAC92 /* CMLInputOutputConversions.c in Sources */,
+				B9FC3EA61565598600AFAC92 /* CMLInvert.c in Sources */,
+				B9FC3EA71565598600AFAC92 /* CMLLabConversions.c in Sources */,
+				B9FC3EA81565598600AFAC92 /* CMLLchConversions.c in Sources */,
+				B9FC3EA91565598600AFAC92 /* CMLLuvConversions.c in Sources */,
+				B9FC3EAA1565598600AFAC92 /* CMLRGBConversions.c in Sources */,
+				B9FC3EAB1565598600AFAC92 /* CMLSpectralConversions.c in Sources */,
+				B9FC3EAC1565598600AFAC92 /* CMLXYZConversions.c in Sources */,
+				B9FC3EAD1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */,
+				B9FC3EAF1565598600AFAC92 /* CMLYxyConversions.c in Sources */,
+				B9E87BD21576904E00049DEF /* CMLColorMachineState.c in Sources */,
+				B966912E159A0DFC00E43EF0 /* CMLNormedConversions.c in Sources */,
+				B9F9A9D415A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */,
+				B9566EED15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */,
+				B97B46FA15B7701300B902CC /* CMLYuvConversions.c in Sources */,
+				B9E38BB917A5DBC500B39CE8 /* CMLResponseCurve.c in Sources */,
+				B9476D6917C1526B00540771 /* CMLObserver.c in Sources */,
+				B9476F9F17C3738D00540771 /* CMLIllumination.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9E8E3EE154D77D500A4C836 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9E8E416154D780E00A4C836 /* CMLStrings.c in Sources */,
+				B9E8E418154D780E00A4C836 /* CMLFunctions.c in Sources */,
+				B9E8E41B154D781000A4C836 /* CMLInternal.c in Sources */,
+				B9FC3EB01565598600AFAC92 /* CMLClamp.c in Sources */,
+				B9FC3EB11565598600AFAC92 /* CMLCMYKConversions.c in Sources */,
+				B9FC3EB21565598600AFAC92 /* CMLColorMachineConversions.c in Sources */,
+				B9FC3EB31565598600AFAC92 /* CMLGrayConversions.c in Sources */,
+				B9FC3EB41565598600AFAC92 /* CMLHSLConversions.c in Sources */,
+				B9FC3EB51565598600AFAC92 /* CMLHSVConversions.c in Sources */,
+				B9FC3EB61565598600AFAC92 /* CMLInputOutputConversions.c in Sources */,
+				B9FC3EB71565598600AFAC92 /* CMLInvert.c in Sources */,
+				B9FC3EB81565598600AFAC92 /* CMLLabConversions.c in Sources */,
+				B9FC3EB91565598600AFAC92 /* CMLLchConversions.c in Sources */,
+				B9FC3EBA1565598600AFAC92 /* CMLLuvConversions.c in Sources */,
+				B9FC3EBB1565598600AFAC92 /* CMLRGBConversions.c in Sources */,
+				B9FC3EBC1565598600AFAC92 /* CMLSpectralConversions.c in Sources */,
+				B9FC3EBD1565598600AFAC92 /* CMLXYZConversions.c in Sources */,
+				B9FC3EBE1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */,
+				B9FC3EC01565598600AFAC92 /* CMLYxyConversions.c in Sources */,
+				B9C6F2FF1579628600B33E6E /* CMLChromaticAdaptation.c in Sources */,
+				B9C6F3001579628600B33E6E /* CMLCMYKColorspace.c in Sources */,
+				B9C6F3011579628700B33E6E /* CMLColorMachine.c in Sources */,
+				B9C6F3021579628700B33E6E /* CMLGrayColorspace.c in Sources */,
+				B9C6F3031579628800B33E6E /* CMLIllumination.c in Sources */,
+				B9C6F3041579628900B33E6E /* CMLLabColorspace.c in Sources */,
+				B9C6F3051579628900B33E6E /* CMLObserver.c in Sources */,
+				B9C6F3061579628A00B33E6E /* CMLRGBColorspace.c in Sources */,
+				B9C6F3071579628B00B33E6E /* CMLColorMachineState.c in Sources */,
+				B966912F159A0E0000E43EF0 /* CMLNormedConversions.c in Sources */,
+				B9F9A9D515A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */,
+				B9566EEF15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */,
+				B97B46FB15B7701300B902CC /* CMLYuvConversions.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B955D7D615946A3C003FCEB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9E8E3F0154D77D500A4C836 /* libcmldebug */;
+			targetProxy = B955D7D515946A3C003FCEB1 /* PBXContainerItemProxy */;
+		};
+		B972DAF9142347940015D6F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B99F4BBE13F8AC4C009465D9 /* libcml */;
+			targetProxy = B972DAF8142347940015D6F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B92F5071140A76D100075896 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = Test;
+			};
+			name = Debug;
+		};
+		B92F5072140A76D100075896 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = Test;
+			};
+			name = Release;
+		};
+		B93BC24A157959260095CAE6 /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_ENABLE_SYMBOL_SEPARATION = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Optimize;
+		};
+		B93BC24B157959260095CAE6 /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.1;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				GCC_WARN_SHADOW = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = libcml;
+				PROVISIONING_PROFILE = "";
+				STRIP_STYLE = all;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Optimize;
+		};
+		B93BC24C157959260095CAE6 /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = Test;
+			};
+			name = Optimize;
+		};
+		B93BC24D157959260095CAE6 /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 0.9;
+				DYLIB_CURRENT_VERSION = 0.9.5;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = libcmldebug;
+			};
+			name = Optimize;
+		};
+		B93BC24E157959260095CAE6 /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lfxAPI";
+				PRODUCT_NAME = InternalTest;
+			};
+			name = Optimize;
+		};
+		B97D27CD156E936000BCF5F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lfxAPI";
+				PRODUCT_NAME = InternalTest;
+			};
+			name = Debug;
+		};
+		B97D27CE156E936000BCF5F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_PEDANTIC = NO;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = "-lfxAPI";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				PRODUCT_NAME = InternalTest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B98F4D5F15E4059C0080C96E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = cppexample;
+			};
+			name = Debug;
+		};
+		B98F4D6015E4059C0080C96E /* Optimize */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = cppexample;
+			};
+			name = Optimize;
+		};
+		B98F4D6115E4059C0080C96E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = "-lcml";
+				PRODUCT_NAME = cppexample;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B99F4BA613F8ABFF009465D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_ENABLE_SYMBOL_SEPARATION = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		B99F4BA713F8ABFF009465D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_SYMBOL_SEPARATION = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_PROTOTYPE_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B99F4BC013F8AC4D009465D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.1;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				GCC_WARN_SHADOW = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = libcml;
+				PROVISIONING_PROFILE = "";
+				STRIP_STYLE = all;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Debug;
+		};
+		B99F4BC113F8AC4D009465D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.1;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				GCC_WARN_SHADOW = YES;
+				LD_GENERATE_MAP_FILE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fvisibility-inlines-hidden";
+				PRODUCT_NAME = libcml;
+				PROVISIONING_PROFILE = "";
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Release;
+		};
+		B9E8E3F2154D77D500A4C836 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 0.9;
+				DYLIB_CURRENT_VERSION = 0.9.5;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = libcmldebug;
+			};
+			name = Debug;
+		};
+		B9E8E3F3154D77D500A4C836 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 0.9;
+				DYLIB_CURRENT_VERSION = 0.9.5;
+				GCC_MODEL_TUNING = G5;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				INSTALL_PATH = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = libcmldebug;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B92F5076140A76DA00075896 /* Build configuration list for PBXNativeTarget "example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B92F5071140A76D100075896 /* Debug */,
+				B93BC24C157959260095CAE6 /* Optimize */,
+				B92F5072140A76D100075896 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B97D27D5156E939800BCF5F1 /* Build configuration list for PBXNativeTarget "InternalTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B97D27CD156E936000BCF5F1 /* Debug */,
+				B93BC24E157959260095CAE6 /* Optimize */,
+				B97D27CE156E936000BCF5F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "cppexample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B98F4D5F15E4059C0080C96E /* Debug */,
+				B98F4D6015E4059C0080C96E /* Optimize */,
+				B98F4D6115E4059C0080C96E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99F4BA813F8ABFF009465D9 /* Build configuration list for PBXProject "CML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99F4BA613F8ABFF009465D9 /* Debug */,
+				B93BC24A157959260095CAE6 /* Optimize */,
+				B99F4BA713F8ABFF009465D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B99F4BC313F8AC53009465D9 /* Build configuration list for PBXNativeTarget "libcml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B99F4BC013F8AC4D009465D9 /* Debug */,
+				B93BC24B157959260095CAE6 /* Optimize */,
+				B99F4BC113F8AC4D009465D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9E8E3F8154D77F600A4C836 /* Build configuration list for PBXNativeTarget "libcmldebug" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9E8E3F2154D77D500A4C836 /* Debug */,
+				B93BC24D157959260095CAE6 /* Optimize */,
+				B9E8E3F3154D77D500A4C836 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B99F4BA513F8ABFF009465D9 /* Project object */;
+}
