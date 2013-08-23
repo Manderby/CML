@@ -142,7 +142,6 @@
 		B925EA0115655470004D2462 /* CMLRGBColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBColorspace.c; sourceTree = "<group>"; };
 		B925EA1C15655518004D2462 /* CMLColorMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachine.h; sourceTree = "<group>"; };
 		B92855C51578EB4600C6C210 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		B92B8A8B146BF3AD00E8258C /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.txt; path = stuff/Readme.txt; sourceTree = SOURCE_ROOT; };
 		B92F506F140A76D100075896 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9476D6317C1523F00540771 /* CMLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLObserver.h; sourceTree = "<group>"; };
 		B9476D6817C1526B00540771 /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
@@ -153,6 +152,9 @@
 		B956B6091577F522006ACA9B /* CMLInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLInternal.h; sourceTree = "<group>"; };
 		B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLNormedConversions.c; sourceTree = "<group>"; };
 		B9669125159A0D8700E43EF0 /* CMLNormedConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLNormedConversions.h; sourceTree = "<group>"; };
+		B973DB6E17C727310064D7AC /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMLChangelog.txt; sourceTree = "<group>"; };
+		B973DB6F17C727310064D7AC /* installimage.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = installimage.psd; sourceTree = "<group>"; };
+		B973DB7017C727310064D7AC /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLCMYKColor.cpp; sourceTree = "<group>"; };
 		B97A8E1D15B953AC00D5E32C /* CMLCMYKColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLCMYKColor.h; sourceTree = "<group>"; };
 		B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLColor.cpp; sourceTree = "<group>"; };
@@ -192,7 +194,6 @@
 		B995CB7115F7CBC700EBD67E /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
 		B99F4BBF13F8AC4C009465D9 /* libcml.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcml.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9A5C98915841A8C00C8B697 /* CMLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConstants.h; sourceTree = "<group>"; };
-		B9A71AD214731F3300150B1B /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMLChangelog.txt; path = stuff/CMLChangelog.txt; sourceTree = SOURCE_ROOT; };
 		B9CA200F145D52F6009FC44A /* CML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CML.h; sourceTree = "<group>"; };
 		B9CA2010145D52F6009FC44A /* CMLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLDefinitions.h; sourceTree = "<group>"; };
 		B9CA201E145D52F6009FC44A /* CMLFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLFunctions.c; sourceTree = "<group>"; };
@@ -285,6 +286,16 @@
 			path = StateMachine;
 			sourceTree = "<group>";
 		};
+		B973DB6D17C727310064D7AC /* res */ = {
+			isa = PBXGroup;
+			children = (
+				B973DB6E17C727310064D7AC /* CMLChangelog.txt */,
+				B973DB6F17C727310064D7AC /* installimage.psd */,
+				B973DB7017C727310064D7AC /* Readme.txt */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		B97A8E1B15B953AC00D5E32C /* ColorClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +339,7 @@
 			children = (
 				B9CA200E145D52F6009FC44A /* src */,
 				B97A8E1B15B953AC00D5E32C /* ColorClasses */,
+				B973DB6D17C727310064D7AC /* res */,
 				B99F4BB513F8AC31009465D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -364,8 +376,6 @@
 				B995CB7115F7CBC700EBD67E /* example.cpp */,
 				B98F4D6315E405DF0080C96E /* cppexample.cpp */,
 				B92855C51578EB4600C6C210 /* Timer.h */,
-				B9A71AD214731F3300150B1B /* CMLChangelog.txt */,
-				B92B8A8B146BF3AD00E8258C /* Readme.txt */,
 				B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */,
 				B97A915D15B9752C00D5E32C /* CMLunused.h */,
 				B9476D6317C1523F00540771 /* CMLObserver.h */,
