@@ -11,7 +11,7 @@
 // Usually, the needed space for the return buffer must be provided, CML will
 // not allocate buffer memory for you. Also note that there is no overflow
 // detection, so make sure, your buffers provide enough space. Note however
-// that a function starting with "CMLcreate..." will indeed allocate space
+// that a function starting with "cmlCreate..." will indeed allocate space
 // which needs to be deleted manually. This will furthermore be indicated by an
 // additional comment at the corresponding API.
 //
@@ -145,20 +145,27 @@ CMLAPI void CMLconvertHSLtoHSV(  CMLVec3       HSV,
 
 
 // This method always returns a radiometric result. If you would like to have
+// a colorimetric result, you need to divide the result by its Y component or
+// use a whitepoint with the two functions below.
+CMLAPI void CMLconvertSpectrumtoRadiometricXYZ (
+                           CMLVec3             XYZ,
+                     const CMLFunction*        spectrum,
+                     const CMLObserver*        observer);
+
+// This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by its Y component.
 CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (
                            CMLVec3             XYZ,
-                     const CMLFunction*        specill,
-                     const CMLObserver*        observer);
+                     const CMLFunction*        spectrum,
+                     const CMLWhitepoint*      whitepoint);
 
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by the Y component of
 // the white point defined by the illumination.
 CMLAPI void CMLconvertRemissionSpectrumtoXYZ (
                            CMLVec3             XYZ,
-                     const CMLFunction*        specrem,
-                     const CMLFunction*        specill,
-                     const CMLObserver*        observer);
+                     const CMLFunction*        spectrum,
+                     const CMLWhitepoint*      whitepoint);
 
 
 // ///////////////////////////////////////////
@@ -183,12 +190,13 @@ CMLAPI void CMLconvertXYZtoChromaticAdaptedXYZ(  CMLVec3 aXYZ,
 
 
 
-// Returns 3 CMLFunctions denoting the x_, y_ and z_ distribution functions
-// of a desired observer. The returned functions must be deleted manually. If
-// an invalid observer is given or if the observer is CML_OBSERVER_CUSTOM, the
-// buffer will be filled with CML_NULL pointers.
-CMLAPI void cmlCreateSpecDistFunctions( CMLFunction* functions[3],
-                                                 CMLObserverType observer);
+// Fills the given array with 3 CMLFunctions denoting the x_, y_ and z_ spectral
+// distribution functions of a desired observer. These functions must be
+// deleted manually. If an invalid observer is given or if the observer is
+// CML_OBSERVER_CUSTOM, the array will be filled with CML_NULL pointers.
+CMLAPI void cmlCreateSpectralDistributionFunctions(
+                                        CMLFunction* functions[3],
+                                     CMLObserverType observer);
 
 
 // Creates and returns a new spectrum with the given input parameters. The
@@ -206,7 +214,7 @@ CMLAPI CMLFunction* cmlCreateIlluminationSpectrum(
 // Returns the correlated color temperature in [Degree Kelvin] for a given
 // whitepoint in Yuv. Currently, the Robertson method is implemented.
 // Beware! This function expects Yuv, not Yxy!
-CMLAPI float CMLgetCorrelatedColorTemperature(
+CMLAPI float cmlComputeCorrelatedColorTemperature(
                                     const CMLVec3       whitepointYuv);
 
 
@@ -216,16 +224,16 @@ CMLAPI float CMLgetCorrelatedColorTemperature(
 
 // Returns all three primaries of a predefined RGB colorspace. Note that
 // the Y component of the three primaries will always be 1.
-CMLAPI void CMLgetRGBColorSpacePrimaries(
-                                  CMLRGBColorSpace      colorspacetype,
+CMLAPI void cmlGetRGBSpacePrimaries(
+                                  CMLRGBSpaceType      colorspacetype,
                                   CMLVec3               primaryRYxy,
                                   CMLVec3               primaryGYxy,
                                   CMLVec3               primaryBYxy);
 // Returns the illumination type of a predefined RGB colorspace.
-CMLAPI CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
-                                  CMLRGBColorSpace      colorspacetype);
-CMLAPI CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
-                                      (CMLRGBColorSpace colorspacetype);
+CMLAPI CMLIlluminationType cmlGetRGBSpaceIlluminationType(
+                                  CMLRGBSpaceType      colorspacetype);
+CMLAPI CMLResponseCurvePreset cmlGetRGBSpaceResponseCurvePreset
+                                      (CMLRGBSpaceType colorspacetype);
 
 // Computes the matrix for RGB -> XYZ conversions given the three primaries and
 // the whitepoint as Yxy colors. Note that the Y component of the three
@@ -243,27 +251,27 @@ CMLAPI void CMLcomputeRGBtoXYZMatrix(
 
 // Returns the number of channels a specific color type uses. If an invalid
 // color type is given, the returned value will be 0.
-CMLAPI CMLuint32 CMLgetNumChannels( CMLColorType        colortype);
+CMLAPI CMLuint32 cmlGetNumChannels( CMLColorType        colortype);
 
 
 // Returns the minimal or maximal bounds for each channel of a specified color
 // type. If an invalid color type is given, the returned values will be
 // undefined.
-CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype);
-CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype);
+CMLAPI void cmlGetMinBounds(float* buffer, CMLColorType colortype);
+CMLAPI void cmlGetMaxBounds(float* buffer, CMLColorType colortype);
 
 
 // The following functions return an ASCII string describing the desired value.
 // Do not delete the returned pointers. If an invalid input parameter is given,
 // the returned value will be invalid.
-CMLAPI const char* CMLgetColorTypeString               (CMLColorType colortype);
-CMLAPI const char* CMLgetObserverTypeString            (CMLObserverType observertype);
-CMLAPI const char* CMLgetIlluminationTypeString        (CMLIlluminationType illuminationtype);
-CMLAPI const char* CMLgetRGBColorspaceString           (CMLRGBColorSpace colorspacetype);
-CMLAPI const char* CMLgetLabSpaceTypeString            (CMLLabColorSpaceType labspacetype);
-CMLAPI const char* CMLgetRGBResponsePresetString  (CMLResponseCurvePreset preset);
-CMLAPI const char* CMLgetFunctionTypeString       (CMLFunctionType functiontype);
-CMLAPI const char* CMLgetGrayComputationTypeString     (CMLGrayComputationType computationtype);
-CMLAPI const char* CMLgetCMYKTransformTypeString       (CMLCMYKTransformType transformtype);
-CMLAPI const char* CMLgetChromaticAdaptationTypeString (CMLChromaticAdaptationType chromaticadaptationtype);
+CMLAPI const char* cmlGetColorTypeString               (CMLColorType colortype);
+CMLAPI const char* cmlGetObserverTypeString            (CMLObserverType observertype);
+CMLAPI const char* cmlGetIlluminationTypeString        (CMLIlluminationType illuminationtype);
+CMLAPI const char* cmlGetRGBColorspaceString           (CMLRGBSpaceType colorspacetype);
+CMLAPI const char* cmlGetLabSpaceTypeString            (CMLLabSpaceType labspacetype);
+CMLAPI const char* cmlGetRGBResponsePresetString  (CMLResponseCurvePreset preset);
+CMLAPI const char* cmlGetFunctionTypeString       (CMLFunctionType functiontype);
+CMLAPI const char* cmlGetGrayComputationTypeString     (CMLGrayComputationType computationtype);
+CMLAPI const char* cmlGetCMYKTransformTypeString       (CMLCMYKTransformType transformtype);
+CMLAPI const char* cmlGetChromaticAdaptationTypeString (CMLChromaticAdaptationType chromaticadaptationtype);
 

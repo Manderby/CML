@@ -9,63 +9,52 @@
 #include "CMLColorMachineState.h"
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = src->BALFtype;
-  illumination->BALFtemperature = src->BALFtemperature;
-  if(src->BALFspectrum){
-    illumination->BALFspectrum = CMLduplicateFunction(src->BALFspectrum);
-  }else{
-    illumination->BALFspectrum = CML_NULL;
-  }
-  cmlCpy3(illumination->BALFradiometricXYZ, src->BALFradiometricXYZ);
-  return illumination;
-}
+CMLAPI void cmlDestroyIllumination(void* illum);
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = type;
-  illumination->BALFtemperature = temperature;
-  illumination->BALFspectrum = cmlCreateIlluminationSpectrum(illumination->BALFtype, illumination->BALFtemperature);
+CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIlluminationType type, float temperature){
+  CMLIllumination* illumination = cmlCreateObject(sizeof(CMLIllumination), cmlDestroyIllumination);
+  illumination->type = type;
+  illumination->temperature = temperature;
+  illumination->spectrum = cmlCreateIlluminationSpectrum(illumination->type, illumination->temperature);
 
-  switch(illumination->BALFtype){
+  switch(illumination->type){
   case CML_ILLUMINATION_BLACKBODY:
     // temperature is already set.
-    if(!illumination->BALFtemperature){illumination->BALFtemperature = CML_TEMPERATURE_A;}
+    if(!illumination->temperature){illumination->temperature = CML_TEMPERATURE_A;}
     break;
   case CML_ILLUMINATION_A_CIE:
-    illumination->BALFtemperature = 2848.f;
+    illumination->temperature = 2848.f;
     break;
   case CML_ILLUMINATION_A_EXACT:
-    illumination->BALFtemperature = CML_TEMPERATURE_A;
+    illumination->temperature = CML_TEMPERATURE_A;
     break;
   case CML_ILLUMINATION_D_ILLUMINANT:
     // temperature is already set.
-    if(!illumination->BALFtemperature){illumination->BALFtemperature = CML_TEMPERATURE_D65;}
+    if(!illumination->temperature){illumination->temperature = CML_TEMPERATURE_D65;}
     break;
   case CML_ILLUMINATION_D50:
-    illumination->BALFtemperature = CML_TEMPERATURE_D50;
+    illumination->temperature = CML_TEMPERATURE_D50;
     break;
   case CML_ILLUMINATION_D55:
-    illumination->BALFtemperature = CML_TEMPERATURE_D55;
+    illumination->temperature = CML_TEMPERATURE_D55;
     break;
   case CML_ILLUMINATION_D65:
-    illumination->BALFtemperature = CML_TEMPERATURE_D65;
+    illumination->temperature = CML_TEMPERATURE_D65;
     break;
   case CML_ILLUMINATION_D75:
-    illumination->BALFtemperature = CML_TEMPERATURE_D75;
+    illumination->temperature = CML_TEMPERATURE_D75;
     break;
   case CML_ILLUMINATION_D93:
-    illumination->BALFtemperature = CML_TEMPERATURE_D93;
+    illumination->temperature = CML_TEMPERATURE_D93;
     break;
   default:
-    // Any other illumination is computed using Robertson
+    // Any other illumination is computed using Robertson on demand.
     {
-      illumination->BALFtemperature = 0.f;
+      illumination->temperature = 0.f;
 //      CMLVec3 whitepointYuv;
 //      cmlInternalOneYupvptoYuv(whitepointYuv, cm->illumination.whitepointYupvp);
-//      cm->illumination.temperature = CMLgetCorrelatedColorTemperature(whitepointYuv);
+//      cm->illumination.temperature = cmlComputeCorrelatedColorTemperature(whitepointYuv);
     }
     break;
   }
@@ -73,83 +62,80 @@ CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumin
 }
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = CML_ILLUMINATION_CUSTOM_SPECTRUM;
-  illumination->BALFtemperature = 0.f;
-  illumination->BALFspectrum = CMLduplicateFunction(spectrum);
+CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(const CMLFunction* spectrum){
+  CMLIllumination* illumination = cmlCreateObject(sizeof(CMLIllumination), cmlDestroyIllumination);
+  illumination->type = CML_ILLUMINATION_CUSTOM_SPECTRUM;
+  illumination->temperature = 0.f;
+  illumination->spectrum = (CMLFunction*)cmlRetainObject(spectrum);
 
-  cmlInternalOneIlluminationSpectrumtoXYZ(illumination->BALFradiometricXYZ, illumination->BALFspectrum, observer);
-
-  CMLVec3 whitepointYxy;
-  CMLVec3 whitepointYupvp;
-  CMLVec3 whitepointYuv;
-  cmlInternalOneXYZtoYxy(whitepointYxy, illumination->BALFradiometricXYZ, CML_NULL);
-  cmlInternalOneYxytoYupvp(whitepointYupvp, whitepointYxy, CML_NULL);
-  cmlInternalOneYupvptoYuv(whitepointYuv, whitepointYupvp);
-  illumination->BALFtemperature = CMLgetCorrelatedColorTemperature(whitepointYuv);
+//  cmlInternalOneIlluminationSpectrumtoXYZ(illumination->radiometricXYZ, illumination->spectrum, observer);
+//
+//  CMLVec3 whitepointYxy;
+//  CMLVec3 whitepointYupvp;
+//  CMLVec3 whitepointYuv;
+//  cmlInternalOneXYZtoYxy(whitepointYxy, illumination->radiometricXYZ, CML_NULL);
+//  cmlInternalOneYxytoYupvp(whitepointYupvp, whitepointYxy, CML_NULL);
+//  cmlInternalOneYupvptoYuv(whitepointYuv, whitepointYupvp);
+//  illumination->temperature = cmlComputeCorrelatedColorTemperature(whitepointYuv);
 
   return illumination;
 }
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitepointYxy){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
-  illumination->BALFspectrum = NULL;
+CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(const CMLVec3 whitepointYxy){
+  CMLIllumination* illumination = cmlCreateObject(sizeof(CMLIllumination), cmlDestroyIllumination);
+  illumination->type = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
+  illumination->spectrum = NULL;
   
-  cmlInternalOneYxytoXYZ(illumination->BALFradiometricXYZ, whitepointYxy, CML_NULL);
+  cmlInternalOneYxytoXYZ(illumination->radiometricXYZ, whitepointYxy, CML_NULL);
 
   CMLVec3 whitepointYupvp;
   CMLVec3 whitepointYuv;
   cmlInternalOneYxytoYupvp(whitepointYupvp, whitepointYxy, CML_NULL);
   cmlInternalOneYupvptoYuv(whitepointYuv, whitepointYupvp);
-  illumination->BALFtemperature = CMLgetCorrelatedColorTemperature(whitepointYuv);
+  illumination->temperature = cmlComputeCorrelatedColorTemperature(whitepointYuv);
 
   return illumination;
 }
 
 
 
-CMLAPI void cmlClearIllumination(CMLIllumination* illumination){
-  cmlReleaseFunction(illumination->BALFspectrum);
+
+CMLAPI void cmlDestroyIllumination(void* illum){
+  CMLIllumination* illumination = (CMLIllumination*)illum;
+  cmlReleaseObject(illumination->spectrum);
 }
 
-
-CMLAPI void cmlDestroyIllumination(CMLIllumination* illumination){
-  cmlClearIllumination(illumination);
-  free(illumination);
-}
 
 
 
 
 CMLAPI CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination){
-  return illumination->BALFtype;
+  return illumination->type;
 }
 
 CMLAPI const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination){
-  return illumination->BALFspectrum;
+  return illumination->spectrum;
 }
 
 
 CMLAPI float cmlGetCorrelatedColorTemperature(const CMLIllumination* illumination){
-//  if(!illumination->BALFtemperature){
+//  if(!illumination->temperature){
 //    // Computation takes long. Compute on demand.
 //    return 0.f;
 ////    CMLVec3 whitepointYuv;
 ////    cmlInternalOneYupvptoYuv(whitepointYuv, cm->illumination.whitepointYupvp);
-////    cm->illumination.temperature = CMLgetCorrelatedColorTemperature(whitepointYuv);
+////    cm->illumination.temperature = cmlComputeCorrelatedColorTemperature(whitepointYuv);
 //  }
-  if(!illumination->BALFtemperature){return CML_TEMPERATURE_D65;}
-  return illumination->BALFtemperature;
+  if(!illumination->temperature){return CML_TEMPERATURE_D65;}
+  return illumination->temperature;
 }
 
 CMLAPI void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer){
-  if(illumination->BALFspectrum){
-    cmlInternalOneIlluminationSpectrumtoXYZ(dest, illumination->BALFspectrum, observer);
+  if(illumination->spectrum){
+    cmlInternalOneSpectrumtoRadiometricXYZ(dest, illumination->spectrum, observer);
   }else{
-    cmlCpy3(dest, illumination->BALFradiometricXYZ);
+    cmlCpy3(dest, illumination->radiometricXYZ);
   }
 }
 

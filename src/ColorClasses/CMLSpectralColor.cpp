@@ -12,7 +12,7 @@
 
 SpectralColor::SpectralColor() :
   spectrum(CML_NULL), bodycolor(CMLFALSE){
-  CMLFunction* fun = CMLcreateConstFilter(0.f);
+  CMLFunction* fun = cmlCreateConstFilter(0.f);
   init(fun, CMLFALSE);
   cmlReleaseFunction(fun);
 }
@@ -23,7 +23,7 @@ SpectralColor::~SpectralColor(){
 
 SpectralColor::SpectralColor(float value) :
   spectrum(CML_NULL), bodycolor(CMLFALSE){
-  CMLFunction* fun = CMLcreateConstFilter(value);
+  CMLFunction* fun = cmlCreateConstFilter(value);
   init(fun, CMLFALSE);
   cmlReleaseFunction(fun);
 }
@@ -50,7 +50,7 @@ SpectralColor& SpectralColor::init(CMLFunction* newspectrum, CMLBool newbodycolo
     }
   #endif
   cmlReleaseFunction(spectrum);
-  spectrum = CMLduplicateFunction(newspectrum);
+  spectrum = cmlDuplicateFunction(newspectrum);
   #ifndef NDEBUG
     if(!spectrum){
       cmlError("SpectralColor::init", "Function duplicate returned NULL.");
@@ -72,7 +72,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
     }
   #endif
   cmlReleaseFunction(spectrum);
-  spectrum = CMLduplicateFunction(speccolor.spectrum);
+  spectrum = cmlDuplicateFunction(speccolor.spectrum);
   #ifndef NDEBUG
     if(!spectrum){
       cmlError("SpectralColor::operator =", "Function duplicate returned NULL.");
@@ -91,7 +91,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
   }
 
   SpectralColor SpectralColor::operator -() const{
-    CMLFunction* newfunction = CMLcreateFunctionMulScalar(spectrum, -1.f);
+    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, -1.f);
     return SpectralColor(newfunction, bodycolor);
   }
 
@@ -102,7 +102,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = CMLcreateFunctionAddFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newfunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
     return SpectralColor(newfunction, bodycolor);
   }
 
@@ -113,12 +113,12 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = CMLcreateFunctionSubFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newfunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
     return SpectralColor(newfunction, bodycolor);
   }
 
   SpectralColor SpectralColor::operator *(float factor) const{
-    CMLFunction* newfunction = CMLcreateFunctionMulScalar(spectrum, factor);
+    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
     return SpectralColor(newfunction, bodycolor);
   }
 
@@ -126,7 +126,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
     // note: do not redirect this implementation to the * operator. It slows
     // down the implementation as more constructors need to be called.
     float factor = cmlInverse(divisor);
-    CMLFunction* newfunction = CMLcreateFunctionMulScalar(spectrum, factor);
+    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
     return SpectralColor(newfunction, bodycolor);
   }
 
@@ -138,7 +138,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = CMLcreateFunctionAddFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newfunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
     cmlReleaseFunction(spectrum);
     spectrum = newfunction;
     return *this;
@@ -152,14 +152,14 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = CMLcreateFunctionSubFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newfunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
     cmlReleaseFunction(spectrum);
     spectrum = newfunction;
     return *this;
   }
 
   SpectralColor& SpectralColor::operator *=(float factor){
-    CMLFunction* newfunction = CMLcreateFunctionMulScalar(spectrum, factor);
+    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
     cmlReleaseFunction(spectrum);
     spectrum = newfunction;
     return *this;

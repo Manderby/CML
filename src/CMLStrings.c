@@ -26,19 +26,16 @@ CMLHIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
 };
 
 CMLHIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
-//  "1931 2 deg (1 nm steps)",                  // CML_OBSERVER_2DEG_1931
-//  "1964 10 deg (1 nm steps)",                 // CML_OBSERVER_10DEG_1964
+  "Custom Observer",                          // CML_OBSERVER_CUSTOM
   "CIE 1931 2 deg",     // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
   "CIE 1964 10 deg",    // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
-//  "ISO-13655 2 deg",     // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
   "Judd 1951 2 deg",            // CML_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
   "Judd Vos 1978 2 deg",         // CML_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
-//  "Stiles Burch 1955 2 deg (5 nm steps)",     // CML_OBSERVER_2DEG_STILES_BURCH_1955
-//  "Shaw Fairchild 1997 2 deg (5 nm steps)",   // CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997
-  "Custom Observer",                          // CML_OBSERVER_CUSTOM
 };
 
 CMLHIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = {
+  "Custom Whitepoint",                // CML_ILLUMINATION_CUSTOM_WHITEPOINT
+  "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
   "Blackbody",                        // CML_ILLUMINATION_BLACKBODY
   "A (CIE Standard)",                 // CML_ILLUMINATION_A_CIE
   "A (with Planck locus shift)",      // CML_ILLUMINATION_A_EXACT
@@ -64,8 +61,6 @@ CMLHIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = 
   "F11 (Philips TL84, Ultralume 40)", // CML_ILLUMINATION_F11
   "F12 (Philips TL83, Ultralume 30)", // CML_ILLUMINATION_F12
   "Spectrocam Xenon Lamp",            // CML_ILLUMINATION_XENON
-  "Custom Whitepoint",                // CML_ILLUMINATION_CUSTOM_WHITEPOINT
-  "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
 CMLHIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
@@ -151,34 +146,34 @@ CMLHIDDEN static const char* chromaticadaptationstrings[CML_NUMBER_OF_CHROMATIC_
 };
 
 
-CMLAPI const char* CMLgetColorTypeString(CMLColorType colortype){
+CMLAPI const char* cmlGetColorTypeString(CMLColorType colortype){
   return colortypestrings[colortype];
 }
-CMLAPI const char* CMLgetObserverTypeString(CMLObserverType observertype){
+CMLAPI const char* cmlGetObserverTypeString(CMLObserverType observertype){
   return observerstrings[observertype];
 }
-CMLAPI const char* CMLgetIlluminationTypeString(CMLIlluminationType illuminationtype){
+CMLAPI const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminationtype){
   return illuminationstrings[illuminationtype];
 }
-CMLAPI const char* CMLgetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticadaptationtype){
+CMLAPI const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticadaptationtype){
   return chromaticadaptationstrings[chromaticadaptationtype];
 }
-CMLAPI const char* CMLgetLabSpaceTypeString(CMLLabColorSpaceType labspacetype){
+CMLAPI const char* cmlGetLabSpaceTypeString(CMLLabSpaceType labspacetype){
   return labspacestrings[labspacetype];
 }
-CMLAPI const char* CMLgetRGBResponsePresetString(CMLResponseCurvePreset preset){
+CMLAPI const char* cmlGetRGBResponsePresetString(CMLResponseCurvePreset preset){
   return rgbresponsepresetstrings[preset];
 }
-CMLAPI const char* CMLgetFunctionTypeString(CMLFunctionType functiontype){
+CMLAPI const char* cmlGetFunctionTypeString(CMLFunctionType functiontype){
   return functiontypestrings[functiontype];
 }
-CMLAPI const char* CMLgetRGBColorspaceString(CMLRGBColorSpace colorspacetype){
+CMLAPI const char* cmlGetRGBColorspaceString(CMLRGBSpaceType colorspacetype){
   return rgbspacestrings[colorspacetype];
 }
-CMLAPI const char* CMLgetCMYKTransformTypeString(CMLCMYKTransformType transformtype){
+CMLAPI const char* cmlGetCMYKTransformTypeString(CMLCMYKTransformType transformtype){
   return cmyktransformstrings[transformtype];
 }
-CMLAPI const char* CMLgetGrayComputationTypeString(CMLGrayComputationType computationtype){
+CMLAPI const char* cmlGetGrayComputationTypeString(CMLGrayComputationType computationtype){
   return graycomputationstrings[computationtype];
 }
 

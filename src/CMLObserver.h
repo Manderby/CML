@@ -4,31 +4,26 @@
 // of the author of this software is prohibited and any liability is disclamed.
 // Terms of a separate contract may apply.
 
-// type:                  Defines, what spectral distribution functions to use.
-// illuminationSpectrum:  The spectrum function of the desired reference
-//                        illumination. This observer will duplicate the
-//                        function.
-// colorimetricBase:      The Y value of the reference illumination.
-//                        In colorimetry, this is usually 1 or 100.
-//                        If you use 0, computation is radiometric.
-CMLAPI CMLObserver* cmlCreateObserverWithIllumination(
-                                            CMLObserver* observer,
-                                         CMLObserverType type,
-                                        CMLIllumination* illumination,
-                                                   float colorimetricBase);
 
-CMLAPI void cmlClearObserver  (CMLObserver* observer);
-CMLAPI void cmlDestroyObserver(CMLObserver* observer);
+// Creates a new observer object with the given type. If an invalid type or
+// CML_OBSERVER_CUSTOM is given, CML_NULL will be returned.
+CMLAPI CMLObserver* cmlCreateObserverWithPreset(CMLObserverType type);
 
-CMLAPI float                  cmlGetObserverRadiometricScale     (const CMLObserver* observer);
-CMLAPI float                  cmlGetObserverColorimetricBase     (const CMLObserver* observer);
-CMLAPI const CMLFunction*     cmlGetObserverSpecDistFunction     (const CMLObserver* observer, CMLInt index);
+// Returns the type of the observer
+CMLAPI CMLObserverType    cmlGetObserverType( const CMLObserver* observer);
 
-CMLAPI CMLObserverType        cmlGetObserverType                 (const CMLObserver* observer);
+// Returns the desired spectral distribution function.
+CMLAPI const CMLFunction* cmlGetObserverSpectralDistributionFunction(
+                                              const CMLObserver* observer,
+                                                          CMLInt index);
 
-CMLAPI const CMLIllumination* cmlGetReferenceIllumination        (const CMLObserver* observer);
-CMLAPI const CMLFunction*     cmlGetReferenceIlluminationSpectrum(const CMLObserver* observer);
-CMLAPI const float*           cmlGetReferenceWhitepointXYZ       (const CMLObserver* observer);
-CMLAPI const float*           cmlGetReferenceInverseWhitepointXYZ(const CMLObserver* observer);
-CMLAPI const float*           cmlGetReferenceWhitepointYxy       (const CMLObserver* observer);
-CMLAPI const float*           cmlGetReferenceWhitepointYupvp     (const CMLObserver* observer);
+// Fills the given xyz array with the spectral color at wavelength lambda. If
+// you want to normalize the resulting values, you have to manually multiply
+// the whole xyz vector with a normalization constant. Usually, the inverse of
+// the Y value of the spectral XYZ color at CML_NORMALIZATION_WAVELENGTH is
+// used as that constant.
+CMLAPI void cmlGetSpectralColorXYZ(   const CMLObserver* observer,
+                                                 CMLVec3 xyz,
+                                                   float lambda);
+
+

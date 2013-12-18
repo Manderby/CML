@@ -183,11 +183,11 @@ CML_INLINE static float cmlInverse(float x){
 
 
 
-CML_INLINE static CMLSize CMLgetSampleCount(float min, float max, float stepsize){
+CML_INLINE static CMLSize cmlGetSampleCount(float min, float max, float stepsize){
   return (CMLSize)(CMLRound((max-min) * cmlInverse(stepsize))) + 1;
 }
 
-CML_INLINE static float CMLgetStepSize(float min, float max, CMLSize samplecount){
+CML_INLINE static float cmlGetStepSize(float min, float max, CMLSize samplecount){
   return (max-min) * cmlInverse((float)samplecount - 1);
 }
 

@@ -120,7 +120,7 @@
 
 #define CML_CONVERTER_FIRST_STEP(firstconverter) \
   if(samebuffer){\
-    (firstconverter ## _SB)(cm, out, count, floatalign);\
+    (firstconverter ## _SB)(cm, out, count);\
   }else{\
     (firstconverter)(cm, out, in, count);\
   }\

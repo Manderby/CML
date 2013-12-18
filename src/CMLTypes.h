@@ -44,17 +44,19 @@ typedef enum{
 
 // Enumerates the different observers
 typedef enum{
-  CML_OBSERVER_2DEG_CIE_1931 = 0,
+  CML_OBSERVER_CUSTOM = 0,
+  CML_OBSERVER_2DEG_CIE_1931,
   CML_OBSERVER_10DEG_CIE_1964,
   CML_OBSERVER_2DEG_JUDD_1951,
   CML_OBSERVER_2DEG_JUDD_VOS_1978,
-  CML_OBSERVER_CUSTOM,
   CML_NUMBER_OF_OBSERVERS
 } CMLObserverType;
 
 // Enumerates the different illuminations
 typedef enum{
-  CML_ILLUMINATION_BLACKBODY = 0,
+  CML_ILLUMINATION_CUSTOM_WHITEPOINT = 0,
+  CML_ILLUMINATION_CUSTOM_SPECTRUM,
+  CML_ILLUMINATION_BLACKBODY,
   CML_ILLUMINATION_A_CIE,
   CML_ILLUMINATION_A_EXACT,
   CML_ILLUMINATION_B,
@@ -79,8 +81,6 @@ typedef enum{
   CML_ILLUMINATION_F11,
   CML_ILLUMINATION_F12,
   CML_ILLUMINATION_XENON,
-  CML_ILLUMINATION_CUSTOM_WHITEPOINT,
-  CML_ILLUMINATION_CUSTOM_SPECTRUM,
   CML_NUMBER_OF_ILLUMINATIONS
 } CMLIlluminationType;
 
@@ -111,7 +111,7 @@ typedef enum{
   CML_RGB_WIDE_GAMUT,
   CML_RGB_CUSTOM,
   CML_NUMBER_OF_RGB_SPACES
-} CMLRGBColorSpace;
+} CMLRGBSpaceType;
 
 // Enumerates the different Lab colorspaces
 typedef enum{
@@ -121,7 +121,7 @@ typedef enum{
   CML_LAB_HUNTER_ORIGINAL,
   CML_LAB_ADAMS_CROMATIC_VALENCE,
   CML_NUMBER_OF_LAB_SPACES
-} CMLLabColorSpaceType;
+} CMLLabSpaceType;
 
 // Enumerates the possible response curves
 typedef enum{
@@ -191,6 +191,11 @@ typedef enum{
 // Enumerates the different extrapolation methods of array functions
 // If you are uncertain which one to use, you should probably choose LIN_ZERO.
 typedef enum{
+  CML_CODEC_RGB_uint8
+} CMLColorCodecType;
+
+// Enumerates the different color codecs.
+typedef enum{
   CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
   CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepsize, then 0
   CML_EXTRAPOLATION_CLAMP_VALUE,    // last value repeating
@@ -203,8 +208,13 @@ typedef enum{
 typedef struct CMLColorMachine    CMLColorMachine;
 typedef struct CMLFunction        CMLFunction;
 typedef struct CMLResponseCurve   CMLResponseCurve;
-typedef struct CMLObserver        CMLObserver;
 typedef struct CMLIllumination    CMLIllumination;
+typedef struct CMLObserver        CMLObserver;
+typedef struct CMLWhitepoint      CMLWhitepoint;
+typedef struct CMLRGBSpace        CMLRGBSpace;
+typedef struct CMLLabSpace        CMLLabSpace;
+typedef struct CMLColorCodec      CMLColorCodec;
+typedef struct CMLConverter       CMLConverter;
 typedef struct CMLDefinitionRange CMLDefinitionRange;
 
 typedef void*                     CMLOutput;
