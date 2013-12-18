@@ -27,8 +27,7 @@
 // of the author of this software is prohibited and any liability is disclamed.
 // Terms of a separate contract may apply.
 //
-// Designed and implemented by Tobias Stamm, Manderim GmbH based on the work
-// at Empa Switzerland, Media Technology Lab.
+// Designed and implemented by Tobias Stamm, Manderim GmbH
 
 #ifndef CML_INCLUDED
 #define CML_INCLUDED
