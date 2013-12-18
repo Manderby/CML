@@ -10,7 +10,7 @@
 // create many predefined functions as well as your own cutsom functions.
 //
 // Note that CMLFunctions use a reference counter. When a function is created,
-// this counter is set to 1. By calling one of the methods CMLduplicateFunction
+// this counter is set to 1. By calling one of the methods cmlDuplicateFunction
 // or cmlReleaseFunction, you can increase or decrese the counter. When the
 // counter becomes 0, the CMLFunction will automatically deallocate itself.
 // Do not call free() or delete on a CMLFunction!
@@ -27,9 +27,9 @@
 // Defines spectral data as radiance per wavelength.
 // The input to these functions is expected to be in the unit [nanometer].
 
-CMLAPI CMLFunction* CMLcreateBlackBody(float temperature);
-CMLAPI CMLFunction* CMLcreateCIEAIlluminant();
-CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
+CMLAPI CMLFunction* cmlCreateBlackBody(float temperature);
+CMLAPI CMLFunction* cmlCreateCIEAIlluminant();
+CMLAPI CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 
 // Response Curves:
 // All response curves operate in the [0,1]-range. The following functions are
@@ -39,16 +39,16 @@ CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
 
-CMLAPI CMLFunction* CMLcreateLinearResponse();
-CMLAPI CMLFunction* CMLcreateGammaResponse(float gamma);
-CMLAPI CMLFunction* CMLcreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* CMLcreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* CMLcreatesRGBToXYZResponse();
-CMLAPI CMLFunction* CMLcreateXYZTosRGBResponse();
-CMLAPI CMLFunction* CMLcreateYToLStarResponse();
-CMLAPI CMLFunction* CMLcreateLStarToYResponse();
-CMLAPI CMLFunction* CMLcreateYToLStarStandardResponse();
-CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse();
+CMLAPI CMLFunction* cmlCreateLinearResponse();
+CMLAPI CMLFunction* cmlCreateGammaResponse(float gamma);
+CMLAPI CMLFunction* cmlCreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CMLAPI CMLFunction* cmlCreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CMLAPI CMLFunction* cmlCreatesRGBToXYZResponse();
+CMLAPI CMLFunction* cmlCreateXYZTosRGBResponse();
+CMLAPI CMLFunction* cmlCreateYToLStarResponse();
+CMLAPI CMLFunction* cmlCreateLStarToYResponse();
+CMLAPI CMLFunction* cmlCreateYToLStarStandardResponse();
+CMLAPI CMLFunction* cmlCreateLStarToYStandardResponse();
 
 // Filter Functions:
 // Use these functions to filter spectra. Filters are used for componentwise
@@ -56,23 +56,23 @@ CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse();
 // but unlike probability distribution functions, they do not necessarily need
 // to be normalized to 1.
 
-CMLAPI CMLFunction* CMLcreateDiracFilter(float wavelength);
-CMLAPI CMLFunction* CMLcreateConstFilter(float value);
-CMLAPI CMLFunction* CMLcreateCutFilter(float min, float max);
+CMLAPI CMLFunction* cmlCreateDiracFilter(float wavelength);
+CMLAPI CMLFunction* cmlCreateConstFilter(float value);
+CMLAPI CMLFunction* cmlCreateCutFilter(float min, float max);
 
 // Composite Functions:
 // You can combine functions like mathematical functions. All operations will
 // then be performed componentwise.
 
-CMLAPI CMLFunction* CMLcreateFunctionAddFunction( const CMLFunction* func1,
+CMLAPI CMLFunction* cmlCreateFunctionAddFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionSubFunction( const CMLFunction* func1,
+CMLAPI CMLFunction* cmlCreateFunctionSubFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionMulFunction( const CMLFunction* func1,
+CMLAPI CMLFunction* cmlCreateFunctionMulFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionDivFunction( const CMLFunction* func1,
+CMLAPI CMLFunction* cmlCreateFunctionDivFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionMulScalar(   const CMLFunction* func,
+CMLAPI CMLFunction* cmlCreateFunctionMulScalar(   const CMLFunction* func,
                                                                float scalar);
 
 // Array Functions:
@@ -83,7 +83,7 @@ CMLAPI CMLFunction* CMLcreateFunctionMulScalar(   const CMLFunction* func,
 // needed. If you choose to do so, make sure the buffer is allocated with
 // malloc.
 
-CMLAPI CMLFunction* CMLcreateArrayFunction(
+CMLAPI CMLFunction* cmlCreateArrayFunction(
                               const float* buffer,
                                    CMLBool ownbuffer,
                                    CMLSize entrycount,
@@ -96,7 +96,7 @@ CMLAPI CMLFunction* CMLcreateArrayFunction(
 // If you already have an (arbitrary) function and you want to convert it to an
 // array function, use the following method:
 
-CMLAPI CMLFunction* CMLsampleArrayFunction(
+CMLAPI CMLFunction* cmlSampleArrayFunction(
                         const CMLFunction* func,
                                      float minimalcoord,
                                      float maximalcoord,
@@ -114,36 +114,26 @@ CMLAPI CMLFunction* CMLsampleArrayFunction(
 // //////////////////////////////////////////
 
 // Evaluates the given function at coordinate x
-CMLAPI float CMLeval(                 const CMLFunction* func,
+CMLAPI float cmlEval(                 const CMLFunction* func,
                                                    float x);
 
 // Returns the desired parameter of the function, if it exists. Returns 0
 // otherwise. The index is 0-based.
-CMLAPI float CMLgetFunctionParameter( const CMLFunction* func,
+CMLAPI float cmlGetFunctionParameter( const CMLFunction* func,
                                                    CMLSize index);
 
 // Performs a filter operation with the two given functions
-CMLAPI float CMLfilterFunction(       const CMLFunction* func,
+CMLAPI float cmlFilterFunction(       const CMLFunction* func,
                                       const CMLFunction* filter);
 
 // Returns the maximal value of the given function in the coordinate range.
-CMLAPI float CMLgetFunctionMaxValue(  const CMLFunction* func);
+CMLAPI float cmlGetFunctionMaxValue(  const CMLFunction* func);
 
 // Places information about the definition range of the given function in the
 // provided DefinitionRange structure.
-CMLAPI void CMLgetFunctionDefinitionRange(
+CMLAPI void cmlGetFunctionDefinitionRange(
                                       const CMLFunction* func,
                                      CMLDefinitionRange* defrange);
-
-// Increments the reference count of the given function and returns a non-const
-// pointer.
-CMLAPI CMLFunction* CMLduplicateFunction(
-                                      const CMLFunction* func);
-
-// Decrements the reference count of the given function. If the reference count
-// reaches 0, the function automatically deallocates itself.
-CMLAPI void cmlReleaseFunction(             CMLFunction* func);
-
 
 
 
@@ -160,7 +150,7 @@ CMLAPI void cmlReleaseFunction(             CMLFunction* func);
 // your CMLFunction gets created.
 //
 // The params pointer points to an array of floats containing as many parameters
-// as have been declared by CMLcreateFunction. When the constructor is called,
+// as have been declared by cmlCreateFunction. When the constructor is called,
 // enough memory is allocated, but the contents are uninitialized. You have
 // to manually write the parameters inside. If the function expects zero
 // parameters, "params" is NULL.
@@ -173,9 +163,9 @@ CMLAPI void cmlReleaseFunction(             CMLFunction* func);
 //
 // Note that the advantage of the "params" parameter is that the memory is
 // allocated and deallocated automatically for you and the parameters stored
-// there can be accessed by a call to CMLgetFunctionParameter.
+// there can be accessed by a call to cmlGetFunctionParameter.
 //
-// The "input" parameter is the argument which you pass to CMLcreateFunction.
+// The "input" parameter is the argument which you pass to cmlCreateFunction.
 // The "defrange" parameter is a pointer to a CMLDefinitionRange structure
 // which stores additional informations about your function. You can manipulate
 // this definition range arbitrarily. See explanation below.
@@ -185,7 +175,7 @@ typedef void  (*CMLFunctionConstructor)(
                        CMLDefinitionRange* defrange,
                                const void* input);
 
-// The EVALUATOR: This callback function is called whenever CMLeval is called.
+// The EVALUATOR: This callback function is called whenever cmlEval is called.
 //
 // Perform any computation necessary and return the function result.
 // The "x" parameter denotes the coordinate where you should evaluate.
@@ -211,12 +201,12 @@ typedef void  (*CMLFunctionDesctructor)(
                                     void*  data);
 
 
-// Use the CMLcreateFunction to create an instance of your own CMLFunction.
+// Use the cmlCreateFunction to create an instance of your own CMLFunction.
 // The "evaluator" parameter must be a valid function pointer, all other
 // parameters can be CML_NULL. floatparams denotes the number of float input
 // parameters the function contains. They will be available in the constructor
 // and evaluator as array of floats.
-CMLAPI CMLFunction* CMLcreateFunction(
+CMLAPI CMLFunction* cmlCreateFunction(
                        CMLFunctionEvaluator evaluator,
                      CMLFunctionConstructor constructor,
                      CMLFunctionDesctructor destructor,
@@ -231,7 +221,7 @@ CMLAPI CMLFunction* CMLcreateFunction(
 // //////////////////////////////////////////
 
 // The following struct can be used for custom CMLFunctions to indicate, where
-// integration or filtering is useful. The CMLfilterFunction method queries
+// integration or filtering is useful. The cmlFilterFunction method queries
 // this data to decide, how to integrate the function. To provide the necessary
 // data of you custom class, alter the values in your custom constructor.
 //

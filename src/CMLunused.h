@@ -1430,7 +1430,7 @@
 //    filterK.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterK, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    imin = CML_DEFAULT_INTEGRATION_MIN;
 //    imax = CML_DEFAULT_INTEGRATION_MAX;
-//    samplecount = CMLgetSampleCount(CML_DEFAULT_INTEGRATION_MIN, CML_DEFAULT_INTEGRATION_MAX, CML_DEFAULT_INTEGRATION_STEPSIZE);
+//    samplecount = cmlGetSampleCount(CML_DEFAULT_INTEGRATION_MIN, CML_DEFAULT_INTEGRATION_MAX, CML_DEFAULT_INTEGRATION_STEPSIZE);
 //    cmlSet4(CMYK, 0.f, 0.f, 0.f, 0.f);
 //    for(istep = 0; istep < samplecount; istep++){
 //      float l = imin + (((imax - imin) * istep) / (samplecount - 1));
@@ -1601,3 +1601,37 @@
 //  CML_DELTA_E_1976 = 0,
 //  CML_NUMBER_OF_DELTA_E_COMPUTATIONS
 //} CMLDeltaEComputationType;
+
+
+
+
+// The following values are from ISO-13655
+// Warning: These are precomputed with D50!!!
+
+//// Steps: 10nm
+//#define CML_X2VALENCES_ISO13655_MIN 370.f
+//#define CML_X2VALENCES_ISO13655_MAX 770.f
+//#define CML_X2VALENCES_ISO13655_NUM 41
+//CMLHIDDEN static const float x2valencesISO13655[CML_X2VALENCES_ISO13655_NUM] = {
+//  0.001f, 0.003f, 0.012f, 0.060f, 0.234f, 0.775f, 1.610f, 2.453f, 2.777f, 2.500f,
+//  1.717f, 0.861f, 0.283f, 0.040f, 0.088f, 0.593f, 1.590f, 2.799f, 4.207f, 5.657f,
+//  7.132f, 8.540f, 9.255f, 9.835f, 9.469f, 8.009f, 5.926f, 4.171f, 2.609f, 1.541f,
+//  0.855f, 0.434f, 0.194f, 0.097f, 0.050f, 0.022f, 0.012f, 0.006f, 0.002f, 0.001f,
+//  0.001f};
+//
+//#define CML_Y2VALENCES_ISO13655_MIN 400.f
+//#define CML_Y2VALENCES_ISO13655_MAX 750.f
+//#define CML_Y2VALENCES_ISO13655_NUM 36
+//CMLHIDDEN static const float y2valencesISO13655[CML_Y2VALENCES_ISO13655_NUM] = {
+//  0.002f, 0.006f, 0.023f, 0.066f, 0.162f, 0.313f, 0.514f, 0.798f, 1.239f, 1.839f,
+//  2.948f, 4.632f, 6.587f, 8.308f, 9.197f, 9.650f, 9.471f, 8.902f, 8.112f, 6.829f,
+//  5.838f, 4.753f, 3.573f, 2.443f, 1.629f, 0.984f, 0.570f, 0.313f, 0.158f, 0.070f,
+//  0.035f, 0.018f, 0.008f, 0.004f, 0.002f, 0.001f};
+//
+//#define CML_Z2VALENCES_ISO13655_MIN 360.f
+//#define CML_Z2VALENCES_ISO13655_MAX 630.f
+//#define CML_Z2VALENCES_ISO13655_NUM 28
+//CMLHIDDEN static const float z2valencesISO13655[CML_Z2VALENCES_ISO13655_NUM] = {
+//   0.001f,  0.005f, 0.013f, 0.057f, 0.285f, 1.113f, 3.723f, 7.862f, 12.309f, 14.647f,
+//  14.346f, 11.299f, 7.309f, 4.128f, 2.466f, 1.447f, 0.736f, 0.401f,  0.196f,  0.085f,
+//   0.037f,  0.020f, 0.015f, 0.010f, 0.007f, 0.004f, 0.002f, 0.001f};

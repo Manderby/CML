@@ -44,10 +44,14 @@
 // Enumerations and color types used in CML.
 #include "CMLTypes.h"
 
-// CMLFunctions define response curves, spectra and other various 1D-functions.
-#include "CMLFunctions.h"
+// The API of the different structs.
+#include "CMLConverter.h"
+#include "CMLFunction.h"
 #include "CMLIllumination.h"
 #include "CMLObserver.h"
+#include "CMLWhitepoint.h"
+#include "CMLRGBSpace.h"
+#include "CMLLabSpace.h"
 #include "CMLResponseCurve.h"
 
 // Definition of the most basic color API

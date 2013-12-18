@@ -5,13 +5,9 @@
 // Terms of a separate contract may apply.
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
-CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer);
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitepointYxy);
-
-CMLAPI void cmlClearIllumination  (CMLIllumination* illumination);
-CMLAPI void cmlDestroyIllumination(CMLIllumination* illumination);
+CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIlluminationType type, float temperature);
+CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(const CMLFunction* spectrum);
+CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(const CMLVec3 whitepointYxy);
 
 CMLAPI CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination);
 CMLAPI const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination);

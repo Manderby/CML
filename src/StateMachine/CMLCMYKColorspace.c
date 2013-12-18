@@ -11,12 +11,12 @@
 
 
 
-CMLAPI CMLCMYKTransformType CMLgetCMYKTransform(const CMLColorMachine* cm){
+CMLAPI CMLCMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
   return cm->cmykspace.transform;
 }
 
 
-CMLAPI void CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
+CMLAPI void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
   switch(transform){
   case CML_CMYK_STANDARD_TRANSFORM:
     cm->RGBtoCMYK = &CMLInternalRGBtoCMYKStandard;
@@ -32,7 +32,7 @@ CMLAPI void CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transf
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLsetCMYKTransform", "CMYK Transformation undefined.");
+      cmlError("cmlSetCMYKTransform", "CMYK Transformation undefined.");
     #endif
     return;
     break;

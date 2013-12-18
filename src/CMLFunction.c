@@ -10,17 +10,16 @@
 
 
 
-
 // ///////////////////////////////////
 // Function
 // ///////////////////////////////////
 
 
+CMLAPI CMLHIDDEN void cmlDestructFunction(void* func);
 
 
-CMLAPI CMLFunction* CMLcreateFunction(CMLFunctionEvaluator evaluator, CMLFunctionConstructor constructor, CMLFunctionDesctructor destructor, CMLuint32 floatparams, const void* input){
-  CMLFunction* newfunction = (CMLFunction*)cmlAllocate(sizeof(CMLFunction));
-  newfunction->refcount = 1;
+CMLAPI CMLFunction* cmlCreateFunction(CMLFunctionEvaluator evaluator, CMLFunctionConstructor constructor, CMLFunctionDesctructor destructor, CMLuint32 floatparams, const void* input){
+  CMLFunction* newfunction = (CMLFunction*)cmlCreateObject(sizeof(CMLFunction), cmlDestructFunction);
   newfunction->paramcount = floatparams;
   if(floatparams){
     newfunction->params = (float*)cmlAllocate(floatparams * sizeof(float));
@@ -42,32 +41,20 @@ CMLAPI CMLFunction* CMLcreateFunction(CMLFunctionEvaluator evaluator, CMLFunctio
 }
 
 
-CMLAPI CMLFunction* CMLduplicateFunction(const CMLFunction* func){
-  CMLSize* mutablerefcount = (CMLSize*)(&(func->refcount));
-  // Beware the parantheses!!!
-  (*mutablerefcount)++;
-  // Return a non-const reference to function.
-  return (CMLFunction*)func;
-}
 
-
-CMLAPI void cmlReleaseFunction(CMLFunction* func){
-  if(!func){return;}
-  func->refcount--;
-  if(!func->refcount){
-    if(func->destruct){
-      func->destruct(func->data);
-      free(func->params);
-    }
-    free(func);
+CMLAPI void cmlDestructFunction(void* func){
+  CMLFunction* function = (CMLFunction*)func;
+  if(function->destruct){
+    function->destruct(function->data);
+    free(function->params);
   }
 }
 
-CMLAPI float CMLeval(const CMLFunction* func, float x){
+CMLAPI float cmlEval(const CMLFunction* func, float x){
   return cmlInternalEval(func, x);
 }
 
-CMLAPI float CMLgetFunctionParameter(const CMLFunction* func, CMLSize index){
+CMLAPI float cmlGetFunctionParameter(const CMLFunction* func, CMLSize index){
   if(func->paramcount > index){
     return func->params[index];
   }else{
@@ -81,7 +68,7 @@ CMLAPI float CMLgetFunctionParameter(const CMLFunction* func, CMLSize index){
 
 
 
-CMLHIDDEN CML_INLINE static CMLDefinitionRange CMLgetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
+CMLHIDDEN CML_INLINE static CMLDefinitionRange cmlGetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
   
   float minsamplecoord1;
   float maxsamplecoord1;
@@ -127,16 +114,16 @@ CMLHIDDEN CML_INLINE static CMLDefinitionRange CMLgetDefinitionRangeOf2Functions
 }
 
 
-CMLAPI float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filter){
+CMLAPI float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter){
   CMLSize samplecount;
   CMLIntegrationMethod type;
   float sum = 0.f;
 
-  CMLDefinitionRange filterrange = CMLgetDefinitionRangeOf2Functions(func, filter, CMLTRUE);
+  CMLDefinitionRange filterrange = cmlGetDefinitionRangeOf2Functions(func, filter, CMLTRUE);
   if(filterrange.minSampleCoord > filterrange.maxSampleCoord){return 0.f;}
   
   #ifndef NDEBUG
-    if(filterrange.stepsize < 0.f){cmlError("CMLfilterFunction", "Negative stepsize in Function.");}
+    if(filterrange.stepsize < 0.f){cmlError("cmlFilterFunction", "Negative stepsize in Function.");}
   #endif
   // If the stepsize is 0, the function will be filtered as a continuous
   // function with the default integration stepsize.
@@ -204,7 +191,7 @@ CMLAPI float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filte
 
   default:
     #ifndef NDEBUG
-      cmlError("CMLfilterFunction", "Invalid Integration type.");
+      cmlError("cmlFilterFunction", "Invalid Integration type.");
     #endif
     return 0.f;
     break;
@@ -214,13 +201,13 @@ CMLAPI float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filte
 }
 
 
-CMLAPI float CMLgetFunctionMaxValue(const CMLFunction* func){
+CMLAPI float cmlGetFunctionMaxValue(const CMLFunction* func){
   CMLSize samplecount;
   CMLSize x;
   float max = -CML_INFINITY;
   float stepsize = func->defrange.stepsize;
   if(stepsize == 0){stepsize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
-  samplecount = CMLgetSampleCount(func->defrange.minSampleCoord, func->defrange.maxSampleCoord, stepsize);
+  samplecount = cmlGetSampleCount(func->defrange.minSampleCoord, func->defrange.maxSampleCoord, stepsize);
   for(x = 0; x < samplecount; x ++){
     float coord = func->defrange.minSampleCoord + x * stepsize;
     float value = cmlInternalEval(func, coord);
@@ -230,21 +217,21 @@ CMLAPI float CMLgetFunctionMaxValue(const CMLFunction* func){
 }
 
 
-CMLAPI void CMLgetFunctionDefinitionRange(
+CMLAPI void cmlGetFunctionDefinitionRange(
                                       const CMLFunction* func,
                                      CMLDefinitionRange* defrange){
   *defrange = func->defrange;
 }
 
 
-CMLAPI CMLFunction* CMLsampleArrayFunction(const CMLFunction* func, float minimalcoord, float maximalcoord, CMLSize entrycount, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod downextrapolationmethod, CMLExtrapolationMethod upextrapolationmethod){
+CMLAPI CMLFunction* cmlSampleArrayFunction(const CMLFunction* func, float minimalcoord, float maximalcoord, CMLSize entrycount, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod downextrapolationmethod, CMLExtrapolationMethod upextrapolationmethod){
   CMLSize i;
   float* buffer = (float*)cmlAllocate(sizeof(float) * entrycount);
   for(i=0; i<entrycount; i++){
     float coord = minimalcoord + ((float)i / (float)(entrycount-1)) * (maximalcoord - minimalcoord);
     buffer[i] = cmlInternalEval(func, coord);
   }
-  return CMLcreateArrayFunction(buffer, CMLTRUE, entrycount, minimalcoord, maximalcoord, interpolationmethod, downextrapolationmethod, upextrapolationmethod);
+  return cmlCreateArrayFunction(buffer, CMLTRUE, entrycount, minimalcoord, maximalcoord, interpolationmethod, downextrapolationmethod, upextrapolationmethod);
 }
 
 
@@ -439,7 +426,7 @@ CMLHIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CML
     break;
   case CML_EXTRAPOLATION_LINEAR_ZERO:
     storage->extrapolateDown = &CMLInternalArrayFunctionExtrapolateDownLinearZero;
-    defrange->minNonTrivialCoord = desc->minimalcoord - CMLgetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
+    defrange->minNonTrivialCoord = desc->minimalcoord - cmlGetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
     break;
   case CML_EXTRAPOLATION_CLAMP_VALUE:
     storage->extrapolateDown = &CMLInternalArrayFunctionExtrapolateDownClampValue;
@@ -464,7 +451,7 @@ CMLHIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CML
     break;
   case CML_EXTRAPOLATION_LINEAR_ZERO:
     storage->extrapolateUp   = &CMLInternalArrayFunctionExtrapolateUpLinearZero;
-    defrange->maxNonTrivialCoord = desc->maximalcoord + CMLgetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
+    defrange->maxNonTrivialCoord = desc->maximalcoord + cmlGetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
     break;
   case CML_EXTRAPOLATION_CLAMP_VALUE:
     storage->extrapolateUp   = &CMLInternalArrayFunctionExtrapolateUpClampValue;
@@ -537,7 +524,7 @@ CMLHIDDEN float cmlInternalEvaluateArrayFunction(float* params, const void* data
 }
 
 
-CMLAPI CMLFunction* CMLcreateArrayFunction(const float* buffer, CMLBool ownbuffer, CMLSize entrycount, float minimalcoord, float maximalcoord, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod extrapolationmethoddown, CMLExtrapolationMethod extrapolationmethodup){
+CMLAPI CMLFunction* cmlCreateArrayFunction(const float* buffer, CMLBool ownbuffer, CMLSize entrycount, float minimalcoord, float maximalcoord, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod extrapolationmethoddown, CMLExtrapolationMethod extrapolationmethodup){
   CMLInternalArrayFunctionDescriptor desc;
   desc.buffer = buffer;
   desc.ownbuffer = ownbuffer;
@@ -547,7 +534,7 @@ CMLAPI CMLFunction* CMLcreateArrayFunction(const float* buffer, CMLBool ownbuffe
   desc.interpolationmethod = interpolationmethod;
   desc.downextrapolationmethod = extrapolationmethoddown;
   desc.upextrapolationmethod = extrapolationmethodup;
-  return CMLcreateFunction(cmlInternalEvaluateArrayFunction, CMLInternalConstructArrayFunction, CMLInternalDestructArrayFunction, 0, &desc);
+  return cmlCreateFunction(cmlInternalEvaluateArrayFunction, CMLInternalConstructArrayFunction, CMLInternalDestructArrayFunction, 0, &desc);
 }
 
 
@@ -616,8 +603,8 @@ CMLHIDDEN void CMLInternalDestructBlackBody(void* data){
 }
 
 
-CMLAPI CMLFunction* CMLcreateBlackBody(float temperature){
-  return CMLcreateFunction(cmlInternalEvaluateBlackBody, CMLInternalConstructBlackBody, CMLInternalDestructBlackBody, 0, &temperature);
+CMLAPI CMLFunction* cmlCreateBlackBody(float temperature){
+  return cmlCreateFunction(cmlInternalEvaluateBlackBody, CMLInternalConstructBlackBody, CMLInternalDestructBlackBody, 0, &temperature);
 }
 
 
@@ -658,8 +645,8 @@ CMLHIDDEN float cmlInternalEvaluateCIEAIlluminant(float* params, const void* dat
 }
 
 
-CMLAPI CMLFunction* CMLcreateCIEAIlluminant(){
-  return CMLcreateFunction(cmlInternalEvaluateCIEAIlluminant, CMLInternalConstructCIEAIlluminant, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateCIEAIlluminant(){
+  return cmlCreateFunction(cmlInternalEvaluateCIEAIlluminant, CMLInternalConstructCIEAIlluminant, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -714,7 +701,7 @@ CMLHIDDEN CML_INLINE static void CMLInternalComputeDIlluminantWhitePoint(float* 
 
 // todo make temperature a parameter
 
-CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature){
+CMLAPI CMLFunction* cmlCreateCIEDIlluminant(float temperature){
   float Minv;
   float M1;
   float M2;
@@ -722,7 +709,7 @@ CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature){
   float* array;
   float whitepoint[2];
   #ifndef NDEBUG
-    if(temperature <= 0){cmlError("CMLcreateCIEDIlluminant", "Temperature must be greater than 0 Kelvin.");}
+    if(temperature <= 0){cmlError("cmlCreateCIEDIlluminant", "Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
   array = (float*)cmlAllocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
@@ -735,7 +722,7 @@ CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature){
   }
   // Multiple sources suggest that the values are considered to be linearly
   // interpolated.
-  return CMLcreateArrayFunction(array, CMLTRUE, CML_D_ILLUMINANT_ENTRYCOUNT, CML_D_ILLUMINANT_MIN, CML_D_ILLUMINANT_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+  return cmlCreateArrayFunction(array, CMLTRUE, CML_D_ILLUMINANT_ENTRYCOUNT, CML_D_ILLUMINANT_MIN, CML_D_ILLUMINANT_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
 }
 
 
@@ -761,8 +748,8 @@ CMLHIDDEN float cmlInternalEvaluateLinearResponse(float* params, const void* dat
 }
 
 
-CMLAPI CMLFunction* CMLcreateLinearResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateLinearResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateLinearResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateLinearResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -802,8 +789,8 @@ CMLHIDDEN void CMLInternalDestructGammaResponse(void* data){
 }
 
 
-CMLAPI CMLFunction* CMLcreateGammaResponse(float gamma){
-  return CMLcreateFunction(cmlInternalEvaluateGammaResponse, CMLInternalConstructGammaResponse, CMLInternalDestructGammaResponse, 1, &gamma);
+CMLAPI CMLFunction* cmlCreateGammaResponse(float gamma){
+  return cmlCreateFunction(cmlInternalEvaluateGammaResponse, CMLInternalConstructGammaResponse, CMLInternalDestructGammaResponse, 1, &gamma);
 }
 
 
@@ -865,11 +852,11 @@ CMLHIDDEN void CMLInternalDestructGammaLinearResponse(void* data){
 }
 
 
-CMLAPI CMLFunction* CMLcreateGammaLinearResponse(float gamma, float offset, float linscale, float split){
+CMLAPI CMLFunction* cmlCreateGammaLinearResponse(float gamma, float offset, float linscale, float split){
   GammaLinearInputParameters tmpstruct = {gamma, offset, linscale, split};
 //                                  offset / (gamma - 1.f) / linscale};
 //                                  (linscale * offset - 1.f) / (powf(offset, gamma) - 1.f)};
-  return CMLcreateFunction(cmlInternalEvaluateGammaLinearResponse, CMLInternalConstructGammaLinearResponse, CMLInternalDestructGammaLinearResponse, 4, &tmpstruct);
+  return cmlCreateFunction(cmlInternalEvaluateGammaLinearResponse, CMLInternalConstructGammaLinearResponse, CMLInternalDestructGammaLinearResponse, 4, &tmpstruct);
 }
 
 
@@ -922,7 +909,7 @@ CMLHIDDEN void CMLInternalDestructInverseGammaLinearResponse(void* data){
 }
 
 
-CMLAPI CMLFunction* CMLcreateInverseGammaLinearResponse(float gamma, float offset, float linscale, float split){
+CMLAPI CMLFunction* cmlCreateInverseGammaLinearResponse(float gamma, float offset, float linscale, float split){
   GammaLinearInputParameters tmpstruct = {gamma, offset, linscale, split};
 //  InverseGammaLinearStruct tmpstruct = { gamma,
 //                                  offset,
@@ -931,7 +918,7 @@ CMLAPI CMLFunction* CMLcreateInverseGammaLinearResponse(float gamma, float offse
 //                                  split / linscale};
 //                                  offset / (gamma - 1.f)};
 //                                  linscale * (linscale * offset - 1.f) / (powf(offset, gamma) - 1.f)};
-  return CMLcreateFunction(cmlInternalEvaluateInverseGammaLinearResponse, CMLInternalConstructInverseGammaLinearResponse, CMLInternalDestructInverseGammaLinearResponse, 4, &tmpstruct);
+  return cmlCreateFunction(cmlInternalEvaluateInverseGammaLinearResponse, CMLInternalConstructInverseGammaLinearResponse, CMLInternalDestructInverseGammaLinearResponse, 4, &tmpstruct);
 }
 
 
@@ -975,8 +962,8 @@ CMLHIDDEN float cmlInternalEvaluatesRGBToXYZResponse(float* params, const void* 
 }
 
 
-CMLAPI CMLFunction* CMLcreatesRGBToXYZResponse(){
-  return CMLcreateFunction(cmlInternalEvaluatesRGBToXYZResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreatesRGBToXYZResponse(){
+  return cmlCreateFunction(cmlInternalEvaluatesRGBToXYZResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1005,8 +992,8 @@ CMLHIDDEN float cmlInternalEvaluateXYZTosRGBResponse(float* params, const void* 
 }
 
 
-CMLAPI CMLFunction* CMLcreateXYZTosRGBResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateXYZTosRGBResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateXYZTosRGBResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateXYZTosRGBResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1049,8 +1036,8 @@ CMLHIDDEN float cmlInternalEvaluateYToLStarResponse(float* params, const void* d
   }
 }
 
-CMLAPI CMLFunction* CMLcreateYToLStarResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateYToLStarResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateYToLStarResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateYToLStarResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1078,8 +1065,8 @@ CMLHIDDEN float cmlInternalEvaluateLStarToYResponse(float* params, const void* d
   }
 }
 
-CMLAPI CMLFunction* CMLcreateLStarToYResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateLStarToYResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateLStarToYResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateLStarToYResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1107,8 +1094,8 @@ CMLHIDDEN float cmlInternalEvaluateYToLStarStandardResponse(float* params, const
 }
 
 
-CMLAPI CMLFunction* CMLcreateYToLStarStandardResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateYToLStarStandardResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateYToLStarStandardResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateYToLStarStandardResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1135,8 +1122,8 @@ CMLHIDDEN float cmlInternalEvaluateLStarToYStandardResponse(float* params, const
 }
 
 
-CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse(){
-  return CMLcreateFunction(cmlInternalEvaluateLStarToYStandardResponse, CML_NULL, CML_NULL, 0, CML_NULL);
+CMLAPI CMLFunction* cmlCreateLStarToYStandardResponse(){
+  return cmlCreateFunction(cmlInternalEvaluateLStarToYStandardResponse, CML_NULL, CML_NULL, 0, CML_NULL);
 }
 
 
@@ -1178,8 +1165,8 @@ CMLHIDDEN float cmlInternalEvaluateDiracFilter(float* params, const void* data, 
 }
 
 
-CMLAPI CMLFunction* CMLcreateDiracFilter(float wavelength){
-  return CMLcreateFunction(cmlInternalEvaluateDiracFilter, CMLInternalConstructDiracFilter, CMLInternalDestructDiracFilter, 0, &wavelength);
+CMLAPI CMLFunction* cmlCreateDiracFilter(float wavelength){
+  return cmlCreateFunction(cmlInternalEvaluateDiracFilter, CMLInternalConstructDiracFilter, CMLInternalDestructDiracFilter, 0, &wavelength);
 }
 
 
@@ -1219,8 +1206,8 @@ CMLHIDDEN float cmlInternalEvaluateConstFilter(float* params, const void* data, 
 }
 
 
-CMLAPI CMLFunction* CMLcreateConstFilter(float value){
-  return CMLcreateFunction(cmlInternalEvaluateConstFilter, CMLInternalConstructConstFilter, CMLInternalDestructConstFilter, 0, &value);
+CMLAPI CMLFunction* cmlCreateConstFilter(float value){
+  return cmlCreateFunction(cmlInternalEvaluateConstFilter, CMLInternalConstructConstFilter, CMLInternalDestructConstFilter, 0, &value);
 }
 
 
@@ -1269,9 +1256,9 @@ CMLHIDDEN float cmlInternalEvaluateCutFilter(float* params, const void* data, fl
 }
 
 
-CMLAPI CMLFunction* CMLcreateCutFilter(float min, float max){
+CMLAPI CMLFunction* cmlCreateCutFilter(float min, float max){
   CMLInternalCutFilterRange range = {min, max};
-  return CMLcreateFunction(cmlInternalEvaluateCutFilter, CMLInternalConstructCutFilter, CMLInternalDestructCutFilter, 0, &range);
+  return cmlCreateFunction(cmlInternalEvaluateCutFilter, CMLInternalConstructCutFilter, CMLInternalDestructCutFilter, 0, &range);
 }
 
 
@@ -1328,17 +1315,17 @@ CMLHIDDEN void CMLInternalConstructFunctionAddFunction(float* params, void** dat
   CMLInternalFunctionFunctionInput* indata = (CMLInternalFunctionFunctionInput*)(input);
   *data = cmlAllocate(sizeof(CMLInternalFunctionFunctionStorage));
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
-  thisdata->func1 = CMLduplicateFunction(indata->func1);
-  thisdata->func2 = CMLduplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLFALSE);
+  thisdata->func1 = (CMLFunction*)cmlRetainObject(indata->func1);
+  thisdata->func2 = (CMLFunction*)cmlRetainObject(indata->func2);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLFALSE);
   *defrange = newrange;
 }
 
 
 CMLHIDDEN void CMLInternalDestructFunctionAddFunction(void* data){
   CMLInternalFunctionFunctionStorage* thisdata = (CMLInternalFunctionFunctionStorage*)data;
-  cmlReleaseFunction(thisdata->func1);
-  cmlReleaseFunction(thisdata->func2);
+  cmlReleaseObject(thisdata->func1);
+  cmlReleaseObject(thisdata->func2);
   free(data);
 }
 
@@ -1350,9 +1337,9 @@ CMLHIDDEN float cmlInternalEvaluateFunctionAddFunction(float* params, const void
 }
 
 
-CMLAPI CMLFunction* CMLcreateFunctionAddFunction(const CMLFunction* func1, const CMLFunction* func2){
+CMLAPI CMLFunction* cmlCreateFunctionAddFunction(const CMLFunction* func1, const CMLFunction* func2){
   CMLInternalFunctionFunctionInput newdata = {func1, func2};
-  return CMLcreateFunction(cmlInternalEvaluateFunctionAddFunction, CMLInternalConstructFunctionAddFunction, CMLInternalDestructFunctionAddFunction, 0, &newdata);
+  return cmlCreateFunction(cmlInternalEvaluateFunctionAddFunction, CMLInternalConstructFunctionAddFunction, CMLInternalDestructFunctionAddFunction, 0, &newdata);
 }
 
 
@@ -1377,17 +1364,17 @@ CMLHIDDEN void CMLInternalConstructFunctionSubFunction(float* params, void** dat
   CMLInternalFunctionFunctionInput* indata = (CMLInternalFunctionFunctionInput*)(input);
   *data = cmlAllocate(sizeof(CMLInternalFunctionFunctionStorage));
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
-  thisdata->func1 = CMLduplicateFunction(indata->func1);
-  thisdata->func2 = CMLduplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLFALSE);
+  thisdata->func1 = (CMLFunction*)cmlRetainObject(indata->func1);
+  thisdata->func2 = (CMLFunction*)cmlRetainObject(indata->func2);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLFALSE);
   *defrange = newrange;
 }
 
 
 CMLHIDDEN void CMLInternalDestructFunctionSubFunction(void* data){
   CMLInternalFunctionFunctionStorage* thisdata = (CMLInternalFunctionFunctionStorage*)data;
-  cmlReleaseFunction(thisdata->func1);
-  cmlReleaseFunction(thisdata->func2);
+  cmlReleaseObject(thisdata->func1);
+  cmlReleaseObject(thisdata->func2);
   free(data);
 }
 
@@ -1399,9 +1386,9 @@ CMLHIDDEN float cmlInternalEvaluateFunctionSubFunction(float* params, const void
 }
 
 
-CMLAPI CMLFunction* CMLcreateFunctionSubFunction(const CMLFunction* func1, const CMLFunction* func2){
+CMLAPI CMLFunction* cmlCreateFunctionSubFunction(const CMLFunction* func1, const CMLFunction* func2){
   CMLInternalFunctionFunctionInput newdata = {func1, func2};
-  return CMLcreateFunction(cmlInternalEvaluateFunctionSubFunction, CMLInternalConstructFunctionSubFunction, CMLInternalDestructFunctionSubFunction, 0, &newdata);
+  return cmlCreateFunction(cmlInternalEvaluateFunctionSubFunction, CMLInternalConstructFunctionSubFunction, CMLInternalDestructFunctionSubFunction, 0, &newdata);
 }
 
 
@@ -1427,17 +1414,17 @@ CMLHIDDEN void CMLInternalConstructFunctionMulFunction(float* params, void** dat
   CMLInternalFunctionFunctionInput* indata = (CMLInternalFunctionFunctionInput*)(input);
   *data = cmlAllocate(sizeof(CMLInternalFunctionFunctionStorage));
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
-  thisdata->func1 = CMLduplicateFunction(indata->func1);
-  thisdata->func2 = CMLduplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLTRUE);
+  thisdata->func1 = (CMLFunction*)cmlRetainObject(indata->func1);
+  thisdata->func2 = (CMLFunction*)cmlRetainObject(indata->func2);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLTRUE);
   *defrange = newrange;
 }
 
 
 CMLHIDDEN void CMLInternalDestructFunctionMulFunction(void* data){
   CMLInternalFunctionFunctionStorage* thisdata = (CMLInternalFunctionFunctionStorage*)data;
-  cmlReleaseFunction(thisdata->func1);
-  cmlReleaseFunction(thisdata->func2);
+  cmlReleaseObject(thisdata->func1);
+  cmlReleaseObject(thisdata->func2);
   free(data);
 }
 
@@ -1449,9 +1436,9 @@ CMLHIDDEN float cmlInternalEvaluateFunctionMulFunction(float* params, const void
 }
 
 
-CMLAPI CMLFunction* CMLcreateFunctionMulFunction(const CMLFunction* func1, const CMLFunction* func2){
+CMLAPI CMLFunction* cmlCreateFunctionMulFunction(const CMLFunction* func1, const CMLFunction* func2){
   CMLInternalFunctionFunctionInput newdata = {func1, func2};
-  return CMLcreateFunction(cmlInternalEvaluateFunctionMulFunction, CMLInternalConstructFunctionMulFunction, CMLInternalDestructFunctionMulFunction, 0, &newdata);
+  return cmlCreateFunction(cmlInternalEvaluateFunctionMulFunction, CMLInternalConstructFunctionMulFunction, CMLInternalDestructFunctionMulFunction, 0, &newdata);
 }
 
 
@@ -1478,17 +1465,17 @@ CMLHIDDEN void CMLInternalConstructFunctionDivFunction(float* params, void** dat
   CMLInternalFunctionFunctionInput* indata = (CMLInternalFunctionFunctionInput*)(input);
   *data = cmlAllocate(sizeof(CMLInternalFunctionFunctionStorage));
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
-  thisdata->func1 = CMLduplicateFunction(indata->func1);
-  thisdata->func2 = CMLduplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLTRUE);
+  thisdata->func1 = (CMLFunction*)cmlRetainObject(indata->func1);
+  thisdata->func2 = (CMLFunction*)cmlRetainObject(indata->func2);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CMLTRUE);
   *defrange = newrange;
 }
 
 
 CMLHIDDEN void CMLInternalDestructFunctionDivFunction(void* data){
   CMLInternalFunctionFunctionStorage* thisdata = (CMLInternalFunctionFunctionStorage*)data;
-  cmlReleaseFunction(thisdata->func1);
-  cmlReleaseFunction(thisdata->func2);
+  cmlReleaseObject(thisdata->func1);
+  cmlReleaseObject(thisdata->func2);
   free(data);
 }
 
@@ -1500,9 +1487,9 @@ CMLHIDDEN float cmlInternalEvaluateFunctionDivFunction(float* params, const void
 }
 
 
-CMLAPI CMLFunction* CMLcreateFunctionDivFunction(const CMLFunction* func1, const CMLFunction* func2){
+CMLAPI CMLFunction* cmlCreateFunctionDivFunction(const CMLFunction* func1, const CMLFunction* func2){
   CMLInternalFunctionFunctionInput newdata = {func1, func2};
-  return CMLcreateFunction(cmlInternalEvaluateFunctionDivFunction, CMLInternalConstructFunctionDivFunction, CMLInternalDestructFunctionDivFunction, 0, &newdata);
+  return cmlCreateFunction(cmlInternalEvaluateFunctionDivFunction, CMLInternalConstructFunctionDivFunction, CMLInternalDestructFunctionDivFunction, 0, &newdata);
 }
 
 
@@ -1526,7 +1513,7 @@ CMLHIDDEN void CMLInternalConstructFunctionMulScalar(float* params, void** data,
   CMLInternalFunctionScalarInput* indata = (CMLInternalFunctionScalarInput*)(input);
   *data = cmlAllocate(sizeof(CMLInternalFunctionScalarStorage));
   thisdata = (CMLInternalFunctionScalarStorage*)(*data);
-  thisdata->func = CMLduplicateFunction(indata->func);
+  thisdata->func = (CMLFunction*)cmlRetainObject(indata->func);
   thisdata->scalar = indata->scalar;
   *defrange = indata->func->defrange;
 }
@@ -1534,7 +1521,7 @@ CMLHIDDEN void CMLInternalConstructFunctionMulScalar(float* params, void** data,
 
 CMLHIDDEN void CMLInternalDestructFunctionMulScalar(void* data){
   CMLInternalFunctionScalarStorage* thisdata = (CMLInternalFunctionScalarStorage*)data;
-  cmlReleaseFunction(thisdata->func);
+  cmlReleaseObject(thisdata->func);
   free(data);
 }
 
@@ -1546,8 +1533,8 @@ CMLHIDDEN float cmlInternalEvaluateFunctionMulScalar(float* params, const void* 
 }
 
 
-CMLAPI CMLFunction* CMLcreateFunctionMulScalar(const CMLFunction* func, float scalar){
+CMLAPI CMLFunction* cmlCreateFunctionMulScalar(const CMLFunction* func, float scalar){
   CMLInternalFunctionScalarInput newdata = {func, scalar};
-  return CMLcreateFunction(cmlInternalEvaluateFunctionMulScalar, CMLInternalConstructFunctionMulScalar, CMLInternalDestructFunctionMulScalar, 0, &newdata);
+  return cmlCreateFunction(cmlInternalEvaluateFunctionMulScalar, CMLInternalConstructFunctionMulScalar, CMLInternalDestructFunctionMulScalar, 0, &newdata);
 }
 

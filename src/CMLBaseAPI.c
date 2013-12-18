@@ -34,28 +34,28 @@ CMLAPI void CMLconvertYuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Yuv){
 }
 
 CMLAPI void CMLconvertYupvptoLuv (CMLVec3 Luv , const CMLVec3 Yupvp, const CMLVec3 whitepointYupvp){
-  CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
+  CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
   cmlInternalOneYupvptoLuv(Luv, Yupvp, whitepointYupvp, lineartoLStarResponse);
-  cmlReleaseFunction(lineartoLStarResponse);
+  cmlReleaseObject(lineartoLStarResponse);
 }
 
 CMLAPI void CMLconvertLuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Luv, const CMLVec3 whitepointYupvp){
-  CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
+  CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
   cmlInternalOneLuvtoYupvp(Yupvp, Luv, whitepointYupvp, LStartoLinearResponse);
-  cmlReleaseFunction(LStartoLinearResponse);
+  cmlReleaseObject(LStartoLinearResponse);
 }
 
 CMLAPI void CMLconvertXYZtoLab(CMLVec3 Lab , const CMLVec3 XYZ , const CMLVec3 whitepointXYZ){
-  CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
+  CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
   CMLVec3 inverseWhitepointXYZ = {cmlInverse(whitepointXYZ[0]), cmlInverse(whitepointXYZ[1]), cmlInverse(whitepointXYZ[2])};
   cmlInternalOneXYZtoCIELAB(Lab, XYZ, inverseWhitepointXYZ, lineartoLStarResponse);
-  cmlReleaseFunction(lineartoLStarResponse);
+  cmlReleaseObject(lineartoLStarResponse);
 }
 
 CMLAPI void CMLconvertLabtoXYZ(CMLVec3 XYZ , const CMLVec3 Lab , const CMLVec3 whitepointXYZ){
-  CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
+  CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
   cmlInternalOneCIELABtoXYZ(XYZ, Lab, whitepointXYZ, LStartoLinearResponse);
-  cmlReleaseFunction(LStartoLinearResponse);
+  cmlReleaseObject(LStartoLinearResponse);
 }
 
 CMLAPI void CMLconvertLabtoLch (CMLVec3 Lch , const CMLVec3 Lab ){
@@ -103,12 +103,16 @@ CMLAPI void CMLconvertHSLtoHSV (CMLVec3 HSV , const CMLVec3 HSL){
 }
 
 
-CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 XYZ , const CMLFunction* specill, const CMLObserver* observer){
-  cmlInternalOneIlluminationSpectrumtoXYZ(XYZ, specill, observer);
+CMLAPI void CMLconvertSpectrumtoRadiometricXYZ (CMLVec3 XYZ , const CMLFunction* spectrum, const CMLObserver* observer){
+  cmlInternalOneSpectrumtoRadiometricXYZ(XYZ, spectrum, observer);
 }
 
-CMLAPI void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 XYZ, const CMLFunction* specrem, const CMLFunction* specill, const CMLObserver* observer){
-  cmlInternalOneRemissionSpectrumtoXYZ(XYZ, specrem, specill, observer);
+CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 XYZ , const CMLFunction* spectrum, const CMLWhitepoint* whitepoint){
+  cmlInternalOneIlluminationSpectrumtoXYZ(XYZ, spectrum, whitepoint);
+}
+
+CMLAPI void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 XYZ, const CMLFunction* spectrum, const CMLWhitepoint* whitepoint){
+  cmlInternalOneRemissionSpectrumtoXYZ(XYZ, spectrum, whitepoint);
 }
 
 
@@ -121,7 +125,7 @@ CMLAPI void CMLconvertXYZtoChromaticAdaptedXYZ(CMLVec3 aXYZ, const CMLVec3 XYZ, 
 
 
 
-CMLAPI CMLuint32 CMLgetNumChannels(CMLColorType colortype){
+CMLAPI CMLuint32 cmlGetNumChannels(CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  return CML_GRAY_NUMCHANNELS; break;
   case CML_COLOR_XYZ:   return CML_XYZ_NUMCHANNELS; break;
@@ -138,7 +142,7 @@ CMLAPI CMLuint32 CMLgetNumChannels(CMLColorType colortype){
   case CML_COLOR_CMYK:  return CML_CMYK_NUMCHANNELS; break;
   default:
     #ifndef NDEBUG
-    cmlError("CMLgetNumChannels", "Invalid Channeled Color Type.");
+    cmlError("cmlGetNumChannels", "Invalid Channeled Color Type.");
     #endif
     return 0;
     break;
@@ -147,7 +151,7 @@ CMLAPI CMLuint32 CMLgetNumChannels(CMLColorType colortype){
 }
 
 
-CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype){
+CMLAPI void cmlGetMinBounds(float* buffer, CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MIN); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MIN, CML_XYZ_Y_MIN, CML_XYZ_Z_MIN); break;
@@ -164,14 +168,14 @@ CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MIN, CML_CMYK_M_MIN, CML_CMYK_Y_MIN, CML_CMYK_K_MIN); break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetMinBounds", "Invalid Channeled Color Type.");
+      cmlError("cmlGetMinBounds", "Invalid Channeled Color Type.");
     #endif
     break;
   }
 }
 
 
-CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
+CMLAPI void cmlGetMaxBounds(float* buffer, CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MAX); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MAX, CML_XYZ_Y_MAX, CML_XYZ_Z_MAX); break;
@@ -188,7 +192,7 @@ CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MAX, CML_CMYK_M_MAX, CML_CMYK_Y_MAX, CML_CMYK_K_MAX); break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetMaxBounds", "Invalid Channeled Color Type.");
+      cmlError("cmlGetMaxBounds", "Invalid Channeled Color Type.");
     #endif
     break;
   }
