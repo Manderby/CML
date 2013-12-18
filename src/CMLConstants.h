@@ -22,7 +22,7 @@
 #define CML_DEFAULT_GRAY_COMPUTATION            CML_GRAY_FROM_LSTAR
 #define CML_DEFAULT_CHROMATIC_ADAPTATION        CML_CHROMATIC_ADAPTATION_NONE
 
-// The following defaults are used for integration and the CMLfilterFunction
+// The following defaults are used for integration and the cmlFilterFunction
 // method with continuous functions.
 
 #define CML_DEFAULT_INTEGRATION_MIN             300.f
@@ -154,8 +154,7 @@
 // In CML, all D illuminants are computed with the official datasets of CIE.
 // The datasets are normalized at the following wavelengths:
 
-#define CML_NORMALIZATION_WAVELENGTH_10NM 560.f
-#define CML_NORMALIZATION_WAVELENGTH_5NM  555.f
+#define CML_NORMALIZATION_WAVELENGTH  555.f
 
 // Currently, CML supports channeled colors of up to 4 channels
 

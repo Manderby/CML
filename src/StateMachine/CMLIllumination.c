@@ -207,79 +207,79 @@ CMLHIDDEN static const float robertsont[] = {
 CMLAPI CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminationtype, float temperature){  
   switch(illuminationtype){
   case CML_ILLUMINATION_BLACKBODY:
-    return CMLcreateBlackBody(temperature);
+    return cmlCreateBlackBody(temperature);
     break;
   case CML_ILLUMINATION_A_CIE:
-    return CMLcreateCIEAIlluminant();
+    return cmlCreateCIEAIlluminant();
     break;
   case CML_ILLUMINATION_A_EXACT:
-    return CMLcreateBlackBody(CML_TEMPERATURE_A);
+    return cmlCreateBlackBody(CML_TEMPERATURE_A);
     break;
   case CML_ILLUMINATION_B:
-    return CMLcreateArrayFunction(billuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(billuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_C:
-    return CMLcreateArrayFunction(cilluminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(cilluminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_D_ILLUMINANT:
-    return CMLcreateCIEDIlluminant(temperature);
+    return cmlCreateCIEDIlluminant(temperature);
     break;
   case CML_ILLUMINATION_D50:
-    return CMLcreateCIEDIlluminant(CML_TEMPERATURE_D50);
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D50);
     break;
   case CML_ILLUMINATION_D55:
-    return CMLcreateCIEDIlluminant(CML_TEMPERATURE_D55);
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D55);
     break;
   case CML_ILLUMINATION_D65:
-    return CMLcreateCIEDIlluminant(CML_TEMPERATURE_D65);
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D65);
     break;
   case CML_ILLUMINATION_D75:
-    return CMLcreateCIEDIlluminant(CML_TEMPERATURE_D75);
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D75);
     break;
   case CML_ILLUMINATION_D93:
-    return CMLcreateCIEDIlluminant(CML_TEMPERATURE_D93);
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D93);
     break;
   case CML_ILLUMINATION_E:
-    return CMLcreateConstFilter(1.f);
+    return cmlCreateConstFilter(1.f);
     break;
   case CML_ILLUMINATION_F1:
-    return CMLcreateArrayFunction(f1illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f1illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F2:
-    return CMLcreateArrayFunction(f2illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f2illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F3:
-    return CMLcreateArrayFunction(f3illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f3illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F4:
-    return CMLcreateArrayFunction(f4illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f4illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F5:
-    return CMLcreateArrayFunction(f5illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f5illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F6:
-    return CMLcreateArrayFunction(f6illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f6illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F7:
-    return CMLcreateArrayFunction(f7illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f7illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F8:
-    return CMLcreateArrayFunction(f8illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f8illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F9:
-    return CMLcreateArrayFunction(f9illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f9illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F10:
-    return CMLcreateArrayFunction(f10illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f10illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F11:
-    return CMLcreateArrayFunction(f11illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f11illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_F12:
-    return CMLcreateArrayFunction(f12illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(f12illuminant, CMLFALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   case CML_ILLUMINATION_XENON:
-    return CMLcreateArrayFunction(xenonilluminant, CMLFALSE, CML_XENON_ILLUMINATIONSPECTRUM_NUM, CML_XENON_ILLUMINATIONSPECTRUM_MIN, CML_XENON_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
+    return cmlCreateArrayFunction(xenonilluminant, CMLFALSE, CML_XENON_ILLUMINATIONSPECTRUM_NUM, CML_XENON_ILLUMINATIONSPECTRUM_MIN, CML_XENON_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
     break;
   default:
     #ifndef NDEBUG
@@ -291,7 +291,7 @@ CMLAPI CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminati
 }
 
 
-CMLAPI float CMLgetCorrelatedColorTemperature(const CMLVec3 whitepointYuv){
+CMLAPI float cmlComputeCorrelatedColorTemperature(const CMLVec3 whitepointYuv){
   float temperature = 0.f;
   CMLSize i;
   float dm = 0.f;
@@ -315,175 +315,6 @@ CMLAPI float CMLgetCorrelatedColorTemperature(const CMLVec3 whitepointYuv){
 
 
 
-
-
-CMLHIDDEN void CMLInternalrecomputeIllumination(CMLColorMachine* cm){
-//  CMLVec3 computationwhitepoint;
-
-  if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_ILLUMINATION; return;}
-  
-//  if(cm->illumination.spectrum){
-//    cmlInternalIlluminationSpectrumtoXYZ(cm->illumination.whitepointXYZ, cm->illumination.spectrum, (const CMLFunction* const *)(cm->observer.functions));
-//    cmlInternalXYZtoYxy(cm->illumination.whitepointYxy, cm->illumination.whitepointXYZ, CML_NULL, 1);
-//  }
-//
-//  if(cm->observer.radiometric){
-//    cmlCpy3(computationwhitepoint, cm->illumination.whitepointYxy);
-//  }else{
-//    cmlSet3(computationwhitepoint, 1.f, cm->illumination.whitepointYxy[1], cm->illumination.whitepointYxy[2]);
-//  }
-//  cmlInternalYxytoXYZ(cm->illumination.whitepointXYZ, computationwhitepoint, CML_NULL, 1);
-//  cmlSet3(cm->illumination.inverseWhitepointXYZ, cmlInverse(cm->illumination.whitepointXYZ[0]), cmlInverse(cm->illumination.whitepointXYZ[1]), cmlInverse(cm->illumination.whitepointXYZ[2]));
-//  cmlInternalYxytoYupvp(cm->illumination.whitepointYupvp, computationwhitepoint, CML_NULL, 1);
-
-  // Now, all whitepoints are computed.
-
-  // Compute the correlated color temperature:
-//  switch(cm->illumination.state){
-//  case CML_ILLUMINATION_BLACKBODY:
-//  case CML_ILLUMINATION_D_ILLUMINANT:
-//    // the temperature is already set.
-//    break;
-//  case CML_ILLUMINATION_A_CIE:
-//    cm->illumination.temperature = 2848.f;
-//    break;
-//  case CML_ILLUMINATION_A_EXACT:
-//    cm->illumination.temperature = CML_TEMPERATURE_A;
-//    break;
-//  case CML_ILLUMINATION_D50:
-//    cm->illumination.temperature = CML_TEMPERATURE_D50;
-//    break;
-//  case CML_ILLUMINATION_D55:
-//    cm->illumination.temperature = CML_TEMPERATURE_D55;
-//    break;
-//  case CML_ILLUMINATION_D65:
-//    cm->illumination.temperature = CML_TEMPERATURE_D65;
-//    break;
-//  case CML_ILLUMINATION_D75:
-//    cm->illumination.temperature = CML_TEMPERATURE_D75;
-//    break;
-//  case CML_ILLUMINATION_D93:
-//    cm->illumination.temperature = CML_TEMPERATURE_D93;
-//    break;
-//  default:
-//    // Any other illumination is computed using Robertson
-//    {
-//      CMLVec3 whitepointYuv;
-//      cmlInternalYupvptoYuv(whitepointYuv, cm->illumination.whitepointYupvp, 1);
-//      cm->illumination.temperature = CMLgetCorrelatedColorTemperature(whitepointYuv);
-//    }
-//    break;
-//  }
-
-  CMLInternalrecomputeLabColorspace(cm);
-  CMLInternalrecomputeAdamsChromaticityValenceSpace(cm);  
-  CMLInternalrecomputeRGBColorspace(cm);
-}
-
-
-CMLAPI CMLIlluminationType   CMLgetIlluminationType(CMLColorMachine* cm){
-  return cmlGetIlluminationType(cmlGetReferenceIllumination(&(cm->observer)));
-}
-
-
-CMLAPI void CMLsetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationtype){
-  if(illuminationtype == CML_ILLUMINATION_CUSTOM_SPECTRUM){return;}
-
-  CMLObserverType newobservertype = cmlGetObserverType(&(cm->observer));
-  float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-  CMLIllumination* newillumination = cmlCreateIlluminationWithPreset(CML_NULL, illuminationtype, CMLgetIlluminationTemperature(cm));
-  cmlClearObserver(&(cm->observer));
-  cmlCreateObserverWithIllumination(&(cm->observer), newobservertype, newillumination, newcolorimetricBase);
-  cmlClearIllumination(newillumination);
-
-//  cm->illumination.state = illuminationtype;
-//  cmlReleaseFunction(cm->illumination.spectrum);
-//
-//  if(cm->illumination.state == CML_ILLUMINATION_CUSTOM_WHITEPOINT){
-//    cm->illumination.temperature = 0.f;
-//  }
-  
-  // Recompute the white point
-  CMLInternalrecomputeIllumination(cm);
-}
-
-
-CMLAPI float CMLgetIlluminationTemperature(const CMLColorMachine* cm){
-  return cmlGetCorrelatedColorTemperature(cmlGetReferenceIllumination(&(cm->observer)));
-//  return cm->illumination.temperature;
-}
-
-
-CMLAPI void CMLsetIlluminationTemperature(CMLColorMachine* cm, float temp){
-  CMLIlluminationType illtype = cmlGetIlluminationType(cmlGetReferenceIllumination(&(cm->observer)));
-  if((illtype == CML_ILLUMINATION_BLACKBODY) || (illtype == CML_ILLUMINATION_D_ILLUMINANT)){
-
-    CMLObserverType newobservertype = cmlGetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithPreset(CML_NULL, illtype, temp);
-    cmlClearObserver(&(cm->observer));
-    cmlCreateObserverWithIllumination(&(cm->observer), newobservertype, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
-
-
-//    cm->illumination.temperature = temp;
-//    cmlReleaseFunction(cm->illumination.spectrum);
-//    if(cm->illumination.state == CML_ILLUMINATION_BLACKBODY){
-//      cm->illumination.spectrum = CMLcreateBlackBody(cm->illumination.temperature);
-//    }else{
-//      cm->illumination.spectrum = CMLcreateCIEDIlluminant(cm->illumination.temperature);
-//    }
-    CMLInternalrecomputeIllumination(cm);
-  #ifndef NDEBUG
-  }else{
-    cmlError("CMLsetIlluminationTemperature", "Call only effective for Blackbody and custom D illuminants.");
-  #endif
-  }
-}
-
-
-CMLAPI const CMLFunction* CMLgetIlluminationSpectrum(const CMLColorMachine* cm){
-  return cmlGetReferenceIlluminationSpectrum(&(cm->observer));
-}
-
-
-CMLAPI void CMLsetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* newspectrum){
-  if(!newspectrum){return;}
-
-    CMLObserverType newobservertype = cmlGetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomSpectrum(CML_NULL, newspectrum, &(cm->observer));
-    cmlClearObserver(&(cm->observer));
-    cmlCreateObserverWithIllumination(&(cm->observer), newobservertype, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
-
-//  cmlReleaseFunction(cm->illumination.spectrum);
-//  cm->illumination.spectrum = CMLduplicateFunction(newspectrum);
-//  cm->illumination.state = CML_ILLUMINATION_CUSTOM_SPECTRUM;
-  CMLInternalrecomputeIllumination(cm);
-}
-
-
-CMLAPI void CMLgetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitepointYxy){
-  cmlCpy3(whitepointYxy, cmlGetReferenceWhitepointYxy(&(cm->observer)));
-}
-
-
-CMLAPI void CMLsetWhitePointYxy(CMLColorMachine* cm, const float* Yxy){
-
-    CMLObserverType newobservertype = cmlGetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitepoint(CML_NULL, Yxy);
-    cmlClearObserver(&(cm->observer));
-    cmlCreateObserverWithIllumination(&(cm->observer), newobservertype, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
-
-//  cm->illumination.state = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
-//  cmlReleaseFunction(cm->illumination.spectrum);
-//  cm->illumination.spectrum = CML_NULL;
-//  cmlCpy3(cm->illumination.whitepointYxy, Yxy);
-  CMLInternalrecomputeIllumination(cm);
-}
 
 
 
