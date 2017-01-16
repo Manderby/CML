@@ -7,27 +7,24 @@
 
 
 
-CMLAPI CMLResponseCurve* cmlCreateResponseCurveWithPreset(
+CML_API CMLMOBResponseCurve* cmlCreateResponseCurveWithPreset(
                                     CMLResponseCurvePreset preset);
 
-CMLAPI CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
-                                                     float param0,
-                                                     float param1,
-                                                     float param2,
-                                                     float param3);
+CML_API CMLMOBResponseCurve* cmlCreateResponseCurveGammaLinear(
+                                                     float gamma,
+                                                     float offset,
+                                                     float linscale,
+                                                     float split);
 
 // ForwardFunc points away from XYZ, BackwardFunc towards it. Meaning:
 // For an RGB space, ForwardFunc is needed for the transformation XYZ->RGB
 // whereas BackwardFunc is needed for the transformation RGB->XYZ.
 // For an Lab space, ForwardFunc is needed for the transformation XYZ->Lab
 // whereas BackwardFunc is needed for the transformation Lab->XYZ.
-CMLAPI CMLFunction* cmlGetResponseCurveForwardFunc(const CMLResponseCurve* curve);
-CMLAPI CMLFunction* cmlGetResponseCurveBackwardFunc(const CMLResponseCurve* curve);
-//CMLAPI CMLFunctionType cmlGetResponseCurveForwardFunctionType(const CMLResponseCurve* curve);
-CMLAPI float cmlGetResponseCurveParam0(const CMLResponseCurve* curve);
-CMLAPI float cmlGetResponseCurveParam1(const CMLResponseCurve* curve);
-CMLAPI float cmlGetResponseCurveParam2(const CMLResponseCurve* curve);
-CMLAPI float cmlGetResponseCurveParam3(const CMLResponseCurve* curve);
+
+CML_API CMLMOBFunction* cmlGetResponseCurveForwardFunc(CMLMOBResponseCurve* curve);
+CML_API CMLMOBFunction* cmlGetResponseCurveBackwardFunc(CMLMOBResponseCurve* curve);
+CML_API CMLFunctionType cmlGetResponseCurveFunctionType(CMLMOBResponseCurve* curve);
 
 
 

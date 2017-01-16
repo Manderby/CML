@@ -616,42 +616,42 @@
 
 //void ColorMachine::adjustIntegrationToObserver(){
 //  switch(s->observer.state){
-//  case CML_OBSERVER_2DEG_1931:
+//  case CML_FUNVEC_OBSERVER_2DEG_1931:
 //    s->inputoutput.minlambda = CML_X2VALENCES_1931_MIN;
 //    s->inputoutput.maxlambda = CML_X2VALENCES_1931_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_1931_NUM;
 //    break;
-//  case CML_OBSERVER_10DEG_1964:
+//  case CML_FUNVEC_OBSERVER_10DEG_1964:
 //    s->inputoutput.minlambda = CML_X10VALENCES_1964_MIN;
 //    s->inputoutput.maxlambda = CML_X10VALENCES_1964_MAX;
 //    s->inputoutput.samplecount = CML_X10VALENCES_1964_NUM;
 //    break;
-//  case CML_OBSERVER_2DEG_CIE_1931:
+//  case CML_FUNVEC_OBSERVER_2DEG_CIE_1931:
 //    s->inputoutput.minlambda = CML_X2VALENCES_CIE1931_MIN;
 //    s->inputoutput.maxlambda = CML_X2VALENCES_CIE1931_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_CIE1931_NUM;
 //    break;
-//  case CML_OBSERVER_10DEG_CIE_1964:
+//  case CML_FUNVEC_OBSERVER_10DEG_CIE_1964:
 //    s->inputoutput.minlambda = CML_X10VALENCES_CIE1964_MIN;
 //    s->inputoutput.maxlambda = CML_X10VALENCES_CIE1964_MAX;
 //    s->inputoutput.samplecount = CML_X10VALENCES_CIE1964_NUM;
 //    break;
-//  case CML_OBSERVER_2DEG_JUDD_1951:
+//  case CML_FUNVEC_OBSERVER_2DEG_JUDD_1951:
 //    s->inputoutput.minlambda = CML_X2VALENCES_JUDD1951_MIN;
 //    s->inputoutput.maxlambda = CML_X2VALENCES_JUDD1951_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_JUDD1951_NUM;
 //    break;
-//  case CML_OBSERVER_2DEG_JUDD_VOS_1978:
+//  case CML_FUNVEC_OBSERVER_2DEG_JUDD_VOS_1978:
 //    s->inputoutput.minlambda = CML_X2VALENCES_JUDDVOS1978_MIN;
 //    s->inputoutput.maxlambda = CML_X2VALENCES_JUDDVOS1978_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_JUDDVOS1978_NUM;
 //    break;
-////  case CML_OBSERVER_2DEG_STILES_BURCH_1955:
+////  case CML_FUNVEC_OBSERVER_2DEG_STILES_BURCH_1955:
 ////    s->inputoutput.minlambda = CML_X2VALENCES_STILESBURCH1955_MIN;
 ////    s->inputoutput.maxlambda = CML_X2VALENCES_STILESBURCH1955_MAX;
 ////    s->inputoutput.samplecount = CML_X2VALENCES_STILESBURCH1955_NUM;
 ////    break;
-////  case CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997:
+////  case CML_FUNVEC_OBSERVER_2DEG_SHAW_FAIRCHILD_1997:
 ////    s->inputoutput.minlambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MIN;
 ////    s->inputoutput.maxlambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MAX;
 ////    s->inputoutput.samplecount = CML_X2VALENCES_SHAWFAIRCHILD1997_NUM;
@@ -1053,7 +1053,7 @@
 //public:
 //  CMLCIEDIlluminant(float temperature);
 //  CMLFunction* duplicate() const;
-//  void computeWhitePoint(float& wx, float& wy) const;
+//  void computeWhite(float& wx, float& wy) const;
 //};
 //
 //
@@ -1395,7 +1395,7 @@
 
 
 
-//CML_INLINE static void SpectralBlanktoDensityDivisor(float* CML_RESTRICT CMYK, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
+//CML_INLINE void SpectralBlanktoDensityDivisor(float* CML_RESTRICT CMYK, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
 //  float blankval;
 //  float illuminantvalue;
 //  float imin;
@@ -1420,10 +1420,10 @@
 //    CMYK[3] = CMYK[0] * 144.f + CMYK[1] * 79.f + CMYK[2] * 25.f;
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
-//    arraydensityfilterC.init(densityfilterC, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterM.init(densityfilterM, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterY.init(densityfilterY, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterK.init(densityfilterK, CMLFALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterC.init(densityfilterC, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterM.init(densityfilterM, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterY.init(densityfilterY, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterK.init(densityfilterK, CML_FALSE, CML_DENSITYFILTER_NUM); break;
 //    filterC.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterC, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterM.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterM, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterY.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterY, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1483,10 +1483,10 @@
 //                        / blankvalue[3]);
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
-//    arraydensityfilterC.init(densityfilterC, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterM.init(densityfilterM, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterY.init(densityfilterY, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterK.init(densityfilterK, CMLFALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterC.init(densityfilterC, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterM.init(densityfilterM, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterY.init(densityfilterY, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterK.init(densityfilterK, CML_FALSE, CML_DENSITYFILTER_NUM);
 //    filterC.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterC, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterM.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterM, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterY.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterY, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1539,10 +1539,10 @@
 //      float weightedblank = 0.f;
 //      CMLArray densityfilter;
 //      switch(type){
-//        case CML_DENSITY_BROAD_CYAN:     densityfilter.init(densityfilterC, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_MAGENTA:  densityfilter.init(densityfilterM, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_YELLOW:   densityfilter.init(densityfilterY, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_BLACK:    densityfilter.init(densityfilterK, CMLFALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_CYAN:     densityfilter.init(densityfilterC, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_MAGENTA:  densityfilter.init(densityfilterM, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_YELLOW:   densityfilter.init(densityfilterY, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_BLACK:    densityfilter.init(densityfilterK, CML_FALSE, densityfiltercount); break;
 //        default: return -1.0f;
 //      }
 //      CMLArrayFunction filter = CMLArrayFunction(densityfiltermin, densityfiltermax, densityfilter, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1612,7 +1612,7 @@
 //#define CML_X2VALENCES_ISO13655_MIN 370.f
 //#define CML_X2VALENCES_ISO13655_MAX 770.f
 //#define CML_X2VALENCES_ISO13655_NUM 41
-//CMLHIDDEN static const float x2valencesISO13655[CML_X2VALENCES_ISO13655_NUM] = {
+//CML_HIDDEN static const float x2valencesISO13655[CML_X2VALENCES_ISO13655_NUM] = {
 //  0.001f, 0.003f, 0.012f, 0.060f, 0.234f, 0.775f, 1.610f, 2.453f, 2.777f, 2.500f,
 //  1.717f, 0.861f, 0.283f, 0.040f, 0.088f, 0.593f, 1.590f, 2.799f, 4.207f, 5.657f,
 //  7.132f, 8.540f, 9.255f, 9.835f, 9.469f, 8.009f, 5.926f, 4.171f, 2.609f, 1.541f,
@@ -1622,7 +1622,7 @@
 //#define CML_Y2VALENCES_ISO13655_MIN 400.f
 //#define CML_Y2VALENCES_ISO13655_MAX 750.f
 //#define CML_Y2VALENCES_ISO13655_NUM 36
-//CMLHIDDEN static const float y2valencesISO13655[CML_Y2VALENCES_ISO13655_NUM] = {
+//CML_HIDDEN static const float y2valencesISO13655[CML_Y2VALENCES_ISO13655_NUM] = {
 //  0.002f, 0.006f, 0.023f, 0.066f, 0.162f, 0.313f, 0.514f, 0.798f, 1.239f, 1.839f,
 //  2.948f, 4.632f, 6.587f, 8.308f, 9.197f, 9.650f, 9.471f, 8.902f, 8.112f, 6.829f,
 //  5.838f, 4.753f, 3.573f, 2.443f, 1.629f, 0.984f, 0.570f, 0.313f, 0.158f, 0.070f,
@@ -1631,7 +1631,7 @@
 //#define CML_Z2VALENCES_ISO13655_MIN 360.f
 //#define CML_Z2VALENCES_ISO13655_MAX 630.f
 //#define CML_Z2VALENCES_ISO13655_NUM 28
-//CMLHIDDEN static const float z2valencesISO13655[CML_Z2VALENCES_ISO13655_NUM] = {
+//CML_HIDDEN static const float z2valencesISO13655[CML_Z2VALENCES_ISO13655_NUM] = {
 //   0.001f,  0.005f, 0.013f, 0.057f, 0.285f, 1.113f, 3.723f, 7.862f, 12.309f, 14.647f,
 //  14.346f, 11.299f, 7.309f, 4.128f, 2.466f, 1.447f, 0.736f, 0.401f,  0.196f,  0.085f,
 //   0.037f,  0.020f, 0.015f, 0.010f, 0.007f, 0.004f, 0.002f, 0.001f};

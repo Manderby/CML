@@ -8,24 +8,24 @@
 #include "CMLColorMachineState.h"
 
 
-CMLAPI void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
+CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
                                 CMLChromaticAdaptationType adaptationtype,
-                                                   CMLVec3 adaptedwhitepointYxy,
-                                                   CMLVec3 whitepointYxy){
+                                                   CMLVec3 adaptedwhiteYxy,
+                                                   CMLVec3 whiteYxy){
 
   CMLMat33 M;
-  CMLVec3  whitepointXYZ;
-  CMLVec3  adaptedwhitepointXYZ;
+  CMLVec3  whiteXYZ;
+  CMLVec3  adaptedwhiteXYZ;
   CMLMat33 Minv;
   CMLVec3  cs;
   CMLVec3  cd;
   
   #ifndef NDEBUG
     if(adaptationtype != CML_CHROMATIC_ADAPTATION_NONE){
-      if(whitepointYxy[2] == 0.f)
-        cmlError("cmlComputeChromaticAdaptationMatrix", "Whitepoint invalid.");
-      if(adaptedwhitepointYxy[2] == 0.f)
-        cmlError("cmlComputeChromaticAdaptationMatrix", "Adapted whitepoint invalid.");
+      if(whiteYxy[2] == 0.f)
+        cmlError("cmlComputeChromaticAdaptationMatrix", "White invalid.");
+      if(adaptedwhiteYxy[2] == 0.f)
+        cmlError("cmlComputeChromaticAdaptationMatrix", "Adapted white invalid.");
     }
   #endif
 
@@ -33,7 +33,7 @@ CMLAPI void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
   switch(adaptationtype){
   case CML_CHROMATIC_ADAPTATION_NONE:
     {
-      float scale = adaptedwhitepointYxy[0] / whitepointYxy[0];
+      float scale = adaptedwhiteYxy[0] / whiteYxy[0];
       CMLMat33set(matrix,
             scale,     0.f,       0.f,
             0.f,       scale,     0.f,
@@ -58,11 +58,11 @@ CMLAPI void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
          -0.08081f,  0.04570f,  0.91822f);
     break;
   }
-  cmlInternalOneYxytoXYZ(whitepointXYZ, whitepointYxy, CML_NULL);
-  cmlInternalOneYxytoXYZ(adaptedwhitepointXYZ, adaptedwhitepointYxy, CML_NULL);
+  cml_OneYxyToXYZ(&(whiteXYZ[0]), &(whiteXYZ[1]), &(whiteXYZ[2]), &(whiteYxy[0]), &(whiteYxy[1]), &(whiteYxy[2]), CML_NULL);
+  cml_OneYxyToXYZ(&(adaptedwhiteXYZ[0]), &(adaptedwhiteXYZ[1]), &(adaptedwhiteXYZ[2]), &(adaptedwhiteYxy[0]), &(adaptedwhiteYxy[1]), &(adaptedwhiteYxy[2]), CML_NULL);
   cmlMat33Inverse(Minv, M);
-  cmlMat33MulVec3(cs, M, whitepointXYZ);
-  cmlMat33MulVec3(cd, M, adaptedwhitepointXYZ);
+  cmlMat33MulVec3(cs, M, whiteXYZ);
+  cmlMat33MulVec3(cd, M, adaptedwhiteXYZ);
   cmlDiv3componentwise(cd, cs);
   cmlMat33ScaleVec3(Minv, cd);
   cmlMat33MulMat33(matrix, Minv, M);

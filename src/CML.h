@@ -44,21 +44,18 @@
 // Enumerations and color types used in CML.
 #include "CMLTypes.h"
 
+// Core
+#include "CMLContext.h"
+
 // The API of the different structs.
-#include "CMLConverter.h"
 #include "CMLFunction.h"
+#include "CMLFunctionVector.h"
 #include "CMLIllumination.h"
 #include "CMLObserver.h"
-#include "CMLWhitepoint.h"
 #include "CMLRGBSpace.h"
-#include "CMLLabSpace.h"
 #include "CMLResponseCurve.h"
 
-// Definition of the most basic color API
-#include "CMLBaseAPI.h"
-
-// Color Machines and their API
-#include "CMLColorMachine.h"
+#include "CMLColor.h"
 
 // The defaults used in CML.
 #include "CMLConstants.h"
