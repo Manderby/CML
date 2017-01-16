@@ -7,7 +7,7 @@
 
 // A CMLFunction is an arbitrary float->float function which may define a
 // spectrum, a response curve, a filter or anything else. In CML, you can
-// create many predefined functions as well as your own cutsom functions.
+// create many predefined functions as well as your own custom functions.
 //
 // Note that CMLFunctions use a reference counter. When a function is created,
 // this counter is set to 1. By calling one of the methods cmlDuplicateFunction
@@ -27,9 +27,9 @@
 // Defines spectral data as radiance per wavelength.
 // The input to these functions is expected to be in the unit [nanometer].
 
-CMLAPI CMLFunction* cmlCreateBlackBody(float temperature);
-CMLAPI CMLFunction* cmlCreateCIEAIlluminant();
-CMLAPI CMLFunction* cmlCreateCIEDIlluminant(float temperature);
+CML_API CMLMOBFunction* cmlCreateBlackBody(float temperature);
+CML_API CMLMOBFunction* cmlCreateCIEAIlluminant();
+CML_API CMLMOBFunction* cmlCreateCIEDIlluminant(float temperature);
 
 // Response Curves:
 // All response curves operate in the [0,1]-range. The following functions are
@@ -39,16 +39,16 @@ CMLAPI CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
 
-CMLAPI CMLFunction* cmlCreateLinearResponse();
-CMLAPI CMLFunction* cmlCreateGammaResponse(float gamma);
-CMLAPI CMLFunction* cmlCreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* cmlCreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* cmlCreatesRGBToXYZResponse();
-CMLAPI CMLFunction* cmlCreateXYZTosRGBResponse();
-CMLAPI CMLFunction* cmlCreateYToLStarResponse();
-CMLAPI CMLFunction* cmlCreateLStarToYResponse();
-CMLAPI CMLFunction* cmlCreateYToLStarStandardResponse();
-CMLAPI CMLFunction* cmlCreateLStarToYStandardResponse();
+CML_API CMLMOBFunction* cmlCreateLinearResponse();
+CML_API CMLMOBFunction* cmlCreateGammaResponse(float gamma);
+CML_API CMLMOBFunction* cmlCreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CML_API CMLMOBFunction* cmlCreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CML_API CMLMOBFunction* cmlCreatesRGBToXYZResponse();
+CML_API CMLMOBFunction* cmlCreateXYZTosRGBResponse();
+CML_API CMLMOBFunction* cmlCreateYToLStarResponse();
+CML_API CMLMOBFunction* cmlCreateLStarToYResponse();
+CML_API CMLMOBFunction* cmlCreateYToLStarStandardResponse();
+CML_API CMLMOBFunction* cmlCreateLStarToYStandardResponse();
 
 // Filter Functions:
 // Use these functions to filter spectra. Filters are used for componentwise
@@ -56,35 +56,46 @@ CMLAPI CMLFunction* cmlCreateLStarToYStandardResponse();
 // but unlike probability distribution functions, they do not necessarily need
 // to be normalized to 1.
 
-CMLAPI CMLFunction* cmlCreateDiracFilter(float wavelength);
-CMLAPI CMLFunction* cmlCreateConstFilter(float value);
-CMLAPI CMLFunction* cmlCreateCutFilter(float min, float max);
+CML_API CMLMOBFunction* cmlCreateDiracFilter(float wavelength);
+CML_API CMLMOBFunction* cmlCreateConstFilter(float value);
+CML_API CMLMOBFunction* cmlCreateCutFilter(float min, float max);
+CML_API CMLMOBFunction* cmlCreateBinomialFilter(float minx, float maxx, CMLInt n, CMLInt k);
+CML_API CMLMOBFunction* cmlCreateGaussFilter(float mu, float sigma);
 
 // Composite Functions:
 // You can combine functions like mathematical functions. All operations will
 // then be performed componentwise.
 
-CMLAPI CMLFunction* cmlCreateFunctionAddFunction( const CMLFunction* func1,
-                                                  const CMLFunction* func2);
-CMLAPI CMLFunction* cmlCreateFunctionSubFunction( const CMLFunction* func1,
-                                                  const CMLFunction* func2);
-CMLAPI CMLFunction* cmlCreateFunctionMulFunction( const CMLFunction* func1,
-                                                  const CMLFunction* func2);
-CMLAPI CMLFunction* cmlCreateFunctionDivFunction( const CMLFunction* func1,
-                                                  const CMLFunction* func2);
-CMLAPI CMLFunction* cmlCreateFunctionMulScalar(   const CMLFunction* func,
-                                                               float scalar);
+CML_API CMLMOBFunction* cmlCreateFunctionAddFunction( CMLMOBFunction* func1,
+                                                      CMLMOBFunction* func2);
+CML_API CMLMOBFunction* cmlCreateFunctionSubFunction( CMLMOBFunction* func1,
+                                                      CMLMOBFunction* func2);
+CML_API CMLMOBFunction* cmlCreateFunctionMulFunction( CMLMOBFunction* func1,
+                                                      CMLMOBFunction* func2);
+CML_API CMLMOBFunction* cmlCreateFunctionDivFunction( CMLMOBFunction* func1,
+                                                      CMLMOBFunction* func2);
+CML_API CMLMOBFunction* cmlCreateFunctionMulScalar(   CMLMOBFunction* func,
+                                                                float scalar);
 
 // Array Functions:
 // Use the following function to crate arbitrary functions where an array with
 // sampling points is given. The ownbuffer parameter depicts if the function
-// shall take ownership of the buffer. If this parameter is CMLTRUE, the buffer
+// shall take ownership of the buffer. If this parameter is CML_TRUE, the buffer
 // will automatically be deallocated with free() when the function is no longer
 // needed. If you choose to do so, make sure the buffer is allocated with
 // malloc.
 
-CMLAPI CMLFunction* cmlCreateArrayFunction(
+CML_API CMLMOBFunction* cmlCreateConstArrayFunction(
                               const float* buffer,
+                                   CMLSize entrycount,
+                                     float minimalcoord,
+                                     float maximalcoord,
+                    CMLInterpolationMethod interpolationmethod,
+                    CMLExtrapolationMethod downextrapolationmethod,
+                    CMLExtrapolationMethod upextrapolationmethod);
+
+CML_API CMLMOBFunction* cmlCreateMutableArrayFunction(
+                                    float* buffer,
                                    CMLBool ownbuffer,
                                    CMLSize entrycount,
                                      float minimalcoord,
@@ -93,11 +104,12 @@ CMLAPI CMLFunction* cmlCreateArrayFunction(
                     CMLExtrapolationMethod downextrapolationmethod,
                     CMLExtrapolationMethod upextrapolationmethod);
 
+
 // If you already have an (arbitrary) function and you want to convert it to an
 // array function, use the following method:
 
-CMLAPI CMLFunction* cmlSampleArrayFunction(
-                        const CMLFunction* func,
+CML_API CMLMOBFunction* cmlSampleArrayFunction(
+                        CMLMOBFunction* func,
                                      float minimalcoord,
                                      float maximalcoord,
                                    CMLSize entrycount,
@@ -114,25 +126,23 @@ CMLAPI CMLFunction* cmlSampleArrayFunction(
 // //////////////////////////////////////////
 
 // Evaluates the given function at coordinate x
-CMLAPI float cmlEval(                 const CMLFunction* func,
+CML_API float cmlEval(                 CMLMOBFunction* func,
                                                    float x);
 
-// Returns the desired parameter of the function, if it exists. Returns 0
-// otherwise. The index is 0-based.
-CMLAPI float cmlGetFunctionParameter( const CMLFunction* func,
-                                                   CMLSize index);
-
 // Performs a filter operation with the two given functions
-CMLAPI float cmlFilterFunction(       const CMLFunction* func,
-                                      const CMLFunction* filter);
+CML_API float cmlFilterFunction(       CMLMOBFunction* func,
+                                      CMLMOBFunction* filter);
 
 // Returns the maximal value of the given function in the coordinate range.
-CMLAPI float cmlGetFunctionMaxValue(  const CMLFunction* func);
+//CML_API float cmlGetFunctionMaxValue(  const CMLFunction* func);
 
 // Places information about the definition range of the given function in the
-// provided DefinitionRange structure.
-CMLAPI void cmlGetFunctionDefinitionRange(
-                                      const CMLFunction* func,
+// provided CMLDefinitionRange structure or stores the provided data.
+CML_API void cmlGetFunctionDefinitionRange(
+                                      CMLMOBFunction* func,
+                                     CMLDefinitionRange* defrange);
+CML_API void cmlSetFunctionDefinitionRange(
+                                      CMLMOBFunction* func,
                                      CMLDefinitionRange* defrange);
 
 
@@ -169,11 +179,11 @@ CMLAPI void cmlGetFunctionDefinitionRange(
 // The "defrange" parameter is a pointer to a CMLDefinitionRange structure
 // which stores additional informations about your function. You can manipulate
 // this definition range arbitrarily. See explanation below.
-typedef void  (*CMLFunctionConstructor)(
-                                    float* params,
-                                    void** data,
-                       CMLDefinitionRange* defrange,
-                               const void* input);
+//typedef void  (*CMLFunctionConstructor)(
+//                                    float* params,
+//                                    void** data,
+//                       CMLDefinitionRange* defrange,
+//                               const void* input);
 
 // The EVALUATOR: This callback function is called whenever cmlEval is called.
 //
@@ -186,8 +196,7 @@ typedef void  (*CMLFunctionConstructor)(
 //
 // Be advised to write a comment on what unit the input values are expected.
 typedef float (*CMLFunctionEvaluator)(
-                                    float* params,
-                               const void* data,
+                                    CMLMOBFunction* function,
                                      float x);
 
 // The DESTRUCTOR: This callback function is called when an instance of your
@@ -197,8 +206,8 @@ typedef float (*CMLFunctionEvaluator)(
 // memory. This should look something like this:
 // free(data);
 // Or use the appropriate delete operator if you are using C++.
-typedef void  (*CMLFunctionDesctructor)(
-                                    void*  data);
+//typedef void  (*CMLFunctionDestructor)(
+//                                    void*  data);
 
 
 // Use the cmlCreateFunction to create an instance of your own CMLFunction.
@@ -206,19 +215,17 @@ typedef void  (*CMLFunctionDesctructor)(
 // parameters can be CML_NULL. floatparams denotes the number of float input
 // parameters the function contains. They will be available in the constructor
 // and evaluator as array of floats.
-CMLAPI CMLFunction* cmlCreateFunction(
-                       CMLFunctionEvaluator evaluator,
-                     CMLFunctionConstructor constructor,
-                     CMLFunctionDesctructor destructor,
-                                  CMLuint32 floatparams,
-                                const void* input);
-
+CML_API CMLMOBFunction* cmlCreateFunction(CMLFunctionEvaluator evaluator);
 
 
 
 // //////////////////////////////////////////
 // Definition Range
 // //////////////////////////////////////////
+
+CMLFunctionEvaluator cml_GetFunctionEvaluator(CMLMOBFunction* function);
+
+void cml_SetFunctionEvaluator(CMLMOBFunction* function, CMLFunctionEvaluator evaluator);
 
 // The following struct can be used for custom CMLFunctions to indicate, where
 // integration or filtering is useful. The cmlFilterFunction method queries

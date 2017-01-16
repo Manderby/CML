@@ -7,26 +7,6 @@
 // of the author of this software is prohibited and any liability is disclamed.
 // Terms of a separate contract may apply.
 
-// Enumerates the different color types
-typedef enum{
-  CML_COLOR_GRAY = 0,
-  CML_COLOR_XYZ,    // CIE 1931
-  CML_COLOR_Yxy,
-  CML_COLOR_Yuv,    // CIE 1960 (UCS)
-  CML_COLOR_Yupvp,  // CIE 1976
-  CML_COLOR_Lab,
-  CML_COLOR_Lch,
-  CML_COLOR_Luv,    // CIE 1976
-  CML_COLOR_RGB,
-  CML_COLOR_YCbCr,
-  CML_COLOR_HSV,
-  CML_COLOR_HSL,
-  CML_COLOR_CMYK,
-  CML_COLOR_SPECTRUM_ILLUMINATION,
-  CML_COLOR_SPECTRUM_REMISSION,
-  CML_NUMBER_OF_COLORTYPES
-} CMLColorType;
-
 // Enumerates the different integration computation types
 typedef enum{
   CML_INTEGRATION_SIMPLE = 0,
@@ -44,17 +24,17 @@ typedef enum{
 
 // Enumerates the different observers
 typedef enum{
-  CML_OBSERVER_CUSTOM = 0,
-  CML_OBSERVER_2DEG_CIE_1931,
-  CML_OBSERVER_10DEG_CIE_1964,
-  CML_OBSERVER_2DEG_JUDD_1951,
-  CML_OBSERVER_2DEG_JUDD_VOS_1978,
+  CML_FUNVEC_OBSERVER_CUSTOM = 0,
+  CML_FUNVEC_OBSERVER_2DEG_CIE_1931,
+  CML_FUNVEC_OBSERVER_10DEG_CIE_1964,
+  CML_FUNVEC_OBSERVER_2DEG_JUDD_1951,
+  CML_FUNVEC_OBSERVER_2DEG_JUDD_VOS_1978,
   CML_NUMBER_OF_OBSERVERS
-} CMLObserverType;
+} CMLFunctionVectorPreset;
 
 // Enumerates the different illuminations
 typedef enum{
-  CML_ILLUMINATION_CUSTOM_WHITEPOINT = 0,
+  CML_ILLUMINATION_CUSTOM_Yxy = 0,
   CML_ILLUMINATION_CUSTOM_SPECTRUM,
   CML_ILLUMINATION_BLACKBODY,
   CML_ILLUMINATION_A_CIE,
@@ -107,7 +87,7 @@ typedef enum{
   CML_RGB_PAL_SECAM_EBU,
   CML_RGB_ROMM_PROPHOTO,
   CML_RGB_SMPTE_C,
-  CML_RGB_SRGB,
+  CML_RGB_sRGB,
   CML_RGB_WIDE_GAMUT,
   CML_RGB_CUSTOM,
   CML_NUMBER_OF_RGB_SPACES
@@ -188,13 +168,47 @@ typedef enum{
   CML_INTERPOLATION_LINEAR
 } CMLInterpolationMethod;
 
+// Enumerates the different colorspace class IDs.
+typedef enum{
+  CML_Radiometric,
+  CML_Remission,
+  CML_XYZ,    // CIE 1931
+  CML_Yxy,
+  CML_Yupvp,  // CIE 1976
+  CML_Yuv,    // CIE 1960 (UCS)
+  CML_Luv,    // CIE 1976
+  CML_Lab,
+  CML_Lch,
+  CML_RGB,  
+  CML_YCbCr,
+  CML_HSV,
+  CML_HSL,
+} CMLColorspaceType;  // todo: make defines
+
+typedef enum{
+  CML_COMPONENT_CARTESIAN,
+  CML_COMPONENT_RADIAL,
+  CML_COMPONENT_ANGULAR,
+  CML_COMPONENT_FUNCTION,
+} CMLComponentType;
+
+typedef enum{
+  CML_ENCODING_NORM,
+  CML_ENCODING_FLOAT,
+} CMLEncoding;
+
+
+typedef enum{
+  CML_GET_EQU,
+  CML_GET_ADD,
+  CML_GET_SUB,
+  CML_GET_ALTDST,
+  CML_GET_ALTSRC,
+  CML_GET_CONVERT,
+} CMLGetMethod;
+
 // Enumerates the different extrapolation methods of array functions
 // If you are uncertain which one to use, you should probably choose LIN_ZERO.
-typedef enum{
-  CML_CODEC_RGB_uint8
-} CMLColorCodecType;
-
-// Enumerates the different color codecs.
 typedef enum{
   CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
   CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepsize, then 0
@@ -203,30 +217,82 @@ typedef enum{
 } CMLExtrapolationMethod;
 
 
+typedef enum{
+  CML_SETTING_OBSERVER,
+  CML_SETTING_GENERATOR,
+  CML_SETTING_CHANNEL_RESPONSE_CURVES,
+  CML_SETTING_ILLUMINATION_SPECTRUM,
+  CML_SETTING_OBS_TO_GEN_MATRIX,
+  CML_SETTING_GEN_TO_OBS_MATRIX,
+  CML_SETTING_COMPONENTS_OFFSETS,
+  CML_SETTING_COMPONENTS_RANGES
+} CMLSettingID;
+
+
+
+typedef enum{
+  CML_NO_ERROR,
+  CML_CONVERSION_NOT_FOUND_YET,
+  CML_MISSING_SETTING_DURING_CONVERSION,
+  CML_WRONG_GET_METHOD,
+  CML_SETTING_INAPPROPRIATE_FOR_CONVERSION
+} CMLError;
+
 // Some typedefs which are used later in the API:
 
-typedef struct CMLColorMachine    CMLColorMachine;
-typedef struct CMLFunction        CMLFunction;
-typedef struct CMLResponseCurve   CMLResponseCurve;
-typedef struct CMLIllumination    CMLIllumination;
-typedef struct CMLObserver        CMLObserver;
-typedef struct CMLWhitepoint      CMLWhitepoint;
-typedef struct CMLRGBSpace        CMLRGBSpace;
-typedef struct CMLLabSpace        CMLLabSpace;
-typedef struct CMLColorCodec      CMLColorCodec;
-typedef struct CMLConverter       CMLConverter;
-typedef struct CMLDefinitionRange CMLDefinitionRange;
+typedef struct MOB    CMLMOBFunction;
+typedef struct MOB    CMLMOBFunctionVector;
+typedef struct MOB    CMLMOBResponseCurve;
+typedef struct MOB    CMLColorspace;
+typedef struct MOB    CMLSetting;
+typedef struct MOB    CMLSettingClass;
+typedef struct MOB    CMLColorspaceAbstract;
+typedef struct MOB    CMLColorspaceClass;
+typedef struct MOB    CMLMOBEncoding;
+typedef struct MOB    CMLComponent;
+typedef struct MOB    CMLMOBObserver;
+typedef struct MOB    CMLMOBGenerator;
+typedef struct MOB    CMLColor;
 
-typedef void*                     CMLOutput;
-typedef const void*               CMLInput;
-typedef void*                     CMLInputOutput;
 
-typedef void (*CMLColorConverter)(  const CMLColorMachine*,
-                                          CMLOutput,
-                                          CMLInput,
-                                          CMLSize);
-                                          
+typedef struct CMLContext             CMLContext;
+typedef struct CMLColorMachine        CMLColorMachine;
+typedef struct CMLFunctionVector      CMLFunctionVector;
+typedef struct CMLIllumination        CMLIllumination;
+typedef struct CMLRGBSpace            CMLRGBSpace;
+typedef struct CMLDefinitionRange     CMLDefinitionRange;
+typedef struct CMLConverter           CMLConverter;
+
+typedef void* CML_RESTRICT            CMLOutput;
+typedef const void* CML_RESTRICT      CMLInput;
+typedef void*                         CMLInputOutput;
+
+typedef void** CML_RESTRICT           CMLNEWOutput;
+typedef const void** CML_RESTRICT     CMLNEWInput;
+
+typedef const char                    CMLErrorObject;
+
 typedef void (*CMLNormedConverter)(       CMLOutput,
                                           CMLInput,
                                           CMLSize);
 
+typedef void (*CMLObjectDesctructor)(void* object);
+
+typedef void (*CMLCallback)(        void* listener,
+                              const void* sender);
+
+typedef void (*CMLColorspaceValenceDefiner)(void);
+
+typedef CMLSetting* (*CMLColorspaceSettingConstructor)();
+typedef CMLSetting* (*CMLConverterSettingConstructor)(CMLColorspace* dstspace, CMLColorspace* srcspace);
+
+typedef float (*CMLMinMaxComponentFunction)(CMLColorspace* colorspace, CMLInt indx);
+
+typedef CMLBool (*CMLConverterRequester)();
+
+typedef void (*CMLConverterEvaluator)(CMLOutput out,
+                                            CMLInput in,
+                                             CMLSize count);
+
+typedef void (*CMLConverterSBEvaluator)(CMLInputOutput buf,
+                                             CMLSize count);

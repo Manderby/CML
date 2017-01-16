@@ -9,7 +9,7 @@
 
 
 
-//CMLHIDDEN void CMLInternalsetResponseR(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
+//CML_HIDDEN void CMLInternalsetResponseR(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
 //  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[0]),
 //                  &(cm->rgbspace.LineartoRGBResponses[0]),
 //                  &(cm->rgbspace.responsetypes[0]),
@@ -20,7 +20,7 @@
 //                  type,
 //                  param0, param1, param2);
 //}
-//CMLHIDDEN void CMLInternalsetResponseG(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
+//CML_HIDDEN void CMLInternalsetResponseG(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
 //  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[1]),
 //                  &(cm->rgbspace.LineartoRGBResponses[1]),
 //                  &(cm->rgbspace.responsetypes[1]),
@@ -31,7 +31,7 @@
 //                  type,
 //                  param0, param1, param2);
 //}
-//CMLHIDDEN void CMLInternalsetResponseB(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
+//CML_HIDDEN void CMLInternalsetResponseB(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
 //  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[2]),
 //                  &(cm->rgbspace.LineartoRGBResponses[2]),
 //                  &(cm->rgbspace.responsetypes[2]),
@@ -42,7 +42,7 @@
 //                  type,
 //                  param0, param1, param2);
 //}
-//CMLHIDDEN void CMLInternalsetResponseL(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
+//CML_HIDDEN void CMLInternalsetResponseL(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
 //  setupResponse(  &(cm->labspace.LtoLinearResponse),
 //                  &(cm->labspace.LineartoLResponse),
 //                  &(cm->labspace.responseLtype),
@@ -55,7 +55,7 @@
 //}
 
 
-//CMLHIDDEN void setupResponse(
+//CML_HIDDEN void setupResponse(
 //                    CMLFunction** toxyzfunc,
 //                    CMLFunction** fromxyzfunc,
 //                    CMLResponseCurveType* typevar,
