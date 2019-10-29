@@ -17,13 +17,13 @@ CML_HIDDEN void cml_DebugConverterClass(CMLConverterClass* converterClass){
   printf("-- Converter Class:\n");
   NAString* srcname = cml_GetColorspaceClassName(cml_GetConverterClassSrcColorspaceClass(converterClass));
   NAString* dstname = cml_GetColorspaceClassName(cml_GetConverterClassDstColorspaceClass(converterClass));
-  printf("Converting from %s to %s\n", naGetStringConstUTF8Pointer(srcname), naGetStringConstUTF8Pointer(dstname));
+  printf("Converting from %s to %s\n", naGetStringUTF8Pointer(srcname), naGetStringUTF8Pointer(dstname));
   printf("--\n");
 }
 
 
 
-CML_HIDDEN void cmlRegisterConverterUnit(CMLColorspaceType dstcolorspaceType, CMLEncoding dstencoding, CMLColorspaceType srccolorspaceType, CMLEncoding srcencoding, CMLConverterRequester requester, CMLConverterEvaluator evaluator, CMLConverterSBEvaluator evaluatorSB){
+void cmlRegisterConverterUnit(CMLColorspaceType dstcolorspaceType, CMLEncoding dstencoding, CMLColorspaceType srccolorspaceType, CMLEncoding srcencoding, CMLConverterRequester requester, CMLConverterEvaluator evaluator, CMLConverterSBEvaluator evaluatorSB){
   CMLColorspaceClass* dstcolorspaceClass = cml_GetContextColorspaceClass(dstcolorspaceType, dstencoding);
   CMLColorspaceClass* srccolorspaceClass = cml_GetContextColorspaceClass(srccolorspaceType, srcencoding);
 
@@ -75,7 +75,7 @@ CML_HIDDEN void cmlRegisterConverterUnit(CMLColorspaceType dstcolorspaceType, CM
 
 
 
-CML_API void cml_AddConverterClassRequiredSettingsAsEqu(CMLConverterClass* converterClass, CMLColorspaceClass* colorspaceClass){
+void cml_AddConverterClassRequiredSettingsAsEqu(CMLConverterClass* converterClass, CMLColorspaceClass* colorspaceClass){
   CMLSettingClass* requiredsettingClass = MOB_NULL;
   while(mobNextKeyObject(colorspaceClass, cml_Key(CML_COLORSPACE_CLASS_REQUIRED_SETTING_CLASSES), &requiredsettingClass)){
     if(!cml_HasConverterClassSettingTreatment(converterClass, requiredsettingClass)){

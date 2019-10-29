@@ -8,11 +8,11 @@
 #include "StateMachine/CMLInternal.h"
 
 CML_HIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
-  "Custom Observer",                          // CML_FUNVEC_OBSERVER_CUSTOM
-  "CIE 1931 2 deg",     // CML_FUNVEC_OBSERVER_2DEG_CIE_1931 (5 nm steps)
-  "CIE 1964 10 deg",    // CML_FUNVEC_OBSERVER_10DEG_CIE_1964 (5 nm steps)
-  "Judd 1951 2 deg",            // CML_FUNVEC_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
-  "Judd Vos 1978 2 deg",         // CML_FUNVEC_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
+  "Custom Observer",     // CML_FUNVEC_OBSERVER_CUSTOM
+  "CIE 1931 2 deg",      // CML_FUNVEC_OBSERVER_2DEG_CIE_1931 (5 nm steps)
+  "CIE 1964 10 deg",     // CML_FUNVEC_OBSERVER_10DEG_CIE_1964 (5 nm steps)
+  "Judd 1951 2 deg",     // CML_FUNVEC_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
+  "Judd Vos 1978 2 deg", // CML_FUNVEC_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
 };
 
 CML_HIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = {
@@ -81,27 +81,27 @@ CML_HIDDEN static const char* labspacestrings[CML_NUMBER_OF_LAB_SPACES] = {
 };
 
 CML_HIDDEN static const char* functiontypestrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
-  "Linear",           // CML_FUNCTION_LINEAR
-  "Sqrt",             // CML_FUNCTION_SQRT
-  "Gamma",            // CML_FUNCTION_GAMMA
+  "Linear",                  // CML_FUNCTION_LINEAR
+  "Sqrt",                    // CML_FUNCTION_SQRT
+  "Gamma",                   // CML_FUNCTION_GAMMA
   "Gamma, Offset, Linear",   // CML_FUNCTION_GAMMA_LINEAR
-  "sRGB",             // CML_FUNCTION_SRGB
-  "L*",               // CML_FUNCTION_LSTAR
-  "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
+  "sRGB",                    // CML_FUNCTION_SRGB
+  "L*",                      // CML_FUNCTION_LSTAR
+  "L* Standard",             // CML_FUNCTION_LSTAR_STANDARD
 };
 
 CML_HIDDEN static const char* rgbresponsepresetstrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
-  "Linear",           // CML_FUNCTION_LINEAR
-  "Sqrt",             // CML_FUNCTION_SQRT
-  "Gamma Adobe 98",   // CML_RESPONSE_GAMMA_ADOBE_98
-  "Gamma 1.8",        // CML_RESPONSE_GAMMA_1_8
-  "Gamma 1.9",        // CML_RESPONSE_GAMMA_1_9
-  "Gamma 2.2",        // CML_RESPONSE_GAMMA_2_2
+  "Linear",              // CML_FUNCTION_LINEAR
+  "Sqrt",                // CML_FUNCTION_SQRT
+  "Gamma Adobe 98",      // CML_RESPONSE_GAMMA_ADOBE_98
+  "Gamma 1.8",           // CML_RESPONSE_GAMMA_1_8
+  "Gamma 1.9",           // CML_RESPONSE_GAMMA_1_9
+  "Gamma 2.2",           // CML_RESPONSE_GAMMA_2_2
   "Gamma Rec BT 10 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT
   "Gamma Rec BT 12 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT
-  "sRGB",             // CML_FUNCTION_SRGB
-  "L*",               // CML_FUNCTION_LSTAR
-  "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
+  "sRGB",                // CML_FUNCTION_SRGB
+  "L*",                  // CML_FUNCTION_LSTAR
+  "L* Standard",         // CML_FUNCTION_LSTAR_STANDARD
 };
 
 CML_HIDDEN static const char* graycomputationstrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {

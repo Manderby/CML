@@ -81,7 +81,7 @@
 
 #if defined __STDC_VERSION__
   #if __STDC_VERSION__ >= 201112L // This indicates the C++11 standard
-    #define CML_NULL nullptr
+    #define CML_NULL NULL // todo. this is c++, not C
   #endif
 #endif
 #ifndef CML_NULL
@@ -279,7 +279,7 @@ CML_INLINE void cmlMat33MulFloat3(CMLVec3 d, const CMLMat33 m, float v0, float v
   d[2] = m[2]*v0 + m[5]*v1 + m[8]*v2;
 }
 CML_INLINE void CMLMat33cpy(CMLMat33 dst, const CMLMat33 src){
-  naCpyn(dst, src, 9 * sizeof(float));
+  naCopyn(dst, src, 9 * sizeof(float));
 }
 CML_INLINE void cmlMat33ScaleVec3(CMLMat33 m, const CMLVec3 v){
   m[0]*=v[0]; m[1]*=v[0]; m[2]*=v[0];

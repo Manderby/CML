@@ -243,7 +243,7 @@ void cml_SetFunctionEvaluator(CMLMOBFunction* function, CMLFunctionEvaluator eva
 
 CML_API CMLMOBFunction* cmlSampleArrayFunction(CMLMOBFunction* func, float minimalcoord, float maximalcoord, CMLSize entrycount, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod downextrapolationmethod, CMLExtrapolationMethod upextrapolationmethod){
   CMLSize i;
-  float* buffer = (float*)naAllocate(sizeof(float) * entrycount);
+  float* buffer = (float*)naMalloc(sizeof(float) * entrycount);
   for(i=0; i<entrycount; i++){
     float coord = minimalcoord + ((float)i / (float)(entrycount-1)) * (maximalcoord - minimalcoord);
     buffer[i] = cml_Eval(func, coord);
@@ -752,7 +752,7 @@ CML_API CMLMOBFunction* cmlCreateCIEDIlluminant(float temperature){
     if(temperature <= 0){cmlError("cmlCreateCIEDIlluminant", "Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
-  array = (float*)naAllocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
+  array = (float*)naMalloc(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
   CMLInternalComputeDIlluminantWhite(white, temperature);
   Minv = cmlInverse(0.0241f +  0.2562f * white[0] -  0.7341f * white[1]);
   M1 = (-1.3515f -  1.7703f * white[0] +  5.9114f * white[1]) * Minv;

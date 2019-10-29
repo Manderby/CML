@@ -848,7 +848,7 @@
 //    out += 3;
 //  }
 //}
-//CML_API void CMLCMYKto16bitOutput (const CMLColorMachine* cm, CMLOutput output, CMLInput CMYK , CMLSize count){
+//void CMLCMYKto16bitOutput (const CMLColorMachine* cm, CMLOutput output, CMLInput CMYK , CMLSize count){
 //  CMLSize i;
 //  const float* in  = (float*)CMYK;
 //  CMLWord* out = (CMLWord*)output;
@@ -862,3 +862,5 @@
 //}
 //
 //
+
+void asdf(){}

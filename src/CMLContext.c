@@ -41,7 +41,7 @@ CML_API CMLContext* cmlActivateContext(CMLContext* context){
     cmlc = context;
     mobActivateContext(cmlc->mobc);
   }else{
-    context = naAllocate(sizeof(CMLContext));
+    context = naAlloc(CMLContext);
     
     #ifndef NDEBUG
       context->version = -CML_VERSION;
@@ -178,7 +178,7 @@ CML_API CMLContext* cmlActivateContext(CMLContext* context){
 
     #ifndef NDEBUG
       if(sizeof(CMLColorspaceSettingConstructor) != sizeof(CMLConverterSettingConstructor))
-        naCrash("cmlActivateContext", "Cannot store function pointers");
+        naCrash("Cannot store function pointers");
     #endif
     cmlc->informationUnits[CML_UNIT_FUNCTION_EVALUATOR]                   = mobRegisterUnit(sizeof(CMLFunctionEvaluator), "Function evaluator");
     cmlc->informationUnits[CML_UNIT_COLORSPACE_SETTING_CONSTRUCTOR]       = mobRegisterUnit(sizeof(CMLColorspaceSettingConstructor), "Colorspace Setting constructor");
@@ -189,7 +189,7 @@ CML_API CMLContext* cmlActivateContext(CMLContext* context){
     cmlc->informationUnits[CML_UNIT_CONVERTER_EVALUATOR_SB]               = mobRegisterUnit(sizeof(CMLConverterSBEvaluator), "Converter SB evaluator");
 
     // Bootstrap all Colorspace Settings
-    naCreateGrowingSpace(&(context->settingClasses), sizeof(CMLSettingClass*), 0);
+    naInitStack(&(context->settingClasses), sizeof(CMLSettingClass*), 2);
     cml_BOOTSTRAPRegisterColorspaceSettingClass(CML_SETTING_OBSERVER,                 "Observer",                         cml_CreateSettingObserver);
     cml_BOOTSTRAPRegisterColorspaceSettingClass(CML_SETTING_GENERATOR,                "Generator",                        cml_CreateSettingGenerator);
     cml_BOOTSTRAPRegisterColorspaceSettingClass(CML_SETTING_CHANNEL_RESPONSE_CURVES,  "Response curves",                  cml_CreateSettingResponseCurves);
@@ -202,12 +202,12 @@ CML_API CMLContext* cmlActivateContext(CMLContext* context){
     cml_BOOTSTRAPRegisterConverterSettingClass(CML_SETTING_COMPONENTS_RANGES,         "Normalization ranges",             cml_CreateSettingComponentsRanges);
 
     // Bootstrap all Encodings
-    naCreateGrowingSpace(&(context->encodings), sizeof(CMLMOBEncoding*), 0);
+    naInitStack(&(context->encodings), sizeof(CMLMOBEncoding*), 2);
     cml_BOOTSTRAPRegisterEncoding(CML_ENCODING_NORM);
     cml_BOOTSTRAPRegisterEncoding(CML_ENCODING_FLOAT);
 
     // Bootstrap all Colorspaces
-    naCreateGrowingSpace(&(context->colorspaceabstracts), sizeof(CMLColorspaceClass*), 0);
+    naInitStack(&(context->colorspaceabstracts), sizeof(CMLColorspaceClass*), 2);
     cml_BOOTSTRAPRegisterColorspaceType(CML_Radiometric,  "Radiometric space",  cml_DefineRadiometricSpaceValences);
     cml_BOOTSTRAPRegisterColorspaceType(CML_Remission,    "Remission space",    cml_DefineRemissionSpaceValences);
     cml_BOOTSTRAPRegisterColorspaceType(CML_XYZ,          "XYZ space",          cml_DefineXYZSpaceValences);
@@ -282,32 +282,35 @@ CML_API CMLContext* cmlCurrentContext(){
 
 
 CML_API void cmlDestroyContext(CMLContext* context){
-//  NAInt entriescount = naGetGrowingSpaceCount(&(context->colorspaceabstracts));
+//  NAInt entriescount = naGetStackCount(&(context->colorspaceabstracts));
 //  CMLColorspaceAbstract** colorspaceabstract = naGetGrowingSpaceMutablePointer(&(context->colorspaceabstracts));
 //  while(entriescount){
 //    cml_DestroyColorspaceAbstract(*colorspaceabstract);
 //    colorspaceabstract++;
 //    entriescount--;
 //  }
-  naClearGrowingSpace(&(context->colorspaceabstracts), (NADestructor)cml_DestroyColorspaceAbstract);
+  naForeachStackMutable(&(context->colorspaceabstracts), (NAMutator)cml_DestroyColorspaceAbstract);
+  naClearStack(&(context->colorspaceabstracts));
 
-//  entriescount = naGetGrowingSpaceCount(&(context->settingClasses));
+//  entriescount = naGetStackCount(&(context->settingClasses));
 //  CMLSettingClass** settingClass = naGetGrowingSpaceMutablePointer(&(context->settingClasses));
 //  while(entriescount){
 //    cml_DestroySettingClass(*settingClass);
 //    settingClass++;
 //    entriescount--;
 //  }
-  naClearGrowingSpace(&(context->settingClasses), (NADestructor)cml_DestroySettingClass);
+  naForeachStackMutable(&(context->settingClasses), (NAMutator)cml_DestroySettingClass);
+  naClearStack(&(context->settingClasses));
 
-//  entriescount = naGetGrowingSpaceCount(&(context->encodings));
+//  entriescount = naGetStackCount(&(context->encodings));
 //  CMLMOBEncoding** encodings = naGetGrowingSpaceMutablePointer(&(context->encodings));
 //  while(entriescount){
 //    cml_DestroyEncoding(*encodings);
 //    encodings++;
 //    entriescount--;
 //  }
-  naClearGrowingSpace(&(context->encodings), (NADestructor)cml_DestroyEncoding);
+  naForeachStackMutable(&(context->encodings), (NAMutator)cml_DestroyEncoding);
+  naClearStack(&(context->encodings));
 
   #ifndef NDEBUG
     if(context->curobject){

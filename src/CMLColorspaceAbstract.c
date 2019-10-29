@@ -11,10 +11,14 @@
 
 
 CML_HIDDEN CMLColorspaceAbstract* cml_CreateColorspaceAbstract(CMLColorspaceType type, const char* name){
-  CMLColorspaceAbstract* colorspaceabstract = mobCreateObject(cml_Key(CML_COLORSPACE_ABSTRACT_OBJECT));
-  *(CMLColorspaceType*)mobKeyEnum(colorspaceabstract, cml_Key(CML_COLORSPACE_ABSTRACT_TYPE)) = type;
-  naCreateStringWithUTF8CStringLiteral(mobKeyString(colorspaceabstract, cml_Key(CML_COLORSPACE_ABSTRACT_NAME)), name);
-  return colorspaceabstract;
+  NA_UNUSED(type);
+  NA_UNUSED(name);
+//  CMLColorspaceAbstract* colorspaceabstract = mobCreateObject(cml_Key(CML_COLORSPACE_ABSTRACT_OBJECT));
+//  *(CMLColorspaceType*)mobKeyEnum(colorspaceabstract, cml_Key(CML_COLORSPACE_ABSTRACT_TYPE)) = type;
+//  // todo
+//  //naNewStringWithFormat(mobKeyString(colorspaceabstract, cml_Key(CML_COLORSPACE_ABSTRACT_NAME)), name);
+//  return colorspaceabstract;
+  return NA_NULL;
 }
 
 
@@ -29,7 +33,7 @@ CML_API CMLColorspaceType cmlRegisterColorspaceType(const char* name, CMLColorsp
   }else{
     // The new colorspace class ID is just the next integer number of the array
     // of colorspace abstracts registered in this context.
-    newcolorspaceType = naGetGrowingSpaceCount(&(cmlc->colorspaceabstracts));
+    newcolorspaceType = (CMLColorspaceType)naGetStackCount(&(cmlc->colorspaceabstracts));
     CMLColorspaceAbstract* newabstract = cml_CreateColorspaceAbstract(newcolorspaceType, name);
     *mobKeyInt(newabstract, cml_Key(CML_COLORSPACE_ABSTRACT_MAIN_COMPONENT_INDEX)) = 0;
 
@@ -48,7 +52,7 @@ CML_API CMLColorspaceType cmlRegisterColorspaceType(const char* name, CMLColorsp
       newcolorspaceType = -1;
     }else{
       // If everything is ok, add the class to the registered classes
-      CMLColorspaceAbstract** registeredelement = naNewGrowingSpaceElement(&(cmlc->colorspaceabstracts));
+      CMLColorspaceAbstract** registeredelement = naPushStack(&(cmlc->colorspaceabstracts));
       *registeredelement = newabstract;
       
       // Artificially create a normed colorspace
@@ -61,20 +65,23 @@ CML_API CMLColorspaceType cmlRegisterColorspaceType(const char* name, CMLColorsp
 
 
 CML_API void cmlAddComponent(CMLComponentType componentType, const char* label){
-  if(!cmlc->curobject || !mobEqual(cmlc->curobject, cml_Key(CML_COLORSPACE_ABSTRACT_OBJECT))){
-    #ifndef NDEBUG
-      cmlError("cmlAddComponent", "You can use this function only while registering a new colorspace type.");
-    #endif
-    return;
-  }
-  // todo: check if the componentType and label are valid
-  
-  CMLComponent* component;
-  component = mobCreateObject(cml_Key(CML_COMPONENT_OBJECT));
-  *(CMLComponentType*)mobKeyEnum(component, cml_Key(CML_COMPONENT_TYPE)) = componentType;
-  naCreateStringWithUTF8CStringLiteral(mobKeyString(component, cml_Key(CML_COMPONENT_NAME)), label);
-
-  mobSetKeyObject(cmlc->curobject, cml_Key(CML_COLORSPACE_ABSTRACT_COMPONENT), component, MOB_TRUE);
+  NA_UNUSED(componentType);
+  NA_UNUSED(label);
+//  if(!cmlc->curobject || !mobEqual(cmlc->curobject, cml_Key(CML_COLORSPACE_ABSTRACT_OBJECT))){
+//    #ifndef NDEBUG
+//      cmlError("cmlAddComponent", "You can use this function only while registering a new colorspace type.");
+//    #endif
+//    return;
+//  }
+//  // todo: check if the componentType and label are valid
+//  
+//  CMLComponent* component;
+//  component = mobCreateObject(cml_Key(CML_COMPONENT_OBJECT));
+//  *(CMLComponentType*)mobKeyEnum(component, cml_Key(CML_COMPONENT_TYPE)) = componentType;
+//  // todo
+//  //naNewStringWithFormat(mobKeyString(component, cml_Key(CML_COMPONENT_NAME)), label);
+//
+//  mobSetKeyObject(cmlc->curobject, cml_Key(CML_COLORSPACE_ABSTRACT_COMPONENT), component, MOB_TRUE);
 }
 
 

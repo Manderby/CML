@@ -8,9 +8,9 @@
 #include "CMLInternal.h"
 
 
-CML_INLINE void cml_OneUnnormed(float* CML_RESTRICT outptr, const float* CML_RESTRICT inptr){
-  *outptr = *inptr;
-}
+//CML_INLINE void cml_OneUnnormed(float* CML_RESTRICT outptr, const float* CML_RESTRICT inptr){
+//  *outptr = *inptr;
+//}
 
 
 CML_INLINE void cml_OneFloatDefaulttoNorm(float* CML_RESTRICT outptr, const float* CML_RESTRICT inptr, float offset, float invrange){
@@ -33,8 +33,8 @@ CML_HIDDEN void cml_DefaulttoNorm (CMLOutput out , CMLInput in, CMLSize count){
   if(cmlGetConverterError()){return;}
 
   CMLInt componentscount = (CMLInt)mobArrayCount(offsets);
-  float* offset = naAllocate(sizeof(float) * componentscount);
-  float* invrange = naAllocate(sizeof(float) * componentscount);
+  float* offset = naMalloc(naSizeof(float) * componentscount);
+  float* invrange = naMalloc(naSizeof(float) * componentscount);
   NABool needsnorming = CML_FALSE;
   for(CMLInt c=0; c<componentscount; c++){
     offset[c] = *mobArrayFloat(offsets, c);
@@ -54,7 +54,7 @@ CML_HIDDEN void cml_DefaulttoNorm (CMLOutput out , CMLInput in, CMLSize count){
     }
   }else{
     CMLInt storagesize = sizeof(void*); // todo!
-    naCpyn(outptr, inptr, storagesize * count);
+    naCopyn(outptr, inptr, storagesize * count);
   }
   
 }
@@ -70,8 +70,8 @@ CML_HIDDEN void cml_NormtoDefault(CMLOutput out, CMLInput in, CMLSize count){
   if(cmlGetConverterError()){return;}
 
   CMLInt componentscount = (CMLInt)mobArrayCount(offsets);
-  float* offset = naAllocate(sizeof(float) * componentscount);
-  float* range = naAllocate(sizeof(float) * componentscount);
+  float* offset = naMalloc(sizeof(float) * componentscount);
+  float* range = naMalloc(sizeof(float) * componentscount);
   NABool needsnorming = CML_FALSE;
   for(CMLInt c=0; c<componentscount; c++){
     offset[c] = *mobArrayFloat(offsets, c);
@@ -91,7 +91,7 @@ CML_HIDDEN void cml_NormtoDefault(CMLOutput out, CMLInput in, CMLSize count){
     }
   }else{
     CMLInt storagesize = sizeof(void*); // todo!
-    naCpyn(outptr, inptr, storagesize * count);
+    naCopyn(outptr, inptr, storagesize * count);
   }
   
 }

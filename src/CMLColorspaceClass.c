@@ -7,7 +7,7 @@
 
 #include "CML.h"
 #include "CMLColorMachineState.h"
-#include "NAGrowingSpace.h"
+#include "NAStack.h"
 #include "NAString.h"
 
 
@@ -37,7 +37,7 @@ CML_HIDDEN void cml_DebugColorspaceClass(CMLColorspaceClass* colorspaceClass){
   CMLColorspaceType colorspaceType = cml_GetColorspaceAbstractType(cml_GetColorspaceClassAbstract(colorspaceClass));
   NAString* colorspaceClassname = cml_GetColorspaceClassName(colorspaceClass);
   CMLInt componentscount = cmlGetComponentsCount(colorspaceType);
-  printf("Colorspace Class \"%s\" with ID %d\n", naGetStringConstUTF8Pointer(colorspaceClassname), colorspaceType);
+  printf("Colorspace Class \"%s\" with ID %d\n", naGetStringUTF8Pointer(colorspaceClassname), colorspaceType);
   printf("Storing %d valence components\n", componentscount);
 
   printf("Requires the following settings:\n");
@@ -45,7 +45,7 @@ CML_HIDDEN void cml_DebugColorspaceClass(CMLColorspaceClass* colorspaceClass){
   while(mobNextKeyObject(colorspaceClass, cml_Key(CML_COLORSPACE_CLASS_REQUIRED_SETTING_CLASSES), &settingClass)){
     CMLSettingID settingClassID = cml_GetSettingClassID(settingClass);
     NAString* settingClassname = cml_GetSettingClassName(settingClass);
-    printf("\"%s\" with ID %d\n", naGetStringConstUTF8Pointer(settingClassname), settingClassID);
+    printf("\"%s\" with ID %d\n", naGetStringUTF8Pointer(settingClassname), settingClassID);
   }
   printf("---\n");
 }

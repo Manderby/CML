@@ -386,7 +386,7 @@ CML_HIDDEN void cml_NormtoDefault                     (CMLOutput out , CMLInput 
 extern CMLContext* cmlc;
 
 
-#include "NAGrowingSpace.h"
+#include "NAStack.h"
 #include "NAList.h"
 
 
@@ -441,9 +441,9 @@ struct CML_HIDDEN CMLObserver{
 
 struct CMLContext{
   CMLInt          version;
-  NAGrowingSpace  colorspaceabstracts;
-  NAGrowingSpace  settingClasses;
-  NAGrowingSpace  encodings;
+  NAStack  colorspaceabstracts;
+  NAStack  settingClasses;
+  NAStack  encodings;
   MOB*            objectKeys[CML_OBJECT_KEYS_COUNT];
   MOBUnitID       informationUnits[CML_INFORMATION_UNITS_COUNT];
   MOB*            curobject;
