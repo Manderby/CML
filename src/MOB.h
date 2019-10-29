@@ -4,7 +4,6 @@
 // of the author of this software is prohibited and any liability is disclamed.
 // Terms of a separate contract may apply.
 
-#include "NAPointer.h"
 #include "NAString.h"
 
 #define MOB_NULL            NA_NULL

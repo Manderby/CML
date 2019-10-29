@@ -16,7 +16,7 @@
 //}
 //
 //
-//CML_API void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
+//void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
 //  switch(transform){
 //  case CML_CMYK_STANDARD_TRANSFORM:
 //    cm->RGBtoCMYK = &CMLInternalRGBtoCMYKStandard;
@@ -40,3 +40,5 @@
 //  cm->cmykspace.transform = transform;
 //}
 //
+
+void asdf(){}

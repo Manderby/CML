@@ -12,36 +12,44 @@
 
 
 CML_API CMLSettingID cmlRegisterColorspaceSettingClass(const char* name, CMLColorspaceSettingConstructor defaultconstructor){
-  // todo: check if name already exists.
-
-  CMLSettingID newsettingClassid = naGetGrowingSpaceCount(&(cmlc->settingClasses));
-
-  CMLSettingClass* newclass = mobCreateObject(cml_Key(CML_SETTING_CLASS_OBJECT));
-  naCreateStringWithUTF8CStringLiteral(mobKeyString(newclass, cml_Key(CML_SETTING_CLASS_NAME)), name);
-  mobSetKeyUnitValue(newclass, cml_Key(CML_COLORSPACE_SETTING_CLASS_CONSTRUCTOR), cml_Unit(CML_UNIT_COLORSPACE_SETTING_CONSTRUCTOR), &defaultconstructor);
-  *(CMLSettingID*)mobKeyEnum(newclass, cml_Key(CML_SETTING_CLASS_ID)) = newsettingClassid;
-
-  CMLSettingClass** registeredelement = naNewGrowingSpaceElement(&(cmlc->settingClasses));
-  *registeredelement = newclass;
-  return newsettingClassid;
+  NA_UNUSED(name);
+  NA_UNUSED(defaultconstructor);
+//  // todo: check if name already exists.
+//
+//  CMLSettingID newsettingClassid = (CMLSettingID)naGetStackCount(&(cmlc->settingClasses));
+//
+//  CMLSettingClass* newclass = mobCreateObject(cml_Key(CML_SETTING_CLASS_OBJECT));
+//  // todo
+////  naNewStringWithFormat(mobKeyString(newclass, cml_Key(CML_SETTING_CLASS_NAME)), name);
+//  mobSetKeyUnitValue(newclass, cml_Key(CML_COLORSPACE_SETTING_CLASS_CONSTRUCTOR), cml_Unit(CML_UNIT_COLORSPACE_SETTING_CONSTRUCTOR), &defaultconstructor);
+//  *(CMLSettingID*)mobKeyEnum(newclass, cml_Key(CML_SETTING_CLASS_ID)) = newsettingClassid;
+//
+//  CMLSettingClass** registeredelement = naPushStack(&(cmlc->settingClasses));
+//  *registeredelement = newclass;
+//  return newsettingClassid;
+  return 0;
 }
 
 
 
 
 CML_API CMLSettingID cmlRegisterConverterSettingClass(const char* name, CMLConverterSettingConstructor defaultconstructor){
-  // todo: check if name already exists.
-
-  CMLSettingID newsettingClassid = naGetGrowingSpaceCount(&(cmlc->settingClasses));
-
-  CMLSettingClass* newclass = mobCreateObject(cml_Key(CML_SETTING_CLASS_OBJECT));
-  naCreateStringWithUTF8CStringLiteral(mobKeyString(newclass, cml_Key(CML_SETTING_CLASS_NAME)), name);
-  mobSetKeyUnitValue(newclass, cml_Key(CML_CONVERTER_SETTING_CLASS_CONSTRUCTOR), cml_Unit(CML_UNIT_CONVERTER_SETTING_CONSTRUCTOR), &defaultconstructor);
-  *(CMLSettingID*)mobKeyEnum(newclass, cml_Key(CML_SETTING_CLASS_ID)) = newsettingClassid;
-
-  CMLSettingClass** registeredelement = naNewGrowingSpaceElement(&(cmlc->settingClasses));
-  *registeredelement = newclass;
-  return newsettingClassid;
+  NA_UNUSED(name);
+  NA_UNUSED(defaultconstructor);
+//  // todo: check if name already exists.
+//
+//  CMLSettingID newsettingClassid = (CMLSettingID)naGetStackCount(&(cmlc->settingClasses));
+//
+//  CMLSettingClass* newclass = mobCreateObject(cml_Key(CML_SETTING_CLASS_OBJECT));
+//  // todo
+////  naNewStringWithFormat(mobKeyString(newclass, cml_Key(CML_SETTING_CLASS_NAME)), name);
+//  mobSetKeyUnitValue(newclass, cml_Key(CML_CONVERTER_SETTING_CLASS_CONSTRUCTOR), cml_Unit(CML_UNIT_CONVERTER_SETTING_CONSTRUCTOR), &defaultconstructor);
+//  *(CMLSettingID*)mobKeyEnum(newclass, cml_Key(CML_SETTING_CLASS_ID)) = newsettingClassid;
+//  
+//  CMLSettingClass** registeredelement = naPushStack(&(cmlc->settingClasses));
+//  *registeredelement = newclass;
+//  return newsettingClassid;
+  return 0;
 }
 
 
@@ -91,7 +99,7 @@ CML_HIDDEN void cml_DebugSettingClass(CMLSettingClass* settingClass){
     cmlError("cml_DebugSettingClass", "Given MOB is not a SettingClass\n");
   #endif
   NAString* namestring = mobKeyString(settingClass, cml_Key(CML_SETTING_CLASS_NAME));
-  printf("Setting Class \"%s\"\n", naGetStringConstUTF8Pointer(namestring));
+  printf("Setting Class \"%s\"\n", naGetStringUTF8Pointer(namestring));
 }
 
 CML_HIDDEN void cml_DebugSetting(CMLSetting* setting){

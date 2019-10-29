@@ -94,41 +94,44 @@ CML_HIDDEN CML_INLINE void cml_BOOTSTRAPRegisterConverterSettingClass(CMLSetting
 
 
 CML_HIDDEN CML_INLINE CMLColorspaceAbstract* cml_GetContextColorspaceAbstract(CMLColorspaceType colorspaceType){
-  CMLInt abstractscount = (CMLInt)naGetGrowingSpaceCount(&(cmlc->colorspaceabstracts));
+  CMLInt abstractscount = (CMLInt)naGetStackCount(&(cmlc->colorspaceabstracts));
   if((CMLInt)colorspaceType >= abstractscount){
     #ifndef NDEBUG
       cmlError("cml_GetContextColorspaceAbstract", "Colorspace type not registered.");
     #endif
     return CML_NULL;
   }
-  return *(CMLColorspaceAbstract**)naGetGrowingSpaceMutableElement(&(cmlc->colorspaceabstracts), colorspaceType);
+  return NA_NULL;  // todo
+//  return *(CMLColorspaceAbstract**)naGetGrowingSpaceMutableElement(&(cmlc->colorspaceabstracts), colorspaceType);
 }
 
 
 
 CML_HIDDEN CML_INLINE CMLMOBEncoding* cml_GetContextEncodingMOB(CMLEncoding encoding){
-  CMLInt encodingscount = (CMLInt)naGetGrowingSpaceCount(&(cmlc->encodings));
+  CMLInt encodingscount = (CMLInt)naGetStackCount(&(cmlc->encodings));
   if((CMLInt)encoding >= encodingscount){
     #ifndef NDEBUG
       cmlError("cml_GetContextEncodingMOB", "Encoding not registered.");
     #endif
     return CML_NULL;
   }else{
-    return *(CMLMOBEncoding**)naGetGrowingSpaceMutableElement(&(cmlc->encodings), encoding);
+  return NA_NULL;  // todo
+//    return *(CMLMOBEncoding**)naGetGrowingSpaceMutableElement(&(cmlc->encodings), encoding);
   }
 }
 
 
 
 CML_HIDDEN CML_INLINE CMLSettingClass* cml_GetContextSettingClass(CMLSettingID settingClassID){
-  CMLInt classescount = (CMLInt)naGetGrowingSpaceCount(&(cmlc->settingClasses));
+  CMLInt classescount = (CMLInt)naGetStackCount(&(cmlc->settingClasses));
   if((CMLInt)settingClassID >= classescount){
     #ifndef NDEBUG
       cmlError("cml_GetContextSettingClass", "Setting class not registered.");
     #endif
     return CML_NULL;
   }else{
-    return *(CMLSettingClass**)naGetGrowingSpaceMutableElement(&(cmlc->settingClasses), settingClassID);
+  return NA_NULL;  // todo
+//    return *(CMLSettingClass**)naGetGrowingSpaceMutableElement(&(cmlc->settingClasses), settingClassID);
   }
 }
 
@@ -233,7 +236,7 @@ CML_HIDDEN CML_INLINE CMLEncoding cml_GetColorspaceClassEncoding(const CMLColors
   #endif
   CMLColorspaceAbstract* colorspaceabstract = cml_GetColorspaceClassAbstract(colorspaceClass);
   const CMLMOBEncoding* encodingMOB = mobGetKey(colorspaceabstract, colorspaceClass);
-  return mobConstEnum(encodingMOB);
+  return (CMLEncoding)mobConstEnum(encodingMOB);
 }
 
 

@@ -8,7 +8,7 @@
 //#include "CMLColorMachineState.h"
 //
 //
-//CML_API CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
+//CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
 //  return cm->grayspace.computation;
 //}
 //
@@ -59,3 +59,5 @@
 ////CMLBool              ColorMachine::getGrayChannelInterpretation() const                            {return (s->grayspace.interpretation == CML_MAX_IS_WHITE);}
 ////void              ColorMachine::setGrayChannelInterpretation(CMLChannelInterpretationType newinterpretation)  {s->grayspace.interpretation = newinterpretation;}
 //
+
+void asdf(){}

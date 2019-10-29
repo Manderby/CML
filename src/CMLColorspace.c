@@ -132,13 +132,13 @@ CML_HIDDEN void cml_DebugColorspace(CMLColorspace* colorspace){
   #endif
   const CMLColorspaceClass* colorspaceClass = cml_GetColorspaceClass(colorspace);
   NAString* classname = cml_GetColorspaceClassName(colorspaceClass);
-  printf("-- Debugging colorspace of class %s\n", naGetStringConstUTF8Pointer(classname));
+  printf("-- Debugging colorspace of class %s\n", naGetStringUTF8Pointer(classname));
   printf("Storing the following required settings:\n");
   CMLSettingClass* requiredsettingClass = MOB_NULL;
   while(mobNextKeyObject(colorspaceClass, cml_Key(CML_COLORSPACE_CLASS_REQUIRED_SETTING_CLASSES), &requiredsettingClass)){
     NAString* settingClassname = cml_GetSettingClassName(requiredsettingClass);
     CMLSetting* setting = mobGetKeyObject(colorspace, requiredsettingClass);
-    printf("%s: %p\n", naGetStringConstUTF8Pointer(settingClassname), setting);
+    printf("%s: %p\n", naGetStringUTF8Pointer(settingClassname), (void*)setting);
   }
 }
 

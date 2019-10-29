@@ -13,7 +13,7 @@
 //
 ////CML_API CMLColorMachine* cmlCreateColorMachine(){
 ////  CMLint32 i;
-////  CMLColorMachine* cm = (CMLColorMachine*)naAllocate(sizeof(CMLColorMachine));
+////  CMLColorMachine* cm = naMalloc(CMLColorMachine);
 ////
 ////  cm->observer = cmlCreateObserverWithPresetAndWhite(CML_FUNVEC_OBSERVER_2DEG_CIE_1931, CML_NULL, 100.f);
 ////
@@ -198,7 +198,7 @@
 //}
 //
 //
-//CML_API void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+//void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
 //  #ifndef NDEBUG
 //    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("cmlSet16bitCutoffs", "Invalid Channel number.");}
 //  #endif
@@ -208,3 +208,5 @@
 //
 //
 //
+
+void asdf();

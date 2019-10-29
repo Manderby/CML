@@ -47,8 +47,8 @@ CML_HIDDEN void cml_DestroyConverterUnit(CMLConverterUnit* converterUnit){
 CML_HIDDEN float cml_BenchmarkConverterUnit(CMLConverterUnit* converterUnit){
   CMLColorspace* dstspace = cml_GetConverterUnitDstColorspace(converterUnit);
   CMLColorspace* srcspace = cml_GetConverterUnitSrcColorspace(converterUnit);
-  void* testout = naAllocate(cmlGetColorspaceStorageSize(dstspace) * CML_BENCHMARKCOUNT);
-  void* testin = naAllocate(cmlGetColorspaceStorageSize(srcspace) * CML_BENCHMARKCOUNT);
+  void* testout = naMalloc(cmlGetColorspaceStorageSize(dstspace) * CML_BENCHMARKCOUNT);
+  void* testin = naMalloc(cmlGetColorspaceStorageSize(srcspace) * CML_BENCHMARKCOUNT);
 
   const CMLConverterClass* converterClass = cml_GetConverterUnitClass(converterUnit);
   CMLConverterEvaluator evaluator = cml_GetConverterClassEvaluator(converterClass);
@@ -81,7 +81,7 @@ CML_HIDDEN float cml_BenchmarkConverterUnit(CMLConverterUnit* converterUnit){
   NADateTime end = naMakeDateTimeNow();
   cmlc->curobject = CML_NULL;
   
-  float cost = naGetDateTimeDiff(&end, &start);
+  float cost = naGetDateTimeDifference(&end, &start);
   *mobKeyFloat(converterUnit, cml_Key(CML_CONVERTER_UNIT_COST)) = cost;
 
   free(testin);

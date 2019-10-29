@@ -10,14 +10,13 @@
 
 #include "MOB.h"
 #include "NAList.h"
-#include "NAGrowingSpace.h"
+#include "NAStack.h"
 
 
 
 
 #define MOB_INLINE NA_INLINE static 
 #define MOB_CELL_ELEMENTS_COUNT 127
-#define mobAllocate naAllocate
 #define mobError naError
 #define MOBByte NAByte
 
@@ -100,7 +99,7 @@ struct MOBPool{
 };
 
 struct MOBContext{
-  NAGrowingSpace  unitpools;
+  NAStack  unitpools;
   MOB*            keys[MOB_KEYS_COUNT];
 };
 

@@ -23,7 +23,7 @@ CML_HIDDEN CML_INLINE void cml_OneRadiometricToXYZ (float* CML_RESTRICT XYZ0, fl
 
 
 
-CML_HIDDEN void cml_RadiometricToXYZ(CMLOutput out , CMLInput in, CMLSize count){
+CML_HIDDEN void cml_RadiometricToXYZ(CMLOutput out, CMLInput in, CMLSize count){
   CMLMOBObserver* observer = cmlGetConverterSetting(CML_SETTING_OBSERVER, CML_GET_ADD);
   if(cmlGetConverterError()){return;}
 

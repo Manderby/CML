@@ -300,7 +300,7 @@ CML_API void* cmlCreateColorStorage(CMLColor* color){
   const CMLColorspaceClass* colorspaceClass = cml_GetColorspaceClass(colorspace);
   CMLColorspaceType colorspaceType = cml_GetColorspaceAbstractType(cml_GetColorspaceClassAbstract(colorspaceClass));
   CMLInt componentscount = cmlGetComponentsCount(cml_GetColorspaceAbstractType(cml_GetColorspaceClassAbstract(colorspaceClass)));
-  void* data = naAllocate(cmlGetColorspaceStorageSize(colorspace));
+  void* data = naMalloc(cmlGetColorspaceStorageSize(colorspace));
   void* dataptr = data;
   for(CMLInt c=0; c<componentscount; c++){
     switch(cmlGetComponentType(colorspaceType, c)){
@@ -323,7 +323,7 @@ CML_API void cmlFillColorWithBuf(CMLColor* color, void* buf){
   const CMLColorspaceClass* colorspaceClass = cml_GetColorspaceClass(colorspace);
   CMLColorspaceType colorspaceType = cml_GetColorspaceAbstractType(cml_GetColorspaceClassAbstract(colorspaceClass));
   CMLInt componentscount = cmlGetComponentsCount(cml_GetColorspaceAbstractType(cml_GetColorspaceClassAbstract(colorspaceClass)));
-//  void* data = naAllocate(cmlGetColorspaceStorageSize(colorspace));
+//  void* data = naMalloc(cmlGetColorspaceStorageSize(colorspace));
   void* dataptr = buf;
   for(CMLInt c=0; c<componentscount; c++){
     switch(cmlGetComponentType(colorspaceType, c)){
@@ -350,7 +350,7 @@ CML_API CMLColor* cmlCreateColor(CMLColorspace* dstcolorspace, CMLColor* srccolo
   void* srcdata = cmlCreateColorStorage(srccolor);
   
   CMLColorspace* srccolorspace = mobGetKeyObject(srccolor, cml_Key(CML_COLOR_COLORSPACE));
-  void* dstdata = naAllocate(cmlGetColorspaceStorageSize(dstcolorspace));
+  void* dstdata = naMalloc(cmlGetColorspaceStorageSize(dstcolorspace));
 
   CMLColor* newcolor = cmlCreateColorspaceColor(dstcolorspace);
 
@@ -417,11 +417,11 @@ CML_API void cmlDebugColor(CMLColor* color){
       case CML_COMPONENT_CARTESIAN:
       case CML_COMPONENT_RADIAL:
       case CML_COMPONENT_ANGULAR:
-        printf("%s=%f ", naGetStringConstUTF8Pointer(componentname), *((float*)data));
+        printf("%s=%f ", naGetStringUTF8Pointer(componentname), *((float*)data));
         data += sizeof(float);
         break;
       case CML_COMPONENT_FUNCTION:
-        printf("%s=Function ", naGetStringConstUTF8Pointer(componentname));
+        printf("%s=Function ", naGetStringUTF8Pointer(componentname));
         data += sizeof(CMLMOBFunction);
         break;
       default:

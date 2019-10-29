@@ -9,11 +9,13 @@
 
 
 CML_API CMLEncoding cmlRegisterEncoding(){
-  CMLEncoding newencoding = naGetGrowingSpaceCount(&(cmlc->encodings));
-  CMLMOBEncoding* newencodingmob = mobCreateEnum(newencoding);
-  CMLMOBEncoding** registeredelement = naNewGrowingSpaceElement(&(cmlc->encodings));
-  *registeredelement = newencodingmob;
-  return newencoding;
+//  CMLEncoding newencoding = naGetStackCount(&(cmlc->encodings));
+//  CMLMOBEncoding* newencodingmob = mobCreateEnum(newencoding);
+//  // todo
+////  CMLMOBEncoding** registeredelement = naNewGrowingSpaceElement(&(cmlc->encodings));
+//  *registeredelement = newencodingmob;
+//  return newencoding;
+  return 0;
 }
 
 
