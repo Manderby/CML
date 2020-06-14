@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CML.h" />
+    <ClInclude Include="src\CMLColor.h" />
+    <ClInclude Include="src\CMLConstants.h" />
+    <ClInclude Include="src\CMLContext.h" />
+    <ClInclude Include="src\CMLDefinitions.h" />
+    <ClInclude Include="src\CMLFunction.h" />
+    <ClInclude Include="src\CMLFunctionVector.h" />
+    <ClInclude Include="src\CMLIllumination.h" />
+    <ClInclude Include="src\CMLInlines.h" />
+    <ClInclude Include="src\CMLObserver.h" />
+    <ClInclude Include="src\CMLResponseCurve.h" />
+    <ClInclude Include="src\CMLRGBSpace.h" />
+    <ClInclude Include="src\CMLTypes.h" />
+    <ClInclude Include="src\CMLunused.h" />
+    <ClInclude Include="src\MOB.h" />
+    <ClInclude Include="src\MOBInternal.h" />
+    <ClInclude Include="src\StateMachine\CMLColorMachineState.h" />
+    <ClInclude Include="src\StateMachine\CMLInternal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CMLColor.c" />
+    <ClCompile Include="src\CMLColorspace.c" />
+    <ClCompile Include="src\CMLColorspaceAbstract.c" />
+    <ClCompile Include="src\CMLColorspaceClass.c" />
+    <ClCompile Include="src\CMLContext.c" />
+    <ClCompile Include="src\CMLConverter.c" />
+    <ClCompile Include="src\CMLConverterClass.c" />
+    <ClCompile Include="src\CMLConverterUnit.c" />
+    <ClCompile Include="src\CMLEncoding.c" />
+    <ClCompile Include="src\CMLFunction.c" />
+    <ClCompile Include="src\CMLFunctionVector.c" />
+    <ClCompile Include="src\CMLIllumination.c" />
+    <ClCompile Include="src\CMLInternal.c" />
+    <ClCompile Include="src\CMLObserver.c" />
+    <ClCompile Include="src\CMLResponseCurve.c" />
+    <ClCompile Include="src\CMLRGBSpace.c" />
+    <ClCompile Include="src\CMLSetting.c" />
+    <ClCompile Include="src\CMLStrings.c" />
+    <ClCompile Include="src\Colorspaces\CMLHSLSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLHSVSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLLabSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLLchSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLLuvSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLRGBSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLSpectrumRadiometricSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLSpectrumRemissionSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLXYZSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLYCbCrSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLYupvpSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLYuvSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLYxySpace.c" />
+    <ClCompile Include="src\Conversions\CMLDefaulttoNorm.c" />
+    <ClCompile Include="src\Conversions\CMLGrayConversions.c" />
+    <ClCompile Include="src\Conversions\CMLHSLtoHSV.c" />
+    <ClCompile Include="src\Conversions\CMLHSVtoHSL.c" />
+    <ClCompile Include="src\Conversions\CMLHSVtoRGB.c" />
+    <ClCompile Include="src\Conversions\CMLInputOutputConversions.c" />
+    <ClCompile Include="src\Conversions\CMLLabtoLch.c" />
+    <ClCompile Include="src\Conversions\CMLLabtoXYZ.c" />
+    <ClCompile Include="src\Conversions\CMLLchtoLab.c" />
+    <ClCompile Include="src\Conversions\CMLLuvtoYupvp.c" />
+    <ClCompile Include="src\Conversions\CMLRadiometrictoRemission.c" />
+    <ClCompile Include="src\Conversions\CMLRadiometrictoXYZ.c" />
+    <ClCompile Include="src\Conversions\CMLRemissiontoRadiometric.c" />
+    <ClCompile Include="src\Conversions\CMLRGBtoHSV.c" />
+    <ClCompile Include="src\Conversions\CMLRGBtoRadiometric.c" />
+    <ClCompile Include="src\Conversions\CMLRGBtoXYZ.c" />
+    <ClCompile Include="src\Conversions\CMLRGBtoYCbCr.c" />
+    <ClCompile Include="src\Conversions\CMLXYZtoLab.c" />
+    <ClCompile Include="src\Conversions\CMLXYZtoRGB.c" />
+    <ClCompile Include="src\Conversions\CMLXYZtoYxy.c" />
+    <ClCompile Include="src\Conversions\CMLYCbCrtoRGB.c" />
+    <ClCompile Include="src\Conversions\CMLYupvptoLuv.c" />
+    <ClCompile Include="src\Conversions\CMLYupvptoYuv.c" />
+    <ClCompile Include="src\Conversions\CMLYupvptoYxy.c" />
+    <ClCompile Include="src\Conversions\CMLYuvtoYupvp.c" />
+    <ClCompile Include="src\Conversions\CMLYxytoXYZ.c" />
+    <ClCompile Include="src\Conversions\CMLYxytoYupvp.c" />
+    <ClCompile Include="src\MOB.c" />
+    <ClCompile Include="src\StateMachine\CMLChromaticAdaptation.c" />
+    <ClCompile Include="src\StateMachine\CMLCMYKColorspace.c" />
+    <ClCompile Include="src\StateMachine\CMLColorMachine.c" />
+    <ClCompile Include="src\StateMachine\CMLColorMachineState.c" />
+    <ClCompile Include="src\StateMachine\CMLGrayColorspace.c" />
+    <ClCompile Include="src\StateMachine\CMLLabColorspace.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A4DDC378-5971-4A78-AAF4-BC6B98AF2369}</ProjectGuid>
+    <RootNamespace>DLL</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>libcml</TargetName>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>libcml</TargetName>
+    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>libcml</TargetName>
+    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AssemblyDebug>true</AssemblyDebug>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AssemblyDebug>false</AssemblyDebug>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
