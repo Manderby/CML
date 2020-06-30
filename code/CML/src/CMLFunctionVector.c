@@ -5,7 +5,7 @@
 // Terms of a separate contract may apply.
 
 #include "CML.h"
-#include "CMLColorMachineState.h"
+#include "StateMachine/CMLColorMachineState.h"
 
 // The following values are the original values from www.cie.co.at
 

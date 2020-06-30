@@ -26,7 +26,7 @@
 
 typedef struct CMLConverterChainElement      CMLConverterChainElement;
 
-#include "MOBInternal.h"
+#include "../MOBInternal.h"
 
 typedef struct MOB    CMLConverterUnit;
 typedef struct MOB    CMLConverterClass;
@@ -600,6 +600,6 @@ CML_HIDDEN CML_INLINE void cml_OneYxyToYupvp (float* CML_RESTRICT Yupvp0, float*
 }
 
 
-#include "CMLInlines.h"
+#include "../CMLInlines.h"
 
 

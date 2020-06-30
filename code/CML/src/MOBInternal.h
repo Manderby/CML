@@ -9,6 +9,7 @@
 // it simply is cumbersome to not have them in a separate file.
 
 #include "MOB.h"
+#include "NAArray.h"
 #include "NAList.h"
 #include "NAStack.h"
 
