@@ -6,7 +6,7 @@
 
 
 #include "CML.h"
-#include "CMLColorMachineState.h"
+#include "StateMachine/CMLColorMachineState.h"
 
 
 #define CML_ILLUMINATIONSPECTRUM_MIN 380.f

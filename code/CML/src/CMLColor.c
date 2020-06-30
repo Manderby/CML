@@ -5,7 +5,7 @@
 // Terms of a separate contract may apply.
 
 #include "CML.h"
-#include "CMLColorMachineState.h"
+#include "StateMachine/CMLColorMachineState.h"
 
 
 CML_API CMLColor* cmlCreateColorspaceColor(CMLColorspace* colorspace){

@@ -62,7 +62,7 @@
     <ClCompile Include="src\Colorspaces\CMLLabSpace.c" />
     <ClCompile Include="src\Colorspaces\CMLLchSpace.c" />
     <ClCompile Include="src\Colorspaces\CMLLuvSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLRGBSpace.c" />
+    <ClCompile Include="src\Colorspaces\CMLRGBSpaceInternal.c" />
     <ClCompile Include="src\Colorspaces\CMLSpectrumRadiometricSpace.c" />
     <ClCompile Include="src\Colorspaces\CMLSpectrumRemissionSpace.c" />
     <ClCompile Include="src\Colorspaces\CMLXYZSpace.c" />
@@ -179,6 +179,7 @@
       <Optimization>Disabled</Optimization>
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -191,6 +192,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -209,6 +211,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -226,6 +229,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

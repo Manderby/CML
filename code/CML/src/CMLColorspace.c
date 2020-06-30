@@ -6,7 +6,7 @@
 
 
 #include "CML.h"
-#include "CMLColorMachineState.h"
+#include "StateMachine/CMLColorMachineState.h"
 #include "NAString.h"
 
 

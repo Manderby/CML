@@ -81,7 +81,7 @@ CML_HIDDEN float cml_BenchmarkConverterUnit(CMLConverterUnit* converterUnit){
   NADateTime end = naMakeDateTimeNow();
   cmlc->curobject = CML_NULL;
   
-  float cost = naGetDateTimeDifference(&end, &start);
+  float cost = (float)naGetDateTimeDifference(&end, &start);
   *mobKeyFloat(converterUnit, cml_Key(CML_CONVERTER_UNIT_COST)) = cost;
 
   free(testin);

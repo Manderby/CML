@@ -625,7 +625,7 @@ CML_HIDDEN void cml_UpdateBlackBody(CMLMOBFunction* function){
   if(temperature == CML_INFINITY){
     c = 0.f;
   }else{
-    c = NA_SECOND_RAD / temperature;
+    c = (float)NA_SECOND_RAD / temperature;
   }
   *mobKeyFloat(function, cml_Key(CML_BLACKBODY_FACTOR_c)) = c;
 }
@@ -643,9 +643,9 @@ CML_HIDDEN float cml_EvaluateBlackBody(CMLMOBFunction* function, float x){
   float c = *mobKeyFloat(function, cml_Key(CML_BLACKBODY_FACTOR_c));
   nanolambda = x * 1e-9f;
   if(c == 0.f){
-    return NA_PI2 * NA_PLANCK * NA_LIGHT_SPEED_VAC * NA_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f));
+    return (float)(NA_PI2 * NA_PLANCK * NA_LIGHT_SPEED_VAC * NA_LIGHT_SPEED_VAC) / (powf(nanolambda, 5.f));
   }else{
-    return NA_PI2 * NA_PLANCK * NA_LIGHT_SPEED_VAC * NA_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f) * (expf(c / nanolambda) - 1.f));
+    return (float)(NA_PI2 * NA_PLANCK * NA_LIGHT_SPEED_VAC * NA_LIGHT_SPEED_VAC) / (powf(nanolambda, 5.f) * (expf(c / nanolambda) - 1.f));
   }
   // first constant is NA_PI2 * NA_PLANCK * NA_LIGHT_SPEED_VAC * NA_LIGHT_SPEED_VAC;
 //    return float(.587756042555631108333846414986e-15) / (Pow(nanolambda, float(5.)) * (Exp(c / nanolambda) - float(1.)));
@@ -1168,7 +1168,7 @@ CML_HIDDEN void cml_UpdateBinomialFilter(CMLMOBFunction* function){
   float maxx = *mobKeyFloat(function, cml_Key(CML_FUNCTION_MAX_NON_TRIVIAL_COORD));
   *mobKeyFloat(function, cml_Key(CML_BINOMIAL_INV_RANGE)) = cmlInverse(maxx - minx);
   *mobKeyFloat(function, cml_Key(CML_BINOMIAL_n_MINUS_k)) = n - k;
-  *mobKeyFloat(function, cml_Key(CML_BINOMIAL_BINOM)) = naBinom(n, k);
+  *mobKeyFloat(function, cml_Key(CML_BINOMIAL_BINOM)) = (float)naBinom(n, k);
 }
 
 CML_HIDDEN float cml_EvaluateBinomialFilter(CMLMOBFunction* function, float x){

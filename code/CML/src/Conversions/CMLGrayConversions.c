@@ -5,7 +5,7 @@
 // Terms of a separate contract may apply.
 
 #include "../CML.h"
-#include "CMLInternal.h"
+#include "../StateMachine/CMLInternal.h"
 
 
 //CML_HIDDEN CML_INLINE CMLColorConverter CMLInternalGetGrayToAnythingColorConverter(const CMLColorMachine* cm, CMLColorType outputsystem){
