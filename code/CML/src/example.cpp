@@ -7,97 +7,10 @@
 
 #include <stdio.h>
 #include "Timer.h"
-#include <CML/CML.h>
+#include "CML.h"
 
 
 int main(){
-
-  double bblinscale = 1.f;
-//  double bblinscale = 12.92f;
-  double bbinvgamma = 0.416666666666667f;
-//  double bboffset = .5f;
-  double bboffset = .055f;
-  float bbtest1 = 0.f;
-  float bbtest2 = 1.f;
-  int goleft = 1;
-  int goright = 1;
-  double step = 1.f;
-  double bestdiv = 1.;
-  
-  int offsetfixed = 1;
-  
-  double curlinscale = bblinscale;
-  double curoffset = bboffset;
-  double x;
-
-  while(1){
-    
-    if(goleft){
-      if(offsetfixed){
-        curlinscale = bblinscale - step;
-      }else{
-        curoffset = bboffset - step;
-      }
-      goleft = 2;
-    }else{
-      if(goright){
-        if(offsetfixed){
-          curlinscale = bblinscale + step;
-        }else{
-          curoffset = bboffset + step;
-        }
-        goright = 2;
-      }else{
-        step /= 2.f;
-        goleft = 1;
-        goright = 1;
-        continue;
-      }
-    }
-
-    x = exp((log(curlinscale / (bbinvgamma * (1. + curoffset)))) / (-1. + bbinvgamma));
-
-    if(isnan(x)){
-      if(goleft == 2){goleft = 0;}
-      if(goright == 2){goright = 0;}
-      continue;
-    }
-    
-    bbtest1 = (1.f+curoffset) * pow(x, bbinvgamma) - curoffset;
-    bbtest2 = x * curlinscale;
-
-    printf("%1.18f %1.18f %1.18f\n", bboffset, bblinscale, x);
-    printf("%1.18f %1.18f %1.18f\n\n", step, bbtest1, bbtest2);
-    
-    if(bbtest1 == bbtest2){break;}
-    
-    double curdiv = fabs(bbtest1 - bbtest2);
-//    if(curdiv < 1e-18){break;}
-    if(curdiv < bestdiv){
-      bestdiv = curdiv;
-      if(offsetfixed){
-        bblinscale = curlinscale;
-      }else{
-        bboffset = curoffset;
-      }
-      if(goleft == 2){goright = 0;}
-      if(goright == 2){goleft = 0;}
-    }else{
-      if(goleft == 2){goleft = 0;}
-      if(goright == 2){goright = 0;}
-    }
-    
-  }
-
-  printf("%1.18f %1.18f %1.18f %1.18f\n\n", bboffset, x*bblinscale, bblinscale, x);
-
-  double bbgamma = 1. / bbinvgamma;
-  printf("%1.18f %1.18f %1.18f\n\n", bboffset, bboffset / (bbgamma - 1),
-    (pow(1. + bboffset, bbgamma) * pow(bbgamma - 1., bbgamma - 1.)) / ((pow(bboffset, bbgamma-1.)) * (pow(bbgamma, bbgamma))));
-    
-  printf("%1.18f %1.18f %1.18f\n\n", bboffset, bboffset / (bbgamma - 1),
-    bboffset/(exp(log((bbgamma * bboffset)/(bbgamma + bbgamma * bboffset - 1. - bboffset)) * bbgamma) * (bbgamma - 1.)));
-
   // Welcome to the example of the Color Machine Library (CML)
   //
   // In this file, some examples are shown on how to use CML. Feel free to
@@ -194,6 +107,7 @@ int main(){
   // But you can change that easily for example to Adobe 98:
   
   CMLsetRGBColorSpace(cm, CML_RGB_ADOBE_98);
+  printf("Current RGB colorspace: %s\n", CMLgetRGBColorspaceString(CMLgetRGBColorSpace(cm)));
 
   // Now, when converting back the xyz value of our orange color to RGB, we
   // get different RGB values:
@@ -446,7 +360,7 @@ int main(){
   // the color again. Note that the resulting values might be slightly different
   // due to numerical errors.
   
-  CMLsetRadiometricComputation(cm3, CMLTRUE);
+//  CMLsetRadiometricComputation(cm3, CMLTRUE);
   CMLSpectrumRemissiontoXYZ(cm3, xyz, remissionfunction, 1);
   printf("Radiometric Remission in XYZ: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
@@ -516,17 +430,20 @@ int main(){
   CMLgetRGBColorSpacePrimaries(CML_RGB_SRGB, primariesYxy[0], primariesYxy[1], primariesYxy[2]);
 
   // Compute the colorimetric whitepoint:
-  CMLFunction* illumination = cmlCreateIlluminationSpectrum(illuminationtype, 0.f);
-  CMLVec3 wpXYZ;
-  CMLFunction* specdistfuncs[3];
-  cmlCreateSpecDistFunctions(specdistfuncs, CML_OBSERVER_2DEG_CIE_1931);
-  CMLconvertIlluminationSpectrumtoXYZ(wpXYZ, illumination, specdistfuncs[0], specdistfuncs[1], specdistfuncs[2]);
-  cmlDiv3(wpXYZ, wpXYZ[1]);
-  CMLconvertXYZtoYxy(wpYxy, wpXYZ);
-    
+  CMLIllumination* illumination = cmlCreateIlluminationWithPreset(CML_NULL, illuminationtype, 0);
+  CMLObserver* observer = cmlCreateObserverWithIllumination(CML_NULL, CML_OBSERVER_2DEG_CIE_1931, illumination, 100.f);
+//  CMLFunction* illumination = cmlCreateIlluminationSpectrum(illuminationtype, 0.f);
+//  CMLVec3 wpXYZ;
+//  CMLFunction* specdistfuncs[3];
+//  cmlCreateSpecDistFunctions(specdistfuncs, CML_OBSERVER_2DEG_CIE_1931);
+//  CMLconvertIlluminationSpectrumtoXYZ(wpXYZ, illumination, specdistfuncs[0], specdistfuncs[1], specdistfuncs[2]);
+//  cmlDiv3(wpXYZ, wpXYZ[1]);
+//  CMLconvertXYZtoYxy(wpYxy, wpXYZ, CML_NULL);
+  const float* srgbwp = cmlGetReferenceWhitepointYxy(observer);
+  
   // Compute the matrix and prepare the response curve:
   CMLMat33 rgbtoxyzmatrix;
-  CMLcomputeRGBtoXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], wpYxy);
+  CMLcomputeRGBtoXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], srgbwp);
   CMLFunction* srgbresponse = CMLcreatesRGBToXYZResponse();
   
   // Convert the color:
@@ -535,10 +452,8 @@ int main(){
 
   // Release all functions.
   cmlReleaseFunction(srgbresponse);
-  cmlReleaseFunction(illumination);
-  cmlReleaseFunction(specdistfuncs[0]);
-  cmlReleaseFunction(specdistfuncs[1]);
-  cmlReleaseFunction(specdistfuncs[2]);
+  cmlDestroyIllumination(illumination);
+  cmlDestroyObserver(observer);
   
   // As you can see, such conversions get very complicated very quickly. You
   // CAN do everything manually with the BaseAPI as just shown ...

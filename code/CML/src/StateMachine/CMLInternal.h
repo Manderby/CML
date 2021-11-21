@@ -5,6 +5,8 @@
 // Terms of a separate contract may apply.
 
 
+#include <stdlib.h>
+
 #if CML_COMPILE_ON_WIN
   #define CMLHIDDEN
   #define CML_RESTRICT    __restrict

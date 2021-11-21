@@ -7,119 +7,175 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B90034351462FAC700E50D75 /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = B90034341462FAC700E50D75 /* CMLInternal.c */; };
-		B925EA0615655470004D2462 /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */; };
-		B925EA0715655470004D2462 /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */; };
-		B925EA0815655470004D2462 /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FB15655470004D2462 /* CMLColorMachine.c */; };
-		B925EA0A15655470004D2462 /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FD15655470004D2462 /* CMLGrayColorspace.c */; };
-		B925EA0B15655470004D2462 /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FE15655470004D2462 /* CMLIllumination.c */; };
-		B925EA0C15655470004D2462 /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FF15655470004D2462 /* CMLLabColorspace.c */; };
-		B925EA0D15655470004D2462 /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0015655470004D2462 /* CMLObserver.c */; };
-		B925EA0E15655470004D2462 /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0115655470004D2462 /* CMLRGBColorspace.c */; };
-		B925EA1D15655518004D2462 /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = B925EA1C15655518004D2462 /* CMLColorMachine.h */; };
-		B9476D6417C1523F00540771 /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = B9476D6317C1523F00540771 /* CMLObserver.h */; };
-		B9476D6917C1526B00540771 /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B9476D6817C1526B00540771 /* CMLObserver.c */; };
-		B9476F9E17C3738D00540771 /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = B9476F9C17C3738D00540771 /* CMLIllumination.h */; };
-		B9476F9F17C3738D00540771 /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B9476F9D17C3738D00540771 /* CMLIllumination.c */; };
-		B949154D15DEF26B00CC33C0 /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = B9F9A90215A333A9003BFFB8 /* CMLTypes.h */; };
-		B955D7D415946A26003FCEB1 /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
-		B9566EEC15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */; };
-		B9566EED15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */; };
-		B9566EEE15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */; };
-		B9566EEF15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */; };
-		B966912E159A0DFC00E43EF0 /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */; };
-		B966912F159A0E0000E43EF0 /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */; };
-		B97B46FA15B7701300B902CC /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B97B46F915B7701300B902CC /* CMLYuvConversions.c */; };
-		B97B46FB15B7701300B902CC /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B97B46F915B7701300B902CC /* CMLYuvConversions.c */; };
-		B97D27D4156E939800BCF5F1 /* internaltestmain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */; };
-		B98F4D6415E405DF0080C96E /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B98F4D6315E405DF0080C96E /* cppexample.cpp */; };
-		B98F4D6C15E405FD0080C96E /* libcml.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B99F4BBF13F8AC4C009465D9 /* libcml.dylib */; };
-		B98F4DA115E40A4C0080C96E /* CMLCMYKColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */; };
-		B98F4DA215E40A4D0080C96E /* CMLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */; };
-		B98F4DA315E40A4E0080C96E /* CMLGrayColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */; };
-		B98F4DA415E40A4E0080C96E /* CMLHSLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */; };
-		B98F4DA515E40A4F0080C96E /* CMLHSVColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */; };
-		B98F4DA615E40A500080C96E /* CMLLabColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */; };
-		B98F4DA715E40A510080C96E /* CMLLchColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */; };
-		B98F4DA815E40A520080C96E /* CMLLuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */; };
-		B98F4DA915E40A530080C96E /* CMLRGBColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */; };
-		B98F4DAA15E40A530080C96E /* CMLSpectralColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */; };
-		B98F4DAB15E40A560080C96E /* CMLXYZColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */; };
-		B98F4DAC15E40A560080C96E /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */; };
-		B98F4DAD15E40A570080C96E /* CMLYupvpColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */; };
-		B98F4DAE15E40A580080C96E /* CMLYuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */; };
-		B98F4DAF15E40A590080C96E /* CMLYxyColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */; };
-		B995CB7215F7CBC700EBD67E /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B995CB7115F7CBC700EBD67E /* example.cpp */; };
-		B9A5C98A15841A8C00C8B697 /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A5C98915841A8C00C8B697 /* CMLConstants.h */; };
-		B9A5C98B15841A8C00C8B697 /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A5C98915841A8C00C8B697 /* CMLConstants.h */; };
-		B9BCD789154D8DE100C76B0E /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA200F145D52F6009FC44A /* CML.h */; };
-		B9BCD78A154D8DE200C76B0E /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA2010145D52F6009FC44A /* CMLDefinitions.h */; };
-		B9BCD78D154D8DE600C76B0E /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA201F145D52F6009FC44A /* CMLFunctions.h */; };
-		B9BCD79C154D8E0000C76B0E /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA200F145D52F6009FC44A /* CML.h */; };
-		B9BCD79D154D8E0000C76B0E /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA2010145D52F6009FC44A /* CMLDefinitions.h */; };
-		B9BCD7A0154D8E0300C76B0E /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = B9CA201F145D52F6009FC44A /* CMLFunctions.h */; };
-		B9C6F2FE1579628100B33E6E /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = B925EA1C15655518004D2462 /* CMLColorMachine.h */; };
-		B9C6F2FF1579628600B33E6E /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */; };
-		B9C6F3001579628600B33E6E /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */; };
-		B9C6F3011579628700B33E6E /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FB15655470004D2462 /* CMLColorMachine.c */; };
-		B9C6F3021579628700B33E6E /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FD15655470004D2462 /* CMLGrayColorspace.c */; };
-		B9C6F3031579628800B33E6E /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FE15655470004D2462 /* CMLIllumination.c */; };
-		B9C6F3041579628900B33E6E /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925E9FF15655470004D2462 /* CMLLabColorspace.c */; };
-		B9C6F3051579628900B33E6E /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0015655470004D2462 /* CMLObserver.c */; };
-		B9C6F3061579628A00B33E6E /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = B925EA0115655470004D2462 /* CMLRGBColorspace.c */; };
-		B9C6F3071579628B00B33E6E /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E87BD01576904E00049DEF /* CMLColorMachineState.c */; };
-		B9CA204C145D52F6009FC44A /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA201E145D52F6009FC44A /* CMLFunctions.c */; };
-		B9CA204E145D52F6009FC44A /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA2020145D52F6009FC44A /* CMLStrings.c */; };
-		B9E38BB917A5DBC500B39CE8 /* CMLResponseCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */; };
-		B9E38BBA17A5DBC500B39CE8 /* CMLResponseCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */; };
-		B9E87BD21576904E00049DEF /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = B9E87BD01576904E00049DEF /* CMLColorMachineState.c */; };
-		B9E8E416154D780E00A4C836 /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA2020145D52F6009FC44A /* CMLStrings.c */; };
-		B9E8E418154D780E00A4C836 /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9CA201E145D52F6009FC44A /* CMLFunctions.c */; };
-		B9E8E41B154D781000A4C836 /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = B90034341462FAC700E50D75 /* CMLInternal.c */; };
-		B9F9A9D415A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */; };
-		B9F9A9D515A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */; };
-		B9FC3E9F1565598600AFAC92 /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8E1565598600AFAC92 /* CMLClamp.c */; };
-		B9FC3EA01565598600AFAC92 /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */; };
-		B9FC3EA11565598600AFAC92 /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */; };
-		B9FC3EA21565598600AFAC92 /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */; };
-		B9FC3EA31565598600AFAC92 /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */; };
-		B9FC3EA41565598600AFAC92 /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */; };
-		B9FC3EA51565598600AFAC92 /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */; };
-		B9FC3EA61565598600AFAC92 /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E951565598600AFAC92 /* CMLInvert.c */; };
-		B9FC3EA71565598600AFAC92 /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E961565598600AFAC92 /* CMLLabConversions.c */; };
-		B9FC3EA81565598600AFAC92 /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E971565598600AFAC92 /* CMLLchConversions.c */; };
-		B9FC3EA91565598600AFAC92 /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */; };
-		B9FC3EAA1565598600AFAC92 /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */; };
-		B9FC3EAB1565598600AFAC92 /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */; };
-		B9FC3EAC1565598600AFAC92 /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */; };
-		B9FC3EAD1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */; };
-		B9FC3EAF1565598600AFAC92 /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */; };
-		B9FC3EB01565598600AFAC92 /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8E1565598600AFAC92 /* CMLClamp.c */; };
-		B9FC3EB11565598600AFAC92 /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */; };
-		B9FC3EB21565598600AFAC92 /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */; };
-		B9FC3EB31565598600AFAC92 /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */; };
-		B9FC3EB41565598600AFAC92 /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */; };
-		B9FC3EB51565598600AFAC92 /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */; };
-		B9FC3EB61565598600AFAC92 /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */; };
-		B9FC3EB71565598600AFAC92 /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E951565598600AFAC92 /* CMLInvert.c */; };
-		B9FC3EB81565598600AFAC92 /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E961565598600AFAC92 /* CMLLabConversions.c */; };
-		B9FC3EB91565598600AFAC92 /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E971565598600AFAC92 /* CMLLchConversions.c */; };
-		B9FC3EBA1565598600AFAC92 /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */; };
-		B9FC3EBB1565598600AFAC92 /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */; };
-		B9FC3EBC1565598600AFAC92 /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */; };
-		B9FC3EBD1565598600AFAC92 /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */; };
-		B9FC3EBE1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */; };
-		B9FC3EC01565598600AFAC92 /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */; };
+		90BF4EFB274AA0EA001FDE2A /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA3274AA0EA001FDE2A /* CMLFunctions.c */; };
+		90BF4EFC274AA0EA001FDE2A /* CMLFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA3274AA0EA001FDE2A /* CMLFunctions.c */; };
+		90BF4EFD274AA0EA001FDE2A /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA4274AA0EA001FDE2A /* CMLInternal.c */; };
+		90BF4EFE274AA0EA001FDE2A /* CMLInternal.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA4274AA0EA001FDE2A /* CMLInternal.c */; };
+		90BF4EFF274AA0EA001FDE2A /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA5274AA0EA001FDE2A /* CMLObserver.c */; };
+		90BF4F00274AA0EA001FDE2A /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA5274AA0EA001FDE2A /* CMLObserver.c */; };
+		90BF4F01274AA0EA001FDE2A /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA7274AA0EA001FDE2A /* CMLInvert.c */; };
+		90BF4F02274AA0EA001FDE2A /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA7274AA0EA001FDE2A /* CMLInvert.c */; };
+		90BF4F03274AA0EA001FDE2A /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA8274AA0EA001FDE2A /* CMLInputOutputConversions.c */; };
+		90BF4F04274AA0EA001FDE2A /* CMLInputOutputConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA8274AA0EA001FDE2A /* CMLInputOutputConversions.c */; };
+		90BF4F05274AA0EA001FDE2A /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA9274AA0EA001FDE2A /* CMLHSLConversions.c */; };
+		90BF4F06274AA0EA001FDE2A /* CMLHSLConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA9274AA0EA001FDE2A /* CMLHSLConversions.c */; };
+		90BF4F07274AA0EA001FDE2A /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAA274AA0EA001FDE2A /* CMLLuvConversions.c */; };
+		90BF4F08274AA0EA001FDE2A /* CMLLuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAA274AA0EA001FDE2A /* CMLLuvConversions.c */; };
+		90BF4F09274AA0EA001FDE2A /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAB274AA0EA001FDE2A /* CMLNormedConversions.c */; };
+		90BF4F0A274AA0EA001FDE2A /* CMLNormedConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAB274AA0EA001FDE2A /* CMLNormedConversions.c */; };
+		90BF4F0B274AA0EA001FDE2A /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAC274AA0EA001FDE2A /* CMLXYZConversions.c */; };
+		90BF4F0C274AA0EA001FDE2A /* CMLXYZConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAC274AA0EA001FDE2A /* CMLXYZConversions.c */; };
+		90BF4F0D274AA0EA001FDE2A /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAD274AA0EA001FDE2A /* CMLLchConversions.c */; };
+		90BF4F0E274AA0EA001FDE2A /* CMLLchConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAD274AA0EA001FDE2A /* CMLLchConversions.c */; };
+		90BF4F0F274AA0EA001FDE2A /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAE274AA0EA001FDE2A /* CMLYxyConversions.c */; };
+		90BF4F10274AA0EA001FDE2A /* CMLYxyConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAE274AA0EA001FDE2A /* CMLYxyConversions.c */; };
+		90BF4F11274AA0EA001FDE2A /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAF274AA0EA001FDE2A /* CMLSpectralConversions.c */; };
+		90BF4F12274AA0EA001FDE2A /* CMLSpectralConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EAF274AA0EA001FDE2A /* CMLSpectralConversions.c */; };
+		90BF4F13274AA0EA001FDE2A /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB0274AA0EA001FDE2A /* CMLCMYKConversions.c */; };
+		90BF4F14274AA0EA001FDE2A /* CMLCMYKConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB0274AA0EA001FDE2A /* CMLCMYKConversions.c */; };
+		90BF4F15274AA0EA001FDE2A /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB1274AA0EA001FDE2A /* CMLYCbCrConversions.c */; };
+		90BF4F16274AA0EA001FDE2A /* CMLYCbCrConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB1274AA0EA001FDE2A /* CMLYCbCrConversions.c */; };
+		90BF4F17274AA0EA001FDE2A /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB2274AA0EA001FDE2A /* CMLGrayConversions.c */; };
+		90BF4F18274AA0EA001FDE2A /* CMLGrayConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB2274AA0EA001FDE2A /* CMLGrayConversions.c */; };
+		90BF4F19274AA0EA001FDE2A /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB3274AA0EA001FDE2A /* CMLYuvConversions.c */; };
+		90BF4F1A274AA0EA001FDE2A /* CMLYuvConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB3274AA0EA001FDE2A /* CMLYuvConversions.c */; };
+		90BF4F1B274AA0EA001FDE2A /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB4274AA0EA001FDE2A /* CMLRGBConversions.c */; };
+		90BF4F1C274AA0EA001FDE2A /* CMLRGBConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB4274AA0EA001FDE2A /* CMLRGBConversions.c */; };
+		90BF4F1D274AA0EA001FDE2A /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB5274AA0EA001FDE2A /* CMLHSVConversions.c */; };
+		90BF4F1E274AA0EA001FDE2A /* CMLHSVConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB5274AA0EA001FDE2A /* CMLHSVConversions.c */; };
+		90BF4F1F274AA0EA001FDE2A /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB6274AA0EA001FDE2A /* CMLClamp.c */; };
+		90BF4F20274AA0EA001FDE2A /* CMLClamp.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB6274AA0EA001FDE2A /* CMLClamp.c */; };
+		90BF4F21274AA0EA001FDE2A /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB7274AA0EA001FDE2A /* CMLColorMachineConversions.c */; };
+		90BF4F22274AA0EA001FDE2A /* CMLColorMachineConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB7274AA0EA001FDE2A /* CMLColorMachineConversions.c */; };
+		90BF4F23274AA0EA001FDE2A /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB8274AA0EA001FDE2A /* CMLLabConversions.c */; };
+		90BF4F24274AA0EA001FDE2A /* CMLLabConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB8274AA0EA001FDE2A /* CMLLabConversions.c */; };
+		90BF4F25274AA0EA001FDE2A /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB9274AA0EA001FDE2A /* CMLYupvpConversions.c */; };
+		90BF4F26274AA0EA001FDE2A /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EB9274AA0EA001FDE2A /* CMLYupvpConversions.c */; };
+		90BF4F27274AA0EA001FDE2A /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBB274AA0EA001FDE2A /* CMLCMYKColorspace.c */; };
+		90BF4F28274AA0EA001FDE2A /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBB274AA0EA001FDE2A /* CMLCMYKColorspace.c */; };
+		90BF4F29274AA0EA001FDE2A /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBC274AA0EA001FDE2A /* CMLColorMachineState.c */; };
+		90BF4F2A274AA0EA001FDE2A /* CMLColorMachineState.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBC274AA0EA001FDE2A /* CMLColorMachineState.c */; };
+		90BF4F2B274AA0EA001FDE2A /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBD274AA0EA001FDE2A /* CMLObserver.c */; };
+		90BF4F2C274AA0EA001FDE2A /* CMLObserver.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBD274AA0EA001FDE2A /* CMLObserver.c */; };
+		90BF4F2D274AA0EA001FDE2A /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBE274AA0EA001FDE2A /* CMLLabColorspace.c */; };
+		90BF4F2E274AA0EA001FDE2A /* CMLLabColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EBE274AA0EA001FDE2A /* CMLLabColorspace.c */; };
+		90BF4F2F274AA0EA001FDE2A /* CMLConverterMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EBF274AA0EA001FDE2A /* CMLConverterMacros.h */; };
+		90BF4F30274AA0EA001FDE2A /* CMLConverterMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EBF274AA0EA001FDE2A /* CMLConverterMacros.h */; };
+		90BF4F31274AA0EA001FDE2A /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC0274AA0EA001FDE2A /* CMLColorMachine.c */; };
+		90BF4F32274AA0EA001FDE2A /* CMLColorMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC0274AA0EA001FDE2A /* CMLColorMachine.c */; };
+		90BF4F33274AA0EA001FDE2A /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC1274AA0EA001FDE2A /* CMLChromaticAdaptation.c */; };
+		90BF4F34274AA0EA001FDE2A /* CMLChromaticAdaptation.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC1274AA0EA001FDE2A /* CMLChromaticAdaptation.c */; };
+		90BF4F35274AA0EA001FDE2A /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC2274AA0EA001FDE2A /* CMLGrayColorspace.c */; };
+		90BF4F36274AA0EA001FDE2A /* CMLGrayColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC2274AA0EA001FDE2A /* CMLGrayColorspace.c */; };
+		90BF4F37274AA0EA001FDE2A /* CMLColorMachineState.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC3274AA0EA001FDE2A /* CMLColorMachineState.h */; };
+		90BF4F38274AA0EA001FDE2A /* CMLColorMachineState.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC3274AA0EA001FDE2A /* CMLColorMachineState.h */; };
+		90BF4F39274AA0EA001FDE2A /* CMLInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC4274AA0EA001FDE2A /* CMLInternal.h */; };
+		90BF4F3A274AA0EA001FDE2A /* CMLInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC4274AA0EA001FDE2A /* CMLInternal.h */; };
+		90BF4F3B274AA0EA001FDE2A /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC5274AA0EA001FDE2A /* CMLIllumination.c */; };
+		90BF4F3C274AA0EA001FDE2A /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC5274AA0EA001FDE2A /* CMLIllumination.c */; };
+		90BF4F3D274AA0EA001FDE2A /* CMLNormedConversions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC6274AA0EA001FDE2A /* CMLNormedConversions.h */; };
+		90BF4F3E274AA0EA001FDE2A /* CMLNormedConversions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EC6274AA0EA001FDE2A /* CMLNormedConversions.h */; };
+		90BF4F3F274AA0EA001FDE2A /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC7274AA0EA001FDE2A /* CMLRGBColorspace.c */; };
+		90BF4F40274AA0EA001FDE2A /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC7274AA0EA001FDE2A /* CMLRGBColorspace.c */; };
+		90BF4F43274AA0EA001FDE2A /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC9274AA0EA001FDE2A /* CMLBaseAPI.c */; };
+		90BF4F44274AA0EA001FDE2A /* CMLBaseAPI.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EC9274AA0EA001FDE2A /* CMLBaseAPI.c */; };
+		90BF4F45274AA0EA001FDE2A /* CMLResponseCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ECA274AA0EA001FDE2A /* CMLResponseCurve.c */; };
+		90BF4F46274AA0EA001FDE2A /* CMLResponseCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ECA274AA0EA001FDE2A /* CMLResponseCurve.c */; };
+		90BF4F47274AA0EA001FDE2A /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECB274AA0EA001FDE2A /* CMLIllumination.h */; };
+		90BF4F48274AA0EA001FDE2A /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECB274AA0EA001FDE2A /* CMLIllumination.h */; };
+		90BF4F49274AA0EA001FDE2A /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECC274AA0EA001FDE2A /* CMLTypes.h */; };
+		90BF4F4A274AA0EA001FDE2A /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECC274AA0EA001FDE2A /* CMLTypes.h */; };
+		90BF4F4B274AA0EA001FDE2A /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ECD274AA0EA001FDE2A /* CMLStrings.c */; };
+		90BF4F4C274AA0EA001FDE2A /* CMLStrings.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ECD274AA0EA001FDE2A /* CMLStrings.c */; };
+		90BF4F4D274AA0EA001FDE2A /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECE274AA0EA001FDE2A /* CML.h */; };
+		90BF4F4E274AA0EA001FDE2A /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECE274AA0EA001FDE2A /* CML.h */; };
+		90BF4F4F274AA0EA001FDE2A /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECF274AA0EA001FDE2A /* Timer.h */; };
+		90BF4F50274AA0EA001FDE2A /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ECF274AA0EA001FDE2A /* Timer.h */; };
+		90BF4F51274AA0EA001FDE2A /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED0274AA0EA001FDE2A /* CMLConstants.h */; };
+		90BF4F52274AA0EA001FDE2A /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED0274AA0EA001FDE2A /* CMLConstants.h */; };
+		90BF4F53274AA0EA001FDE2A /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED1274AA0EA001FDE2A /* CMLObserver.h */; };
+		90BF4F54274AA0EA001FDE2A /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED1274AA0EA001FDE2A /* CMLObserver.h */; };
+		90BF4F57274AA0EA001FDE2A /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED3274AA0EA001FDE2A /* CMLFunctions.h */; };
+		90BF4F58274AA0EA001FDE2A /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED3274AA0EA001FDE2A /* CMLFunctions.h */; };
+		90BF4F59274AA0EA001FDE2A /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED4274AA0EA001FDE2A /* CMLDefinitions.h */; };
+		90BF4F5A274AA0EA001FDE2A /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED4274AA0EA001FDE2A /* CMLDefinitions.h */; };
+		90BF4F5B274AA0EA001FDE2A /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ED5274AA0EA001FDE2A /* CMLIllumination.c */; };
+		90BF4F5C274AA0EA001FDE2A /* CMLIllumination.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ED5274AA0EA001FDE2A /* CMLIllumination.c */; };
+		90BF4F5D274AA0EA001FDE2A /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED6274AA0EA001FDE2A /* CMLBaseAPI.h */; };
+		90BF4F5E274AA0EA001FDE2A /* CMLBaseAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED6274AA0EA001FDE2A /* CMLBaseAPI.h */; };
+		90BF4F5F274AA0EA001FDE2A /* CMLResponseCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED7274AA0EA001FDE2A /* CMLResponseCurve.h */; };
+		90BF4F60274AA0EA001FDE2A /* CMLResponseCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED7274AA0EA001FDE2A /* CMLResponseCurve.h */; };
+		90BF4F61274AA0EA001FDE2A /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED8274AA0EA001FDE2A /* CMLColorMachine.h */; };
+		90BF4F62274AA0EA001FDE2A /* CMLColorMachine.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4ED8274AA0EA001FDE2A /* CMLColorMachine.h */; };
+		90BF4F63274AA0EA001FDE2A /* CMLColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EDA274AA0EA001FDE2A /* CMLColor.h */; };
+		90BF4F64274AA0EA001FDE2A /* CMLColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EDA274AA0EA001FDE2A /* CMLColor.h */; };
+		90BF4F65274AA0EA001FDE2A /* CMLCMYKColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDB274AA0EA001FDE2A /* CMLCMYKColor.cpp */; };
+		90BF4F66274AA0EA001FDE2A /* CMLCMYKColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDB274AA0EA001FDE2A /* CMLCMYKColor.cpp */; };
+		90BF4F67274AA0EA001FDE2A /* CMLLabColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDC274AA0EA001FDE2A /* CMLLabColor.cpp */; };
+		90BF4F68274AA0EA001FDE2A /* CMLLabColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDC274AA0EA001FDE2A /* CMLLabColor.cpp */; };
+		90BF4F69274AA0EA001FDE2A /* CMLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDD274AA0EA001FDE2A /* CMLColor.cpp */; };
+		90BF4F6A274AA0EA001FDE2A /* CMLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDD274AA0EA001FDE2A /* CMLColor.cpp */; };
+		90BF4F6B274AA0EA001FDE2A /* CMLRGBColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDE274AA0EA001FDE2A /* CMLRGBColor.cpp */; };
+		90BF4F6C274AA0EA001FDE2A /* CMLRGBColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDE274AA0EA001FDE2A /* CMLRGBColor.cpp */; };
+		90BF4F6D274AA0EA001FDE2A /* CMLXYZColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDF274AA0EA001FDE2A /* CMLXYZColor.cpp */; };
+		90BF4F6E274AA0EA001FDE2A /* CMLXYZColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EDF274AA0EA001FDE2A /* CMLXYZColor.cpp */; };
+		90BF4F6F274AA0EA001FDE2A /* CMLSpectralColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE0274AA0EA001FDE2A /* CMLSpectralColor.cpp */; };
+		90BF4F70274AA0EA001FDE2A /* CMLSpectralColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE0274AA0EA001FDE2A /* CMLSpectralColor.cpp */; };
+		90BF4F71274AA0EA001FDE2A /* CMLHSLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE1274AA0EA001FDE2A /* CMLHSLColor.cpp */; };
+		90BF4F72274AA0EA001FDE2A /* CMLHSLColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE1274AA0EA001FDE2A /* CMLHSLColor.cpp */; };
+		90BF4F73274AA0EA001FDE2A /* CMLRGBColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE2274AA0EA001FDE2A /* CMLRGBColor.h */; };
+		90BF4F74274AA0EA001FDE2A /* CMLRGBColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE2274AA0EA001FDE2A /* CMLRGBColor.h */; };
+		90BF4F75274AA0EA001FDE2A /* CMLCMYKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE3274AA0EA001FDE2A /* CMLCMYKColor.h */; };
+		90BF4F76274AA0EA001FDE2A /* CMLCMYKColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE3274AA0EA001FDE2A /* CMLCMYKColor.h */; };
+		90BF4F77274AA0EA001FDE2A /* CMLXYZColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE4274AA0EA001FDE2A /* CMLXYZColor.h */; };
+		90BF4F78274AA0EA001FDE2A /* CMLXYZColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE4274AA0EA001FDE2A /* CMLXYZColor.h */; };
+		90BF4F79274AA0EA001FDE2A /* CMLGrayColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE5274AA0EA001FDE2A /* CMLGrayColor.h */; };
+		90BF4F7A274AA0EA001FDE2A /* CMLGrayColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE5274AA0EA001FDE2A /* CMLGrayColor.h */; };
+		90BF4F7B274AA0EA001FDE2A /* CMLYupvpColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE6274AA0EA001FDE2A /* CMLYupvpColor.h */; };
+		90BF4F7C274AA0EA001FDE2A /* CMLYupvpColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EE6274AA0EA001FDE2A /* CMLYupvpColor.h */; };
+		90BF4F7D274AA0EA001FDE2A /* CMLLuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE7274AA0EA001FDE2A /* CMLLuvColor.cpp */; };
+		90BF4F7E274AA0EA001FDE2A /* CMLLuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE7274AA0EA001FDE2A /* CMLLuvColor.cpp */; };
+		90BF4F7F274AA0EA001FDE2A /* CMLGrayColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE8274AA0EA001FDE2A /* CMLGrayColor.cpp */; };
+		90BF4F80274AA0EA001FDE2A /* CMLGrayColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE8274AA0EA001FDE2A /* CMLGrayColor.cpp */; };
+		90BF4F81274AA0EA001FDE2A /* CMLYxyColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE9274AA0EA001FDE2A /* CMLYxyColor.cpp */; };
+		90BF4F82274AA0EA001FDE2A /* CMLYxyColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EE9274AA0EA001FDE2A /* CMLYxyColor.cpp */; };
+		90BF4F83274AA0EA001FDE2A /* CMLLchColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEA274AA0EA001FDE2A /* CMLLchColor.h */; };
+		90BF4F84274AA0EA001FDE2A /* CMLLchColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEA274AA0EA001FDE2A /* CMLLchColor.h */; };
+		90BF4F85274AA0EA001FDE2A /* CMLLchColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EEB274AA0EA001FDE2A /* CMLLchColor.cpp */; };
+		90BF4F86274AA0EA001FDE2A /* CMLLchColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EEB274AA0EA001FDE2A /* CMLLchColor.cpp */; };
+		90BF4F87274AA0EA001FDE2A /* CMLLuvColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEC274AA0EA001FDE2A /* CMLLuvColor.h */; };
+		90BF4F88274AA0EA001FDE2A /* CMLLuvColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEC274AA0EA001FDE2A /* CMLLuvColor.h */; };
+		90BF4F89274AA0EA001FDE2A /* CMLSpectralColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EED274AA0EA001FDE2A /* CMLSpectralColor.h */; };
+		90BF4F8A274AA0EA001FDE2A /* CMLSpectralColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EED274AA0EA001FDE2A /* CMLSpectralColor.h */; };
+		90BF4F8B274AA0EA001FDE2A /* CMLLabColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEE274AA0EA001FDE2A /* CMLLabColor.h */; };
+		90BF4F8C274AA0EA001FDE2A /* CMLLabColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EEE274AA0EA001FDE2A /* CMLLabColor.h */; };
+		90BF4F8D274AA0EA001FDE2A /* CMLYuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EEF274AA0EA001FDE2A /* CMLYuvColor.cpp */; };
+		90BF4F8E274AA0EA001FDE2A /* CMLYuvColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EEF274AA0EA001FDE2A /* CMLYuvColor.cpp */; };
+		90BF4F8F274AA0EA001FDE2A /* CMLYuvColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF0274AA0EA001FDE2A /* CMLYuvColor.h */; };
+		90BF4F90274AA0EA001FDE2A /* CMLYuvColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF0274AA0EA001FDE2A /* CMLYuvColor.h */; };
+		90BF4F91274AA0EA001FDE2A /* CMLYxyColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF1274AA0EA001FDE2A /* CMLYxyColor.h */; };
+		90BF4F92274AA0EA001FDE2A /* CMLYxyColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF1274AA0EA001FDE2A /* CMLYxyColor.h */; };
+		90BF4F93274AA0EA001FDE2A /* CMLHSVColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF2274AA0EA001FDE2A /* CMLHSVColor.cpp */; };
+		90BF4F94274AA0EA001FDE2A /* CMLHSVColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF2274AA0EA001FDE2A /* CMLHSVColor.cpp */; };
+		90BF4F95274AA0EA001FDE2A /* CMLHSLColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF3274AA0EA001FDE2A /* CMLHSLColor.h */; };
+		90BF4F96274AA0EA001FDE2A /* CMLHSLColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF3274AA0EA001FDE2A /* CMLHSLColor.h */; };
+		90BF4F97274AA0EA001FDE2A /* CMLYCbCrColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF4274AA0EA001FDE2A /* CMLYCbCrColor.h */; };
+		90BF4F98274AA0EA001FDE2A /* CMLYCbCrColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF4274AA0EA001FDE2A /* CMLYCbCrColor.h */; };
+		90BF4F99274AA0EA001FDE2A /* CMLYupvpColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF5274AA0EA001FDE2A /* CMLYupvpColor.cpp */; };
+		90BF4F9A274AA0EA001FDE2A /* CMLYupvpColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF5274AA0EA001FDE2A /* CMLYupvpColor.cpp */; };
+		90BF4F9B274AA0EA001FDE2A /* CMLHSVColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF6274AA0EA001FDE2A /* CMLHSVColor.h */; };
+		90BF4F9C274AA0EA001FDE2A /* CMLHSVColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF6274AA0EA001FDE2A /* CMLHSVColor.h */; };
+		90BF4F9D274AA0EA001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF7274AA0EA001FDE2A /* CMLYCbCrColor.cpp */; };
+		90BF4F9E274AA0EA001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EF7274AA0EA001FDE2A /* CMLYCbCrColor.cpp */; };
+		90BF4F9F274AA0EA001FDE2A /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF8274AA0EA001FDE2A /* CMLunused.h */; };
+		90BF4FA0274AA0EA001FDE2A /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4EF8274AA0EA001FDE2A /* CMLunused.h */; };
+		90BF4FA1274AA26F001FDE2A /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4EA2274AA0EA001FDE2A /* example.cpp */; };
+		90BF4FA3274AA2D9001FDE2A /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
+		90BF4FA5274AA63A001FDE2A /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4ED2274AA0EA001FDE2A /* cppexample.cpp */; };
+		90BF4FA6274AA698001FDE2A /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B955D7D515946A3C003FCEB1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B99F4BA513F8ABFF009465D9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B9E8E3F0154D77D500A4C836;
-			remoteInfo = libcmldebug;
-		};
 		B972DAF8142347940015D6F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B99F4BA513F8ABFF009465D9 /* Project object */;
@@ -130,97 +186,96 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B90034341462FAC700E50D75 /* CMLInternal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = CMLInternal.c; path = ../CMLInternal.c; sourceTree = "<group>"; };
-		B91C460416CBCC540065FB47 /* CMLConverterMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMLConverterMacros.h; sourceTree = "<group>"; };
-		B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLChromaticAdaptation.c; sourceTree = "<group>"; };
-		B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKColorspace.c; sourceTree = "<group>"; };
-		B925E9FB15655470004D2462 /* CMLColorMachine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachine.c; sourceTree = "<group>"; };
-		B925E9FD15655470004D2462 /* CMLGrayColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayColorspace.c; sourceTree = "<group>"; };
-		B925E9FE15655470004D2462 /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
-		B925E9FF15655470004D2462 /* CMLLabColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabColorspace.c; sourceTree = "<group>"; };
-		B925EA0015655470004D2462 /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
-		B925EA0115655470004D2462 /* CMLRGBColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBColorspace.c; sourceTree = "<group>"; };
-		B925EA1C15655518004D2462 /* CMLColorMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachine.h; sourceTree = "<group>"; };
-		B92855C51578EB4600C6C210 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
-		B92B8A8B146BF3AD00E8258C /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Readme.txt; path = stuff/Readme.txt; sourceTree = SOURCE_ROOT; };
+		90BF4E9E274AA0EA001FDE2A /* installimage.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = installimage.psd; sourceTree = "<group>"; };
+		90BF4E9F274AA0EA001FDE2A /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		90BF4EA0274AA0EA001FDE2A /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMLChangelog.txt; sourceTree = "<group>"; };
+		90BF4EA2274AA0EA001FDE2A /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
+		90BF4EA3274AA0EA001FDE2A /* CMLFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLFunctions.c; sourceTree = "<group>"; };
+		90BF4EA4274AA0EA001FDE2A /* CMLInternal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInternal.c; sourceTree = "<group>"; };
+		90BF4EA5274AA0EA001FDE2A /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
+		90BF4EA7274AA0EA001FDE2A /* CMLInvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInvert.c; sourceTree = "<group>"; };
+		90BF4EA8274AA0EA001FDE2A /* CMLInputOutputConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInputOutputConversions.c; sourceTree = "<group>"; };
+		90BF4EA9274AA0EA001FDE2A /* CMLHSLConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSLConversions.c; sourceTree = "<group>"; };
+		90BF4EAA274AA0EA001FDE2A /* CMLLuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLuvConversions.c; sourceTree = "<group>"; };
+		90BF4EAB274AA0EA001FDE2A /* CMLNormedConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLNormedConversions.c; sourceTree = "<group>"; };
+		90BF4EAC274AA0EA001FDE2A /* CMLXYZConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLXYZConversions.c; sourceTree = "<group>"; };
+		90BF4EAD274AA0EA001FDE2A /* CMLLchConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLchConversions.c; sourceTree = "<group>"; };
+		90BF4EAE274AA0EA001FDE2A /* CMLYxyConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYxyConversions.c; sourceTree = "<group>"; };
+		90BF4EAF274AA0EA001FDE2A /* CMLSpectralConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLSpectralConversions.c; sourceTree = "<group>"; };
+		90BF4EB0274AA0EA001FDE2A /* CMLCMYKConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKConversions.c; sourceTree = "<group>"; };
+		90BF4EB1274AA0EA001FDE2A /* CMLYCbCrConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYCbCrConversions.c; sourceTree = "<group>"; };
+		90BF4EB2274AA0EA001FDE2A /* CMLGrayConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayConversions.c; sourceTree = "<group>"; };
+		90BF4EB3274AA0EA001FDE2A /* CMLYuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYuvConversions.c; sourceTree = "<group>"; };
+		90BF4EB4274AA0EA001FDE2A /* CMLRGBConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBConversions.c; sourceTree = "<group>"; };
+		90BF4EB5274AA0EA001FDE2A /* CMLHSVConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSVConversions.c; sourceTree = "<group>"; };
+		90BF4EB6274AA0EA001FDE2A /* CMLClamp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLClamp.c; sourceTree = "<group>"; };
+		90BF4EB7274AA0EA001FDE2A /* CMLColorMachineConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineConversions.c; sourceTree = "<group>"; };
+		90BF4EB8274AA0EA001FDE2A /* CMLLabConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabConversions.c; sourceTree = "<group>"; };
+		90BF4EB9274AA0EA001FDE2A /* CMLYupvpConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYupvpConversions.c; sourceTree = "<group>"; };
+		90BF4EBB274AA0EA001FDE2A /* CMLCMYKColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKColorspace.c; sourceTree = "<group>"; };
+		90BF4EBC274AA0EA001FDE2A /* CMLColorMachineState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineState.c; sourceTree = "<group>"; };
+		90BF4EBD274AA0EA001FDE2A /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
+		90BF4EBE274AA0EA001FDE2A /* CMLLabColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabColorspace.c; sourceTree = "<group>"; };
+		90BF4EBF274AA0EA001FDE2A /* CMLConverterMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConverterMacros.h; sourceTree = "<group>"; };
+		90BF4EC0274AA0EA001FDE2A /* CMLColorMachine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachine.c; sourceTree = "<group>"; };
+		90BF4EC1274AA0EA001FDE2A /* CMLChromaticAdaptation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLChromaticAdaptation.c; sourceTree = "<group>"; };
+		90BF4EC2274AA0EA001FDE2A /* CMLGrayColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayColorspace.c; sourceTree = "<group>"; };
+		90BF4EC3274AA0EA001FDE2A /* CMLColorMachineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachineState.h; sourceTree = "<group>"; };
+		90BF4EC4274AA0EA001FDE2A /* CMLInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLInternal.h; sourceTree = "<group>"; };
+		90BF4EC5274AA0EA001FDE2A /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
+		90BF4EC6274AA0EA001FDE2A /* CMLNormedConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLNormedConversions.h; sourceTree = "<group>"; };
+		90BF4EC7274AA0EA001FDE2A /* CMLRGBColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBColorspace.c; sourceTree = "<group>"; };
+		90BF4EC9274AA0EA001FDE2A /* CMLBaseAPI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLBaseAPI.c; sourceTree = "<group>"; };
+		90BF4ECA274AA0EA001FDE2A /* CMLResponseCurve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLResponseCurve.c; sourceTree = "<group>"; };
+		90BF4ECB274AA0EA001FDE2A /* CMLIllumination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLIllumination.h; sourceTree = "<group>"; };
+		90BF4ECC274AA0EA001FDE2A /* CMLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLTypes.h; sourceTree = "<group>"; };
+		90BF4ECD274AA0EA001FDE2A /* CMLStrings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLStrings.c; sourceTree = "<group>"; };
+		90BF4ECE274AA0EA001FDE2A /* CML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CML.h; sourceTree = "<group>"; };
+		90BF4ECF274AA0EA001FDE2A /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		90BF4ED0274AA0EA001FDE2A /* CMLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConstants.h; sourceTree = "<group>"; };
+		90BF4ED1274AA0EA001FDE2A /* CMLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLObserver.h; sourceTree = "<group>"; };
+		90BF4ED2274AA0EA001FDE2A /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
+		90BF4ED3274AA0EA001FDE2A /* CMLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLFunctions.h; sourceTree = "<group>"; };
+		90BF4ED4274AA0EA001FDE2A /* CMLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLDefinitions.h; sourceTree = "<group>"; };
+		90BF4ED5274AA0EA001FDE2A /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
+		90BF4ED6274AA0EA001FDE2A /* CMLBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLBaseAPI.h; sourceTree = "<group>"; };
+		90BF4ED7274AA0EA001FDE2A /* CMLResponseCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLResponseCurve.h; sourceTree = "<group>"; };
+		90BF4ED8274AA0EA001FDE2A /* CMLColorMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachine.h; sourceTree = "<group>"; };
+		90BF4EDA274AA0EA001FDE2A /* CMLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColor.h; sourceTree = "<group>"; };
+		90BF4EDB274AA0EA001FDE2A /* CMLCMYKColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLCMYKColor.cpp; sourceTree = "<group>"; };
+		90BF4EDC274AA0EA001FDE2A /* CMLLabColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLabColor.cpp; sourceTree = "<group>"; };
+		90BF4EDD274AA0EA001FDE2A /* CMLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLColor.cpp; sourceTree = "<group>"; };
+		90BF4EDE274AA0EA001FDE2A /* CMLRGBColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLRGBColor.cpp; sourceTree = "<group>"; };
+		90BF4EDF274AA0EA001FDE2A /* CMLXYZColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLXYZColor.cpp; sourceTree = "<group>"; };
+		90BF4EE0274AA0EA001FDE2A /* CMLSpectralColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLSpectralColor.cpp; sourceTree = "<group>"; };
+		90BF4EE1274AA0EA001FDE2A /* CMLHSLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSLColor.cpp; sourceTree = "<group>"; };
+		90BF4EE2274AA0EA001FDE2A /* CMLRGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLRGBColor.h; sourceTree = "<group>"; };
+		90BF4EE3274AA0EA001FDE2A /* CMLCMYKColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLCMYKColor.h; sourceTree = "<group>"; };
+		90BF4EE4274AA0EA001FDE2A /* CMLXYZColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLXYZColor.h; sourceTree = "<group>"; };
+		90BF4EE5274AA0EA001FDE2A /* CMLGrayColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLGrayColor.h; sourceTree = "<group>"; };
+		90BF4EE6274AA0EA001FDE2A /* CMLYupvpColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYupvpColor.h; sourceTree = "<group>"; };
+		90BF4EE7274AA0EA001FDE2A /* CMLLuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLuvColor.cpp; sourceTree = "<group>"; };
+		90BF4EE8274AA0EA001FDE2A /* CMLGrayColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLGrayColor.cpp; sourceTree = "<group>"; };
+		90BF4EE9274AA0EA001FDE2A /* CMLYxyColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYxyColor.cpp; sourceTree = "<group>"; };
+		90BF4EEA274AA0EA001FDE2A /* CMLLchColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLchColor.h; sourceTree = "<group>"; };
+		90BF4EEB274AA0EA001FDE2A /* CMLLchColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLchColor.cpp; sourceTree = "<group>"; };
+		90BF4EEC274AA0EA001FDE2A /* CMLLuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLuvColor.h; sourceTree = "<group>"; };
+		90BF4EED274AA0EA001FDE2A /* CMLSpectralColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLSpectralColor.h; sourceTree = "<group>"; };
+		90BF4EEE274AA0EA001FDE2A /* CMLLabColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLabColor.h; sourceTree = "<group>"; };
+		90BF4EEF274AA0EA001FDE2A /* CMLYuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYuvColor.cpp; sourceTree = "<group>"; };
+		90BF4EF0274AA0EA001FDE2A /* CMLYuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYuvColor.h; sourceTree = "<group>"; };
+		90BF4EF1274AA0EA001FDE2A /* CMLYxyColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYxyColor.h; sourceTree = "<group>"; };
+		90BF4EF2274AA0EA001FDE2A /* CMLHSVColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSVColor.cpp; sourceTree = "<group>"; };
+		90BF4EF3274AA0EA001FDE2A /* CMLHSLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSLColor.h; sourceTree = "<group>"; };
+		90BF4EF4274AA0EA001FDE2A /* CMLYCbCrColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYCbCrColor.h; sourceTree = "<group>"; };
+		90BF4EF5274AA0EA001FDE2A /* CMLYupvpColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYupvpColor.cpp; sourceTree = "<group>"; };
+		90BF4EF6274AA0EA001FDE2A /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
+		90BF4EF7274AA0EA001FDE2A /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
+		90BF4EF8274AA0EA001FDE2A /* CMLunused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLunused.h; sourceTree = "<group>"; };
 		B92F506F140A76D100075896 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9476D6317C1523F00540771 /* CMLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLObserver.h; sourceTree = "<group>"; };
-		B9476D6817C1526B00540771 /* CMLObserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLObserver.c; sourceTree = "<group>"; };
-		B9476F9C17C3738D00540771 /* CMLIllumination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLIllumination.h; sourceTree = "<group>"; };
-		B9476F9D17C3738D00540771 /* CMLIllumination.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIllumination.c; sourceTree = "<group>"; };
-		B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLBaseAPI.h; sourceTree = "<group>"; };
-		B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLBaseAPI.c; sourceTree = "<group>"; };
-		B956B6091577F522006ACA9B /* CMLInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLInternal.h; sourceTree = "<group>"; };
-		B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLNormedConversions.c; sourceTree = "<group>"; };
-		B9669125159A0D8700E43EF0 /* CMLNormedConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLNormedConversions.h; sourceTree = "<group>"; };
-		B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLCMYKColor.cpp; sourceTree = "<group>"; };
-		B97A8E1D15B953AC00D5E32C /* CMLCMYKColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLCMYKColor.h; sourceTree = "<group>"; };
-		B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLColor.cpp; sourceTree = "<group>"; };
-		B97A8E1F15B953AC00D5E32C /* CMLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColor.h; sourceTree = "<group>"; };
-		B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLGrayColor.cpp; sourceTree = "<group>"; };
-		B97A8E2115B953AC00D5E32C /* CMLGrayColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLGrayColor.h; sourceTree = "<group>"; };
-		B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSLColor.cpp; sourceTree = "<group>"; };
-		B97A8E2315B953AC00D5E32C /* CMLHSLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSLColor.h; sourceTree = "<group>"; };
-		B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLHSVColor.cpp; sourceTree = "<group>"; };
-		B97A8E2515B953AC00D5E32C /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
-		B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLabColor.cpp; sourceTree = "<group>"; };
-		B97A8E2715B953AC00D5E32C /* CMLLabColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLabColor.h; sourceTree = "<group>"; };
-		B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLchColor.cpp; sourceTree = "<group>"; };
-		B97A8E2915B953AC00D5E32C /* CMLLchColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLchColor.h; sourceTree = "<group>"; };
-		B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLLuvColor.cpp; sourceTree = "<group>"; };
-		B97A8E2B15B953AC00D5E32C /* CMLLuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLLuvColor.h; sourceTree = "<group>"; };
-		B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLRGBColor.cpp; sourceTree = "<group>"; };
-		B97A8E2D15B953AC00D5E32C /* CMLRGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLRGBColor.h; sourceTree = "<group>"; };
-		B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLSpectralColor.cpp; sourceTree = "<group>"; };
-		B97A8E2F15B953AC00D5E32C /* CMLSpectralColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLSpectralColor.h; sourceTree = "<group>"; };
-		B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLXYZColor.cpp; sourceTree = "<group>"; };
-		B97A8E3115B953AC00D5E32C /* CMLXYZColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLXYZColor.h; sourceTree = "<group>"; };
-		B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
-		B97A8E3315B953AC00D5E32C /* CMLYCbCrColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYCbCrColor.h; sourceTree = "<group>"; };
-		B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYupvpColor.cpp; sourceTree = "<group>"; };
-		B97A8E3515B953AC00D5E32C /* CMLYupvpColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYupvpColor.h; sourceTree = "<group>"; };
-		B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYuvColor.cpp; sourceTree = "<group>"; };
-		B97A8E3715B953AC00D5E32C /* CMLYuvColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYuvColor.h; sourceTree = "<group>"; };
-		B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYxyColor.cpp; sourceTree = "<group>"; };
-		B97A8E3915B953AC00D5E32C /* CMLYxyColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLYxyColor.h; sourceTree = "<group>"; };
-		B97A915D15B9752C00D5E32C /* CMLunused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLunused.h; sourceTree = "<group>"; };
-		B97B46F915B7701300B902CC /* CMLYuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYuvConversions.c; sourceTree = "<group>"; };
-		B97D27CB156E936000BCF5F1 /* InternalTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InternalTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = internaltestmain.cpp; sourceTree = "<group>"; };
 		B98F4D5D15E4059C0080C96E /* cppexample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cppexample; sourceTree = BUILT_PRODUCTS_DIR; };
-		B98F4D6315E405DF0080C96E /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
-		B995CB7115F7CBC700EBD67E /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
 		B99F4BBF13F8AC4C009465D9 /* libcml.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcml.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9A5C98915841A8C00C8B697 /* CMLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConstants.h; sourceTree = "<group>"; };
-		B9A71AD214731F3300150B1B /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CMLChangelog.txt; path = stuff/CMLChangelog.txt; sourceTree = SOURCE_ROOT; };
-		B9CA200F145D52F6009FC44A /* CML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CML.h; sourceTree = "<group>"; };
-		B9CA2010145D52F6009FC44A /* CMLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLDefinitions.h; sourceTree = "<group>"; };
-		B9CA201E145D52F6009FC44A /* CMLFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLFunctions.c; sourceTree = "<group>"; };
-		B9CA201F145D52F6009FC44A /* CMLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLFunctions.h; sourceTree = "<group>"; };
-		B9CA2020145D52F6009FC44A /* CMLStrings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLStrings.c; sourceTree = "<group>"; };
-		B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLResponseCurve.c; sourceTree = "<group>"; };
-		B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLResponseCurve.h; sourceTree = "<group>"; };
-		B9E87BCF1576904E00049DEF /* CMLColorMachineState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLColorMachineState.h; sourceTree = "<group>"; };
-		B9E87BD01576904E00049DEF /* CMLColorMachineState.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineState.c; sourceTree = "<group>"; };
 		B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcmldebug.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9F9A90215A333A9003BFFB8 /* CMLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLTypes.h; sourceTree = "<group>"; };
-		B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYupvpConversions.c; sourceTree = "<group>"; };
-		B9FC3E8E1565598600AFAC92 /* CMLClamp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLClamp.c; sourceTree = "<group>"; };
-		B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKConversions.c; sourceTree = "<group>"; };
-		B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLColorMachineConversions.c; sourceTree = "<group>"; };
-		B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLGrayConversions.c; sourceTree = "<group>"; };
-		B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSLConversions.c; sourceTree = "<group>"; };
-		B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLHSVConversions.c; sourceTree = "<group>"; };
-		B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInputOutputConversions.c; sourceTree = "<group>"; };
-		B9FC3E951565598600AFAC92 /* CMLInvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInvert.c; sourceTree = "<group>"; };
-		B9FC3E961565598600AFAC92 /* CMLLabConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabConversions.c; sourceTree = "<group>"; };
-		B9FC3E971565598600AFAC92 /* CMLLchConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLchConversions.c; sourceTree = "<group>"; };
-		B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLuvConversions.c; sourceTree = "<group>"; };
-		B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBConversions.c; sourceTree = "<group>"; };
-		B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLSpectralConversions.c; sourceTree = "<group>"; };
-		B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLXYZConversions.c; sourceTree = "<group>"; };
-		B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYCbCrConversions.c; sourceTree = "<group>"; };
-		B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYxyConversions.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,14 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B97D27C9156E936000BCF5F1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B955D7D415946A26003FCEB1 /* libcmldebug.dylib in Frameworks */,
+				90BF4FA3274AA2D9001FDE2A /* libcmldebug.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98F4D6C15E405FD0080C96E /* libcml.dylib in Frameworks */,
+				90BF4FA6274AA698001FDE2A /* libcmldebug.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,71 +312,153 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B925E9F815655470004D2462 /* StateMachine */ = {
+		90BF4E9C274AA0EA001FDE2A /* CML */ = {
 			isa = PBXGroup;
 			children = (
-				B925E9F915655470004D2462 /* CMLChromaticAdaptation.c */,
-				B925E9FA15655470004D2462 /* CMLCMYKColorspace.c */,
-				B925E9FB15655470004D2462 /* CMLColorMachine.c */,
-				B925E9FD15655470004D2462 /* CMLGrayColorspace.c */,
-				B925E9FE15655470004D2462 /* CMLIllumination.c */,
-				B925E9FF15655470004D2462 /* CMLLabColorspace.c */,
-				B925EA0015655470004D2462 /* CMLObserver.c */,
-				B925EA0115655470004D2462 /* CMLRGBColorspace.c */,
-				B956B6091577F522006ACA9B /* CMLInternal.h */,
-				B90034341462FAC700E50D75 /* CMLInternal.c */,
-				B91C460416CBCC540065FB47 /* CMLConverterMacros.h */,
-				B9669125159A0D8700E43EF0 /* CMLNormedConversions.h */,
-				B9E87BCF1576904E00049DEF /* CMLColorMachineState.h */,
-				B9E87BD01576904E00049DEF /* CMLColorMachineState.c */,
+				90BF4E9D274AA0EA001FDE2A /* res */,
+				90BF4EA1274AA0EA001FDE2A /* src */,
+			);
+			name = CML;
+			path = code/CML;
+			sourceTree = "<group>";
+		};
+		90BF4E9D274AA0EA001FDE2A /* res */ = {
+			isa = PBXGroup;
+			children = (
+				90BF4E9E274AA0EA001FDE2A /* installimage.psd */,
+				90BF4E9F274AA0EA001FDE2A /* Readme.txt */,
+				90BF4EA0274AA0EA001FDE2A /* CMLChangelog.txt */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		90BF4EA1274AA0EA001FDE2A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				90BF4ECE274AA0EA001FDE2A /* CML.h */,
+				90BF4EC9274AA0EA001FDE2A /* CMLBaseAPI.c */,
+				90BF4ED6274AA0EA001FDE2A /* CMLBaseAPI.h */,
+				90BF4ED8274AA0EA001FDE2A /* CMLColorMachine.h */,
+				90BF4ED0274AA0EA001FDE2A /* CMLConstants.h */,
+				90BF4ED4274AA0EA001FDE2A /* CMLDefinitions.h */,
+				90BF4EA3274AA0EA001FDE2A /* CMLFunctions.c */,
+				90BF4ED3274AA0EA001FDE2A /* CMLFunctions.h */,
+				90BF4ED5274AA0EA001FDE2A /* CMLIllumination.c */,
+				90BF4ECB274AA0EA001FDE2A /* CMLIllumination.h */,
+				90BF4EA4274AA0EA001FDE2A /* CMLInternal.c */,
+				90BF4EA5274AA0EA001FDE2A /* CMLObserver.c */,
+				90BF4ED1274AA0EA001FDE2A /* CMLObserver.h */,
+				90BF4ECA274AA0EA001FDE2A /* CMLResponseCurve.c */,
+				90BF4ED7274AA0EA001FDE2A /* CMLResponseCurve.h */,
+				90BF4ECD274AA0EA001FDE2A /* CMLStrings.c */,
+				90BF4ECC274AA0EA001FDE2A /* CMLTypes.h */,
+				90BF4EF8274AA0EA001FDE2A /* CMLunused.h */,
+				90BF4ED9274AA0EA001FDE2A /* ColorClasses */,
+				90BF4EA6274AA0EA001FDE2A /* Conversions */,
+				90BF4ED2274AA0EA001FDE2A /* cppexample.cpp */,
+				90BF4EA2274AA0EA001FDE2A /* example.cpp */,
+				90BF4EBA274AA0EA001FDE2A /* StateMachine */,
+				90BF4ECF274AA0EA001FDE2A /* Timer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		90BF4EA6274AA0EA001FDE2A /* Conversions */ = {
+			isa = PBXGroup;
+			children = (
+				90BF4EA7274AA0EA001FDE2A /* CMLInvert.c */,
+				90BF4EA8274AA0EA001FDE2A /* CMLInputOutputConversions.c */,
+				90BF4EA9274AA0EA001FDE2A /* CMLHSLConversions.c */,
+				90BF4EAA274AA0EA001FDE2A /* CMLLuvConversions.c */,
+				90BF4EAB274AA0EA001FDE2A /* CMLNormedConversions.c */,
+				90BF4EAC274AA0EA001FDE2A /* CMLXYZConversions.c */,
+				90BF4EAD274AA0EA001FDE2A /* CMLLchConversions.c */,
+				90BF4EAE274AA0EA001FDE2A /* CMLYxyConversions.c */,
+				90BF4EAF274AA0EA001FDE2A /* CMLSpectralConversions.c */,
+				90BF4EB0274AA0EA001FDE2A /* CMLCMYKConversions.c */,
+				90BF4EB1274AA0EA001FDE2A /* CMLYCbCrConversions.c */,
+				90BF4EB2274AA0EA001FDE2A /* CMLGrayConversions.c */,
+				90BF4EB3274AA0EA001FDE2A /* CMLYuvConversions.c */,
+				90BF4EB4274AA0EA001FDE2A /* CMLRGBConversions.c */,
+				90BF4EB5274AA0EA001FDE2A /* CMLHSVConversions.c */,
+				90BF4EB6274AA0EA001FDE2A /* CMLClamp.c */,
+				90BF4EB7274AA0EA001FDE2A /* CMLColorMachineConversions.c */,
+				90BF4EB8274AA0EA001FDE2A /* CMLLabConversions.c */,
+				90BF4EB9274AA0EA001FDE2A /* CMLYupvpConversions.c */,
+			);
+			path = Conversions;
+			sourceTree = "<group>";
+		};
+		90BF4EBA274AA0EA001FDE2A /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				90BF4EBB274AA0EA001FDE2A /* CMLCMYKColorspace.c */,
+				90BF4EBC274AA0EA001FDE2A /* CMLColorMachineState.c */,
+				90BF4EBD274AA0EA001FDE2A /* CMLObserver.c */,
+				90BF4EBE274AA0EA001FDE2A /* CMLLabColorspace.c */,
+				90BF4EBF274AA0EA001FDE2A /* CMLConverterMacros.h */,
+				90BF4EC0274AA0EA001FDE2A /* CMLColorMachine.c */,
+				90BF4EC1274AA0EA001FDE2A /* CMLChromaticAdaptation.c */,
+				90BF4EC2274AA0EA001FDE2A /* CMLGrayColorspace.c */,
+				90BF4EC3274AA0EA001FDE2A /* CMLColorMachineState.h */,
+				90BF4EC4274AA0EA001FDE2A /* CMLInternal.h */,
+				90BF4EC5274AA0EA001FDE2A /* CMLIllumination.c */,
+				90BF4EC6274AA0EA001FDE2A /* CMLNormedConversions.h */,
+				90BF4EC7274AA0EA001FDE2A /* CMLRGBColorspace.c */,
 			);
 			path = StateMachine;
 			sourceTree = "<group>";
 		};
-		B97A8E1B15B953AC00D5E32C /* ColorClasses */ = {
+		90BF4ED9274AA0EA001FDE2A /* ColorClasses */ = {
 			isa = PBXGroup;
 			children = (
-				B97A8E1C15B953AC00D5E32C /* CMLCMYKColor.cpp */,
-				B97A8E1D15B953AC00D5E32C /* CMLCMYKColor.h */,
-				B97A8E1E15B953AC00D5E32C /* CMLColor.cpp */,
-				B97A8E1F15B953AC00D5E32C /* CMLColor.h */,
-				B97A8E2015B953AC00D5E32C /* CMLGrayColor.cpp */,
-				B97A8E2115B953AC00D5E32C /* CMLGrayColor.h */,
-				B97A8E2215B953AC00D5E32C /* CMLHSLColor.cpp */,
-				B97A8E2315B953AC00D5E32C /* CMLHSLColor.h */,
-				B97A8E2415B953AC00D5E32C /* CMLHSVColor.cpp */,
-				B97A8E2515B953AC00D5E32C /* CMLHSVColor.h */,
-				B97A8E2615B953AC00D5E32C /* CMLLabColor.cpp */,
-				B97A8E2715B953AC00D5E32C /* CMLLabColor.h */,
-				B97A8E2815B953AC00D5E32C /* CMLLchColor.cpp */,
-				B97A8E2915B953AC00D5E32C /* CMLLchColor.h */,
-				B97A8E2A15B953AC00D5E32C /* CMLLuvColor.cpp */,
-				B97A8E2B15B953AC00D5E32C /* CMLLuvColor.h */,
-				B97A8E2C15B953AC00D5E32C /* CMLRGBColor.cpp */,
-				B97A8E2D15B953AC00D5E32C /* CMLRGBColor.h */,
-				B97A8E2E15B953AC00D5E32C /* CMLSpectralColor.cpp */,
-				B97A8E2F15B953AC00D5E32C /* CMLSpectralColor.h */,
-				B97A8E3015B953AC00D5E32C /* CMLXYZColor.cpp */,
-				B97A8E3115B953AC00D5E32C /* CMLXYZColor.h */,
-				B97A8E3215B953AC00D5E32C /* CMLYCbCrColor.cpp */,
-				B97A8E3315B953AC00D5E32C /* CMLYCbCrColor.h */,
-				B97A8E3415B953AC00D5E32C /* CMLYupvpColor.cpp */,
-				B97A8E3515B953AC00D5E32C /* CMLYupvpColor.h */,
-				B97A8E3615B953AC00D5E32C /* CMLYuvColor.cpp */,
-				B97A8E3715B953AC00D5E32C /* CMLYuvColor.h */,
-				B97A8E3815B953AC00D5E32C /* CMLYxyColor.cpp */,
-				B97A8E3915B953AC00D5E32C /* CMLYxyColor.h */,
+				90BF4EDA274AA0EA001FDE2A /* CMLColor.h */,
+				90BF4EDB274AA0EA001FDE2A /* CMLCMYKColor.cpp */,
+				90BF4EDC274AA0EA001FDE2A /* CMLLabColor.cpp */,
+				90BF4EDD274AA0EA001FDE2A /* CMLColor.cpp */,
+				90BF4EDE274AA0EA001FDE2A /* CMLRGBColor.cpp */,
+				90BF4EDF274AA0EA001FDE2A /* CMLXYZColor.cpp */,
+				90BF4EE0274AA0EA001FDE2A /* CMLSpectralColor.cpp */,
+				90BF4EE1274AA0EA001FDE2A /* CMLHSLColor.cpp */,
+				90BF4EE2274AA0EA001FDE2A /* CMLRGBColor.h */,
+				90BF4EE3274AA0EA001FDE2A /* CMLCMYKColor.h */,
+				90BF4EE4274AA0EA001FDE2A /* CMLXYZColor.h */,
+				90BF4EE5274AA0EA001FDE2A /* CMLGrayColor.h */,
+				90BF4EE6274AA0EA001FDE2A /* CMLYupvpColor.h */,
+				90BF4EE7274AA0EA001FDE2A /* CMLLuvColor.cpp */,
+				90BF4EE8274AA0EA001FDE2A /* CMLGrayColor.cpp */,
+				90BF4EE9274AA0EA001FDE2A /* CMLYxyColor.cpp */,
+				90BF4EEA274AA0EA001FDE2A /* CMLLchColor.h */,
+				90BF4EEB274AA0EA001FDE2A /* CMLLchColor.cpp */,
+				90BF4EEC274AA0EA001FDE2A /* CMLLuvColor.h */,
+				90BF4EED274AA0EA001FDE2A /* CMLSpectralColor.h */,
+				90BF4EEE274AA0EA001FDE2A /* CMLLabColor.h */,
+				90BF4EEF274AA0EA001FDE2A /* CMLYuvColor.cpp */,
+				90BF4EF0274AA0EA001FDE2A /* CMLYuvColor.h */,
+				90BF4EF1274AA0EA001FDE2A /* CMLYxyColor.h */,
+				90BF4EF2274AA0EA001FDE2A /* CMLHSVColor.cpp */,
+				90BF4EF3274AA0EA001FDE2A /* CMLHSLColor.h */,
+				90BF4EF4274AA0EA001FDE2A /* CMLYCbCrColor.h */,
+				90BF4EF5274AA0EA001FDE2A /* CMLYupvpColor.cpp */,
+				90BF4EF6274AA0EA001FDE2A /* CMLHSVColor.h */,
+				90BF4EF7274AA0EA001FDE2A /* CMLYCbCrColor.cpp */,
 			);
-			name = ColorClasses;
-			path = src/ColorClasses;
+			path = ColorClasses;
+			sourceTree = "<group>";
+		};
+		90BF4FA2274AA2D9001FDE2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B99F4BA313F8ABFF009465D9 = {
 			isa = PBXGroup;
 			children = (
-				B9CA200E145D52F6009FC44A /* src */,
-				B97A8E1B15B953AC00D5E32C /* ColorClasses */,
+				90BF4E9C274AA0EA001FDE2A /* CML */,
 				B99F4BB513F8AC31009465D9 /* Products */,
+				90BF4FA2274AA2D9001FDE2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -338,68 +468,9 @@
 				B99F4BBF13F8AC4C009465D9 /* libcml.dylib */,
 				B92F506F140A76D100075896 /* Test */,
 				B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */,
-				B97D27CB156E936000BCF5F1 /* InternalTest */,
 				B98F4D5D15E4059C0080C96E /* cppexample */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B9CA200E145D52F6009FC44A /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B925E9F815655470004D2462 /* StateMachine */,
-				B9FC3E8D1565598600AFAC92 /* Conversions */,
-				B9CA200F145D52F6009FC44A /* CML.h */,
-				B9A5C98915841A8C00C8B697 /* CMLConstants.h */,
-				B9CA2010145D52F6009FC44A /* CMLDefinitions.h */,
-				B9F9A90215A333A9003BFFB8 /* CMLTypes.h */,
-				B925EA1C15655518004D2462 /* CMLColorMachine.h */,
-				B9566EEA15AC9ECC0053DB9C /* CMLBaseAPI.h */,
-				B9566EEB15AC9ECC0053DB9C /* CMLBaseAPI.c */,
-				B9CA201E145D52F6009FC44A /* CMLFunctions.c */,
-				B9CA201F145D52F6009FC44A /* CMLFunctions.h */,
-				B9E38BB717A5DBC500B39CE8 /* CMLResponseCurve.c */,
-				B9E38BB817A5DBC500B39CE8 /* CMLResponseCurve.h */,
-				B9CA2020145D52F6009FC44A /* CMLStrings.c */,
-				B995CB7115F7CBC700EBD67E /* example.cpp */,
-				B98F4D6315E405DF0080C96E /* cppexample.cpp */,
-				B92855C51578EB4600C6C210 /* Timer.h */,
-				B9A71AD214731F3300150B1B /* CMLChangelog.txt */,
-				B92B8A8B146BF3AD00E8258C /* Readme.txt */,
-				B97D27D3156E939800BCF5F1 /* internaltestmain.cpp */,
-				B97A915D15B9752C00D5E32C /* CMLunused.h */,
-				B9476D6317C1523F00540771 /* CMLObserver.h */,
-				B9476D6817C1526B00540771 /* CMLObserver.c */,
-				B9476F9C17C3738D00540771 /* CMLIllumination.h */,
-				B9476F9D17C3738D00540771 /* CMLIllumination.c */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		B9FC3E8D1565598600AFAC92 /* Conversions */ = {
-			isa = PBXGroup;
-			children = (
-				B9FC3E8E1565598600AFAC92 /* CMLClamp.c */,
-				B9FC3E8F1565598600AFAC92 /* CMLCMYKConversions.c */,
-				B9FC3E901565598600AFAC92 /* CMLColorMachineConversions.c */,
-				B9FC3E911565598600AFAC92 /* CMLGrayConversions.c */,
-				B9FC3E921565598600AFAC92 /* CMLHSLConversions.c */,
-				B9FC3E931565598600AFAC92 /* CMLHSVConversions.c */,
-				B9FC3E941565598600AFAC92 /* CMLInputOutputConversions.c */,
-				B9669106159A0A8100E43EF0 /* CMLNormedConversions.c */,
-				B9FC3E951565598600AFAC92 /* CMLInvert.c */,
-				B9FC3E961565598600AFAC92 /* CMLLabConversions.c */,
-				B9FC3E971565598600AFAC92 /* CMLLchConversions.c */,
-				B9FC3E981565598600AFAC92 /* CMLLuvConversions.c */,
-				B9FC3E991565598600AFAC92 /* CMLRGBConversions.c */,
-				B9FC3E9A1565598600AFAC92 /* CMLSpectralConversions.c */,
-				B9FC3E9B1565598600AFAC92 /* CMLXYZConversions.c */,
-				B9FC3E9C1565598600AFAC92 /* CMLYCbCrConversions.c */,
-				B9F9A9D315A34EB2003BFFB8 /* CMLYupvpConversions.c */,
-				B97B46F915B7701300B902CC /* CMLYuvConversions.c */,
-				B9FC3E9E1565598600AFAC92 /* CMLYxyConversions.c */,
-			);
-			path = Conversions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,16 +480,37 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9BCD789154D8DE100C76B0E /* CML.h in Headers */,
-				B9BCD78A154D8DE200C76B0E /* CMLDefinitions.h in Headers */,
-				B9BCD78D154D8DE600C76B0E /* CMLFunctions.h in Headers */,
-				B925EA1D15655518004D2462 /* CMLColorMachine.h in Headers */,
-				B9A5C98A15841A8C00C8B697 /* CMLConstants.h in Headers */,
-				B9566EEC15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */,
-				B949154D15DEF26B00CC33C0 /* CMLTypes.h in Headers */,
-				B9E38BBA17A5DBC500B39CE8 /* CMLResponseCurve.h in Headers */,
-				B9476D6417C1523F00540771 /* CMLObserver.h in Headers */,
-				B9476F9E17C3738D00540771 /* CMLIllumination.h in Headers */,
+				90BF4F57274AA0EA001FDE2A /* CMLFunctions.h in Headers */,
+				90BF4F91274AA0EA001FDE2A /* CMLYxyColor.h in Headers */,
+				90BF4F47274AA0EA001FDE2A /* CMLIllumination.h in Headers */,
+				90BF4F39274AA0EA001FDE2A /* CMLInternal.h in Headers */,
+				90BF4F7B274AA0EA001FDE2A /* CMLYupvpColor.h in Headers */,
+				90BF4F8F274AA0EA001FDE2A /* CMLYuvColor.h in Headers */,
+				90BF4F9F274AA0EA001FDE2A /* CMLunused.h in Headers */,
+				90BF4F2F274AA0EA001FDE2A /* CMLConverterMacros.h in Headers */,
+				90BF4F5D274AA0EA001FDE2A /* CMLBaseAPI.h in Headers */,
+				90BF4F77274AA0EA001FDE2A /* CMLXYZColor.h in Headers */,
+				90BF4F61274AA0EA001FDE2A /* CMLColorMachine.h in Headers */,
+				90BF4F53274AA0EA001FDE2A /* CMLObserver.h in Headers */,
+				90BF4F9B274AA0EA001FDE2A /* CMLHSVColor.h in Headers */,
+				90BF4F75274AA0EA001FDE2A /* CMLCMYKColor.h in Headers */,
+				90BF4F49274AA0EA001FDE2A /* CMLTypes.h in Headers */,
+				90BF4F95274AA0EA001FDE2A /* CMLHSLColor.h in Headers */,
+				90BF4F79274AA0EA001FDE2A /* CMLGrayColor.h in Headers */,
+				90BF4F73274AA0EA001FDE2A /* CMLRGBColor.h in Headers */,
+				90BF4F97274AA0EA001FDE2A /* CMLYCbCrColor.h in Headers */,
+				90BF4F8B274AA0EA001FDE2A /* CMLLabColor.h in Headers */,
+				90BF4F83274AA0EA001FDE2A /* CMLLchColor.h in Headers */,
+				90BF4F59274AA0EA001FDE2A /* CMLDefinitions.h in Headers */,
+				90BF4F5F274AA0EA001FDE2A /* CMLResponseCurve.h in Headers */,
+				90BF4F51274AA0EA001FDE2A /* CMLConstants.h in Headers */,
+				90BF4F89274AA0EA001FDE2A /* CMLSpectralColor.h in Headers */,
+				90BF4F63274AA0EA001FDE2A /* CMLColor.h in Headers */,
+				90BF4F3D274AA0EA001FDE2A /* CMLNormedConversions.h in Headers */,
+				90BF4F4D274AA0EA001FDE2A /* CML.h in Headers */,
+				90BF4F4F274AA0EA001FDE2A /* Timer.h in Headers */,
+				90BF4F87274AA0EA001FDE2A /* CMLLuvColor.h in Headers */,
+				90BF4F37274AA0EA001FDE2A /* CMLColorMachineState.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,12 +518,37 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9BCD79C154D8E0000C76B0E /* CML.h in Headers */,
-				B9BCD79D154D8E0000C76B0E /* CMLDefinitions.h in Headers */,
-				B9BCD7A0154D8E0300C76B0E /* CMLFunctions.h in Headers */,
-				B9C6F2FE1579628100B33E6E /* CMLColorMachine.h in Headers */,
-				B9A5C98B15841A8C00C8B697 /* CMLConstants.h in Headers */,
-				B9566EEE15AC9ECC0053DB9C /* CMLBaseAPI.h in Headers */,
+				90BF4F58274AA0EA001FDE2A /* CMLFunctions.h in Headers */,
+				90BF4F92274AA0EA001FDE2A /* CMLYxyColor.h in Headers */,
+				90BF4F48274AA0EA001FDE2A /* CMLIllumination.h in Headers */,
+				90BF4F3A274AA0EA001FDE2A /* CMLInternal.h in Headers */,
+				90BF4F7C274AA0EA001FDE2A /* CMLYupvpColor.h in Headers */,
+				90BF4F90274AA0EA001FDE2A /* CMLYuvColor.h in Headers */,
+				90BF4FA0274AA0EA001FDE2A /* CMLunused.h in Headers */,
+				90BF4F30274AA0EA001FDE2A /* CMLConverterMacros.h in Headers */,
+				90BF4F5E274AA0EA001FDE2A /* CMLBaseAPI.h in Headers */,
+				90BF4F78274AA0EA001FDE2A /* CMLXYZColor.h in Headers */,
+				90BF4F62274AA0EA001FDE2A /* CMLColorMachine.h in Headers */,
+				90BF4F54274AA0EA001FDE2A /* CMLObserver.h in Headers */,
+				90BF4F9C274AA0EA001FDE2A /* CMLHSVColor.h in Headers */,
+				90BF4F76274AA0EA001FDE2A /* CMLCMYKColor.h in Headers */,
+				90BF4F4A274AA0EA001FDE2A /* CMLTypes.h in Headers */,
+				90BF4F96274AA0EA001FDE2A /* CMLHSLColor.h in Headers */,
+				90BF4F7A274AA0EA001FDE2A /* CMLGrayColor.h in Headers */,
+				90BF4F74274AA0EA001FDE2A /* CMLRGBColor.h in Headers */,
+				90BF4F98274AA0EA001FDE2A /* CMLYCbCrColor.h in Headers */,
+				90BF4F8C274AA0EA001FDE2A /* CMLLabColor.h in Headers */,
+				90BF4F84274AA0EA001FDE2A /* CMLLchColor.h in Headers */,
+				90BF4F5A274AA0EA001FDE2A /* CMLDefinitions.h in Headers */,
+				90BF4F60274AA0EA001FDE2A /* CMLResponseCurve.h in Headers */,
+				90BF4F52274AA0EA001FDE2A /* CMLConstants.h in Headers */,
+				90BF4F8A274AA0EA001FDE2A /* CMLSpectralColor.h in Headers */,
+				90BF4F64274AA0EA001FDE2A /* CMLColor.h in Headers */,
+				90BF4F3E274AA0EA001FDE2A /* CMLNormedConversions.h in Headers */,
+				90BF4F4E274AA0EA001FDE2A /* CML.h in Headers */,
+				90BF4F50274AA0EA001FDE2A /* Timer.h in Headers */,
+				90BF4F88274AA0EA001FDE2A /* CMLLuvColor.h in Headers */,
+				90BF4F38274AA0EA001FDE2A /* CMLColorMachineState.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,23 +570,6 @@
 			name = example;
 			productName = Test;
 			productReference = B92F506F140A76D100075896 /* Test */;
-			productType = "com.apple.product-type.tool";
-		};
-		B97D27CA156E936000BCF5F1 /* InternalTest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B97D27D5156E939800BCF5F1 /* Build configuration list for PBXNativeTarget "InternalTest" */;
-			buildPhases = (
-				B97D27C8156E936000BCF5F1 /* Sources */,
-				B97D27C9156E936000BCF5F1 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B955D7D615946A3C003FCEB1 /* PBXTargetDependency */,
-			);
-			name = InternalTest;
-			productName = InternalTest;
-			productReference = B97D27CB156E936000BCF5F1 /* InternalTest */;
 			productType = "com.apple.product-type.tool";
 		};
 		B98F4D5C15E4059C0080C96E /* cppexample */ = {
@@ -495,7 +595,6 @@
 				B99F4BBB13F8AC4C009465D9 /* Headers */,
 				B99F4BBC13F8AC4C009465D9 /* Sources */,
 				B99F4BBD13F8AC4C009465D9 /* Frameworks */,
-				B9602B51154D538500095654 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -550,42 +649,17 @@
 				B99F4BBE13F8AC4C009465D9 /* libcml */,
 				B92F506E140A76D100075896 /* example */,
 				B9E8E3F0154D77D500A4C836 /* libcmldebug */,
-				B97D27CA156E936000BCF5F1 /* InternalTest */,
 				B98F4D5C15E4059C0080C96E /* cppexample */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		B9602B51154D538500095654 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "rm -rf $CONFIGURATION_BUILD_DIR/CML\nmkdir $CONFIGURATION_BUILD_DIR/CML\nrm -rf $CONFIGURATION_BUILD_DIR/CML/ColorClasses\nmkdir $CONFIGURATION_BUILD_DIR/CML/ColorClasses\ncp $PROJECT_DIR/src/CML.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLConstants.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLDefinitions.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLBaseAPI.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLTypes.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLColorMachine.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLFunctions.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLObserver.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLIllumination.h $CONFIGURATION_BUILD_DIR/CML/\ncp $PROJECT_DIR/src/CMLResponseCurve.h $CONFIGURATION_BUILD_DIR/CML/\ncp -r $PROJECT_DIR/src/ColorClasses/ $CONFIGURATION_BUILD_DIR/CML/ColorClasses\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B92F506C140A76D100075896 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B995CB7215F7CBC700EBD67E /* example.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B97D27C8156E936000BCF5F1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B97D27D4156E939800BCF5F1 /* internaltestmain.cpp in Sources */,
+				90BF4FA1274AA26F001FDE2A /* example.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,22 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B98F4D6415E405DF0080C96E /* cppexample.cpp in Sources */,
-				B98F4DA115E40A4C0080C96E /* CMLCMYKColor.cpp in Sources */,
-				B98F4DA215E40A4D0080C96E /* CMLColor.cpp in Sources */,
-				B98F4DA315E40A4E0080C96E /* CMLGrayColor.cpp in Sources */,
-				B98F4DA415E40A4E0080C96E /* CMLHSLColor.cpp in Sources */,
-				B98F4DA515E40A4F0080C96E /* CMLHSVColor.cpp in Sources */,
-				B98F4DA615E40A500080C96E /* CMLLabColor.cpp in Sources */,
-				B98F4DA715E40A510080C96E /* CMLLchColor.cpp in Sources */,
-				B98F4DA815E40A520080C96E /* CMLLuvColor.cpp in Sources */,
-				B98F4DA915E40A530080C96E /* CMLRGBColor.cpp in Sources */,
-				B98F4DAA15E40A530080C96E /* CMLSpectralColor.cpp in Sources */,
-				B98F4DAB15E40A560080C96E /* CMLXYZColor.cpp in Sources */,
-				B98F4DAC15E40A560080C96E /* CMLYCbCrColor.cpp in Sources */,
-				B98F4DAD15E40A570080C96E /* CMLYupvpColor.cpp in Sources */,
-				B98F4DAE15E40A580080C96E /* CMLYuvColor.cpp in Sources */,
-				B98F4DAF15E40A590080C96E /* CMLYxyColor.cpp in Sources */,
+				90BF4FA5274AA63A001FDE2A /* cppexample.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,41 +675,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9CA204C145D52F6009FC44A /* CMLFunctions.c in Sources */,
-				B9CA204E145D52F6009FC44A /* CMLStrings.c in Sources */,
-				B90034351462FAC700E50D75 /* CMLInternal.c in Sources */,
-				B925EA0615655470004D2462 /* CMLChromaticAdaptation.c in Sources */,
-				B925EA0715655470004D2462 /* CMLCMYKColorspace.c in Sources */,
-				B925EA0815655470004D2462 /* CMLColorMachine.c in Sources */,
-				B925EA0A15655470004D2462 /* CMLGrayColorspace.c in Sources */,
-				B925EA0B15655470004D2462 /* CMLIllumination.c in Sources */,
-				B925EA0C15655470004D2462 /* CMLLabColorspace.c in Sources */,
-				B925EA0D15655470004D2462 /* CMLObserver.c in Sources */,
-				B925EA0E15655470004D2462 /* CMLRGBColorspace.c in Sources */,
-				B9FC3E9F1565598600AFAC92 /* CMLClamp.c in Sources */,
-				B9FC3EA01565598600AFAC92 /* CMLCMYKConversions.c in Sources */,
-				B9FC3EA11565598600AFAC92 /* CMLColorMachineConversions.c in Sources */,
-				B9FC3EA21565598600AFAC92 /* CMLGrayConversions.c in Sources */,
-				B9FC3EA31565598600AFAC92 /* CMLHSLConversions.c in Sources */,
-				B9FC3EA41565598600AFAC92 /* CMLHSVConversions.c in Sources */,
-				B9FC3EA51565598600AFAC92 /* CMLInputOutputConversions.c in Sources */,
-				B9FC3EA61565598600AFAC92 /* CMLInvert.c in Sources */,
-				B9FC3EA71565598600AFAC92 /* CMLLabConversions.c in Sources */,
-				B9FC3EA81565598600AFAC92 /* CMLLchConversions.c in Sources */,
-				B9FC3EA91565598600AFAC92 /* CMLLuvConversions.c in Sources */,
-				B9FC3EAA1565598600AFAC92 /* CMLRGBConversions.c in Sources */,
-				B9FC3EAB1565598600AFAC92 /* CMLSpectralConversions.c in Sources */,
-				B9FC3EAC1565598600AFAC92 /* CMLXYZConversions.c in Sources */,
-				B9FC3EAD1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */,
-				B9FC3EAF1565598600AFAC92 /* CMLYxyConversions.c in Sources */,
-				B9E87BD21576904E00049DEF /* CMLColorMachineState.c in Sources */,
-				B966912E159A0DFC00E43EF0 /* CMLNormedConversions.c in Sources */,
-				B9F9A9D415A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */,
-				B9566EED15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */,
-				B97B46FA15B7701300B902CC /* CMLYuvConversions.c in Sources */,
-				B9E38BB917A5DBC500B39CE8 /* CMLResponseCurve.c in Sources */,
-				B9476D6917C1526B00540771 /* CMLObserver.c in Sources */,
-				B9476F9F17C3738D00540771 /* CMLIllumination.c in Sources */,
+				90BF4F93274AA0EA001FDE2A /* CMLHSVColor.cpp in Sources */,
+				90BF4F0B274AA0EA001FDE2A /* CMLXYZConversions.c in Sources */,
+				90BF4F07274AA0EA001FDE2A /* CMLLuvConversions.c in Sources */,
+				90BF4F67274AA0EA001FDE2A /* CMLLabColor.cpp in Sources */,
+				90BF4F0D274AA0EA001FDE2A /* CMLLchConversions.c in Sources */,
+				90BF4F0F274AA0EA001FDE2A /* CMLYxyConversions.c in Sources */,
+				90BF4F29274AA0EA001FDE2A /* CMLColorMachineState.c in Sources */,
+				90BF4F7F274AA0EA001FDE2A /* CMLGrayColor.cpp in Sources */,
+				90BF4F9D274AA0EA001FDE2A /* CMLYCbCrColor.cpp in Sources */,
+				90BF4F3F274AA0EA001FDE2A /* CMLRGBColorspace.c in Sources */,
+				90BF4F21274AA0EA001FDE2A /* CMLColorMachineConversions.c in Sources */,
+				90BF4F4B274AA0EA001FDE2A /* CMLStrings.c in Sources */,
+				90BF4F85274AA0EA001FDE2A /* CMLLchColor.cpp in Sources */,
+				90BF4F6D274AA0EA001FDE2A /* CMLXYZColor.cpp in Sources */,
+				90BF4F31274AA0EA001FDE2A /* CMLColorMachine.c in Sources */,
+				90BF4F01274AA0EA001FDE2A /* CMLInvert.c in Sources */,
+				90BF4EFD274AA0EA001FDE2A /* CMLInternal.c in Sources */,
+				90BF4EFB274AA0EA001FDE2A /* CMLFunctions.c in Sources */,
+				90BF4F25274AA0EA001FDE2A /* CMLYupvpConversions.c in Sources */,
+				90BF4F09274AA0EA001FDE2A /* CMLNormedConversions.c in Sources */,
+				90BF4F05274AA0EA001FDE2A /* CMLHSLConversions.c in Sources */,
+				90BF4F71274AA0EA001FDE2A /* CMLHSLColor.cpp in Sources */,
+				90BF4F6B274AA0EA001FDE2A /* CMLRGBColor.cpp in Sources */,
+				90BF4F11274AA0EA001FDE2A /* CMLSpectralConversions.c in Sources */,
+				90BF4F19274AA0EA001FDE2A /* CMLYuvConversions.c in Sources */,
+				90BF4F43274AA0EA001FDE2A /* CMLBaseAPI.c in Sources */,
+				90BF4F2B274AA0EA001FDE2A /* CMLObserver.c in Sources */,
+				90BF4F33274AA0EA001FDE2A /* CMLChromaticAdaptation.c in Sources */,
+				90BF4F45274AA0EA001FDE2A /* CMLResponseCurve.c in Sources */,
+				90BF4F2D274AA0EA001FDE2A /* CMLLabColorspace.c in Sources */,
+				90BF4F13274AA0EA001FDE2A /* CMLCMYKConversions.c in Sources */,
+				90BF4F5B274AA0EA001FDE2A /* CMLIllumination.c in Sources */,
+				90BF4F1B274AA0EA001FDE2A /* CMLRGBConversions.c in Sources */,
+				90BF4F3B274AA0EA001FDE2A /* CMLIllumination.c in Sources */,
+				90BF4F27274AA0EA001FDE2A /* CMLCMYKColorspace.c in Sources */,
+				90BF4EFF274AA0EA001FDE2A /* CMLObserver.c in Sources */,
+				90BF4F15274AA0EA001FDE2A /* CMLYCbCrConversions.c in Sources */,
+				90BF4F17274AA0EA001FDE2A /* CMLGrayConversions.c in Sources */,
+				90BF4F1F274AA0EA001FDE2A /* CMLClamp.c in Sources */,
+				90BF4F6F274AA0EA001FDE2A /* CMLSpectralColor.cpp in Sources */,
+				90BF4F81274AA0EA001FDE2A /* CMLYxyColor.cpp in Sources */,
+				90BF4F8D274AA0EA001FDE2A /* CMLYuvColor.cpp in Sources */,
+				90BF4F99274AA0EA001FDE2A /* CMLYupvpColor.cpp in Sources */,
+				90BF4F23274AA0EA001FDE2A /* CMLLabConversions.c in Sources */,
+				90BF4F35274AA0EA001FDE2A /* CMLGrayColorspace.c in Sources */,
+				90BF4F03274AA0EA001FDE2A /* CMLInputOutputConversions.c in Sources */,
+				90BF4F7D274AA0EA001FDE2A /* CMLLuvColor.cpp in Sources */,
+				90BF4F69274AA0EA001FDE2A /* CMLColor.cpp in Sources */,
+				90BF4F1D274AA0EA001FDE2A /* CMLHSVConversions.c in Sources */,
+				90BF4F65274AA0EA001FDE2A /* CMLCMYKColor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,49 +732,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E8E416154D780E00A4C836 /* CMLStrings.c in Sources */,
-				B9E8E418154D780E00A4C836 /* CMLFunctions.c in Sources */,
-				B9E8E41B154D781000A4C836 /* CMLInternal.c in Sources */,
-				B9FC3EB01565598600AFAC92 /* CMLClamp.c in Sources */,
-				B9FC3EB11565598600AFAC92 /* CMLCMYKConversions.c in Sources */,
-				B9FC3EB21565598600AFAC92 /* CMLColorMachineConversions.c in Sources */,
-				B9FC3EB31565598600AFAC92 /* CMLGrayConversions.c in Sources */,
-				B9FC3EB41565598600AFAC92 /* CMLHSLConversions.c in Sources */,
-				B9FC3EB51565598600AFAC92 /* CMLHSVConversions.c in Sources */,
-				B9FC3EB61565598600AFAC92 /* CMLInputOutputConversions.c in Sources */,
-				B9FC3EB71565598600AFAC92 /* CMLInvert.c in Sources */,
-				B9FC3EB81565598600AFAC92 /* CMLLabConversions.c in Sources */,
-				B9FC3EB91565598600AFAC92 /* CMLLchConversions.c in Sources */,
-				B9FC3EBA1565598600AFAC92 /* CMLLuvConversions.c in Sources */,
-				B9FC3EBB1565598600AFAC92 /* CMLRGBConversions.c in Sources */,
-				B9FC3EBC1565598600AFAC92 /* CMLSpectralConversions.c in Sources */,
-				B9FC3EBD1565598600AFAC92 /* CMLXYZConversions.c in Sources */,
-				B9FC3EBE1565598600AFAC92 /* CMLYCbCrConversions.c in Sources */,
-				B9FC3EC01565598600AFAC92 /* CMLYxyConversions.c in Sources */,
-				B9C6F2FF1579628600B33E6E /* CMLChromaticAdaptation.c in Sources */,
-				B9C6F3001579628600B33E6E /* CMLCMYKColorspace.c in Sources */,
-				B9C6F3011579628700B33E6E /* CMLColorMachine.c in Sources */,
-				B9C6F3021579628700B33E6E /* CMLGrayColorspace.c in Sources */,
-				B9C6F3031579628800B33E6E /* CMLIllumination.c in Sources */,
-				B9C6F3041579628900B33E6E /* CMLLabColorspace.c in Sources */,
-				B9C6F3051579628900B33E6E /* CMLObserver.c in Sources */,
-				B9C6F3061579628A00B33E6E /* CMLRGBColorspace.c in Sources */,
-				B9C6F3071579628B00B33E6E /* CMLColorMachineState.c in Sources */,
-				B966912F159A0E0000E43EF0 /* CMLNormedConversions.c in Sources */,
-				B9F9A9D515A34EB2003BFFB8 /* CMLYupvpConversions.c in Sources */,
-				B9566EEF15AC9ECC0053DB9C /* CMLBaseAPI.c in Sources */,
-				B97B46FB15B7701300B902CC /* CMLYuvConversions.c in Sources */,
+				90BF4F94274AA0EA001FDE2A /* CMLHSVColor.cpp in Sources */,
+				90BF4F0C274AA0EA001FDE2A /* CMLXYZConversions.c in Sources */,
+				90BF4F08274AA0EA001FDE2A /* CMLLuvConversions.c in Sources */,
+				90BF4F68274AA0EA001FDE2A /* CMLLabColor.cpp in Sources */,
+				90BF4F0E274AA0EA001FDE2A /* CMLLchConversions.c in Sources */,
+				90BF4F10274AA0EA001FDE2A /* CMLYxyConversions.c in Sources */,
+				90BF4F2A274AA0EA001FDE2A /* CMLColorMachineState.c in Sources */,
+				90BF4F80274AA0EA001FDE2A /* CMLGrayColor.cpp in Sources */,
+				90BF4F9E274AA0EA001FDE2A /* CMLYCbCrColor.cpp in Sources */,
+				90BF4F40274AA0EA001FDE2A /* CMLRGBColorspace.c in Sources */,
+				90BF4F22274AA0EA001FDE2A /* CMLColorMachineConversions.c in Sources */,
+				90BF4F4C274AA0EA001FDE2A /* CMLStrings.c in Sources */,
+				90BF4F86274AA0EA001FDE2A /* CMLLchColor.cpp in Sources */,
+				90BF4F6E274AA0EA001FDE2A /* CMLXYZColor.cpp in Sources */,
+				90BF4F32274AA0EA001FDE2A /* CMLColorMachine.c in Sources */,
+				90BF4F02274AA0EA001FDE2A /* CMLInvert.c in Sources */,
+				90BF4EFE274AA0EA001FDE2A /* CMLInternal.c in Sources */,
+				90BF4EFC274AA0EA001FDE2A /* CMLFunctions.c in Sources */,
+				90BF4F26274AA0EA001FDE2A /* CMLYupvpConversions.c in Sources */,
+				90BF4F0A274AA0EA001FDE2A /* CMLNormedConversions.c in Sources */,
+				90BF4F06274AA0EA001FDE2A /* CMLHSLConversions.c in Sources */,
+				90BF4F72274AA0EA001FDE2A /* CMLHSLColor.cpp in Sources */,
+				90BF4F6C274AA0EA001FDE2A /* CMLRGBColor.cpp in Sources */,
+				90BF4F12274AA0EA001FDE2A /* CMLSpectralConversions.c in Sources */,
+				90BF4F1A274AA0EA001FDE2A /* CMLYuvConversions.c in Sources */,
+				90BF4F44274AA0EA001FDE2A /* CMLBaseAPI.c in Sources */,
+				90BF4F2C274AA0EA001FDE2A /* CMLObserver.c in Sources */,
+				90BF4F34274AA0EA001FDE2A /* CMLChromaticAdaptation.c in Sources */,
+				90BF4F46274AA0EA001FDE2A /* CMLResponseCurve.c in Sources */,
+				90BF4F2E274AA0EA001FDE2A /* CMLLabColorspace.c in Sources */,
+				90BF4F14274AA0EA001FDE2A /* CMLCMYKConversions.c in Sources */,
+				90BF4F5C274AA0EA001FDE2A /* CMLIllumination.c in Sources */,
+				90BF4F1C274AA0EA001FDE2A /* CMLRGBConversions.c in Sources */,
+				90BF4F3C274AA0EA001FDE2A /* CMLIllumination.c in Sources */,
+				90BF4F28274AA0EA001FDE2A /* CMLCMYKColorspace.c in Sources */,
+				90BF4F00274AA0EA001FDE2A /* CMLObserver.c in Sources */,
+				90BF4F16274AA0EA001FDE2A /* CMLYCbCrConversions.c in Sources */,
+				90BF4F18274AA0EA001FDE2A /* CMLGrayConversions.c in Sources */,
+				90BF4F20274AA0EA001FDE2A /* CMLClamp.c in Sources */,
+				90BF4F70274AA0EA001FDE2A /* CMLSpectralColor.cpp in Sources */,
+				90BF4F82274AA0EA001FDE2A /* CMLYxyColor.cpp in Sources */,
+				90BF4F8E274AA0EA001FDE2A /* CMLYuvColor.cpp in Sources */,
+				90BF4F9A274AA0EA001FDE2A /* CMLYupvpColor.cpp in Sources */,
+				90BF4F24274AA0EA001FDE2A /* CMLLabConversions.c in Sources */,
+				90BF4F36274AA0EA001FDE2A /* CMLGrayColorspace.c in Sources */,
+				90BF4F04274AA0EA001FDE2A /* CMLInputOutputConversions.c in Sources */,
+				90BF4F7E274AA0EA001FDE2A /* CMLLuvColor.cpp in Sources */,
+				90BF4F6A274AA0EA001FDE2A /* CMLColor.cpp in Sources */,
+				90BF4F1E274AA0EA001FDE2A /* CMLHSVConversions.c in Sources */,
+				90BF4F66274AA0EA001FDE2A /* CMLCMYKColor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B955D7D615946A3C003FCEB1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B9E8E3F0154D77D500A4C836 /* libcmldebug */;
-			targetProxy = B955D7D515946A3C003FCEB1 /* PBXContainerItemProxy */;
-		};
 		B972DAF9142347940015D6F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B99F4BBE13F8AC4C009465D9 /* libcml */;
@@ -712,16 +799,15 @@
 		B92F5071140A76D100075896 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lcml";
 				PRODUCT_NAME = Test;
 			};
 			name = Debug;
@@ -729,16 +815,15 @@
 		B92F5072140A76D100075896 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lcml";
 				PRODUCT_NAME = Test;
 			};
 			name = Release;
@@ -746,8 +831,8 @@
 		B93BC24A157959260095CAE6 /* Optimize */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = ppc;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_ENABLE_SYMBOL_SEPARATION = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -780,7 +865,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -792,8 +877,7 @@
 		B93BC24B157959260095CAE6 /* Optimize */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -806,6 +890,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				GCC_WARN_SHADOW = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = libcml;
 				PROVISIONING_PROFILE = "";
@@ -817,8 +902,7 @@
 		B93BC24C157959260095CAE6 /* Optimize */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -826,8 +910,8 @@
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-lcml";
 				PRODUCT_NAME = Test;
 			};
 			name = Optimize;
@@ -836,7 +920,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 0.9;
@@ -847,6 +931,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -857,71 +942,11 @@
 			};
 			name = Optimize;
 		};
-		B93BC24E157959260095CAE6 /* Optimize */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = "-lfxAPI";
-				PRODUCT_NAME = InternalTest;
-			};
-			name = Optimize;
-		};
-		B97D27CD156E936000BCF5F1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = "-lfxAPI";
-				PRODUCT_NAME = InternalTest;
-			};
-			name = Debug;
-		};
-		B97D27CE156E936000BCF5F1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_PEDANTIC = NO;
-				HEADER_SEARCH_PATHS = "/usr/local/include/**";
-				INSTALL_PATH = /usr/local/bin;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
-				OTHER_LDFLAGS = "-lfxAPI";
-				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
-				PRODUCT_NAME = InternalTest;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		B98F4D5F15E4059C0080C96E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -929,7 +954,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = "-lcml";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = cppexample;
 			};
 			name = Debug;
@@ -938,11 +963,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "-";
 				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = "-lcml";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = cppexample;
 			};
 			name = Optimize;
@@ -951,13 +977,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = "-lcml";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = cppexample;
 				ZERO_LINK = NO;
 			};
@@ -966,8 +993,8 @@
 		B99F4BA613F8ABFF009465D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = ppc;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_ENABLE_SYMBOL_SEPARATION = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1000,7 +1027,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1012,8 +1039,8 @@
 		B99F4BA713F8ABFF009465D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = ppc;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Manderim GmbH";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "-";
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_DEBUGGING_SYMBOLS = full;
@@ -1051,7 +1078,7 @@
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -1063,8 +1090,7 @@
 		B99F4BC013F8AC4D009465D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
@@ -1076,6 +1102,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				GCC_WARN_SHADOW = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = libcml;
 				PROVISIONING_PROFILE = "";
@@ -1087,8 +1114,7 @@
 		B99F4BC113F8AC4D009465D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -1102,6 +1128,7 @@
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				GCC_WARN_SHADOW = YES;
 				LD_GENERATE_MAP_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility-inlines-hidden";
 				PRODUCT_NAME = libcml;
@@ -1115,7 +1142,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 0.9;
@@ -1126,6 +1153,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1140,7 +1168,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1151,6 +1179,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				INSTALL_PATH = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1172,16 +1201,6 @@
 				B92F5071140A76D100075896 /* Debug */,
 				B93BC24C157959260095CAE6 /* Optimize */,
 				B92F5072140A76D100075896 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B97D27D5156E939800BCF5F1 /* Build configuration list for PBXNativeTarget "InternalTest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B97D27CD156E936000BCF5F1 /* Debug */,
-				B93BC24E157959260095CAE6 /* Optimize */,
-				B97D27CE156E936000BCF5F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
