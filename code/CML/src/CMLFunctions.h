@@ -28,7 +28,7 @@
 // The input to these functions is expected to be in the unit [nanometer].
 
 CMLAPI CMLFunction* CMLcreateBlackBody(float temperature);
-CMLAPI CMLFunction* CMLcreateCIEAIlluminant();
+CMLAPI CMLFunction* CMLcreateCIEAIlluminant(void);
 CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
 
 // Response Curves:
@@ -39,16 +39,16 @@ CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
 
-CMLAPI CMLFunction* CMLcreateLinearResponse();
+CMLAPI CMLFunction* CMLcreateLinearResponse(void);
 CMLAPI CMLFunction* CMLcreateGammaResponse(float gamma);
 CMLAPI CMLFunction* CMLcreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
 CMLAPI CMLFunction* CMLcreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* CMLcreatesRGBToXYZResponse();
-CMLAPI CMLFunction* CMLcreateXYZTosRGBResponse();
-CMLAPI CMLFunction* CMLcreateYToLStarResponse();
-CMLAPI CMLFunction* CMLcreateLStarToYResponse();
-CMLAPI CMLFunction* CMLcreateYToLStarStandardResponse();
-CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse();
+CMLAPI CMLFunction* CMLcreatesRGBToXYZResponse(void);
+CMLAPI CMLFunction* CMLcreateXYZTosRGBResponse(void);
+CMLAPI CMLFunction* CMLcreateYToLStarResponse(void);
+CMLAPI CMLFunction* CMLcreateLStarToYResponse(void);
+CMLAPI CMLFunction* CMLcreateYToLStarStandardResponse(void);
+CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse(void);
 
 // Filter Functions:
 // Use these functions to filter spectra. Filters are used for componentwise
