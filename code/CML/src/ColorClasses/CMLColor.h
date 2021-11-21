@@ -6,7 +6,7 @@
 // of the author of this software is prohibited and any liability is disclamed.
 // Terms of a separate contract may apply.
 
-#include "CML.h"
+#include "../CML.h"
 
 
 #if CML_COMPILE_ON_MAC

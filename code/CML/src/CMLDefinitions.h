@@ -75,7 +75,7 @@
 
 #if defined __STDC_VERSION__
   #if __STDC_VERSION__ >= 201112L // This indicates the C++11 standard
-    #define CML_NULL (void*)NULL
+    #define CML_NULL NULL
   #endif
 #endif
 #ifndef CML_NULL

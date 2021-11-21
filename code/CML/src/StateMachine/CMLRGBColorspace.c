@@ -70,80 +70,80 @@ CMLHIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBER
 // x * linscale                              if x < split
 // split will be computed automatically.
 
-CMLHIDDEN static const float rgbspaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
-  { 2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
-    2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
-    2.f + 51.f / 256.f, 0.f, 1.f, 0.f},   // CML_RGB_ADOBE_98
-  { 1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_APPLE
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BEST
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BETA
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BRUCE
-  { 1.0f              , 0.f, 1.f, 0.f,
-    1.0f              , 0.f, 1.f, 0.f,
-    1.0f              , 0.f, 1.f, 0.f},   // CML_RGB_CIE
-  { 1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_COLORMATCH
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_DON4
-  { 1.9f              , 0.f, 1.f, 0.f,
-    1.9f              , 0.f, 1.f, 0.f,
-    1.9f              , 0.f, 1.f, 0.f},   // CML_RGB_EBU_MONITOR
-  { 1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_ECI
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_EKTA_SPACE_PS5
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_HDTV
-  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_525
-  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_625
-  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
-    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_709
-  { 1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f,
-    1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f,
-    1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f},   // CML_RGB_REC_BT_2020
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_KODAK_DC
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_NTSC_53
-  { 2.2f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.2f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.2f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_PAL_SECAM_EBU
-  { 1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f,
-    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_ROMM_PROPHOTO
-  { 2.2f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.2f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.2f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SMPTE_C
-  { 2.4f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.4f              , 0.055f, 12.92f, 0.0031306684425f,
-    2.4f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SRGB
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_WIDE_GAMUT
-  { 2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f,
-    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_CUSTOM
-};
+//CMLHIDDEN static const float rgbspaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
+//  { 2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
+//    2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
+//    2.f + 51.f / 256.f, 0.f, 1.f, 0.f},   // CML_RGB_ADOBE_98
+//  { 1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_APPLE
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BEST
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BETA
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_BRUCE
+//  { 1.0f              , 0.f, 1.f, 0.f,
+//    1.0f              , 0.f, 1.f, 0.f,
+//    1.0f              , 0.f, 1.f, 0.f},   // CML_RGB_CIE
+//  { 1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_COLORMATCH
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_DON4
+//  { 1.9f              , 0.f, 1.f, 0.f,
+//    1.9f              , 0.f, 1.f, 0.f,
+//    1.9f              , 0.f, 1.f, 0.f},   // CML_RGB_EBU_MONITOR
+//  { 1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_ECI
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_EKTA_SPACE_PS5
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_HDTV
+//  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_525
+//  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_625
+//  { 1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f,
+//    1.f / 0.45f       , 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_709
+//  { 1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f,
+//    1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f,
+//    1.f / 0.45f       , 0.0993f, 4.5f, 0.0181f},   // CML_RGB_REC_BT_2020
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_KODAK_DC
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_NTSC_53
+//  { 2.2f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.2f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.2f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_PAL_SECAM_EBU
+//  { 1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f,
+//    1.8f              , 0.f, 1.f, 0.f},   // CML_RGB_ROMM_PROPHOTO
+//  { 2.2f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.2f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.2f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SMPTE_C
+//  { 2.4f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.4f              , 0.055f, 12.92f, 0.0031306684425f,
+//    2.4f              , 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SRGB
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_WIDE_GAMUT
+//  { 2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f,
+//    2.2f              , 0.f, 1.f, 0.f},   // CML_RGB_CUSTOM
+//};
 
 // array usage:
 // xr, yr, xg, yg, xb, yb

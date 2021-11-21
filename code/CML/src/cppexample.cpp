@@ -6,7 +6,7 @@
 
 
 #include <stdio.h>
-#include "CMLColor.h"
+#include <ColorClasses/CMLColor.h>
 
 
 int main(){
