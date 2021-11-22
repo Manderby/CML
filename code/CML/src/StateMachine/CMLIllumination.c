@@ -464,11 +464,11 @@ CML_API void CMLgetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitepointYx
 }
 
 
-CML_API void CMLsetWhitePointYxy(CMLColorMachine* cm, const float* Yxy){
+CML_API void CMLsetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
 
     CMLObserverType newobservertype = cmlGetObserverType(&(cm->observer));
     float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitepoint(CML_NULL, Yxy);
+    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitepoint(CML_NULL, yxy);
     cmlClearObserver(&(cm->observer));
     cmlCreateObserverWithIllumination(&(cm->observer), newobservertype, newillumination, newcolorimetricBase);
     cmlClearIllumination(newillumination);
@@ -476,7 +476,7 @@ CML_API void CMLsetWhitePointYxy(CMLColorMachine* cm, const float* Yxy){
 //  cm->illumination.state = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
 //  cmlReleaseFunction(cm->illumination.spectrum);
 //  cm->illumination.spectrum = CML_NULL;
-//  cmlCpy3(cm->illumination.whitepointYxy, Yxy);
+//  cmlCpy3(cm->illumination.whitepointYxy, yxy);
   CMLInternalrecomputeIllumination(cm);
 }
 

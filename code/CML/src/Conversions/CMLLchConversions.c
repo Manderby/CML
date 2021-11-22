@@ -19,15 +19,15 @@ CML_API void CMLLchtoLch (const CMLColorMachine* cm, CMLOutput Lchd , CMLInput L
 // Lch to anything
 // //////////////////////////
 
-CML_API void CMLLchtoXYZ (const CMLColorMachine* cm, CMLOutput XYZ , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(XYZ, Lch, CML_XYZ_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoXYZ (const CMLColorMachine* cm, CMLOutput xyz , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(xyz, lch, CML_XYZ_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoYuv (const CMLColorMachine* cm, CMLOutput Yuv , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(Yuv, Lch, CML_Yuv_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoYuv (const CMLColorMachine* cm, CMLOutput yuv , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(yuv, lch, CML_Yuv_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoYxy_SB(cm, out, count, floatalign);
@@ -36,22 +36,22 @@ CML_API void CMLLchtoYuv (const CMLColorMachine* cm, CMLOutput Yuv , CMLInput Lc
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoYxy (const CMLColorMachine* cm, CMLOutput Yxy , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(Yxy, Lch, CML_Yxy_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoYxy (const CMLColorMachine* cm, CMLOutput yxy , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(yxy, lch, CML_Yxy_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoYxy_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoLab (const CMLColorMachine* cm, CMLOutput Lab , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(Lab, Lch, CML_Lab_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoLab (const CMLColorMachine* cm, CMLOutput lab , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(lab, lch, CML_Lab_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoLuv (const CMLColorMachine* cm, CMLOutput Luv , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(Luv, Lch, CML_Luv_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoLuv (const CMLColorMachine* cm, CMLOutput luv , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(luv, lch, CML_Luv_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoYxy_SB(cm, out, count, floatalign);
@@ -60,8 +60,8 @@ CML_API void CMLLchtoLuv (const CMLColorMachine* cm, CMLOutput Luv , CMLInput Lc
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoYupvp (const CMLColorMachine* cm, CMLOutput Yupvp , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(Yupvp, Lch, CML_Yupvp_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(yupvp, lch, CML_Yupvp_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoYxy_SB(cm, out, count, floatalign);
@@ -69,16 +69,16 @@ CML_API void CMLLchtoYupvp (const CMLColorMachine* cm, CMLOutput Yupvp , CMLInpu
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoRGB (const CMLColorMachine* cm, CMLOutput RGB , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(RGB, Lch, CML_RGB_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoRGB (const CMLColorMachine* cm, CMLOutput rgb , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(rgb, lch, CML_RGB_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoRGB_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoYCbCr (const CMLColorMachine* cm, CMLOutput YCbCr , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(YCbCr, Lch, CML_YCbCr_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(ycbcr, lch, CML_YCbCr_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoRGB_SB(cm, out, count, floatalign);
@@ -86,8 +86,8 @@ CML_API void CMLLchtoYCbCr (const CMLColorMachine* cm, CMLOutput YCbCr , CMLInpu
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoHSV (const CMLColorMachine* cm, CMLOutput HSV , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(HSV, Lch, CML_HSV_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoHSV (const CMLColorMachine* cm, CMLOutput hsv , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(hsv, lch, CML_HSV_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoRGB_SB(cm, out, count, floatalign);
@@ -95,8 +95,8 @@ CML_API void CMLLchtoHSV (const CMLColorMachine* cm, CMLOutput HSV , CMLInput Lc
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoHSL (const CMLColorMachine* cm, CMLOutput HSL , CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(HSL, Lch, CML_HSL_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoHSL (const CMLColorMachine* cm, CMLOutput hsl , CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(hsl, lch, CML_HSL_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoRGB_SB(cm, out, count, floatalign);
@@ -105,8 +105,8 @@ CML_API void CMLLchtoHSL (const CMLColorMachine* cm, CMLOutput HSL , CMLInput Lc
   CML_CONVERTER_RETURN;
 }
 
-CML_API void CMLLchtoCMYK(const CMLColorMachine* cm, CMLOutput CMYK, CMLInput Lch , CMLSize count){
-  CML_CONVERTER_INOUT_PARAMETER(CMYK, Lch, CML_CMYK_NUMCHANNELS, CML_Lch_NUMCHANNELS);
+CML_API void CMLLchtoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput lch , CMLSize count){
+  CML_CONVERTER_INOUT_PARAMETER(cmyk, lch, CML_CMYK_NUMCHANNELS, CML_Lch_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMLchtoLab);
   (*cm->LabtoXYZ_SB)(cm, out, count, floatalign);
   CMLCMXYZtoRGB_SB(cm, out, count, floatalign);

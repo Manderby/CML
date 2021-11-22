@@ -16,8 +16,8 @@ YuvColor::YuvColor(const Color& anycolor){
   operator =(anycolor);
 }
 
-YuvColor::YuvColor(const YuvColor& Yuv){
-  operator =(Yuv);
+YuvColor::YuvColor(const YuvColor& yuv){
+  operator =(yuv);
 }
 
 void YuvColor::init(float Y, float U, float V){
@@ -29,8 +29,8 @@ YuvColor& YuvColor::operator =(const Color& anycolor){
   return *this;
 }
 
-YuvColor& YuvColor::operator =(const YuvColor& Yuv){
-  cmlCpy3(color, Yuv);
+YuvColor& YuvColor::operator =(const YuvColor& yuv){
+  cmlCpy3(color, yuv);
   return *this;
 }
 
@@ -91,20 +91,20 @@ YuvColor& YuvColor::operator /=(const float divisor){
   return *this;
 }
 
-float YuvColor::dot(const YuvColor& Yuv) const {
-  return cmlDot3(color, Yuv.color);
+float YuvColor::dot(const YuvColor& yuv) const {
+  return cmlDot3(color, yuv.color);
 }
 
 float YuvColor::length() const {
   return cmlLength3(color);
 }
 
-CMLBool YuvColor::operator ==(const YuvColor& Yuv) const {
-  return cmlEqual3(color, Yuv.color);
+CMLBool YuvColor::operator ==(const YuvColor& yuv) const {
+  return cmlEqual3(color, yuv.color);
 }
 
-CMLBool YuvColor::operator !=(const YuvColor& Yuv) const {
-  return !cmlEqual3(color, Yuv.color);
+CMLBool YuvColor::operator !=(const YuvColor& yuv) const {
+  return !cmlEqual3(color, yuv.color);
 }
 
 // ///////////////////////////////////////

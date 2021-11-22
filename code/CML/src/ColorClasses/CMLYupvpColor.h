@@ -22,11 +22,11 @@ public:
 
   YupvpColor(float Y, float U, float V);
   YupvpColor(const Color& anycolor);
-  YupvpColor(const YupvpColor& Yupvp);
+  YupvpColor(const YupvpColor& yupvp);
 
   void init(float Y, float U, float V);
   YupvpColor& operator =(const Color& anycolor);
-  YupvpColor& operator =(const YupvpColor& Yupvp);
+  YupvpColor& operator =(const YupvpColor& yupvp);
 
   // ///////////////////////////////////////
   // Mathematical operators in cartesian space
@@ -45,11 +45,11 @@ public:
   YupvpColor& operator *=(float factor);
   YupvpColor& operator /=(float divisor);
 
-  float dot(const YupvpColor& Yupvp) const;
+  float dot(const YupvpColor& yupvp) const;
   float length() const;
 
-  CMLBool operator ==(const YupvpColor& Yupvp) const;
-  CMLBool operator !=(const YupvpColor& Yupvp) const;
+  CMLBool operator ==(const YupvpColor& yupvp) const;
+  CMLBool operator !=(const YupvpColor& yupvp) const;
 
   // ///////////////////////////////////////
   // various methods

@@ -1389,7 +1389,7 @@
 
 
 
-//CML_INLINE static void SpectralBlanktoDensityDivisor(float* CML_RESTRICT CMYK, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
+//CML_INLINE static void SpectralBlanktoDensityDivisor(float* CML_RESTRICT cmyk, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
 //  float blankval;
 //  float illuminantvalue;
 //  float imin;
@@ -1408,10 +1408,10 @@
 //
 //  switch(densitycomputation){
 //  case CML_DENSITY_NARROW_BAND:
-//    CMYK[0] = (*blank)(620.f);
-//    CMYK[1] = (*blank)(530.f);
-//    CMYK[2] = (*blank)(430.f);
-//    CMYK[3] = CMYK[0] * 144.f + CMYK[1] * 79.f + CMYK[2] * 25.f;
+//    cmyk[0] = (*blank)(620.f);
+//    cmyk[1] = (*blank)(530.f);
+//    cmyk[2] = (*blank)(430.f);
+//    cmyk[3] = cmyk[0] * 144.f + cmyk[1] * 79.f + cmyk[2] * 25.f;
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
 //    arraydensityfilterC.init(densityfilterC, CML_FALSE, CML_DENSITYFILTER_NUM); break;
@@ -1425,15 +1425,15 @@
 //    imin = CML_DEFAULT_INTEGRATION_MIN;
 //    imax = CML_DEFAULT_INTEGRATION_MAX;
 //    samplecount = CMLgetSampleCount(CML_DEFAULT_INTEGRATION_MIN, CML_DEFAULT_INTEGRATION_MAX, CML_DEFAULT_INTEGRATION_STEPSIZE);
-//    cmlSet4(CMYK, 0.f, 0.f, 0.f, 0.f);
+//    cmlSet4(cmyk, 0.f, 0.f, 0.f, 0.f);
 //    for(istep = 0; istep < samplecount; istep++){
 //      float l = imin + (((imax - imin) * istep) / (samplecount - 1));
 //      illuminantvalue = ailluminant(l);
 //      blankval = (*blank)(l);
-//      CMYK[0] += blankval * illuminantvalue * filterC(l);
-//      CMYK[1] += blankval * illuminantvalue * filterM(l);
-//      CMYK[2] += blankval * illuminantvalue * filterY(l);
-//      CMYK[3] += blankval * illuminantvalue * filterK(l);
+//      cmyk[0] += blankval * illuminantvalue * filterC(l);
+//      cmyk[1] += blankval * illuminantvalue * filterM(l);
+//      cmyk[2] += blankval * illuminantvalue * filterY(l);
+//      cmyk[3] += blankval * illuminantvalue * filterK(l);
 //    }
 //    break;
 //  default: break;
@@ -1441,7 +1441,7 @@
 //}
 //
 //
-//void ColorMachine::SpectralColortoDensityCMYK(float* CML_RESTRICT CMYK, FunctionStorage const * CML_RESTRICT color, FunctionStorage const * CML_RESTRICT blank) const{
+//void ColorMachine::SpectralColortoDensityCMYK(float* CML_RESTRICT cmyk, FunctionStorage const * CML_RESTRICT color, FunctionStorage const * CML_RESTRICT blank) const{
 //  float colorvalue[4];
 //  float blankvalue[4];
 //  float filtervalue;
@@ -1470,10 +1470,10 @@
 //    colorvalue[0] = (**color)(620.f);
 //    colorvalue[1] = (**color)(530.f);
 //    colorvalue[2] = (**color)(430.f);
-//    CMYK[0] = - log10f(colorvalue[0] / blankvalue[0]);
-//    CMYK[1] = - log10f(colorvalue[1] / blankvalue[1]);
-//    CMYK[2] = - log10f(colorvalue[2] / blankvalue[2]);
-//    CMYK[3] = - log10f(   (colorvalue[0] * 144.f + colorvalue[1] * 79.f + colorvalue[2] * 25.f)
+//    cmyk[0] = - log10f(colorvalue[0] / blankvalue[0]);
+//    cmyk[1] = - log10f(colorvalue[1] / blankvalue[1]);
+//    cmyk[2] = - log10f(colorvalue[2] / blankvalue[2]);
+//    cmyk[3] = - log10f(   (colorvalue[0] * 144.f + colorvalue[1] * 79.f + colorvalue[2] * 25.f)
 //                        / blankvalue[3]);
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
@@ -1501,10 +1501,10 @@
 //      filtervalue = illuminantvalue * filterK(l);
 //      colorvalue[3] += colorval * filtervalue;
 //    }
-//    CMYK[0] = - log10f(colorvalue[0] / blankvalue[0]);
-//    CMYK[1] = - log10f(colorvalue[1] / blankvalue[1]);
-//    CMYK[2] = - log10f(colorvalue[2] / blankvalue[2]);
-//    CMYK[3] = - log10f(colorvalue[3] / blankvalue[3]);
+//    cmyk[0] = - log10f(colorvalue[0] / blankvalue[0]);
+//    cmyk[1] = - log10f(colorvalue[1] / blankvalue[1]);
+//    cmyk[2] = - log10f(colorvalue[2] / blankvalue[2]);
+//    cmyk[3] = - log10f(colorvalue[3] / blankvalue[3]);
 //    break;
 //  default: break;
 //  }

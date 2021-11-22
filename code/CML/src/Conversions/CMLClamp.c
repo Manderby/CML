@@ -23,15 +23,15 @@ CML_HIDDEN CML_INLINE static void InternalclampYxy(float* yxy){
   CMLClampToRange(&(yxy[1]), CML_Yxy_x_MIN, CML_Yxy_x_MAX);
   CMLClampToRange(&(yxy[2]), CML_Yxy_y_MIN, CML_Yxy_y_MAX);
 }
-CML_HIDDEN CML_INLINE static void InternalclampYuv(float* Yuv){
-  CMLClampToRange(&(Yuv[0]), CML_Yuv_Y_MIN, CML_Yuv_Y_MAX);
-  CMLClampToRange(&(Yuv[1]), CML_Yuv_u_MIN, CML_Yuv_u_MAX);
-  CMLClampToRange(&(Yuv[2]), CML_Yuv_v_MIN, CML_Yuv_v_MAX);
+CML_HIDDEN CML_INLINE static void InternalclampYuv(float* yuv){
+  CMLClampToRange(&(yuv[0]), CML_Yuv_Y_MIN, CML_Yuv_Y_MAX);
+  CMLClampToRange(&(yuv[1]), CML_Yuv_u_MIN, CML_Yuv_u_MAX);
+  CMLClampToRange(&(yuv[2]), CML_Yuv_v_MIN, CML_Yuv_v_MAX);
 }
-CML_HIDDEN CML_INLINE static void InternalclampYupvp(float* Yuv){
-  CMLClampToRange(&(Yuv[0]), CML_Yupvp_Y_MIN, CML_Yupvp_Y_MAX);
-  CMLClampToRange(&(Yuv[1]), CML_Yupvp_up_MIN, CML_Yupvp_up_MAX);
-  CMLClampToRange(&(Yuv[2]), CML_Yupvp_vp_MIN, CML_Yupvp_vp_MAX);
+CML_HIDDEN CML_INLINE static void InternalclampYupvp(float* yuv){
+  CMLClampToRange(&(yuv[0]), CML_Yupvp_Y_MIN, CML_Yupvp_Y_MAX);
+  CMLClampToRange(&(yuv[1]), CML_Yupvp_up_MIN, CML_Yupvp_up_MAX);
+  CMLClampToRange(&(yuv[2]), CML_Yupvp_vp_MIN, CML_Yupvp_vp_MAX);
 }
 CML_HIDDEN CML_INLINE static void InternalclampLab(float* lab){
   CMLClampToRange(&(lab[0]), CML_Lab_L_MIN, CML_Lab_L_MAX);
@@ -104,17 +104,17 @@ CML_API void CMLclampYxy  (CMLInputOutput yxy  , CMLSize count){
     inout += 3;
   }
 }
-CML_API void CMLclampYuv  (CMLInputOutput Yuv  , CMLSize count){
+CML_API void CMLclampYuv  (CMLInputOutput yuv  , CMLSize count){
   CMLSize i;
-  float* inout = (float*)Yuv;
+  float* inout = (float*)yuv;
   for(i=0; i<count; i++){
     InternalclampYuv  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampYupvp  (CMLInputOutput Yupvp  , CMLSize count){
+CML_API void CMLclampYupvp  (CMLInputOutput yupvp  , CMLSize count){
   CMLSize i;
-  float* inout = (float*)Yupvp;
+  float* inout = (float*)yupvp;
   for(i=0; i<count; i++){
     InternalclampYupvp  (inout);
     inout += 3;

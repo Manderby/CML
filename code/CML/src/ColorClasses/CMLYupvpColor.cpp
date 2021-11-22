@@ -16,8 +16,8 @@ YupvpColor::YupvpColor(const Color& anycolor){
   operator =(anycolor);
 }
 
-YupvpColor::YupvpColor(const YupvpColor& Yupvp){
-  operator =(Yupvp);
+YupvpColor::YupvpColor(const YupvpColor& yupvp){
+  operator =(yupvp);
 }
 
 void YupvpColor::init(float Y, float U, float V){
@@ -29,8 +29,8 @@ YupvpColor& YupvpColor::operator =(const Color& anycolor){
   return *this;
 }
 
-YupvpColor& YupvpColor::operator =(const YupvpColor& Yupvp){
-  cmlCpy3(color, Yupvp);
+YupvpColor& YupvpColor::operator =(const YupvpColor& yupvp){
+  cmlCpy3(color, yupvp);
   return *this;
 }
 
@@ -91,20 +91,20 @@ YupvpColor& YupvpColor::operator /=(const float divisor){
   return *this;
 }
 
-float YupvpColor::dot(const YupvpColor& Yupvp) const {
-  return cmlDot3(color, Yupvp.color);
+float YupvpColor::dot(const YupvpColor& yupvp) const {
+  return cmlDot3(color, yupvp.color);
 }
 
 float YupvpColor::length() const {
   return cmlLength3(color);
 }
 
-CMLBool YupvpColor::operator ==(const YupvpColor& Yupvp) const {
-  return cmlEqual3(color, Yupvp.color);
+CMLBool YupvpColor::operator ==(const YupvpColor& yupvp) const {
+  return cmlEqual3(color, yupvp.color);
 }
 
-CMLBool YupvpColor::operator !=(const YupvpColor& Yupvp) const {
-  return !cmlEqual3(color, Yupvp.color);
+CMLBool YupvpColor::operator !=(const YupvpColor& yupvp) const {
+  return !cmlEqual3(color, yupvp.color);
 }
 
 // ///////////////////////////////////////

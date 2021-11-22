@@ -153,84 +153,84 @@ CML_HIDDEN void CMLInternalrecomputeAdamsChromaticityValenceSpace(CMLColorMachin
 CML_HIDDEN void CMLInternalrecomputeRGBResponses(CMLColorMachine* cm);
 CML_HIDDEN void CMLInternalrecomputeRGBColorspace(CMLColorMachine* cm);
 
-CML_HIDDEN CML_INLINE static void CMLCMXYZtoYxy   (const CMLColorMachine* cm, float* CML_RESTRICT Yxy , const float* CML_RESTRICT XYZ, CMLuint32 count)
-  {cmlInternalXYZtoYxy(Yxy, XYZ, cmlGetReferenceWhitepointYxy(&(cm->observer)), count);}
+CML_HIDDEN CML_INLINE static void CMLCMXYZtoYxy   (const CMLColorMachine* cm, float* CML_RESTRICT yxy , const float* CML_RESTRICT xyz, CMLuint32 count)
+  {cmlInternalXYZtoYxy(yxy, xyz, cmlGetReferenceWhitepointYxy(&(cm->observer)), count);}
 CML_HIDDEN CML_INLINE static void CMLCMXYZtoYxy_SB   (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalXYZtoYxy_SB(buf, cmlGetReferenceWhitepointYxy(&(cm->observer)), count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYxytoXYZ   (const CMLColorMachine* cm, float* CML_RESTRICT XYZ , const float* CML_RESTRICT Yxy, CMLuint32 count)
-  {cmlInternalYxytoXYZ(XYZ, Yxy, cmlGetReferenceWhitepointXYZ(&(cm->observer)), count);}
+CML_HIDDEN CML_INLINE static void CMLCMYxytoXYZ   (const CMLColorMachine* cm, float* CML_RESTRICT xyz , const float* CML_RESTRICT yxy, CMLuint32 count)
+  {cmlInternalYxytoXYZ(xyz, yxy, cmlGetReferenceWhitepointXYZ(&(cm->observer)), count);}
 CML_HIDDEN CML_INLINE static void CMLCMYxytoXYZ_SB(const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalYxytoXYZ_SB(buf, cmlGetReferenceWhitepointXYZ(&(cm->observer)), count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYxytoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT Yupvp , const float* CML_RESTRICT Yxy, CMLuint32 count)
-  {cmlInternalYxytoYupvp(Yupvp, Yxy, cmlGetReferenceWhitepointYupvp(&(cm->observer)), count);}
+CML_HIDDEN CML_INLINE static void CMLCMYxytoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT yupvp , const float* CML_RESTRICT yxy, CMLuint32 count)
+  {cmlInternalYxytoYupvp(yupvp, yxy, cmlGetReferenceWhitepointYupvp(&(cm->observer)), count);}
 CML_HIDDEN CML_INLINE static void CMLCMYxytoYupvp_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalYxytoYupvp_SB(buf, cmlGetReferenceWhitepointYupvp(&(cm->observer)), count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYupvptoYxy (const CMLColorMachine* cm, float* CML_RESTRICT Yxy , const float* CML_RESTRICT Yupvp, CMLuint32 count)
-  {cmlInternalYupvptoYxy(Yxy, Yupvp, cmlGetReferenceWhitepointYxy(&(cm->observer)), count);}
+CML_HIDDEN CML_INLINE static void CMLCMYupvptoYxy (const CMLColorMachine* cm, float* CML_RESTRICT yxy , const float* CML_RESTRICT yupvp, CMLuint32 count)
+  {cmlInternalYupvptoYxy(yxy, yupvp, cmlGetReferenceWhitepointYxy(&(cm->observer)), count);}
 CML_HIDDEN CML_INLINE static void CMLCMYupvptoYxy_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalYupvptoYxy_SB(buf, cmlGetReferenceWhitepointYxy(&(cm->observer)), count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYupvptoYuv (const CMLColorMachine* cm, float* CML_RESTRICT Yuv , const float* CML_RESTRICT Yupvp, CMLuint32 count)
-  {cm = cm; cmlInternalYupvptoYuv(Yuv, Yupvp, count);}
+CML_HIDDEN CML_INLINE static void CMLCMYupvptoYuv (const CMLColorMachine* cm, float* CML_RESTRICT yuv , const float* CML_RESTRICT yupvp, CMLuint32 count)
+  {cm = cm; cmlInternalYupvptoYuv(yuv, yupvp, count);}
 CML_HIDDEN CML_INLINE static void CMLCMYupvptoYuv_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalYupvptoYuv_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYuvtoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT Yupvp , const float* CML_RESTRICT Yuv, CMLuint32 count)
-  {cm = cm; cmlInternalYuvtoYupvp(Yupvp, Yuv, count);}
+CML_HIDDEN CML_INLINE static void CMLCMYuvtoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT yupvp , const float* CML_RESTRICT yuv, CMLuint32 count)
+  {cm = cm; cmlInternalYuvtoYupvp(yupvp, yuv, count);}
 CML_HIDDEN CML_INLINE static void CMLCMYuvtoYupvp_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalYuvtoYupvp_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMYupvptoLuv (const CMLColorMachine* cm, float* CML_RESTRICT Luv , const float* CML_RESTRICT Yupvp, CMLuint32 count)
-  {cmlInternalYupvptoLuv(Luv, Yupvp, count, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.forwardfunc);}
+CML_HIDDEN CML_INLINE static void CMLCMYupvptoLuv (const CMLColorMachine* cm, float* CML_RESTRICT luv , const float* CML_RESTRICT yupvp, CMLuint32 count)
+  {cmlInternalYupvptoLuv(luv, yupvp, count, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.forwardfunc);}
 CML_HIDDEN CML_INLINE static void CMLCMYupvptoLuv_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalYupvptoLuv_SB(buf, count, floatalign, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.forwardfunc);}
-CML_HIDDEN CML_INLINE static void CMLCMLuvtoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT Yupvp , const float* CML_RESTRICT Luv, CMLuint32 count)
-  {cmlInternalLuvtoYupvp(Yupvp, Luv, count, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.backwardfunc);}
+CML_HIDDEN CML_INLINE static void CMLCMLuvtoYupvp (const CMLColorMachine* cm, float* CML_RESTRICT yupvp , const float* CML_RESTRICT luv, CMLuint32 count)
+  {cmlInternalLuvtoYupvp(yupvp, luv, count, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.backwardfunc);}
 CML_HIDDEN CML_INLINE static void CMLCMLuvtoYupvp_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalLuvtoYupvp_SB(buf, count, floatalign, cmlGetReferenceWhitepointYupvp(&(cm->observer)), cm->labspace.responseLStar.backwardfunc);}
-CML_HIDDEN CML_INLINE static void CMLCMLabtoLch   (const CMLColorMachine* cm, float* CML_RESTRICT Lch , const float* CML_RESTRICT Lab, CMLuint32 count)
-  {cm = cm; cmlInternalLabtoLch(Lch, Lab, count);}
+CML_HIDDEN CML_INLINE static void CMLCMLabtoLch   (const CMLColorMachine* cm, float* CML_RESTRICT lch , const float* CML_RESTRICT lab, CMLuint32 count)
+  {cm = cm; cmlInternalLabtoLch(lch, lab, count);}
 CML_HIDDEN CML_INLINE static void CMLCMLabtoLch_SB   (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalLabtoLch_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMLchtoLab   (const CMLColorMachine* cm, float* CML_RESTRICT Lab , const float* CML_RESTRICT Lch, CMLuint32 count)
-  {cm = cm; cmlInternalLchtoLab(Lab, Lch, count);}
+CML_HIDDEN CML_INLINE static void CMLCMLchtoLab   (const CMLColorMachine* cm, float* CML_RESTRICT lab , const float* CML_RESTRICT lch, CMLuint32 count)
+  {cm = cm; cmlInternalLchtoLab(lab, lch, count);}
 CML_HIDDEN CML_INLINE static void CMLCMLchtoLab_SB   (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalLchtoLab_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMXYZtoRGB   (const CMLColorMachine* cm, float* CML_RESTRICT RGB , const float* CML_RESTRICT XYZ, CMLuint32 count)
-  {cmlInternalXYZtoRGB(RGB, XYZ, count, cm->rgbspace.matrixinv, cm->rgbspace.responseR.forwardfunc, cm->rgbspace.responseG.forwardfunc, cm->rgbspace.responseB.forwardfunc);}
+CML_HIDDEN CML_INLINE static void CMLCMXYZtoRGB   (const CMLColorMachine* cm, float* CML_RESTRICT rgb , const float* CML_RESTRICT xyz, CMLuint32 count)
+  {cmlInternalXYZtoRGB(rgb, xyz, count, cm->rgbspace.matrixinv, cm->rgbspace.responseR.forwardfunc, cm->rgbspace.responseG.forwardfunc, cm->rgbspace.responseB.forwardfunc);}
 CML_HIDDEN CML_INLINE static void CMLCMXYZtoRGB_SB   (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalXYZtoRGB_SB(buf, count, floatalign, cm->rgbspace.matrixinv, cm->rgbspace.responseR.forwardfunc, cm->rgbspace.responseG.forwardfunc, cm->rgbspace.responseB.forwardfunc);}
-CML_HIDDEN CML_INLINE static void CMLCMRGBtoXYZ   (const CMLColorMachine* cm, float* CML_RESTRICT XYZ , const float* CML_RESTRICT RGB, CMLuint32 count)
-  {cmlInternalRGBtoXYZ(XYZ, RGB, count, cm->rgbspace.matrix, cm->rgbspace.responseR.backwardfunc, cm->rgbspace.responseG.backwardfunc, cm->rgbspace.responseB.backwardfunc);}
+CML_HIDDEN CML_INLINE static void CMLCMRGBtoXYZ   (const CMLColorMachine* cm, float* CML_RESTRICT xyz , const float* CML_RESTRICT rgb, CMLuint32 count)
+  {cmlInternalRGBtoXYZ(xyz, rgb, count, cm->rgbspace.matrix, cm->rgbspace.responseR.backwardfunc, cm->rgbspace.responseG.backwardfunc, cm->rgbspace.responseB.backwardfunc);}
 CML_HIDDEN CML_INLINE static void CMLCMRGBtoXYZ_SB   (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalRGBtoXYZ_SB(buf, count, floatalign, cm->rgbspace.matrix, cm->rgbspace.responseR.backwardfunc, cm->rgbspace.responseG.backwardfunc, cm->rgbspace.responseB.backwardfunc);}
-CML_HIDDEN CML_INLINE static void CMLCMRGBtoYCbCr (const CMLColorMachine* cm, float* CML_RESTRICT YCbCr , const float* CML_RESTRICT RGB, CMLuint32 count)
-  {cmlInternalRGBtoYCbCr(YCbCr, RGB, count, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
+CML_HIDDEN CML_INLINE static void CMLCMRGBtoYCbCr (const CMLColorMachine* cm, float* CML_RESTRICT ycbcr , const float* CML_RESTRICT rgb, CMLuint32 count)
+  {cmlInternalRGBtoYCbCr(ycbcr, rgb, count, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
 CML_HIDDEN CML_INLINE static void CMLCMRGBtoYCbCr_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalRGBtoYCbCr_SB(buf, count, floatalign, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
-CML_HIDDEN CML_INLINE static void CMLCMYCbCrtoRGB (const CMLColorMachine* cm, float* CML_RESTRICT RGB , const float* CML_RESTRICT YCbCr, CMLuint32 count)
-  {cmlInternalYCbCrtoRGB(RGB, YCbCr, count, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
+CML_HIDDEN CML_INLINE static void CMLCMYCbCrtoRGB (const CMLColorMachine* cm, float* CML_RESTRICT rgb , const float* CML_RESTRICT ycbcr, CMLuint32 count)
+  {cmlInternalYCbCrtoRGB(rgb, ycbcr, count, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
 CML_HIDDEN CML_INLINE static void CMLCMYCbCrtoRGB_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cmlInternalYCbCrtoRGB_SB(buf, count, floatalign, cm->rgbspace.primariesYxy[0], cm->rgbspace.primariesYxy[2], cmlGetReferenceInverseWhitepointXYZ(&(cm->observer)));}
-CML_HIDDEN CML_INLINE static void CMLCMRGBtoHSV (const CMLColorMachine* cm, float* CML_RESTRICT HSV , const float* CML_RESTRICT RGB, CMLuint32 count)
-  {cm = cm; cmlInternalRGBtoHSV(HSV, RGB, count);}
+CML_HIDDEN CML_INLINE static void CMLCMRGBtoHSV (const CMLColorMachine* cm, float* CML_RESTRICT hsv , const float* CML_RESTRICT rgb, CMLuint32 count)
+  {cm = cm; cmlInternalRGBtoHSV(hsv, rgb, count);}
 CML_HIDDEN CML_INLINE static void CMLCMRGBtoHSV_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalRGBtoHSV_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMHSVtoRGB (const CMLColorMachine* cm, float* CML_RESTRICT RGB , const float* CML_RESTRICT HSV, CMLuint32 count)
-  {cm = cm; cmlInternalHSVtoRGB(RGB, HSV, count);}
+CML_HIDDEN CML_INLINE static void CMLCMHSVtoRGB (const CMLColorMachine* cm, float* CML_RESTRICT rgb , const float* CML_RESTRICT hsv, CMLuint32 count)
+  {cm = cm; cmlInternalHSVtoRGB(rgb, hsv, count);}
 CML_HIDDEN CML_INLINE static void CMLCMHSVtoRGB_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalHSVtoRGB_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMHSVtoHSL (const CMLColorMachine* cm, float* CML_RESTRICT HSL , const float* CML_RESTRICT HSV, CMLuint32 count)
-  {cm = cm; cmlInternalHSVtoHSL(HSL, HSV, count);}
+CML_HIDDEN CML_INLINE static void CMLCMHSVtoHSL (const CMLColorMachine* cm, float* CML_RESTRICT hsl , const float* CML_RESTRICT hsv, CMLuint32 count)
+  {cm = cm; cmlInternalHSVtoHSL(hsl, hsv, count);}
 CML_HIDDEN CML_INLINE static void CMLCMHSVtoHSL_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalHSVtoHSL_SB(buf, count, floatalign);}
-CML_HIDDEN CML_INLINE static void CMLCMHSLtoHSV (const CMLColorMachine* cm, float* CML_RESTRICT HSV , const float* CML_RESTRICT HSL, CMLuint32 count)
-  {cm = cm; cmlInternalHSLtoHSV(HSV, HSL, count);}
+CML_HIDDEN CML_INLINE static void CMLCMHSLtoHSV (const CMLColorMachine* cm, float* CML_RESTRICT hsv , const float* CML_RESTRICT hsl, CMLuint32 count)
+  {cm = cm; cmlInternalHSLtoHSV(hsv, hsl, count);}
 CML_HIDDEN CML_INLINE static void CMLCMHSLtoHSV_SB (const CMLColorMachine* cm, float* buf, CMLuint32 count, CMLuint32 floatalign)
   {cm = cm; cmlInternalHSLtoHSV_SB(buf, count, floatalign);}
 
 
-CML_HIDDEN CML_INLINE static void CMLCMIlluminationSpectrumtoXYZ(const CMLColorMachine* cm, float* CML_RESTRICT XYZ , const CMLFunction* CML_RESTRICT specill, CMLuint32 count, CMLuint32 floatalign)
-  {cmlInternalIlluminationSpectrumtoXYZ(XYZ, specill, count, floatalign, &(cm->observer));}
-CML_HIDDEN CML_INLINE static void CMLCMRemissionSpectrumtoXYZ(const CMLColorMachine* cm, float* CML_RESTRICT XYZ , const CMLFunction* CML_RESTRICT specrem, CMLuint32 count, CMLuint32 floatalign)
-  {cmlInternalRemissionSpectrumtoXYZ(XYZ, specrem, count, floatalign, cmlGetReferenceIlluminationSpectrum(&(cm->observer)), &(cm->observer));}
+CML_HIDDEN CML_INLINE static void CMLCMIlluminationSpectrumtoXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz , const CMLFunction* CML_RESTRICT specill, CMLuint32 count, CMLuint32 floatalign)
+  {cmlInternalIlluminationSpectrumtoXYZ(xyz, specill, count, floatalign, &(cm->observer));}
+CML_HIDDEN CML_INLINE static void CMLCMRemissionSpectrumtoXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz , const CMLFunction* CML_RESTRICT specrem, CMLuint32 count, CMLuint32 floatalign)
+  {cmlInternalRemissionSpectrumtoXYZ(xyz, specrem, count, floatalign, cmlGetReferenceIlluminationSpectrum(&(cm->observer)), &(cm->observer));}
 
 
 

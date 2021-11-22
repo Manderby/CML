@@ -690,11 +690,11 @@ CML_HIDDEN CML_INLINE static void cmlInternalHSLtoHSV_SB (float* buf, CMLuint32 
 #define CMLINTERNALRGBtoHSV(out, in) \
   float min;\
   float range;\
-  CMLVec3 RGB;\
-  cmlCpy3(RGB, in);\
-  if(RGB[0] < RGB[1]){min = RGB[0]; out[2] = RGB[1];}else{min = RGB[1]; out[2] = RGB[0];}\
-  if(RGB[2] < min){min = RGB[2];}\
-  if(RGB[2] > out[2]){out[2] = RGB[2];}\
+  CMLVec3 rgb;\
+  cmlCpy3(rgb, in);\
+  if(rgb[0] < rgb[1]){min = rgb[0]; out[2] = rgb[1];}else{min = rgb[1]; out[2] = rgb[0];}\
+  if(rgb[2] < min){min = rgb[2];}\
+  if(rgb[2] > out[2]){out[2] = rgb[2];}\
   range = out[2] - min;\
   if(out[2] == 0.f){\
     out[1] = 0.f;\
@@ -705,9 +705,9 @@ CML_HIDDEN CML_INLINE static void cmlInternalHSLtoHSV_SB (float* buf, CMLuint32 
     out[0] = 0.f;\
   }else{\
     float invrange = cmlInverse(range);\
-    if(out[2] == RGB[0])      {out[0] = 60.f * (0.f + (RGB[1]-RGB[2]) * invrange);}\
-    else if(out[2] == RGB[1]) {out[0] = 60.f * (2.f + (RGB[2]-RGB[0]) * invrange);}\
-    else                      {out[0] = 60.f * (4.f + (RGB[0]-RGB[1]) * invrange);}\
+    if(out[2] == rgb[0])      {out[0] = 60.f * (0.f + (rgb[1]-rgb[2]) * invrange);}\
+    else if(out[2] == rgb[1]) {out[0] = 60.f * (2.f + (rgb[2]-rgb[0]) * invrange);}\
+    else                      {out[0] = 60.f * (4.f + (rgb[0]-rgb[1]) * invrange);}\
     if(out[0] < 0.f){out[0] += 360.f;}\
   }
 
@@ -737,24 +737,24 @@ CML_HIDDEN CML_INLINE static void cmlInternalRGBtoHSV_SB (float* buf, CMLuint32 
 
 // todo: Make it SB
 #define CMLINTERNALHSVtoRGB(out, in) \
-  CMLVec3 HSV;\
-  cmlCpy3(HSV, in);\
-  CMLint8 h0 = (CMLint8)floorf(HSV[0] / 60.f);\
+  CMLVec3 hsv;\
+  cmlCpy3(hsv, in);\
+  CMLint8 h0 = (CMLint8)floorf(hsv[0] / 60.f);\
   CMLuint8 h1 = (CMLuint8)((h0 % 6) + 6) % 6;\
-  float f = (HSV[0] / 60.f) - h0;\
-  float range = HSV[2] * HSV[1];\
-  float min = HSV[2] - range;\
+  float f = (hsv[0] / 60.f) - h0;\
+  float range = hsv[2] * hsv[1];\
+  float min = hsv[2] - range;\
   float inc = f * range;\
   float dec = (1.f - f) * range;\
   inc += min;\
   dec += min;\
   switch(h1){\
-  case 0: out[0] = HSV[2] ; out[1] = inc    ; out[2] = min    ; break;\
-  case 1: out[0] = dec    ; out[1] = HSV[2] ; out[2] = min    ; break;\
-  case 2: out[0] = min    ; out[1] = HSV[2] ; out[2] = inc    ; break;\
-  case 3: out[0] = min    ; out[1] = dec    ; out[2] = HSV[2] ; break;\
-  case 4: out[0] = inc    ; out[1] = min    ; out[2] = HSV[2] ; break;\
-  case 5: out[0] = HSV[2] ; out[1] = min    ; out[2] = dec    ; break;\
+  case 0: out[0] = hsv[2] ; out[1] = inc    ; out[2] = min    ; break;\
+  case 1: out[0] = dec    ; out[1] = hsv[2] ; out[2] = min    ; break;\
+  case 2: out[0] = min    ; out[1] = hsv[2] ; out[2] = inc    ; break;\
+  case 3: out[0] = min    ; out[1] = dec    ; out[2] = hsv[2] ; break;\
+  case 4: out[0] = inc    ; out[1] = min    ; out[2] = hsv[2] ; break;\
+  case 5: out[0] = hsv[2] ; out[1] = min    ; out[2] = dec    ; break;\
   default:\
     out[0] = 0.f; out[1] = 0.f; out[2] = 0.f;\
   }
