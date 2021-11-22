@@ -1,9 +1,4 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "../CML.h"
 #include "CMLColorMachineState.h"
 
@@ -20,25 +15,25 @@
 
 
 
-CMLAPI CMLLabColorSpaceType CMLgetLabColorSpace(const CMLColorMachine* cm){
+CML_API CMLLabColorSpaceType CMLgetLabColorSpace(const CMLColorMachine* cm){
   return cm->labspace.state;
 }
 
 
-CMLAPI void CMLsetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labspace){
+CML_API void CMLsetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labspace){
   cm->labspace.state = labspace;
   CMLInternalrecomputeLabColorspace(cm);
   CMLInternalrecomputeAdamsChromaticityValenceSpace(cm);
 }
 
 
-CMLAPI void CMLgetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke){
+CML_API void CMLgetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke){
   *K = cm->labspace.adamschromaticityvalenceK;
   *ke = cm->labspace.adamschromaticityvalenceke;
 }
 
 
-CMLAPI void CMLsetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke){
+CML_API void CMLsetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke){
   if(cm->labspace.state == CML_LAB_ADAMS_CROMATIC_VALENCE){
     cm->labspace.adamschromaticityvalenceK = K;
     cm->labspace.adamschromaticityvalenceke = ke;
@@ -50,12 +45,12 @@ CMLAPI void CMLsetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float 
 }
 
 
-CMLAPI CMLuint8 CMLgetLabLUTSize(const CMLColorMachine* cm){
+CML_API CMLuint8 CMLgetLabLUTSize(const CMLColorMachine* cm){
   return cm->labspace.lutsize;
 }
 
 
-CMLAPI void CMLsetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits){
+CML_API void CMLsetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits){
   CMLLabColorSpaceType curtype;
   if((bits < 1) || (bits > 16)){bits = 32;}
   cm->labspace.lutsize = bits;
@@ -65,27 +60,27 @@ CMLAPI void CMLsetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits){
 }
 
 
-CMLAPI const CMLFunction* CMLgetLtoLinearResponse(const CMLColorMachine* cm){
+CML_API const CMLFunction* CMLgetLtoLinearResponse(const CMLColorMachine* cm){
   return cm->labspace.responseL.backwardfunc;
 }
 
 
-CMLAPI const CMLFunction* CMLgetLineartoLResponse(const CMLColorMachine* cm){
+CML_API const CMLFunction* CMLgetLineartoLResponse(const CMLColorMachine* cm){
   return cm->labspace.responseL.forwardfunc;
 }
 
 
-CMLAPI const CMLResponseCurve* CMLgetResponseL  (CMLColorMachine* cm){
+CML_API const CMLResponseCurve* CMLgetResponseL  (CMLColorMachine* cm){
   return &(cm->labspace.responseL);
 }
 
 
-//CMLAPI CMLResponseCurveType CMLgetLabResponseCurveFunctionType(const CMLColorMachine* cm){
+//CML_API CMLResponseCurveType CMLgetLabResponseCurveFunctionType(const CMLColorMachine* cm){
 //  return cm->labspace.responseL.type;
 //}
 
 
-CMLAPI void CMLsetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_API void CMLsetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->labspace.responseL));
   cmlCreateResponseCurveCopy((&cm->labspace.responseL), response);
 //  cm->labspace.responseL.forwardfunc = CMLduplicateFunction(response->forwardfunc);
@@ -94,12 +89,12 @@ CMLAPI void CMLsetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
 }
 
 
-//CMLAPI float CMLgetLabGamma(const CMLColorMachine* cm){
+//CML_API float CMLgetLabGamma(const CMLColorMachine* cm){
 //  return cm->labspace.responseL.param0;
 //}
 
 
-CMLHIDDEN void CMLInternalrecomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
+CML_HIDDEN void CMLInternalrecomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
   float Ka;
   float Kb;
   const float* whitepointXYZ;
@@ -125,7 +120,7 @@ CMLHIDDEN void CMLInternalrecomputeAdamsChromaticityValenceSpace(CMLColorMachine
 
 
 
-CMLHIDDEN void CMLInternalrecomputeLabColorspace(CMLColorMachine* cm){
+CML_HIDDEN void CMLInternalrecomputeLabColorspace(CMLColorMachine* cm){
   if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_LAB; return;}
   CMLResponseCurve* responseL;
 
@@ -213,3 +208,29 @@ CMLHIDDEN void CMLInternalrecomputeLabColorspace(CMLColorMachine* cm){
 //}
 //
 
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

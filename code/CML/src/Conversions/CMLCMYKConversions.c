@@ -1,9 +1,4 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "../CML.h"
 #include "../StateMachine/CMLColorMachineState.h"
 #include "../StateMachine/CMLConverterMacros.h"
@@ -12,7 +7,7 @@
 // Identity converter
 // //////////////////////////
 
-CMLAPI void CMLCMYKtoCMYK (const CMLColorMachine* cm, CMLOutput CMYKd , CMLInput CMYKs, CMLSize count){
+CML_API void CMLCMYKtoCMYK (const CMLColorMachine* cm, CMLOutput CMYKd , CMLInput CMYKs, CMLSize count){
   cm = cm; // no warning
   CML_CONVERTER_INOUT_PARAMETER(CMYKd, CMYKs, CML_CMYK_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_MEMCPY(CML_CMYK_NUMCHANNELS);
@@ -23,14 +18,14 @@ CMLAPI void CMLCMYKtoCMYK (const CMLColorMachine* cm, CMLOutput CMYKd , CMLInput
 // CMYK to anything
 // //////////////////////////
 
-CMLAPI void CMLCMYKtoXYZ (const CMLColorMachine* cm, CMLOutput XYZ , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoXYZ (const CMLColorMachine* cm, CMLOutput XYZ , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(XYZ, CMYK, CML_XYZ_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoYuv (const CMLColorMachine* cm, CMLOutput Yuv , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoYuv (const CMLColorMachine* cm, CMLOutput Yuv , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Yuv, CMYK, CML_Yuv_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -40,7 +35,7 @@ CMLAPI void CMLCMYKtoYuv (const CMLColorMachine* cm, CMLOutput Yuv , CMLInput CM
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoYupvp (const CMLColorMachine* cm, CMLOutput Yupvp , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoYupvp (const CMLColorMachine* cm, CMLOutput Yupvp , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Yupvp, CMYK, CML_Yupvp_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -49,7 +44,7 @@ CMLAPI void CMLCMYKtoYupvp (const CMLColorMachine* cm, CMLOutput Yupvp , CMLInpu
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoYxy (const CMLColorMachine* cm, CMLOutput Yxy , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoYxy (const CMLColorMachine* cm, CMLOutput Yxy , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Yxy, CMYK, CML_Yxy_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -57,7 +52,7 @@ CMLAPI void CMLCMYKtoYxy (const CMLColorMachine* cm, CMLOutput Yxy , CMLInput CM
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoLab (const CMLColorMachine* cm, CMLOutput Lab , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoLab (const CMLColorMachine* cm, CMLOutput Lab , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Lab, CMYK, CML_Lab_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -65,7 +60,7 @@ CMLAPI void CMLCMYKtoLab (const CMLColorMachine* cm, CMLOutput Lab , CMLInput CM
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoLch (const CMLColorMachine* cm, CMLOutput Lch , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoLch (const CMLColorMachine* cm, CMLOutput Lch , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Lch, CMYK, CML_Lch_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -74,7 +69,7 @@ CMLAPI void CMLCMYKtoLch (const CMLColorMachine* cm, CMLOutput Lch , CMLInput CM
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoLuv (const CMLColorMachine* cm, CMLOutput Luv , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoLuv (const CMLColorMachine* cm, CMLOutput Luv , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(Luv, CMYK, CML_Luv_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoXYZ_SB(cm, out, count, floatalign);
@@ -84,31 +79,58 @@ CMLAPI void CMLCMYKtoLuv (const CMLColorMachine* cm, CMLOutput Luv , CMLInput CM
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoRGB (const CMLColorMachine* cm, CMLOutput RGB , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoRGB (const CMLColorMachine* cm, CMLOutput RGB , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(RGB, CMYK, CML_RGB_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoYCbCr (const CMLColorMachine* cm, CMLOutput YCbCr , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoYCbCr (const CMLColorMachine* cm, CMLOutput YCbCr , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(YCbCr, CMYK, CML_YCbCr_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoYCbCr_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoHSV (const CMLColorMachine* cm, CMLOutput HSV , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoHSV (const CMLColorMachine* cm, CMLOutput HSV , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(HSV, CMYK, CML_HSV_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoHSV_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
 
-CMLAPI void CMLCMYKtoHSL (const CMLColorMachine* cm, CMLOutput HSL , CMLInput CMYK, CMLSize count){
+CML_API void CMLCMYKtoHSL (const CMLColorMachine* cm, CMLOutput HSL , CMLInput CMYK, CMLSize count){
   CML_CONVERTER_INOUT_PARAMETER(HSL, CMYK, CML_HSL_NUMCHANNELS, CML_CMYK_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->CMYKtoRGB);
   CMLCMRGBtoHSV_SB(cm, out, count, floatalign);
   CMLCMHSVtoHSL_SB(cm, out, count, floatalign);
   CML_CONVERTER_RETURN;
 }
+
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>
 

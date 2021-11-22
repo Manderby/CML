@@ -1,35 +1,3 @@
-
-// Color Machine Library (CML)
-//
-// CML is a self-contained implementation of color transformations used in
-// color science and standards, based on informations from the literature and
-// reference material from standartization institutes.
-//
-// This is the full version of CML and has been made available to you, your
-// company or institute by a separate contract. If not stated otherwise, you
-// are permitted by this contract to use this software for internal software
-// engineering and to get future version upgrades for free (See changelog for
-// more information). If not explicitly stated in the contract, you are NOT
-// allowed to use this version for a product. Further restrictions/terms are
-// stated in the contract.
-//
-// Please contact cml@manderim.ch for requests, bugs, hints, clarification and
-// similar things. Note that German is the preferred choice of correspondance
-// but English is offered as a common language of inter-communication.
-// Requests which can be answered by yourself with the given documentation will
-// be answered with a reference to the documentation.
-//
-// If you consider incorporating CML into a bigger project and need (paid) help
-// in engineering, feel free to contact.
-//
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-//
-// Designed and implemented by Tobias Stamm, Manderim GmbH based on the work
-// at Empa Switzerland, Media Technology Lab.
-
 #ifndef CML_INCLUDED
 #define CML_INCLUDED
 
@@ -67,3 +35,30 @@
 #endif
 
 #endif // CML_INCLUDED
+
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

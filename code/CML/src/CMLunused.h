@@ -1,10 +1,4 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
-
 // Informations and data are from various sources.
 // Some of them are the folowing:
 // http://www.adobe.com/digitalimag/pdfs/AdobeRGB1998.pdf
@@ -1420,10 +1414,10 @@
 //    CMYK[3] = CMYK[0] * 144.f + CMYK[1] * 79.f + CMYK[2] * 25.f;
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
-//    arraydensityfilterC.init(densityfilterC, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterM.init(densityfilterM, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterY.init(densityfilterY, CMLFALSE, CML_DENSITYFILTER_NUM); break;
-//    arraydensityfilterK.init(densityfilterK, CMLFALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterC.init(densityfilterC, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterM.init(densityfilterM, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterY.init(densityfilterY, CML_FALSE, CML_DENSITYFILTER_NUM); break;
+//    arraydensityfilterK.init(densityfilterK, CML_FALSE, CML_DENSITYFILTER_NUM); break;
 //    filterC.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterC, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterM.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterM, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterY.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterY, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1483,10 +1477,10 @@
 //                        / blankvalue[3]);
 //    break;
 //  case CML_DENSITY_WIDE_BAND:
-//    arraydensityfilterC.init(densityfilterC, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterM.init(densityfilterM, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterY.init(densityfilterY, CMLFALSE, CML_DENSITYFILTER_NUM);
-//    arraydensityfilterK.init(densityfilterK, CMLFALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterC.init(densityfilterC, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterM.init(densityfilterM, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterY.init(densityfilterY, CML_FALSE, CML_DENSITYFILTER_NUM);
+//    arraydensityfilterK.init(densityfilterK, CML_FALSE, CML_DENSITYFILTER_NUM);
 //    filterC.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterC, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterM.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterM, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    filterY.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterY, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1539,10 +1533,10 @@
 //      float weightedblank = 0.f;
 //      CMLArray densityfilter;
 //      switch(type){
-//        case CML_DENSITY_BROAD_CYAN:     densityfilter.init(densityfilterC, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_MAGENTA:  densityfilter.init(densityfilterM, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_YELLOW:   densityfilter.init(densityfilterY, CMLFALSE, densityfiltercount); break;
-//        case CML_DENSITY_BROAD_BLACK:    densityfilter.init(densityfilterK, CMLFALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_CYAN:     densityfilter.init(densityfilterC, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_MAGENTA:  densityfilter.init(densityfilterM, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_YELLOW:   densityfilter.init(densityfilterY, CML_FALSE, densityfiltercount); break;
+//        case CML_DENSITY_BROAD_BLACK:    densityfilter.init(densityfilterK, CML_FALSE, densityfiltercount); break;
 //        default: return -1.0f;
 //      }
 //      CMLArrayFunction filter = CMLArrayFunction(densityfiltermin, densityfiltermax, densityfilter, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
@@ -1601,3 +1595,30 @@
 //  CML_DELTA_E_1976 = 0,
 //  CML_NUMBER_OF_DELTA_E_COMPUTATIONS
 //} CMLDeltaEComputationType;
+
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

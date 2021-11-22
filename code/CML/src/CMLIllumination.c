@@ -1,15 +1,9 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
-
 #include "CML.h"
 #include "StateMachine/CMLColorMachineState.h"
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
+CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = src->BALFtype;
   illumination->BALFtemperature = src->BALFtemperature;
@@ -23,7 +17,7 @@ CMLAPI CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumina
 }
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
+CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = type;
   illumination->BALFtemperature = temperature;
@@ -73,7 +67,7 @@ CMLAPI CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumin
 }
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = CML_ILLUMINATION_CUSTOM_SPECTRUM;
   illumination->BALFtemperature = 0.f;
@@ -93,7 +87,7 @@ CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination*
 }
 
 
-CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitepointYxy){
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitepointYxy){
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   illumination->BALFspectrum = NULL;
@@ -111,12 +105,12 @@ CMLAPI CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIlluminatio
 
 
 
-CMLAPI void cmlClearIllumination(CMLIllumination* illumination){
+CML_API void cmlClearIllumination(CMLIllumination* illumination){
   cmlReleaseFunction(illumination->BALFspectrum);
 }
 
 
-CMLAPI void cmlDestroyIllumination(CMLIllumination* illumination){
+CML_API void cmlDestroyIllumination(CMLIllumination* illumination){
   cmlClearIllumination(illumination);
   free(illumination);
 }
@@ -124,16 +118,16 @@ CMLAPI void cmlDestroyIllumination(CMLIllumination* illumination){
 
 
 
-CMLAPI CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination){
+CML_API CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination){
   return illumination->BALFtype;
 }
 
-CMLAPI const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination){
+CML_API const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination){
   return illumination->BALFspectrum;
 }
 
 
-CMLAPI float cmlGetCorrelatedColorTemperature(const CMLIllumination* illumination){
+CML_API float cmlGetCorrelatedColorTemperature(const CMLIllumination* illumination){
 //  if(!illumination->BALFtemperature){
 //    // Computation takes long. Compute on demand.
 //    return 0.f;
@@ -145,7 +139,7 @@ CMLAPI float cmlGetCorrelatedColorTemperature(const CMLIllumination* illuminatio
   return illumination->BALFtemperature;
 }
 
-CMLAPI void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer){
+CML_API void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer){
   if(illumination->BALFspectrum){
     cmlInternalOneIlluminationSpectrumtoXYZ(dest, illumination->BALFspectrum, observer);
   }else{
@@ -155,3 +149,27 @@ CMLAPI void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination
 
 
 
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

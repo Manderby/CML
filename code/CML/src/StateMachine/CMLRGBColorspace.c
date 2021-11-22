@@ -1,14 +1,9 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "../CML.h"
 #include "CMLColorMachineState.h"
 
 
-CMLHIDDEN static const CMLIlluminationType rgbspaceilluminations[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HIDDEN static const CMLIlluminationType rgbspaceilluminations[CML_NUMBER_OF_RGB_SPACES] = {
   CML_ILLUMINATION_D65,     // CML_RGB_ADOBE_98
   CML_ILLUMINATION_D65,     // CML_RGB_APPLE
   CML_ILLUMINATION_D50,     // CML_RGB_BEST
@@ -35,7 +30,7 @@ CMLHIDDEN static const CMLIlluminationType rgbspaceilluminations[CML_NUMBER_OF_R
   CML_ILLUMINATION_D65,     // CML_RGB_CUSTOM
 };
 
-CMLHIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBER_OF_RGB_SPACES] = {
   CML_RESPONSE_GAMMA_ADOBE_98,         // CML_RGB_ADOBE_98
   CML_RESPONSE_GAMMA_1_8,         // CML_RGB_APPLE
   CML_RESPONSE_GAMMA_2_2,         // CML_RGB_BEST
@@ -70,7 +65,7 @@ CMLHIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBER
 // x * linscale                              if x < split
 // split will be computed automatically.
 
-//CMLHIDDEN static const float rgbspaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
+//CML_HIDDEN static const float rgbspaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
 //  { 2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
 //    2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
 //    2.f + 51.f / 256.f, 0.f, 1.f, 0.f},   // CML_RGB_ADOBE_98
@@ -148,7 +143,7 @@ CMLHIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBER
 // array usage:
 // xr, yr, xg, yg, xb, yb
 // gamma, offset, linscale,
-CMLHIDDEN static const float rgbspaceprimaries[CML_NUMBER_OF_RGB_SPACES][9] = {
+CML_HIDDEN static const float rgbspaceprimaries[CML_NUMBER_OF_RGB_SPACES][9] = {
   {0.6400f  , 0.3300f  , 0.2100f  , 0.7100f  , 0.1500f  , 0.0600f},   // CML_RGB_ADOBE_98
   {0.6250f  , 0.3400f  , 0.2800f  , 0.5950f  , 0.1550f  , 0.0700f},   // CML_RGB_APPLE
   {0.7347f  , 0.2653f  , 0.2150f  , 0.7750f  , 0.1300f  , 0.0350f},   // CML_RGB_BEST
@@ -177,7 +172,7 @@ CMLHIDDEN static const float rgbspaceprimaries[CML_NUMBER_OF_RGB_SPACES][9] = {
 
 
 
-CMLHIDDEN void CMLInternalrecomputeRGBResponses(CMLColorMachine* cm){
+CML_HIDDEN void CMLInternalrecomputeRGBResponses(CMLColorMachine* cm){
   if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES; return;}
   
   CMLResponseCurve* responseR = cmlCreateResponseCurveWithPreset(NULL, rgbspaceresponsepresets[cm->rgbspace.state]);
@@ -193,7 +188,7 @@ CMLHIDDEN void CMLInternalrecomputeRGBResponses(CMLColorMachine* cm){
 }
 
 
-CMLHIDDEN void CMLInternalrecomputeRGBColorspace(CMLColorMachine* cm){
+CML_HIDDEN void CMLInternalrecomputeRGBColorspace(CMLColorMachine* cm){
   CMLVec3 normedwhitepointYxy;
 
   if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_RGB; return;}
@@ -215,12 +210,12 @@ CMLHIDDEN void CMLInternalrecomputeRGBColorspace(CMLColorMachine* cm){
 
 
 
-CMLAPI CMLRGBColorSpace CMLgetRGBColorSpace(const CMLColorMachine* cm){
+CML_API CMLRGBColorSpace CMLgetRGBColorSpace(const CMLColorMachine* cm){
   return cm->rgbspace.state;
 }
 
 
-CMLAPI void CMLsetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorspacetype){    
+CML_API void CMLsetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorspacetype){    
   // Multiple changes need to be made. (Illumination and RGBspace)
   CMLlockRecomputation(cm);
   
@@ -235,14 +230,14 @@ CMLAPI void CMLsetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorspace
 }
 
 
-CMLAPI void CMLgetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]){
+CML_API void CMLgetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]){
   cmlCpy3(primaries[0], cm->rgbspace.primariesYxy[0]);
   cmlCpy3(primaries[1], cm->rgbspace.primariesYxy[1]);
   cmlCpy3(primaries[2], cm->rgbspace.primariesYxy[2]);
 }
 
 
-CMLAPI void CMLsetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]){
+CML_API void CMLsetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]){
   cm->rgbspace.state = CML_RGB_CUSTOM;
   cm->rgbspace.primariesYxy[0][1] = primaries[0][1];
   cm->rgbspace.primariesYxy[0][2] = primaries[0][2];
@@ -254,51 +249,51 @@ CMLAPI void CMLsetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]){
 }
 
 
-//CMLAPI void CMLgetRGBtoLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
+//CML_API void CMLgetRGBtoLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
 //  responses[0] = cm->rgbspace.responseR.backwardfunc;
 //  responses[1] = cm->rgbspace.responseG.backwardfunc;
 //  responses[2] = cm->rgbspace.responseB.backwardfunc;
 //}
 
 
-//CMLAPI void CMLgetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
+//CML_API void CMLgetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
 //  responses[0] = cm->rgbspace.responseR.forwardfunc;
 //  responses[1] = cm->rgbspace.responseG.forwardfunc;
 //  responses[2] = cm->rgbspace.responseB.forwardfunc;
 //}
 
 
-//CMLAPI void CMLgetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType responsetypes[3]){
+//CML_API void CMLgetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType responsetypes[3]){
 //  responsetypes[0] = cm->rgbspace.responseR.type;
 //  responsetypes[1] = cm->rgbspace.responseG.type;
 //  responsetypes[2] = cm->rgbspace.responseB.type;
 //}
 
 
-//CMLAPI void CMLgetRGBGammas(const CMLColorMachine* cm, float gammas[3]){
+//CML_API void CMLgetRGBGammas(const CMLColorMachine* cm, float gammas[3]){
 //  gammas[0] = cm->rgbspace.responseR.param0;
 //  gammas[1] = cm->rgbspace.responseG.param0;
 //  gammas[2] = cm->rgbspace.responseB.param0;
 //}
 
 
-CMLAPI void CMLsetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_API void CMLsetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLsetResponseR(cm, response);
   CMLsetResponseG(cm, response);
   CMLsetResponseB(cm, response);
 }
 
-CMLAPI const CMLResponseCurve* CMLgetResponseR  (CMLColorMachine* cm){
+CML_API const CMLResponseCurve* CMLgetResponseR  (CMLColorMachine* cm){
   return &(cm->rgbspace.responseR);
 }
-CMLAPI const CMLResponseCurve* CMLgetResponseG  (CMLColorMachine* cm){
+CML_API const CMLResponseCurve* CMLgetResponseG  (CMLColorMachine* cm){
   return &(cm->rgbspace.responseG);
 }
-CMLAPI const CMLResponseCurve* CMLgetResponseB  (CMLColorMachine* cm){
+CML_API const CMLResponseCurve* CMLgetResponseB  (CMLColorMachine* cm){
   return &(cm->rgbspace.responseB);
 }
 
-CMLAPI void CMLsetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_API void CMLsetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseR));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseR), response);
 //  cm->rgbspace.responseR.forwardfunc = CMLduplicateFunction(response->forwardfunc);
@@ -307,7 +302,7 @@ CMLAPI void CMLsetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
 }
 
 
-CMLAPI void CMLsetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_API void CMLsetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseG));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseG), response);
 //  cm->rgbspace.responseG.forwardfunc = CMLduplicateFunction(response->forwardfunc);
@@ -316,7 +311,7 @@ CMLAPI void CMLsetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
 }
 
 
-CMLAPI void CMLsetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_API void CMLsetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseB));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseB), response);
 //  cm->rgbspace.responseB.forwardfunc = CMLduplicateFunction(response->forwardfunc);
@@ -326,19 +321,19 @@ CMLAPI void CMLsetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
 
 
 
-CMLAPI CMLuint8 CMLgetRGBLUTSize(const CMLColorMachine* cm){
+CML_API CMLuint8 CMLgetRGBLUTSize(const CMLColorMachine* cm){
   return cm->rgbspace.lutsize;
 }
 
 
-CMLAPI void CMLsetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits){
+CML_API void CMLsetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits){
   if((bits < 1) || (bits > 16)){bits = 32;}
   cm->rgbspace.lutsize = bits;
   CMLInternalrecomputeRGBResponses(cm);
 }
 
 
-CMLAPI void CMLgetRGBColorSpacePrimaries(CMLRGBColorSpace colorspacetype, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy){
+CML_API void CMLgetRGBColorSpacePrimaries(CMLRGBColorSpace colorspacetype, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy){
   if(colorspacetype < CML_RGB_CUSTOM){
     primaryRYxy[0] = 1.f;
     primaryRYxy[1]  = rgbspaceprimaries[colorspacetype][0];
@@ -357,7 +352,7 @@ CMLAPI void CMLgetRGBColorSpacePrimaries(CMLRGBColorSpace colorspacetype, CMLVec
 }
 
 
-CMLAPI CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
+CML_API CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
                                   CMLRGBColorSpace      colorspacetype){
   if(colorspacetype < CML_RGB_CUSTOM){
     return rgbspaceilluminations[colorspacetype];
@@ -369,7 +364,7 @@ CMLAPI CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
   }
 }
 
-CMLAPI CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
+CML_API CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
                                       (CMLRGBColorSpace colorspacetype){
   if(colorspacetype < CML_RGB_CUSTOM){
     return rgbspaceresponsepresets[colorspacetype];
@@ -381,7 +376,7 @@ CMLAPI CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
   }
 }
 
-CMLAPI void CMLcomputeRGBtoXYZMatrix(CMLMat33 rgbtoxyzmatrix, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy, const CMLVec3 whitepointYxy){
+CML_API void CMLcomputeRGBtoXYZMatrix(CMLMat33 rgbtoxyzmatrix, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy, const CMLVec3 whitepointYxy){
   CMLVec3 redXYZ;
   CMLVec3 greenXYZ;
   CMLVec3 blueXYZ;
@@ -423,3 +418,28 @@ CMLAPI void CMLcomputeRGBtoXYZMatrix(CMLMat33 rgbtoxyzmatrix, CMLVec3 primaryRYx
 }
 
 
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

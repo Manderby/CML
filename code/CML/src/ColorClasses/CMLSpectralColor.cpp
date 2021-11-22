@@ -1,9 +1,4 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "CMLColor.h"
 
 // ///////////////////////////////////////
@@ -11,9 +6,9 @@
 // ///////////////////////////////////////
 
 SpectralColor::SpectralColor() :
-  spectrum(CML_NULL), bodycolor(CMLFALSE){
+  spectrum(CML_NULL), bodycolor(CML_FALSE){
   CMLFunction* fun = CMLcreateConstFilter(0.f);
-  init(fun, CMLFALSE);
+  init(fun, CML_FALSE);
   cmlReleaseFunction(fun);
 }
 
@@ -22,24 +17,24 @@ SpectralColor::~SpectralColor(){
 }
 
 SpectralColor::SpectralColor(float value) :
-  spectrum(CML_NULL), bodycolor(CMLFALSE){
+  spectrum(CML_NULL), bodycolor(CML_FALSE){
   CMLFunction* fun = CMLcreateConstFilter(value);
-  init(fun, CMLFALSE);
+  init(fun, CML_FALSE);
   cmlReleaseFunction(fun);
 }
 
 SpectralColor::SpectralColor(CMLFunction* newspectrum, CMLBool newbodycolor) :
-  spectrum(CML_NULL), bodycolor(CMLFALSE){
+  spectrum(CML_NULL), bodycolor(CML_FALSE){
   init(newspectrum, newbodycolor);
 }
 
 SpectralColor::SpectralColor(const Color& anycolor) :
-  spectrum(CML_NULL), bodycolor(CMLFALSE){
+  spectrum(CML_NULL), bodycolor(CML_FALSE){
   operator =(anycolor);
 }
 
 SpectralColor::SpectralColor(const SpectralColor& speccolor) :
-  spectrum(CML_NULL), bodycolor(CMLFALSE){
+  spectrum(CML_NULL), bodycolor(CML_FALSE){
   operator =(speccolor);
 }
 
@@ -350,3 +345,28 @@ void SpectralColor::toCMYKBuffer(float* dest) const {
 }
 
 
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

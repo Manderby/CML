@@ -1,13 +1,8 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "CML.h"
 #include "StateMachine/CMLInternal.h"
 
-CMLHIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
+CML_HIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
   "Gray",
   "XYZ",
   "Yxy",
@@ -25,7 +20,7 @@ CMLHIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
   "Remission Spectrum"
 };
 
-CMLHIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
+CML_HIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
 //  "1931 2 deg (1 nm steps)",                  // CML_OBSERVER_2DEG_1931
 //  "1964 10 deg (1 nm steps)",                 // CML_OBSERVER_10DEG_1964
   "CIE 1931 2 deg",     // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
@@ -38,7 +33,7 @@ CMLHIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
   "Custom Observer",                          // CML_OBSERVER_CUSTOM
 };
 
-CMLHIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = {
+CML_HIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = {
   "Blackbody",                        // CML_ILLUMINATION_BLACKBODY
   "A (CIE Standard)",                 // CML_ILLUMINATION_A_CIE
   "A (with Planck locus shift)",      // CML_ILLUMINATION_A_EXACT
@@ -68,7 +63,7 @@ CMLHIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = 
   "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
-CMLHIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Adobe 98",             // CML_RGB_ADOBE_98
   "Apple",                // CML_RGB_APPLE
   "Best",                 // CML_RGB_BEST
@@ -95,7 +90,7 @@ CMLHIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Custom",               // CML_RGB_WIDE_GAMUT
 };
 
-CMLHIDDEN static const char* labspacestrings[CML_NUMBER_OF_LAB_SPACES] = {
+CML_HIDDEN static const char* labspacestrings[CML_NUMBER_OF_LAB_SPACES] = {
   "CIELAB L*a*b* 1976",           // CML_LAB_CIELAB
   "Custom L",                     // CML_LAB_CUSTOM_L
   "Hunter Lab 1948 Approximated", // CML_LAB_HUNTER_APPROXIMATE
@@ -103,7 +98,7 @@ CMLHIDDEN static const char* labspacestrings[CML_NUMBER_OF_LAB_SPACES] = {
   "Adams chromatic valence",      // CML_LAB_ADAMS_CROMATIC_VALENCE
 };
 
-CMLHIDDEN static const char* functiontypestrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
+CML_HIDDEN static const char* functiontypestrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
   "Linear",           // CML_FUNCTION_LINEAR
   "Sqrt",             // CML_FUNCTION_SQRT
   "Gamma",            // CML_FUNCTION_GAMMA
@@ -113,7 +108,7 @@ CMLHIDDEN static const char* functiontypestrings[CML_NUMBER_OF_FUNCTION_TYPES] =
   "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CMLHIDDEN static const char* rgbresponsepresetstrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
+CML_HIDDEN static const char* rgbresponsepresetstrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
   "Linear",           // CML_FUNCTION_LINEAR
   "Sqrt",             // CML_FUNCTION_SQRT
   "Gamma Adobe 98",   // CML_RESPONSE_GAMMA_ADOBE_98
@@ -127,7 +122,7 @@ CMLHIDDEN static const char* rgbresponsepresetstrings[CML_NUMBER_OF_RESPONSE_CUR
   "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CMLHIDDEN static const char* graycomputationstrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
+CML_HIDDEN static const char* graycomputationstrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
   "L (HSL)",              // CML_GRAY_FROM_HSL
   "V (HSV)",              // CML_GRAY_FROM_HSV
   "G (RGB)",              // CML_GRAY_FROM_G
@@ -137,13 +132,13 @@ CMLHIDDEN static const char* graycomputationstrings[CML_NUMBER_OF_GRAY_COMPUTATI
   "Y' (YCbCr)",           // CML_GRAY_FROM_YPRIME
 };
 
-CMLHIDDEN static const char* cmyktransformstrings[CML_NUMBER_OF_CMYK_TRANSFORMS] = {
+CML_HIDDEN static const char* cmyktransformstrings[CML_NUMBER_OF_CMYK_TRANSFORMS] = {
   "Standard",           // CML_CMYK_STANDARD_TRANSFORM
   "UCR",                // CML_CMYK_UCR_TRANSFORM
 //  "GCR",              // CML_CMYK_GCR_TRANSFORM
 };
 
-CMLHIDDEN static const char* chromaticadaptationstrings[CML_NUMBER_OF_CHROMATIC_ADAPTATIONS] = {
+CML_HIDDEN static const char* chromaticadaptationstrings[CML_NUMBER_OF_CHROMATIC_ADAPTATIONS] = {
   "No adaptation",      // CML_CHROMATIC_ADAPTATION_NONE
   "XYZ scaling",        // CML_CHROMATIC_ADAPTATION_XYZ_SCALING
   "Bradford",           // CML_CHROMATIC_ADAPTATION_BRADFORD
@@ -151,34 +146,60 @@ CMLHIDDEN static const char* chromaticadaptationstrings[CML_NUMBER_OF_CHROMATIC_
 };
 
 
-CMLAPI const char* CMLgetColorTypeString(CMLColorType colortype){
+CML_API const char* CMLgetColorTypeString(CMLColorType colortype){
   return colortypestrings[colortype];
 }
-CMLAPI const char* CMLgetObserverTypeString(CMLObserverType observertype){
+CML_API const char* CMLgetObserverTypeString(CMLObserverType observertype){
   return observerstrings[observertype];
 }
-CMLAPI const char* CMLgetIlluminationTypeString(CMLIlluminationType illuminationtype){
+CML_API const char* CMLgetIlluminationTypeString(CMLIlluminationType illuminationtype){
   return illuminationstrings[illuminationtype];
 }
-CMLAPI const char* CMLgetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticadaptationtype){
+CML_API const char* CMLgetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticadaptationtype){
   return chromaticadaptationstrings[chromaticadaptationtype];
 }
-CMLAPI const char* CMLgetLabSpaceTypeString(CMLLabColorSpaceType labspacetype){
+CML_API const char* CMLgetLabSpaceTypeString(CMLLabColorSpaceType labspacetype){
   return labspacestrings[labspacetype];
 }
-CMLAPI const char* CMLgetRGBResponsePresetString(CMLResponseCurvePreset preset){
+CML_API const char* CMLgetRGBResponsePresetString(CMLResponseCurvePreset preset){
   return rgbresponsepresetstrings[preset];
 }
-CMLAPI const char* CMLgetFunctionTypeString(CMLFunctionType functiontype){
+CML_API const char* CMLgetFunctionTypeString(CMLFunctionType functiontype){
   return functiontypestrings[functiontype];
 }
-CMLAPI const char* CMLgetRGBColorspaceString(CMLRGBColorSpace colorspacetype){
+CML_API const char* CMLgetRGBColorspaceString(CMLRGBColorSpace colorspacetype){
   return rgbspacestrings[colorspacetype];
 }
-CMLAPI const char* CMLgetCMYKTransformTypeString(CMLCMYKTransformType transformtype){
+CML_API const char* CMLgetCMYKTransformTypeString(CMLCMYKTransformType transformtype){
   return cmyktransformstrings[transformtype];
 }
-CMLAPI const char* CMLgetGrayComputationTypeString(CMLGrayComputationType computationtype){
+CML_API const char* CMLgetGrayComputationTypeString(CMLGrayComputationType computationtype){
   return graycomputationstrings[computationtype];
 }
 
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

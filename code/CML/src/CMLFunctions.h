@@ -1,10 +1,4 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
-
 // A CMLFunction is an arbitrary float->float function which may define a
 // spectrum, a response curve, a filter or anything else. In CML, you can
 // create many predefined functions as well as your own cutsom functions.
@@ -27,9 +21,9 @@
 // Defines spectral data as radiance per wavelength.
 // The input to these functions is expected to be in the unit [nanometer].
 
-CMLAPI CMLFunction* CMLcreateBlackBody(float temperature);
-CMLAPI CMLFunction* CMLcreateCIEAIlluminant(void);
-CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
+CML_API CMLFunction* CMLcreateBlackBody(float temperature);
+CML_API CMLFunction* CMLcreateCIEAIlluminant(void);
+CML_API CMLFunction* CMLcreateCIEDIlluminant(float temperature);
 
 // Response Curves:
 // All response curves operate in the [0,1]-range. The following functions are
@@ -39,16 +33,16 @@ CMLAPI CMLFunction* CMLcreateCIEDIlluminant(float temperature);
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
 
-CMLAPI CMLFunction* CMLcreateLinearResponse(void);
-CMLAPI CMLFunction* CMLcreateGammaResponse(float gamma);
-CMLAPI CMLFunction* CMLcreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* CMLcreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
-CMLAPI CMLFunction* CMLcreatesRGBToXYZResponse(void);
-CMLAPI CMLFunction* CMLcreateXYZTosRGBResponse(void);
-CMLAPI CMLFunction* CMLcreateYToLStarResponse(void);
-CMLAPI CMLFunction* CMLcreateLStarToYResponse(void);
-CMLAPI CMLFunction* CMLcreateYToLStarStandardResponse(void);
-CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse(void);
+CML_API CMLFunction* CMLcreateLinearResponse(void);
+CML_API CMLFunction* CMLcreateGammaResponse(float gamma);
+CML_API CMLFunction* CMLcreateGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CML_API CMLFunction* CMLcreateInverseGammaLinearResponse(float linscale, float offset, float gamma, float split);
+CML_API CMLFunction* CMLcreatesRGBToXYZResponse(void);
+CML_API CMLFunction* CMLcreateXYZTosRGBResponse(void);
+CML_API CMLFunction* CMLcreateYToLStarResponse(void);
+CML_API CMLFunction* CMLcreateLStarToYResponse(void);
+CML_API CMLFunction* CMLcreateYToLStarStandardResponse(void);
+CML_API CMLFunction* CMLcreateLStarToYStandardResponse(void);
 
 // Filter Functions:
 // Use these functions to filter spectra. Filters are used for componentwise
@@ -56,34 +50,34 @@ CMLAPI CMLFunction* CMLcreateLStarToYStandardResponse(void);
 // but unlike probability distribution functions, they do not necessarily need
 // to be normalized to 1.
 
-CMLAPI CMLFunction* CMLcreateDiracFilter(float wavelength);
-CMLAPI CMLFunction* CMLcreateConstFilter(float value);
-CMLAPI CMLFunction* CMLcreateCutFilter(float min, float max);
+CML_API CMLFunction* CMLcreateDiracFilter(float wavelength);
+CML_API CMLFunction* CMLcreateConstFilter(float value);
+CML_API CMLFunction* CMLcreateCutFilter(float min, float max);
 
 // Composite Functions:
 // You can combine functions like mathematical functions. All operations will
 // then be performed componentwise.
 
-CMLAPI CMLFunction* CMLcreateFunctionAddFunction( const CMLFunction* func1,
+CML_API CMLFunction* CMLcreateFunctionAddFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionSubFunction( const CMLFunction* func1,
+CML_API CMLFunction* CMLcreateFunctionSubFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionMulFunction( const CMLFunction* func1,
+CML_API CMLFunction* CMLcreateFunctionMulFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionDivFunction( const CMLFunction* func1,
+CML_API CMLFunction* CMLcreateFunctionDivFunction( const CMLFunction* func1,
                                                   const CMLFunction* func2);
-CMLAPI CMLFunction* CMLcreateFunctionMulScalar(   const CMLFunction* func,
+CML_API CMLFunction* CMLcreateFunctionMulScalar(   const CMLFunction* func,
                                                                float scalar);
 
 // Array Functions:
 // Use the following function to crate arbitrary functions where an array with
 // sampling points is given. The ownbuffer parameter depicts if the function
-// shall take ownership of the buffer. If this parameter is CMLTRUE, the buffer
+// shall take ownership of the buffer. If this parameter is CML_TRUE, the buffer
 // will automatically be deallocated with free() when the function is no longer
 // needed. If you choose to do so, make sure the buffer is allocated with
 // malloc.
 
-CMLAPI CMLFunction* CMLcreateArrayFunction(
+CML_API CMLFunction* CMLcreateArrayFunction(
                               const float* buffer,
                                    CMLBool ownbuffer,
                                    CMLSize entrycount,
@@ -96,7 +90,7 @@ CMLAPI CMLFunction* CMLcreateArrayFunction(
 // If you already have an (arbitrary) function and you want to convert it to an
 // array function, use the following method:
 
-CMLAPI CMLFunction* CMLsampleArrayFunction(
+CML_API CMLFunction* CMLsampleArrayFunction(
                         const CMLFunction* func,
                                      float minimalcoord,
                                      float maximalcoord,
@@ -114,35 +108,35 @@ CMLAPI CMLFunction* CMLsampleArrayFunction(
 // //////////////////////////////////////////
 
 // Evaluates the given function at coordinate x
-CMLAPI float CMLeval(                 const CMLFunction* func,
+CML_API float CMLeval(                 const CMLFunction* func,
                                                    float x);
 
 // Returns the desired parameter of the function, if it exists. Returns 0
 // otherwise. The index is 0-based.
-CMLAPI float CMLgetFunctionParameter( const CMLFunction* func,
+CML_API float CMLgetFunctionParameter( const CMLFunction* func,
                                                    CMLSize index);
 
 // Performs a filter operation with the two given functions
-CMLAPI float CMLfilterFunction(       const CMLFunction* func,
+CML_API float CMLfilterFunction(       const CMLFunction* func,
                                       const CMLFunction* filter);
 
 // Returns the maximal value of the given function in the coordinate range.
-CMLAPI float CMLgetFunctionMaxValue(  const CMLFunction* func);
+CML_API float CMLgetFunctionMaxValue(  const CMLFunction* func);
 
 // Places information about the definition range of the given function in the
 // provided DefinitionRange structure.
-CMLAPI void CMLgetFunctionDefinitionRange(
+CML_API void CMLgetFunctionDefinitionRange(
                                       const CMLFunction* func,
                                      CMLDefinitionRange* defrange);
 
 // Increments the reference count of the given function and returns a non-const
 // pointer.
-CMLAPI CMLFunction* CMLduplicateFunction(
+CML_API CMLFunction* CMLduplicateFunction(
                                       const CMLFunction* func);
 
 // Decrements the reference count of the given function. If the reference count
 // reaches 0, the function automatically deallocates itself.
-CMLAPI void cmlReleaseFunction(             CMLFunction* func);
+CML_API void cmlReleaseFunction(             CMLFunction* func);
 
 
 
@@ -216,7 +210,7 @@ typedef void  (*CMLFunctionDesctructor)(
 // parameters can be CML_NULL. floatparams denotes the number of float input
 // parameters the function contains. They will be available in the constructor
 // and evaluator as array of floats.
-CMLAPI CMLFunction* CMLcreateFunction(
+CML_API CMLFunction* CMLcreateFunction(
                        CMLFunctionEvaluator evaluator,
                      CMLFunctionConstructor constructor,
                      CMLFunctionDesctructor destructor,
@@ -279,3 +273,27 @@ struct CMLDefinitionRange {
 
 
 
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

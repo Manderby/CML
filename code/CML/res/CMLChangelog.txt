@@ -1,5 +1,16 @@
 Changelog CML: Color Machine Library
 
+
+
+The company Manderim GmbH did close down in 2019 and the author took the code
+back to his private collection. On 2021-11-21, the author decided to publish
+the whole library into the public domain, refreshing the work until a solid
+version will be available to all.
+
+
+
+unfinished Version 1.0.3
+------------------------
 - Reenabled whitepoint for conversions when division by zero occurs.
 - Started to rename all API symbols
 - Started to work on object structures.

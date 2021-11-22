@@ -1,14 +1,9 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "CML.h"
 #include "StateMachine/CMLInternal.h"
 
 
-CMLHIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
+CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
   if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
   curve->forwardfunc = NULL;
   curve->backwardfunc = NULL;
@@ -16,7 +11,7 @@ CMLHIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
 }
 
 
-CMLAPI CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve, CMLResponseCurve* srccurve){
+CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve, CMLResponseCurve* srccurve){
   if(!dstcurve){dstcurve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
   dstcurve->forwardfunc = CMLduplicateFunction(srccurve->forwardfunc);
   dstcurve->backwardfunc = CMLduplicateFunction(srccurve->backwardfunc);
@@ -25,7 +20,7 @@ CMLAPI CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve, 
 }
 
 
-CMLAPI CMLResponseCurve* cmlCreateResponseCurveWithPreset(
+CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
                                         CMLResponseCurve* curve,
                                    CMLResponseCurvePreset preset){
   if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
@@ -106,7 +101,7 @@ CMLAPI CMLResponseCurve* cmlCreateResponseCurveWithPreset(
   return curve;
 }
 
-CMLAPI CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
+CML_API CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
                                          CMLResponseCurve* curve,
 //                                           CMLFunctionType type,
                                                      float param0,
@@ -122,28 +117,28 @@ CMLAPI CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
 
 
 
-CMLAPI void CMLclearResponseCurve(CMLResponseCurve* curve){
+CML_API void CMLclearResponseCurve(CMLResponseCurve* curve){
   cmlReleaseFunction(curve->backwardfunc);
   cmlReleaseFunction(curve->forwardfunc);
 }
 
-CMLAPI void CMLdestroyResponseCurve(CMLResponseCurve* curve){
+CML_API void CMLdestroyResponseCurve(CMLResponseCurve* curve){
   CMLclearResponseCurve(curve);
   free(curve);
 }
 
 
 
-CMLAPI CMLFunction* CMLgetResponseCurveFunc(const CMLResponseCurve* curve){
+CML_API CMLFunction* CMLgetResponseCurveFunc(const CMLResponseCurve* curve){
   return curve->backwardfunc;
 }
-CMLAPI CMLFunction* CMLgetResponseCurveInvFunc(const CMLResponseCurve* curve){
+CML_API CMLFunction* CMLgetResponseCurveInvFunc(const CMLResponseCurve* curve){
   return curve->forwardfunc;
 }
-//CMLAPI CMLFunctionType CMLgetResponseCurveFunctionType(const CMLResponseCurve* curve){
+//CML_API CMLFunctionType CMLgetResponseCurveFunctionType(const CMLResponseCurve* curve){
 //  return curve->type;
 //}
-CMLAPI float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
+CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
   switch(curve->functiontype){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 2.0f; break;
@@ -160,7 +155,7 @@ CMLAPI float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
     break;
   }
 }
-CMLAPI float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
+CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
   switch(curve->functiontype){
   case CML_FUNCTION_LINEAR: return 0.0f; break;
   case CML_FUNCTION_SQRT: return 0.0f; break;
@@ -177,7 +172,7 @@ CMLAPI float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
     break;
   }
 }
-CMLAPI float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
+CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
   switch(curve->functiontype){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 1.0f; break;
@@ -194,7 +189,7 @@ CMLAPI float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
     break;
   }
 }
-CMLAPI float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
+CML_API float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
   switch(curve->functiontype){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 0.0f; break;
@@ -212,3 +207,29 @@ CMLAPI float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
   }
 }
 
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

@@ -1,127 +1,122 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "CML.h"
 #include "StateMachine/CMLColorMachineState.h"
 
 
 
-CMLAPI void CMLconvertXYZtoYxy (CMLVec3 Yxy , const CMLVec3 XYZ, const CMLVec3 whitepointYxy){
+CML_API void CMLconvertXYZtoYxy (CMLVec3 Yxy , const CMLVec3 XYZ, const CMLVec3 whitepointYxy){
   cmlInternalOneXYZtoYxy(Yxy, XYZ, whitepointYxy);
 }
 
-CMLAPI void CMLconvertYxytoXYZ (CMLVec3 XYZ , const CMLVec3 Yxy, const CMLVec3 whitepointXYZ){
+CML_API void CMLconvertYxytoXYZ (CMLVec3 XYZ , const CMLVec3 Yxy, const CMLVec3 whitepointXYZ){
   cmlInternalOneYxytoXYZ(XYZ, Yxy, whitepointXYZ);
 }
 
-CMLAPI void CMLconvertYxytoYupvp(CMLVec3 Yupvp , const CMLVec3 Yxy, const CMLVec3 whitepointYupvp){
+CML_API void CMLconvertYxytoYupvp(CMLVec3 Yupvp , const CMLVec3 Yxy, const CMLVec3 whitepointYupvp){
   cmlInternalOneYxytoYupvp(Yupvp, Yxy, whitepointYupvp);
 }
 
-CMLAPI void CMLconvertYupvptoYxy (CMLVec3 Yxy , const CMLVec3 Yupvp, const CMLVec3 whitepointYxy){
+CML_API void CMLconvertYupvptoYxy (CMLVec3 Yxy , const CMLVec3 Yupvp, const CMLVec3 whitepointYxy){
   cmlInternalOneYupvptoYxy(Yxy, Yupvp, whitepointYxy);
 }
 
-CMLAPI void CMLconvertYupvptoYuv (CMLVec3 Yuv , const CMLVec3 Yupvp){
+CML_API void CMLconvertYupvptoYuv (CMLVec3 Yuv , const CMLVec3 Yupvp){
   cmlInternalOneYupvptoYuv(Yuv, Yupvp);
 }
 
-CMLAPI void CMLconvertYuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Yuv){
+CML_API void CMLconvertYuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Yuv){
   cmlInternalOneYuvtoYupvp(Yupvp, Yuv);
 }
 
-CMLAPI void CMLconvertYupvptoLuv (CMLVec3 Luv , const CMLVec3 Yupvp, const CMLVec3 whitepointYupvp){
+CML_API void CMLconvertYupvptoLuv (CMLVec3 Luv , const CMLVec3 Yupvp, const CMLVec3 whitepointYupvp){
   CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
   cmlInternalOneYupvptoLuv(Luv, Yupvp, whitepointYupvp, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
-CMLAPI void CMLconvertLuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Luv, const CMLVec3 whitepointYupvp){
+CML_API void CMLconvertLuvtoYupvp (CMLVec3 Yupvp , const CMLVec3 Luv, const CMLVec3 whitepointYupvp){
   CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
   cmlInternalOneLuvtoYupvp(Yupvp, Luv, whitepointYupvp, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }
 
-CMLAPI void CMLconvertXYZtoLab(CMLVec3 Lab , const CMLVec3 XYZ , const CMLVec3 whitepointXYZ){
+CML_API void CMLconvertXYZtoLab(CMLVec3 Lab , const CMLVec3 XYZ , const CMLVec3 whitepointXYZ){
   CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
   CMLVec3 inverseWhitepointXYZ = {cmlInverse(whitepointXYZ[0]), cmlInverse(whitepointXYZ[1]), cmlInverse(whitepointXYZ[2])};
   cmlInternalOneXYZtoCIELAB(Lab, XYZ, inverseWhitepointXYZ, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
-CMLAPI void CMLconvertLabtoXYZ(CMLVec3 XYZ , const CMLVec3 Lab , const CMLVec3 whitepointXYZ){
+CML_API void CMLconvertLabtoXYZ(CMLVec3 XYZ , const CMLVec3 Lab , const CMLVec3 whitepointXYZ){
   CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
   cmlInternalOneCIELABtoXYZ(XYZ, Lab, whitepointXYZ, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }
 
-CMLAPI void CMLconvertLabtoLch (CMLVec3 Lch , const CMLVec3 Lab ){
+CML_API void CMLconvertLabtoLch (CMLVec3 Lch , const CMLVec3 Lab ){
   cmlInternalOneLabtoLch(Lch, Lab);
 }
 
-CMLAPI void CMLconvertLchtoLab (CMLVec3 Lab , const CMLVec3 Lch ){
+CML_API void CMLconvertLchtoLab (CMLVec3 Lab , const CMLVec3 Lch ){
   cmlInternalOneLchtoLab(Lab, Lch);
 }
 
-CMLAPI void CMLconvertXYZtoRGB (CMLVec3 RGB , const CMLVec3 XYZ, const CMLMat33 XYZtoRGBmatrix, const CMLFunction* LineartoRResponse, const CMLFunction* LineartoGResponse, const CMLFunction* LineartoBResponse){
+CML_API void CMLconvertXYZtoRGB (CMLVec3 RGB , const CMLVec3 XYZ, const CMLMat33 XYZtoRGBmatrix, const CMLFunction* LineartoRResponse, const CMLFunction* LineartoGResponse, const CMLFunction* LineartoBResponse){
   cmlInternalOneXYZtoRGB(RGB, XYZ, XYZtoRGBmatrix, LineartoRResponse, LineartoGResponse, LineartoBResponse);
 }
 
-CMLAPI void CMLconvertRGBtoXYZ (CMLVec3 XYZ , const CMLVec3 RGB, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
+CML_API void CMLconvertRGBtoXYZ (CMLVec3 XYZ , const CMLVec3 RGB, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
   cmlInternalOneRGBtoXYZ(XYZ, RGB, RGBtoXYZmatrix, RtoLinearResponse, GtoLinearResponse, BtoLinearResponse);
 }
 
-CMLAPI void CMLconvertRGBtoYCbCr (CMLVec3 YCbCr , const CMLVec3 RGB, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitepointXYZ){
+CML_API void CMLconvertRGBtoYCbCr (CMLVec3 YCbCr , const CMLVec3 RGB, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitepointXYZ){
   CMLVec3 inversewhitepointXYZ;
   cmlSet3(inversewhitepointXYZ, cmlInverse(whitepointXYZ[0]), cmlInverse(whitepointXYZ[1]), cmlInverse(whitepointXYZ[2]));
   cmlInternalOneRGBtoYCbCr(YCbCr, RGB, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
 }
 
-CMLAPI void CMLconvertYCbCrtoRGB (CMLVec3 RGB , const CMLVec3 YCbCr, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitepointXYZ){
+CML_API void CMLconvertYCbCrtoRGB (CMLVec3 RGB , const CMLVec3 YCbCr, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitepointXYZ){
   CMLVec3 inversewhitepointXYZ;
   cmlSet3(inversewhitepointXYZ, cmlInverse(whitepointXYZ[0]), cmlInverse(whitepointXYZ[1]), cmlInverse(whitepointXYZ[2]));
   cmlInternalOneYCbCrtoRGB(RGB, YCbCr, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
 }
 
-CMLAPI void CMLconvertRGBtoHSV (CMLVec3 HSV , const CMLVec3 RGB){
+CML_API void CMLconvertRGBtoHSV (CMLVec3 HSV , const CMLVec3 RGB){
   cmlInternalOneRGBtoHSV(HSV, RGB);
 }
 
-CMLAPI void CMLconvertHSVtoRGB (CMLVec3 RGB , const CMLVec3 HSV){
+CML_API void CMLconvertHSVtoRGB (CMLVec3 RGB , const CMLVec3 HSV){
   cmlInternalOneHSVtoRGB(RGB, HSV);
 }
 
-CMLAPI void CMLconvertHSVtoHSL (CMLVec3 HSL , const CMLVec3 HSV){
+CML_API void CMLconvertHSVtoHSL (CMLVec3 HSL , const CMLVec3 HSV){
   cmlInternalOneHSVtoHSL(HSL, HSV);
 }
 
-CMLAPI void CMLconvertHSLtoHSV (CMLVec3 HSV , const CMLVec3 HSL){
+CML_API void CMLconvertHSLtoHSV (CMLVec3 HSV , const CMLVec3 HSL){
   cmlInternalOneHSLtoHSV(HSV, HSL);
 }
 
 
-CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 XYZ , const CMLFunction* specill, const CMLObserver* observer){
+CML_API void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 XYZ , const CMLFunction* specill, const CMLObserver* observer){
   cmlInternalOneIlluminationSpectrumtoXYZ(XYZ, specill, observer);
 }
 
-CMLAPI void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 XYZ, const CMLFunction* specrem, const CMLFunction* specill, const CMLObserver* observer){
+CML_API void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 XYZ, const CMLFunction* specrem, const CMLFunction* specill, const CMLObserver* observer){
   cmlInternalOneRemissionSpectrumtoXYZ(XYZ, specrem, specill, observer);
 }
 
 
 
 
-CMLAPI void CMLconvertXYZtoChromaticAdaptedXYZ(CMLVec3 aXYZ, const CMLVec3 XYZ, const CMLMat33 matrix){
+CML_API void CMLconvertXYZtoChromaticAdaptedXYZ(CMLVec3 aXYZ, const CMLVec3 XYZ, const CMLMat33 matrix){
   cmlMat33MulVec3(aXYZ, matrix, XYZ);
 }
 
 
 
 
-CMLAPI CMLuint32 CMLgetNumChannels(CMLColorType colortype){
+CML_API CMLuint32 CMLgetNumChannels(CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  return CML_GRAY_NUMCHANNELS; break;
   case CML_COLOR_XYZ:   return CML_XYZ_NUMCHANNELS; break;
@@ -147,7 +142,7 @@ CMLAPI CMLuint32 CMLgetNumChannels(CMLColorType colortype){
 }
 
 
-CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype){
+CML_API void CMLgetMinBounds(float* buffer, CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MIN); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MIN, CML_XYZ_Y_MIN, CML_XYZ_Z_MIN); break;
@@ -171,7 +166,7 @@ CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype){
 }
 
 
-CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
+CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
   switch(colortype){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MAX); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MAX, CML_XYZ_Y_MAX, CML_XYZ_Z_MAX); break;
@@ -196,5 +191,27 @@ CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
 
 
 
+// This is free and unencumbered software released into the public domain.
 
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
 
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

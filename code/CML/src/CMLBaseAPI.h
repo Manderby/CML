@@ -1,5 +1,4 @@
 
-//
 // This file contains the declarations of all raw color transformations and
 // various functions used in color science.
 //
@@ -14,32 +13,25 @@
 // that a function starting with "CMLcreate..." will indeed allocate space
 // which needs to be deleted manually. This will furthermore be indicated by an
 // additional comment at the corresponding API.
-//
-//
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 
 
 
 // When the conversion results in a division by zero the values of the
 // whitepoint with Y=0 will be set. When NULL is provided as whitepoint,
 // the values will be set to 0.
-CMLAPI void CMLconvertXYZtoYxy(  CMLVec3       Yxy,
+CML_API void CMLconvertXYZtoYxy(  CMLVec3       Yxy,
                            const CMLVec3       XYZ,
                            const CMLVec3       whitepointYxy);
 
-CMLAPI void CMLconvertYxytoXYZ(  CMLVec3       XYZ,
+CML_API void CMLconvertYxytoXYZ(  CMLVec3       XYZ,
                            const CMLVec3       Yxy,
                            const CMLVec3       whitepointXYZ);
 
-CMLAPI void CMLconvertYxytoYupvp(CMLVec3       Yupvp,
+CML_API void CMLconvertYxytoYupvp(CMLVec3       Yupvp,
                            const CMLVec3       Yxy,
                            const CMLVec3       whitepointYupvp);
 
-CMLAPI void CMLconvertYupvptoYxy(CMLVec3       Yxy,
+CML_API void CMLconvertYupvptoYxy(CMLVec3       Yxy,
                            const CMLVec3       Yupvp,
                            const CMLVec3       whitepointYxy);
 
@@ -47,21 +39,21 @@ CMLAPI void CMLconvertYupvptoYxy(CMLVec3       Yxy,
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertYupvptoYuv(CMLVec3       Yuv,
+CML_API void CMLconvertYupvptoYuv(CMLVec3       Yuv,
                            const CMLVec3       Yupvp);
 
-CMLAPI void CMLconvertYuvtoYupvp(CMLVec3       Yupvp,
+CML_API void CMLconvertYuvtoYupvp(CMLVec3       Yupvp,
                            const CMLVec3       Yuv);
 
 
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertYupvptoLuv(CMLVec3       Luv,
+CML_API void CMLconvertYupvptoLuv(CMLVec3       Luv,
                            const CMLVec3       Yupvp,
                            const CMLVec3       whitepointYupvp);
 
-CMLAPI void CMLconvertLuvtoYupvp(CMLVec3       Yupvp,
+CML_API void CMLconvertLuvtoYupvp(CMLVec3       Yupvp,
                            const CMLVec3       Luv,
                            const CMLVec3       whitepointYupvp);
 
@@ -70,35 +62,35 @@ CMLAPI void CMLconvertLuvtoYupvp(CMLVec3       Yupvp,
 // Note that the BaseAPI only supports CIELAB. Use ColorMachines if you need
 // other Lab spaces like Hunter lab or chromatic valence spaces.
 
-CMLAPI void CMLconvertXYZtoLab(  CMLVec3       Lab,
+CML_API void CMLconvertXYZtoLab(  CMLVec3       Lab,
                            const CMLVec3       XYZ,
                            const CMLVec3       whitepointXYZ);
 
-CMLAPI void CMLconvertLabtoXYZ(  CMLVec3       XYZ,
+CML_API void CMLconvertLabtoXYZ(  CMLVec3       XYZ,
                            const CMLVec3       Lab,
                            const CMLVec3       whitepointXYZ);
 
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertLabtoLch(  CMLVec3       Lch,
+CML_API void CMLconvertLabtoLch(  CMLVec3       Lch,
                            const CMLVec3       Lab);
 
-CMLAPI void CMLconvertLchtoLab(  CMLVec3       Lab,
+CML_API void CMLconvertLchtoLab(  CMLVec3       Lab,
                            const CMLVec3       Lch);
 
 
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertXYZtoRGB(  CMLVec3       RGB,
+CML_API void CMLconvertXYZtoRGB(  CMLVec3       RGB,
                            const CMLVec3       XYZ,
                            const CMLMat33      XYZtoRGBmatrix,
                            const CMLFunction*  LineartoRResponse,
                            const CMLFunction*  LineartoGResponse,
                            const CMLFunction*  LineartoBResponse);
 
-CMLAPI void CMLconvertRGBtoXYZ(  CMLVec3       XYZ,
+CML_API void CMLconvertRGBtoXYZ(  CMLVec3       XYZ,
                            const CMLVec3       RGB,
                            const CMLMat33      RGBtoXYZmatrix,
                            const CMLFunction*  RtoLinearResponse,
@@ -109,13 +101,13 @@ CMLAPI void CMLconvertRGBtoXYZ(  CMLVec3       XYZ,
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertRGBtoYCbCr(CMLVec3       YCbCr,
+CML_API void CMLconvertRGBtoYCbCr(CMLVec3       YCbCr,
                            const CMLVec3       RGB,
                            const CMLVec3       redprimaryYxy,
                            const CMLVec3       blueprimaryYxy,
                            const CMLVec3       whitepointXYZ);
 
-CMLAPI void CMLconvertYCbCrtoRGB(CMLVec3       RGB,
+CML_API void CMLconvertYCbCrtoRGB(CMLVec3       RGB,
                            const CMLVec3       YCbCr,
                            const CMLVec3       redprimaryYxy,
                            const CMLVec3       blueprimaryYxy,
@@ -125,19 +117,19 @@ CMLAPI void CMLconvertYCbCrtoRGB(CMLVec3       RGB,
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertRGBtoHSV(  CMLVec3       HSV,
+CML_API void CMLconvertRGBtoHSV(  CMLVec3       HSV,
                            const CMLVec3       RGB);
 
-CMLAPI void CMLconvertHSVtoRGB(  CMLVec3       RGB,
+CML_API void CMLconvertHSVtoRGB(  CMLVec3       RGB,
                            const CMLVec3       HSV);
 
 // ///////////////////////////////////////////
 
 
-CMLAPI void CMLconvertHSVtoHSL(  CMLVec3       HSL,
+CML_API void CMLconvertHSVtoHSL(  CMLVec3       HSL,
                            const CMLVec3       HSV);
 
-CMLAPI void CMLconvertHSLtoHSV(  CMLVec3       HSV,
+CML_API void CMLconvertHSLtoHSV(  CMLVec3       HSV,
                            const CMLVec3       HSL);
 
 
@@ -146,7 +138,7 @@ CMLAPI void CMLconvertHSLtoHSV(  CMLVec3       HSV,
 
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by its Y component.
-CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (
+CML_API void CMLconvertIlluminationSpectrumtoXYZ (
                            CMLVec3             XYZ,
                      const CMLFunction*        specill,
                      const CMLObserver*        observer);
@@ -154,7 +146,7 @@ CMLAPI void CMLconvertIlluminationSpectrumtoXYZ (
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by the Y component of
 // the white point defined by the illumination.
-CMLAPI void CMLconvertRemissionSpectrumtoXYZ (
+CML_API void CMLconvertRemissionSpectrumtoXYZ (
                            CMLVec3             XYZ,
                      const CMLFunction*        specrem,
                      const CMLFunction*        specill,
@@ -167,14 +159,14 @@ CMLAPI void CMLconvertRemissionSpectrumtoXYZ (
 // Computes a chromatic adaptation matrix and returns it in the first parameter.
 // Note that you can use the type CML_CHROMATIC_ADAPTATION_NONE to convert
 // between whitepoints with different radiometric Y values.
-CMLAPI void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
+CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
                                 CMLChromaticAdaptationType adaptationtype,
                                                    CMLVec3 adaptedwhitepointYxy,
                                                    CMLVec3 whitepointYxy);
 
 
 // Convert XYZ to the chromatic adapted aXYZ
-CMLAPI void CMLconvertXYZtoChromaticAdaptedXYZ(  CMLVec3 aXYZ,
+CML_API void CMLconvertXYZtoChromaticAdaptedXYZ(  CMLVec3 aXYZ,
                                            const CMLVec3 XYZ,
                                           const CMLMat33 matrix);
 
@@ -187,7 +179,7 @@ CMLAPI void CMLconvertXYZtoChromaticAdaptedXYZ(  CMLVec3 aXYZ,
 // of a desired observer. The returned functions must be deleted manually. If
 // an invalid observer is given or if the observer is CML_OBSERVER_CUSTOM, the
 // buffer will be filled with CML_NULL pointers.
-CMLAPI void cmlCreateSpecDistFunctions( CMLFunction* functions[3],
+CML_API void cmlCreateSpecDistFunctions( CMLFunction* functions[3],
                                                  CMLObserverType observer);
 
 
@@ -198,7 +190,7 @@ CMLAPI void cmlCreateSpecDistFunctions( CMLFunction* functions[3],
 // must be deleted manually. Only types denoting built-in illuminations are
 // valid (no custom illuminations). Invalid illumination types will return
 // CML_NULL.
-CMLAPI CMLFunction* cmlCreateIlluminationSpectrum(
+CML_API CMLFunction* cmlCreateIlluminationSpectrum(
                                     CMLIlluminationType illuminationtype,
                                     float               temperature);
 
@@ -206,7 +198,7 @@ CMLAPI CMLFunction* cmlCreateIlluminationSpectrum(
 // Returns the correlated color temperature in [Degree Kelvin] for a given
 // whitepoint in Yuv. Currently, the Robertson method is implemented.
 // Beware! This function expects Yuv, not Yxy!
-CMLAPI float CMLgetCorrelatedColorTemperature(
+CML_API float CMLgetCorrelatedColorTemperature(
                                     const CMLVec3       whitepointYuv);
 
 
@@ -216,15 +208,15 @@ CMLAPI float CMLgetCorrelatedColorTemperature(
 
 // Returns all three primaries of a predefined RGB colorspace. Note that
 // the Y component of the three primaries will always be 1.
-CMLAPI void CMLgetRGBColorSpacePrimaries(
+CML_API void CMLgetRGBColorSpacePrimaries(
                                   CMLRGBColorSpace      colorspacetype,
                                   CMLVec3               primaryRYxy,
                                   CMLVec3               primaryGYxy,
                                   CMLVec3               primaryBYxy);
 // Returns the illumination type of a predefined RGB colorspace.
-CMLAPI CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
+CML_API CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
                                   CMLRGBColorSpace      colorspacetype);
-CMLAPI CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
+CML_API CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
                                       (CMLRGBColorSpace colorspacetype);
 
 // Computes the matrix for RGB -> XYZ conversions given the three primaries and
@@ -234,7 +226,7 @@ CMLAPI CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
 // setting the Y component of the whitepoint to 1.
 // Also note that in order to get the inverse transformation matrix, simply
 // use the cmlMat33Inverse functin.
-CMLAPI void CMLcomputeRGBtoXYZMatrix(
+CML_API void CMLcomputeRGBtoXYZMatrix(
                                               CMLMat33  rgbtoxyzmatrix,
                                               CMLVec3   primaryRYxy,
                                               CMLVec3   primaryGYxy,
@@ -243,27 +235,53 @@ CMLAPI void CMLcomputeRGBtoXYZMatrix(
 
 // Returns the number of channels a specific color type uses. If an invalid
 // color type is given, the returned value will be 0.
-CMLAPI CMLuint32 CMLgetNumChannels( CMLColorType        colortype);
+CML_API CMLuint32 CMLgetNumChannels( CMLColorType        colortype);
 
 
 // Returns the minimal or maximal bounds for each channel of a specified color
 // type. If an invalid color type is given, the returned values will be
 // undefined.
-CMLAPI void CMLgetMinBounds(float* buffer, CMLColorType colortype);
-CMLAPI void CMLgetMaxBounds(float* buffer, CMLColorType colortype);
+CML_API void CMLgetMinBounds(float* buffer, CMLColorType colortype);
+CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colortype);
 
 
 // The following functions return an ASCII string describing the desired value.
 // Do not delete the returned pointers. If an invalid input parameter is given,
 // the returned value will be invalid.
-CMLAPI const char* CMLgetColorTypeString               (CMLColorType colortype);
-CMLAPI const char* CMLgetObserverTypeString            (CMLObserverType observertype);
-CMLAPI const char* CMLgetIlluminationTypeString        (CMLIlluminationType illuminationtype);
-CMLAPI const char* CMLgetRGBColorspaceString           (CMLRGBColorSpace colorspacetype);
-CMLAPI const char* CMLgetLabSpaceTypeString            (CMLLabColorSpaceType labspacetype);
-CMLAPI const char* CMLgetRGBResponsePresetString  (CMLResponseCurvePreset preset);
-CMLAPI const char* CMLgetFunctionTypeString       (CMLFunctionType functiontype);
-CMLAPI const char* CMLgetGrayComputationTypeString     (CMLGrayComputationType computationtype);
-CMLAPI const char* CMLgetCMYKTransformTypeString       (CMLCMYKTransformType transformtype);
-CMLAPI const char* CMLgetChromaticAdaptationTypeString (CMLChromaticAdaptationType chromaticadaptationtype);
+CML_API const char* CMLgetColorTypeString               (CMLColorType colortype);
+CML_API const char* CMLgetObserverTypeString            (CMLObserverType observertype);
+CML_API const char* CMLgetIlluminationTypeString        (CMLIlluminationType illuminationtype);
+CML_API const char* CMLgetRGBColorspaceString           (CMLRGBColorSpace colorspacetype);
+CML_API const char* CMLgetLabSpaceTypeString            (CMLLabColorSpaceType labspacetype);
+CML_API const char* CMLgetRGBResponsePresetString  (CMLResponseCurvePreset preset);
+CML_API const char* CMLgetFunctionTypeString       (CMLFunctionType functiontype);
+CML_API const char* CMLgetGrayComputationTypeString     (CMLGrayComputationType computationtype);
+CML_API const char* CMLgetCMYKTransformTypeString       (CMLCMYKTransformType transformtype);
+CML_API const char* CMLgetChromaticAdaptationTypeString (CMLChromaticAdaptationType chromaticadaptationtype);
 
+
+
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>

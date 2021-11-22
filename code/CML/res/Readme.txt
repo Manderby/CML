@@ -9,6 +9,11 @@ literature and reference material from standartization institutes.
 CML is written in C and is available in this package as a precompiled
 dynamic library.
 
+If you consider incorporating CML into a bigger project and need (paid) help
+in engineering, feel free to contact.
+
+Designed and implemented by Tobias Stamm.
+Email: cml@manderc.com
 
 
 
@@ -101,7 +106,7 @@ originally are located in the folder include/CML/ColorClasses.
 Contact
 =======
 
-Please contact cml@manderim.ch for requests, bugs, hints, clarification and
+Please contact cml@manderc.com for requests, bugs, hints, clarification and
 similar things. Note that German is the preferred choice of correspondance
 but English is offered as a common language of inter-communication.
 Requests which can be answered by yourself with the given documentation will
@@ -118,16 +123,5 @@ in engineering, feel free to contact.
 Version Notice
 ==============
 
-First, note that CML is a closed-source, proprietary software. Any use without
-the explicit acknowledgement of the author of this software is prohibited and
-any liability is disclamed. Terms of a separate contract may apply.
-
-This is the full version of CML and has been made available to you, your
-company or institute by a separate contract. If not stated otherwise, you
-are permitted by this contract to use this software for internal software
-engineering and to get some future version upgrades for free. If not
-explicitly stated in the contract, you are NOT allowed to use this version
-for a product. Further restrictions/terms are stated in the contract.
-
-(c) Manderim GmbH
+This software is public domain since 2021-11-21.
 

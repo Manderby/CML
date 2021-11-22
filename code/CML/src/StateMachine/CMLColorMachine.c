@@ -1,14 +1,9 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
-
 #include "../CML.h"
 #include "CMLColorMachineState.h"
 
 
-CMLAPI void CMLgetVersion(CMLByte version[4]){
+CML_API void CMLgetVersion(CMLByte version[4]){
   #ifndef NDEBUG
     version[0] = 1;
     version[1] = 0;
@@ -24,7 +19,7 @@ CMLAPI void CMLgetVersion(CMLByte version[4]){
 
 
 
-CMLAPI CMLColorMachine* CMLcreateColorMachine(){
+CML_API CMLColorMachine* CMLcreateColorMachine(){
   CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cmlAllocate(sizeof(CMLColorMachine));
 
@@ -68,7 +63,7 @@ CMLAPI CMLColorMachine* CMLcreateColorMachine(){
   
   // Set the default observer.
   CMLsetObserverType(cm, CML_DEFAULT_2DEG_OBSERVER);
-//  CMLsetRadiometricComputation(cm, CMLFALSE);
+//  CMLsetRadiometricComputation(cm, CML_FALSE);
 
   // Set the default RGB space and the according default illumination.
   CMLsetRGBLUTSize(cm, CML_DEFAULT_RGB_LUT_SIZE);
@@ -94,7 +89,7 @@ CMLAPI CMLColorMachine* CMLcreateColorMachine(){
 
 
 
-CMLAPI void CMLreleaseColorMachine(CMLColorMachine* cm){
+CML_API void CMLreleaseColorMachine(CMLColorMachine* cm){
   cmlClearObserver(&(cm->observer));
   CMLclearResponseCurve(&(cm->rgbspace.responseR));
   CMLclearResponseCurve(&(cm->rgbspace.responseG));
@@ -106,13 +101,13 @@ CMLAPI void CMLreleaseColorMachine(CMLColorMachine* cm){
 
 
 
-CMLAPI void CMLlockRecomputation(CMLColorMachine* cm){
+CML_API void CMLlockRecomputation(CMLColorMachine* cm){
   cm->recomputationlockcount ++;
 }
 
 
 
-CMLAPI void CMLreleaseRecomputation(CMLColorMachine* cm){
+CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
   cm->recomputationlockcount --;
   if(cm->recomputationlockcount){return;}
   
@@ -143,7 +138,7 @@ CMLAPI void CMLreleaseRecomputation(CMLColorMachine* cm){
 
 
 
-CMLAPI void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType newtype){
+CML_API void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType newtype){
   switch(newtype){
   case CML_INTEGER_MAPPING_FLOOR:
     cm->float1to8bit          = &CMLInternalfloat1to8bitFloor;
@@ -180,12 +175,12 @@ CMLAPI void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType 
 }
 
 
-CMLAPI CMLIntegerMappingType CMLgetIntegerMappingType(const CMLColorMachine* cm){
+CML_API CMLIntegerMappingType CMLgetIntegerMappingType(const CMLColorMachine* cm){
   return cm->inputoutput.integermapping;
 }
 
 
-CMLAPI void CMLget8bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void CMLget8bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #ifndef NDEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget8bitCutoffs", "Invalid Channel number.");}
   #endif
@@ -194,7 +189,7 @@ CMLAPI void CMLget8bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32
 }
 
 
-CMLAPI void CMLget16bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void CMLget16bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #ifndef NDEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget16bitCutoffs", "Invalid Channel number.");}
   #endif
@@ -203,7 +198,7 @@ CMLAPI void CMLget16bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint3
 }
 
 
-CMLAPI void CMLset8bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_API void CMLset8bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #ifndef NDEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLset8bitCutoffs", "Invalid Channel number.");}
   #endif
@@ -212,7 +207,7 @@ CMLAPI void CMLset8bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, C
 }
 
 
-CMLAPI void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_API void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #ifndef NDEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("cmlSet16bitCutoffs", "Invalid Channel number.");}
   #endif
@@ -222,3 +217,27 @@ CMLAPI void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, 
 
 
 
+// This is free and unencumbered software released into the public domain.
+
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+
+// For more information, please refer to <http://unlicense.org/>
