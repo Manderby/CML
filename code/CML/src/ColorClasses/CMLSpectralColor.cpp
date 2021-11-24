@@ -204,19 +204,19 @@ SpectralColor SpectralColor::toSpectral() const  {
 }
 
 
-void SpectralColor::from8bitBuffer(const CMLByte* input){
+void SpectralColor::from8BitBuffer(const CMLByte* input){
   input = input;  // no warning
 }
-void SpectralColor::from16bitBuffer(const CMLWord* input){
+void SpectralColor::from16BitBuffer(const CMLWord* input){
   input = input;  // no warning
 }
 void SpectralColor::fromFloatBuffer(const float* input){
   input = input;  // no warning
 }
-void SpectralColor::to8bitBuffer(CMLByte* output) const {
+void SpectralColor::to8BitBuffer(CMLByte* output) const {
   output = output;  // no warning
 }
-void SpectralColor::to16bitBuffer(CMLWord* output) const {
+void SpectralColor::to16BitBuffer(CMLWord* output) const {
   output = output;  // no warning
 }
 void SpectralColor::toFloatBuffer(float* output) const {

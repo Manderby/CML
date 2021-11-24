@@ -80,7 +80,7 @@ CML_API CMLFunction* CMLcreateFunctionMulScalar(   const CMLFunction* func,
 CML_API CMLFunction* CMLcreateArrayFunction(
                               const float* buffer,
                                    CMLBool ownbuffer,
-                                   CMLSize entrycount,
+                                   size_t entrycount,
                                      float minimalcoord,
                                      float maximalcoord,
                     CMLInterpolationMethod interpolationmethod,
@@ -94,7 +94,7 @@ CML_API CMLFunction* CMLsampleArrayFunction(
                         const CMLFunction* func,
                                      float minimalcoord,
                                      float maximalcoord,
-                                   CMLSize entrycount,
+                                   size_t entrycount,
                     CMLInterpolationMethod interpolationmethod,
                     CMLExtrapolationMethod downextrapolationmethod,
                     CMLExtrapolationMethod upextrapolationmethod);
@@ -114,7 +114,7 @@ CML_API float CMLeval(                 const CMLFunction* func,
 // Returns the desired parameter of the function, if it exists. Returns 0
 // otherwise. The index is 0-based.
 CML_API float CMLgetFunctionParameter( const CMLFunction* func,
-                                                   CMLSize index);
+                                                   size_t index);
 
 // Performs a filter operation with the two given functions
 CML_API float CMLfilterFunction(       const CMLFunction* func,

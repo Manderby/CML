@@ -155,20 +155,20 @@ CMLColorType RGBColor::getColorType() const{
   return CML_COLOR_RGB;
 }
 
-void RGBColor::from8bitBuffer(const CMLByte* input){
-  CMLRGBfrom8bitInput(cmlcm, color, input, 1);
+void RGBColor::from8BitBuffer(const CMLByte* input){
+  cmlRGBWithData8(cmlcm, color, input, 1);
 }
-void RGBColor::from16bitBuffer(const CMLWord* input){
-  CMLRGBfrom16bitInput(cmlcm, color, input, 1);
+void RGBColor::from16BitBuffer(const CMLWord* input){
+  cmlRGBWithData16(cmlcm, color, input, 1);
 }
 void RGBColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void RGBColor::to8bitBuffer(CMLByte* output) const {
-  CMLRGBto8bitOutput(cmlcm, output, color, 1);
+void RGBColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithRGB(cmlcm, output, color, 1);
 }
-void RGBColor::to16bitBuffer(CMLWord* output) const {
-  CMLRGBto16bitOutput(cmlcm, output, color, 1);
+void RGBColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithRGB(cmlcm, output, color, 1);
 }
 void RGBColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void RGBColor::toFloatBuffer(float* output) const {
 
 
 void RGBColor::fromNormedBuffer(const float* input){
-  CMLRGBfromNormedInput(color, input, 1);
+  cmlRGBWithNormedInput(color, input, 1);
 }
 void RGBColor::toNormedBuffer(float* output) const {
-  CMLRGBtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithRGB(output, color, 1);
 }
 void RGBColor::fromNormedCartesianBuffer(const float* input){
-  CMLRGBfromNormedInput(color, input, 1);
+  cmlRGBWithNormedInput(color, input, 1);
 }
 void RGBColor::toNormedCartesianBuffer(float* output) const {
-  CMLRGBtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithRGB(output, color, 1);
 }
 
 

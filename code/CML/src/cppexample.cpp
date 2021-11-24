@@ -147,7 +147,7 @@ int main(){
   
   unsigned char rgbdata[3] = {255, 128, 51};
   RGBColor inputrgb;
-  inputrgb.from8bitBuffer(rgbdata);
+  inputrgb.from8BitBuffer(rgbdata);
   printf("Input RGB: %f, %f, %f\n", inputrgb[0], inputrgb[1], inputrgb[2]);
 
 

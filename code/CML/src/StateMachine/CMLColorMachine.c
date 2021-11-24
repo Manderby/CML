@@ -55,10 +55,10 @@ CML_API CMLColorMachine* CMLcreateColorMachine(){
   // Set the default for the integer mapping
   CMLsetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
   for(i=0; i<CML_MAX_NUMBER_OF_CHANNELS; i++){
-    cm->inputoutput.offset8bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
-    cm->inputoutput.range8bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
-    cm->inputoutput.offset16bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
-    cm->inputoutput.range16bit[i]  = (float)(CML_DEFAULT_16BIT_CEIL_CUTOFF - CML_DEFAULT_16BIT_FLOOR_CUTOFF);
+    cm->inputoutput.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
+    cm->inputoutput.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
+    cm->inputoutput.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
+    cm->inputoutput.range16Bit[i]  = (float)(CML_DEFAULT_16BIT_CEIL_CUTOFF - CML_DEFAULT_16BIT_FLOOR_CUTOFF);
   }
   
   // Set the default observer.
@@ -141,28 +141,28 @@ CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
 CML_API void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType newtype){
   switch(newtype){
   case CML_INTEGER_MAPPING_FLOOR:
-    cm->float1to8bit          = &CMLInternalfloat1to8bitFloor;
-    cm->float3to8bit          = &CMLInternalfloat3to8bitFloor;
-    cm->float4to8bit          = &CMLInternalfloat4to8bitFloor;
-    cm->float1to16bit         = &CMLInternalfloat1to16bitFloor;
-    cm->float3to16bit         = &CMLInternalfloat3to16bitFloor;
-    cm->float4to16bit         = &CMLInternalfloat4to16bitFloor;
+    cm->data8WithFloat1          = &cml_Data8WithFloat1Floor;
+    cm->data8WithFloat3          = &cml_Data8WithFloat3Floor;
+    cm->data8WithFloat4          = &cml_Data8WithFloat4Floor;
+    cm->data16WithFloat1         = &cml_Data16WithFloat1Floor;
+    cm->data16WithFloat3         = &cml_Data16WithFloat3Floor;
+    cm->data16WithFloat4         = &cml_Data16WithFloat4Floor;
     break;
   case CML_INTEGER_MAPPING_BOX:
-    cm->float1to8bit          = &CMLInternalfloat1to8bitBox;
-    cm->float3to8bit          = &CMLInternalfloat3to8bitBox;
-    cm->float4to8bit          = &CMLInternalfloat4to8bitBox;
-    cm->float1to16bit         = &CMLInternalfloat1to16bitBox;
-    cm->float3to16bit         = &CMLInternalfloat3to16bitBox;
-    cm->float4to16bit         = &CMLInternalfloat4to16bitBox;
+    cm->data8WithFloat1          = &cml_Data8WithFloat1Box;
+    cm->data8WithFloat3          = &cml_Data8WithFloat3Box;
+    cm->data8WithFloat4          = &cml_Data8WithFloat4Box;
+    cm->data16WithFloat1         = &cml_Data16WithFloat1Box;
+    cm->data16WithFloat3         = &cml_Data16WithFloat3Box;
+    cm->data16WithFloat4         = &cml_Data16WithFloat4Box;
     break;
   case CML_INTEGER_MAPPING_INTERVAL:
-    cm->float1to8bit          = &CMLInternalfloat1to8bitInterval;
-    cm->float3to8bit          = &CMLInternalfloat3to8bitInterval;
-    cm->float4to8bit          = &CMLInternalfloat4to8bitInterval;
-    cm->float1to16bit         = &CMLInternalfloat1to16bitInterval;
-    cm->float3to16bit         = &CMLInternalfloat3to16bitInterval;
-    cm->float4to16bit         = &CMLInternalfloat4to16bitInterval;
+    cm->data8WithFloat1          = &cml_Data8WithFloat1Interval;
+    cm->data8WithFloat3          = &cml_Data8WithFloat3Interval;
+    cm->data8WithFloat4          = &cml_Data8WithFloat4Interval;
+    cm->data16WithFloat1         = &cml_Data16WithFloat1Interval;
+    cm->data16WithFloat3         = &cml_Data16WithFloat3Interval;
+    cm->data16WithFloat4         = &cml_Data16WithFloat4Interval;
     break;
   default:
     #ifndef NDEBUG
@@ -180,39 +180,39 @@ CML_API CMLIntegerMappingType CMLgetIntegerMappingType(const CMLColorMachine* cm
 }
 
 
-CML_API void CMLget8bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void CMLget8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #ifndef NDEBUG
-    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget8bitCutoffs", "Invalid Channel number.");}
+    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget8BitCutoffs", "Invalid Channel number.");}
   #endif
-  *min = (CMLint32)(cm->inputoutput.offset8bit[channel]);
-  *max = *min + (CMLint32)(cm->inputoutput.range8bit[channel]);
+  *min = (CMLint32)(cm->inputoutput.offset8Bit[channel]);
+  *max = *min + (CMLint32)(cm->inputoutput.range8Bit[channel]);
 }
 
 
-CML_API void CMLget16bitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void CMLget16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #ifndef NDEBUG
-    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget16bitCutoffs", "Invalid Channel number.");}
+    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLget16BitCutoffs", "Invalid Channel number.");}
   #endif
-  *min = (CMLint32)(cm->inputoutput.offset16bit[channel]);
-  *max = *min + (CMLint32)(cm->inputoutput.range16bit[channel]);
+  *min = (CMLint32)(cm->inputoutput.offset16Bit[channel]);
+  *max = *min + (CMLint32)(cm->inputoutput.range16Bit[channel]);
 }
 
 
-CML_API void CMLset8bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_API void CMLset8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #ifndef NDEBUG
-    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLset8bitCutoffs", "Invalid Channel number.");}
+    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("CMLset8BitCutoffs", "Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset8bit[channel] = (CMLByte)(min);
-  cm->inputoutput.range8bit[channel] = (float)(max - min);
+  cm->inputoutput.offset8Bit[channel] = (CMLByte)(min);
+  cm->inputoutput.range8Bit[channel] = (float)(max - min);
 }
 
 
-CML_API void cmlSet16bitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_API void cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #ifndef NDEBUG
-    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("cmlSet16bitCutoffs", "Invalid Channel number.");}
+    if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("cmlSet16BitCutoffs", "Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset16bit[channel] = (CMLWord)(min);
-  cm->inputoutput.range16bit[channel] = (float)(max - min);
+  cm->inputoutput.offset16Bit[channel] = (CMLWord)(min);
+  cm->inputoutput.range16Bit[channel] = (float)(max - min);
 }
 
 

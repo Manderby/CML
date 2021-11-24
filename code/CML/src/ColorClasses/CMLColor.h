@@ -115,11 +115,11 @@ public:
 
   
   // Converting from or to input-output buffers.
-  virtual void from8bitBuffer(const CMLByte* input)       = 0;  
-  virtual void from16bitBuffer(const CMLWord* input)      = 0;  
+  virtual void from8BitBuffer(const CMLByte* input)       = 0;  
+  virtual void from16BitBuffer(const CMLWord* input)      = 0;  
   virtual void fromFloatBuffer(const float* input)        = 0;  
-  virtual void to8bitBuffer(CMLByte* output) const        = 0;
-  virtual void to16bitBuffer(CMLWord* output) const       = 0;
+  virtual void to8BitBuffer(CMLByte* output) const        = 0;
+  virtual void to16BitBuffer(CMLWord* output) const       = 0;
   virtual void toFloatBuffer(float* output) const         = 0;
 
   // Converting from or to normed buffers. More information about normed

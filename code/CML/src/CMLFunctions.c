@@ -38,7 +38,7 @@ CML_API CMLFunction* CMLcreateFunction(CMLFunctionEvaluator evaluator, CMLFuncti
 
 
 CML_API CMLFunction* CMLduplicateFunction(const CMLFunction* func){
-  CMLSize* mutablerefcount = (CMLSize*)(&(func->refcount));
+  size_t* mutablerefcount = (size_t*)(&(func->refcount));
   // Beware the parantheses!!!
   (*mutablerefcount)++;
   // Return a non-const reference to function.
@@ -62,7 +62,7 @@ CML_API float CMLeval(const CMLFunction* func, float x){
   return cmlInternalEval(func, x);
 }
 
-CML_API float CMLgetFunctionParameter(const CMLFunction* func, CMLSize index){
+CML_API float CMLgetFunctionParameter(const CMLFunction* func, size_t index){
   if(func->paramcount > index){
     return func->params[index];
   }else{
@@ -123,7 +123,7 @@ CML_HIDDEN CML_INLINE static CMLDefinitionRange CMLgetDefinitionRangeOf2Function
 
 
 CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filter){
-  CMLSize samplecount;
+  size_t samplecount;
   CMLIntegrationMethod type;
   float sum = 0.f;
 
@@ -136,7 +136,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
   // If the stepsize is 0, the function will be filtered as a continuous
   // function with the default integration stepsize.
   if(filterrange.stepsize == 0.f){filterrange.stepsize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
-  samplecount = (CMLSize)(CMLRound((filterrange.maxSampleCoord - filterrange.minSampleCoord) / filterrange.stepsize)) + 1;
+  samplecount = (size_t)(CMLRound((filterrange.maxSampleCoord - filterrange.minSampleCoord) / filterrange.stepsize)) + 1;
   // If there is only one value to compute, the stepsize is manually set to 1
   // to not normalize the final result with a wrong value.
   if(samplecount == 1){filterrange.stepsize = 1.f;}
@@ -147,7 +147,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
   
   case CML_INTEGRATION_SIMPLE:
     {
-      CMLSize istep;
+      size_t istep;
       // Simple sum computation by adding one by one
       for(istep = 0; istep < samplecount; istep++){
         float x = filterrange.minSampleCoord + (filterrange.stepsize * istep);
@@ -157,10 +157,10 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
     
   case CML_INTEGRATION_BINARY_PAIRS:
     {
-      CMLSize istep;
-      CMLSize i;
-      float tmpsums[8 * sizeof(CMLSize)];  // 8 denotes bits per Byte
-      memset(tmpsums, 0, sizeof(float) * (8 * sizeof(CMLSize)));
+      size_t istep;
+      size_t i;
+      float tmpsums[8 * sizeof(size_t)];  // 8 denotes bits per Byte
+      memset(tmpsums, 0, sizeof(float) * (8 * sizeof(size_t)));
 
       // iterative binary sum computation method
       for(istep = 0; istep < samplecount; istep+=2){
@@ -175,7 +175,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
         // the current istep has its first binary 0.
         float walkingsum = value1 + value2;
         char p = 1;
-        CMLSize step = 2;
+        size_t step = 2;
         while(istep & step){
           walkingsum += tmpsums[p];
           p++;
@@ -190,7 +190,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
       }
       // Finally, go though all temp sums and add those to the final sum where
       // samplecount has a binary 1
-      for(i=0; i<8 * sizeof(CMLSize); i++){
+      for(i=0; i<8 * sizeof(size_t); i++){
         if(samplecount & (1<<i)){
           sum += tmpsums[i];
         }
@@ -210,8 +210,8 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
 
 
 CML_API float CMLgetFunctionMaxValue(const CMLFunction* func){
-  CMLSize samplecount;
-  CMLSize x;
+  size_t samplecount;
+  size_t x;
   float max = -CML_INFINITY;
   float stepsize = func->defrange.stepsize;
   if(stepsize == 0){stepsize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
@@ -232,8 +232,8 @@ CML_API void CMLgetFunctionDefinitionRange(
 }
 
 
-CML_API CMLFunction* CMLsampleArrayFunction(const CMLFunction* func, float minimalcoord, float maximalcoord, CMLSize entrycount, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod downextrapolationmethod, CMLExtrapolationMethod upextrapolationmethod){
-  CMLSize i;
+CML_API CMLFunction* CMLsampleArrayFunction(const CMLFunction* func, float minimalcoord, float maximalcoord, size_t entrycount, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod downextrapolationmethod, CMLExtrapolationMethod upextrapolationmethod){
+  size_t i;
   float* buffer = (float*)cmlAllocate(sizeof(float) * entrycount);
   for(i=0; i<entrycount; i++){
     float coord = minimalcoord + ((float)i / (float)(entrycount-1)) * (maximalcoord - minimalcoord);
@@ -258,7 +258,7 @@ typedef struct CMLInternalArrayFunctionDescriptor CMLInternalArrayFunctionDescri
 struct CML_HIDDEN CMLInternalArrayFunctionDescriptor{
   const float* buffer;
   CMLBool ownbuffer;
-  CMLSize entrycount;
+  size_t entrycount;
   float minimalcoord;
   float maximalcoord;
   CMLInterpolationMethod interpolationmethod;
@@ -269,7 +269,7 @@ struct CML_HIDDEN CMLInternalArrayFunctionDescriptor{
 typedef struct CMLInternalArrayFunctionStorage CMLInternalArrayFunctionStorage;
 struct CML_HIDDEN CMLInternalArrayFunctionStorage{
   const float* array;
-  CMLSize size;
+  size_t size;
   CMLBool isowner;
 
   float mincoord;
@@ -356,7 +356,7 @@ CML_HIDDEN float CMLInternalArrayFunctionExtrapolateUpGradient(const CMLInternal
 
 
 CML_HIDDEN float CMLInternalArrayFunctionInterpolateNone(const CMLInternalArrayFunctionStorage* storage, float indx){
-  CMLSize i = (CMLSize)indx;
+  size_t i = (size_t)indx;
   if((float)(i) == indx){
     return storage->array[i];
   }else{
@@ -365,20 +365,20 @@ CML_HIDDEN float CMLInternalArrayFunctionInterpolateNone(const CMLInternalArrayF
 }
 
 CML_HIDDEN float CMLInternalArrayFunctionInterpolateFloor(const CMLInternalArrayFunctionStorage* storage, float indx){
-  return storage->array[(CMLSize)indx];
+  return storage->array[(size_t)indx];
 }
 
 CML_HIDDEN float CMLInternalArrayFunctionInterpolateBox(const CMLInternalArrayFunctionStorage* storage, float indx){
-  return storage->array[(CMLSize)(indx + .5f)];
+  return storage->array[(size_t)(indx + .5f)];
 }
 
 CML_HIDDEN float CMLInternalArrayFunctionInterpolateInterval(const CMLInternalArrayFunctionStorage* storage, float indx){
-  return storage->array[(CMLSize)indx];
+  return storage->array[(size_t)indx];
 }
 
 CML_HIDDEN float CMLInternalArrayFunctionInterpolateLinear(const CMLInternalArrayFunctionStorage* storage, float indx){
-  CMLSize i1 = (CMLSize)indx;
-  CMLSize i2 = i1 + 1;
+  size_t i1 = (size_t)indx;
+  size_t i2 = i1 + 1;
   float alpha = indx - (float)(i1);
   return storage->array[i1] - (storage->array[i1] - storage->array[i2]) * alpha;
 }
@@ -532,7 +532,7 @@ CML_HIDDEN float cmlInternalEvaluateArrayFunction(float* params, const void* dat
 }
 
 
-CML_API CMLFunction* CMLcreateArrayFunction(const float* buffer, CMLBool ownbuffer, CMLSize entrycount, float minimalcoord, float maximalcoord, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod extrapolationmethoddown, CMLExtrapolationMethod extrapolationmethodup){
+CML_API CMLFunction* CMLcreateArrayFunction(const float* buffer, CMLBool ownbuffer, size_t entrycount, float minimalcoord, float maximalcoord, CMLInterpolationMethod interpolationmethod, CMLExtrapolationMethod extrapolationmethoddown, CMLExtrapolationMethod extrapolationmethodup){
   CMLInternalArrayFunctionDescriptor desc;
   desc.buffer = buffer;
   desc.ownbuffer = ownbuffer;

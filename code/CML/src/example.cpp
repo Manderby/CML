@@ -169,7 +169,7 @@ int main(){
   CMLColorMachine* cm2 = CMLcreateColorMachine();
   
   // Let's do this with some large arrays:
-  CMLSize millioncolors = 10;
+  size_t millioncolors = 10;
   // Adjust this number, if the following computation is running too fast or
   // too slow on your computer
 
@@ -180,7 +180,7 @@ int main(){
   fflush(stdout);
   float *randvalues = (float*)malloc(sizeof(float)*millioncolors*1000000*3);
   float *outvalues  = (float*)malloc(sizeof(float)*millioncolors*1000000*3);
-  for(CMLSize i=0; i<millioncolors*1000000; i++){
+  for(size_t i=0; i<millioncolors*1000000; i++){
     randvalues[i*3 + 0] = rand()/(float)RAND_MAX;
     randvalues[i*3 + 1] = rand()/(float)RAND_MAX;
     randvalues[i*3 + 2] = rand()/(float)RAND_MAX;

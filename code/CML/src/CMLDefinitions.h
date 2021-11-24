@@ -111,7 +111,6 @@
 #endif
 
 typedef CMLint32      CMLInt;
-typedef CMLuint32     CMLSize;
 typedef CMLuint16     CMLWord;
 typedef CMLuint8      CMLByte;
 
@@ -178,11 +177,11 @@ CML_INLINE static float cmlInverse(float x){
 
 
 
-CML_INLINE static CMLSize CMLgetSampleCount(float min, float max, float stepsize){
-  return (CMLSize)(CMLRound((max-min) * cmlInverse(stepsize))) + 1;
+CML_INLINE static size_t CMLgetSampleCount(float min, float max, float stepsize){
+  return (size_t)(CMLRound((max-min) * cmlInverse(stepsize))) + 1;
 }
 
-CML_INLINE static float CMLgetStepSize(float min, float max, CMLSize samplecount){
+CML_INLINE static float CMLgetStepSize(float min, float max, size_t samplecount){
   return (max-min) * cmlInverse((float)samplecount - 1);
 }
 
@@ -294,16 +293,16 @@ CML_INLINE static void cmlMat33Inverse(CMLMat33 d, const CMLMat33 m){
 // Angle functions
 // ////////////////////////////////////////////
 
-CML_INLINE static float CMLDegtoRad(float deg) {return deg * (CML_2PI / 360.f);}
-CML_INLINE static float CMLRadtoDeg(float rad) {return rad * (360.f / CML_2PI);}
+CML_INLINE static float cmlRadWithDeg(float deg) {return deg * (CML_2PI / 360.f);}
+CML_INLINE static float cmlDegWithRad(float rad) {return rad * (360.f / CML_2PI);}
 
-CML_INLINE static void CMLPolartoCartesian(float* xy, const float* r_theta){
+CML_INLINE static void cmlCartesianWithPolar(float* xy, const float* r_theta){
   float r = r_theta[0];
   xy[0] = r * cosf(r_theta[1]);
   xy[1] = r * sinf(r_theta[1]);
 }
 
-CML_INLINE static void CMLCartesiantoPolar(float* r_theta, const float* xy){
+CML_INLINE static void cmlPolarWithCartesian(float* r_theta, const float* xy){
   float length = cmlLength2(xy);
   r_theta[1] = (length == 0.) ? 0.f : cmlAngle(xy);
   r_theta[0] = length;

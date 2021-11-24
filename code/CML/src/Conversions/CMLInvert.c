@@ -86,118 +86,105 @@ CML_HIDDEN CML_INLINE static void cml_InvertCMYK(float* cmyk){
 
 
 
-CML_API void cmlInvertGray(CMLInputOutput gray, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertGray(CMLInputOutput gray, size_t count){
   float* inout = (float*)gray;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertGray(inout);
     inout++;
   }
 }
 
-CML_API void cmlInvertXYZ(CMLInputOutput xyz, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertXYZ(CMLInputOutput xyz, size_t count){
   float* inout = (float*)xyz;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertXYZ(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertYxy(CMLInputOutput yxy, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertYxy(CMLInputOutput yxy, size_t count){
   float* inout = (float*)yxy;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertYxy(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertYuv(CMLInputOutput yuv, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertYuv(CMLInputOutput yuv, size_t count){
   float* inout = (float*)yuv;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertYuv(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertYupvp(CMLInputOutput yupvp, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertYupvp(CMLInputOutput yupvp, size_t count){
   float* inout = (float*)yupvp;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertYupvp(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertLab(CMLInputOutput lab, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertLab(CMLInputOutput lab, size_t count){
   float* inout = (float*)lab;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertLab(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertLch(CMLInputOutput lch, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertLch(CMLInputOutput lch, size_t count){
   float* inout = (float*)lch;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertLch(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertLuv(CMLInputOutput luv, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertLuv(CMLInputOutput luv, size_t count){
   float* inout = (float*)luv;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertLuv(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertRGB(CMLInputOutput rgb, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertRGB(CMLInputOutput rgb, size_t count){
   float* inout = (float*)rgb;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertRGB(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertYCbCr(CMLInputOutput Ycbcr, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertYCbCr(CMLInputOutput Ycbcr, size_t count){
   float* inout = (float*)Ycbcr;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertYCbCr(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertHSV(CMLInputOutput hsv, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertHSV(CMLInputOutput hsv, size_t count){
   float* inout = (float*)hsv;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertHSV(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertHSL(CMLInputOutput hsl, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertHSL(CMLInputOutput hsl, size_t count){
   float* inout = (float*)hsl;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertHSL(inout);
     inout += 3;
   }
 }
 
-CML_API void cmlInvertCMYK(CMLInputOutput cmyk, CMLSize count){
-  CMLSize i;
+CML_API void cmlInvertCMYK(CMLInputOutput cmyk, size_t count){
   float* inout = (float*)cmyk;
-  for(i = 0; i < count; i++){
+  for(size_t i = 0; i < count; i++){
     cml_InvertCMYK(inout);
     inout += 4;
   }

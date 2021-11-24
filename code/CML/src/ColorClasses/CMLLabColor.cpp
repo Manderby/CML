@@ -160,20 +160,20 @@ CMLColorType LabColor::getColorType() const{
   return CML_COLOR_Lab;
 }
 
-void LabColor::from8bitBuffer(const CMLByte* input){
-  CMLLabfrom8bitInput(cmlcm, color, input, 1);
+void LabColor::from8BitBuffer(const CMLByte* input){
+  cmlLabWithData8(cmlcm, color, input, 1);
 }
-void LabColor::from16bitBuffer(const CMLWord* input){
-  CMLLabfrom16bitInput(cmlcm, color, input, 1);
+void LabColor::from16BitBuffer(const CMLWord* input){
+  cmlLabWithData16(cmlcm, color, input, 1);
 }
 void LabColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void LabColor::to8bitBuffer(CMLByte* output) const {
-  CMLLabto8bitOutput(cmlcm, output, color, 1);
+void LabColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithLab(cmlcm, output, color, 1);
 }
-void LabColor::to16bitBuffer(CMLWord* output) const {
-  CMLLabto16bitOutput(cmlcm, output, color, 1);
+void LabColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithLab(cmlcm, output, color, 1);
 }
 void LabColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -181,16 +181,16 @@ void LabColor::toFloatBuffer(float* output) const {
 
 
 void LabColor::fromNormedBuffer(const float* input){
-  CMLLabfromNormedInput(color, input, 1);
+  cmlLabWithNormedInput(color, input, 1);
 }
 void LabColor::toNormedBuffer(float* output) const {
-  CMLLabtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithLab(output, color, 1);
 }
 void LabColor::fromNormedCartesianBuffer(const float* input){
-  CMLLabfromNormedInput(color, input, 1);
+  cmlLabWithNormedInput(color, input, 1);
 }
 void LabColor::toNormedCartesianBuffer(float* output) const {
-  CMLLabtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithLab(output, color, 1);
 }
 
 

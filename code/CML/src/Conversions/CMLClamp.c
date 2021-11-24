@@ -80,106 +80,93 @@ CML_HIDDEN CML_INLINE static void InternalclampCMYK(float* cmyk){
 }
 
 
-CML_API void CMLclampGray (CMLInputOutput gray , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampGray (CMLInputOutput gray , size_t count){
   float* inout = (float*)gray;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampGray (inout);
     inout++;
   }
 }
-CML_API void CMLclampXYZ  (CMLInputOutput xyz  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampXYZ  (CMLInputOutput xyz  , size_t count){
   float* inout = (float*)xyz;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampXYZ  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampYxy  (CMLInputOutput yxy  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampYxy  (CMLInputOutput yxy  , size_t count){
   float* inout = (float*)yxy;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampYxy  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampYuv  (CMLInputOutput yuv  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampYuv  (CMLInputOutput yuv  , size_t count){
   float* inout = (float*)yuv;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampYuv  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampYupvp  (CMLInputOutput yupvp  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampYupvp  (CMLInputOutput yupvp  , size_t count){
   float* inout = (float*)yupvp;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampYupvp  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampLab  (CMLInputOutput lab  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampLab  (CMLInputOutput lab  , size_t count){
   float* inout = (float*)lab;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampLab  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampLch  (CMLInputOutput lch  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampLch  (CMLInputOutput lch  , size_t count){
   float* inout = (float*)lch;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampLch  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampLuv  (CMLInputOutput luv  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampLuv  (CMLInputOutput luv  , size_t count){
   float* inout = (float*)luv;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampLuv  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampRGB  (CMLInputOutput rgb  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampRGB  (CMLInputOutput rgb  , size_t count){
   float* inout = (float*)rgb;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampRGB  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampYCbCr(CMLInputOutput ycbcr, CMLSize count){
-  CMLSize i;
+CML_API void CMLclampYCbCr(CMLInputOutput ycbcr, size_t count){
   float* inout = (float*)ycbcr;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampYCbCr(inout);
     inout += 3;
   }
 }
-CML_API void CMLclampHSV  (CMLInputOutput hsv  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampHSV  (CMLInputOutput hsv  , size_t count){
   float* inout = (float*)hsv;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampHSV  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampHSL  (CMLInputOutput hsl  , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampHSL  (CMLInputOutput hsl  , size_t count){
   float* inout = (float*)hsl;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampHSL  (inout);
     inout += 3;
   }
 }
-CML_API void CMLclampCMYK (CMLInputOutput cmyk , CMLSize count){
-  CMLSize i;
+CML_API void CMLclampCMYK (CMLInputOutput cmyk , size_t count){
   float* inout = (float*)cmyk;
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     InternalclampCMYK (inout);
     inout += 4;
   }

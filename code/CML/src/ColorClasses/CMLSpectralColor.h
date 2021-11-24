@@ -89,11 +89,11 @@ public:
 
   // Currently, the 8, 16 and float buffer methods do nothing. There might be
   // a different use in the future. Don't use it.
-  void from8bitBuffer(const CMLByte* input);  
-  void from16bitBuffer(const CMLWord* input);  
+  void from8BitBuffer(const CMLByte* input);  
+  void from16BitBuffer(const CMLWord* input);  
   void fromFloatBuffer(const float* input);  
-  void to8bitBuffer(CMLByte* output) const;
-  void to16bitBuffer(CMLWord* output) const;
+  void to8BitBuffer(CMLByte* output) const;
+  void to16BitBuffer(CMLWord* output) const;
   void toFloatBuffer(float* output) const;  
 
   void fromNormedBuffer(const float* input);  

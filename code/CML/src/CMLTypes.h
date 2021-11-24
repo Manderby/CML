@@ -211,11 +211,11 @@ typedef void*                     CMLInputOutput;
 typedef void (*CMLColorConverter)(  const CMLColorMachine*,
                                           CMLOutput,
                                           CMLInput,
-                                          CMLSize);
+                                          size_t);
                                           
 typedef void (*CMLNormedConverter)(       CMLOutput,
                                           CMLInput,
-                                          CMLSize);
+                                          size_t);
 
 
 

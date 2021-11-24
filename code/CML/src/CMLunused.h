@@ -690,7 +690,7 @@
 //struct CMLSampleArrayFunctionStorage{
 //  CMLArray values;
 //  CMLArray coords;
-//  CMLSize maxindex;
+//  size_t maxindex;
 //  float (CMLSampleArrayFunctionStorage:: *extrapolateDown)(float x);
 //  float (CMLSampleArrayFunctionStorage:: *extrapolateUp)(float x);
 //  float (CMLSampleArrayFunctionStorage:: *interpolate)(float index);
@@ -746,7 +746,7 @@
 //
 //
 //float CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateNone(float index){
-//  CMLSize i = (CMLSize)index;
+//  size_t i = (size_t)index;
 //  if(float(i) == index){
 //    return values[i];
 //  }else{
@@ -755,20 +755,20 @@
 //}
 //
 //float CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateFloor(float index){
-//  return values[(CMLSize)index];
+//  return values[(size_t)index];
 //}
 //
 //float CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateBox(float index){
-//  return values[(CMLSize)(index + .5f)];
+//  return values[(size_t)(index + .5f)];
 //}
 //
 //float CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateInterval(float index){
-//  return values[(CMLSize)(index + index / (float)maxindex)];
+//  return values[(size_t)(index + index / (float)maxindex)];
 //}
 //
 //float CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateLinear(float index){
-//  CMLSize i1 = (CMLSize)index;
-//  CMLSize i2 = i1 + 1;
+//  size_t i1 = (size_t)index;
+//  size_t i2 = i1 + 1;
 //  float alpha = index - float(i1);
 //  return values[i1] - (values[i1] - values[i2]) * alpha;
 //}
@@ -838,11 +838,11 @@
 //  else if(x < s->coords[0]){return (s->*(s->extrapolateDown))(x);}
 //  else if(x > s->coords[s->maxindex]){return (s->*(s->extrapolateUp))(x);}
 //  else{
-//    CMLSize i1 = 0;
-//    CMLSize i2 = s->maxindex;
+//    size_t i1 = 0;
+//    size_t i2 = s->maxindex;
 //    // Binary search
 //    while(i2-i1 > 1){
-//      CMLSize m = (i1 + i2) / 2;
+//      size_t m = (i1 + i2) / 2;
 //      if(s->coords[m] > x){i2 = m;}else{i1 = m;}
 //    }
 //    float index = float(i1) + (x - s->coords[i1]) / (s->coords[i2] - s->coords[i1]);
@@ -956,7 +956,7 @@
 //  CMLArrayFunction* createArrayFunction(
 //            float minimalvalue,
 //            float maximalvalue,
-//            CMLSize entrycount,
+//            size_t entrycount,
 //            CMLInterpolationMethod interpolationmethod = CML_INTERPOLATION_LINEAR,
 //            CMLExtrapolationMethod extrapolationmethod = CML_EXTRAPOLATION_CLAMP);
 //
@@ -973,14 +973,14 @@
 //  ~CMLArrayFunction();
 //  CMLArrayFunction( const float* buffer,
 //                    CMLBool ownbuffer,
-//                    CMLSize entrycount,
+//                    size_t entrycount,
 //                    float newminimalcoord,
 //                    float newmaximalcoord,
 //                    CMLInterpolationMethod newinterpolationmethod,
 //                    CMLExtrapolationMethod newextrapolationmethod);
 //  void init(        const float* buffer,
 //                    CMLBool ownbuffer,
-//                    CMLSize entrycount,
+//                    size_t entrycount,
 //                    float newminimalcoord,
 //                    float newmaximalcoord,
 //                    CMLInterpolationMethod newinterpolationmethod,
@@ -1394,7 +1394,7 @@
 //  float illuminantvalue;
 //  float imin;
 //  float imax;
-//  CMLSize samplecount;
+//  size_t samplecount;
 //  CMLuint32 istep;
 //  CMLCIEAIlluminant ailluminant;
 //  CMLArray arraydensityfilterC;
@@ -1449,7 +1449,7 @@
 //  float illuminantvalue;
 //  float imin;
 //  float imax;
-//  CMLSize samplecount;
+//  size_t samplecount;
 //  CMLuint32 istep;
 //  CMLCIEAIlluminant ailluminant;
 //  CMLArray arraydensityfilterC;

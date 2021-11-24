@@ -49,7 +49,7 @@ CML_HIDDEN CML_INLINE static CMLColorConverter CMLInternalGetAnythingToGrayColor
 // Identity converter
 // //////////////////////////
 
-CML_API void CMLGraytoGray(const CMLColorMachine* cm, CMLOutput grayd , CMLInput grays, CMLSize count){
+CML_API void CMLGraytoGray(const CMLColorMachine* cm, CMLOutput grayd , CMLInput grays, size_t count){
   cm = cm; // no warning
   memcpy(grayd, grays, count * sizeof(CMLVec1));
 }
@@ -60,11 +60,10 @@ CML_API void CMLGraytoGray(const CMLColorMachine* cm, CMLOutput grayd , CMLInput
 //////////////////////////////
 
 
-CML_HIDDEN CML_INLINE static void CMLInternalConvertGrayToColorspace(const CMLColorMachine* cm, float* out, const float* in, CMLSize count, CMLColorType outputsystem, CMLSize outputchannelcount){
-  CMLSize i;
+CML_HIDDEN CML_INLINE static void CMLInternalConvertGrayToColorspace(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType outputsystem, size_t outputchannelcount){
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetGrayToAnythingColorConverter(cm, outputsystem);
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     cm->GraytoChanneledBuffer(cm, c, in);
     (*grayconverter)(cm, out, c, 1);
     in +=1;
@@ -73,40 +72,40 @@ CML_HIDDEN CML_INLINE static void CMLInternalConvertGrayToColorspace(const CMLCo
 }
 
 
-CML_API void CMLGraytoXYZ (const CMLColorMachine* cm, CMLOutput xyz , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoXYZ (const CMLColorMachine* cm, CMLOutput xyz , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)xyz, (float*)gray, count, CML_COLOR_XYZ, 3);
 }
-CML_API void CMLGraytoYuv (const CMLColorMachine* cm, CMLOutput yuv , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoYuv (const CMLColorMachine* cm, CMLOutput yuv , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)yuv, (float*)gray, count, CML_COLOR_Yuv, 3);
 }
-CML_API void CMLGraytoYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)yupvp, (float*)gray, count, CML_COLOR_Yupvp, 3);
 }
-CML_API void CMLGraytoYxy (const CMLColorMachine* cm, CMLOutput yxy , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoYxy (const CMLColorMachine* cm, CMLOutput yxy , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)yxy, (float*)gray, count, CML_COLOR_Yxy, 3);
 }
-CML_API void CMLGraytoLab (const CMLColorMachine* cm, CMLOutput lab , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoLab (const CMLColorMachine* cm, CMLOutput lab , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)lab, (float*)gray, count, CML_COLOR_Lab, 3);
 }
-CML_API void CMLGraytoLch (const CMLColorMachine* cm, CMLOutput lch , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoLch (const CMLColorMachine* cm, CMLOutput lch , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)lch, (float*)gray, count, CML_COLOR_Lch, 3);
 }
-CML_API void CMLGraytoLuv (const CMLColorMachine* cm, CMLOutput luv , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoLuv (const CMLColorMachine* cm, CMLOutput luv , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)luv, (float*)gray, count, CML_COLOR_Luv, 3);
 }
-CML_API void CMLGraytoRGB (const CMLColorMachine* cm, CMLOutput rgb , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoRGB (const CMLColorMachine* cm, CMLOutput rgb , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)rgb, (float*)gray, count, CML_COLOR_RGB, 3);
 }
-CML_API void CMLGraytoYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)ycbcr, (float*)gray, count, CML_COLOR_YCbCr, 3);
 }
-CML_API void CMLGraytoHSV (const CMLColorMachine* cm, CMLOutput hsv , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoHSV (const CMLColorMachine* cm, CMLOutput hsv , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)hsv, (float*)gray, count, CML_COLOR_HSV, 3);
 }
-CML_API void CMLGraytoHSL (const CMLColorMachine* cm, CMLOutput hsl , CMLInput gray, CMLSize count){
+CML_API void CMLGraytoHSL (const CMLColorMachine* cm, CMLOutput hsl , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)hsl, (float*)gray, count, CML_COLOR_HSL, 3);
 }
-CML_API void CMLGraytoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput gray, CMLSize count){
+CML_API void CMLGraytoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)cmyk, (float*)gray, count, CML_COLOR_CMYK, 4);
 }
 
@@ -119,11 +118,10 @@ CML_API void CMLGraytoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput g
 // Anything to Gray
 //////////////////////////////
 
-CML_HIDDEN CML_INLINE static void CMLInternalConvertColorspaceToGray(const CMLColorMachine* cm, float* out, const float* in, CMLSize count, CMLColorType inputsystem, CMLSize inputchannelcount){
-  CMLSize i;
+CML_HIDDEN CML_INLINE static void CMLInternalConvertColorspaceToGray(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType inputsystem, size_t inputchannelcount){
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetAnythingToGrayColorConverter(cm, inputsystem);
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     (*grayconverter)(cm, c, in, 1);
     cm->ChanneledBuffertoGray(cm, out, c);
     in += inputchannelcount;
@@ -131,61 +129,60 @@ CML_HIDDEN CML_INLINE static void CMLInternalConvertColorspaceToGray(const CMLCo
   }
 }
 
-CML_API void CMLXYZtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput xyz , CMLSize count){
+CML_API void CMLXYZtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput xyz , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)xyz, count, CML_COLOR_XYZ, 3);
 }
 
-CML_API void CMLYuvtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yuv , CMLSize count){
+CML_API void CMLYuvtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yuv , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yuv, count, CML_COLOR_Yuv, 3);
 }
 
-CML_API void CMLYupvptoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yupvp , CMLSize count){
+CML_API void CMLYupvptoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yupvp , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yupvp, count, CML_COLOR_Yupvp, 3);
 }
 
-CML_API void CMLYxytoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yxy , CMLSize count){
+CML_API void CMLYxytoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yxy , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yxy, count, CML_COLOR_Yxy, 3);
 }
 
-CML_API void CMLLabtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput lab , CMLSize count){
+CML_API void CMLLabtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput lab , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)lab, count, CML_COLOR_Lab, 3);
 }
 
-CML_API void CMLLchtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput lch , CMLSize count){
+CML_API void CMLLchtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput lch , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)lch, count, CML_COLOR_Lch, 3);
 }
 
-CML_API void CMLLuvtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput luv , CMLSize count){
+CML_API void CMLLuvtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput luv , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)luv, count, CML_COLOR_Luv, 3);
 }
 
-CML_API void CMLRGBtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput rgb , CMLSize count){
+CML_API void CMLRGBtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput rgb , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)rgb, count, CML_COLOR_RGB, 3);
 }
 
-CML_API void CMLYCbCrtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput ycbcr , CMLSize count){
+CML_API void CMLYCbCrtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput ycbcr , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)ycbcr, count, CML_COLOR_YCbCr, 3);
 }
 
-CML_API void CMLHSVtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput hsv , CMLSize count){
+CML_API void CMLHSVtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput hsv , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)hsv, count, CML_COLOR_HSV, 3);
 }
 
-CML_API void CMLHSLtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput hsl , CMLSize count){
+CML_API void CMLHSLtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput hsl , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)hsl, count, CML_COLOR_HSL, 3);
 }
 
-CML_API void CMLCMYKtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput cmyk, CMLSize count){
+CML_API void CMLCMYKtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput cmyk, size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)cmyk, count, CML_COLOR_CMYK, 4);
 }
 
-CML_API void CMLSpectrumIlluminationtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput specill, CMLSize count){
-  CMLSize i;
+CML_API void CMLSpectrumIlluminationtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput specill, size_t count){
   const CMLFunction* in  = (const CMLFunction*)specill;
   float* out = (float*)gray;
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetAnythingToGrayColorConverter(cm, CML_COLOR_SPECTRUM_ILLUMINATION);
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     (*grayconverter)(cm, c, in, 1);
     cm->ChanneledBuffertoGray(cm, out, c);
     in += 1;
@@ -193,13 +190,12 @@ CML_API void CMLSpectrumIlluminationtoGray(const CMLColorMachine* cm, CMLOutput 
   }
 }
 
-CML_API void CMLSpectrumRemissiontoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput specrem, CMLSize count){
-  CMLSize i;
+CML_API void CMLSpectrumRemissiontoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput specrem, size_t count){
   const CMLFunction* in  = (const CMLFunction*)specrem;
   float* out = (float*)gray;
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetAnythingToGrayColorConverter(cm, CML_COLOR_SPECTRUM_REMISSION);
-  for(i=0; i<count; i++){
+  for(size_t i = 0; i < count; i++){
     (*grayconverter)(cm, c, in, 1);
     cm->ChanneledBuffertoGray(cm, out, c);
     in += 1;

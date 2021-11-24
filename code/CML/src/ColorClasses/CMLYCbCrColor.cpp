@@ -155,20 +155,20 @@ CMLColorType YCbCrColor::getColorType() const{
   return CML_COLOR_YCbCr;
 }
 
-void YCbCrColor::from8bitBuffer(const CMLByte* input){
-  CMLYCbCrfrom8bitInput(cmlcm, color, input, 1);
+void YCbCrColor::from8BitBuffer(const CMLByte* input){
+  cmlYCbCrWithData8(cmlcm, color, input, 1);
 }
-void YCbCrColor::from16bitBuffer(const CMLWord* input){
-  CMLYCbCrfrom16bitInput(cmlcm, color, input, 1);
+void YCbCrColor::from16BitBuffer(const CMLWord* input){
+  cmlYCbCrWithData16(cmlcm, color, input, 1);
 }
 void YCbCrColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void YCbCrColor::to8bitBuffer(CMLByte* output) const {
-  CMLYCbCrto8bitOutput(cmlcm, output, color, 1);
+void YCbCrColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithYCbCr(cmlcm, output, color, 1);
 }
-void YCbCrColor::to16bitBuffer(CMLWord* output) const {
-  CMLYCbCrto16bitOutput(cmlcm, output, color, 1);
+void YCbCrColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithYCbCr(cmlcm, output, color, 1);
 }
 void YCbCrColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void YCbCrColor::toFloatBuffer(float* output) const {
 
 
 void YCbCrColor::fromNormedBuffer(const float* input){
-  CMLYCbCrfromNormedInput(color, input, 1);
+  cmlYCbCrWithNormedInput(color, input, 1);
 }
 void YCbCrColor::toNormedBuffer(float* output) const {
-  CMLYCbCrtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithYCbCr(output, color, 1);
 }
 void YCbCrColor::fromNormedCartesianBuffer(const float* input){
-  CMLYCbCrfromNormedInput(color, input, 1);
+  cmlYCbCrWithNormedInput(color, input, 1);
 }
 void YCbCrColor::toNormedCartesianBuffer(float* output) const {
-  CMLYCbCrtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithYCbCr(output, color, 1);
 }
 
 

@@ -164,20 +164,20 @@ CMLColorType HSLColor::getColorType() const{
   return CML_COLOR_HSL;
 }
 
-void HSLColor::from8bitBuffer(const CMLByte* input){
-  CMLHSLfrom8bitInput(cmlcm, color, input, 1);
+void HSLColor::from8BitBuffer(const CMLByte* input){
+  cmlHSLWithData8(cmlcm, color, input, 1);
 }
-void HSLColor::from16bitBuffer(const CMLWord* input){
-  CMLHSLfrom16bitInput(cmlcm, color, input, 1);
+void HSLColor::from16BitBuffer(const CMLWord* input){
+  cmlHSLWithData16(cmlcm, color, input, 1);
 }
 void HSLColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void HSLColor::to8bitBuffer(CMLByte* output) const {
-  CMLHSLto8bitOutput(cmlcm, output, color, 1);
+void HSLColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithHSL(cmlcm, output, color, 1);
 }
-void HSLColor::to16bitBuffer(CMLWord* output) const {
-  CMLHSLto16bitOutput(cmlcm, output, color, 1);
+void HSLColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithHSL(cmlcm, output, color, 1);
 }
 void HSLColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -185,16 +185,16 @@ void HSLColor::toFloatBuffer(float* output) const {
 
 
 void HSLColor::fromNormedBuffer(const float* input){
-  CMLHSLfromNormedInput(color, input, 1);
+  cmlHSLWithNormedInput(color, input, 1);
 }
 void HSLColor::toNormedBuffer(float* output) const {
-  CMLHSLtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithHSL(output, color, 1);
 }
 void HSLColor::fromNormedCartesianBuffer(const float* input){
-  CMLHSLfromNormedCartesianInput(color, input, 1);
+  cmlHSLWithNormedCartesianInput(color, input, 1);
 }
 void HSLColor::toNormedCartesianBuffer(float* output) const {
-  CMLHSLtoNormedCartesianOutput(output, color, 1);
+  cmlNormedCartesianOutputWithHSL(output, color, 1);
 }
 
 

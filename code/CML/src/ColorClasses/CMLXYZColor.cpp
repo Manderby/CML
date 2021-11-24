@@ -155,20 +155,20 @@ CMLColorType XYZColor::getColorType() const{
   return CML_COLOR_XYZ;
 }
 
-void XYZColor::from8bitBuffer(const CMLByte* input){
-  CMLXYZfrom8bitInput(cmlcm, color, input, 1);
+void XYZColor::from8BitBuffer(const CMLByte* input){
+  cmlXYZWithData8(cmlcm, color, input, 1);
 }
-void XYZColor::from16bitBuffer(const CMLWord* input){
-  CMLXYZfrom16bitInput(cmlcm, color, input, 1);
+void XYZColor::from16BitBuffer(const CMLWord* input){
+  cmlXYZWithData16(cmlcm, color, input, 1);
 }
 void XYZColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void XYZColor::to8bitBuffer(CMLByte* output) const {
-  CMLXYZto8bitOutput(cmlcm, output, color, 1);
+void XYZColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithXYZ(cmlcm, output, color, 1);
 }
-void XYZColor::to16bitBuffer(CMLWord* output) const {
-  CMLXYZto16bitOutput(cmlcm, output, color, 1);
+void XYZColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithXYZ(cmlcm, output, color, 1);
 }
 void XYZColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void XYZColor::toFloatBuffer(float* output) const {
 
 
 void XYZColor::fromNormedBuffer(const float* input){
-  CMLXYZfromNormedInput(color, input, 1);
+  cmlXYZWithNormedInput(color, input, 1);
 }
 void XYZColor::toNormedBuffer(float* output) const {
-  CMLXYZtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithXYZ(output, color, 1);
 }
 void XYZColor::fromNormedCartesianBuffer(const float* input){
-  CMLXYZfromNormedInput(color, input, 1);
+  cmlXYZWithNormedInput(color, input, 1);
 }
 void XYZColor::toNormedCartesianBuffer(float* output) const {
-  CMLXYZtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithXYZ(output, color, 1);
 }
 
 

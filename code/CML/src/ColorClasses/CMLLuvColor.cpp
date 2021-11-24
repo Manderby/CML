@@ -155,20 +155,20 @@ CMLColorType LuvColor::getColorType() const{
   return CML_COLOR_Luv;
 }
 
-void LuvColor::from8bitBuffer(const CMLByte* input){
-  CMLLuvfrom8bitInput(cmlcm, color, input, 1);
+void LuvColor::from8BitBuffer(const CMLByte* input){
+  cmlLuvWithData8(cmlcm, color, input, 1);
 }
-void LuvColor::from16bitBuffer(const CMLWord* input){
-  CMLLuvfrom16bitInput(cmlcm, color, input, 1);
+void LuvColor::from16BitBuffer(const CMLWord* input){
+  cmlLuvWithData16(cmlcm, color, input, 1);
 }
 void LuvColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void LuvColor::to8bitBuffer(CMLByte* output) const {
-  CMLLuvto8bitOutput(cmlcm, output, color, 1);
+void LuvColor::to8BitBuffer(CMLByte* output) const {
+  cmlData8WithLuv(cmlcm, output, color, 1);
 }
-void LuvColor::to16bitBuffer(CMLWord* output) const {
-  CMLLuvto16bitOutput(cmlcm, output, color, 1);
+void LuvColor::to16BitBuffer(CMLWord* output) const {
+  cmlData16WithLuv(cmlcm, output, color, 1);
 }
 void LuvColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void LuvColor::toFloatBuffer(float* output) const {
 
 
 void LuvColor::fromNormedBuffer(const float* input){
-  CMLLuvfromNormedInput(color, input, 1);
+  cmlLuvWithNormedInput(color, input, 1);
 }
 void LuvColor::toNormedBuffer(float* output) const {
-  CMLLuvtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithLuv(output, color, 1);
 }
 void LuvColor::fromNormedCartesianBuffer(const float* input){
-  CMLLuvfromNormedInput(color, input, 1);
+  cmlLuvWithNormedInput(color, input, 1);
 }
 void LuvColor::toNormedCartesianBuffer(float* output) const {
-  CMLLuvtoNormedOutput(output, color, 1);
+  cmlNormedOutputWithLuv(output, color, 1);
 }
 
 

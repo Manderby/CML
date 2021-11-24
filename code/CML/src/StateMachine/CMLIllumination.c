@@ -288,10 +288,9 @@ CML_API CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
 
 CML_API float CMLgetCorrelatedColorTemperature(const CMLVec3 whitepointYuv){
   float temperature = 0.f;
-  CMLSize i;
   float dm = 0.f;
 
-  for(i = 0; i < CML_ROBERTSON_SAMPLECOUNT; i++) {
+  for(size_t i = 0; i < CML_ROBERTSON_SAMPLECOUNT; i++) {
     float di = (whitepointYuv[2] - robertsonv[i]) - robertsont[i] * (whitepointYuv[1] - robertsonu[i]);
     if ((i > 0) && (di*dm < 0.f)){
       float p;
