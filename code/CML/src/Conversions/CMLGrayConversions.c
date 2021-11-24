@@ -14,7 +14,7 @@ CML_HIDEF CMLColorConverter CMLInternalGetGrayToAnythingColorConverter(const CML
   case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(outputSystem, CML_COLOR_YCbCr);
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalGetGrayToAnythingColorConverter", "Undefined Gray conversion.");
+      cmlError("Undefined Gray conversion.");
     #endif
     return cmlGetColorConverter(outputSystem, CML_COLOR_Luv);
   }
@@ -31,7 +31,7 @@ CML_HIDEF CMLColorConverter CMLInternalGetAnythingToGrayColorConverter(const CML
   case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(CML_COLOR_YCbCr, inputSystem);
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalGetAnythingToGrayColorConverter", "Undefined Gray conversion.");
+      cmlError("Undefined Gray conversion.");
     #endif
     return cmlGetColorConverter(CML_COLOR_Luv, inputSystem);
   }

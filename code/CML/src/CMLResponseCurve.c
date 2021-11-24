@@ -93,7 +93,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
     #ifndef NDEBUG
       curve->forwardfunc  = CMLcreateLinearResponse();
       curve->backwardfunc = CMLcreateLinearResponse();
-      cmlError("cmlCreateResponseCurveWithPreset", "Response preset unknown.");
+      cmlError("Response preset unknown.");
     #endif
     break;
   }
@@ -149,7 +149,7 @@ CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR_STANDARD: return 3.0f; break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetResponseCurveParam0", "Function type unknown.");
+      cmlError("Function type unknown.");
     #endif
     return 1.0f;
     break;
@@ -166,7 +166,7 @@ CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR_STANDARD: return 0.16f; break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetResponseCurveParam1", "Function type unknown.");
+      cmlError("Function type unknown.");
     #endif
     return 0.0f;
     break;
@@ -183,7 +183,7 @@ CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR_STANDARD: return 9.033f; break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetResponseCurveParam2", "Function type unknown.");
+      cmlError("Function type unknown.");
     #endif
     return 1.0f;
     break;
@@ -200,7 +200,7 @@ CML_API float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR_STANDARD: return 0.008856f; break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetResponseCurveParam3", "Function type unknown.");
+      cmlError("Function type unknown.");
     #endif
     return 0.0f;
     break;

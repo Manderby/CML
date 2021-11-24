@@ -4,12 +4,8 @@
 
 
 
-// ////////////////////////////////////////////
-// Definitions for Debugging. Use NDEBUG!
-// ////////////////////////////////////////////
-
 #include <sys/types.h>  // base types
-#include <stdlib.h>    // Just for the NULL
+#include <stdlib.h>     // Just for the NULL
 #include <string.h>     // memset and memcpy
 
 
@@ -17,8 +13,6 @@
 // ////////////////////////////////////////////
 // System dependant macros and type definitions
 // ////////////////////////////////////////////
-
-
 
 #if (defined _WIN64) || (defined _WIN32) || (defined WIN32)
   #define CML_COMPILE_ON_WIN 1
@@ -28,8 +22,9 @@
     #define CML_INLINE __inline
   #endif
   #define NA_LINKER_NO_EXPORT
-  #define NA_LINKER_EXPORT      __declspec(dllexport)
-  
+  #define NA_LINKER_EXPORT         __declspec(dllexport)
+  #define CML_DEBUG_FUNCTIONSYMBOL __FUNCTION__
+
   typedef signed __int32    CMLint32;
   typedef unsigned __int32  CMLuint32;
   typedef unsigned __int16  CMLuint16;
@@ -40,8 +35,9 @@
   #define CML_COMPILE_ON_MAC 1
 
   #define CML_INLINE inline
-  #define NA_LINKER_NO_EXPORT   __attribute__ ((visibility("hidden")))
-  #define NA_LINKER_EXPORT      __attribute__ ((visibility("default")))
+  #define NA_LINKER_NO_EXPORT      __attribute__ ((visibility("hidden")))
+  #define NA_LINKER_EXPORT         __attribute__ ((visibility("default")))
+  #define CML_DEBUG_FUNCTIONSYMBOL __func__
   
   typedef int32_t           CMLint32;
   typedef u_int32_t         CMLuint32;
@@ -55,7 +51,8 @@
   #define CML_INLINE inline
   #define NA_LINKER_NO_EXPORT
   #define NA_LINKER_EXPORT
-  
+  #define CML_DEBUG_FUNCTIONSYMBOL __func__
+
   typedef signed int        CMLint32;
   typedef unsigned int      CMLuint32;
   typedef unsigned short    CMLuint16;
@@ -82,6 +79,10 @@ typedef CMLuint8      CMLBool;
 
 
 
+// ////////////////////////////////////////////
+// Definitions for Debugging. Use NDEBUG!
+// ////////////////////////////////////////////
+
 #ifndef NDEBUG
   #if CML_COMPILE_ON_WIN
     #include <io.h>
@@ -101,15 +102,13 @@ typedef CMLuint8      CMLBool;
   
   #include <string.h>
   #include <stdio.h>
-  CML_IAPI void cmlError(  const char* functionsymbol,
-                                    const char* message){
-    fprintf(stderr, "Error in %s: %s\n", functionsymbol, message);
-  }
-  CML_IAPI void cmlCrash(  const char* functionsymbol,
-                                    const char* message){
-    fprintf(stderr, "Critical Error in %s: %s\n", functionsymbol, message);
-    fprintf(stderr, "The application will likely crash...\n");
-  }
+
+  CML_API void cml_Error(const char* functionSymbol, const char* text);
+
+  #define cmlError(text)\
+    cml_Error(CML_DEBUG_FUNCTIONSYMBOL, text)
+    
+    
 #endif
 
 
@@ -158,11 +157,11 @@ CML_IDEF CMLBool CMLInRange(float x, float a, float b){
 CML_IDEF float cmlInverse(float x){
   #ifndef NDEBUG
     if(x == 0.f){
-      cmlError("cmlInverse", "Division by zero.");
+      cmlError("Division by zero.");
       return CML_INFINITY;
     }
     if(cmlAlmostZero(x)){
-      cmlError("cmlInverse", "Division by almost zero.");
+      cmlError("Division by almost zero.");
     }
   #endif
   return 1.f / x;
@@ -246,39 +245,41 @@ typedef float CMLMat33[9];
 
 // Warning: The set method expects the values in COLUMN-FIRST order!
 CML_IDEF void CMLMat33set(CMLMat33 m, float a0, float a1, float a2, float a3, float a4, float a5, float a6, float a7, float a8){
-  m[0]=a0;m[1]=a1;m[2]=a2;m[3]=a3;m[4]=a4;m[5]=a5;m[6]=a6;m[7]=a7;m[8]=a8;}
+  m[0] = a0; m[1] = a1; m[2] = a2; m[3] = a3; m[4] = a4; m[5] = a5; m[6] = a6; m[7] = a7; m[8] = a8;}
 CML_IDEF void CMLMat33setVec3(CMLMat33 m, const CMLVec3 v0, const CMLVec3 v1, const CMLVec3 v2){
-  CMLMat33set(m, v0[0],v0[1],v0[2],v1[0],v1[1],v1[2],v2[0],v2[1],v2[2]);}
+  CMLMat33set(m, v0[0], v0[1], v0[2], v1[0], v1[1], v1[2], v2[0], v2[1], v2[2]);}
 CML_IDEF void cmlMat33MulVec3(CMLVec3 d, const CMLMat33 m, const CMLVec3 v){
-  d[0] = m[0]*v[0] + m[3]*v[1] + m[6]*v[2];
-  d[1] = m[1]*v[0] + m[4]*v[1] + m[7]*v[2];
-  d[2] = m[2]*v[0] + m[5]*v[1] + m[8]*v[2];
+  d[0] = m[0] * v[0] + m[3] * v[1] + m[6] * v[2];
+  d[1] = m[1] * v[0] + m[4] * v[1] + m[7] * v[2];
+  d[2] = m[2] * v[0] + m[5] * v[1] + m[8] * v[2];
 }
 CML_IDEF void cmlMat33ScaleVec3(CMLMat33 m, const CMLVec3 v){
-  m[0]*=v[0]; m[1]*=v[0]; m[2]*=v[0];
-  m[3]*=v[1]; m[4]*=v[1]; m[5]*=v[1];
-  m[6]*=v[2]; m[7]*=v[2]; m[8]*=v[2];
+  m[0] *= v[0]; m[1] *= v[0]; m[2] *= v[0];
+  m[3] *= v[1]; m[4] *= v[1]; m[5] *= v[1];
+  m[6] *= v[2]; m[7] *= v[2]; m[8] *= v[2];
 }
 CML_IDEF void cmlMat33MulMat33(CMLMat33 d, const CMLMat33 m, const CMLMat33 a){
-  CMLMat33set(d,  m[0]*a[0] + m[3]*a[1] + m[6]*a[2],
-                  m[1]*a[0] + m[4]*a[1] + m[7]*a[2],
-                  m[2]*a[0] + m[5]*a[1] + m[8]*a[2],
-                  m[0]*a[3] + m[3]*a[4] + m[6]*a[5],
-                  m[1]*a[3] + m[4]*a[4] + m[7]*a[5],
-                  m[2]*a[3] + m[5]*a[4] + m[8]*a[5],
-                  m[0]*a[6] + m[3]*a[7] + m[6]*a[8],
-                  m[1]*a[6] + m[4]*a[7] + m[7]*a[8],
-                  m[2]*a[6] + m[5]*a[7] + m[8]*a[8]);
+  CMLMat33set(d,
+    m[0] * a[0] + m[3] * a[1] + m[6] * a[2],
+    m[1] * a[0] + m[4] * a[1] + m[7] * a[2],
+    m[2] * a[0] + m[5] * a[1] + m[8] * a[2],
+    m[0] * a[3] + m[3] * a[4] + m[6] * a[5],
+    m[1] * a[3] + m[4] * a[4] + m[7] * a[5],
+    m[2] * a[3] + m[5] * a[4] + m[8] * a[5],
+    m[0] * a[6] + m[3] * a[7] + m[6] * a[8],
+    m[1] * a[6] + m[4] * a[7] + m[7] * a[8],
+    m[2] * a[6] + m[5] * a[7] + m[8] * a[8]);
 }
 CML_IDEF void cmlMat33Inverse(CMLMat33 d, const CMLMat33 m){
-  float d0 = m[4]*m[8] - m[5]*m[7];
-  float d1 = m[2]*m[7] - m[1]*m[8];
-  float d2 = m[1]*m[5] - m[2]*m[4];
-  float discriminant = m[0]*d0 + m[3]*d1 + m[6]*d2;
+  float d0 = m[4] * m[8] - m[5] * m[7];
+  float d1 = m[2] * m[7] - m[1] * m[8];
+  float d2 = m[1] * m[5] - m[2] * m[4];
+  float discriminant = m[0] * d0 + m[3] * d1 + m[6] * d2;
   float divisor = cmlInverse(discriminant);
-  CMLMat33set(d,  d0 * divisor, d1 * divisor, d2 * divisor,
-                  (m[5]*m[6] - m[3]*m[8]) * divisor, (m[0]*m[8] - m[2]*m[6]) * divisor, (m[2]*m[3] - m[0]*m[5]) * divisor,
-                  (m[3]*m[7] - m[4]*m[6]) * divisor, (m[1]*m[6] - m[0]*m[7]) * divisor, (m[0]*m[4] - m[1]*m[3]) * divisor);
+  CMLMat33set(d,
+    d0 * divisor, d1 * divisor, d2 * divisor,
+    (m[5] * m[6] - m[3] * m[8]) * divisor, (m[0] * m[8] - m[2] * m[6]) * divisor, (m[2] * m[3] - m[0] * m[5]) * divisor,
+    (m[3] * m[7] - m[4] * m[6]) * divisor, (m[1] * m[6] - m[0] * m[7]) * divisor, (m[0] * m[4] - m[1] * m[3]) * divisor);
 }
 
 

@@ -294,7 +294,7 @@ CML_API void cmlCreateSpecDistFunctions(CMLFunction* functions[3], CMLObserverTy
     functions[1] = CML_NULL;
     functions[2] = CML_NULL;
     #ifndef NDEBUG
-      cmlError("cmlCreateSpecDistFunctions", "Observer state unknown");
+      cmlError("Observer state unknown");
     #endif
     break;
   }
@@ -366,7 +366,7 @@ CML_API void CMLgetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunctio
 CML_API void CMLgetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda){
 //  if(!(cm->observer.functions[0])){
 //    #ifndef NDEBUG
-//      cmlError("CMLgetSpectralXYZColor", "Spectral distribution function unavailable.");
+//      cmlError("Spectral distribution function unavailable.");
 //    #endif
 //    cmlSet3(xyz, 0.f, 0.f, 0.f);
 //  }else{

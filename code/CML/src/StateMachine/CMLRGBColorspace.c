@@ -346,7 +346,7 @@ CML_API void CMLgetRGBColorSpacePrimaries(CMLRGBColorSpace colorspacetype, CMLVe
     primaryBYxy[2]  = rgbspaceprimaries[colorspacetype][5];
   }else{
     #ifndef NDEBUG
-      cmlError("CMLgetRGBColorSpacePrimaries", "Invalid RGB colorspace.");
+      cmlError("Invalid RGB colorspace.");
     #endif
   }
 }
@@ -358,7 +358,7 @@ CML_API CMLIlluminationType CMLgetRGBColorSpaceIlluminationType(
     return rgbspaceilluminations[colorspacetype];
   }else{
     #ifndef NDEBUG
-      cmlError("CMLgetRGBColorSpaceIlluminationType", "Invalid RGB colorspace.");
+      cmlError("Invalid RGB colorspace.");
     #endif
     return CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   }
@@ -370,7 +370,7 @@ CML_API CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
     return rgbspaceresponsepresets[colorspacetype];
   }else{
     #ifndef NDEBUG
-      cmlError("CMLgetRGBColorSpaceResponseCurvePreset", "Invalid RGB colorspace.");
+      cmlError("Invalid RGB colorspace.");
     #endif
     return CML_RESPONSE_LINEAR;
   }

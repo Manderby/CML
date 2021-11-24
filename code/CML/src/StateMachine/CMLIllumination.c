@@ -278,7 +278,7 @@ CML_API CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
     break;
   default:
     #ifndef NDEBUG
-      cmlError("cmlCreateIlluminationSpectrum", "Illumination type invalid.");
+      cmlError("Illumination type invalid.");
     #endif
     return CML_NULL;
     break;
@@ -430,7 +430,7 @@ CML_API void CMLsetIlluminationTemperature(CMLColorMachine* cm, float temp){
     CMLInternalrecomputeIllumination(cm);
   #ifndef NDEBUG
   }else{
-    cmlError("CMLsetIlluminationTemperature", "Call only effective for Blackbody and custom D illuminants.");
+    cmlError("Call only effective for Blackbody and custom D illuminants.");
   #endif
   }
 }

@@ -39,7 +39,7 @@ CML_API void CMLsetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float
     cm->labspace.adamschromaticityvalenceke = ke;
   #ifndef NDEBUG
   }else{
-    cmlError("CMLsetAdamsChromaticityValenceParameters", "call ineffective.");
+    cmlError("call ineffective.");
   #endif
   }
 }
@@ -180,7 +180,7 @@ CML_HIDDEN void CMLInternalrecomputeLabColorspace(CMLColorMachine* cm){
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalrecomputeLabColorspace", "Undefined Lab space.");
+      cmlError("Undefined Lab space.");
     #endif
     break;
   }

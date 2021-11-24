@@ -73,12 +73,12 @@ CML_IDEF void* cmlAllocate(size_t size){
   void* ptr; // Declaration before implementation.
   #ifndef NDEBUG
     if(size < 1)
-      cmlError("cmlAllocate", "size is smaller than 1 .");
+      cmlError("size is smaller than 1 .");
   #endif
   ptr = malloc(size);
   #ifndef NDEBUG
     if(!ptr)
-      {cmlCrash("cmlAllocate", "out of memory."); exit(1); return CML_NULL;}
+      {cmlError("out of memory."); exit(1); return CML_NULL;}
     // The exit call has been introduced as this is such a severe problem
     // that all functions rely on its functionality. Here, the debug version
     // differs from the non-debug version.
@@ -90,7 +90,7 @@ CML_IDEF void* cmlAllocate(size_t size){
 CML_IDEF void* cmlAllocateIfNull(void* ptr, size_t size){
   #ifndef NDEBUG
     if(size < 1)
-      cmlError("naAllocateIfNull", "size is smaller than 1 .");
+      cmlError("size is smaller than 1 .");
   #endif
   if(ptr == CML_NULL){
     return cmlAllocate(size);

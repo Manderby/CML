@@ -133,7 +133,7 @@ CML_API CMLuint32 CMLgetNumChannels(CMLColorType colorType){
   case CML_COLOR_CMYK:  return CML_CMYK_NUMCHANNELS; break;
   default:
     #ifndef NDEBUG
-    cmlError("CMLgetNumChannels", "Invalid Channeled Color Type.");
+    cmlError("Invalid Channeled Color Type.");
     #endif
     return 0;
     break;
@@ -159,7 +159,7 @@ CML_API void CMLgetMinBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MIN, CML_CMYK_M_MIN, CML_CMYK_Y_MIN, CML_CMYK_K_MIN); break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetMinBounds", "Invalid Channeled Color Type.");
+      cmlError("Invalid Channeled Color Type.");
     #endif
     break;
   }
@@ -183,7 +183,7 @@ CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MAX, CML_CMYK_M_MAX, CML_CMYK_Y_MAX, CML_CMYK_K_MAX); break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLgetMaxBounds", "Invalid Channeled Color Type.");
+      cmlError("Invalid Channeled Color Type.");
     #endif
     break;
   }

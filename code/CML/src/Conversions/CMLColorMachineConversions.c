@@ -263,13 +263,13 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
     }
   default:
     #ifndef NDEBUG
-      cmlError("cmlGetColorConverter", "Input-ColorType unknown.");
+      cmlError("Input-ColorType unknown.");
     #endif
     return CML_NULL; break;
   }
   // Reaching here, a default inside the inner switch has been reached.
   #ifndef NDEBUG
-    cmlError("cmlGetColorConverter", "Output-ColorType unknown.");
+    cmlError("Output-ColorType unknown.");
   #endif
   return CML_NULL;
 }
@@ -292,7 +292,7 @@ CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
     default: break;
   }
   #ifndef NDEBUG
-    cmlError("cmlGetNormedInputConverter", "ColorType unknown.");
+    cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
 }
@@ -315,7 +315,7 @@ CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
     default: break;
   }
   #ifndef NDEBUG
-    cmlError("cmlGetNormedOutputConverter", "ColorType unknown.");
+    cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
 }
@@ -338,7 +338,7 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
     default: break;
   }
   #ifndef NDEBUG
-    cmlError("cmlGetNormedCartesianInputConverter", "ColorType unknown.");
+    cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
 }
@@ -361,7 +361,7 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType col
     default: break;
   }
   #ifndef NDEBUG
-    cmlError("cmlGetNormedCartesianOutputConverter", "ColorType unknown.");
+    cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
 }

@@ -18,9 +18,9 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
   #ifndef NDEBUG
     if(adaptationtype != CML_CHROMATIC_ADAPTATION_NONE){
       if(whitepointYxy[2] == 0.f)
-        cmlError("cmlComputeChromaticAdaptationMatrix", "Whitepoint invalid.");
+        cmlError("Whitepoint invalid.");
       if(adaptedwhitepointYxy[2] == 0.f)
-        cmlError("cmlComputeChromaticAdaptationMatrix", "Adapted whitepoint invalid.");
+        cmlError("Adapted whitepoint invalid.");
     }
   #endif
 

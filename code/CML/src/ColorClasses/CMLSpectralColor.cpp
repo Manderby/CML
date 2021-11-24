@@ -41,14 +41,14 @@ SpectralColor::SpectralColor(const SpectralColor& speccolor) :
 SpectralColor& SpectralColor::init(CMLFunction* newspectrum, CMLBool newbodycolor){
   #ifndef NDEBUG
     if(!newspectrum){
-      cmlError("SpectralColor::init", "spectrum is NULL.");
+      cmlError("spectrum is NULL.");
     }
   #endif
   cmlReleaseFunction(spectrum);
   spectrum = CMLduplicateFunction(newspectrum);
   #ifndef NDEBUG
     if(!spectrum){
-      cmlError("SpectralColor::init", "Function duplicate returned NULL.");
+      cmlError("Function duplicate returned NULL.");
     }
   #endif
   bodycolor = newbodycolor;
@@ -63,14 +63,14 @@ SpectralColor& SpectralColor::operator =(const Color& anycolor){
 SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
   #ifndef NDEBUG
     if(!speccolor.spectrum){
-      cmlError("SpectralColor::operator =", "spectrum is NULL");
+      cmlError("spectrum is NULL");
     }
   #endif
   cmlReleaseFunction(spectrum);
   spectrum = CMLduplicateFunction(speccolor.spectrum);
   #ifndef NDEBUG
     if(!spectrum){
-      cmlError("SpectralColor::operator =", "Function duplicate returned NULL.");
+      cmlError("Function duplicate returned NULL.");
     }
   #endif
   bodycolor = speccolor.bodycolor;
@@ -93,7 +93,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
   SpectralColor SpectralColor::operator +(const SpectralColor& speccolor) const{
     #ifndef NDEBUG
       if(isBodyColor() != speccolor.isBodyColor()){
-        cmlError("SpectralColor::operator +", "Adding spectral bodycolor with non-bodycolor.");
+        cmlError("Adding spectral bodycolor with non-bodycolor.");
       }
     #endif
 
@@ -104,7 +104,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
   SpectralColor SpectralColor::operator -(const SpectralColor& speccolor) const{
     #ifndef NDEBUG
       if(isBodyColor() != speccolor.isBodyColor()){
-        cmlError("SpectralColor::operator -", "Subtracting spectral bodycolor with non-bodycolor.");
+        cmlError("Subtracting spectral bodycolor with non-bodycolor.");
       }
     #endif
 
@@ -129,7 +129,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
     SpectralColor speccolor = anycolor.toSpectral();
     #ifndef NDEBUG
       if(isBodyColor() != speccolor.isBodyColor()){
-        cmlError("SpectralColor::operator +=", "Adding spectral bodycolor with non-bodycolor.");
+        cmlError("Adding spectral bodycolor with non-bodycolor.");
       }
     #endif
 
@@ -143,7 +143,7 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
     SpectralColor speccolor = anycolor.toSpectral();
     #ifndef NDEBUG
       if(isBodyColor() != speccolor.isBodyColor()){
-        cmlError("SpectralColor::operator -=", "Subtracting spectral bodycolor with non-bodycolor.");
+        cmlError("Subtracting spectral bodycolor with non-bodycolor.");
       }
     #endif
 

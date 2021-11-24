@@ -40,7 +40,7 @@ CML_API void CMLsetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLsetGrayComputationType", "Gray Computation undefined.");
+      cmlError("Gray Computation undefined.");
     #endif
     return;
     break;

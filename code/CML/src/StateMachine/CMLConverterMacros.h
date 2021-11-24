@@ -57,7 +57,7 @@
 #ifndef NDEBUG
   #define CML_CONVERTER_INOUT_PARAMETER(outsymbol, insymbol, outchannels, inchannels) \
     if(insymbol == CML_NULL){\
-      cmlError("CML_CONVERTER_INOUT_PARAMETER", "Input buffer is NULL.");\
+      cmlError("Input buffer is NULL.");\
     }\
     float* out;\
     const float* in = insymbol;\
@@ -69,10 +69,10 @@
       floatalign = outchannels;\
     }else if(insymbol == outsymbol){\
       if(outchannels > inchannels){\
-        cmlError("CML_CONVERTER_INOUT_PARAMETER", "Output colorspace has too many dimensions to store in buffer. Expecting the input values to be aligned.");\
+        cmlError("Output colorspace has too many dimensions to store in buffer. Expecting the input values to be aligned.");\
       }\
       if(outchannels < inchannels){\
-        cmlError("CML_CONVERTER_INOUT_PARAMETER", "Output colorspace has fewer dimensions than usable in the buffer. Writing the output values aligned.");\
+        cmlError("Output colorspace has fewer dimensions than usable in the buffer. Writing the output values aligned.");\
       }\
       out = outsymbol;\
       samebuffer = CML_TRUE;\

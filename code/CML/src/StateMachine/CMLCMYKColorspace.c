@@ -27,7 +27,7 @@ CML_API void CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType trans
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLsetCMYKTransform", "CMYK Transformation undefined.");
+      cmlError("CMYK Transformation undefined.");
     #endif
     return;
     break;

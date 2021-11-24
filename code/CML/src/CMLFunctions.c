@@ -131,7 +131,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
   if(filterrange.minSampleCoord > filterrange.maxSampleCoord){return 0.f;}
   
   #ifndef NDEBUG
-    if(filterrange.stepsize < 0.f){cmlError("CMLfilterFunction", "Negative stepsize in Function.");}
+    if(filterrange.stepsize < 0.f){cmlError("Negative stepsize in Function.");}
   #endif
   // If the stepsize is 0, the function will be filtered as a continuous
   // function with the default integration stepsize.
@@ -199,7 +199,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
 
   default:
     #ifndef NDEBUG
-      cmlError("CMLfilterFunction", "Invalid Integration type.");
+      cmlError("Invalid Integration type.");
     #endif
     return 0.f;
     break;
@@ -420,7 +420,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
 
   #ifndef NDEBUG
     if(storage->size <= 1){
-      cmlError("CMLInternalConstructArrayFunction", "Array Function with 1 or 0 Entries may not work properly yet.");
+      cmlError("Array Function with 1 or 0 Entries may not work properly yet.");
     }
   #endif
 
@@ -446,7 +446,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalConstructArrayFunction", "Undefined Down-Extrapolation method.");
+      cmlError("Undefined Down-Extrapolation method.");
     #endif
     storage->extrapolateDown = CML_NULL;
     break;
@@ -471,7 +471,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalConstructArrayFunction", "Undefined Up-Extrapolation method.");
+      cmlError("Undefined Up-Extrapolation method.");
     #endif
     storage->extrapolateUp = CML_NULL;
     break;
@@ -510,7 +510,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLInternalConstructArrayFunction", "Undefined Interpolation method.");
+      cmlError("Undefined Interpolation method.");
     #endif
     storage->interpolate = CML_NULL;
     break;
@@ -567,7 +567,7 @@ CML_HIDDEN void CMLInternalConstructBlackBody(float* params, void** data, CMLDef
   float temperature = *((float*)input);
   if(temperature <= 0){
     #ifndef NDEBUG
-      cmlError("CMLInternalConstructBlackBody", "Temperature must be greater than 0 Kelvin.");
+      cmlError("Temperature must be greater than 0 Kelvin.");
     #endif
     return;
   }
@@ -590,7 +590,7 @@ CML_HIDDEN float cmlInternalEvaluateBlackBody(float* params, const void* data, f
   // Note: x is expected in [nanometer]
   if(x <= 0){
     #ifndef NDEBUG
-      cmlError("cmlInternalEvaluateBlackBody", "Blackbody radiator is only defined for input values greater than 0.");
+      cmlError("Blackbody radiator is only defined for input values greater than 0.");
     #endif
     return 0.f;
   }
@@ -641,7 +641,7 @@ CML_HIDDEN float cmlInternalEvaluateCIEAIlluminant(float* params, const void* da
   float nanolambda;
   data = data;
   #ifndef NDEBUG
-    if(x <= 0){cmlError("cmlInternalEvaluateCIEAIlluminant", "CIE A illuminant is only defined for input values greater than 0.");}
+    if(x <= 0){cmlError("CIE A illuminant is only defined for input values greater than 0.");}
   #endif
   nanolambda = x * 1e-9f;
   // First constant is 100. * pow(560e-9.,5.);
@@ -717,7 +717,7 @@ CML_API CMLFunction* CMLcreateCIEDIlluminant(float temperature){
   float* array;
   float whitepoint[2];
   #ifndef NDEBUG
-    if(temperature <= 0){cmlError("CMLcreateCIEDIlluminant", "Temperature must be greater than 0 Kelvin.");}
+    if(temperature <= 0){cmlError("Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
   array = (float*)cmlAllocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));

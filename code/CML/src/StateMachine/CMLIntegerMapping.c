@@ -144,7 +144,7 @@ CML_API void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType
     break;
   default:
     #ifndef NDEBUG
-      cmlError("CMLsetIntegerMappingType", "Invalid Integer mapping.");
+      cmlError("Invalid Integer mapping.");
     #endif
     return;
     break;
