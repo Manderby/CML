@@ -142,7 +142,7 @@ CMLBool YCbCrColor::inside()  {
 }
 
 void YCbCrColor::clamp(){
-  CMLclampYCbCr(color, 1);
+  cmlClampYCbCr(color, 1);
 }
 
 CMLuint32 YCbCrColor::getNumChannels() const {return 3;}

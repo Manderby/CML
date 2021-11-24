@@ -142,7 +142,7 @@ CMLBool XYZColor::inside(){
 }
 
 void XYZColor::clamp(){
-  CMLclampXYZ(color, 1);
+  cmlClampXYZ(color, 1);
 }
 
 CMLuint32 XYZColor::getNumChannels() const {return 3;}

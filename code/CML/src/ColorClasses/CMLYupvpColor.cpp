@@ -142,7 +142,7 @@ CMLBool YupvpColor::inside(){
 }
 
 void YupvpColor::clamp(){
-  CMLclampYupvp(color, 1);
+  cmlClampYupvp(color, 1);
 }
 
 CMLuint32 YupvpColor::getNumChannels() const {return 3;}

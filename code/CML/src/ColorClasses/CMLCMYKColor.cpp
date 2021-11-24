@@ -142,7 +142,7 @@ CMLBool CMYKColor::inside(){
 }
 
 void CMYKColor::clamp(){
-  CMLclampCMYK(color, 1);
+  cmlClampCMYK(color, 1);
 }
 
 CMLuint32 CMYKColor::getNumChannels() const {return 4;}

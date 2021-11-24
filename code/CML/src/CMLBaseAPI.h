@@ -235,20 +235,20 @@ CML_API void CMLcomputeRGBtoXYZMatrix(
 
 // Returns the number of channels a specific color type uses. If an invalid
 // color type is given, the returned value will be 0.
-CML_API CMLuint32 CMLgetNumChannels( CMLColorType        colortype);
+CML_API CMLuint32 CMLgetNumChannels( CMLColorType        colorType);
 
 
 // Returns the minimal or maximal bounds for each channel of a specified color
 // type. If an invalid color type is given, the returned values will be
 // undefined.
-CML_API void CMLgetMinBounds(float* buffer, CMLColorType colortype);
-CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colortype);
+CML_API void CMLgetMinBounds(float* buffer, CMLColorType colorType);
+CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colorType);
 
 
 // The following functions return an ASCII string describing the desired value.
 // Do not delete the returned pointers. If an invalid input parameter is given,
 // the returned value will be invalid.
-CML_API const char* CMLgetColorTypeString               (CMLColorType colortype);
+CML_API const char* CMLgetColorTypeString               (CMLColorType colorType);
 CML_API const char* CMLgetObserverTypeString            (CMLObserverType observertype);
 CML_API const char* CMLgetIlluminationTypeString        (CMLIlluminationType illuminationtype);
 CML_API const char* CMLgetRGBColorspaceString           (CMLRGBColorSpace colorspacetype);

@@ -151,7 +151,7 @@ CMLBool LchColor::inside(){
 }
 
 void LchColor::clamp(){
-  CMLclampLch(color, 1);
+  cmlClampLch(color, 1);
 }
 
 CMLuint32 LchColor::getNumChannels() const {return 3;}

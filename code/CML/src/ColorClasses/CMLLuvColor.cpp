@@ -142,7 +142,7 @@ CMLBool LuvColor::inside()  {
 }
 
 void LuvColor::clamp(){
-  CMLclampLuv(color, 1);
+  cmlClampLuv(color, 1);
 }
 
 CMLuint32 LuvColor::getNumChannels() const {return 3;}

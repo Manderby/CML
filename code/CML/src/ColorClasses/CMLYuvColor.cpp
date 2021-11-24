@@ -142,7 +142,7 @@ CMLBool YuvColor::inside(){
 }
 
 void YuvColor::clamp(){
-  CMLclampYuv(color, 1);
+  cmlClampYuv(color, 1);
 }
 
 CMLuint32 YuvColor::getNumChannels() const {return 3;}

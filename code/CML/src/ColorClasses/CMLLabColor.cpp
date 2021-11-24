@@ -147,7 +147,7 @@ CMLBool LabColor::inside()  {
 }
 
 void LabColor::clamp(){
-  CMLclampLab(color, 1);
+  cmlClampLab(color, 1);
 }
 
 CMLuint32 LabColor::getNumChannels() const {return 3;}

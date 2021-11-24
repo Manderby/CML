@@ -130,7 +130,7 @@ CMLBool GrayColor::inside() const {
 }
 
 void GrayColor::clamp(){
-  CMLclampGray(color, 1);
+  cmlClampGray(color, 1);
 }
 
 CMLuint32 GrayColor::getNumChannels() const {return 1;}

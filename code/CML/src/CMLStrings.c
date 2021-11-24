@@ -146,8 +146,8 @@ CML_HIDDEN static const char* chromaticadaptationstrings[CML_NUMBER_OF_CHROMATIC
 };
 
 
-CML_API const char* CMLgetColorTypeString(CMLColorType colortype){
-  return colortypestrings[colortype];
+CML_API const char* CMLgetColorTypeString(CMLColorType colorType){
+  return colortypestrings[colorType];
 }
 CML_API const char* CMLgetObserverTypeString(CMLObserverType observertype){
   return observerstrings[observertype];

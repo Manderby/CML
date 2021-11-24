@@ -142,7 +142,7 @@ CMLBool RGBColor::inside(){
 }
 
 void RGBColor::clamp(){
-  CMLclampRGB(color, 1);
+  cmlClampRGB(color, 1);
 }
 
 CMLuint32 RGBColor::getNumChannels() const {return 3;}

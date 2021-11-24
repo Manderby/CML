@@ -116,8 +116,8 @@ CML_API void CMLconvertXYZtoChromaticAdaptedXYZ(CMLVec3 adaptxyz, const CMLVec3 
 
 
 
-CML_API CMLuint32 CMLgetNumChannels(CMLColorType colortype){
-  switch(colortype){
+CML_API CMLuint32 CMLgetNumChannels(CMLColorType colorType){
+  switch(colorType){
   case CML_COLOR_GRAY:  return CML_GRAY_NUMCHANNELS; break;
   case CML_COLOR_XYZ:   return CML_XYZ_NUMCHANNELS; break;
   case CML_COLOR_Yxy:   return CML_Yxy_NUMCHANNELS; break;
@@ -142,8 +142,8 @@ CML_API CMLuint32 CMLgetNumChannels(CMLColorType colortype){
 }
 
 
-CML_API void CMLgetMinBounds(float* buffer, CMLColorType colortype){
-  switch(colortype){
+CML_API void CMLgetMinBounds(float* buffer, CMLColorType colorType){
+  switch(colorType){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MIN); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MIN, CML_XYZ_Y_MIN, CML_XYZ_Z_MIN); break;
   case CML_COLOR_Yxy:   cmlSet3(buffer, CML_Yxy_Y_MIN, CML_Yxy_x_MIN, CML_Yxy_y_MIN); break;
@@ -166,8 +166,8 @@ CML_API void CMLgetMinBounds(float* buffer, CMLColorType colortype){
 }
 
 
-CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colortype){
-  switch(colortype){
+CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colorType){
+  switch(colorType){
   case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MAX); break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MAX, CML_XYZ_Y_MAX, CML_XYZ_Z_MAX); break;
   case CML_COLOR_Yxy:   cmlSet3(buffer, CML_Yxy_Y_MAX, CML_Yxy_x_MAX, CML_Yxy_y_MAX); break;

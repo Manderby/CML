@@ -151,7 +151,7 @@ CMLBool HSLColor::inside(){
 }
 
 void HSLColor::clamp(){
-  CMLclampHSL(color, 1);
+  cmlClampHSL(color, 1);
 }
 
 CMLuint32 HSLColor::getNumChannels() const {return 3;}

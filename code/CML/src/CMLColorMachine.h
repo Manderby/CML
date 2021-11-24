@@ -143,10 +143,10 @@ CML_API void                    CMLsetGrayComputationType(CMLColorMachine* cm, C
 //
 // Using ColorMachines, you can convert any color into any other with the
 // following conversion functions. You can also get a function pointer to
-// one of these conversion function using the CMLgetColorConverter function.
+// one of these conversion function using the cmlGetColorConverter function.
 // ///////////////////////////////////////////////
 
-CML_API CMLColorConverter     CMLgetColorConverter(CMLColorType outputsystem, CMLColorType inputsystem);
+CML_API CMLColorConverter     cmlGetColorConverter(CMLColorType outputSystem, CMLColorType inputSystem);
 
 // Gray Conversions
 CML_API void CMLGraytoGray  (const CMLColorMachine* cm, CMLOutput grayd , CMLInput grays , size_t count);
@@ -482,12 +482,12 @@ CML_API void cmlData16WithCMYK (const CMLColorMachine* cm, CMLOutput output, CML
 // Note that all converter getters return the same function pointer type.
 // This gives you as a programmer more freedom but beware of false
 // conversions!
-CML_API CMLNormedConverter CMLgetNormedInputConverter(CMLColorType colortype);
-CML_API CMLNormedConverter CMLgetNormedOutputConverter(CMLColorType colortype);
+CML_API CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType);
+CML_API CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType);
 // Note that those colortypes which are already in cartesian space will
 // return the cartesian converter.
-CML_API CMLNormedConverter CMLgetNormedCartesianInputConverter(CMLColorType colortype);
-CML_API CMLNormedConverter CMLgetNormedCartesianOutputConverter(CMLColorType colortype);
+CML_API CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colorType);
+CML_API CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType);
 
 // float Input Conversions from normed range [0,1]
 CML_API void cmlGrayWithNormedInput  (CMLOutput gray  , CMLInput input, size_t count);
@@ -555,19 +555,19 @@ CML_API void cmlInvertCMYK   (CMLInputOutput cmyk , size_t count);
 // ////////////////////////////
 
 // Use these to clamp colors. No value will be out of range.
-CML_API void CMLclampGray  (CMLInputOutput gray , size_t count);
-CML_API void CMLclampXYZ   (CMLInputOutput xyz  , size_t count);
-CML_API void CMLclampYxy   (CMLInputOutput yxy  , size_t count);
-CML_API void CMLclampYuv   (CMLInputOutput yuv  , size_t count);
-CML_API void CMLclampYupvp (CMLInputOutput yupvp, size_t count);
-CML_API void CMLclampLab   (CMLInputOutput lab  , size_t count);
-CML_API void CMLclampLch   (CMLInputOutput lch  , size_t count);
-CML_API void CMLclampLuv   (CMLInputOutput luv  , size_t count);
-CML_API void CMLclampRGB   (CMLInputOutput rgb  , size_t count);
-CML_API void CMLclampYCbCr (CMLInputOutput ycbcr, size_t count);
-CML_API void CMLclampHSV   (CMLInputOutput hsv  , size_t count);
-CML_API void CMLclampHSL   (CMLInputOutput hsl  , size_t count);
-CML_API void CMLclampCMYK  (CMLInputOutput cmyk , size_t count);
+CML_API void cmlClampGray  (CMLInputOutput gray , size_t count);
+CML_API void cmlClampXYZ   (CMLInputOutput xyz  , size_t count);
+CML_API void cmlClampYxy   (CMLInputOutput yxy  , size_t count);
+CML_API void cmlClampYuv   (CMLInputOutput yuv  , size_t count);
+CML_API void cmlClampYupvp (CMLInputOutput yupvp, size_t count);
+CML_API void cmlClampLab   (CMLInputOutput lab  , size_t count);
+CML_API void cmlClampLch   (CMLInputOutput lch  , size_t count);
+CML_API void cmlClampLuv   (CMLInputOutput luv  , size_t count);
+CML_API void cmlClampRGB   (CMLInputOutput rgb  , size_t count);
+CML_API void cmlClampYCbCr (CMLInputOutput ycbcr, size_t count);
+CML_API void cmlClampHSV   (CMLInputOutput hsv  , size_t count);
+CML_API void cmlClampHSL   (CMLInputOutput hsl  , size_t count);
+CML_API void cmlClampCMYK  (CMLInputOutput cmyk , size_t count);
 
 
 
