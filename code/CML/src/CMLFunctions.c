@@ -76,7 +76,7 @@ CML_API float CMLgetFunctionParameter(const CMLFunction* func, size_t index){
 
 
 
-CML_HIDDEN CML_INLINE static CMLDefinitionRange CMLgetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
+CML_HIDEF CMLDefinitionRange CMLgetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
   
   float minsamplecoord1;
   float maxsamplecoord1;
@@ -695,7 +695,7 @@ CML_HIDDEN const float dilluminantS2[CML_D_ILLUMINANT_ENTRYCOUNT] =
    9.60f,  8.50f,  7.00f,  7.60f,  8.00f,  6.70f,  5.20f,  7.40f,  6.80f,  7.00f,
    6.40f,  5.50f,  6.10f,  6.50f};
 
-CML_HIDDEN CML_INLINE static void CMLInternalComputeDIlluminantWhitePoint(float* whitepoint, float temp){
+CML_HIDEF void CMLInternalComputeDIlluminantWhitePoint(float* whitepoint, float temp){
   if(temp < 4000.f){temp = 4000.f;}
   if(temp > 25000.f){temp = 25000.f;}
   

@@ -7,7 +7,7 @@
 // Normed Input
 // ////////////////////////////
 
-CML_API void cmlGrayWithNormedInput(CMLOutput gray, CMLInput input, size_t count){
+CML_DEF void cmlGrayWithNormedInput(CMLOutput gray, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)gray;
   for(size_t i = 0; i < count; i++){
@@ -16,7 +16,7 @@ CML_API void cmlGrayWithNormedInput(CMLOutput gray, CMLInput input, size_t count
     in++;
   }
 }
-CML_API void cmlXYZWithNormedInput(CMLOutput xyz, CMLInput input, size_t count){
+CML_DEF void cmlXYZWithNormedInput(CMLOutput xyz, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)xyz;
   for(size_t i = 0; i < count; i++){
@@ -25,7 +25,7 @@ CML_API void cmlXYZWithNormedInput(CMLOutput xyz, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlYxyWithNormedInput(CMLOutput yxy, CMLInput input, size_t count){
+CML_DEF void cmlYxyWithNormedInput(CMLOutput yxy, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)yxy;
   for(size_t i = 0; i < count; i++){
@@ -34,7 +34,7 @@ CML_API void cmlYxyWithNormedInput(CMLOutput yxy, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlYuvWithNormedInput(CMLOutput yuv, CMLInput input, size_t count){
+CML_DEF void cmlYuvWithNormedInput(CMLOutput yuv, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)yuv;
   for(size_t i = 0; i < count; i++){
@@ -43,7 +43,7 @@ CML_API void cmlYuvWithNormedInput(CMLOutput yuv, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlYupvpWithNormedInput(CMLOutput yupvp, CMLInput input, size_t count){
+CML_DEF void cmlYupvpWithNormedInput(CMLOutput yupvp, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)yupvp;
   for(size_t i = 0; i < count; i++){
@@ -52,7 +52,7 @@ CML_API void cmlYupvpWithNormedInput(CMLOutput yupvp, CMLInput input, size_t cou
     in += 3;
   }
 }
-CML_API void cmlLabWithNormedInput(CMLOutput lab, CMLInput input, size_t count){
+CML_DEF void cmlLabWithNormedInput(CMLOutput lab, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)lab;
   for(size_t i = 0; i < count; i++){
@@ -61,7 +61,7 @@ CML_API void cmlLabWithNormedInput(CMLOutput lab, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlLchWithNormedInput(CMLOutput lch, CMLInput input, size_t count){
+CML_DEF void cmlLchWithNormedInput(CMLOutput lch, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)lch;
   for(size_t i = 0; i < count; i++){
@@ -70,7 +70,7 @@ CML_API void cmlLchWithNormedInput(CMLOutput lch, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlLuvWithNormedInput(CMLOutput luv, CMLInput input, size_t count){
+CML_DEF void cmlLuvWithNormedInput(CMLOutput luv, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)luv;
   for(size_t i = 0; i < count; i++){
@@ -79,7 +79,7 @@ CML_API void cmlLuvWithNormedInput(CMLOutput luv, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlRGBWithNormedInput(CMLOutput rgb, CMLInput input, size_t count){
+CML_DEF void cmlRGBWithNormedInput(CMLOutput rgb, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)rgb;
   for(size_t i = 0; i < count; i++){
@@ -88,7 +88,7 @@ CML_API void cmlRGBWithNormedInput(CMLOutput rgb, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlYCbCrWithNormedInput(CMLOutput ycbcr, CMLInput input, size_t count){
+CML_DEF void cmlYCbCrWithNormedInput(CMLOutput ycbcr, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)ycbcr;
   for(size_t i = 0; i < count; i++){
@@ -97,7 +97,7 @@ CML_API void cmlYCbCrWithNormedInput(CMLOutput ycbcr, CMLInput input, size_t cou
     in += 3;
   }
 }
-CML_API void cmlHSVWithNormedInput(CMLOutput hsv, CMLInput input, size_t count){
+CML_DEF void cmlHSVWithNormedInput(CMLOutput hsv, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)hsv;
   for(size_t i = 0; i < count; i++){
@@ -106,7 +106,7 @@ CML_API void cmlHSVWithNormedInput(CMLOutput hsv, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlHSLWithNormedInput(CMLOutput hsl, CMLInput input, size_t count){
+CML_DEF void cmlHSLWithNormedInput(CMLOutput hsl, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)hsl;
   for(size_t i = 0; i < count; i++){
@@ -115,7 +115,7 @@ CML_API void cmlHSLWithNormedInput(CMLOutput hsl, CMLInput input, size_t count){
     in += 3;
   }
 }
-CML_API void cmlCMYKWithNormedInput(CMLOutput cmyk, CMLInput input, size_t count){
+CML_DEF void cmlCMYKWithNormedInput(CMLOutput cmyk, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)cmyk;
   for(size_t i = 0; i < count; i++){
@@ -131,7 +131,7 @@ CML_API void cmlCMYKWithNormedInput(CMLOutput cmyk, CMLInput input, size_t count
 // Normed Output
 // ////////////////////////////
 
-CML_API void cmlNormedOutputWithGray(CMLOutput output, CMLInput gray, size_t count){
+CML_DEF void cmlNormedOutputWithGray(CMLOutput output, CMLInput gray, size_t count){
   const float* in  = (float*)gray;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -140,7 +140,7 @@ CML_API void cmlNormedOutputWithGray(CMLOutput output, CMLInput gray, size_t cou
     in++;
   }
 }
-CML_API void cmlNormedOutputWithXYZ(CMLOutput output, CMLInput xyz, size_t count){
+CML_DEF void cmlNormedOutputWithXYZ(CMLOutput output, CMLInput xyz, size_t count){
   const float* in  = (float*)xyz;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -149,7 +149,7 @@ CML_API void cmlNormedOutputWithXYZ(CMLOutput output, CMLInput xyz, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithYxy(CMLOutput output, CMLInput yxy, size_t count){
+CML_DEF void cmlNormedOutputWithYxy(CMLOutput output, CMLInput yxy, size_t count){
   const float* in  = (float*)yxy;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -158,7 +158,7 @@ CML_API void cmlNormedOutputWithYxy(CMLOutput output, CMLInput yxy, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithYuv(CMLOutput output, CMLInput yuv, size_t count){
+CML_DEF void cmlNormedOutputWithYuv(CMLOutput output, CMLInput yuv, size_t count){
   const float* in  = (float*)yuv;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -167,7 +167,7 @@ CML_API void cmlNormedOutputWithYuv(CMLOutput output, CMLInput yuv, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithYupvp(CMLOutput output, CMLInput yupvp, size_t count){
+CML_DEF void cmlNormedOutputWithYupvp(CMLOutput output, CMLInput yupvp, size_t count){
   const float* in  = (float*)yupvp;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -176,7 +176,7 @@ CML_API void cmlNormedOutputWithYupvp(CMLOutput output, CMLInput yupvp, size_t c
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithLab(CMLOutput output, CMLInput lab, size_t count){
+CML_DEF void cmlNormedOutputWithLab(CMLOutput output, CMLInput lab, size_t count){
   const float* in  = (float*)lab;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -185,7 +185,7 @@ CML_API void cmlNormedOutputWithLab(CMLOutput output, CMLInput lab, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithLch(CMLOutput output, CMLInput lch, size_t count){
+CML_DEF void cmlNormedOutputWithLch(CMLOutput output, CMLInput lch, size_t count){
   const float* in  = (float*)lch;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -194,7 +194,7 @@ CML_API void cmlNormedOutputWithLch(CMLOutput output, CMLInput lch, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithLuv(CMLOutput output, CMLInput luv, size_t count){
+CML_DEF void cmlNormedOutputWithLuv(CMLOutput output, CMLInput luv, size_t count){
   const float* in  = (float*)luv;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -203,7 +203,7 @@ CML_API void cmlNormedOutputWithLuv(CMLOutput output, CMLInput luv, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithRGB(CMLOutput output, CMLInput rgb, size_t count){
+CML_DEF void cmlNormedOutputWithRGB(CMLOutput output, CMLInput rgb, size_t count){
   const float* in  = (float*)rgb;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -212,7 +212,7 @@ CML_API void cmlNormedOutputWithRGB(CMLOutput output, CMLInput rgb, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithYCbCr(CMLOutput output, CMLInput ycbcr, size_t count){
+CML_DEF void cmlNormedOutputWithYCbCr(CMLOutput output, CMLInput ycbcr, size_t count){
   const float* in  = (float*)ycbcr;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -221,7 +221,7 @@ CML_API void cmlNormedOutputWithYCbCr(CMLOutput output, CMLInput ycbcr, size_t c
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithHSV(CMLOutput output, CMLInput hsv, size_t count){
+CML_DEF void cmlNormedOutputWithHSV(CMLOutput output, CMLInput hsv, size_t count){
   const float* in  = (float*)hsv;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -230,7 +230,7 @@ CML_API void cmlNormedOutputWithHSV(CMLOutput output, CMLInput hsv, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithHSL(CMLOutput output, CMLInput hsl, size_t count){
+CML_DEF void cmlNormedOutputWithHSL(CMLOutput output, CMLInput hsl, size_t count){
   const float* in  = (float*)hsl;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -239,7 +239,7 @@ CML_API void cmlNormedOutputWithHSL(CMLOutput output, CMLInput hsl, size_t count
     in += 3;
   }
 }
-CML_API void cmlNormedOutputWithCMYK(CMLOutput output, CMLInput cmyk, size_t count){
+CML_DEF void cmlNormedOutputWithCMYK(CMLOutput output, CMLInput cmyk, size_t count){
   const float* in  = (float*)cmyk;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -255,7 +255,7 @@ CML_API void cmlNormedOutputWithCMYK(CMLOutput output, CMLInput cmyk, size_t cou
 // Normed Cartesian Input
 // ////////////////////////////
 
-CML_API void cmlLchWithNormedCartesianInput(CMLOutput lch, CMLInput input, size_t count){
+CML_DEF void cmlLchWithNormedCartesianInput(CMLOutput lch, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)lch;
   for(size_t i = 0; i < count; i++){
@@ -264,7 +264,7 @@ CML_API void cmlLchWithNormedCartesianInput(CMLOutput lch, CMLInput input, size_
     in += 3;
   }
 }
-CML_API void cmlHSVWithNormedCartesianInput(CMLOutput hsv, CMLInput input, size_t count){
+CML_DEF void cmlHSVWithNormedCartesianInput(CMLOutput hsv, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)hsv;
   for(size_t i = 0; i < count; i++){
@@ -273,7 +273,7 @@ CML_API void cmlHSVWithNormedCartesianInput(CMLOutput hsv, CMLInput input, size_
     in += 3;
   }
 }
-CML_API void cmlHSLWithNormedCartesianInput(CMLOutput hsl, CMLInput input, size_t count){
+CML_DEF void cmlHSLWithNormedCartesianInput(CMLOutput hsl, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)hsl;
   for(size_t i = 0; i < count; i++){
@@ -289,7 +289,7 @@ CML_API void cmlHSLWithNormedCartesianInput(CMLOutput hsl, CMLInput input, size_
 // Normed Cartesian Output
 // ////////////////////////////
 
-CML_API void cmlNormedCartesianOutputWithLch(CMLOutput output, CMLInput lch, size_t count){
+CML_DEF void cmlNormedCartesianOutputWithLch(CMLOutput output, CMLInput lch, size_t count){
   const float* in  = (float*)lch;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -298,7 +298,7 @@ CML_API void cmlNormedCartesianOutputWithLch(CMLOutput output, CMLInput lch, siz
     in += 3;
   }
 }
-CML_API void cmlNormedCartesianOutputWithHSV(CMLOutput output, CMLInput hsv, size_t count){
+CML_DEF void cmlNormedCartesianOutputWithHSV(CMLOutput output, CMLInput hsv, size_t count){
   const float* in  = (float*)hsv;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
@@ -307,7 +307,7 @@ CML_API void cmlNormedCartesianOutputWithHSV(CMLOutput output, CMLInput hsv, siz
     in += 3;
   }
 }
-CML_API void cmlNormedCartesianOutputWithHSL(CMLOutput output, CMLInput hsl, size_t count){
+CML_DEF void cmlNormedCartesianOutputWithHSL(CMLOutput output, CMLInput hsl, size_t count){
   const float* in  = (float*)hsl;
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){

@@ -1389,7 +1389,7 @@
 
 
 
-//CML_INLINE static void SpectralBlanktoDensityDivisor(float* CML_RESTRICT cmyk, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
+//CML_INLINE void SpectralBlanktoDensityDivisor(float* CML_RESTRICT cmyk, FunctionStorage CML_RESTRICT blank, CMLDensityComputationType densitycomputation){
 //  float blankval;
 //  float illuminantvalue;
 //  float imin;
@@ -1573,7 +1573,7 @@
 //    for(CMLuint32 istep = 0; istep <= intervals; istep++){
 //      float l = imin + (((imax - imin) * istep) / intervals);
 //      float diff  = (*blank->getFunction())(l)  - (*solid->getFunction())(l);
-//      if(!CMLAlmostZero((*blank->getFunction())(l))){
+//      if(!cmlAlmostZero((*blank->getFunction())(l))){
 //        sum += diff;
 //      }
 //    }
@@ -1581,7 +1581,7 @@
 //      float l = imin + (((imax - imin) * istep) / intervals);
 //      float diff  = (*blank->getFunction())(l)  - (*solid->getFunction())(l);
 //      float cdiff = (*color)(l)                 - (*solid->getFunction())(l);
-//      if(!CMLAlmostZero((*blank->getFunction())(l))){
+//      if(!cmlAlmostZero((*blank->getFunction())(l))){
 //        float intensity = cdiff / diff;
 //        fraction += (1.f - intensity) * diff / sum;
 //      }

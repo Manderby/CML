@@ -3,43 +3,37 @@
 #include "../StateMachine/CMLColorMachineState.h"
 
 
-CML_HIDDEN CML_INLINE static CMLColorConverter CMLInternalGetGrayToAnythingColorConverter(const CMLColorMachine* cm, CMLColorType outputSystem){
+CML_HIDEF CMLColorConverter CMLInternalGetGrayToAnythingColorConverter(const CMLColorMachine* cm, CMLColorType outputSystem){
   switch(cm->grayspace.computation){
-  case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSL); break;
-  case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSV); break;
-  case CML_GRAY_FROM_G      : return cmlGetColorConverter(outputSystem, CML_COLOR_RGB); break;
-  case CML_GRAY_FROM_LSTAR  : return cmlGetColorConverter(outputSystem, CML_COLOR_Luv); break;
-  case CML_GRAY_FROM_L      : return cmlGetColorConverter(outputSystem, CML_COLOR_Lab); break;
-  case CML_GRAY_FROM_Y      : return cmlGetColorConverter(outputSystem, CML_COLOR_Yxy); break;
-  case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(outputSystem, CML_COLOR_YCbCr); break;
+  case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSL);
+  case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSV);
+  case CML_GRAY_FROM_G      : return cmlGetColorConverter(outputSystem, CML_COLOR_RGB);
+  case CML_GRAY_FROM_LSTAR  : return cmlGetColorConverter(outputSystem, CML_COLOR_Luv);
+  case CML_GRAY_FROM_L      : return cmlGetColorConverter(outputSystem, CML_COLOR_Lab);
+  case CML_GRAY_FROM_Y      : return cmlGetColorConverter(outputSystem, CML_COLOR_Yxy);
+  case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(outputSystem, CML_COLOR_YCbCr);
   default:
     #ifndef NDEBUG
       cmlError("CMLInternalGetGrayToAnythingColorConverter", "Undefined Gray conversion.");
     #endif
-    // Although it is virtually impossible to reach here, give the compiler
-    // a reason to be happy and return L*
     return cmlGetColorConverter(outputSystem, CML_COLOR_Luv);
-    break;
   }
 }
 
-CML_HIDDEN CML_INLINE static CMLColorConverter CMLInternalGetAnythingToGrayColorConverter(const CMLColorMachine* cm, CMLColorType inputSystem){
+CML_HIDEF CMLColorConverter CMLInternalGetAnythingToGrayColorConverter(const CMLColorMachine* cm, CMLColorType inputSystem){
   switch(cm->grayspace.computation){
-  case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(CML_COLOR_HSL, inputSystem); break;
-  case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(CML_COLOR_HSV, inputSystem); break;
-  case CML_GRAY_FROM_G      : return cmlGetColorConverter(CML_COLOR_RGB, inputSystem); break;
-  case CML_GRAY_FROM_LSTAR  : return cmlGetColorConverter(CML_COLOR_Luv, inputSystem); break;
-  case CML_GRAY_FROM_L      : return cmlGetColorConverter(CML_COLOR_Lab, inputSystem); break;
-  case CML_GRAY_FROM_Y      : return cmlGetColorConverter(CML_COLOR_Yxy, inputSystem); break;
-  case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(CML_COLOR_YCbCr, inputSystem); break;
+  case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(CML_COLOR_HSL, inputSystem);
+  case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(CML_COLOR_HSV, inputSystem);
+  case CML_GRAY_FROM_G      : return cmlGetColorConverter(CML_COLOR_RGB, inputSystem);
+  case CML_GRAY_FROM_LSTAR  : return cmlGetColorConverter(CML_COLOR_Luv, inputSystem);
+  case CML_GRAY_FROM_L      : return cmlGetColorConverter(CML_COLOR_Lab, inputSystem);
+  case CML_GRAY_FROM_Y      : return cmlGetColorConverter(CML_COLOR_Yxy, inputSystem);
+  case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(CML_COLOR_YCbCr, inputSystem);
   default:
     #ifndef NDEBUG
       cmlError("CMLInternalGetAnythingToGrayColorConverter", "Undefined Gray conversion.");
     #endif
-    // Although it is virtually impossible to reach here, give the compiler
-    // a reason to be happy and return L*
     return cmlGetColorConverter(CML_COLOR_Luv, inputSystem);
-    break;
   }
 }
 
@@ -55,12 +49,12 @@ CML_API void CMLGraytoGray(const CMLColorMachine* cm, CMLOutput grayd , CMLInput
 }
 
 
-//////////////////////////////
+
+// ////////////////////////////
 // Gray to anything
-//////////////////////////////
+// ////////////////////////////
 
-
-CML_HIDDEN CML_INLINE static void CMLInternalConvertGrayToColorspace(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType outputSystem, size_t outputchannelcount){
+CML_HIDEF void CMLInternalConvertGrayToColorspace(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType outputSystem, size_t outputchannelcount){
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetGrayToAnythingColorConverter(cm, outputSystem);
   for(size_t i = 0; i < count; i++){
@@ -71,54 +65,61 @@ CML_HIDDEN CML_INLINE static void CMLInternalConvertGrayToColorspace(const CMLCo
   }
 }
 
-
 CML_API void CMLGraytoXYZ (const CMLColorMachine* cm, CMLOutput xyz , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)xyz, (float*)gray, count, CML_COLOR_XYZ, 3);
 }
-CML_API void CMLGraytoYuv (const CMLColorMachine* cm, CMLOutput yuv , CMLInput gray, size_t count){
-  CMLInternalConvertGrayToColorspace(cm, (float*)yuv, (float*)gray, count, CML_COLOR_Yuv, 3);
-}
-CML_API void CMLGraytoYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput gray, size_t count){
-  CMLInternalConvertGrayToColorspace(cm, (float*)yupvp, (float*)gray, count, CML_COLOR_Yupvp, 3);
-}
+
 CML_API void CMLGraytoYxy (const CMLColorMachine* cm, CMLOutput yxy , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)yxy, (float*)gray, count, CML_COLOR_Yxy, 3);
 }
+
+CML_API void CMLGraytoYuv (const CMLColorMachine* cm, CMLOutput yuv , CMLInput gray, size_t count){
+  CMLInternalConvertGrayToColorspace(cm, (float*)yuv, (float*)gray, count, CML_COLOR_Yuv, 3);
+}
+
+CML_API void CMLGraytoYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput gray, size_t count){
+  CMLInternalConvertGrayToColorspace(cm, (float*)yupvp, (float*)gray, count, CML_COLOR_Yupvp, 3);
+}
+
 CML_API void CMLGraytoLab (const CMLColorMachine* cm, CMLOutput lab , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)lab, (float*)gray, count, CML_COLOR_Lab, 3);
 }
+
 CML_API void CMLGraytoLch (const CMLColorMachine* cm, CMLOutput lch , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)lch, (float*)gray, count, CML_COLOR_Lch, 3);
 }
+
 CML_API void CMLGraytoLuv (const CMLColorMachine* cm, CMLOutput luv , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)luv, (float*)gray, count, CML_COLOR_Luv, 3);
 }
+
 CML_API void CMLGraytoRGB (const CMLColorMachine* cm, CMLOutput rgb , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)rgb, (float*)gray, count, CML_COLOR_RGB, 3);
 }
+
 CML_API void CMLGraytoYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)ycbcr, (float*)gray, count, CML_COLOR_YCbCr, 3);
 }
+
 CML_API void CMLGraytoHSV (const CMLColorMachine* cm, CMLOutput hsv , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)hsv, (float*)gray, count, CML_COLOR_HSV, 3);
 }
+
 CML_API void CMLGraytoHSL (const CMLColorMachine* cm, CMLOutput hsl , CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)hsl, (float*)gray, count, CML_COLOR_HSL, 3);
 }
+
 CML_API void CMLGraytoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput gray, size_t count){
   CMLInternalConvertGrayToColorspace(cm, (float*)cmyk, (float*)gray, count, CML_COLOR_CMYK, 4);
 }
 
 
 
-
-
-
-//////////////////////////////
+// ////////////////////////////
 // Anything to Gray
-//////////////////////////////
+// ////////////////////////////
 
-CML_HIDDEN CML_INLINE static void CMLInternalConvertColorspaceToGray(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType inputSystem, size_t inputchannelcount){
+CML_HIDEF void CMLInternalConvertColorspaceToGray(const CMLColorMachine* cm, float* out, const float* in, size_t count, CMLColorType inputSystem, size_t inputchannelcount){
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayconverter = CMLInternalGetAnythingToGrayColorConverter(cm, inputSystem);
   for(size_t i = 0; i < count; i++){
@@ -133,16 +134,16 @@ CML_API void CMLXYZtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput xy
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)xyz, count, CML_COLOR_XYZ, 3);
 }
 
+CML_API void CMLYxytoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yxy , size_t count){
+  CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yxy, count, CML_COLOR_Yxy, 3);
+}
+
 CML_API void CMLYuvtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yuv , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yuv, count, CML_COLOR_Yuv, 3);
 }
 
 CML_API void CMLYupvptoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yupvp , size_t count){
   CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yupvp, count, CML_COLOR_Yupvp, 3);
-}
-
-CML_API void CMLYxytoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput yxy , size_t count){
-  CMLInternalConvertColorspaceToGray(cm, (float*)gray, (float*)yxy, count, CML_COLOR_Yxy, 3);
 }
 
 CML_API void CMLLabtoGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput lab , size_t count){

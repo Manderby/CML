@@ -4,7 +4,7 @@
 
 
 
-CML_API CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLColorType inputSystem){
+CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLColorType inputSystem){
   switch(inputSystem){
   case CML_COLOR_GRAY:
     switch(outputSystem){
@@ -274,7 +274,7 @@ CML_API CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   return CML_NULL;
 }
 
-CML_API CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
+CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_GRAY:  return &cmlGrayWithNormedInput;
     case CML_COLOR_XYZ:   return &cmlXYZWithNormedInput;
@@ -297,7 +297,7 @@ CML_API CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
   return CML_NULL;
 }
 
-CML_API CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
+CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_GRAY:  return &cmlNormedOutputWithGray;
     case CML_COLOR_XYZ:   return &cmlNormedOutputWithXYZ;
@@ -320,7 +320,7 @@ CML_API CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
   return CML_NULL;
 }
 
-CML_API CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colorType){
+CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_GRAY:  return &cmlGrayWithNormedInput;
     case CML_COLOR_XYZ:   return &cmlXYZWithNormedInput;
@@ -343,7 +343,7 @@ CML_API CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
   return CML_NULL;
 }
 
-CML_API CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType){
+CML_DEF CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_GRAY:  return &cmlNormedOutputWithGray;
     case CML_COLOR_XYZ:   return &cmlNormedOutputWithXYZ;
