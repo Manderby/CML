@@ -165,19 +165,19 @@ CMLColorType LchColor::getColorType() const{
 }
 
 void LchColor::from8BitBuffer(const CMLByte* input){
-  cmlLchWithData8(cmlcm, color, input, 1);
+  cmlData8ToLch(cmlcm, color, input, 1);
 }
 void LchColor::from16BitBuffer(const CMLWord* input){
-  cmlLchWithData16(cmlcm, color, input, 1);
+  cmlData16ToLch(cmlcm, color, input, 1);
 }
 void LchColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
 void LchColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithLch(cmlcm, output, color, 1);
+  cmlLchToData8(cmlcm, output, color, 1);
 }
 void LchColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithLch(cmlcm, output, color, 1);
+  cmlLchToData16(cmlcm, output, color, 1);
 }
 void LchColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -185,16 +185,16 @@ void LchColor::toFloatBuffer(float* output) const {
 
 
 void LchColor::fromNormedBuffer(const float* input){
-  cmlLchWithNormedInput(color, input, 1);
+  cmlNormedInputToLch(color, input, 1);
 }
 void LchColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithLch(output, color, 1);
+  cmlLchToNormedOutput(output, color, 1);
 }
 void LchColor::fromNormedCartesianBuffer(const float* input){
-  cmlLchWithNormedCartesianInput(color, input, 1);
+  cmlNormedCartesianInputToLch(color, input, 1);
 }
 void LchColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedCartesianOutputWithLch(output, color, 1);
+  cmlLchToNormedCartesianOutput(output, color, 1);
 }
 
 

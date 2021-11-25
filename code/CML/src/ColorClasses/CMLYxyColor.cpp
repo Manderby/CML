@@ -156,19 +156,19 @@ CMLColorType YxyColor::getColorType() const{
 }
 
 void YxyColor::from8BitBuffer(const CMLByte* input){
-  cmlYxyWithData8(cmlcm, color, input, 1);
+  cmlData8ToYxy(cmlcm, color, input, 1);
 }
 void YxyColor::from16BitBuffer(const CMLWord* input){
-  cmlYxyWithData16(cmlcm, color, input, 1);
+  cmlData16ToYxy(cmlcm, color, input, 1);
 }
 void YxyColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
 void YxyColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithYxy(cmlcm, output, color, 1);
+  cmlYxyToData8(cmlcm, output, color, 1);
 }
 void YxyColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithYxy(cmlcm, output, color, 1);
+  cmlYxyToData16(cmlcm, output, color, 1);
 }
 void YxyColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void YxyColor::toFloatBuffer(float* output) const {
 
 
 void YxyColor::fromNormedBuffer(const float* input){
-  cmlYxyWithNormedInput(color, input, 1);
+  cmlNormedInputToYxy(color, input, 1);
 }
 void YxyColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithYxy(output, color, 1);
+  cmlYxyToNormedOutput(output, color, 1);
 }
 void YxyColor::fromNormedCartesianBuffer(const float* input){
-  cmlYxyWithNormedInput(color, input, 1);
+  cmlNormedInputToYxy(color, input, 1);
 }
 void YxyColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedOutputWithYxy(output, color, 1);
+  cmlYxyToNormedOutput(output, color, 1);
 }
 
 

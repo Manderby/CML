@@ -144,19 +144,19 @@ CMLColorType GrayColor::getColorType() const{
 }
 
 void GrayColor::from8BitBuffer(const CMLByte* input){
-  cmlGrayWithData8(cmlcm, color, input, 1);
+  cmlData8ToGray(cmlcm, color, input, 1);
 }
 void GrayColor::from16BitBuffer(const CMLWord* input){
-  cmlGrayWithData16(cmlcm, color, input, 1);
+  cmlData16ToGray(cmlcm, color, input, 1);
 }
 void GrayColor::fromFloatBuffer(const float* input){
   color[0] = input[0];
 }
 void GrayColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithGray(cmlcm, output, color, 1);
+  cmlGrayToData8(cmlcm, output, color, 1);
 }
 void GrayColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithGray(cmlcm, output, color, 1);
+  cmlGrayToData16(cmlcm, output, color, 1);
 }
 void GrayColor::toFloatBuffer(float* output) const {
   output[0] = color[0];
@@ -164,16 +164,16 @@ void GrayColor::toFloatBuffer(float* output) const {
 
 
 void GrayColor::fromNormedBuffer(const float* input){
-  cmlGrayWithNormedInput(color, input, 1);
+  cmlNormedInputToGray(color, input, 1);
 }
 void GrayColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithGray(output, color, 1);
+  cmlGrayToNormedOutput(output, color, 1);
 }
 void GrayColor::fromNormedCartesianBuffer(const float* input){
-  cmlGrayWithNormedInput(color, input, 1);
+  cmlNormedInputToGray(color, input, 1);
 }
 void GrayColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedOutputWithGray(output, color, 1);
+  cmlGrayToNormedOutput(output, color, 1);
 }
 
 

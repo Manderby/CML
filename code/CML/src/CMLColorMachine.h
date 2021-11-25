@@ -386,64 +386,64 @@ CML_API void CMLSpectrumRemissiontoCMYK  (const CMLColorMachine* cm, CMLOutput c
 // integer mappings of the given machine.
 
 // 8-bit Input Conversions
-CML_API void cmlGrayWithData8 (const CMLColorMachine* cm, CMLOutput gray  , CMLInput input, size_t count);
-CML_API void cmlXYZWithData8  (const CMLColorMachine* cm, CMLOutput xyz   , CMLInput input, size_t count);
-CML_API void cmlYxyWithData8  (const CMLColorMachine* cm, CMLOutput yxy   , CMLInput input, size_t count);
-CML_API void cmlYuvWithData8  (const CMLColorMachine* cm, CMLOutput yuv   , CMLInput input, size_t count);
-CML_API void cmlYupvpWithData8(const CMLColorMachine* cm, CMLOutput yupvp , CMLInput input, size_t count);
-CML_API void cmlLabWithData8  (const CMLColorMachine* cm, CMLOutput lab   , CMLInput input, size_t count);
-CML_API void cmlLchWithData8  (const CMLColorMachine* cm, CMLOutput lch   , CMLInput input, size_t count);
-CML_API void cmlLuvWithData8  (const CMLColorMachine* cm, CMLOutput luv   , CMLInput input, size_t count);
-CML_API void cmlRGBWithData8  (const CMLColorMachine* cm, CMLOutput rgb   , CMLInput input, size_t count);
-CML_API void cmlYCbCrWithData8(const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput input, size_t count);
-CML_API void cmlHSVWithData8  (const CMLColorMachine* cm, CMLOutput hsv   , CMLInput input, size_t count);
-CML_API void cmlHSLWithData8  (const CMLColorMachine* cm, CMLOutput hsl   , CMLInput input, size_t count);
-CML_API void cmlCMYKWithData8 (const CMLColorMachine* cm, CMLOutput cmyk  , CMLInput input, size_t count);
+CML_API void cmlData8ToGray (const CMLColorMachine* cm, CMLOutput gray  , CMLInput input, size_t count);
+CML_API void cmlData8ToXYZ  (const CMLColorMachine* cm, CMLOutput xyz   , CMLInput input, size_t count);
+CML_API void cmlData8ToYxy  (const CMLColorMachine* cm, CMLOutput yxy   , CMLInput input, size_t count);
+CML_API void cmlData8ToYuv  (const CMLColorMachine* cm, CMLOutput yuv   , CMLInput input, size_t count);
+CML_API void cmlData8ToYupvp(const CMLColorMachine* cm, CMLOutput yupvp , CMLInput input, size_t count);
+CML_API void cmlData8ToLab  (const CMLColorMachine* cm, CMLOutput lab   , CMLInput input, size_t count);
+CML_API void cmlData8ToLch  (const CMLColorMachine* cm, CMLOutput lch   , CMLInput input, size_t count);
+CML_API void cmlData8ToLuv  (const CMLColorMachine* cm, CMLOutput luv   , CMLInput input, size_t count);
+CML_API void cmlData8ToRGB  (const CMLColorMachine* cm, CMLOutput rgb   , CMLInput input, size_t count);
+CML_API void cmlData8ToYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput input, size_t count);
+CML_API void cmlData8ToHSV  (const CMLColorMachine* cm, CMLOutput hsv   , CMLInput input, size_t count);
+CML_API void cmlData8ToHSL  (const CMLColorMachine* cm, CMLOutput hsl   , CMLInput input, size_t count);
+CML_API void cmlData8ToCMYK (const CMLColorMachine* cm, CMLOutput cmyk  , CMLInput input, size_t count);
 
 // 16-bit Input Conversions
-CML_API void cmlGrayWithData16  (const CMLColorMachine* cm, CMLOutput gray  , CMLInput input, size_t count);
-CML_API void cmlXYZWithData16   (const CMLColorMachine* cm, CMLOutput xyz   , CMLInput input, size_t count);
-CML_API void cmlYxyWithData16   (const CMLColorMachine* cm, CMLOutput yxy   , CMLInput input, size_t count);
-CML_API void cmlYuvWithData16   (const CMLColorMachine* cm, CMLOutput yuv   , CMLInput input, size_t count);
-CML_API void cmlYupvpWithData16 (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput input, size_t count);
-CML_API void cmlLabWithData16   (const CMLColorMachine* cm, CMLOutput lab   , CMLInput input, size_t count);
-CML_API void cmlLchWithData16   (const CMLColorMachine* cm, CMLOutput lch   , CMLInput input, size_t count);
-CML_API void cmlLuvWithData16   (const CMLColorMachine* cm, CMLOutput luv   , CMLInput input, size_t count);
-CML_API void cmlRGBWithData16   (const CMLColorMachine* cm, CMLOutput rgb   , CMLInput input, size_t count);
-CML_API void cmlYCbCrWithData16 (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput input, size_t count);
-CML_API void cmlHSVWithData16   (const CMLColorMachine* cm, CMLOutput hsv   , CMLInput input, size_t count);
-CML_API void cmlHSLWithData16   (const CMLColorMachine* cm, CMLOutput hsl   , CMLInput input, size_t count);
-CML_API void cmlCMYKWithData16  (const CMLColorMachine* cm, CMLOutput cmyk  , CMLInput input, size_t count);
+CML_API void cmlData16ToGray  (const CMLColorMachine* cm, CMLOutput gray  , CMLInput input, size_t count);
+CML_API void cmlData16ToXYZ   (const CMLColorMachine* cm, CMLOutput xyz   , CMLInput input, size_t count);
+CML_API void cmlData16ToYxy   (const CMLColorMachine* cm, CMLOutput yxy   , CMLInput input, size_t count);
+CML_API void cmlData16ToYuv   (const CMLColorMachine* cm, CMLOutput yuv   , CMLInput input, size_t count);
+CML_API void cmlData16ToYupvp (const CMLColorMachine* cm, CMLOutput yupvp , CMLInput input, size_t count);
+CML_API void cmlData16ToLab   (const CMLColorMachine* cm, CMLOutput lab   , CMLInput input, size_t count);
+CML_API void cmlData16ToLch   (const CMLColorMachine* cm, CMLOutput lch   , CMLInput input, size_t count);
+CML_API void cmlData16ToLuv   (const CMLColorMachine* cm, CMLOutput luv   , CMLInput input, size_t count);
+CML_API void cmlData16ToRGB   (const CMLColorMachine* cm, CMLOutput rgb   , CMLInput input, size_t count);
+CML_API void cmlData16ToYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr , CMLInput input, size_t count);
+CML_API void cmlData16ToHSV   (const CMLColorMachine* cm, CMLOutput hsv   , CMLInput input, size_t count);
+CML_API void cmlData16ToHSL   (const CMLColorMachine* cm, CMLOutput hsl   , CMLInput input, size_t count);
+CML_API void cmlData16ToCMYK  (const CMLColorMachine* cm, CMLOutput cmyk  , CMLInput input, size_t count);
 
 // 8-bit Output Conversions
-CML_API void cmlData8WithGray  (const CMLColorMachine* cm, CMLOutput output, CMLInput gray , size_t count);
-CML_API void cmlData8WithXYZ   (const CMLColorMachine* cm, CMLOutput output, CMLInput xyz  , size_t count);
-CML_API void cmlData8WithYxy   (const CMLColorMachine* cm, CMLOutput output, CMLInput yxy  , size_t count);
-CML_API void cmlData8WithYuv   (const CMLColorMachine* cm, CMLOutput output, CMLInput yuv  , size_t count);
-CML_API void cmlData8WithYupvp (const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count);
-CML_API void cmlData8WithLab   (const CMLColorMachine* cm, CMLOutput output, CMLInput lab  , size_t count);
-CML_API void cmlData8WithLch   (const CMLColorMachine* cm, CMLOutput output, CMLInput lch  , size_t count);
-CML_API void cmlData8WithLuv   (const CMLColorMachine* cm, CMLOutput output, CMLInput luv  , size_t count);
-CML_API void cmlData8WithRGB   (const CMLColorMachine* cm, CMLOutput output, CMLInput rgb  , size_t count);
-CML_API void cmlData8WithYCbCr (const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count);
-CML_API void cmlData8WithHSV   (const CMLColorMachine* cm, CMLOutput output, CMLInput hsv  , size_t count);
-CML_API void cmlData8WithHSL   (const CMLColorMachine* cm, CMLOutput output, CMLInput hsl  , size_t count);
-CML_API void cmlData8WithCMYK  (const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk , size_t count);
+CML_API void cmlGrayToData8  (const CMLColorMachine* cm, CMLOutput output, CMLInput gray , size_t count);
+CML_API void cmlXYZToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput xyz  , size_t count);
+CML_API void cmlYxyToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput yxy  , size_t count);
+CML_API void cmlYuvToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput yuv  , size_t count);
+CML_API void cmlYupvpToData8 (const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count);
+CML_API void cmlLabToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput lab  , size_t count);
+CML_API void cmlLchToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput lch  , size_t count);
+CML_API void cmlLuvToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput luv  , size_t count);
+CML_API void cmlRGBToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput rgb  , size_t count);
+CML_API void cmlYCbCrToData8 (const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count);
+CML_API void cmlHSVToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput hsv  , size_t count);
+CML_API void cmlHSLToData8   (const CMLColorMachine* cm, CMLOutput output, CMLInput hsl  , size_t count);
+CML_API void cmlCMYKToData8  (const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk , size_t count);
 
 // 16-bit Output Conversions
-CML_API void cmlData16WithGray (const CMLColorMachine* cm, CMLOutput output, CMLInput gray , size_t count);
-CML_API void cmlData16WithXYZ  (const CMLColorMachine* cm, CMLOutput output, CMLInput xyz  , size_t count);
-CML_API void cmlData16WithYxy  (const CMLColorMachine* cm, CMLOutput output, CMLInput yxy  , size_t count);
-CML_API void cmlData16WithYuv  (const CMLColorMachine* cm, CMLOutput output, CMLInput yuv  , size_t count);
-CML_API void cmlData16WithYupvp(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count);
-CML_API void cmlData16WithLab  (const CMLColorMachine* cm, CMLOutput output, CMLInput lab  , size_t count);
-CML_API void cmlData16WithLch  (const CMLColorMachine* cm, CMLOutput output, CMLInput lch  , size_t count);
-CML_API void cmlData16WithLuv  (const CMLColorMachine* cm, CMLOutput output, CMLInput luv  , size_t count);
-CML_API void cmlData16WithRGB  (const CMLColorMachine* cm, CMLOutput output, CMLInput rgb  , size_t count);
-CML_API void cmlData16WithYCbCr(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count);
-CML_API void cmlData16WithHSV  (const CMLColorMachine* cm, CMLOutput output, CMLInput hsv  , size_t count);
-CML_API void cmlData16WithHSL  (const CMLColorMachine* cm, CMLOutput output, CMLInput hsl  , size_t count);
-CML_API void cmlData16WithCMYK (const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk , size_t count);
+CML_API void cmlGrayToData16 (const CMLColorMachine* cm, CMLOutput output, CMLInput gray , size_t count);
+CML_API void cmlXYZToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput xyz  , size_t count);
+CML_API void cmlYxyToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput yxy  , size_t count);
+CML_API void cmlYuvToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput yuv  , size_t count);
+CML_API void cmlYupvpToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count);
+CML_API void cmlLabToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput lab  , size_t count);
+CML_API void cmlLchToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput lch  , size_t count);
+CML_API void cmlLuvToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput luv  , size_t count);
+CML_API void cmlRGBToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput rgb  , size_t count);
+CML_API void cmlYCbCrToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count);
+CML_API void cmlHSVToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput hsv  , size_t count);
+CML_API void cmlHSLToData16  (const CMLColorMachine* cm, CMLOutput output, CMLInput hsl  , size_t count);
+CML_API void cmlCMYKToData16 (const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk , size_t count);
 
 
 
@@ -490,44 +490,44 @@ CML_API CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
 CML_API CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType);
 
 // float Input Conversions from normed range [0,1]
-CML_API void cmlGrayWithNormedInput  (CMLOutput gray  , CMLInput input, size_t count);
-CML_API void cmlXYZWithNormedInput   (CMLOutput xyz   , CMLInput input, size_t count);
-CML_API void cmlYxyWithNormedInput   (CMLOutput yxy   , CMLInput input, size_t count);
-CML_API void cmlYuvWithNormedInput   (CMLOutput yuv   , CMLInput input, size_t count);
-CML_API void cmlYupvpWithNormedInput (CMLOutput yupvp , CMLInput input, size_t count);
-CML_API void cmlLabWithNormedInput   (CMLOutput lab   , CMLInput input, size_t count);
-CML_API void cmlLchWithNormedInput   (CMLOutput lch   , CMLInput input, size_t count);
-CML_API void cmlLuvWithNormedInput   (CMLOutput luv   , CMLInput input, size_t count);
-CML_API void cmlRGBWithNormedInput   (CMLOutput rgb   , CMLInput input, size_t count);
-CML_API void cmlYCbCrWithNormedInput (CMLOutput ycbcr , CMLInput input, size_t count);
-CML_API void cmlHSVWithNormedInput   (CMLOutput hsv   , CMLInput input, size_t count);
-CML_API void cmlHSLWithNormedInput   (CMLOutput hsl   , CMLInput input, size_t count);
-CML_API void cmlCMYKWithNormedInput  (CMLOutput cmyk  , CMLInput input, size_t count);
+CML_API void cmlNormedInputToGray  (CMLOutput gray  , CMLInput input, size_t count);
+CML_API void cmlNormedInputToXYZ   (CMLOutput xyz   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToYxy   (CMLOutput yxy   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToYuv   (CMLOutput yuv   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToYupvp (CMLOutput yupvp , CMLInput input, size_t count);
+CML_API void cmlNormedInputToLab   (CMLOutput lab   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToLch   (CMLOutput lch   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToLuv   (CMLOutput luv   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToRGB   (CMLOutput rgb   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToYCbCr (CMLOutput ycbcr , CMLInput input, size_t count);
+CML_API void cmlNormedInputToHSV   (CMLOutput hsv   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToHSL   (CMLOutput hsl   , CMLInput input, size_t count);
+CML_API void cmlNormedInputToCMYK  (CMLOutput cmyk  , CMLInput input, size_t count);
 
 // Output Conversions to normed range [0,1]
-CML_API void cmlNormedOutputWithGray (CMLOutput output, CMLInput gray , size_t count);
-CML_API void cmlNormedOutputWithXYZ  (CMLOutput output, CMLInput xyz  , size_t count);
-CML_API void cmlNormedOutputWithYxy  (CMLOutput output, CMLInput yxy  , size_t count);
-CML_API void cmlNormedOutputWithYuv  (CMLOutput output, CMLInput yuv  , size_t count);
-CML_API void cmlNormedOutputWithYupvp(CMLOutput output, CMLInput yupvp, size_t count);
-CML_API void cmlNormedOutputWithLab  (CMLOutput output, CMLInput lab  , size_t count);
-CML_API void cmlNormedOutputWithLch  (CMLOutput output, CMLInput lch  , size_t count);
-CML_API void cmlNormedOutputWithLuv  (CMLOutput output, CMLInput luv  , size_t count);
-CML_API void cmlNormedOutputWithRGB  (CMLOutput output, CMLInput rgb  , size_t count);
-CML_API void cmlNormedOutputWithYCbCr(CMLOutput output, CMLInput ycbcr, size_t count);
-CML_API void cmlNormedOutputWithHSV  (CMLOutput output, CMLInput hsv  , size_t count);
-CML_API void cmlNormedOutputWithHSL  (CMLOutput output, CMLInput hsl  , size_t count);
-CML_API void cmlNormedOutputWithCMYK (CMLOutput output, CMLInput cmyk , size_t count);
+CML_API void cmlGrayToNormedOutput (CMLOutput output, CMLInput gray , size_t count);
+CML_API void cmlXYZToNormedOutput  (CMLOutput output, CMLInput xyz  , size_t count);
+CML_API void cmlYxyToNormedOutput  (CMLOutput output, CMLInput yxy  , size_t count);
+CML_API void cmlYuvToNormedOutput  (CMLOutput output, CMLInput yuv  , size_t count);
+CML_API void cmlYupvpToNormedOutput(CMLOutput output, CMLInput yupvp, size_t count);
+CML_API void cmlLabToNormedOutput  (CMLOutput output, CMLInput lab  , size_t count);
+CML_API void cmlLchToNormedOutput  (CMLOutput output, CMLInput lch  , size_t count);
+CML_API void cmlLuvToNormedOutput  (CMLOutput output, CMLInput luv  , size_t count);
+CML_API void cmlRGBToNormedOutput  (CMLOutput output, CMLInput rgb  , size_t count);
+CML_API void cmlYCbCrToNormedOutput(CMLOutput output, CMLInput ycbcr, size_t count);
+CML_API void cmlHSVToNormedOutput  (CMLOutput output, CMLInput hsv  , size_t count);
+CML_API void cmlHSLToNormedOutput  (CMLOutput output, CMLInput hsl  , size_t count);
+CML_API void cmlCMYKToNormedOutput (CMLOutput output, CMLInput cmyk , size_t count);
 
 // float Input Conversions from normed cartesian range [0,1]
-CML_API void cmlLchWithNormedCartesianInput   (CMLOutput lch   , CMLInput input, size_t count);
-CML_API void cmlHSVWithNormedCartesianInput   (CMLOutput hsv   , CMLInput input, size_t count);
-CML_API void cmlHSLWithNormedCartesianInput   (CMLOutput hsl   , CMLInput input, size_t count);
+CML_API void cmlNormedCartesianInputToLch   (CMLOutput lch   , CMLInput input, size_t count);
+CML_API void cmlNormedCartesianInputToHSV   (CMLOutput hsv   , CMLInput input, size_t count);
+CML_API void cmlNormedCartesianInputToHSL   (CMLOutput hsl   , CMLInput input, size_t count);
 
 // Output Conversions to normed cartesian range [0,1]
-CML_API void cmlNormedCartesianOutputWithLch  (CMLOutput output, CMLInput lch  , size_t count);
-CML_API void cmlNormedCartesianOutputWithHSV  (CMLOutput output, CMLInput hsv  , size_t count);
-CML_API void cmlNormedCartesianOutputWithHSL  (CMLOutput output, CMLInput hsl  , size_t count);
+CML_API void cmlLchToNormedCartesianOutput  (CMLOutput output, CMLInput lch  , size_t count);
+CML_API void cmlHSVToNormedCartesianOutput  (CMLOutput output, CMLInput hsv  , size_t count);
+CML_API void cmlHSLToNormedCartesianOutput  (CMLOutput output, CMLInput hsl  , size_t count);
 
 
 

@@ -156,19 +156,19 @@ CMLColorType YupvpColor::getColorType() const{
 }
 
 void YupvpColor::from8BitBuffer(const CMLByte* input){
-  cmlYupvpWithData8(cmlcm, color, input, 1);
+  cmlData8ToYupvp(cmlcm, color, input, 1);
 }
 void YupvpColor::from16BitBuffer(const CMLWord* input){
-  cmlYupvpWithData16(cmlcm, color, input, 1);
+  cmlData16ToYupvp(cmlcm, color, input, 1);
 }
 void YupvpColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
 void YupvpColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithYupvp(cmlcm, output, color, 1);
+  cmlYupvpToData8(cmlcm, output, color, 1);
 }
 void YupvpColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithYupvp(cmlcm, output, color, 1);
+  cmlYupvpToData16(cmlcm, output, color, 1);
 }
 void YupvpColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -176,16 +176,16 @@ void YupvpColor::toFloatBuffer(float* output) const {
 
 
 void YupvpColor::fromNormedBuffer(const float* input){
-  cmlYupvpWithNormedInput(color, input, 1);
+  cmlNormedInputToYupvp(color, input, 1);
 }
 void YupvpColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithYupvp(output, color, 1);
+  cmlYupvpToNormedOutput(output, color, 1);
 }
 void YupvpColor::fromNormedCartesianBuffer(const float* input){
-  cmlYupvpWithNormedInput(color, input, 1);
+  cmlNormedInputToYupvp(color, input, 1);
 }
 void YupvpColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedOutputWithYupvp(output, color, 1);
+  cmlYupvpToNormedOutput(output, color, 1);
 }
 
 

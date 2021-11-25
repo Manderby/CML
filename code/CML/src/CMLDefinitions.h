@@ -288,16 +288,16 @@ CML_IDEF void cmlMat33Inverse(CMLMat33 d, const CMLMat33 m){
 // Angle functions
 // ////////////////////////////////////////////
 
-CML_IDEF float cmlRadWithDeg(float deg) {return deg * (CML_2PI / 360.f);}
-CML_IDEF float cmlDegWithRad(float rad) {return rad * (360.f / CML_2PI);}
+CML_IDEF float cmlDegToRad(float deg) {return deg * (CML_2PI / 360.f);}
+CML_IDEF float cmlRadToDeg(float rad) {return rad * (360.f / CML_2PI);}
 
-CML_IDEF void cmlCartesianWithPolar(float* xy, const float* r_theta){
+CML_IDEF void cmlPolarToCartesian(float* xy, const float* r_theta){
   float r = r_theta[0];
   xy[0] = r * cosf(r_theta[1]);
   xy[1] = r * sinf(r_theta[1]);
 }
 
-CML_IDEF void cmlPolarWithCartesian(float* r_theta, const float* xy){
+CML_IDEF void cmlCartesianToPolar(float* r_theta, const float* xy){
   float length = cmlLength2(xy);
   r_theta[1] = (length == 0.) ? 0.f : cmlAngle(xy);
   r_theta[0] = length;

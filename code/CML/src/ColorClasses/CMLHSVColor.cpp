@@ -165,19 +165,19 @@ CMLColorType HSVColor::getColorType() const{
 }
 
 void HSVColor::from8BitBuffer(const CMLByte* input){
-  cmlHSVWithData8(cmlcm, color, input, 1);
+  cmlData8ToHSV(cmlcm, color, input, 1);
 }
 void HSVColor::from16BitBuffer(const CMLWord* input){
-  cmlHSVWithData16(cmlcm, color, input, 1);
+  cmlData16ToHSV(cmlcm, color, input, 1);
 }
 void HSVColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
 void HSVColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithHSV(cmlcm, output, color, 1);
+  cmlHSVToData8(cmlcm, output, color, 1);
 }
 void HSVColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithHSV(cmlcm, output, color, 1);
+  cmlHSVToData16(cmlcm, output, color, 1);
 }
 void HSVColor::toFloatBuffer(float* output) const {
   cmlCpy3(output, color);
@@ -185,16 +185,16 @@ void HSVColor::toFloatBuffer(float* output) const {
 
 
 void HSVColor::fromNormedBuffer(const float* input){
-  cmlHSVWithNormedInput(color, input, 1);
+  cmlNormedInputToHSV(color, input, 1);
 }
 void HSVColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithHSV(output, color, 1);
+  cmlHSVToNormedOutput(output, color, 1);
 }
 void HSVColor::fromNormedCartesianBuffer(const float* input){
-  cmlHSVWithNormedCartesianInput(color, input, 1);
+  cmlNormedCartesianInputToHSV(color, input, 1);
 }
 void HSVColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedCartesianOutputWithHSV(output, color, 1);
+  cmlHSVToNormedCartesianOutput(output, color, 1);
 }
 
 

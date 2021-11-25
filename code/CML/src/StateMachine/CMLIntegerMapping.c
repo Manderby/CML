@@ -119,28 +119,28 @@ CML_HIDEF void cml_Data16WithFloat4Interval(const CMLColorMachine* cm, CMLWord* 
 CML_API void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType newtype){
   switch(newtype){
   case CML_INTEGER_MAPPING_FLOOR:
-    cm->data8WithFloat1          = &cml_Data8WithFloat1Floor;
-    cm->data8WithFloat3          = &cml_Data8WithFloat3Floor;
-    cm->data8WithFloat4          = &cml_Data8WithFloat4Floor;
-    cm->data16WithFloat1         = &cml_Data16WithFloat1Floor;
-    cm->data16WithFloat3         = &cml_Data16WithFloat3Floor;
-    cm->data16WithFloat4         = &cml_Data16WithFloat4Floor;
+    cm->float1ToData8          = &cml_Data8WithFloat1Floor;
+    cm->float3ToData8          = &cml_Data8WithFloat3Floor;
+    cm->float4ToData8          = &cml_Data8WithFloat4Floor;
+    cm->float1ToData16         = &cml_Data16WithFloat1Floor;
+    cm->float3ToData16         = &cml_Data16WithFloat3Floor;
+    cm->float4ToData16         = &cml_Data16WithFloat4Floor;
     break;
   case CML_INTEGER_MAPPING_BOX:
-    cm->data8WithFloat1          = &cml_Data8WithFloat1Box;
-    cm->data8WithFloat3          = &cml_Data8WithFloat3Box;
-    cm->data8WithFloat4          = &cml_Data8WithFloat4Box;
-    cm->data16WithFloat1         = &cml_Data16WithFloat1Box;
-    cm->data16WithFloat3         = &cml_Data16WithFloat3Box;
-    cm->data16WithFloat4         = &cml_Data16WithFloat4Box;
+    cm->float1ToData8          = &cml_Data8WithFloat1Box;
+    cm->float3ToData8          = &cml_Data8WithFloat3Box;
+    cm->float4ToData8          = &cml_Data8WithFloat4Box;
+    cm->float1ToData16         = &cml_Data16WithFloat1Box;
+    cm->float3ToData16         = &cml_Data16WithFloat3Box;
+    cm->float4ToData16         = &cml_Data16WithFloat4Box;
     break;
   case CML_INTEGER_MAPPING_INTERVAL:
-    cm->data8WithFloat1          = &cml_Data8WithFloat1Interval;
-    cm->data8WithFloat3          = &cml_Data8WithFloat3Interval;
-    cm->data8WithFloat4          = &cml_Data8WithFloat4Interval;
-    cm->data16WithFloat1         = &cml_Data16WithFloat1Interval;
-    cm->data16WithFloat3         = &cml_Data16WithFloat3Interval;
-    cm->data16WithFloat4         = &cml_Data16WithFloat4Interval;
+    cm->float1ToData8          = &cml_Data8WithFloat1Interval;
+    cm->float3ToData8          = &cml_Data8WithFloat3Interval;
+    cm->float4ToData8          = &cml_Data8WithFloat4Interval;
+    cm->float1ToData16         = &cml_Data16WithFloat1Interval;
+    cm->float3ToData16         = &cml_Data16WithFloat3Interval;
+    cm->float4ToData16         = &cml_Data16WithFloat4Interval;
     break;
   default:
     #ifndef NDEBUG

@@ -276,19 +276,19 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
 
 CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
   switch(colorType){
-    case CML_COLOR_GRAY:  return &cmlGrayWithNormedInput;
-    case CML_COLOR_XYZ:   return &cmlXYZWithNormedInput;
-    case CML_COLOR_Yxy:   return &cmlYxyWithNormedInput;
-    case CML_COLOR_Yuv:   return &cmlYuvWithNormedInput;
-    case CML_COLOR_Yupvp: return &cmlYupvpWithNormedInput;
-    case CML_COLOR_Lab:   return &cmlLabWithNormedInput;
-    case CML_COLOR_Lch:   return &cmlLchWithNormedInput;
-    case CML_COLOR_Luv:   return &cmlLuvWithNormedInput;
-    case CML_COLOR_RGB:   return &cmlRGBWithNormedInput;
-    case CML_COLOR_YCbCr: return &cmlYCbCrWithNormedInput;
-    case CML_COLOR_HSV:   return &cmlHSVWithNormedInput;
-    case CML_COLOR_HSL:   return &cmlHSLWithNormedInput;
-    case CML_COLOR_CMYK:  return &cmlCMYKWithNormedInput;
+    case CML_COLOR_GRAY:  return &cmlNormedInputToGray;
+    case CML_COLOR_XYZ:   return &cmlNormedInputToXYZ;
+    case CML_COLOR_Yxy:   return &cmlNormedInputToYxy;
+    case CML_COLOR_Yuv:   return &cmlNormedInputToYuv;
+    case CML_COLOR_Yupvp: return &cmlNormedInputToYupvp;
+    case CML_COLOR_Lab:   return &cmlNormedInputToLab;
+    case CML_COLOR_Lch:   return &cmlNormedInputToLch;
+    case CML_COLOR_Luv:   return &cmlNormedInputToLuv;
+    case CML_COLOR_RGB:   return &cmlNormedInputToRGB;
+    case CML_COLOR_YCbCr: return &cmlNormedInputToYCbCr;
+    case CML_COLOR_HSV:   return &cmlNormedInputToHSV;
+    case CML_COLOR_HSL:   return &cmlNormedInputToHSL;
+    case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
     default: break;
   }
   #ifndef NDEBUG
@@ -299,19 +299,19 @@ CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
 
 CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
   switch(colorType){
-    case CML_COLOR_GRAY:  return &cmlNormedOutputWithGray;
-    case CML_COLOR_XYZ:   return &cmlNormedOutputWithXYZ;
-    case CML_COLOR_Yxy:   return &cmlNormedOutputWithYxy;
-    case CML_COLOR_Yuv:   return &cmlNormedOutputWithYuv;
-    case CML_COLOR_Yupvp: return &cmlNormedOutputWithYupvp;
-    case CML_COLOR_Lab:   return &cmlNormedOutputWithLab;
-    case CML_COLOR_Lch:   return &cmlNormedOutputWithLch;
-    case CML_COLOR_Luv:   return &cmlNormedOutputWithLuv;
-    case CML_COLOR_RGB:   return &cmlNormedOutputWithRGB;
-    case CML_COLOR_YCbCr: return &cmlNormedOutputWithYCbCr;
-    case CML_COLOR_HSV:   return &cmlNormedOutputWithHSV;
-    case CML_COLOR_HSL:   return &cmlNormedOutputWithHSL;
-    case CML_COLOR_CMYK:  return &cmlNormedOutputWithCMYK;
+    case CML_COLOR_GRAY:  return &cmlGrayToNormedOutput;
+    case CML_COLOR_XYZ:   return &cmlXYZToNormedOutput;
+    case CML_COLOR_Yxy:   return &cmlYxyToNormedOutput;
+    case CML_COLOR_Yuv:   return &cmlYuvToNormedOutput;
+    case CML_COLOR_Yupvp: return &cmlYupvpToNormedOutput;
+    case CML_COLOR_Lab:   return &cmlLabToNormedOutput;
+    case CML_COLOR_Lch:   return &cmlLchToNormedOutput;
+    case CML_COLOR_Luv:   return &cmlLuvToNormedOutput;
+    case CML_COLOR_RGB:   return &cmlRGBToNormedOutput;
+    case CML_COLOR_YCbCr: return &cmlYCbCrToNormedOutput;
+    case CML_COLOR_HSV:   return &cmlHSVToNormedOutput;
+    case CML_COLOR_HSL:   return &cmlHSLToNormedOutput;
+    case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
     default: break;
   }
   #ifndef NDEBUG
@@ -322,19 +322,19 @@ CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
 
 CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colorType){
   switch(colorType){
-    case CML_COLOR_GRAY:  return &cmlGrayWithNormedInput;
-    case CML_COLOR_XYZ:   return &cmlXYZWithNormedInput;
-    case CML_COLOR_Yxy:   return &cmlYxyWithNormedInput;
-    case CML_COLOR_Yuv:   return &cmlYuvWithNormedInput;
-    case CML_COLOR_Yupvp: return &cmlYupvpWithNormedInput;
-    case CML_COLOR_Lab:   return &cmlLabWithNormedInput;
-    case CML_COLOR_Lch:   return &cmlLchWithNormedCartesianInput;
-    case CML_COLOR_Luv:   return &cmlLuvWithNormedInput;
-    case CML_COLOR_RGB:   return &cmlRGBWithNormedInput;
-    case CML_COLOR_YCbCr: return &cmlYCbCrWithNormedInput;
-    case CML_COLOR_HSV:   return &cmlHSVWithNormedCartesianInput;
-    case CML_COLOR_HSL:   return &cmlHSLWithNormedCartesianInput;
-    case CML_COLOR_CMYK:  return &cmlCMYKWithNormedInput;
+    case CML_COLOR_GRAY:  return &cmlNormedInputToGray;
+    case CML_COLOR_XYZ:   return &cmlNormedInputToXYZ;
+    case CML_COLOR_Yxy:   return &cmlNormedInputToYxy;
+    case CML_COLOR_Yuv:   return &cmlNormedInputToYuv;
+    case CML_COLOR_Yupvp: return &cmlNormedInputToYupvp;
+    case CML_COLOR_Lab:   return &cmlNormedInputToLab;
+    case CML_COLOR_Lch:   return &cmlNormedCartesianInputToLch;
+    case CML_COLOR_Luv:   return &cmlNormedInputToLuv;
+    case CML_COLOR_RGB:   return &cmlNormedInputToRGB;
+    case CML_COLOR_YCbCr: return &cmlNormedInputToYCbCr;
+    case CML_COLOR_HSV:   return &cmlNormedCartesianInputToHSV;
+    case CML_COLOR_HSL:   return &cmlNormedCartesianInputToHSL;
+    case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
     default: break;
   }
   #ifndef NDEBUG
@@ -345,19 +345,19 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
 
 CML_DEF CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType){
   switch(colorType){
-    case CML_COLOR_GRAY:  return &cmlNormedOutputWithGray;
-    case CML_COLOR_XYZ:   return &cmlNormedOutputWithXYZ;
-    case CML_COLOR_Yxy:   return &cmlNormedOutputWithYxy;
-    case CML_COLOR_Yuv:   return &cmlNormedOutputWithYuv;
-    case CML_COLOR_Yupvp: return &cmlNormedOutputWithYupvp;
-    case CML_COLOR_Lab:   return &cmlNormedOutputWithLab;
-    case CML_COLOR_Lch:   return &cmlNormedCartesianOutputWithLch;
-    case CML_COLOR_Luv:   return &cmlNormedOutputWithLuv;
-    case CML_COLOR_RGB:   return &cmlNormedOutputWithRGB;
-    case CML_COLOR_YCbCr: return &cmlNormedOutputWithYCbCr;
-    case CML_COLOR_HSV:   return &cmlNormedCartesianOutputWithHSV;
-    case CML_COLOR_HSL:   return &cmlNormedCartesianOutputWithHSL;
-    case CML_COLOR_CMYK:  return &cmlNormedOutputWithCMYK;
+    case CML_COLOR_GRAY:  return &cmlGrayToNormedOutput;
+    case CML_COLOR_XYZ:   return &cmlXYZToNormedOutput;
+    case CML_COLOR_Yxy:   return &cmlYxyToNormedOutput;
+    case CML_COLOR_Yuv:   return &cmlYuvToNormedOutput;
+    case CML_COLOR_Yupvp: return &cmlYupvpToNormedOutput;
+    case CML_COLOR_Lab:   return &cmlLabToNormedOutput;
+    case CML_COLOR_Lch:   return &cmlLchToNormedCartesianOutput;
+    case CML_COLOR_Luv:   return &cmlLuvToNormedOutput;
+    case CML_COLOR_RGB:   return &cmlRGBToNormedOutput;
+    case CML_COLOR_YCbCr: return &cmlYCbCrToNormedOutput;
+    case CML_COLOR_HSV:   return &cmlHSVToNormedCartesianOutput;
+    case CML_COLOR_HSL:   return &cmlHSLToNormedCartesianOutput;
+    case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
     default: break;
   }
   #ifndef NDEBUG

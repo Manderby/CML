@@ -40,43 +40,43 @@
 //   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 
 
-CML_HIDEF void cml_FloatWithData8(float* out, CMLByte in, CMLByte offset, float range){
+CML_HIDEF void cml_Data8ToFloat(float* out, CMLByte in, CMLByte offset, float range){
   *out = (float)(in - offset) / range;
 }
-CML_HIDEF void cml_FloatWithData16(float* out, CMLWord in, CMLWord offset, float range){
+CML_HIDEF void cml_Data16ToFloat(float* out, CMLWord in, CMLWord offset, float range){
   *out = (float)(in - offset) / range;
 }
 
 
-CML_HIDEF void cml_Float1WithData8(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
-  cml_FloatWithData8(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
+CML_HIDEF void cml_Data8ToFloat1(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
+  cml_Data8ToFloat(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
 }
-CML_HIDEF void cml_Float3WithData8(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
-  cml_FloatWithData8(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
-  cml_FloatWithData8(&(out[1]), in[1], cm->inputoutput.offset8Bit[1], cm->inputoutput.range8Bit[1]);
-  cml_FloatWithData8(&(out[2]), in[2], cm->inputoutput.offset8Bit[2], cm->inputoutput.range8Bit[2]);
+CML_HIDEF void cml_Data8ToFloat3(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
+  cml_Data8ToFloat(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
+  cml_Data8ToFloat(&(out[1]), in[1], cm->inputoutput.offset8Bit[1], cm->inputoutput.range8Bit[1]);
+  cml_Data8ToFloat(&(out[2]), in[2], cm->inputoutput.offset8Bit[2], cm->inputoutput.range8Bit[2]);
 }
-CML_HIDEF void cml_Float4WithData8(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
-  cml_FloatWithData8(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
-  cml_FloatWithData8(&(out[1]), in[1], cm->inputoutput.offset8Bit[1], cm->inputoutput.range8Bit[1]);
-  cml_FloatWithData8(&(out[2]), in[2], cm->inputoutput.offset8Bit[2], cm->inputoutput.range8Bit[2]);
-  cml_FloatWithData8(&(out[3]), in[3], cm->inputoutput.offset8Bit[3], cm->inputoutput.range8Bit[3]);
+CML_HIDEF void cml_Data8ToFloat4(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLByte* CML_RESTRICT in){
+  cml_Data8ToFloat(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
+  cml_Data8ToFloat(&(out[1]), in[1], cm->inputoutput.offset8Bit[1], cm->inputoutput.range8Bit[1]);
+  cml_Data8ToFloat(&(out[2]), in[2], cm->inputoutput.offset8Bit[2], cm->inputoutput.range8Bit[2]);
+  cml_Data8ToFloat(&(out[3]), in[3], cm->inputoutput.offset8Bit[3], cm->inputoutput.range8Bit[3]);
 }
 
 
-CML_HIDEF void cml_Float1WithData16(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
-  cml_FloatWithData16(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
+CML_HIDEF void cml_Data16ToFloat1(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
+  cml_Data16ToFloat(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
 }
-CML_HIDEF void cml_Float3WithData16(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
-  cml_FloatWithData16(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
-  cml_FloatWithData16(&(out[1]), in[1], cm->inputoutput.offset16Bit[1], cm->inputoutput.range16Bit[1]);
-  cml_FloatWithData16(&(out[2]), in[2], cm->inputoutput.offset16Bit[2], cm->inputoutput.range16Bit[2]);
+CML_HIDEF void cml_Data16ToFloat3(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
+  cml_Data16ToFloat(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
+  cml_Data16ToFloat(&(out[1]), in[1], cm->inputoutput.offset16Bit[1], cm->inputoutput.range16Bit[1]);
+  cml_Data16ToFloat(&(out[2]), in[2], cm->inputoutput.offset16Bit[2], cm->inputoutput.range16Bit[2]);
 }
-CML_HIDEF void cml_Float4WithData16(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
-  cml_FloatWithData16(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
-  cml_FloatWithData16(&(out[1]), in[1], cm->inputoutput.offset16Bit[1], cm->inputoutput.range16Bit[1]);
-  cml_FloatWithData16(&(out[2]), in[2], cm->inputoutput.offset16Bit[2], cm->inputoutput.range16Bit[2]);
-  cml_FloatWithData16(&(out[3]), in[3], cm->inputoutput.offset16Bit[3], cm->inputoutput.range16Bit[3]);
+CML_HIDEF void cml_Data16ToFloat4(const CMLColorMachine* cm, float* CML_RESTRICT out, const CMLWord* CML_RESTRICT in){
+  cml_Data16ToFloat(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
+  cml_Data16ToFloat(&(out[1]), in[1], cm->inputoutput.offset16Bit[1], cm->inputoutput.range16Bit[1]);
+  cml_Data16ToFloat(&(out[2]), in[2], cm->inputoutput.offset16Bit[2], cm->inputoutput.range16Bit[2]);
+  cml_Data16ToFloat(&(out[3]), in[3], cm->inputoutput.offset16Bit[3], cm->inputoutput.range16Bit[3]);
 }
 
 
@@ -85,157 +85,157 @@ CML_HIDEF void cml_Float4WithData16(const CMLColorMachine* cm, float* CML_RESTRI
 // 8 bit Input Conversions
 // //////////////////////////
 
-CML_DEF void cmlGrayWithData8(const CMLColorMachine* cm, CMLOutput gray, CMLInput input, size_t count){
+CML_DEF void cmlData8ToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)gray;
   for(size_t i = 0; i < count; i++){
     float tmp[1];
-    cml_Float1WithData8(cm, tmp, in);
-    cml_GrayWithNormedInput(out, tmp);
+    cml_Data8ToFloat1(cm, tmp, in);
+    cml_NormedInputToGray(out, tmp);
     out += 1;
     in += 1;
   }
 }
 
-CML_DEF void cmlXYZWithData8(const CMLColorMachine* cm, CMLOutput xyz, CMLInput input, size_t count){
+CML_DEF void cmlData8ToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)xyz;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_XYZWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToXYZ(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYxyWithData8(const CMLColorMachine* cm, CMLOutput yxy, CMLInput input, size_t count){
+CML_DEF void cmlData8ToYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)yxy;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_YxyWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToYxy(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYuvWithData8(const CMLColorMachine* cm, CMLOutput yuv, CMLInput input, size_t count){
+CML_DEF void cmlData8ToYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)yuv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_YuvWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToYuv(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYupvpWithData8(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput input, size_t count){
+CML_DEF void cmlData8ToYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)yupvp;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_YupvpWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToYupvp(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLabWithData8(const CMLColorMachine* cm, CMLOutput lab, CMLInput input, size_t count){
+CML_DEF void cmlData8ToLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)lab;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_LabWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToLab(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLchWithData8(const CMLColorMachine* cm, CMLOutput lch, CMLInput input, size_t count){
+CML_DEF void cmlData8ToLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)lch;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_LchWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToLch(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLuvWithData8(const CMLColorMachine* cm, CMLOutput luv, CMLInput input, size_t count){
+CML_DEF void cmlData8ToLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)luv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_LuvWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToLuv(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlRGBWithData8(const CMLColorMachine* cm, CMLOutput rgb, CMLInput input, size_t count){
+CML_DEF void cmlData8ToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)rgb;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_RGBWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToRGB(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYCbCrWithData8(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput input, size_t count){
+CML_DEF void cmlData8ToYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)ycbcr;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_YCbCrWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToYCbCr(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlHSVWithData8(const CMLColorMachine* cm, CMLOutput hsv, CMLInput input, size_t count){
+CML_DEF void cmlData8ToHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)hsv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_HSVWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToHSV(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlHSLWithData8(const CMLColorMachine* cm, CMLOutput hsl, CMLInput input, size_t count){
+CML_DEF void cmlData8ToHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)hsl;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData8(cm, tmp, in);
-    cml_HSLWithNormedInput(out, tmp);
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_NormedInputToHSL(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlCMYKWithData8(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput input, size_t count){
+CML_DEF void cmlData8ToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput input, size_t count){
   const CMLByte* in  = (CMLByte*)input;
   float* out = (float*)cmyk;
   for(size_t i = 0; i < count; i++){
     float tmp[4];
-    cml_Float4WithData8(cm, tmp, in);
-    cml_CMYKWithNormedInput(out, tmp);
+    cml_Data8ToFloat4(cm, tmp, in);
+    cml_NormedInputToCMYK(out, tmp);
     out += 4;
     in += 4;
   }
@@ -247,157 +247,157 @@ CML_DEF void cmlCMYKWithData8(const CMLColorMachine* cm, CMLOutput cmyk, CMLInpu
 // 16 bit Input Conversions
 // //////////////////////////
 
-CML_DEF void cmlGrayWithData16(const CMLColorMachine* cm, CMLOutput gray, CMLInput input, size_t count){
+CML_DEF void cmlData16ToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)gray;
   for(size_t i = 0; i < count; i++){
     float tmp[1];
-    cml_Float1WithData16(cm, tmp, in);
-    cml_GrayWithNormedInput(out, tmp);
+    cml_Data16ToFloat1(cm, tmp, in);
+    cml_NormedInputToGray(out, tmp);
     out += 1;
     in += 1;
   }
 }
 
-CML_DEF void cmlXYZWithData16(const CMLColorMachine* cm, CMLOutput xyz, CMLInput input, size_t count){
+CML_DEF void cmlData16ToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)xyz;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_XYZWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToXYZ(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYxyWithData16(const CMLColorMachine* cm, CMLOutput yxy, CMLInput input, size_t count){
+CML_DEF void cmlData16ToYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)yxy;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_YxyWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToYxy(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYuvWithData16(const CMLColorMachine* cm, CMLOutput yuv, CMLInput input, size_t count){
+CML_DEF void cmlData16ToYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)yuv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_YuvWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToYuv(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYupvpWithData16(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput input, size_t count){
+CML_DEF void cmlData16ToYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)yupvp;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_YupvpWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToYupvp(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLabWithData16(const CMLColorMachine* cm, CMLOutput lab, CMLInput input, size_t count){
+CML_DEF void cmlData16ToLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)lab;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_LabWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToLab(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLchWithData16(const CMLColorMachine* cm, CMLOutput lch, CMLInput input, size_t count){
+CML_DEF void cmlData16ToLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)lch;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_LchWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToLch(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlLuvWithData16(const CMLColorMachine* cm, CMLOutput luv, CMLInput input, size_t count){
+CML_DEF void cmlData16ToLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)luv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_LuvWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToLuv(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlRGBWithData16(const CMLColorMachine* cm, CMLOutput rgb, CMLInput input, size_t count){
+CML_DEF void cmlData16ToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)rgb;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_RGBWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToRGB(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlYCbCrWithData16(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput input, size_t count){
+CML_DEF void cmlData16ToYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)ycbcr;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_YCbCrWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToYCbCr(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlHSVWithData16(const CMLColorMachine* cm, CMLOutput hsv, CMLInput input, size_t count){
+CML_DEF void cmlData16ToHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)hsv;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_HSVWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToHSV(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlHSLWithData16(const CMLColorMachine* cm, CMLOutput hsl, CMLInput input, size_t count){
+CML_DEF void cmlData16ToHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)hsl;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_Float3WithData16(cm, tmp, in);
-    cml_HSLWithNormedInput(out, tmp);
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_NormedInputToHSL(out, tmp);
     out += 3;
     in += 3;
   }
 }
 
-CML_DEF void cmlCMYKWithData16(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput input, size_t count){
+CML_DEF void cmlData16ToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput input, size_t count){
   const CMLWord* in  = (CMLWord*)input;
   float* out = (float*)cmyk;
   for(size_t i = 0; i < count; i++){
     float tmp[4];
-    cml_Float4WithData16(cm, tmp, in);
-    cml_CMYKWithNormedInput(out, tmp);
+    cml_Data16ToFloat4(cm, tmp, in);
+    cml_NormedInputToCMYK(out, tmp);
     out += 4;
     in += 4;
   }
@@ -415,157 +415,157 @@ CML_DEF void cmlCMYKWithData16(const CMLColorMachine* cm, CMLOutput cmyk, CMLInp
 // 8 bit Output Conversions
 // //////////////////////////
 
-CML_DEF void cmlData8WithGray(const CMLColorMachine* cm, CMLOutput output, CMLInput gray, size_t count){
+CML_DEF void cmlGrayToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput gray, size_t count){
   const float* in  = (float*)gray;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[1];
-    cml_NormedOutputWithGray(tmp, in);
-    (*cm->data8WithFloat1)(cm, out, tmp);
+    cml_GrayToNormedOutput(tmp, in);
+    (*cm->float1ToData8)(cm, out, tmp);
     in += 1;
     out += 1;
   }
 }
 
-CML_DEF void cmlData8WithXYZ(const CMLColorMachine* cm, CMLOutput output, CMLInput xyz, size_t count){
+CML_DEF void cmlXYZToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput xyz, size_t count){
   const float* in  = (float*)xyz;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithXYZ(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_XYZToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithYxy(const CMLColorMachine* cm, CMLOutput output, CMLInput yxy, size_t count){
+CML_DEF void cmlYxyToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput yxy, size_t count){
   const float* in  = (float*)yxy;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYxy(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_YxyToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithYuv(const CMLColorMachine* cm, CMLOutput output, CMLInput yuv, size_t count){
+CML_DEF void cmlYuvToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput yuv, size_t count){
   const float* in  = (float*)yuv;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYuv(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_YuvToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithYupvp(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count){
+CML_DEF void cmlYupvpToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count){
   const float* in  = (float*)yupvp;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYupvp(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_YupvpToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithLab(const CMLColorMachine* cm, CMLOutput output, CMLInput lab, size_t count){
+CML_DEF void cmlLabToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput lab, size_t count){
   const float* in  = (float*)lab;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLab(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_LabToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithLch(const CMLColorMachine* cm, CMLOutput output, CMLInput lch, size_t count){
+CML_DEF void cmlLchToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput lch, size_t count){
   const float* in  = (float*)lch;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLch(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_LchToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithLuv(const CMLColorMachine* cm, CMLOutput output, CMLInput luv, size_t count){
+CML_DEF void cmlLuvToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput luv, size_t count){
   const float* in  = (float*)luv;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLuv(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_LuvToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithRGB(const CMLColorMachine* cm, CMLOutput output, CMLInput rgb, size_t count){
+CML_DEF void cmlRGBToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput rgb, size_t count){
   const float* in  = (float*)rgb;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithRGB(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_RGBToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithYCbCr(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count){
+CML_DEF void cmlYCbCrToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count){
   const float* in  = (float*)ycbcr;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYCbCr(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_YCbCrToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithHSV(const CMLColorMachine* cm, CMLOutput output, CMLInput hsv, size_t count){
+CML_DEF void cmlHSVToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput hsv, size_t count){
   const float* in  = (float*)hsv;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithHSV(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_HSVToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithHSL(const CMLColorMachine* cm, CMLOutput output, CMLInput hsl, size_t count){
+CML_DEF void cmlHSLToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput hsl, size_t count){
   const float* in  = (float*)hsl;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithHSL(tmp, in);
-    (*cm->data8WithFloat3)(cm, out, tmp);
+    cml_HSLToNormedOutput(tmp, in);
+    (*cm->float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData8WithCMYK(const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk, size_t count){
+CML_DEF void cmlCMYKToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk, size_t count){
   const float* in  = (float*)cmyk;
   CMLByte* out = (CMLByte*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[4];
-    cml_NormedOutputWithCMYK(tmp, in);
-    (*cm->data8WithFloat4)(cm, out, tmp);
+    cml_CMYKToNormedOutput(tmp, in);
+    (*cm->float4ToData8)(cm, out, tmp);
     in += 4;
     out += 4;
   }
@@ -577,157 +577,157 @@ CML_DEF void cmlData8WithCMYK(const CMLColorMachine* cm, CMLOutput output, CMLIn
 // 16 bit Output Conversions
 // //////////////////////////
 
-CML_DEF void cmlData16WithGray(const CMLColorMachine* cm, CMLOutput output, CMLInput gray, size_t count){
+CML_DEF void cmlGrayToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput gray, size_t count){
   const float* in  = (float*)gray;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[1];
-    cml_NormedOutputWithGray(tmp, in);
-    (*cm->data16WithFloat1)(cm, out, tmp);
+    cml_GrayToNormedOutput(tmp, in);
+    (*cm->float1ToData16)(cm, out, tmp);
     in += 1;
     out += 1;
   }
 }
 
-CML_DEF void cmlData16WithXYZ(const CMLColorMachine* cm, CMLOutput output, CMLInput xyz, size_t count){
+CML_DEF void cmlXYZToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput xyz, size_t count){
   const float* in  = (float*)xyz;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithXYZ(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_XYZToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithYxy(const CMLColorMachine* cm, CMLOutput output, CMLInput yxy, size_t count){
+CML_DEF void cmlYxyToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput yxy, size_t count){
   const float* in  = (float*)yxy;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYxy(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_YxyToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithYuv(const CMLColorMachine* cm, CMLOutput output, CMLInput yuv, size_t count){
+CML_DEF void cmlYuvToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput yuv, size_t count){
   const float* in  = (float*)yuv;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYuv(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_YuvToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithYupvp(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count){
+CML_DEF void cmlYupvpToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput yupvp, size_t count){
   const float* in  = (float*)yupvp;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYupvp(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_YupvpToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithLab(const CMLColorMachine* cm, CMLOutput output, CMLInput lab, size_t count){
+CML_DEF void cmlLabToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput lab, size_t count){
   const float* in  = (float*)lab;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLab(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_LabToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithLch(const CMLColorMachine* cm, CMLOutput output, CMLInput lch, size_t count){
+CML_DEF void cmlLchToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput lch, size_t count){
   const float* in  = (float*)lch;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLch(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_LchToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithLuv(const CMLColorMachine* cm, CMLOutput output, CMLInput luv, size_t count){
+CML_DEF void cmlLuvToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput luv, size_t count){
   const float* in  = (float*)luv;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithLuv(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_LuvToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithRGB(const CMLColorMachine* cm, CMLOutput output, CMLInput rgb, size_t count){
+CML_DEF void cmlRGBToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput rgb, size_t count){
   const float* in  = (float*)rgb;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithRGB(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_RGBToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithYCbCr(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count){
+CML_DEF void cmlYCbCrToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput ycbcr, size_t count){
   const float* in  = (float*)ycbcr;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithYCbCr(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_YCbCrToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithHSV(const CMLColorMachine* cm, CMLOutput output, CMLInput hsv, size_t count){
+CML_DEF void cmlHSVToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput hsv, size_t count){
   const float* in  = (float*)hsv;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithHSV(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_HSVToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithHSL(const CMLColorMachine* cm, CMLOutput output, CMLInput hsl, size_t count){
+CML_DEF void cmlHSLToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput hsl, size_t count){
   const float* in  = (float*)hsl;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[3];
-    cml_NormedOutputWithHSL(tmp, in);
-    (*cm->data16WithFloat3)(cm, out, tmp);
+    cml_HSLToNormedOutput(tmp, in);
+    (*cm->float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
 }
 
-CML_DEF void cmlData16WithCMYK(const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk, size_t count){
+CML_DEF void cmlCMYKToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput cmyk, size_t count){
   const float* in  = (float*)cmyk;
   CMLWord* out = (CMLWord*)output;
   for(size_t i = 0; i < count; i++){
     float tmp[4];
-    cml_NormedOutputWithCMYK(tmp, in);
-    (*cm->data16WithFloat4)(cm, out, tmp);
+    cml_CMYKToNormedOutput(tmp, in);
+    (*cm->float4ToData16)(cm, out, tmp);
     in += 4;
     out += 4;
   }

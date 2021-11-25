@@ -156,19 +156,19 @@ CMLColorType CMYKColor::getColorType() const{
 }
 
 void CMYKColor::from8BitBuffer(const CMLByte* input){
-  cmlCMYKWithData8(cmlcm, color, input, 1);
+  cmlData8ToCMYK(cmlcm, color, input, 1);
 }
 void CMYKColor::from16BitBuffer(const CMLWord* input){
-  cmlCMYKWithData16(cmlcm, color, input, 1);
+  cmlData16ToCMYK(cmlcm, color, input, 1);
 }
 void CMYKColor::fromFloatBuffer(const float* input){
   cmlCpy4(color, input);
 }
 void CMYKColor::to8BitBuffer(CMLByte* output) const {
-  cmlData8WithCMYK(cmlcm, output, color, 1);
+  cmlCMYKToData8(cmlcm, output, color, 1);
 }
 void CMYKColor::to16BitBuffer(CMLWord* output) const {
-  cmlData16WithCMYK(cmlcm, output, color, 1);
+  cmlCMYKToData16(cmlcm, output, color, 1);
 }
 void CMYKColor::toFloatBuffer(float* output) const {
   cmlCpy4(output, color);
@@ -176,16 +176,16 @@ void CMYKColor::toFloatBuffer(float* output) const {
 
 
 void CMYKColor::fromNormedBuffer(const float* input){
-  cmlCMYKWithNormedInput(color, input, 1);
+  cmlNormedInputToCMYK(color, input, 1);
 }
 void CMYKColor::toNormedBuffer(float* output) const {
-  cmlNormedOutputWithCMYK(output, color, 1);
+  cmlCMYKToNormedOutput(output, color, 1);
 }
 void CMYKColor::fromNormedCartesianBuffer(const float* input){
-  cmlCMYKWithNormedInput(color, input, 1);
+  cmlNormedInputToCMYK(color, input, 1);
 }
 void CMYKColor::toNormedCartesianBuffer(float* output) const {
-  cmlNormedOutputWithCMYK(output, color, 1);
+  cmlCMYKToNormedOutput(output, color, 1);
 }
 
 

@@ -462,7 +462,7 @@ CML_HIDEF void cmlInternalYupvptoYuv_SB (float* buf, size_t count, CMLuint32 flo
   if(length == 0.f){\
     out[2] = 0.f;\
   }else{\
-    out[2] = cmlDegWithRad(atan2f(in[2], in[1]));\
+    out[2] = cmlRadToDeg(atan2f(in[2], in[1]));\
     if(out[2] < 0.f){out[2] += 360.f;}\
   }\
   out[1] = length;
@@ -590,7 +590,7 @@ CML_HIDEF void cmlInternalHSVtoHSL_SB (float* buf, size_t count, CMLuint32 float
     out[2] = 0.f;\
     out[1] = 0.f;\
   }else{\
-    float hue = cmlRadWithDeg(in[2]);\
+    float hue = cmlDegToRad(in[2]);\
     out[2] = sinf(hue) * in[1];\
     out[1] = cosf(hue) * in[1];\
   }\
