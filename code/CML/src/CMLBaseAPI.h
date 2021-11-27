@@ -10,7 +10,7 @@
 // Usually, the needed space for the return buffer must be provided, CML will
 // not allocate buffer memory for you. Also note that there is no overflow
 // detection, so make sure, your buffers provide enough space. Note however
-// that a function starting with "CMLcreate..." will indeed allocate space
+// that a function starting with "cmlCreate..." will indeed allocate space
 // which needs to be deleted manually. This will furthermore be indicated by an
 // additional comment at the corresponding API.
 

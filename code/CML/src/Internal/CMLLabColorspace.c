@@ -83,8 +83,8 @@ CML_API const CMLResponseCurve* CMLgetResponseL  (CMLColorMachine* cm){
 CML_API void CMLsetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->labspace.responseL));
   cmlCreateResponseCurveCopy((&cm->labspace.responseL), response);
-//  cm->labspace.responseL.forwardfunc = CMLduplicateFunction(response->forwardfunc);
-//  cm->labspace.responseL.backwardfunc = CMLduplicateFunction(response->backwardfunc);
+//  cm->labspace.responseL.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
+//  cm->labspace.responseL.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
 //  cmlCreateResponseCurveWithParamFunction(&(cm->labspace.responseL), type, param0, param1, param2, param3);
 }
 

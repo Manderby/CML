@@ -17,7 +17,7 @@
 #define CML_DEFAULT_GRAY_COMPUTATION            CML_GRAY_FROM_LSTAR
 #define CML_DEFAULT_CHROMATIC_ADAPTATION        CML_CHROMATIC_ADAPTATION_NONE
 
-// The following defaults are used for integration and the CMLfilterFunction
+// The following defaults are used for integration and the cmlFilterFunction
 // method with continuous functions.
 
 #define CML_DEFAULT_INTEGRATION_MIN             300.f

@@ -676,11 +676,11 @@
 //  ~CMLSampleArrayFunction();
 //  CMLSampleArrayFunction( CMLArray coords,
 //                          CMLArray values,
-//                          CMLInterpolationMethod newinterpolationmethod,
+//                          CMLInterpolationMethod newinterpolationMethod,
 //                          CMLExtrapolationMethod newextrapolationmethod);
 //  void init(              CMLArray coords,
 //                          CMLArray values,
-//                          CMLInterpolationMethod newinterpolationmethod,
+//                          CMLInterpolationMethod newinterpolationMethod,
 //                          CMLExtrapolationMethod newextrapolationmethod);
 //  float operator ()(float x) const;
 //  CMLFunction* duplicate() const;
@@ -777,12 +777,12 @@
 //
 //CMLSampleArrayFunction::CMLSampleArrayFunction() : s(CML_NULL){}
 //CMLSampleArrayFunction::~CMLSampleArrayFunction(){delete s;}
-//CMLSampleArrayFunction::CMLSampleArrayFunction(CMLArray coordsarray, CMLArray valuearray, CMLInterpolationMethod newinterpolationmethod, CMLExtrapolationMethod newextrapolationmethod) :
+//CMLSampleArrayFunction::CMLSampleArrayFunction(CMLArray coordsarray, CMLArray valuearray, CMLInterpolationMethod newinterpolationMethod, CMLExtrapolationMethod newextrapolationmethod) :
 //  s(CML_NULL){
-//  init(coordsarray, valuearray, newinterpolationmethod, newextrapolationmethod);
+//  init(coordsarray, valuearray, newinterpolationMethod, newextrapolationmethod);
 //}
 //
-//void CMLSampleArrayFunction::init(CMLArray coordsarray, CMLArray valuearray, CMLInterpolationMethod newinterpolationmethod, CMLExtrapolationMethod newextrapolationmethod){
+//void CMLSampleArrayFunction::init(CMLArray coordsarray, CMLArray valuearray, CMLInterpolationMethod newinterpolationMethod, CMLExtrapolationMethod newextrapolationmethod){
 //  #if CML_DEBUG
 //    if(valuearray.getSize() != coordsarray.getSize()){CMLError("Warning: SampleArrayFunction has two arrays with different sizes.\n"); return;}
 //    if(coordsarray.getSize() <= 1){CMLError("Warning: SampleArrayFunction with 0 or 1 Entries are not allowed.\n"); return;}
@@ -813,7 +813,7 @@
 //    delete s; s = CML_NULL; return; break;
 //  }
 //
-//  switch(newinterpolationmethod){
+//  switch(newinterpolationMethod){
 //  case CML_INTERPOLATION_NONE:          s->interpolate = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateNone; break;
 //  case CML_INTERPOLATION_FLOOR:         s->interpolate = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateFloor; break;
 //  case CML_INTERPOLATION_BOX:           s->interpolate = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateBox; break;
@@ -956,8 +956,8 @@
 //  CMLArrayFunction* createArrayFunction(
 //            float minimalvalue,
 //            float maximalvalue,
-//            size_t entrycount,
-//            CMLInterpolationMethod interpolationmethod = CML_INTERPOLATION_LINEAR,
+//            size_t entryCount,
+//            CMLInterpolationMethod interpolationMethod = CML_INTERPOLATION_LINEAR,
 //            CMLExtrapolationMethod extrapolationmethod = CML_EXTRAPOLATION_CLAMP);
 //
 //};
@@ -972,18 +972,18 @@
 //  CMLArrayFunction();
 //  ~CMLArrayFunction();
 //  CMLArrayFunction( const float* buffer,
-//                    CMLBool ownbuffer,
-//                    size_t entrycount,
-//                    float newminimalcoord,
-//                    float newmaximalcoord,
-//                    CMLInterpolationMethod newinterpolationmethod,
+//                    CMLBool ownBuffer,
+//                    size_t entryCount,
+//                    float newminimalCoord,
+//                    float newmaximalCoord,
+//                    CMLInterpolationMethod newinterpolationMethod,
 //                    CMLExtrapolationMethod newextrapolationmethod);
 //  void init(        const float* buffer,
-//                    CMLBool ownbuffer,
-//                    size_t entrycount,
-//                    float newminimalcoord,
-//                    float newmaximalcoord,
-//                    CMLInterpolationMethod newinterpolationmethod,
+//                    CMLBool ownBuffer,
+//                    size_t entryCount,
+//                    float newminimalCoord,
+//                    float newmaximalCoord,
+//                    CMLInterpolationMethod newinterpolationMethod,
 //                    CMLExtrapolationMethod newextrapolationmethod);
 //  float operator ()(float x) const;
 //  CMLFunction* duplicate() const;

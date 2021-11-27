@@ -36,7 +36,7 @@ CML_API void CMLgetVersion(CMLByte version[4]){
 
 
 
-CML_API CMLColorMachine* CMLcreateColorMachine(){
+CML_API CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cmlAllocate(sizeof(CMLColorMachine));
 

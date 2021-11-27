@@ -57,13 +57,14 @@ CML_IDEF CMLBool cmlInRange(float x, float a, float b){
   return !((x < a) || (x > b));
 }
 
-CML_IDEF size_t cmlGetSampleCount(float min, float max, float stepsize){
-  return (size_t)(cmlRound((max - min) * cmlInverse(stepsize))) + 1;
+CML_IDEF size_t cmlGetSampleCount(float min, float max, float stepSize){
+  return (size_t)(cmlRound((max - min) * cmlInverse(stepSize))) + 1;
 }
 
 CML_IDEF float cmlGetStepSize(float min, float max, size_t samplecount){
   return (max-min) * cmlInverse((float)samplecount - 1);
 }
+
 
 
 // ////////////////////////////////////////////

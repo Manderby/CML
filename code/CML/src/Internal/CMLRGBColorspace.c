@@ -59,10 +59,10 @@ CML_HIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBE
 
 
 
-// gamma, offset, linscale for R, G and B
+// gamma, offset, linScale for R, G and B
 // with the following computation:
 // (1+offset) * powf(x, 1/gamma) - offset   if x => split
-// x * linscale                              if x < split
+// x * linScale                              if x < split
 // split will be computed automatically.
 
 //CML_HIDDEN static const float rgbspaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
@@ -142,7 +142,7 @@ CML_HIDDEN static const CMLResponseCurvePreset rgbspaceresponsepresets[CML_NUMBE
 
 // array usage:
 // xr, yr, xg, yg, xb, yb
-// gamma, offset, linscale,
+// gamma, offset, linScale,
 CML_HIDDEN static const float rgbspaceprimaries[CML_NUMBER_OF_RGB_SPACES][9] = {
   {0.6400f  , 0.3300f  , 0.2100f  , 0.7100f  , 0.1500f  , 0.0600f},   // CML_RGB_ADOBE_98
   {0.6250f  , 0.3400f  , 0.2800f  , 0.5950f  , 0.1550f  , 0.0700f},   // CML_RGB_APPLE
@@ -296,8 +296,8 @@ CML_API const CMLResponseCurve* CMLgetResponseB  (CMLColorMachine* cm){
 CML_API void CMLsetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseR));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseR), response);
-//  cm->rgbspace.responseR.forwardfunc = CMLduplicateFunction(response->forwardfunc);
-//  cm->rgbspace.responseR.backwardfunc = CMLduplicateFunction(response->backwardfunc);
+//  cm->rgbspace.responseR.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
+//  cm->rgbspace.responseR.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
 //  cmlCreateResponseCurveWithParamFunction(&(cm->rgbspace.responseR), type, param0, param1, param2, param3);
 }
 
@@ -305,8 +305,8 @@ CML_API void CMLsetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
 CML_API void CMLsetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseG));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseG), response);
-//  cm->rgbspace.responseG.forwardfunc = CMLduplicateFunction(response->forwardfunc);
-//  cm->rgbspace.responseG.backwardfunc = CMLduplicateFunction(response->backwardfunc);
+//  cm->rgbspace.responseG.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
+//  cm->rgbspace.responseG.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
 //  cmlCreateResponseCurveWithParamFunction(&(cm->rgbspace.responseG), type, param0, param1, param2, param3);
 }
 
@@ -314,8 +314,8 @@ CML_API void CMLsetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
 CML_API void CMLsetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
   CMLclearResponseCurve(&(cm->rgbspace.responseB));
   cmlCreateResponseCurveCopy((&cm->rgbspace.responseB), response);
-//  cm->rgbspace.responseB.forwardfunc = CMLduplicateFunction(response->forwardfunc);
-//  cm->rgbspace.responseB.backwardfunc = CMLduplicateFunction(response->backwardfunc);
+//  cm->rgbspace.responseB.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
+//  cm->rgbspace.responseB.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
 //  cmlCreateResponseCurveWithParamFunction(&(cm->rgbspace.responseB), type, param0, param1, param2, param3);
 }
 

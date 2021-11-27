@@ -19,7 +19,7 @@
 CML_API void                  CMLgetVersion(CMLByte version[4]);
 
 // Create and destroy ColorMachines with these functions:
-CML_API CMLColorMachine*      CMLcreateColorMachine(void);
+CML_API CMLColorMachine*      cmlCreateColorMachine(void);
 CML_API void                  CMLreleaseColorMachine(CMLColorMachine* cm);
 
 // If you have multiple state changes to set, lock the recomputation, set all

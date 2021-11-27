@@ -118,37 +118,37 @@
 //  
 //  switch(type){
 //  case CML_RESPONSE_LINEAR:
-//    *toxyzfunc  = CMLcreateLinearResponse();
-//    *fromxyzfunc = CMLcreateLinearResponse();
+//    *toxyzfunc  = cmlCreateLinearResponse();
+//    *fromxyzfunc = cmlCreateLinearResponse();
 //    break;
 //  case CML_RESPONSE_SQRT:
-//    *toxyzfunc  = CMLcreateGammaResponse(2.f);
-//    *fromxyzfunc = CMLcreateGammaResponse(.5f);
+//    *toxyzfunc  = cmlCreateGammaResponse(2.f);
+//    *fromxyzfunc = cmlCreateGammaResponse(.5f);
 //    break;
 //  case CML_RESPONSE_GAMMA:
-//    *toxyzfunc  = CMLcreateGammaResponse(param0);
-//    *fromxyzfunc = CMLcreateGammaResponse(cmlInverse(param0));
+//    *toxyzfunc  = cmlCreateGammaResponse(param0);
+//    *fromxyzfunc = cmlCreateGammaResponse(cmlInverse(param0));
 //    break;
 //  case CML_RESPONSE_GAMMA_LINEAR:
-//    *toxyzfunc  = CMLcreateGammaLinearResponse(param0, param1, param2);
-//    *fromxyzfunc = CMLcreateGammaLinearResponse(cmlInverse(param0), param1, param2);
+//    *toxyzfunc  = cmlCreateGammaLinearResponse(param0, param1, param2);
+//    *fromxyzfunc = cmlCreateGammaLinearResponse(cmlInverse(param0), param1, param2);
 //    break;
 //  case CML_RESPONSE_SRGB:
-//    *toxyzfunc  = CMLcreatesRGBToXYZResponse();
-//    *fromxyzfunc = CMLcreateXYZTosRGBResponse();
+//    *toxyzfunc  = cmlCreatesRGBToXYZResponse();
+//    *fromxyzfunc = cmlCreateXYZTosRGBResponse();
 //    break;
 //  case CML_RESPONSE_LSTAR:
-//    *toxyzfunc  = CMLcreateLStarToYResponse();
-//    *fromxyzfunc = CMLcreateYToLStarResponse();
+//    *toxyzfunc  = cmlCreateLStarToYResponse();
+//    *fromxyzfunc = cmlCreateYToLStarResponse();
 //    break;
 //  case CML_RESPONSE_LSTAR_STANDARD:
-//    *toxyzfunc  = CMLcreateLStarToYStandardResponse();
-//    *fromxyzfunc = CMLcreateYToLStarStandardResponse();
+//    *toxyzfunc  = cmlCreateLStarToYStandardResponse();
+//    *fromxyzfunc = cmlCreateYToLStarStandardResponse();
 //    break;
 //  default:
 //    #if CML_DEBUG
-//      *toxyzfunc  = CMLcreateLinearResponse();
-//      *fromxyzfunc = CMLcreateLinearResponse();
+//      *toxyzfunc  = cmlCreateLinearResponse();
+//      *fromxyzfunc = cmlCreateLinearResponse();
 //      CMLError("Error in libcml: Response Curve type unknown.\n");
 //    #endif
 //    break;
@@ -156,8 +156,8 @@
 //  
 //  // Create LUT if needed.
 //  if(lutsize < 32){
-//    CMLFunction* toxyzfunction = CMLsampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (CMLuint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
-//    CMLFunction* fromxyzfunction = CMLsampleArrayFunction(*fromxyzfunc, 0.f, 1.f, 1 << (CMLuint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//    CMLFunction* toxyzfunction = cmlSampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (CMLuint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//    CMLFunction* fromxyzfunction = cmlSampleArrayFunction(*fromxyzfunc, 0.f, 1.f, 1 << (CMLuint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
 //    cmlReleaseFunction(*toxyzfunc);
 //    cmlReleaseFunction(*fromxyzfunc);
 //    *toxyzfunc = toxyzfunction;

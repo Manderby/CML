@@ -189,7 +189,7 @@ typedef enum{
 // If you are uncertain, you should probably choose LINEAR_ZERO.
 typedef enum{
   CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
-  CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepsize, then 0
+  CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepSize, then 0
   CML_EXTRAPOLATION_CLAMP_VALUE,    // last value repeating
   CML_EXTRAPOLATION_GRADIENT        // last gradient repeating
 } CMLExtrapolationMethod;

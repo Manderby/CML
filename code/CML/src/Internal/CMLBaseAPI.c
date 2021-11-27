@@ -29,26 +29,26 @@ CML_API void CMLconvertYuvtoYupvp (CMLVec3 yupvp , const CMLVec3 yuv){
 }
 
 CML_API void CMLconvertYupvptoLuv (CMLVec3 luv , const CMLVec3 yupvp, const CMLVec3 whitepointYupvp){
-  CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
+  CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
   cmlInternalOneYupvptoLuv(luv, yupvp, whitepointYupvp, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
 CML_API void CMLconvertLuvtoYupvp (CMLVec3 yupvp , const CMLVec3 luv, const CMLVec3 whitepointYupvp){
-  CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
+  CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
   cmlInternalOneLuvtoYupvp(yupvp, luv, whitepointYupvp, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }
 
 CML_API void CMLconvertXYZtoLab(CMLVec3 lab , const CMLVec3 xyz , const CMLVec3 whitepointXYZ){
-  CMLFunction* lineartoLStarResponse = CMLcreateYToLStarResponse();
+  CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
   CMLVec3 inverseWhitepointXYZ = {cmlInverse(whitepointXYZ[0]), cmlInverse(whitepointXYZ[1]), cmlInverse(whitepointXYZ[2])};
   cmlInternalOneXYZtoCIELAB(lab, xyz, inverseWhitepointXYZ, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
 CML_API void CMLconvertLabtoXYZ(CMLVec3 xyz , const CMLVec3 lab , const CMLVec3 whitepointXYZ){
-  CMLFunction* LStartoLinearResponse = CMLcreateLStarToYResponse();
+  CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
   cmlInternalOneCIELABtoXYZ(xyz, lab, whitepointXYZ, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }

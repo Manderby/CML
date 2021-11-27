@@ -24,7 +24,7 @@ struct CML_HIDDEN CMLFunction{
   size_t paramcount;
   float* params;
   void* data;
-  CMLDefinitionRange defrange;
+  CMLDefinitionRange defRange;
   CMLFunctionEvaluator getValue;
   CMLFunctionDesctructor destruct;
 };
@@ -877,9 +877,9 @@ CML_HIDEF void cmlInternalCIELABtoXYZ_SB (float* buf , size_t count, CMLuint32 f
 // ////////////////////////////////////
 
 #define CMLINTERNALSpectrumtoXYZ(out, in, observer) \
-  out[0] = CMLfilterFunction(in, cmlGetObserverSpecDistFunction(observer, 0));\
-  out[1] = CMLfilterFunction(in, cmlGetObserverSpecDistFunction(observer, 1));\
-  out[2] = CMLfilterFunction(in, cmlGetObserverSpecDistFunction(observer, 2));\
+  out[0] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 0));\
+  out[1] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 1));\
+  out[2] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 2));\
   cmlMul3(out, cmlGetObserverRadiometricScale(observer));    
 
 CML_HIDEF void cmlInternalOneIlluminationSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, const CMLObserver* observer){
@@ -893,7 +893,7 @@ CML_HIDEF void cmlInternalIlluminationSpectrumtoXYZ (CMLVec3 out, const CMLFunct
 }
 
 CML_HIDEF void cmlInternalOneRemissionSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, const CMLFunction* specIll, const CMLObserver* observer){
-  CMLFunction* remillfunction = CMLcreateFunctionMulFunction(in, specIll);
+  CMLFunction* remillfunction = cmlCreateFunctionMulFunction(in, specIll);
   cmlInternalOneIlluminationSpectrumtoXYZ(out, remillfunction, observer);
   cmlReleaseFunction(remillfunction);
 }
