@@ -4,7 +4,7 @@
 #include "../CML.h"
 
 
-#if CML_COMPILE_ON_MAC
+#if CML_COMPILE_ON_MAC_OSX
   // Mac OS X uses some symbols which are equal to the classes provided with
   // this library. But as quickdraw is deprecated, this should not be a problem
   // to exclude it from compilation.

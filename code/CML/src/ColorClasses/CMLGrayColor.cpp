@@ -126,7 +126,7 @@ void GrayColor::invert(){
 }
 
 CMLBool GrayColor::inside() const {
-  return CMLInRange(color[0], CML_GRAY_MIN, CML_GRAY_MAX);
+  return cmlInRange(color[0], CML_GRAY_MIN, CML_GRAY_MAX);
 }
 
 void GrayColor::clamp(){

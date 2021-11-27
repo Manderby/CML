@@ -54,7 +54,7 @@
 // After this macro, in and out are defined as float-arrays.
 // The sameBuffer variable depicts if out is the same as in.
 
-#ifndef NDEBUG
+#if CML_DEBUG
   #define CML_CONVERTER_INOUT_PARAMETER(outsymbol, insymbol, outchannels, inchannels) \
     if(insymbol == CML_NULL){\
       cmlError("Input buffer is NULL.");\

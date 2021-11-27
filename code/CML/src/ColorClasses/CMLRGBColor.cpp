@@ -126,15 +126,15 @@ void RGBColor::invert(){
 }
 
 CMLBool RGBColor::insideR() {
-  return CMLInRange(color[0], CML_RGB_R_MIN, CML_RGB_R_MAX);
+  return cmlInRange(color[0], CML_RGB_R_MIN, CML_RGB_R_MAX);
 }
 
 CMLBool RGBColor::insideG() {
-  return CMLInRange(color[1], CML_RGB_G_MIN, CML_RGB_G_MAX);
+  return cmlInRange(color[1], CML_RGB_G_MIN, CML_RGB_G_MAX);
 }
 
 CMLBool RGBColor::insideB() {
-  return CMLInRange(color[2], CML_RGB_B_MIN, CML_RGB_B_MAX);
+  return cmlInRange(color[2], CML_RGB_B_MIN, CML_RGB_B_MAX);
 }
 
 CMLBool RGBColor::inside(){

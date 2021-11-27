@@ -1,6 +1,6 @@
 
 #include "../CML.h"
-#include "../StateMachine/CMLColorMachineState.h"
+#include "../Internal/CMLColorMachineState.h"
 
 
 
@@ -14,7 +14,7 @@ CML_HIDEF CMLColorConverter cml_GetGrayToAnythingColorConverter(const CMLColorMa
   case CML_GRAY_FROM_Y      : return cmlGetColorConverter(outputSystem, CML_COLOR_Yxy);
   case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(outputSystem, CML_COLOR_YCbCr);
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Undefined Gray conversion.");
     #endif
     return cmlGetColorConverter(outputSystem, CML_COLOR_Luv);
@@ -31,7 +31,7 @@ CML_HIDEF CMLColorConverter cml_GetAnythingColorToGrayColorConverter(const CMLCo
   case CML_GRAY_FROM_Y      : return cmlGetColorConverter(CML_COLOR_Yxy, inputSystem);
   case CML_GRAY_FROM_YPRIME : return cmlGetColorConverter(CML_COLOR_YCbCr, inputSystem);
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Undefined Gray conversion.");
     #endif
     return cmlGetColorConverter(CML_COLOR_Luv, inputSystem);

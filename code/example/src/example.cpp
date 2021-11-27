@@ -37,7 +37,7 @@ int main(){
   
   // All color data in CML are stored as floats (32 Bit). Colors which have
   // multiple channels store the values in a simple float array. You can use
-  // the CMLVec typedefs found in CMLDefinitions.h:
+  // the CMLVec typedefs found in CMLMath.h:
   
   CMLVec3 orange = {1.f, .5f, 0.f};
   printf("Orange in RGB: %f, %f, %f\n", orange[0], orange[1], orange[2]);
@@ -176,7 +176,7 @@ int main(){
   // First, we create two arrays: One with the input values and one which will
   // hold the output values. We are initializing the input array with random
   // RGB values:
-  printf("Preparing %i million random RGB values to convert to Lab... ", millioncolors);
+  printf("Preparing %i million random RGB values to convert to Lab... ", (int)millioncolors);
   fflush(stdout);
   float *randvalues = (float*)malloc(sizeof(float)*millioncolors*1000000*3);
   float *outvalues  = (float*)malloc(sizeof(float)*millioncolors*1000000*3);

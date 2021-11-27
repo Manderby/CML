@@ -131,15 +131,15 @@ void LabColor::invert(){
 }
 
 CMLBool LabColor::insideL() {
-  return CMLInRange(color[0], CML_Lab_L_MIN, CML_Lab_L_MAX);
+  return cmlInRange(color[0], CML_Lab_L_MIN, CML_Lab_L_MAX);
 }
 
 CMLBool LabColor::insidea() {
-  return CMLInRange(color[1], CML_Lab_a_MIN, CML_Lab_a_MAX);
+  return cmlInRange(color[1], CML_Lab_a_MIN, CML_Lab_a_MAX);
 }
 
 CMLBool LabColor::insideb() {
-  return CMLInRange(color[2], CML_Lab_b_MIN, CML_Lab_b_MAX);
+  return cmlInRange(color[2], CML_Lab_b_MIN, CML_Lab_b_MAX);
 }
 
 CMLBool LabColor::inside()  {

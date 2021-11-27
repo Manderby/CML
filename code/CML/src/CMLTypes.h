@@ -4,7 +4,7 @@
 
 
 
-// Enumerates the different color types
+// Enumerates the predefined color types
 typedef enum{
   CML_COLOR_GRAY = 0,
   CML_COLOR_XYZ,    // CIE 1931
@@ -24,14 +24,14 @@ typedef enum{
   CML_NUMBER_OF_COLORTYPES
 } CMLColorType;
 
-// Enumerates the different integration computation types
+// Enumerates the predefined integration computation types
 typedef enum{
   CML_INTEGRATION_SIMPLE = 0,
   CML_INTEGRATION_BINARY_PAIRS,
   CML_NUMBER_OF_INTEGRATION_TYPES
 } CMLIntegrationMethod;
 
-// Enumerates the different integer mapping types
+// Enumerates the predefined integer mapping types
 typedef enum{
   CML_INTEGER_MAPPING_FLOOR = 0,
   CML_INTEGER_MAPPING_BOX,
@@ -39,7 +39,7 @@ typedef enum{
   CML_NUMBER_OF_INTEGER_MAPPING_TYPES
 } CMLIntegerMappingType;
 
-// Enumerates the different observers
+// Enumerates the predefined observers
 typedef enum{
   CML_OBSERVER_2DEG_CIE_1931 = 0,
   CML_OBSERVER_10DEG_CIE_1964,
@@ -49,7 +49,7 @@ typedef enum{
   CML_NUMBER_OF_OBSERVERS
 } CMLObserverType;
 
-// Enumerates the different illuminations
+// Enumerates the predefined illuminations
 typedef enum{
   CML_ILLUMINATION_BLACKBODY = 0,
   CML_ILLUMINATION_A_CIE,
@@ -81,7 +81,7 @@ typedef enum{
   CML_NUMBER_OF_ILLUMINATIONS
 } CMLIlluminationType;
 
-// Enumerates the different RGB colorspaces
+// Enumerates the predefined RGB colorspaces
 typedef enum{
   CML_RGB_ADOBE_98 = 0,
   CML_RGB_APPLE,
@@ -110,7 +110,7 @@ typedef enum{
   CML_NUMBER_OF_RGB_SPACES
 } CMLRGBColorSpace;
 
-// Enumerates the different Lab colorspaces
+// Enumerates the predefined Lab colorspaces
 typedef enum{
   CML_LAB_CIELAB = 0,
   CML_LAB_CUSTOM_L,
@@ -120,7 +120,7 @@ typedef enum{
   CML_NUMBER_OF_LAB_SPACES
 } CMLLabColorSpaceType;
 
-// Enumerates the possible response curves
+// Enumerates the predefined response curves
 typedef enum{
   CML_RESPONSE_LINEAR = 0,
   CML_RESPONSE_SQRT,
@@ -136,7 +136,7 @@ typedef enum{
   CML_NUMBER_OF_RESPONSE_CURVE_PRESETS
 } CMLResponseCurvePreset;
 
-// Enumerates the possible function types
+// Enumerates the predefined function types
 typedef enum{
   CML_FUNCTION_LINEAR = 0,
   CML_FUNCTION_SQRT,
@@ -148,7 +148,7 @@ typedef enum{
   CML_NUMBER_OF_FUNCTION_TYPES
 } CMLFunctionType;
 
-// Enumerates the different Gray computations.
+// Enumerates the predefined Gray computations.
 typedef enum{
   CML_GRAY_FROM_HSL = 0,  // HSL
   CML_GRAY_FROM_HSV,      // HSV
@@ -160,14 +160,14 @@ typedef enum{
   CML_NUMBER_OF_GRAY_COMPUTATIONS
 } CMLGrayComputationType;
 
-// Enumerates the different RGB to CMYK conversions
+// Enumerates the predefined RGB to CMYK conversions
 typedef enum{
   CML_CMYK_STANDARD_TRANSFORM = 0,
   CML_CMYK_UCR_TRANSFORM,
   CML_NUMBER_OF_CMYK_TRANSFORMS
 } CMLCMYKTransformType;
 
-// Enumerates the different chromatic adaptations
+// Enumerates the predefined chromatic adaptations
 typedef enum{
   CML_CHROMATIC_ADAPTATION_NONE = 0,
   CML_CHROMATIC_ADAPTATION_XYZ_SCALING,
@@ -176,7 +176,7 @@ typedef enum{
   CML_NUMBER_OF_CHROMATIC_ADAPTATIONS
 } CMLChromaticAdaptationType;
 
-// Enumerates the different Interpolation methods of array functions
+// Enumerates the predefined interpolation methods of array functions
 typedef enum{
   CML_INTERPOLATION_NONE = 0,
   CML_INTERPOLATION_FLOOR,
@@ -185,14 +185,15 @@ typedef enum{
   CML_INTERPOLATION_LINEAR
 } CMLInterpolationMethod;
 
-// Enumerates the different extrapolation methods of array functions
-// If you are uncertain which one to use, you should probably choose LIN_ZERO.
+// Enumerates the predefined extrapolation methods of array functions
+// If you are uncertain, you should probably choose LINEAR_ZERO.
 typedef enum{
   CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
   CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepsize, then 0
   CML_EXTRAPOLATION_CLAMP_VALUE,    // last value repeating
   CML_EXTRAPOLATION_GRADIENT        // last gradient repeating
 } CMLExtrapolationMethod;
+
 
 
 // Some typedefs which are used later in the API:
@@ -208,14 +209,16 @@ typedef void*                     CMLOutput;
 typedef const void*               CMLInput;
 typedef void*                     CMLInputOutput;
 
-typedef void (*CMLColorConverter)(  const CMLColorMachine*,
-                                          CMLOutput,
-                                          CMLInput,
-                                          size_t);
+typedef void (*CMLColorConverter)(
+  const CMLColorMachine*,
+  CMLOutput,
+  CMLInput,
+  size_t);
                                           
-typedef void (*CMLNormedConverter)(       CMLOutput,
-                                          CMLInput,
-                                          size_t);
+typedef void (*CMLNormedConverter)(
+  CMLOutput,
+  CMLInput,
+  size_t);
 
 
 

@@ -1,6 +1,11 @@
 Changelog CML: Color Machine Library
 
 
+Version 2
+---------
+- Adapting a more modern code style.
+
+
 
 The company Manderim GmbH did close down in 2019 and the author took the code
 back to his private collection. On 2021-11-21, the author decided to publish
@@ -28,8 +33,8 @@ Version 1.0.2
 Version 1.0.1
 -------------
 - Added linear-zero extrapolation method and corrected all functions.
-- CMLgetIntervalCount is now called CMLgetSampleCount
-- Added CMLgetStepSize
+- CMLgetIntervalCount is now called cmlGetSampleCount
+- Added cmlGetStepSize
 - Changed BaseAPI such that conversions from or to Lab and Luv require one less
   parameter. Only CIELAB and CIELUV possible though.
 - Changed back the L-response curve of Luv to L Star always.

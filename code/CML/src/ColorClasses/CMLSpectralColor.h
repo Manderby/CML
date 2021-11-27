@@ -55,7 +55,7 @@ public:
 
   // This method currently always returns 0 for spectral colors. There might
   // be a special use in the future. Don't use it.
-  CML_IMET float length() const {return 0.f;}
+  CML_INLINE float length() const {return 0.f;}
 
   // ///////////////////////////////////////
   // various methods
@@ -63,7 +63,7 @@ public:
 
   // This method currently always returns inf for spectral colors. There might
   // be a different use in the future. Don't use it.
-  CML_IMET CMLuint32 getNumChannels() const {return (CMLuint32) -1;}
+  CML_INLINE CMLuint32 getNumChannels() const {return (CMLuint32) -1;}
 
   // This method currently does nothing for spectral colors. There might
   // be a different use in the future. Don't use it.

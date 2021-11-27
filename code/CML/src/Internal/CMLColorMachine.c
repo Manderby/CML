@@ -4,7 +4,7 @@
 
 
 
-#ifndef NDEBUG
+#if CML_DEBUG
   CML_DEF void cml_Error(const char* functionSymbol, const char* text){
     fprintf(stderr, "Error in %s: %s", functionSymbol, text);
 
@@ -21,7 +21,7 @@
 
 
 CML_API void CMLgetVersion(CMLByte version[4]){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     version[0] = 1;
     version[1] = 0;
     version[2] = 2;
@@ -161,7 +161,7 @@ CML_API CMLIntegerMappingType CMLgetIntegerMappingType(const CMLColorMachine* cm
 
 
 CML_API void CMLget8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
   *min = (CMLint32)(cm->inputoutput.offset8Bit[channel]);
@@ -170,7 +170,7 @@ CML_API void CMLget8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint3
 
 
 CML_API void CMLget16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
   *min = (CMLint32)(cm->inputoutput.offset16Bit[channel]);
@@ -179,7 +179,7 @@ CML_API void CMLget16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint
 
 
 CML_API void CMLset8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
   cm->inputoutput.offset8Bit[channel] = (CMLByte)(min);
@@ -188,7 +188,7 @@ CML_API void CMLset8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, 
 
 
 CML_API void cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
   cm->inputoutput.offset16Bit[channel] = (CMLWord)(min);

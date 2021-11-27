@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "StateMachine/CMLColorMachineState.h"
+#include "CMLColorMachineState.h"
 
 
 
@@ -9,8 +9,6 @@
 // ///////////////////////////////////
 // Function
 // ///////////////////////////////////
-
-
 
 
 CML_API CMLFunction* CMLcreateFunction(CMLFunctionEvaluator evaluator, CMLFunctionConstructor constructor, CMLFunctionDesctructor destructor, CMLuint32 floatparams, const void* input){
@@ -130,13 +128,13 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
   CMLDefinitionRange filterrange = CMLgetDefinitionRangeOf2Functions(func, filter, CML_TRUE);
   if(filterrange.minSampleCoord > filterrange.maxSampleCoord){return 0.f;}
   
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(filterrange.stepsize < 0.f){cmlError("Negative stepsize in Function.");}
   #endif
   // If the stepsize is 0, the function will be filtered as a continuous
   // function with the default integration stepsize.
   if(filterrange.stepsize == 0.f){filterrange.stepsize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
-  samplecount = (size_t)(CMLRound((filterrange.maxSampleCoord - filterrange.minSampleCoord) / filterrange.stepsize)) + 1;
+  samplecount = (size_t)(cmlRound((filterrange.maxSampleCoord - filterrange.minSampleCoord) / filterrange.stepsize)) + 1;
   // If there is only one value to compute, the stepsize is manually set to 1
   // to not normalize the final result with a wrong value.
   if(samplecount == 1){filterrange.stepsize = 1.f;}
@@ -198,7 +196,7 @@ CML_API float CMLfilterFunction(const CMLFunction* func, const CMLFunction* filt
     } break;
 
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Invalid Integration type.");
     #endif
     return 0.f;
@@ -215,7 +213,7 @@ CML_API float CMLgetFunctionMaxValue(const CMLFunction* func){
   float max = -CML_INFINITY;
   float stepsize = func->defrange.stepsize;
   if(stepsize == 0){stepsize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
-  samplecount = CMLgetSampleCount(func->defrange.minSampleCoord, func->defrange.maxSampleCoord, stepsize);
+  samplecount = cmlGetSampleCount(func->defrange.minSampleCoord, func->defrange.maxSampleCoord, stepsize);
   for(x = 0; x < samplecount; x ++){
     float coord = func->defrange.minSampleCoord + x * stepsize;
     float value = cmlInternalEval(func, coord);
@@ -418,7 +416,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
   storage->size = desc->entrycount;
   storage->isowner = desc->ownbuffer;
 
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(storage->size <= 1){
       cmlError("Array Function with 1 or 0 Entries may not work properly yet.");
     }
@@ -434,7 +432,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     break;
   case CML_EXTRAPOLATION_LINEAR_ZERO:
     storage->extrapolateDown = &CMLInternalArrayFunctionExtrapolateDownLinearZero;
-    defrange->minNonTrivialCoord = desc->minimalcoord - CMLgetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
+    defrange->minNonTrivialCoord = desc->minimalcoord - cmlGetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
     break;
   case CML_EXTRAPOLATION_CLAMP_VALUE:
     storage->extrapolateDown = &CMLInternalArrayFunctionExtrapolateDownClampValue;
@@ -445,7 +443,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     defrange->minNonTrivialCoord = -CML_INFINITY;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Undefined Down-Extrapolation method.");
     #endif
     storage->extrapolateDown = CML_NULL;
@@ -459,7 +457,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     break;
   case CML_EXTRAPOLATION_LINEAR_ZERO:
     storage->extrapolateUp   = &CMLInternalArrayFunctionExtrapolateUpLinearZero;
-    defrange->maxNonTrivialCoord = desc->maximalcoord + CMLgetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
+    defrange->maxNonTrivialCoord = desc->maximalcoord + cmlGetStepSize(desc->minimalcoord, desc->maximalcoord, desc->entrycount);
     break;
   case CML_EXTRAPOLATION_CLAMP_VALUE:
     storage->extrapolateUp   = &CMLInternalArrayFunctionExtrapolateUpClampValue;
@@ -470,7 +468,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     defrange->maxNonTrivialCoord = CML_INFINITY;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Undefined Up-Extrapolation method.");
     #endif
     storage->extrapolateUp = CML_NULL;
@@ -509,7 +507,7 @@ CML_HIDDEN void CMLInternalConstructArrayFunction(float* params, void** data, CM
     storage->inverseinterval = (float)(storage->size - 1) / (storage->maxcoord - storage->mincoord);
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Undefined Interpolation method.");
     #endif
     storage->interpolate = CML_NULL;
@@ -566,7 +564,7 @@ CML_HIDDEN void CMLInternalConstructBlackBody(float* params, void** data, CMLDef
   float* c;
   float temperature = *((float*)input);
   if(temperature <= 0){
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Temperature must be greater than 0 Kelvin.");
     #endif
     return;
@@ -589,7 +587,7 @@ CML_HIDDEN float cmlInternalEvaluateBlackBody(float* params, const void* data, f
   float nanolambda;
   // Note: x is expected in [nanometer]
   if(x <= 0){
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Blackbody radiator is only defined for input values greater than 0.");
     #endif
     return 0.f;
@@ -597,11 +595,11 @@ CML_HIDDEN float cmlInternalEvaluateBlackBody(float* params, const void* data, f
   c = *((float*)data);
   nanolambda = x * 1e-9f;
   if(c == 0.f){
-    return CML_2PI * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f));
+    return CML_PI2 * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f));
   }else{
-    return CML_2PI * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f) * (expf(c / nanolambda) - 1.f));
+    return CML_PI2 * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC / (powf(nanolambda, 5.f) * (expf(c / nanolambda) - 1.f));
   }
-  // first constant is CML_2PI * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC;
+  // first constant is CML_PI2 * CML_PLANCK * CML_LIGHT_SPEED_VAC * CML_LIGHT_SPEED_VAC;
 //    return float(.587756042555631108333846414986e-15) / (Pow(nanolambda, float(5.)) * (Exp(c / nanolambda) - float(1.)));
 }
 
@@ -640,7 +638,7 @@ CML_HIDDEN float cmlInternalEvaluateCIEAIlluminant(float* params, const void* da
   params = params; // no warning
   float nanolambda;
   data = data;
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(x <= 0){cmlError("CIE A illuminant is only defined for input values greater than 0.");}
   #endif
   nanolambda = x * 1e-9f;
@@ -716,7 +714,7 @@ CML_API CMLFunction* CMLcreateCIEDIlluminant(float temperature){
   CMLuint32 l;
   float* array;
   float whitepoint[2];
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(temperature <= 0){cmlError("Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
@@ -1038,7 +1036,7 @@ CML_HIDDEN float cmlInternalEvaluateYToLStarResponse(float* params, const void* 
   params = params; // no warning
   data = data;
   if(x > CML_LIN_LSTAR_SWITCH){
-    return cmlInternalfytoLr(CMLCbrt(x));
+    return cmlInternalfytoLr(cmlCbrt(x));
   }else{
     return x * CML_LSTAR_LINEAR_SCALE;
   }
@@ -1095,7 +1093,7 @@ CML_HIDDEN float cmlInternalEvaluateYToLStarStandardResponse(float* params, cons
   params = params; // no warning
   data = data;
   if(x > CML_LIN_LSTAR_SWITCH_STANDARD){
-    return cmlInternalfytoLr(CMLCbrt(x));
+    return cmlInternalfytoLr(cmlCbrt(x));
   }else{
     return x * CML_LSTAR_LINEAR_SCALE_STANDARD;
   }

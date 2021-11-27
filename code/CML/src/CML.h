@@ -7,13 +7,15 @@
 
 
 
-// Some typedefs and math operators.
-#include "CMLDefinitions.h"
+// System dependent definitions and math operators.
+#include "CMLEnvironment.h"
+#include "CMLMath.h"
 
-// Enumerations and color types used in CML.
+// Enums, types and constants used in CML.
 #include "CMLTypes.h"
+#include "CMLConstants.h"
 
-// CMLFunctions define response curves, spectra and other various 1D-functions.
+// API to create response curves, spectra and other various 1D-functions.
 #include "CMLFunctions.h"
 #include "CMLIllumination.h"
 #include "CMLObserver.h"
@@ -24,9 +26,6 @@
 
 // Color Machines and their API
 #include "CMLColorMachine.h"
-
-// The defaults used in CML.
-#include "CMLConstants.h"
 
 
 

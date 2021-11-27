@@ -4,7 +4,7 @@
 #if CML_COMPILE_ON_WIN
   #define CML_HIDDEN
   #define CML_RESTRICT    __restrict
-#elif CML_COMPILE_ON_MAC
+#elif CML_COMPILE_ON_MAC_OSX
   #define CML_HIDDEN      __attribute__ ((visibility("hidden")))
   #define CML_RESTRICT    __restrict__
 #else
@@ -71,12 +71,12 @@ CML_HIDEF float cmlInternalEval(const CMLFunction* function, float x){
 
 CML_IDEF void* cmlAllocate(size_t size){
   void* ptr; // Declaration before implementation.
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(size < 1)
       cmlError("size is smaller than 1 .");
   #endif
   ptr = malloc(size);
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(!ptr)
       {cmlError("out of memory."); exit(1); return CML_NULL;}
     // The exit call has been introduced as this is such a severe problem
@@ -88,7 +88,7 @@ CML_IDEF void* cmlAllocate(size_t size){
 
 
 CML_IDEF void* cmlAllocateIfNull(void* ptr, size_t size){
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(size < 1)
       cmlError("size is smaller than 1 .");
   #endif
@@ -166,7 +166,7 @@ CML_HIDEF void cmlInternalXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 wh
 // todo: make mulVec SB
 #define CMLINTERNALXYZtoRGB(out, in, XYZtoRGBmatrix, LineartoRResponse, LineartoGResponse, LineartoBResponse) \
   CMLVec3 RGBp;\
-  cmlMat33MulVec3(RGBp, XYZtoRGBmatrix, in);\
+  cmlMulMat33Vec3(RGBp, XYZtoRGBmatrix, in);\
   out[0] = cmlInternalEval(LineartoRResponse, RGBp[0]);\
   out[1] = cmlInternalEval(LineartoGResponse, RGBp[1]);\
   out[2] = cmlInternalEval(LineartoBResponse, RGBp[2]);
@@ -497,7 +497,7 @@ CML_HIDEF void cmlInternalLabtoLch_SB (float* buf, size_t count, CMLuint32 float
   RGBp[0] = cmlInternalEval(RtoLinearResponse, in[0]);\
   RGBp[1] = cmlInternalEval(GtoLinearResponse, in[1]);\
   RGBp[2] = cmlInternalEval(BtoLinearResponse, in[2]);\
-  cmlMat33MulVec3(out, RGBtoXYZmatrix, RGBp);
+  cmlMulMat33Vec3(out, RGBtoXYZmatrix, RGBp);
 
 CML_HIDEF void cmlInternalOneRGBtoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
   CMLINTERNALRGBtoXYZ(out, in, RGBtoXYZmatrix, RtoLinearResponse, GtoLinearResponse, BtoLinearResponse);

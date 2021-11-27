@@ -651,7 +651,7 @@
 ////    s->inputoutput.samplecount = CML_X2VALENCES_SHAWFAIRCHILD1997_NUM;
 ////    break;
 //  default:
-//    #ifndef NDEBUG
+//    #if CML_DEBUG
 //      CMLError("Error in libcml: Observer state unknown\n");
 //    #endif
 //    break;
@@ -783,7 +783,7 @@
 //}
 //
 //void CMLSampleArrayFunction::init(CMLArray coordsarray, CMLArray valuearray, CMLInterpolationMethod newinterpolationmethod, CMLExtrapolationMethod newextrapolationmethod){
-//  #ifndef NDEBUG
+//  #if CML_DEBUG
 //    if(valuearray.getSize() != coordsarray.getSize()){CMLError("Warning: SampleArrayFunction has two arrays with different sizes.\n"); return;}
 //    if(coordsarray.getSize() <= 1){CMLError("Warning: SampleArrayFunction with 0 or 1 Entries are not allowed.\n"); return;}
 //  #endif
@@ -807,7 +807,7 @@
 //    s->extrapolateUp   = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionExtrapolateUpGradient;
 //    break;
 //  default:
-//    #ifndef NDEBUG
+//    #if CML_DEBUG
 //      CMLError("Undefined Extrapolation method.\n");
 //    #endif
 //    delete s; s = CML_NULL; return; break;
@@ -820,7 +820,7 @@
 //  case CML_INTERPOLATION_INTERVAL:      s->interpolate = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateInterval; break;
 //  case CML_INTERPOLATION_LINEAR:        s->interpolate = &CMLSampleArrayFunctionStorage::InternalSampleArrayFunctionInterpolateLinear; break;
 //  default:
-//    #ifndef NDEBUG
+//    #if CML_DEBUG
 //      CMLError("Undefined Interpolation method.\n");
 //    #endif
 //    delete s; s = CML_NULL; return; break;
@@ -830,7 +830,7 @@
 //
 //
 //float CMLSampleArrayFunction::operator ()(float x) const{
-//  #ifndef NDEBUG
+//  #if CML_DEBUG
 //    if(!s){CMLError("Function uninitialized.\n"); return 0.f;}
 //  #endif
 //  if(x == s->coords[0]){return s->values[0];}
@@ -851,7 +851,7 @@
 //}
 //
 //CMLFunction* CMLSampleArrayFunction::duplicate() const {
-//  #ifndef NDEBUG
+//  #if CML_DEBUG
 //    if(!s){CMLError("Function uninitialized.\n"); return CML_NULL;}
 //  #endif
 //  CMLSampleArrayFunction* newfunction = new CMLSampleArrayFunction;
@@ -868,13 +868,13 @@
 //}
 //
 ////CMLArray CMLSampleArrayFunction::getValues() const{
-////  #ifndef NDEBUG
+////  #if CML_DEBUG
 ////    if(!s){CMLError("Function uninitialized.\n");}
 ////  #endif
 ////  return s->values;
 ////}
 ////CMLArray CMLSampleArrayFunction::getCoords() const{
-////  #ifndef NDEBUG
+////  #if CML_DEBUG
 ////    if(!s){CMLError("Function uninitialized.\n");}
 ////  #endif
 ////  return s->coords;
@@ -1424,7 +1424,7 @@
 //    filterK.init(CML_DENSITYFILTER_MIN, CML_DENSITYFILTER_MAX, arraydensityfilterK, CML_INTERPOLATION_BOX, CML_EXTRAPOLATION_CLAMP_ZERO);
 //    imin = CML_DEFAULT_INTEGRATION_MIN;
 //    imax = CML_DEFAULT_INTEGRATION_MAX;
-//    samplecount = CMLgetSampleCount(CML_DEFAULT_INTEGRATION_MIN, CML_DEFAULT_INTEGRATION_MAX, CML_DEFAULT_INTEGRATION_STEPSIZE);
+//    samplecount = cmlGetSampleCount(CML_DEFAULT_INTEGRATION_MIN, CML_DEFAULT_INTEGRATION_MAX, CML_DEFAULT_INTEGRATION_STEPSIZE);
 //    cmlSet4(cmyk, 0.f, 0.f, 0.f, 0.f);
 //    for(istep = 0; istep < samplecount; istep++){
 //      float l = imin + (((imax - imin) * istep) / (samplecount - 1));

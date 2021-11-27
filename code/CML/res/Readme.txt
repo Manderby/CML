@@ -90,7 +90,8 @@ it finally works without errors and warnings:
 - Add the header search path in the build settings.
 - Make sure, that your code builds for the architecture supported by this
   CML distribution.
-- Optionally: Add the preprocessor Macro for Release: NDEBUG
+- Optionally: Add a preprocessor macro CML_DEBUG=0 or CML_DEBUG=1
+- Optionally: Add a preprocessor macro for Release: NDEBUG
 
 
 When using ColorClasses:
@@ -109,8 +110,6 @@ Contact
 Please contact cml@manderc.com for requests, bugs, hints, clarification and
 similar things. Note that German is the preferred choice of correspondance
 but English is offered as a common language of inter-communication.
-Requests which can be answered by yourself with the given documentation will
-be answered with a reference to the documentation.
 
 If you consider incorporating CML into a bigger project and need (paid) help
 in engineering, feel free to contact.

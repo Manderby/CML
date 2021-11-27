@@ -1,6 +1,6 @@
 
 #include "../CML.h"
-#include "../StateMachine/CMLColorMachineState.h"
+#include "../Internal/CMLColorMachineState.h"
 
 
 
@@ -262,13 +262,13 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
       default: break;
     }
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Input-ColorType unknown.");
     #endif
     return CML_NULL; break;
   }
   // Reaching here, a default inside the inner switch has been reached.
-  #ifndef NDEBUG
+  #if CML_DEBUG
     cmlError("Output-ColorType unknown.");
   #endif
   return CML_NULL;
@@ -291,7 +291,7 @@ CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
     case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
     default: break;
   }
-  #ifndef NDEBUG
+  #if CML_DEBUG
     cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
@@ -314,7 +314,7 @@ CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
     case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
     default: break;
   }
-  #ifndef NDEBUG
+  #if CML_DEBUG
     cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
@@ -337,7 +337,7 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
     case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
     default: break;
   }
-  #ifndef NDEBUG
+  #if CML_DEBUG
     cmlError("ColorType unknown.");
   #endif
   return CML_NULL;
@@ -360,7 +360,7 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType col
     case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
     default: break;
   }
-  #ifndef NDEBUG
+  #if CML_DEBUG
     cmlError("ColorType unknown.");
   #endif
   return CML_NULL;

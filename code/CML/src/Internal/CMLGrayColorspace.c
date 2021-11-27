@@ -39,7 +39,7 @@ CML_API void CMLsetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
     cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayYPRIME;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Gray Computation undefined.");
     #endif
     return;

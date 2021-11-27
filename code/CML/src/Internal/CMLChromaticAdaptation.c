@@ -15,7 +15,7 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
   CMLVec3  cs;
   CMLVec3  cd;
   
-  #ifndef NDEBUG
+  #if CML_DEBUG
     if(adaptationtype != CML_CHROMATIC_ADAPTATION_NONE){
       if(whitepointYxy[2] == 0.f)
         cmlError("Whitepoint invalid.");
@@ -29,7 +29,7 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
   case CML_CHROMATIC_ADAPTATION_NONE:
     {
       float scale = adaptedwhitepointYxy[0] / whitepointYxy[0];
-      CMLMat33set(matrix,
+      cmlSetMat33(matrix,
             scale,     0.f,       0.f,
             0.f,       scale,     0.f,
             0.f,       0.f,       scale);
@@ -37,17 +37,17 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
       break;
     }
   default:
-  case CML_CHROMATIC_ADAPTATION_XYZ_SCALING: CMLMat33set(M,
+  case CML_CHROMATIC_ADAPTATION_XYZ_SCALING: cmlSetMat33(M,
           1.f,       0.f,       0.f,
           0.f,       1.f,       0.f,
           0.f,       0.f,       1.f);
     break;
-  case CML_CHROMATIC_ADAPTATION_BRADFORD: CMLMat33set(M,
+  case CML_CHROMATIC_ADAPTATION_BRADFORD: cmlSetMat33(M,
           0.8951f,  -0.7502f,   0.0389f,
           0.2664f,   1.7135f,  -0.0685f,
          -0.1614f,   0.0367f,   1.0296f);
     break;
-  case CML_CHROMATIC_ADAPTATION_VON_KRIES: CMLMat33set(M,
+  case CML_CHROMATIC_ADAPTATION_VON_KRIES: cmlSetMat33(M,
           0.40024f, -0.22630f,  0.f,
           0.70760f,  1.16532f,  0.f,
          -0.08081f,  0.04570f,  0.91822f);
@@ -55,12 +55,12 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
   }
   cmlInternalOneYxytoXYZ(whitepointXYZ, whitepointYxy, CML_NULL);
   cmlInternalOneYxytoXYZ(adaptedwhitepointXYZ, adaptedwhitepointYxy, CML_NULL);
-  cmlMat33Inverse(Minv, M);
-  cmlMat33MulVec3(cs, M, whitepointXYZ);
-  cmlMat33MulVec3(cd, M, adaptedwhitepointXYZ);
+  cmlInvertMat33(Minv, M);
+  cmlMulMat33Vec3(cs, M, whitepointXYZ);
+  cmlMulMat33Vec3(cd, M, adaptedwhitepointXYZ);
   cmlDiv3componentwise(cd, cs);
-  cmlMat33ScaleVec3(Minv, cd);
-  cmlMat33MulMat33(matrix, Minv, M);
+  cmlScaleMat33Vec3(Minv, cd);
+  cmlMulMat33Mat33(matrix, Minv, M);
 }
 
 

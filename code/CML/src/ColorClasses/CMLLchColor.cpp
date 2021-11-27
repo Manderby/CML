@@ -135,15 +135,15 @@ void LchColor::invert(){
 }
 
 CMLBool LchColor::insideL(){
-  return CMLInRange(color[0], CML_Lch_L_MIN, CML_Lch_L_MAX);
+  return cmlInRange(color[0], CML_Lch_L_MIN, CML_Lch_L_MAX);
 }
 
 CMLBool LchColor::insidec(){
-  return CMLInRange(color[1], CML_Lch_c_MIN, CML_Lch_c_MAX);
+  return cmlInRange(color[1], CML_Lch_c_MIN, CML_Lch_c_MAX);
 }
 
 CMLBool LchColor::insideh(){
-  return CMLInRange(color[2], CML_Lch_h_MIN, CML_Lch_h_MAX);
+  return cmlInRange(color[2], CML_Lch_h_MIN, CML_Lch_h_MAX);
 }
 
 CMLBool LchColor::inside(){

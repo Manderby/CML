@@ -122,19 +122,19 @@ void CMYKColor::invert(){
 }
 
 CMLBool CMYKColor::insideC(){
-  return CMLInRange(color[0], CML_CMYK_C_MIN, CML_CMYK_C_MAX);
+  return cmlInRange(color[0], CML_CMYK_C_MIN, CML_CMYK_C_MAX);
 }
 
 CMLBool CMYKColor::insideM(){
-  return CMLInRange(color[1], CML_CMYK_M_MIN, CML_CMYK_M_MAX);
+  return cmlInRange(color[1], CML_CMYK_M_MIN, CML_CMYK_M_MAX);
 }
 
 CMLBool CMYKColor::insideY(){
-  return CMLInRange(color[2], CML_CMYK_Y_MIN, CML_CMYK_Y_MAX);
+  return cmlInRange(color[2], CML_CMYK_Y_MIN, CML_CMYK_Y_MAX);
 }
 
 CMLBool CMYKColor::insideK(){
-  return CMLInRange(color[3], CML_CMYK_K_MIN, CML_CMYK_K_MAX);
+  return cmlInRange(color[3], CML_CMYK_K_MIN, CML_CMYK_K_MAX);
 }
 
 CMLBool CMYKColor::inside(){

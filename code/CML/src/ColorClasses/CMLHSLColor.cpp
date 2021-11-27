@@ -135,15 +135,15 @@ void HSLColor::invert(){
 }
 
 CMLBool HSLColor::insideH(){
-  return CMLInRange(color[0], CML_HSL_H_MIN, CML_HSL_H_MAX);
+  return cmlInRange(color[0], CML_HSL_H_MIN, CML_HSL_H_MAX);
 }
 
 CMLBool HSLColor::insideS(){
-  return CMLInRange(color[1], CML_HSL_S_MIN, CML_HSL_S_MAX);
+  return cmlInRange(color[1], CML_HSL_S_MIN, CML_HSL_S_MAX);
 }
 
 CMLBool HSLColor::insideL(){
-  return CMLInRange(color[2], CML_HSL_L_MIN, CML_HSL_L_MAX);
+  return cmlInRange(color[2], CML_HSL_L_MIN, CML_HSL_L_MAX);
 }
 
 CMLBool HSLColor::inside(){

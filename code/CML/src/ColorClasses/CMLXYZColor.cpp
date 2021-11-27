@@ -126,15 +126,15 @@ void XYZColor::invert(){
 }
 
 CMLBool XYZColor::insideX(){
-  return CMLInRange(color[0], CML_XYZ_X_MIN, CML_XYZ_X_MAX);
+  return cmlInRange(color[0], CML_XYZ_X_MIN, CML_XYZ_X_MAX);
 }
 
 CMLBool XYZColor::insideY(){
-  return CMLInRange(color[1], CML_XYZ_Y_MIN, CML_XYZ_Y_MAX);
+  return cmlInRange(color[1], CML_XYZ_Y_MIN, CML_XYZ_Y_MAX);
 }
 
 CMLBool XYZColor::insideZ(){
-  return CMLInRange(color[2], CML_XYZ_Z_MIN, CML_XYZ_Z_MAX);
+  return cmlInRange(color[2], CML_XYZ_Z_MIN, CML_XYZ_Z_MAX);
 }
 
 CMLBool XYZColor::inside(){

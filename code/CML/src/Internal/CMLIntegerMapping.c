@@ -143,7 +143,7 @@ CML_API void CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType
     cm->float4ToData16         = &cml_Data16WithFloat4Interval;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Invalid Integer mapping.");
     #endif
     return;

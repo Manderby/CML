@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "StateMachine/CMLColorMachineState.h"
+#include "CMLColorMachineState.h"
 
 
 
@@ -110,7 +110,7 @@ CML_API void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 xyz, const CMLFunction* s
 
 
 CML_API void CMLconvertXYZtoChromaticAdaptedXYZ(CMLVec3 adaptxyz, const CMLVec3 xyz, const CMLMat33 matrix){
-  cmlMat33MulVec3(adaptxyz, matrix, xyz);
+  cmlMulMat33Vec3(adaptxyz, matrix, xyz);
 }
 
 
@@ -132,7 +132,7 @@ CML_API CMLuint32 CMLgetNumChannels(CMLColorType colorType){
   case CML_COLOR_HSL:   return CML_HSL_NUMCHANNELS; break;
   case CML_COLOR_CMYK:  return CML_CMYK_NUMCHANNELS; break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
     cmlError("Invalid Channeled Color Type.");
     #endif
     return 0;
@@ -158,7 +158,7 @@ CML_API void CMLgetMinBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_HSL:   cmlSet3(buffer, CML_HSL_H_MIN, CML_HSL_S_MIN, CML_HSL_L_MIN); break;
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MIN, CML_CMYK_M_MIN, CML_CMYK_Y_MIN, CML_CMYK_K_MIN); break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Invalid Channeled Color Type.");
     #endif
     break;
@@ -182,7 +182,7 @@ CML_API void CMLgetMaxBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_HSL:   cmlSet3(buffer, CML_HSL_H_MAX, CML_HSL_S_MAX, CML_HSL_L_MAX); break;
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MAX, CML_CMYK_M_MAX, CML_CMYK_Y_MAX, CML_CMYK_K_MAX); break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Invalid Channeled Color Type.");
     #endif
     break;

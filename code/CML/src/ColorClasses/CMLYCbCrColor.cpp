@@ -126,15 +126,15 @@ void YCbCrColor::invert(){
 }
 
 CMLBool YCbCrColor::insideY() {
-  return CMLInRange(color[0], CML_YCbCr_Y_MIN, CML_YCbCr_Y_MAX);
+  return cmlInRange(color[0], CML_YCbCr_Y_MIN, CML_YCbCr_Y_MAX);
 }
 
 CMLBool YCbCrColor::insideCb() {
-  return CMLInRange(color[1], CML_YCbCr_Cb_MIN, CML_YCbCr_Cb_MAX);
+  return cmlInRange(color[1], CML_YCbCr_Cb_MIN, CML_YCbCr_Cb_MAX);
 }
 
 CMLBool YCbCrColor::insideCr() {
-  return CMLInRange(color[2], CML_YCbCr_Cr_MIN, CML_YCbCr_Cr_MAX);
+  return cmlInRange(color[2], CML_YCbCr_Cr_MIN, CML_YCbCr_Cr_MAX);
 }
 
 CMLBool YCbCrColor::inside()  {

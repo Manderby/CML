@@ -46,7 +46,7 @@ CML_API CMLFunction* CMLcreateLStarToYStandardResponse(void);
 
 // Filter Functions:
 // Use these functions to filter spectra. Filters are used for componentwise
-// multiplication of a sectrum. Therefore, they return values relative to 1
+// multiplication of a spectrum. Therefore, they return values relative to 1
 // but unlike probability distribution functions, they do not necessarily need
 // to be normalized to 1.
 

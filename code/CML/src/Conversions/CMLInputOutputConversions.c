@@ -1,6 +1,6 @@
 
 #include "../CML.h"
-#include "../StateMachine/CMLColorMachineState.h"
+#include "../Internal/CMLColorMachineState.h"
 
 
 // In CML, all color computations are done in floating point precision. When

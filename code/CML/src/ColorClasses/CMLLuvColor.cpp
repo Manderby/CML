@@ -126,15 +126,15 @@ void LuvColor::invert(){
 }
 
 CMLBool LuvColor::insideL() {
-  return CMLInRange(color[0], CML_Luv_L_MIN, CML_Luv_L_MAX);
+  return cmlInRange(color[0], CML_Luv_L_MIN, CML_Luv_L_MAX);
 }
 
 CMLBool LuvColor::insideu() {
-  return CMLInRange(color[1], CML_Luv_u_MIN, CML_Luv_u_MAX);
+  return cmlInRange(color[1], CML_Luv_u_MIN, CML_Luv_u_MAX);
 }
 
 CMLBool LuvColor::insidev() {
-  return CMLInRange(color[2], CML_Luv_v_MIN, CML_Luv_v_MAX);
+  return cmlInRange(color[2], CML_Luv_v_MIN, CML_Luv_v_MAX);
 }
 
 CMLBool LuvColor::inside()  {

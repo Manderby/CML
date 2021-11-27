@@ -225,7 +225,7 @@ CML_API CMLResponseCurvePreset CMLgetRGBColorSpaceResponseCurvePreset
 // choose to have a colorimetric instead of a radiometric computation by simply
 // setting the Y component of the whitepoint to 1.
 // Also note that in order to get the inverse transformation matrix, simply
-// use the cmlMat33Inverse functin.
+// use the cmlInvertMat33 functin.
 CML_API void CMLcomputeRGBtoXYZMatrix(
                                               CMLMat33  rgbtoxyzmatrix,
                                               CMLVec3   primaryRYxy,

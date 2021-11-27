@@ -126,15 +126,15 @@ void YupvpColor::invert(){
 }
 
 CMLBool YupvpColor::insideY(){
-  return CMLInRange(color[0], CML_Yupvp_Y_MIN, CML_Yupvp_Y_MAX);
+  return cmlInRange(color[0], CML_Yupvp_Y_MIN, CML_Yupvp_Y_MAX);
 }
 
 CMLBool YupvpColor::insideU() {
-  return CMLInRange(color[1], CML_Yupvp_up_MIN, CML_Yupvp_up_MAX);
+  return cmlInRange(color[1], CML_Yupvp_up_MIN, CML_Yupvp_up_MAX);
 }
 
 CMLBool YupvpColor::insideV(){
-  return CMLInRange(color[2], CML_Yupvp_vp_MIN, CML_Yupvp_vp_MAX);
+  return cmlInRange(color[2], CML_Yupvp_vp_MIN, CML_Yupvp_vp_MAX);
 }
 
 CMLBool YupvpColor::inside(){

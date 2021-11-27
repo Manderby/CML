@@ -26,7 +26,7 @@ CML_API void CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType trans
     cm->CMYKtoRGB_SB = &CMLInternalCMYKtoRGBUCR_SB;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("CMYK Transformation undefined.");
     #endif
     return;

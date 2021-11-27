@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "StateMachine/CMLInternal.h"
+#include "CMLInternal.h"
 
 
 CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
@@ -90,7 +90,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
     curve->functiontype = CML_FUNCTION_LSTAR_STANDARD;
     break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       curve->forwardfunc  = CMLcreateLinearResponse();
       curve->backwardfunc = CMLcreateLinearResponse();
       cmlError("Response preset unknown.");
@@ -148,7 +148,7 @@ CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR: return 3.0f; break;
   case CML_FUNCTION_LSTAR_STANDARD: return 3.0f; break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Function type unknown.");
     #endif
     return 1.0f;
@@ -165,7 +165,7 @@ CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR: return 0.16f; break;
   case CML_FUNCTION_LSTAR_STANDARD: return 0.16f; break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Function type unknown.");
     #endif
     return 0.0f;
@@ -182,7 +182,7 @@ CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR: return 9.03296296296296296f; break;
   case CML_FUNCTION_LSTAR_STANDARD: return 9.033f; break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Function type unknown.");
     #endif
     return 1.0f;
@@ -199,7 +199,7 @@ CML_API float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
   case CML_FUNCTION_LSTAR: return 0.008856451679036f; break;
   case CML_FUNCTION_LSTAR_STANDARD: return 0.008856f; break;
   default:
-    #ifndef NDEBUG
+    #if CML_DEBUG
       cmlError("Function type unknown.");
     #endif
     return 0.0f;

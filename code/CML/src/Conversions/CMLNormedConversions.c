@@ -1,6 +1,6 @@
 
 #include "../CML.h"
-#include "../StateMachine/CMLColorMachineState.h"
+#include "../Internal/CMLColorMachineState.h"
 
 
 // ////////////////////////////

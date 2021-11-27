@@ -1,7 +1,7 @@
 
 #include "../CML.h"
-#include "../StateMachine/CMLColorMachineState.h"
-#include "../StateMachine/CMLConverterMacros.h"
+#include "../Internal/CMLColorMachineState.h"
+#include "../Internal/CMLConverterMacros.h"
 
 
 

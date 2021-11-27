@@ -99,7 +99,7 @@
 //      param2 = 1.f;
 //      break;
 //    default:
-//      #ifndef NDEBUG
+//      #if CML_DEBUG
 //        param0 = 2.2f;
 //        param1 = 0.f;
 //        param2 = 1.f;
@@ -146,7 +146,7 @@
 //    *fromxyzfunc = CMLcreateYToLStarStandardResponse();
 //    break;
 //  default:
-//    #ifndef NDEBUG
+//    #if CML_DEBUG
 //      *toxyzfunc  = CMLcreateLinearResponse();
 //      *fromxyzfunc = CMLcreateLinearResponse();
 //      CMLError("Error in libcml: Response Curve type unknown.\n");
