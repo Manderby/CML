@@ -177,34 +177,34 @@ void GrayColor::toNormedCartesianBuffer(float* output) const {
 }
 
 
-void GrayColor::fromGrayBuffer(const float* src) {CMLGraytoGray (cmlcm, color, src, 1);}
-void GrayColor::fromXYZBuffer(const float* src)  {CMLXYZtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromYuvBuffer(const float* src)  {CMLYuvtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromYupvpBuffer(const float* src){CMLYupvptoGray(cmlcm, color, src, 1);}
-void GrayColor::fromYxyBuffer(const float* src)  {CMLYxytoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromLabBuffer(const float* src)  {CMLLabtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromLchBuffer(const float* src)  {CMLLchtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromLuvBuffer(const float* src)  {CMLLuvtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromRGBBuffer(const float* src)  {CMLRGBtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromYCbCrBuffer(const float* src){CMLYCbCrtoGray(cmlcm, color, src, 1);}
-void GrayColor::fromHSVBuffer(const float* src)  {CMLHSVtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromHSLBuffer(const float* src)  {CMLHSLtoGray  (cmlcm, color, src, 1);}
-void GrayColor::fromCMYKBuffer(const float* src) {CMLCMYKtoGray (cmlcm, color, src, 1);}
+void GrayColor::fromGrayBuffer(const float* src) {cmlGrayToGray (cmlcm, color, src, 1);}
+void GrayColor::fromXYZBuffer(const float* src)  {cmlXYZToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromYuvBuffer(const float* src)  {cmlYuvToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromYupvpBuffer(const float* src){cmlYupvpToGray(cmlcm, color, src, 1);}
+void GrayColor::fromYxyBuffer(const float* src)  {cmlYxyToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromLabBuffer(const float* src)  {cmlLabToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromLchBuffer(const float* src)  {cmlLchToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromLuvBuffer(const float* src)  {cmlLuvToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromRGBBuffer(const float* src)  {cmlRGBToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromYCbCrBuffer(const float* src){cmlYCbCrToGray(cmlcm, color, src, 1);}
+void GrayColor::fromHSVBuffer(const float* src)  {cmlHSVToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromHSLBuffer(const float* src)  {cmlHSLToGray  (cmlcm, color, src, 1);}
+void GrayColor::fromCMYKBuffer(const float* src) {cmlCMYKToGray (cmlcm, color, src, 1);}
 
 
-void GrayColor::toGrayBuffer(float* dest) const {CMLGraytoGray (cmlcm, dest, color, 1);}
-void GrayColor::toXYZBuffer(float* dest) const  {CMLGraytoXYZ  (cmlcm, dest, color, 1);}
-void GrayColor::toYuvBuffer(float* dest) const  {CMLGraytoYuv  (cmlcm, dest, color, 1);}
-void GrayColor::toYupvpBuffer(float* dest) const{CMLGraytoYupvp(cmlcm, dest, color, 1);}
-void GrayColor::toYxyBuffer(float* dest) const  {CMLGraytoYxy  (cmlcm, dest, color, 1);}
-void GrayColor::toLabBuffer(float* dest) const  {CMLGraytoLab  (cmlcm, dest, color, 1);}
-void GrayColor::toLchBuffer(float* dest) const  {CMLGraytoLch  (cmlcm, dest, color, 1);}
-void GrayColor::toLuvBuffer(float* dest) const  {CMLGraytoLuv  (cmlcm, dest, color, 1);}
-void GrayColor::toRGBBuffer(float* dest) const  {CMLGraytoRGB  (cmlcm, dest, color, 1);}
-void GrayColor::toYCbCrBuffer(float* dest) const{CMLGraytoYCbCr(cmlcm, dest, color, 1);}
-void GrayColor::toHSVBuffer(float* dest) const  {CMLGraytoHSV  (cmlcm, dest, color, 1);}
-void GrayColor::toHSLBuffer(float* dest) const  {CMLGraytoHSL  (cmlcm, dest, color, 1);}
-void GrayColor::toCMYKBuffer(float* dest) const {CMLGraytoCMYK (cmlcm, dest, color, 1);}
+void GrayColor::toGrayBuffer(float* dest) const {cmlGrayToGray (cmlcm, dest, color, 1);}
+void GrayColor::toXYZBuffer(float* dest) const  {cmlGrayToXYZ  (cmlcm, dest, color, 1);}
+void GrayColor::toYuvBuffer(float* dest) const  {cmlGrayToYuv  (cmlcm, dest, color, 1);}
+void GrayColor::toYupvpBuffer(float* dest) const{cmlGrayToYupvp(cmlcm, dest, color, 1);}
+void GrayColor::toYxyBuffer(float* dest) const  {cmlGrayToYxy  (cmlcm, dest, color, 1);}
+void GrayColor::toLabBuffer(float* dest) const  {cmlGrayToLab  (cmlcm, dest, color, 1);}
+void GrayColor::toLchBuffer(float* dest) const  {cmlGrayToLch  (cmlcm, dest, color, 1);}
+void GrayColor::toLuvBuffer(float* dest) const  {cmlGrayToLuv  (cmlcm, dest, color, 1);}
+void GrayColor::toRGBBuffer(float* dest) const  {cmlGrayToRGB  (cmlcm, dest, color, 1);}
+void GrayColor::toYCbCrBuffer(float* dest) const{cmlGrayToYCbCr(cmlcm, dest, color, 1);}
+void GrayColor::toHSVBuffer(float* dest) const  {cmlGrayToHSV  (cmlcm, dest, color, 1);}
+void GrayColor::toHSLBuffer(float* dest) const  {cmlGrayToHSL  (cmlcm, dest, color, 1);}
+void GrayColor::toCMYKBuffer(float* dest) const {cmlGrayToCMYK (cmlcm, dest, color, 1);}
 
 
 

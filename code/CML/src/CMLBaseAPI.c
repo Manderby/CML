@@ -98,12 +98,12 @@ CML_API void CMLconvertHSLtoHSV (CMLVec3 hsv , const CMLVec3 hsl){
 }
 
 
-CML_API void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 xyz , const CMLFunction* specill, const CMLObserver* observer){
-  cmlInternalOneIlluminationSpectrumtoXYZ(xyz, specill, observer);
+CML_API void CMLconvertIlluminationSpectrumtoXYZ (CMLVec3 xyz , const CMLFunction* specIll, const CMLObserver* observer){
+  cmlInternalOneIlluminationSpectrumtoXYZ(xyz, specIll, observer);
 }
 
-CML_API void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 xyz, const CMLFunction* specrem, const CMLFunction* specill, const CMLObserver* observer){
-  cmlInternalOneRemissionSpectrumtoXYZ(xyz, specrem, specill, observer);
+CML_API void CMLconvertRemissionSpectrumtoXYZ (CMLVec3 xyz, const CMLFunction* specRem, const CMLFunction* specIll, const CMLObserver* observer){
+  cmlInternalOneRemissionSpectrumtoXYZ(xyz, specRem, specIll, observer);
 }
 
 

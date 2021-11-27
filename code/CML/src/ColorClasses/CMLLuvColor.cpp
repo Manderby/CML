@@ -189,34 +189,34 @@ void LuvColor::toNormedCartesianBuffer(float* output) const {
 }
 
 
-void LuvColor::fromGrayBuffer(const float* src) {CMLGraytoLuv (cmlcm, color, src, 1);}
-void LuvColor::fromXYZBuffer(const float* src)  {CMLXYZtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromYuvBuffer(const float* src)  {CMLYuvtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromYupvpBuffer(const float* src){CMLYupvptoLuv(cmlcm, color, src, 1);}
-void LuvColor::fromYxyBuffer(const float* src)  {CMLYxytoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromLabBuffer(const float* src)  {CMLLabtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromLchBuffer(const float* src)  {CMLLchtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromLuvBuffer(const float* src)  {CMLLuvtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromRGBBuffer(const float* src)  {CMLRGBtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromYCbCrBuffer(const float* src){CMLYCbCrtoLuv(cmlcm, color, src, 1);}
-void LuvColor::fromHSVBuffer(const float* src)  {CMLHSVtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromHSLBuffer(const float* src)  {CMLHSLtoLuv  (cmlcm, color, src, 1);}
-void LuvColor::fromCMYKBuffer(const float* src) {CMLCMYKtoLuv (cmlcm, color, src, 1);}
+void LuvColor::fromGrayBuffer(const float* src) {cmlGrayToLuv (cmlcm, color, src, 1);}
+void LuvColor::fromXYZBuffer(const float* src)  {cmlXYZToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromYuvBuffer(const float* src)  {cmlYuvToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromYupvpBuffer(const float* src){cmlYupvpToLuv(cmlcm, color, src, 1);}
+void LuvColor::fromYxyBuffer(const float* src)  {cmlYxyToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromLabBuffer(const float* src)  {cmlLabToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromLchBuffer(const float* src)  {cmlLchToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromLuvBuffer(const float* src)  {cmlLuvToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromRGBBuffer(const float* src)  {cmlRGBToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromYCbCrBuffer(const float* src){cmlYCbCrToLuv(cmlcm, color, src, 1);}
+void LuvColor::fromHSVBuffer(const float* src)  {cmlHSVToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromHSLBuffer(const float* src)  {cmlHSLToLuv  (cmlcm, color, src, 1);}
+void LuvColor::fromCMYKBuffer(const float* src) {cmlCMYKToLuv (cmlcm, color, src, 1);}
 
 
-void LuvColor::toGrayBuffer(float* dest) const {CMLLuvtoGray (cmlcm, dest, color, 1);}
-void LuvColor::toXYZBuffer(float* dest) const  {CMLLuvtoXYZ  (cmlcm, dest, color, 1);}
-void LuvColor::toYuvBuffer(float* dest) const  {CMLLuvtoYuv  (cmlcm, dest, color, 1);}
-void LuvColor::toYupvpBuffer(float* dest) const{CMLLuvtoYupvp(cmlcm, dest, color, 1);}
-void LuvColor::toYxyBuffer(float* dest) const  {CMLLuvtoYxy  (cmlcm, dest, color, 1);}
-void LuvColor::toLabBuffer(float* dest) const  {CMLLuvtoLab  (cmlcm, dest, color, 1);}
-void LuvColor::toLchBuffer(float* dest) const  {CMLLuvtoLch  (cmlcm, dest, color, 1);}
-void LuvColor::toLuvBuffer(float* dest) const  {CMLLuvtoLuv  (cmlcm, dest, color, 1);}
-void LuvColor::toRGBBuffer(float* dest) const  {CMLLuvtoRGB  (cmlcm, dest, color, 1);}
-void LuvColor::toYCbCrBuffer(float* dest) const{CMLLuvtoYCbCr(cmlcm, dest, color, 1);}
-void LuvColor::toHSVBuffer(float* dest) const  {CMLLuvtoHSV  (cmlcm, dest, color, 1);}
-void LuvColor::toHSLBuffer(float* dest) const  {CMLLuvtoHSL  (cmlcm, dest, color, 1);}
-void LuvColor::toCMYKBuffer(float* dest) const {CMLLuvtoCMYK (cmlcm, dest, color, 1);}
+void LuvColor::toGrayBuffer(float* dest) const {cmlLuvToGray (cmlcm, dest, color, 1);}
+void LuvColor::toXYZBuffer(float* dest) const  {cmlLuvToXYZ  (cmlcm, dest, color, 1);}
+void LuvColor::toYuvBuffer(float* dest) const  {cmlLuvToYuv  (cmlcm, dest, color, 1);}
+void LuvColor::toYupvpBuffer(float* dest) const{cmlLuvToYupvp(cmlcm, dest, color, 1);}
+void LuvColor::toYxyBuffer(float* dest) const  {cmlLuvToYxy  (cmlcm, dest, color, 1);}
+void LuvColor::toLabBuffer(float* dest) const  {cmlLuvToLab  (cmlcm, dest, color, 1);}
+void LuvColor::toLchBuffer(float* dest) const  {cmlLuvToLch  (cmlcm, dest, color, 1);}
+void LuvColor::toLuvBuffer(float* dest) const  {cmlLuvToLuv  (cmlcm, dest, color, 1);}
+void LuvColor::toRGBBuffer(float* dest) const  {cmlLuvToRGB  (cmlcm, dest, color, 1);}
+void LuvColor::toYCbCrBuffer(float* dest) const{cmlLuvToYCbCr(cmlcm, dest, color, 1);}
+void LuvColor::toHSVBuffer(float* dest) const  {cmlLuvToHSV  (cmlcm, dest, color, 1);}
+void LuvColor::toHSLBuffer(float* dest) const  {cmlLuvToHSL  (cmlcm, dest, color, 1);}
+void LuvColor::toCMYKBuffer(float* dest) const {cmlLuvToCMYK (cmlcm, dest, color, 1);}
 
 
 

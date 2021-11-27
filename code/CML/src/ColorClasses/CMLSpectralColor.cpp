@@ -254,93 +254,93 @@ void SpectralColor::fromCMYKBuffer(const float* src) {src = src;}
 
 void SpectralColor::toGrayBuffer(float* dest) const {
   if(bodycolor){
-    CMLSpectrumRemissiontoGray(cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToGray(cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoGray(cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToGray(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toXYZBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoXYZ (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToXYZ (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoXYZ (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToXYZ (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYuvBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoYuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYuv (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoYuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYuv (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYupvpBuffer(float* dest) const{
   if(bodycolor){
-    CMLSpectrumRemissiontoYupvp(cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYupvp(cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoYupvp(cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYupvp(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYxyBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoYxy (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYxy (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoYxy (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYxy (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLabBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoLab (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLab (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoLab (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLab (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLchBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoLch (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLch (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoLch (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLch (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLuvBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoLuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLuv (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoLuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLuv (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toRGBBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoRGB (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToRGB (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoRGB (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToRGB (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYCbCrBuffer(float* dest) const{
   if(bodycolor){
-    CMLSpectrumRemissiontoYCbCr(cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYCbCr(cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoYCbCr(cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYCbCr(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toHSVBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoHSV (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToHSV (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoHSV (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToHSV (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toHSLBuffer(float* dest) const  {
   if(bodycolor){
-    CMLSpectrumRemissiontoHSL (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToHSL (cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoHSL (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToHSL (cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toCMYKBuffer(float* dest) const {
   if(bodycolor){
-    CMLSpectrumRemissiontoCMYK(cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToCMYK(cmlcm, dest, spectrum, 1);
   }else{
-    CMLSpectrumIlluminationtoCMYK(cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToCMYK(cmlcm, dest, spectrum, 1);
   }
 }
 

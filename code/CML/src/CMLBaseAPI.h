@@ -140,7 +140,7 @@ CML_API void CMLconvertHSLtoHSV(  CMLVec3       hsv,
 // a colorimetric result, you need to divide the result by its Y component.
 CML_API void CMLconvertIlluminationSpectrumtoXYZ (
                            CMLVec3             xyz,
-                     const CMLFunction*        specill,
+                     const CMLFunction*        specIll,
                      const CMLObserver*        observer);
 
 // This method always returns a radiometric result. If you would like to have
@@ -148,8 +148,8 @@ CML_API void CMLconvertIlluminationSpectrumtoXYZ (
 // the white point defined by the illumination.
 CML_API void CMLconvertRemissionSpectrumtoXYZ (
                            CMLVec3             xyz,
-                     const CMLFunction*        specrem,
-                     const CMLFunction*        specill,
+                     const CMLFunction*        specRem,
+                     const CMLFunction*        specIll,
                      const CMLObserver*        observer);
 
 

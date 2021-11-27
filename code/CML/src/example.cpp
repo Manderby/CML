@@ -76,7 +76,7 @@ int main(){
   // Note that a new machine sets sRGB as the default RGB colorspace.
   // Now for example, converting RGB to XYZ is as simple as that:
   
-  CMLRGBtoXYZ(cm, xyz, orange, 1);
+  cmlRGBToXYZ(cm, xyz, orange, 1);
   printf("Orange in XYZ: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
   // Note that in CML, the destination parameter always comes before the source
@@ -85,7 +85,7 @@ int main(){
   // As another example, we convert the RGB orange into a HSV orange:
 
   CMLVec3 hsv;
-  CMLRGBtoHSV(cm, hsv, orange, 1);
+  cmlRGBToHSV(cm, hsv, orange, 1);
   printf("Orange in HSV: %f, %f, %f\n", hsv[0], hsv[1], hsv[2]);
       
   // Even conversions over multiple colorspaces are no more difficult than
@@ -94,7 +94,7 @@ int main(){
   // finally to Lch.
 
   CMLVec3 lch;
-  CMLHSVtoLch(cm, lch, hsv, 1);
+  cmlHSVToLch(cm, lch, hsv, 1);
   printf("Orange in Lch: %f, %f, %f\n", lch[0], lch[1], lch[2]);
 
   // Now, the default RGB colorspace of a newly created ColorMachine is sRGB.
@@ -106,7 +106,7 @@ int main(){
   // Now, when converting back the xyz value of our orange color to RGB, we
   // get different RGB values:
 
-  CMLXYZtoRGB(cm, orange, xyz, 1);
+  cmlXYZToRGB(cm, orange, xyz, 1);
   printf("Adobe 98 RGB:  %f, %f, %f\n", orange[0], orange[1], orange[2]);
 
   // You can also set many more states of the machine. For example, we will
@@ -142,7 +142,7 @@ int main(){
   // As we still have the orange stored in xyz, let's see what the RGB value
   // of that orange is in this strange RGB colorspace...
 
-  CMLXYZtoRGB(cm, orange, xyz, 1);
+  cmlXYZToRGB(cm, orange, xyz, 1);
   printf("Deformed orange is now in RGB: %f, %f, %f\n", orange[0], orange[1], orange[2]);
 
 
@@ -199,7 +199,7 @@ int main(){
   fflush(stdout);
   timer = CMLStartTimer();
   
-  CMLRGBtoLab(cm2, outvalues, randvalues, millioncolors*1000000);
+  cmlRGBToLab(cm2, outvalues, randvalues, millioncolors*1000000);
   
   printf("Done after %1.02f seconds\n", CMLTimerGetSeconds(timer));
   fflush(stdout);
@@ -217,7 +217,7 @@ int main(){
   fflush(stdout);
   timer = CMLStartTimer();
   
-  CMLRGBtoLab(cm2, outvalues, randvalues, millioncolors*1000000);
+  cmlRGBToLab(cm2, outvalues, randvalues, millioncolors*1000000);
   
   printf("Done after %1.02f seconds\n", CMLTimerGetSeconds(timer));
   fflush(stdout);
@@ -339,7 +339,7 @@ int main(){
   // conversion, the function will multiply with the current illumination
   // (which we just set to our illumination function).
   
-  CMLSpectrumRemissiontoXYZ(cm3, xyz, remissionfunction, 1);
+  cmlSpectrumRemissionToXYZ(cm3, xyz, remissionfunction, 1);
   printf("Colorimetric Remission in XYZ: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
   // Note that by default, a ColorMachine converts to colorimetric values.
@@ -355,7 +355,7 @@ int main(){
   // due to numerical errors.
   
 //  CMLsetRadiometricComputation(cm3, CML_TRUE);
-  CMLSpectrumRemissiontoXYZ(cm3, xyz, remissionfunction, 1);
+  cmlSpectrumRemissionToXYZ(cm3, xyz, remissionfunction, 1);
   printf("Radiometric Remission in XYZ: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
   // In case you wonder what happends if you have a bodycolor reflecting the
@@ -363,7 +363,7 @@ int main(){
 
   CMLVec3 yxy;
   CMLFunction* constfunction = CMLcreateConstFilter(1.f);
-  CMLSpectrumRemissiontoYxy(cm3, yxy, constfunction, 1);
+  cmlSpectrumRemissionToYxy(cm3, yxy, constfunction, 1);
   printf("Lambertian surface: %f, %f, %f\n", yxy[0], yxy[1], yxy[2]);
 
   // It should be the same as the whitepoint printed above.
@@ -455,7 +455,7 @@ int main(){
   // using a Colormachine:
   
   CMLColorMachine* cm4 = CMLcreateColorMachine();
-  CMLRGBtoXYZ(cm4, xyz, orange, 1);
+  cmlRGBToXYZ(cm4, xyz, orange, 1);
   printf("XYZ color: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
   
   

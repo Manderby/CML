@@ -76,7 +76,7 @@ typedef CMLuint8      CMLBool;
 #define CML_TRUE      1
 #define CML_FALSE     0
 #define CML_NULL      NULL
-
+#define CML_UNUSED(x) (void)x
 
 
 // ////////////////////////////////////////////

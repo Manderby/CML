@@ -189,34 +189,34 @@ void CMYKColor::toNormedCartesianBuffer(float* output) const {
 }
 
 
-void CMYKColor::fromGrayBuffer(const float* src) {CMLGraytoCMYK (cmlcm, color, src, 1);}
-void CMYKColor::fromXYZBuffer(const float* src)  {CMLXYZtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromYuvBuffer(const float* src)  {CMLYuvtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromYupvpBuffer(const float* src){CMLYupvptoCMYK(cmlcm, color, src, 1);}
-void CMYKColor::fromYxyBuffer(const float* src)  {CMLYxytoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromLabBuffer(const float* src)  {CMLLabtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromLchBuffer(const float* src)  {CMLLchtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromLuvBuffer(const float* src)  {CMLLuvtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromRGBBuffer(const float* src)  {CMLRGBtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromYCbCrBuffer(const float* src){CMLYCbCrtoCMYK(cmlcm, color, src, 1);}
-void CMYKColor::fromHSVBuffer(const float* src)  {CMLHSVtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromHSLBuffer(const float* src)  {CMLHSLtoCMYK  (cmlcm, color, src, 1);}
-void CMYKColor::fromCMYKBuffer(const float* src) {CMLCMYKtoCMYK (cmlcm, color, src, 1);}
+void CMYKColor::fromGrayBuffer(const float* src) {cmlGrayToCMYK (cmlcm, color, src, 1);}
+void CMYKColor::fromXYZBuffer(const float* src)  {cmlXYZToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromYuvBuffer(const float* src)  {cmlYuvToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromYupvpBuffer(const float* src){cmlYupvpToCMYK(cmlcm, color, src, 1);}
+void CMYKColor::fromYxyBuffer(const float* src)  {cmlYxyToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromLabBuffer(const float* src)  {cmlLabToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromLchBuffer(const float* src)  {cmlLchToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromLuvBuffer(const float* src)  {cmlLuvToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromRGBBuffer(const float* src)  {cmlRGBToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromYCbCrBuffer(const float* src){cmlYCbCrToCMYK(cmlcm, color, src, 1);}
+void CMYKColor::fromHSVBuffer(const float* src)  {cmlHSVToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromHSLBuffer(const float* src)  {cmlHSLToCMYK  (cmlcm, color, src, 1);}
+void CMYKColor::fromCMYKBuffer(const float* src) {cmlCMYKToCMYK (cmlcm, color, src, 1);}
 
 
-void CMYKColor::toGrayBuffer(float* dest) const {CMLCMYKtoGray (cmlcm, dest, color, 1);}
-void CMYKColor::toXYZBuffer(float* dest) const  {CMLCMYKtoXYZ  (cmlcm, dest, color, 1);}
-void CMYKColor::toYuvBuffer(float* dest) const  {CMLCMYKtoYuv  (cmlcm, dest, color, 1);}
-void CMYKColor::toYupvpBuffer(float* dest) const{CMLCMYKtoYupvp(cmlcm, dest, color, 1);}
-void CMYKColor::toYxyBuffer(float* dest) const  {CMLCMYKtoYxy  (cmlcm, dest, color, 1);}
-void CMYKColor::toLabBuffer(float* dest) const  {CMLCMYKtoLab  (cmlcm, dest, color, 1);}
-void CMYKColor::toLchBuffer(float* dest) const  {CMLCMYKtoLch  (cmlcm, dest, color, 1);}
-void CMYKColor::toLuvBuffer(float* dest) const  {CMLCMYKtoLuv  (cmlcm, dest, color, 1);}
-void CMYKColor::toRGBBuffer(float* dest) const  {CMLCMYKtoRGB  (cmlcm, dest, color, 1);}
-void CMYKColor::toYCbCrBuffer(float* dest) const{CMLCMYKtoYCbCr(cmlcm, dest, color, 1);}
-void CMYKColor::toHSVBuffer(float* dest) const  {CMLCMYKtoHSV  (cmlcm, dest, color, 1);}
-void CMYKColor::toHSLBuffer(float* dest) const  {CMLCMYKtoHSL  (cmlcm, dest, color, 1);}
-void CMYKColor::toCMYKBuffer(float* dest) const {CMLCMYKtoCMYK (cmlcm, dest, color, 1);}
+void CMYKColor::toGrayBuffer(float* dest) const {cmlCMYKToGray (cmlcm, dest, color, 1);}
+void CMYKColor::toXYZBuffer(float* dest) const  {cmlCMYKToXYZ  (cmlcm, dest, color, 1);}
+void CMYKColor::toYuvBuffer(float* dest) const  {cmlCMYKToYuv  (cmlcm, dest, color, 1);}
+void CMYKColor::toYupvpBuffer(float* dest) const{cmlCMYKToYupvp(cmlcm, dest, color, 1);}
+void CMYKColor::toYxyBuffer(float* dest) const  {cmlCMYKToYxy  (cmlcm, dest, color, 1);}
+void CMYKColor::toLabBuffer(float* dest) const  {cmlCMYKToLab  (cmlcm, dest, color, 1);}
+void CMYKColor::toLchBuffer(float* dest) const  {cmlCMYKToLch  (cmlcm, dest, color, 1);}
+void CMYKColor::toLuvBuffer(float* dest) const  {cmlCMYKToLuv  (cmlcm, dest, color, 1);}
+void CMYKColor::toRGBBuffer(float* dest) const  {cmlCMYKToRGB  (cmlcm, dest, color, 1);}
+void CMYKColor::toYCbCrBuffer(float* dest) const{cmlCMYKToYCbCr(cmlcm, dest, color, 1);}
+void CMYKColor::toHSVBuffer(float* dest) const  {cmlCMYKToHSV  (cmlcm, dest, color, 1);}
+void CMYKColor::toHSLBuffer(float* dest) const  {cmlCMYKToHSL  (cmlcm, dest, color, 1);}
+void CMYKColor::toCMYKBuffer(float* dest) const {cmlCMYKToCMYK (cmlcm, dest, color, 1);}
 
 
 

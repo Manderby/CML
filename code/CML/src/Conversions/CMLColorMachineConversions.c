@@ -8,257 +8,257 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   switch(inputSystem){
   case CML_COLOR_GRAY:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLGraytoGray;
-      case CML_COLOR_XYZ:   return &CMLGraytoXYZ;
-      case CML_COLOR_Yxy:   return &CMLGraytoYxy;
-      case CML_COLOR_Yuv:   return &CMLGraytoYuv;
-      case CML_COLOR_Yupvp: return &CMLGraytoYupvp;
-      case CML_COLOR_Lab:   return &CMLGraytoLab;
-      case CML_COLOR_Lch:   return &CMLGraytoLch;
-      case CML_COLOR_Luv:   return &CMLGraytoLuv;
-      case CML_COLOR_RGB:   return &CMLGraytoRGB;
-      case CML_COLOR_YCbCr: return &CMLGraytoYCbCr;
-      case CML_COLOR_HSV:   return &CMLGraytoHSV;
-      case CML_COLOR_HSL:   return &CMLGraytoHSL;
-      case CML_COLOR_CMYK:  return &CMLGraytoCMYK;
+      case CML_COLOR_GRAY:  return &cmlGrayToGray;
+      case CML_COLOR_XYZ:   return &cmlGrayToXYZ;
+      case CML_COLOR_Yxy:   return &cmlGrayToYxy;
+      case CML_COLOR_Yuv:   return &cmlGrayToYuv;
+      case CML_COLOR_Yupvp: return &cmlGrayToYupvp;
+      case CML_COLOR_Lab:   return &cmlGrayToLab;
+      case CML_COLOR_Lch:   return &cmlGrayToLch;
+      case CML_COLOR_Luv:   return &cmlGrayToLuv;
+      case CML_COLOR_RGB:   return &cmlGrayToRGB;
+      case CML_COLOR_YCbCr: return &cmlGrayToYCbCr;
+      case CML_COLOR_HSV:   return &cmlGrayToHSV;
+      case CML_COLOR_HSL:   return &cmlGrayToHSL;
+      case CML_COLOR_CMYK:  return &cmlGrayToCMYK;
       default: break;
     }
   case CML_COLOR_XYZ:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLXYZtoGray;
-      case CML_COLOR_XYZ:   return &CMLXYZtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLXYZtoYxy;
-      case CML_COLOR_Yuv:   return &CMLXYZtoYuv;
-      case CML_COLOR_Yupvp: return &CMLXYZtoYupvp;
-      case CML_COLOR_Lab:   return &CMLXYZtoLab;
-      case CML_COLOR_Lch:   return &CMLXYZtoLch;
-      case CML_COLOR_Luv:   return &CMLXYZtoLuv;
-      case CML_COLOR_RGB:   return &CMLXYZtoRGB;
-      case CML_COLOR_YCbCr: return &CMLXYZtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLXYZtoHSV;
-      case CML_COLOR_HSL:   return &CMLXYZtoHSL;
-      case CML_COLOR_CMYK:  return &CMLXYZtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlXYZToGray;
+      case CML_COLOR_XYZ:   return &cmlXYZToXYZ;
+      case CML_COLOR_Yxy:   return &cmlXYZToYxy;
+      case CML_COLOR_Yuv:   return &cmlXYZToYuv;
+      case CML_COLOR_Yupvp: return &cmlXYZToYupvp;
+      case CML_COLOR_Lab:   return &cmlXYZToLab;
+      case CML_COLOR_Lch:   return &cmlXYZToLch;
+      case CML_COLOR_Luv:   return &cmlXYZToLuv;
+      case CML_COLOR_RGB:   return &cmlXYZToRGB;
+      case CML_COLOR_YCbCr: return &cmlXYZToYCbCr;
+      case CML_COLOR_HSV:   return &cmlXYZToHSV;
+      case CML_COLOR_HSL:   return &cmlXYZToHSL;
+      case CML_COLOR_CMYK:  return &cmlXYZToCMYK;
       default: break;
     }
   case CML_COLOR_Yxy:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLYxytoGray;
-      case CML_COLOR_XYZ:   return &CMLYxytoXYZ;
-      case CML_COLOR_Yxy:   return &CMLYxytoYxy;
-      case CML_COLOR_Yuv:   return &CMLYxytoYuv;
-      case CML_COLOR_Yupvp: return &CMLYxytoYupvp;
-      case CML_COLOR_Lab:   return &CMLYxytoLab;
-      case CML_COLOR_Lch:   return &CMLYxytoLch;
-      case CML_COLOR_Luv:   return &CMLYxytoLuv;
-      case CML_COLOR_RGB:   return &CMLYxytoRGB;
-      case CML_COLOR_YCbCr: return &CMLYxytoYCbCr;
-      case CML_COLOR_HSV:   return &CMLYxytoHSV;
-      case CML_COLOR_HSL:   return &CMLYxytoHSL;
-      case CML_COLOR_CMYK:  return &CMLYxytoCMYK;
+      case CML_COLOR_GRAY:  return &cmlYxyToGray;
+      case CML_COLOR_XYZ:   return &cmlYxyToXYZ;
+      case CML_COLOR_Yxy:   return &cmlYxyToYxy;
+      case CML_COLOR_Yuv:   return &cmlYxyToYuv;
+      case CML_COLOR_Yupvp: return &cmlYxyToYupvp;
+      case CML_COLOR_Lab:   return &cmlYxyToLab;
+      case CML_COLOR_Lch:   return &cmlYxyToLch;
+      case CML_COLOR_Luv:   return &cmlYxyToLuv;
+      case CML_COLOR_RGB:   return &cmlYxyToRGB;
+      case CML_COLOR_YCbCr: return &cmlYxyToYCbCr;
+      case CML_COLOR_HSV:   return &cmlYxyToHSV;
+      case CML_COLOR_HSL:   return &cmlYxyToHSL;
+      case CML_COLOR_CMYK:  return &cmlYxyToCMYK;
       default: break;
     }
   case CML_COLOR_Yuv:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLYuvtoGray;
-      case CML_COLOR_XYZ:   return &CMLYuvtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLYuvtoYxy;
-      case CML_COLOR_Yuv:   return &CMLYuvtoYuv;
-      case CML_COLOR_Yupvp: return &CMLYuvtoYupvp;
-      case CML_COLOR_Lab:   return &CMLYuvtoLab;
-      case CML_COLOR_Lch:   return &CMLYuvtoLch;
-      case CML_COLOR_Luv:   return &CMLYuvtoLuv;
-      case CML_COLOR_RGB:   return &CMLYuvtoRGB;
-      case CML_COLOR_YCbCr: return &CMLYuvtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLYuvtoHSV;
-      case CML_COLOR_HSL:   return &CMLYuvtoHSL;
-      case CML_COLOR_CMYK:  return &CMLYuvtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlYuvToGray;
+      case CML_COLOR_XYZ:   return &cmlYuvToXYZ;
+      case CML_COLOR_Yxy:   return &cmlYuvToYxy;
+      case CML_COLOR_Yuv:   return &cmlYuvToYuv;
+      case CML_COLOR_Yupvp: return &cmlYuvToYupvp;
+      case CML_COLOR_Lab:   return &cmlYuvToLab;
+      case CML_COLOR_Lch:   return &cmlYuvToLch;
+      case CML_COLOR_Luv:   return &cmlYuvToLuv;
+      case CML_COLOR_RGB:   return &cmlYuvToRGB;
+      case CML_COLOR_YCbCr: return &cmlYuvToYCbCr;
+      case CML_COLOR_HSV:   return &cmlYuvToHSV;
+      case CML_COLOR_HSL:   return &cmlYuvToHSL;
+      case CML_COLOR_CMYK:  return &cmlYuvToCMYK;
       default: break;
     }
   case CML_COLOR_Yupvp:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLYupvptoGray;
-      case CML_COLOR_XYZ:   return &CMLYupvptoXYZ;
-      case CML_COLOR_Yxy:   return &CMLYupvptoYxy;
-      case CML_COLOR_Yuv:   return &CMLYupvptoYuv;
-      case CML_COLOR_Yupvp: return &CMLYupvptoYupvp;
-      case CML_COLOR_Lab:   return &CMLYupvptoLab;
-      case CML_COLOR_Lch:   return &CMLYupvptoLch;
-      case CML_COLOR_Luv:   return &CMLYupvptoLuv;
-      case CML_COLOR_RGB:   return &CMLYupvptoRGB;
-      case CML_COLOR_YCbCr: return &CMLYupvptoYCbCr;
-      case CML_COLOR_HSV:   return &CMLYupvptoHSV;
-      case CML_COLOR_HSL:   return &CMLYupvptoHSL;
-      case CML_COLOR_CMYK:  return &CMLYupvptoCMYK;
+      case CML_COLOR_GRAY:  return &cmlYupvpToGray;
+      case CML_COLOR_XYZ:   return &cmlYupvpToXYZ;
+      case CML_COLOR_Yxy:   return &cmlYupvpToYxy;
+      case CML_COLOR_Yuv:   return &cmlYupvpToYuv;
+      case CML_COLOR_Yupvp: return &cmlYupvpToYupvp;
+      case CML_COLOR_Lab:   return &cmlYupvpToLab;
+      case CML_COLOR_Lch:   return &cmlYupvpToLch;
+      case CML_COLOR_Luv:   return &cmlYupvpToLuv;
+      case CML_COLOR_RGB:   return &cmlYupvpToRGB;
+      case CML_COLOR_YCbCr: return &cmlYupvpToYCbCr;
+      case CML_COLOR_HSV:   return &cmlYupvpToHSV;
+      case CML_COLOR_HSL:   return &cmlYupvpToHSL;
+      case CML_COLOR_CMYK:  return &cmlYupvpToCMYK;
       default: break;
     }
   case CML_COLOR_Lab:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLLabtoGray;
-      case CML_COLOR_XYZ:   return &CMLLabtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLLabtoYxy;
-      case CML_COLOR_Yuv:   return &CMLLabtoYuv;
-      case CML_COLOR_Yupvp: return &CMLLabtoYupvp;
-      case CML_COLOR_Lab:   return &CMLLabtoLab;
-      case CML_COLOR_Lch:   return &CMLLabtoLch;
-      case CML_COLOR_Luv:   return &CMLLabtoLuv;
-      case CML_COLOR_RGB:   return &CMLLabtoRGB;
-      case CML_COLOR_YCbCr: return &CMLLabtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLLabtoHSV;
-      case CML_COLOR_HSL:   return &CMLLabtoHSL;
-      case CML_COLOR_CMYK:  return &CMLLabtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlLabToGray;
+      case CML_COLOR_XYZ:   return &cmlLabToXYZ;
+      case CML_COLOR_Yxy:   return &cmlLabToYxy;
+      case CML_COLOR_Yuv:   return &cmlLabToYuv;
+      case CML_COLOR_Yupvp: return &cmlLabToYupvp;
+      case CML_COLOR_Lab:   return &cmlLabToLab;
+      case CML_COLOR_Lch:   return &cmlLabToLch;
+      case CML_COLOR_Luv:   return &cmlLabToLuv;
+      case CML_COLOR_RGB:   return &cmlLabToRGB;
+      case CML_COLOR_YCbCr: return &cmlLabToYCbCr;
+      case CML_COLOR_HSV:   return &cmlLabToHSV;
+      case CML_COLOR_HSL:   return &cmlLabToHSL;
+      case CML_COLOR_CMYK:  return &cmlLabToCMYK;
       default: break;
     }
   case CML_COLOR_Lch:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLLchtoGray;
-      case CML_COLOR_XYZ:   return &CMLLchtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLLchtoYxy;
-      case CML_COLOR_Yuv:   return &CMLLchtoYuv;
-      case CML_COLOR_Yupvp: return &CMLLchtoYupvp;
-      case CML_COLOR_Lab:   return &CMLLchtoLab;
-      case CML_COLOR_Lch:   return &CMLLchtoLch;
-      case CML_COLOR_Luv:   return &CMLLchtoLuv;
-      case CML_COLOR_RGB:   return &CMLLchtoRGB;
-      case CML_COLOR_YCbCr: return &CMLLchtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLLchtoHSV;
-      case CML_COLOR_HSL:   return &CMLLchtoHSL;
-      case CML_COLOR_CMYK:  return &CMLLchtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlLchToGray;
+      case CML_COLOR_XYZ:   return &cmlLchToXYZ;
+      case CML_COLOR_Yxy:   return &cmlLchToYxy;
+      case CML_COLOR_Yuv:   return &cmlLchToYuv;
+      case CML_COLOR_Yupvp: return &cmlLchToYupvp;
+      case CML_COLOR_Lab:   return &cmlLchToLab;
+      case CML_COLOR_Lch:   return &cmlLchToLch;
+      case CML_COLOR_Luv:   return &cmlLchToLuv;
+      case CML_COLOR_RGB:   return &cmlLchToRGB;
+      case CML_COLOR_YCbCr: return &cmlLchToYCbCr;
+      case CML_COLOR_HSV:   return &cmlLchToHSV;
+      case CML_COLOR_HSL:   return &cmlLchToHSL;
+      case CML_COLOR_CMYK:  return &cmlLchToCMYK;
       default: break;
     }
   case CML_COLOR_Luv:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLLuvtoGray;
-      case CML_COLOR_XYZ:   return &CMLLuvtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLLuvtoYxy;
-      case CML_COLOR_Yuv:   return &CMLLuvtoYuv;
-      case CML_COLOR_Yupvp: return &CMLLuvtoYupvp;
-      case CML_COLOR_Lab:   return &CMLLuvtoLab;
-      case CML_COLOR_Lch:   return &CMLLuvtoLch;
-      case CML_COLOR_Luv:   return &CMLLuvtoLuv;
-      case CML_COLOR_RGB:   return &CMLLuvtoRGB;
-      case CML_COLOR_YCbCr: return &CMLLuvtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLLuvtoHSV;
-      case CML_COLOR_HSL:   return &CMLLuvtoHSL;
-      case CML_COLOR_CMYK:  return &CMLLuvtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlLuvToGray;
+      case CML_COLOR_XYZ:   return &cmlLuvToXYZ;
+      case CML_COLOR_Yxy:   return &cmlLuvToYxy;
+      case CML_COLOR_Yuv:   return &cmlLuvToYuv;
+      case CML_COLOR_Yupvp: return &cmlLuvToYupvp;
+      case CML_COLOR_Lab:   return &cmlLuvToLab;
+      case CML_COLOR_Lch:   return &cmlLuvToLch;
+      case CML_COLOR_Luv:   return &cmlLuvToLuv;
+      case CML_COLOR_RGB:   return &cmlLuvToRGB;
+      case CML_COLOR_YCbCr: return &cmlLuvToYCbCr;
+      case CML_COLOR_HSV:   return &cmlLuvToHSV;
+      case CML_COLOR_HSL:   return &cmlLuvToHSL;
+      case CML_COLOR_CMYK:  return &cmlLuvToCMYK;
       default: break;
     }
   case CML_COLOR_RGB:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLRGBtoGray;
-      case CML_COLOR_XYZ:   return &CMLRGBtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLRGBtoYxy;
-      case CML_COLOR_Yuv:   return &CMLRGBtoYuv;
-      case CML_COLOR_Yupvp: return &CMLRGBtoYupvp;
-      case CML_COLOR_Lab:   return &CMLRGBtoLab;
-      case CML_COLOR_Lch:   return &CMLRGBtoLch;
-      case CML_COLOR_Luv:   return &CMLRGBtoLuv;
-      case CML_COLOR_RGB:   return &CMLRGBtoRGB;
-      case CML_COLOR_YCbCr: return &CMLRGBtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLRGBtoHSV;
-      case CML_COLOR_HSL:   return &CMLRGBtoHSL;
-      case CML_COLOR_CMYK:  return &CMLRGBtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlRGBToGray;
+      case CML_COLOR_XYZ:   return &cmlRGBToXYZ;
+      case CML_COLOR_Yxy:   return &cmlRGBToYxy;
+      case CML_COLOR_Yuv:   return &cmlRGBToYuv;
+      case CML_COLOR_Yupvp: return &cmlRGBToYupvp;
+      case CML_COLOR_Lab:   return &cmlRGBToLab;
+      case CML_COLOR_Lch:   return &cmlRGBToLch;
+      case CML_COLOR_Luv:   return &cmlRGBToLuv;
+      case CML_COLOR_RGB:   return &cmlRGBToRGB;
+      case CML_COLOR_YCbCr: return &cmlRGBToYCbCr;
+      case CML_COLOR_HSV:   return &cmlRGBToHSV;
+      case CML_COLOR_HSL:   return &cmlRGBToHSL;
+      case CML_COLOR_CMYK:  return &cmlRGBToCMYK;
       default: break;
     }
   case CML_COLOR_YCbCr:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLYCbCrtoGray;
-      case CML_COLOR_XYZ:   return &CMLYCbCrtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLYCbCrtoYxy;
-      case CML_COLOR_Yuv:   return &CMLYCbCrtoYuv;
-      case CML_COLOR_Yupvp: return &CMLYCbCrtoYupvp;
-      case CML_COLOR_Lab:   return &CMLYCbCrtoLab;
-      case CML_COLOR_Lch:   return &CMLYCbCrtoLch;
-      case CML_COLOR_Luv:   return &CMLYCbCrtoLuv;
-      case CML_COLOR_RGB:   return &CMLYCbCrtoRGB;
-      case CML_COLOR_YCbCr: return &CMLYCbCrtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLYCbCrtoHSV;
-      case CML_COLOR_HSL:   return &CMLYCbCrtoHSL;
-      case CML_COLOR_CMYK:  return &CMLYCbCrtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlYCbCrToGray;
+      case CML_COLOR_XYZ:   return &cmlYCbCrToXYZ;
+      case CML_COLOR_Yxy:   return &cmlYCbCrToYxy;
+      case CML_COLOR_Yuv:   return &cmlYCbCrToYuv;
+      case CML_COLOR_Yupvp: return &cmlYCbCrToYupvp;
+      case CML_COLOR_Lab:   return &cmlYCbCrToLab;
+      case CML_COLOR_Lch:   return &cmlYCbCrToLch;
+      case CML_COLOR_Luv:   return &cmlYCbCrToLuv;
+      case CML_COLOR_RGB:   return &cmlYCbCrToRGB;
+      case CML_COLOR_YCbCr: return &cmlYCbCrToYCbCr;
+      case CML_COLOR_HSV:   return &cmlYCbCrToHSV;
+      case CML_COLOR_HSL:   return &cmlYCbCrToHSL;
+      case CML_COLOR_CMYK:  return &cmlYCbCrToCMYK;
       default: break;
     }
   case CML_COLOR_HSV:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLHSVtoGray;
-      case CML_COLOR_XYZ:   return &CMLHSVtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLHSVtoYxy;
-      case CML_COLOR_Yuv:   return &CMLHSVtoYuv;
-      case CML_COLOR_Yupvp: return &CMLHSVtoYupvp;
-      case CML_COLOR_Lab:   return &CMLHSVtoLab;
-      case CML_COLOR_Lch:   return &CMLHSVtoLch;
-      case CML_COLOR_Luv:   return &CMLHSVtoLuv;
-      case CML_COLOR_RGB:   return &CMLHSVtoRGB;
-      case CML_COLOR_YCbCr: return &CMLHSVtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLHSVtoHSV;
-      case CML_COLOR_HSL:   return &CMLHSVtoHSL;
-      case CML_COLOR_CMYK:  return &CMLHSVtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlHSVToGray;
+      case CML_COLOR_XYZ:   return &cmlHSVToXYZ;
+      case CML_COLOR_Yxy:   return &cmlHSVToYxy;
+      case CML_COLOR_Yuv:   return &cmlHSVToYuv;
+      case CML_COLOR_Yupvp: return &cmlHSVToYupvp;
+      case CML_COLOR_Lab:   return &cmlHSVToLab;
+      case CML_COLOR_Lch:   return &cmlHSVToLch;
+      case CML_COLOR_Luv:   return &cmlHSVToLuv;
+      case CML_COLOR_RGB:   return &cmlHSVToRGB;
+      case CML_COLOR_YCbCr: return &cmlHSVToYCbCr;
+      case CML_COLOR_HSV:   return &cmlHSVToHSV;
+      case CML_COLOR_HSL:   return &cmlHSVToHSL;
+      case CML_COLOR_CMYK:  return &cmlHSVToCMYK;
       default: break;
     }
   case CML_COLOR_HSL:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLHSLtoGray;
-      case CML_COLOR_XYZ:   return &CMLHSLtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLHSLtoYxy;
-      case CML_COLOR_Yuv:   return &CMLHSLtoYuv;
-      case CML_COLOR_Yupvp: return &CMLHSLtoYupvp;
-      case CML_COLOR_Lab:   return &CMLHSLtoLab;
-      case CML_COLOR_Lch:   return &CMLHSLtoLch;
-      case CML_COLOR_Luv:   return &CMLHSLtoLuv;
-      case CML_COLOR_RGB:   return &CMLHSLtoRGB;
-      case CML_COLOR_YCbCr: return &CMLHSLtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLHSLtoHSV;
-      case CML_COLOR_HSL:   return &CMLHSLtoHSL;
-      case CML_COLOR_CMYK:  return &CMLHSLtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlHSLToGray;
+      case CML_COLOR_XYZ:   return &cmlHSLToXYZ;
+      case CML_COLOR_Yxy:   return &cmlHSLToYxy;
+      case CML_COLOR_Yuv:   return &cmlHSLToYuv;
+      case CML_COLOR_Yupvp: return &cmlHSLToYupvp;
+      case CML_COLOR_Lab:   return &cmlHSLToLab;
+      case CML_COLOR_Lch:   return &cmlHSLToLch;
+      case CML_COLOR_Luv:   return &cmlHSLToLuv;
+      case CML_COLOR_RGB:   return &cmlHSLToRGB;
+      case CML_COLOR_YCbCr: return &cmlHSLToYCbCr;
+      case CML_COLOR_HSV:   return &cmlHSLToHSV;
+      case CML_COLOR_HSL:   return &cmlHSLToHSL;
+      case CML_COLOR_CMYK:  return &cmlHSLToCMYK;
       default: break;
     }
   case CML_COLOR_CMYK:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLCMYKtoGray;
-      case CML_COLOR_XYZ:   return &CMLCMYKtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLCMYKtoYxy;
-      case CML_COLOR_Yuv:   return &CMLCMYKtoYuv;
-      case CML_COLOR_Yupvp: return &CMLCMYKtoYupvp;
-      case CML_COLOR_Lab:   return &CMLCMYKtoLab;
-      case CML_COLOR_Lch:   return &CMLCMYKtoLch;
-      case CML_COLOR_Luv:   return &CMLCMYKtoLuv;
-      case CML_COLOR_RGB:   return &CMLCMYKtoRGB;
-      case CML_COLOR_YCbCr: return &CMLCMYKtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLCMYKtoHSV;
-      case CML_COLOR_HSL:   return &CMLCMYKtoHSL;
-      case CML_COLOR_CMYK:  return &CMLCMYKtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlCMYKToGray;
+      case CML_COLOR_XYZ:   return &cmlCMYKToXYZ;
+      case CML_COLOR_Yxy:   return &cmlCMYKToYxy;
+      case CML_COLOR_Yuv:   return &cmlCMYKToYuv;
+      case CML_COLOR_Yupvp: return &cmlCMYKToYupvp;
+      case CML_COLOR_Lab:   return &cmlCMYKToLab;
+      case CML_COLOR_Lch:   return &cmlCMYKToLch;
+      case CML_COLOR_Luv:   return &cmlCMYKToLuv;
+      case CML_COLOR_RGB:   return &cmlCMYKToRGB;
+      case CML_COLOR_YCbCr: return &cmlCMYKToYCbCr;
+      case CML_COLOR_HSV:   return &cmlCMYKToHSV;
+      case CML_COLOR_HSL:   return &cmlCMYKToHSL;
+      case CML_COLOR_CMYK:  return &cmlCMYKToCMYK;
       default: break;
     }
   case CML_COLOR_SPECTRUM_ILLUMINATION:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLSpectrumIlluminationtoGray;
-      case CML_COLOR_XYZ:   return &CMLSpectrumIlluminationtoXYZ;
-      case CML_COLOR_Yxy:   return &CMLSpectrumIlluminationtoYxy;
-      case CML_COLOR_Yuv:   return &CMLSpectrumIlluminationtoYuv;
-      case CML_COLOR_Yupvp: return &CMLSpectrumIlluminationtoYupvp;
-      case CML_COLOR_Lab:   return &CMLSpectrumIlluminationtoLab;
-      case CML_COLOR_Lch:   return &CMLSpectrumIlluminationtoLch;
-      case CML_COLOR_Luv:   return &CMLSpectrumIlluminationtoLuv;
-      case CML_COLOR_RGB:   return &CMLSpectrumIlluminationtoRGB;
-      case CML_COLOR_YCbCr: return &CMLSpectrumIlluminationtoYCbCr;
-      case CML_COLOR_HSV:   return &CMLSpectrumIlluminationtoHSV;
-      case CML_COLOR_HSL:   return &CMLSpectrumIlluminationtoHSL;
-      case CML_COLOR_CMYK:  return &CMLSpectrumIlluminationtoCMYK;
+      case CML_COLOR_GRAY:  return &cmlSpectrumIlluminationToGray;
+      case CML_COLOR_XYZ:   return &cmlSpectrumIlluminationToXYZ;
+      case CML_COLOR_Yxy:   return &cmlSpectrumIlluminationToYxy;
+      case CML_COLOR_Yuv:   return &cmlSpectrumIlluminationToYuv;
+      case CML_COLOR_Yupvp: return &cmlSpectrumIlluminationToYupvp;
+      case CML_COLOR_Lab:   return &cmlSpectrumIlluminationToLab;
+      case CML_COLOR_Lch:   return &cmlSpectrumIlluminationToLch;
+      case CML_COLOR_Luv:   return &cmlSpectrumIlluminationToLuv;
+      case CML_COLOR_RGB:   return &cmlSpectrumIlluminationToRGB;
+      case CML_COLOR_YCbCr: return &cmlSpectrumIlluminationToYCbCr;
+      case CML_COLOR_HSV:   return &cmlSpectrumIlluminationToHSV;
+      case CML_COLOR_HSL:   return &cmlSpectrumIlluminationToHSL;
+      case CML_COLOR_CMYK:  return &cmlSpectrumIlluminationToCMYK;
       default: break;
     }
   case CML_COLOR_SPECTRUM_REMISSION:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &CMLSpectrumRemissiontoGray;
-      case CML_COLOR_XYZ:   return &CMLSpectrumRemissiontoXYZ;
-      case CML_COLOR_Yxy:   return &CMLSpectrumRemissiontoYxy;
-      case CML_COLOR_Yuv:   return &CMLSpectrumRemissiontoYuv;
-      case CML_COLOR_Yupvp: return &CMLSpectrumRemissiontoYupvp;
-      case CML_COLOR_Lab:   return &CMLSpectrumRemissiontoLab;
-      case CML_COLOR_Lch:   return &CMLSpectrumRemissiontoLch;
-      case CML_COLOR_Luv:   return &CMLSpectrumRemissiontoLuv;
-      case CML_COLOR_RGB:   return &CMLSpectrumRemissiontoRGB;
-      case CML_COLOR_YCbCr: return &CMLSpectrumRemissiontoYCbCr;
-      case CML_COLOR_HSV:   return &CMLSpectrumRemissiontoHSV;
-      case CML_COLOR_HSL:   return &CMLSpectrumRemissiontoHSL;
-      case CML_COLOR_CMYK:  return &CMLSpectrumRemissiontoCMYK;
+      case CML_COLOR_GRAY:  return &cmlSpectrumRemissionToGray;
+      case CML_COLOR_XYZ:   return &cmlSpectrumRemissionToXYZ;
+      case CML_COLOR_Yxy:   return &cmlSpectrumRemissionToYxy;
+      case CML_COLOR_Yuv:   return &cmlSpectrumRemissionToYuv;
+      case CML_COLOR_Yupvp: return &cmlSpectrumRemissionToYupvp;
+      case CML_COLOR_Lab:   return &cmlSpectrumRemissionToLab;
+      case CML_COLOR_Lch:   return &cmlSpectrumRemissionToLch;
+      case CML_COLOR_Luv:   return &cmlSpectrumRemissionToLuv;
+      case CML_COLOR_RGB:   return &cmlSpectrumRemissionToRGB;
+      case CML_COLOR_YCbCr: return &cmlSpectrumRemissionToYCbCr;
+      case CML_COLOR_HSV:   return &cmlSpectrumRemissionToHSV;
+      case CML_COLOR_HSL:   return &cmlSpectrumRemissionToHSL;
+      case CML_COLOR_CMYK:  return &cmlSpectrumRemissionToCMYK;
       default: break;
     }
   default:

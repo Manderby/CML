@@ -52,7 +52,7 @@
 // - ... which are the same
 //
 // After this macro, in and out are defined as float-arrays.
-// The samebuffer variable depicts if out is the same as in.
+// The sameBuffer variable depicts if out is the same as in.
 
 #ifndef NDEBUG
   #define CML_CONVERTER_INOUT_PARAMETER(outsymbol, insymbol, outchannels, inchannels) \
@@ -61,12 +61,12 @@
     }\
     float* out;\
     const float* in = insymbol;\
-    CMLuint32 floatalign;\
-    register CMLBool samebuffer;\
+    CMLuint32 floatAlign;\
+    register CMLBool sameBuffer;\
     if(!outsymbol){\
       out = (float*)cmlAllocate(count * outchannels * sizeof(float));\
-      samebuffer = CML_FALSE;\
-      floatalign = outchannels;\
+      sameBuffer = CML_FALSE;\
+      floatAlign = outchannels;\
     }else if(insymbol == outsymbol){\
       if(outchannels > inchannels){\
         cmlError("Output colorspace has too many dimensions to store in buffer. Expecting the input values to be aligned.");\
@@ -75,31 +75,31 @@
         cmlError("Output colorspace has fewer dimensions than usable in the buffer. Writing the output values aligned.");\
       }\
       out = outsymbol;\
-      samebuffer = CML_TRUE;\
-      floatalign = CML_MAX(outchannels,inchannels);\
+      sameBuffer = CML_TRUE;\
+      floatAlign = CML_MAX(outchannels,inchannels);\
     }else{\
       out = outsymbol;\
-      samebuffer = CML_FALSE;\
-      floatalign = outchannels;\
+      sameBuffer = CML_FALSE;\
+      floatAlign = outchannels;\
     }
 #else
   #define CML_CONVERTER_INOUT_PARAMETER(outsymbol, insymbol, outchannels, inchannels) \
     float* out;\
     const float* in = insymbol;\
-    CMLuint32 floatalign;\
-    register CMLBool samebuffer;\
+    CMLuint32 floatAlign;\
+    register CMLBool sameBuffer;\
     if(!outsymbol){\
       out = (float*)cmlAllocate(count * outchannels * sizeof(float));\
-      samebuffer = CML_FALSE;\
-      floatalign = outchannels;\
+      sameBuffer = CML_FALSE;\
+      floatAlign = outchannels;\
     }else if(insymbol == outsymbol){\
       out = outsymbol;\
-      samebuffer = CML_TRUE;\
-      floatalign = CML_MAX(outchannels,inchannels);\
+      sameBuffer = CML_TRUE;\
+      floatAlign = CML_MAX(outchannels,inchannels);\
     }else{\
       out = outsymbol;\
-      samebuffer = CML_FALSE;\
-      floatalign = outchannels;\
+      sameBuffer = CML_FALSE;\
+      floatAlign = outchannels;\
     }
 #endif
 
@@ -107,23 +107,17 @@
 
 
 #define CML_CONVERTER_MEMCPY(numchannels)\
-  if(!samebuffer){\
+  if(!sameBuffer){\
     memcpy(out, in, count * numchannels * sizeof(float));\
   }\
 
 
 #define CML_CONVERTER_FIRST_STEP(firstconverter) \
-  if(samebuffer){\
-    (firstconverter ## _SB)(cm, out, count, floatalign);\
+  if(sameBuffer){\
+    (firstconverter ## _SB)(cm, out, count, floatAlign);\
   }else{\
     (firstconverter)(cm, out, in, count);\
   }\
-
-
-// Add return out; as soon as it is soweit.
-#define CML_CONVERTER_RETURN
-
-
 
 
 
@@ -135,23 +129,23 @@
   }else{\
     out = outsymbol;\
   }\
-  CMLBool samebuffer;\
+  CMLBool sameBuffer;\
   float* xyzbuf;\
-  CMLuint32 floatalign;\
+  CMLuint32 floatAlign;\
   if(outchannels < CML_XYZ_NUMCHANNELS){\
     xyzbuf = (float*)cmlAllocate(count * CML_XYZ_NUMCHANNELS * sizeof(float));\
-    samebuffer = CML_FALSE;\
-    floatalign = CML_XYZ_NUMCHANNELS;\
+    sameBuffer = CML_FALSE;\
+    floatAlign = CML_XYZ_NUMCHANNELS;\
   }else{\
     xyzbuf = out;\
-    samebuffer = CML_TRUE;\
-    floatalign = outchannels;\
+    sameBuffer = CML_TRUE;\
+    floatAlign = outchannels;\
   }
 
 
 // Add return out; as soon as it is soweit.
 #define CML_CONVERTER_SPECTRUM_RETURN \
-  if(!samebuffer){free(xyzbuf);}
+  if(!sameBuffer){free(xyzbuf);}
 
 
 

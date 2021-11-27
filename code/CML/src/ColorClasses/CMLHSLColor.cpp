@@ -198,33 +198,33 @@ void HSLColor::toNormedCartesianBuffer(float* output) const {
 }
 
 
-void HSLColor::fromGrayBuffer(const float* src) {CMLGraytoHSL (cmlcm, color, src, 1);}
-void HSLColor::fromXYZBuffer(const float* src)  {CMLXYZtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromYuvBuffer(const float* src)  {CMLYuvtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromYupvpBuffer(const float* src){CMLYupvptoHSL(cmlcm, color, src, 1);}
-void HSLColor::fromYxyBuffer(const float* src)  {CMLYxytoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromLabBuffer(const float* src)  {CMLLabtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromLchBuffer(const float* src)  {CMLLchtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromLuvBuffer(const float* src)  {CMLLuvtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromRGBBuffer(const float* src)  {CMLRGBtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromYCbCrBuffer(const float* src){CMLYCbCrtoHSL(cmlcm, color, src, 1);}
-void HSLColor::fromHSVBuffer(const float* src)  {CMLHSVtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromHSLBuffer(const float* src)  {CMLHSLtoHSL  (cmlcm, color, src, 1);}
-void HSLColor::fromCMYKBuffer(const float* src) {CMLCMYKtoHSL (cmlcm, color, src, 1);}
+void HSLColor::fromGrayBuffer(const float* src) {cmlGrayToHSL (cmlcm, color, src, 1);}
+void HSLColor::fromXYZBuffer(const float* src)  {cmlXYZToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromYuvBuffer(const float* src)  {cmlYuvToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromYupvpBuffer(const float* src){cmlYupvpToHSL(cmlcm, color, src, 1);}
+void HSLColor::fromYxyBuffer(const float* src)  {cmlYxyToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromLabBuffer(const float* src)  {cmlLabToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromLchBuffer(const float* src)  {cmlLchToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromLuvBuffer(const float* src)  {cmlLuvToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromRGBBuffer(const float* src)  {cmlRGBToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromYCbCrBuffer(const float* src){cmlYCbCrToHSL(cmlcm, color, src, 1);}
+void HSLColor::fromHSVBuffer(const float* src)  {cmlHSVToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromHSLBuffer(const float* src)  {cmlHSLToHSL  (cmlcm, color, src, 1);}
+void HSLColor::fromCMYKBuffer(const float* src) {cmlCMYKToHSL (cmlcm, color, src, 1);}
 
-void HSLColor::toGrayBuffer(float* dest) const {CMLHSLtoGray (cmlcm, dest, color, 1);}
-void HSLColor::toXYZBuffer(float* dest) const  {CMLHSLtoXYZ  (cmlcm, dest, color, 1);}
-void HSLColor::toYuvBuffer(float* dest) const  {CMLHSLtoYuv  (cmlcm, dest, color, 1);}
-void HSLColor::toYupvpBuffer(float* dest) const{CMLHSLtoYupvp(cmlcm, dest, color, 1);}
-void HSLColor::toYxyBuffer(float* dest) const  {CMLHSLtoYxy  (cmlcm, dest, color, 1);}
-void HSLColor::toLabBuffer(float* dest) const  {CMLHSLtoLab  (cmlcm, dest, color, 1);}
-void HSLColor::toLchBuffer(float* dest) const  {CMLHSLtoLch  (cmlcm, dest, color, 1);}
-void HSLColor::toLuvBuffer(float* dest) const  {CMLHSLtoLuv  (cmlcm, dest, color, 1);}
-void HSLColor::toRGBBuffer(float* dest) const  {CMLHSLtoRGB  (cmlcm, dest, color, 1);}
-void HSLColor::toYCbCrBuffer(float* dest) const{CMLHSLtoYCbCr(cmlcm, dest, color, 1);}
-void HSLColor::toHSVBuffer(float* dest) const  {CMLHSLtoHSV  (cmlcm, dest, color, 1);}
-void HSLColor::toHSLBuffer(float* dest) const  {CMLHSLtoHSL  (cmlcm, dest, color, 1);}
-void HSLColor::toCMYKBuffer(float* dest) const {CMLHSLtoCMYK (cmlcm, dest, color, 1);}
+void HSLColor::toGrayBuffer(float* dest) const {cmlHSLToGray (cmlcm, dest, color, 1);}
+void HSLColor::toXYZBuffer(float* dest) const  {cmlHSLToXYZ  (cmlcm, dest, color, 1);}
+void HSLColor::toYuvBuffer(float* dest) const  {cmlHSLToYuv  (cmlcm, dest, color, 1);}
+void HSLColor::toYupvpBuffer(float* dest) const{cmlHSLToYupvp(cmlcm, dest, color, 1);}
+void HSLColor::toYxyBuffer(float* dest) const  {cmlHSLToYxy  (cmlcm, dest, color, 1);}
+void HSLColor::toLabBuffer(float* dest) const  {cmlHSLToLab  (cmlcm, dest, color, 1);}
+void HSLColor::toLchBuffer(float* dest) const  {cmlHSLToLch  (cmlcm, dest, color, 1);}
+void HSLColor::toLuvBuffer(float* dest) const  {cmlHSLToLuv  (cmlcm, dest, color, 1);}
+void HSLColor::toRGBBuffer(float* dest) const  {cmlHSLToRGB  (cmlcm, dest, color, 1);}
+void HSLColor::toYCbCrBuffer(float* dest) const{cmlHSLToYCbCr(cmlcm, dest, color, 1);}
+void HSLColor::toHSVBuffer(float* dest) const  {cmlHSLToHSV  (cmlcm, dest, color, 1);}
+void HSLColor::toHSLBuffer(float* dest) const  {cmlHSLToHSL  (cmlcm, dest, color, 1);}
+void HSLColor::toCMYKBuffer(float* dest) const {cmlHSLToCMYK (cmlcm, dest, color, 1);}
 
 
 

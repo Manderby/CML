@@ -4,90 +4,91 @@
 #include "../StateMachine/CMLConverterMacros.h"
 
 
+
 // //////////////////////////
 // Spectrum Illumination to anything
 // //////////////////////////
 
-CML_API void CMLSpectrumIlluminationtoXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(xyz, specill, CML_XYZ_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
+CML_API void cmlSpectrumIlluminationToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(xyz, specIll, CML_XYZ_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yxy, specill, CML_Yxy_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYxy(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yxy, specIll, CML_Yxy_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYxy(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yuv, specill, CML_Yuv_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYuv(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yuv, specIll, CML_Yuv_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYuv(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yupvp, specill, CML_Yupvp_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYupvp(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yupvp, specIll, CML_Yupvp_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYupvp(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lab, specill, CML_Lab_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLab(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lab, specIll, CML_Lab_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLab(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lch, specill, CML_Lch_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLch(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lch, specIll, CML_Lch_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLch(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(luv, specill, CML_Luv_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLuv(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(luv, specIll, CML_Luv_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLuv(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(rgb, specill, CML_RGB_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoRGB(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(rgb, specIll, CML_RGB_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToRGB(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(ycbcr, specill, CML_YCbCr_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYCbCr(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(ycbcr, specIll, CML_YCbCr_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYCbCr(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsv, specill, CML_HSV_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoHSV(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsv, specIll, CML_HSV_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToHSV(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsl, specill, CML_HSL_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoHSL(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsl, specIll, CML_HSL_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToHSL(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumIlluminationtoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput specill, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(cmyk, specill, CML_CMYK_NUMCHANNELS);
-  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoCMYK(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumIlluminationToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput specIll, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(cmyk, specIll, CML_CMYK_NUMCHANNELS);
+  CMLCMIlluminationSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToCMYK(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
@@ -97,86 +98,86 @@ CML_API void CMLSpectrumIlluminationtoCMYK(const CMLColorMachine* cm, CMLOutput 
 // Spectrum Remission to anything
 // //////////////////////////
 
-CML_API void CMLSpectrumRemissiontoXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(xyz, specrem, CML_XYZ_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
+CML_API void cmlSpectrumRemissionToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(xyz, specRem, CML_XYZ_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yxy, specrem, CML_Yxy_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYxy(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToYxy(const CMLColorMachine* cm, CMLOutput yxy, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yxy, specRem, CML_Yxy_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYxy(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yuv, specrem, CML_Yuv_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYuv(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToYuv(const CMLColorMachine* cm, CMLOutput yuv, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yuv, specRem, CML_Yuv_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYuv(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yupvp, specrem, CML_Yupvp_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYupvp(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(yupvp, specRem, CML_Yupvp_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYupvp(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lab, specrem, CML_Lab_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLab(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lab, specRem, CML_Lab_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLab(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lch, specrem, CML_Lch_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLch(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToLch(const CMLColorMachine* cm, CMLOutput lch, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(lch, specRem, CML_Lch_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLch(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(luv, specrem, CML_Luv_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoLuv(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToLuv(const CMLColorMachine* cm, CMLOutput luv, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(luv, specRem, CML_Luv_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToLuv(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(rgb, specrem, CML_RGB_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoRGB(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(rgb, specRem, CML_RGB_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToRGB(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(ycbcr, specrem, CML_YCbCr_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoYCbCr(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToYCbCr(const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(ycbcr, specRem, CML_YCbCr_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToYCbCr(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsv, specrem, CML_HSV_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoHSV(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToHSV(const CMLColorMachine* cm, CMLOutput hsv, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsv, specRem, CML_HSV_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToHSV(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsl, specrem, CML_HSL_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoHSL(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToHSL(const CMLColorMachine* cm, CMLOutput hsl, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(hsl, specRem, CML_HSL_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToHSL(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
-CML_API void CMLSpectrumRemissiontoCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput specrem, size_t count){
-  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(cmyk, specrem, CML_CMYK_NUMCHANNELS);
-  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatalign);
-  CMLXYZtoCMYK(cm, out, xyzbuf, count);
+CML_API void cmlSpectrumRemissionToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput specRem, size_t count){
+  CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(cmyk, specRem, CML_CMYK_NUMCHANNELS);
+  CMLCMRemissionSpectrumtoXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToCMYK(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 

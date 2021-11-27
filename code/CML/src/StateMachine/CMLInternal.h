@@ -152,10 +152,10 @@ CML_HIDEF void cmlInternalXYZtoYxy (float* CML_RESTRICT out, const float* CML_RE
   CMLINTERNAL_END_COUNT_LOOP(CML_Yxy_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneXYZtoYxy_SB(buf, whitepointYxy);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -185,10 +185,10 @@ CML_HIDEF void cmlInternalXYZtoRGB (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalXYZtoRGB_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLMat33 XYZtoRGBmatrix, const CMLFunction* LineartoRResponse, const CMLFunction* LineartoGResponse, const CMLFunction* LineartoBResponse){
+CML_HIDEF void cmlInternalXYZtoRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLMat33 XYZtoRGBmatrix, const CMLFunction* LineartoRResponse, const CMLFunction* LineartoGResponse, const CMLFunction* LineartoBResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneXYZtoRGB_SB(buf, XYZtoRGBmatrix, LineartoRResponse, LineartoGResponse, LineartoBResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -228,10 +228,10 @@ CML_HIDEF void cmlInternalYxytoXYZ (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_XYZ_NUMCHANNELS, CML_Yxy_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYxytoXYZ_SB(buf, whitepointXYZ);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 // ////////////////////////////////////
@@ -270,10 +270,10 @@ CML_HIDEF void cmlInternalYupvptoYxy (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_Yxy_NUMCHANNELS, CML_Yupvp_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYupvptoYxy_SB(float* buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalYupvptoYxy_SB(float* buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYupvptoYxy_SB(buf, whitepointYxy);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -309,10 +309,10 @@ CML_HIDEF void cmlInternalLuvtoYupvp (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_Yupvp_NUMCHANNELS, CML_Luv_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneLuvtoYupvp_SB(buf, whitepointYupvp, LtoLinearResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -354,10 +354,10 @@ CML_HIDEF void cmlInternalYxytoYupvp(float* CML_RESTRICT out , const float* CML_
   CMLINTERNAL_END_COUNT_LOOP(CML_Yupvp_NUMCHANNELS, CML_Yxy_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYxytoYupvp_SB(float* buf, const CMLVec3 whitepointYupvp, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalYxytoYupvp_SB(float* buf, const CMLVec3 whitepointYupvp, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYxytoYupvp_SB(buf, whitepointYupvp);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -387,10 +387,10 @@ CML_HIDEF void cmlInternalYupvptoLuv (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_Luv_NUMCHANNELS, CML_Yupvp_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYupvptoLuv_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cmlInternalYupvptoLuv_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYupvptoLuv_SB(buf, whitepointYupvp, LineartoLResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -416,10 +416,10 @@ CML_HIDEF void cmlInternalYuvtoYupvp (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_Yupvp_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalYuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYuvtoYupvp_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -445,10 +445,10 @@ CML_HIDEF void cmlInternalYupvptoYuv (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_Yuv_NUMCHANNELS, CML_Yupvp_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYupvptoYuv_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalYupvptoYuv_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYupvptoYuv_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -480,10 +480,10 @@ CML_HIDEF void cmlInternalLabtoLch (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_Lch_NUMCHANNELS, CML_Lab_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalLabtoLch_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalLabtoLch_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneLabtoLch_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -512,10 +512,10 @@ CML_HIDEF void cmlInternalRGBtoXYZ (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_XYZ_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalRGBtoXYZ_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
+CML_HIDEF void cmlInternalRGBtoXYZ_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneRGBtoXYZ_SB(buf, RGBtoXYZmatrix, RtoLinearResponse, GtoLinearResponse, BtoLinearResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -544,10 +544,10 @@ CML_HIDEF void cmlInternalRGBtoYCbCr (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_YCbCr_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalRGBtoYCbCr_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalRGBtoYCbCr_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneRGBtoYCbCr_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -574,10 +574,10 @@ CML_HIDEF void cmlInternalHSVtoHSL (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_HSL_NUMCHANNELS, CML_HSV_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalHSVtoHSL_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalHSVtoHSL_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneHSVtoHSL_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -609,10 +609,10 @@ CML_HIDEF void cmlInternalLchtoLab(float* CML_RESTRICT out , const float* CML_RE
   CMLINTERNAL_END_COUNT_LOOP(CML_Lab_NUMCHANNELS, CML_Lch_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalLchtoLab_SB(float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalLchtoLab_SB(float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneLchtoLab_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -642,10 +642,10 @@ CML_HIDEF void cmlInternalYCbCrtoRGB (float* CML_RESTRICT out , const float* CML
   CMLINTERNAL_END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_YCbCr_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYCbCrtoRGB_SB (float* buf, size_t count, CMLuint32 floatalign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalYCbCrtoRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneYCbCrtoRGB_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -675,10 +675,10 @@ CML_HIDEF void cmlInternalHSLtoHSV (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_HSV_NUMCHANNELS, CML_HSL_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalHSLtoHSV_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalHSLtoHSV_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneHSLtoHSV_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -724,10 +724,10 @@ CML_HIDEF void cmlInternalRGBtoHSV (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_HSV_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalRGBtoHSV_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalRGBtoHSV_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneRGBtoHSV_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -772,10 +772,10 @@ CML_HIDEF void cmlInternalHSVtoRGB (float* CML_RESTRICT out , const float* CML_R
   CMLINTERNAL_END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_HSV_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalHSVtoRGB_SB (float* buf, size_t count, CMLuint32 floatalign){
+CML_HIDEF void cmlInternalHSVtoRGB_SB (float* buf, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneHSVtoRGB_SB(buf);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -825,10 +825,10 @@ CML_HIDEF void cmlInternalXYZtoCIELAB(float* CML_RESTRICT out, const float* CML_
   CMLINTERNAL_END_COUNT_LOOP(CML_Lab_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalXYZtoCIELAB_SB(float* buf, size_t count, CMLuint32 floatalign, const CMLVec3 inverseWhitepointXYZ, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cmlInternalXYZtoCIELAB_SB(float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 inverseWhitepointXYZ, const CMLFunction* LineartoLResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneXYZtoCIELAB_SB(buf, inverseWhitepointXYZ, LineartoLResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -862,10 +862,10 @@ CML_HIDEF void cmlInternalCIELABtoXYZ (float* CML_RESTRICT out , const float* CM
 }
 
 
-CML_HIDEF void cmlInternalCIELABtoXYZ_SB (float* buf , size_t count, CMLuint32 floatalign, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalCIELABtoXYZ_SB (float* buf , size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneCIELABtoXYZ_SB(buf, whitepointXYZ, LtoLinearResponse);
-  CMLINTERNAL_END_COUNT_LOOP_SB(floatalign);
+  CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
 
@@ -886,28 +886,28 @@ CML_HIDEF void cmlInternalOneIlluminationSpectrumtoXYZ (CMLVec3 out, const CMLFu
   CMLINTERNALSpectrumtoXYZ(out, in, observer);
 }
 
-CML_HIDEF void cmlInternalIlluminationSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatalign, const CMLObserver* observer){
+CML_HIDEF void cmlInternalIlluminationSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLObserver* observer){
   CMLINTERNAL_START_COUNT_LOOP(count);
   cmlInternalOneIlluminationSpectrumtoXYZ(out, in, observer);
-  CMLINTERNAL_END_COUNT_LOOP(floatalign, 1);
+  CMLINTERNAL_END_COUNT_LOOP(floatAlign, 1);
 }
 
-CML_HIDEF void cmlInternalOneRemissionSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, const CMLFunction* specill, const CMLObserver* observer){
-  CMLFunction* remillfunction = CMLcreateFunctionMulFunction(in, specill);
+CML_HIDEF void cmlInternalOneRemissionSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, const CMLFunction* specIll, const CMLObserver* observer){
+  CMLFunction* remillfunction = CMLcreateFunctionMulFunction(in, specIll);
   cmlInternalOneIlluminationSpectrumtoXYZ(out, remillfunction, observer);
   cmlReleaseFunction(remillfunction);
 }
 
-CML_HIDEF void cmlInternalRemissionSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatalign, const CMLFunction* specill, const CMLObserver* observer){
-  if(specill){
+CML_HIDEF void cmlInternalRemissionSpectrumtoXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLFunction* specIll, const CMLObserver* observer){
+  if(specIll){
     CMLINTERNAL_START_COUNT_LOOP(count);
-    cmlInternalOneRemissionSpectrumtoXYZ(out, in, specill, observer);
-    CMLINTERNAL_END_COUNT_LOOP(floatalign, 1);
+    cmlInternalOneRemissionSpectrumtoXYZ(out, in, specIll, observer);
+    CMLINTERNAL_END_COUNT_LOOP(floatAlign, 1);
   }else{
     float base = cmlGetObserverColorimetricBase(observer) * .5f;
     CMLINTERNAL_START_COUNT_LOOP(count);
     cmlSet3(out, base, base, base);
-    CMLINTERNAL_END_COUNT_LOOP(floatalign, 1);
+    CMLINTERNAL_END_COUNT_LOOP(floatAlign, 1);
   }
 }
 
