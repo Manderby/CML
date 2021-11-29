@@ -37,8 +37,8 @@ CML_HIDDEN void CMLInternalGraytoChanneledBufferL(const CMLColorMachine* cm, flo
 }
 CML_HIDDEN void CMLInternalGraytoChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer , const float* CML_RESTRICT gray){
   float luminance = 1.f - *gray;
-  const float* whitepointYxy = cmlGetReferenceWhitepointYxy(&(cm->observer));
-  cmlSet3(buffer, luminance, whitepointYxy[1], whitepointYxy[2]);
+  const float* whitePointYxy = cmlGetReferenceWhitepointYxy(&(cm->observer));
+  cmlSet3(buffer, luminance, whitePointYxy[1], whitePointYxy[2]);
 }
 CML_HIDDEN void CMLInternalGraytoChanneledBufferYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT buffer , const float* CML_RESTRICT gray){
   float luminance;
@@ -155,7 +155,7 @@ CML_HIDDEN void CMLInternalLabtoXYZCIELAB_SB (const CMLColorMachine* cm, float* 
 
 
 CML_HIDDEN void CMLInternalLabtoXYZChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count){
-  const float* whitepointXYZ = cmlGetReferenceWhitepointXYZ(&(cm->observer));
+  const float* whitePointXYZ = cmlGetReferenceWhitepointXYZ(&(cm->observer));
   while(count){
 
     float xr, yr, zr;
@@ -171,9 +171,9 @@ CML_HIDDEN void CMLInternalLabtoXYZChromaticValence (const CMLColorMachine* cm, 
       zr = yr - fy * in[2] / (cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f);
     }
 
-    out[0] = xr * whitepointXYZ[0];
-    out[1] = yr * whitepointXYZ[1];
-    out[2] = zr * whitepointXYZ[2];
+    out[0] = xr * whitePointXYZ[0];
+    out[1] = yr * whitePointXYZ[1];
+    out[2] = zr * whitePointXYZ[2];
 
     in += CML_Lab_NUMCHANNELS;
     out += CML_XYZ_NUMCHANNELS;
@@ -183,7 +183,7 @@ CML_HIDDEN void CMLInternalLabtoXYZChromaticValence (const CMLColorMachine* cm, 
 
 
 CML_HIDDEN void CMLInternalLabtoXYZChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
-  const float* whitepointXYZ = cmlGetReferenceWhitepointXYZ(&(cm->observer));
+  const float* whitePointXYZ = cmlGetReferenceWhitepointXYZ(&(cm->observer));
   while(count){
 
     float xr, yr, zr;
@@ -199,9 +199,9 @@ CML_HIDDEN void CMLInternalLabtoXYZChromaticValence_SB (const CMLColorMachine* c
       zr = yr - fy * buf[2] / (cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f);
     }
 
-    buf[0] = xr * whitepointXYZ[0];
-    buf[1] = yr * whitepointXYZ[1];
-    buf[2] = zr * whitepointXYZ[2];
+    buf[0] = xr * whitePointXYZ[0];
+    buf[1] = yr * whitePointXYZ[1];
+    buf[2] = zr * whitePointXYZ[2];
 
     buf += floatAlign;
     count--;

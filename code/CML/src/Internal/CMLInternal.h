@@ -33,7 +33,7 @@ struct CML_HIDDEN CMLFunction{
 struct CMLResponseCurve{
   CMLFunction* forwardfunc;     // converting from luminance space
   CMLFunction* backwardfunc;    // converting to luminance space
-  CMLFunctionType functiontype;
+  CMLFunctionType functionType;
 };
 
 
@@ -50,10 +50,10 @@ struct CMLObserver{
   CMLFunction*                  BALFspecdistfunctions[3];
   CMLIllumination               BALFillumination;
   float                         BALFradiometricScale;
-  CMLVec3                       BALFwhitepointXYZ;
+  CMLVec3                       BALFwhitePointXYZ;
   CMLVec3                       BALFinverseWhitepointXYZ;
-  CMLVec3                       BALFwhitepointYxy;
-  CMLVec3                       BALFwhitepointYupvp;
+  CMLVec3                       BALFwhitePointYxy;
+  CMLVec3                       BALFwhitePointYupvp;
 };
 
 
@@ -119,14 +119,14 @@ CML_IDEF void* cmlAllocateIfNull(void* ptr, size_t size){
 // XYZ to Yxy
 // ////////////////////////////////////
 
-#define CMLINTERNALXYZtoYxy(out, in, whitepointYxy) \
+#define CMLINTERNALXYZtoYxy(out, in, whitePointYxy) \
   float divisor;\
   divisor = (in[0] + in[1] + in[2]);\
   float Y = in[1];\
   if(divisor == 0.f){\
-    if(whitepointYxy){\
-      out[2] = whitepointYxy[2];\
-      out[1] = whitepointYxy[1];\
+    if(whitePointYxy){\
+      out[2] = whitePointYxy[2];\
+      out[1] = whitePointYxy[1];\
     }else{\
       out[2] = 0.f;\
       out[1] = 0.f;\
@@ -138,23 +138,23 @@ CML_IDEF void* cmlAllocateIfNull(void* ptr, size_t size){
   }\
   out[0] = Y;
 
-CML_HIDEF void cmlInternalOneXYZtoYxy (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitepointYxy){
-  CMLINTERNALXYZtoYxy(out, in, whitepointYxy);
+CML_HIDEF void cmlInternalOneXYZtoYxy (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYxy){
+  CMLINTERNALXYZtoYxy(out, in, whitePointYxy);
 }
 
-CML_HIDEF void cmlInternalOneXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitepointYxy){
-  CMLINTERNALXYZtoYxy(buf, buf, whitepointYxy);
+CML_HIDEF void cmlInternalOneXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitePointYxy){
+  CMLINTERNALXYZtoYxy(buf, buf, whitePointYxy);
 }
 
-CML_HIDEF void cmlInternalXYZtoYxy (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitepointYxy, size_t count){
+CML_HIDEF void cmlInternalXYZtoYxy (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYxy, size_t count){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneXYZtoYxy(out, in, whitepointYxy);
+  cmlInternalOneXYZtoYxy(out, in, whitePointYxy);
   CMLINTERNAL_END_COUNT_LOOP(CML_Yxy_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatAlign){
+CML_HIDEF void cmlInternalXYZtoYxy_SB (float* CML_RESTRICT buf, const CMLVec3 whitePointYxy, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneXYZtoYxy_SB(buf, whitepointYxy);
+  cmlInternalOneXYZtoYxy_SB(buf, whitePointYxy);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -196,11 +196,11 @@ CML_HIDEF void cmlInternalXYZtoRGB_SB (float* buf, size_t count, CMLuint32 float
 // Yxy to XYZ
 // ////////////////////////////////////
 
-#define CMLINTERNALYxytoXYZ(out, in, whitepointXYZ) \
+#define CMLINTERNALYxytoXYZ(out, in, whitePointXYZ) \
   if(in[2] == 0.f){\
-    if(whitepointXYZ){\
-      out[0] = ((float*)whitepointXYZ)[0];\
-      out[2] = ((float*)whitepointXYZ)[2];\
+    if(whitePointXYZ){\
+      out[0] = ((float*)whitePointXYZ)[0];\
+      out[2] = ((float*)whitePointXYZ)[2];\
     }else{\
       out[0] = 0.f;\
       out[2] = 0.f;\
@@ -214,23 +214,23 @@ CML_HIDEF void cmlInternalXYZtoRGB_SB (float* buf, size_t count, CMLuint32 float
     out[2] -= out[0] + out[1];\
   }
 
-CML_HIDEF void cmlInternalOneYxytoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointXYZ){
-  CMLINTERNALYxytoXYZ(out, in, whitepointXYZ);
+CML_HIDEF void cmlInternalOneYxytoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointXYZ){
+  CMLINTERNALYxytoXYZ(out, in, whitePointXYZ);
 }
 
-CML_HIDEF void cmlInternalOneYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ){
-  CMLINTERNALYxytoXYZ(buf, buf, whitepointXYZ);
+CML_HIDEF void cmlInternalOneYxytoXYZ_SB(float* buf, const CMLVec3 whitePointXYZ){
+  CMLINTERNALYxytoXYZ(buf, buf, whitePointXYZ);
 }
 
-CML_HIDEF void cmlInternalYxytoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointXYZ, size_t count){
+CML_HIDEF void cmlInternalYxytoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointXYZ, size_t count){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYxytoXYZ(out, in, whitepointXYZ);
+  cmlInternalOneYxytoXYZ(out, in, whitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP(CML_XYZ_NUMCHANNELS, CML_Yxy_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ, size_t count, CMLuint32 floatAlign){
+CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitePointXYZ, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYxytoXYZ_SB(buf, whitepointXYZ);
+  cmlInternalOneYxytoXYZ_SB(buf, whitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -239,14 +239,14 @@ CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ, s
 // ////////////////////////////////////
 
 
-#define CMLINTERNALYupvptoYxy(out, in, whitepointYxy) \
+#define CMLINTERNALYupvptoYxy(out, in, whitePointYxy) \
   float divisor;\
   out[0] = in[0];\
   divisor = 6.f * in[1] - 16.f * in[2] + 12.f;\
   if(divisor == 0.f){\
-    if(whitepointYxy){\
-      out[1] = whitepointYxy[1];\
-      out[2] = whitepointYxy[2];\
+    if(whitePointYxy){\
+      out[1] = whitePointYxy[1];\
+      out[2] = whitePointYxy[2];\
     }else{\
       out[1] = 0.f;\
       out[2] = 0.f;\
@@ -257,22 +257,22 @@ CML_HIDEF void cmlInternalYxytoXYZ_SB(float* buf, const CMLVec3 whitepointXYZ, s
     out[2] = 4.f * in[2] * factor;\
   }
 
-CML_HIDEF void cmlInternalOneYupvptoYxy (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYxy){
-  CMLINTERNALYupvptoYxy(out, in, whitepointYxy);
+CML_HIDEF void cmlInternalOneYupvptoYxy (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYxy){
+  CMLINTERNALYupvptoYxy(out, in, whitePointYxy);
 }
-CML_HIDEF void cmlInternalOneYupvptoYxy_SB(float* buf, const CMLVec3 whitepointYxy){
-  CMLINTERNALYupvptoYxy(buf, buf, whitepointYxy);
+CML_HIDEF void cmlInternalOneYupvptoYxy_SB(float* buf, const CMLVec3 whitePointYxy){
+  CMLINTERNALYupvptoYxy(buf, buf, whitePointYxy);
 }
 
-CML_HIDEF void cmlInternalYupvptoYxy (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYxy, size_t count){
+CML_HIDEF void cmlInternalYupvptoYxy (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYxy, size_t count){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYupvptoYxy(out, in, whitepointYxy);
+  cmlInternalOneYupvptoYxy(out, in, whitePointYxy);
   CMLINTERNAL_END_COUNT_LOOP(CML_Yxy_NUMCHANNELS, CML_Yupvp_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYupvptoYxy_SB(float* buf, const CMLVec3 whitepointYxy, size_t count, CMLuint32 floatAlign){
+CML_HIDEF void cmlInternalYupvptoYxy_SB(float* buf, const CMLVec3 whitePointYxy, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYupvptoYxy_SB(buf, whitepointYxy);
+  cmlInternalOneYupvptoYxy_SB(buf, whitePointYxy);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -281,37 +281,37 @@ CML_HIDEF void cmlInternalYupvptoYxy_SB(float* buf, const CMLVec3 whitepointYxy,
 // Luv to Yupvp
 // ////////////////////////////////////
 
-#define CMLINTERNALLuvtoYupvp(out, in, whitepointYupvp, LtoLinearResponse) \
+#define CMLINTERNALLuvtoYupvp(out, in, whitePointYupvp, LtoLinearResponse) \
   float divisor;\
   float yr;\
   yr = cmlInternalEval(LtoLinearResponse, in[0] * .01f);\
   divisor = 13.f * in[0];\
-  out[0] = yr * whitepointYupvp[0];\
+  out[0] = yr * whitePointYupvp[0];\
   if(divisor == 0.f){\
-    out[1] = whitepointYupvp[1];\
-    out[2] = whitepointYupvp[2];\
+    out[1] = whitePointYupvp[1];\
+    out[2] = whitePointYupvp[2];\
   }else{\
     float factor = cmlInverse(divisor);\
-    out[1] = (in[1] * factor) + whitepointYupvp[1];\
-    out[2] = (in[2] * factor) + whitepointYupvp[2];\
+    out[1] = (in[1] * factor) + whitePointYupvp[1];\
+    out[2] = (in[2] * factor) + whitePointYupvp[2];\
   }
 
-CML_HIDEF void cmlInternalOneLuvtoYupvp (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
-  CMLINTERNALLuvtoYupvp(out, in, whitepointYupvp, LtoLinearResponse);
+CML_HIDEF void cmlInternalOneLuvtoYupvp (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp, const CMLFunction* LtoLinearResponse){
+  CMLINTERNALLuvtoYupvp(out, in, whitePointYupvp, LtoLinearResponse);
 }
-CML_HIDEF void cmlInternalOneLuvtoYupvp_SB (float* buf, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
-  CMLINTERNALLuvtoYupvp(buf, buf, whitepointYupvp, LtoLinearResponse);
+CML_HIDEF void cmlInternalOneLuvtoYupvp_SB (float* buf, const CMLVec3 whitePointYupvp, const CMLFunction* LtoLinearResponse){
+  CMLINTERNALLuvtoYupvp(buf, buf, whitePointYupvp, LtoLinearResponse);
 }
 
-CML_HIDEF void cmlInternalLuvtoYupvp (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalLuvtoYupvp (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitePointYupvp, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneLuvtoYupvp(out, in, whitepointYupvp, LtoLinearResponse);
+  cmlInternalOneLuvtoYupvp(out, in, whitePointYupvp, LtoLinearResponse);
   CMLINTERNAL_END_COUNT_LOOP(CML_Yupvp_NUMCHANNELS, CML_Luv_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointYupvp, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitePointYupvp, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneLuvtoYupvp_SB(buf, whitepointYupvp, LtoLinearResponse);
+  cmlInternalOneLuvtoYupvp_SB(buf, whitePointYupvp, LtoLinearResponse);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -322,14 +322,14 @@ CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 flo
 // ////////////////////////////////////
 
 
-#define CMLINTERNALYxytoYupvp(out, in, whitepointYupvp) \
+#define CMLINTERNALYxytoYupvp(out, in, whitePointYupvp) \
   float divisor;\
   out[0] = in[0];\
   divisor = -2.f * in[1] + 12.f * in[2] + 3.f;\
   if(divisor == 0.f){\
-    if(whitepointYupvp){\
-      out[1] = whitepointYupvp[1];\
-      out[2] = whitepointYupvp[2];\
+    if(whitePointYupvp){\
+      out[1] = whitePointYupvp[1];\
+      out[2] = whitePointYupvp[2];\
     }else{\
       out[1] = 0.f;\
       out[2] = 0.f;\
@@ -340,23 +340,23 @@ CML_HIDEF void cmlInternalLuvtoYupvp_SB (float* buf, size_t count, CMLuint32 flo
     out[2] = 9.f * in[2] * factor;\
   }\
 
-CML_HIDEF void cmlInternalOneYxytoYupvp(float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYupvp){
-  CMLINTERNALYxytoYupvp(out, in, whitepointYupvp);
+CML_HIDEF void cmlInternalOneYxytoYupvp(float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp){
+  CMLINTERNALYxytoYupvp(out, in, whitePointYupvp);
 }
 
-CML_HIDEF void cmlInternalOneYxytoYupvp_SB(float* buf, const CMLVec3 whitepointYupvp){
-  CMLINTERNALYxytoYupvp(buf, buf, whitepointYupvp);
+CML_HIDEF void cmlInternalOneYxytoYupvp_SB(float* buf, const CMLVec3 whitePointYupvp){
+  CMLINTERNALYxytoYupvp(buf, buf, whitePointYupvp);
 }
 
-CML_HIDEF void cmlInternalYxytoYupvp(float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYupvp, size_t count){
+CML_HIDEF void cmlInternalYxytoYupvp(float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp, size_t count){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYxytoYupvp(out, in, whitepointYupvp);
+  cmlInternalOneYxytoYupvp(out, in, whitePointYupvp);
   CMLINTERNAL_END_COUNT_LOOP(CML_Yupvp_NUMCHANNELS, CML_Yxy_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYxytoYupvp_SB(float* buf, const CMLVec3 whitepointYupvp, size_t count, CMLuint32 floatAlign){
+CML_HIDEF void cmlInternalYxytoYupvp_SB(float* buf, const CMLVec3 whitePointYupvp, size_t count, CMLuint32 floatAlign){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYxytoYupvp_SB(buf, whitepointYupvp);
+  cmlInternalOneYxytoYupvp_SB(buf, whitePointYupvp);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -366,30 +366,30 @@ CML_HIDEF void cmlInternalYxytoYupvp_SB(float* buf, const CMLVec3 whitepointYupv
 // Yupvp to Luv
 // ////////////////////////////////////
 
-#define CMLINTERNALYupvptoLuv(out, in, whitepointYupvp, LineartoLResponse) \
-  float yr = in[0] / whitepointYupvp[0];\
+#define CMLINTERNALYupvptoLuv(out, in, whitePointYupvp, LineartoLResponse) \
+  float yr = in[0] / whitePointYupvp[0];\
   float fy = cmlInternalEval(LineartoLResponse, yr);\
   out[0] = 100.f * fy;\
-  out[1] = 13.f * out[0] * (in[1] - whitepointYupvp[1]);\
-  out[2] = 13.f * out[0] * (in[2] - whitepointYupvp[2]);
+  out[1] = 13.f * out[0] * (in[1] - whitePointYupvp[1]);\
+  out[2] = 13.f * out[0] * (in[2] - whitePointYupvp[2]);
 
-CML_HIDEF void cmlInternalOneYupvptoLuv (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
-  CMLINTERNALYupvptoLuv(out, in, whitepointYupvp, LineartoLResponse);
+CML_HIDEF void cmlInternalOneYupvptoLuv (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp, const CMLFunction* LineartoLResponse){
+  CMLINTERNALYupvptoLuv(out, in, whitePointYupvp, LineartoLResponse);
 }
 
-CML_HIDEF void cmlInternalOneYupvptoLuv_SB (float* buf, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
-  CMLINTERNALYupvptoLuv(buf, buf, whitepointYupvp, LineartoLResponse);
+CML_HIDEF void cmlInternalOneYupvptoLuv_SB (float* buf, const CMLVec3 whitePointYupvp, const CMLFunction* LineartoLResponse){
+  CMLINTERNALYupvptoLuv(buf, buf, whitePointYupvp, LineartoLResponse);
 }
 
-CML_HIDEF void cmlInternalYupvptoLuv (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cmlInternalYupvptoLuv (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitePointYupvp, const CMLFunction* LineartoLResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYupvptoLuv(out, in, whitepointYupvp, LineartoLResponse);
+  cmlInternalOneYupvptoLuv(out, in, whitePointYupvp, LineartoLResponse);
   CMLINTERNAL_END_COUNT_LOOP(CML_Luv_NUMCHANNELS, CML_Yupvp_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYupvptoLuv_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointYupvp, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cmlInternalYupvptoLuv_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 whitePointYupvp, const CMLFunction* LineartoLResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYupvptoLuv_SB(buf, whitepointYupvp, LineartoLResponse);
+  cmlInternalOneYupvptoLuv_SB(buf, whitePointYupvp, LineartoLResponse);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -523,30 +523,30 @@ CML_HIDEF void cmlInternalRGBtoXYZ_SB (float* buf, size_t count, CMLuint32 float
 // RGB to YCbCr
 // ////////////////////////////////////
 
-#define CMLINTERNALRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ) \
-  float Kr = redprimaryYxy[0] * inversewhitepointXYZ[1];\
-  float Kb = blueprimaryYxy[0] * inversewhitepointXYZ[1];\
+#define CMLINTERNALRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ) \
+  float Kr = redprimaryYxy[0] * inversewhitePointXYZ[1];\
+  float Kb = blueprimaryYxy[0] * inversewhitePointXYZ[1];\
   float Y = Kr * in[0] + (1.f - Kr - Kb) * in[1] + Kb * in[2];\
   out[1] = .5f * (in[2] - Y) / (1.f - Kb);\
   out[2] = .5f * (in[0] - Y) / (1.f - Kr);\
   out[0] = Y;
 
-CML_HIDEF void cmlInternalOneRGBtoYCbCr (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
-  CMLINTERNALRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+CML_HIDEF void cmlInternalOneRGBtoYCbCr (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
+  CMLINTERNALRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
-CML_HIDEF void cmlInternalOneRGBtoYCbCr_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
-  CMLINTERNALRGBtoYCbCr(buf, buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+CML_HIDEF void cmlInternalOneRGBtoYCbCr_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
+  CMLINTERNALRGBtoYCbCr(buf, buf, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
 
-CML_HIDEF void cmlInternalRGBtoYCbCr (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalRGBtoYCbCr (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+  cmlInternalOneRGBtoYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP(CML_YCbCr_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalRGBtoYCbCr_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalRGBtoYCbCr_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneRGBtoYCbCr_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+  cmlInternalOneRGBtoYCbCr_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -620,31 +620,31 @@ CML_HIDEF void cmlInternalLchtoLab_SB(float* buf, size_t count, CMLuint32 floatA
 // YCbCr to RGB
 // ////////////////////////////////////
 
-#define CMLINTERNALYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ) \
-  float Kr = redprimaryYxy[0] * inversewhitepointXYZ[1];\
-  float Kb = blueprimaryYxy[0] * inversewhitepointXYZ[1];\
+#define CMLINTERNALYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ) \
+  float Kr = redprimaryYxy[0] * inversewhitePointXYZ[1];\
+  float Kb = blueprimaryYxy[0] * inversewhitePointXYZ[1];\
   float Y = in[0];\
   out[0] = 2.f * in[2] * (1.f - Kr) + Y;\
   out[2] = 2.f * in[1] * (1.f - Kb) + Y;\
   out[1] = (Y - Kr * out[0] - Kb * out[2]) / (1.f - Kr - Kb);
 
 
-CML_HIDEF void cmlInternalOneYCbCrtoRGB (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
-  CMLINTERNALYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+CML_HIDEF void cmlInternalOneYCbCrtoRGB (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
+  CMLINTERNALYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
-CML_HIDEF void cmlInternalOneYCbCrtoRGB_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
-  CMLINTERNALYCbCrtoRGB(buf, buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+CML_HIDEF void cmlInternalOneYCbCrtoRGB_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
+  CMLINTERNALYCbCrtoRGB(buf, buf, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
 
-CML_HIDEF void cmlInternalYCbCrtoRGB (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalYCbCrtoRGB (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+  cmlInternalOneYCbCrtoRGB(out, in, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_YCbCr_NUMCHANNELS);
 }
 
-CML_HIDEF void cmlInternalYCbCrtoRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitepointXYZ){
+CML_HIDEF void cmlInternalYCbCrtoRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inversewhitePointXYZ){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneYCbCrtoRGB_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitepointXYZ);
+  cmlInternalOneYCbCrtoRGB_SB(buf, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -836,35 +836,35 @@ CML_HIDEF void cmlInternalXYZtoCIELAB_SB(float* buf, size_t count, CMLuint32 flo
 // CIELAB to XYZ
 // ////////////////////////////////////
 
-#define CMLINTERNALCIELABtoXYZ(out, in, whitepointXYZ, LtoLinearResponse) \
+#define CMLINTERNALCIELABtoXYZ(out, in, whitePointXYZ, LtoLinearResponse) \
     float fy = cmlInternalLrtofy(.01f * in[0]);\
     float fx = fy + in[1] * .002f;\
     float fz = fy - in[2] * .005f;\
     float xr = cmlInternalEval(LtoLinearResponse, cmlInternalfytoLr(fx));\
     float yr = cmlInternalEval(LtoLinearResponse, cmlInternalfytoLr(fy));\
     float zr = cmlInternalEval(LtoLinearResponse, cmlInternalfytoLr(fz));\
-    out[0] = xr * whitepointXYZ[0];\
-    out[1] = yr * whitepointXYZ[1];\
-    out[2] = zr * whitepointXYZ[2];
+    out[0] = xr * whitePointXYZ[0];\
+    out[1] = yr * whitePointXYZ[1];\
+    out[2] = zr * whitePointXYZ[2];
 
 
-CML_HIDEF void cmlInternalOneCIELABtoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
-  CMLINTERNALCIELABtoXYZ(out, in, whitepointXYZ, LtoLinearResponse);
+CML_HIDEF void cmlInternalOneCIELABtoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, const CMLVec3 whitePointXYZ, const CMLFunction* LtoLinearResponse){
+  CMLINTERNALCIELABtoXYZ(out, in, whitePointXYZ, LtoLinearResponse);
 }
-CML_HIDEF void cmlInternalOneCIELABtoXYZ_SB (float* buf, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
-  CMLINTERNALCIELABtoXYZ(buf, buf, whitepointXYZ, LtoLinearResponse);
+CML_HIDEF void cmlInternalOneCIELABtoXYZ_SB (float* buf, const CMLVec3 whitePointXYZ, const CMLFunction* LtoLinearResponse){
+  CMLINTERNALCIELABtoXYZ(buf, buf, whitePointXYZ, LtoLinearResponse);
 }
 
-CML_HIDEF void cmlInternalCIELABtoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalCIELABtoXYZ (float* CML_RESTRICT out , const float* CML_RESTRICT in, size_t count, const CMLVec3 whitePointXYZ, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneCIELABtoXYZ(out, in, whitepointXYZ, LtoLinearResponse);
+  cmlInternalOneCIELABtoXYZ(out, in, whitePointXYZ, LtoLinearResponse);
   CMLINTERNAL_END_COUNT_LOOP(CML_XYZ_NUMCHANNELS, CML_Lab_NUMCHANNELS);
 }
 
 
-CML_HIDEF void cmlInternalCIELABtoXYZ_SB (float* buf , size_t count, CMLuint32 floatAlign, const CMLVec3 whitepointXYZ, const CMLFunction* LtoLinearResponse){
+CML_HIDEF void cmlInternalCIELABtoXYZ_SB (float* buf , size_t count, CMLuint32 floatAlign, const CMLVec3 whitePointXYZ, const CMLFunction* LtoLinearResponse){
   CMLINTERNAL_START_COUNT_LOOP(count);
-  cmlInternalOneCIELABtoXYZ_SB(buf, whitepointXYZ, LtoLinearResponse);
+  cmlInternalOneCIELABtoXYZ_SB(buf, whitePointXYZ, LtoLinearResponse);
   CMLINTERNAL_END_COUNT_LOOP_SB(floatAlign);
 }
 

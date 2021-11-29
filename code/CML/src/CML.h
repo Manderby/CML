@@ -11,9 +11,8 @@
 #include "CMLEnvironment.h"
 #include "CMLMath.h"
 
-// Enums, types and constants used in CML.
-#include "CMLTypes.h"
-#include "CMLConstants.h"
+// Enums, strings, types, constants used in CML.
+#include "CMLDefinitions.h"
 
 // API to create response curves, spectra and other various 1D-functions.
 #include "CMLFunctions.h"

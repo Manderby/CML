@@ -3,7 +3,7 @@
 #include "CMLColorMachineState.h"
 
 
-CML_API CMLGrayComputationType CMLgetGrayComputationType(const CMLColorMachine* cm){
+CML_API CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
   return cm->grayspace.computation;
 }
 

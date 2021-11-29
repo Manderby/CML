@@ -2,14 +2,14 @@
 CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
 CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
 CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer);
-CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitepointYxy);
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
 
 CML_API void cmlClearIllumination  (CMLIllumination* illumination);
 CML_API void cmlDestroyIllumination(CMLIllumination* illumination);
 
-CML_API CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination);
-CML_API const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination);
-CML_API float cmlGetCorrelatedColorTemperature(const CMLIllumination* illumination);
+CML_API CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
+CML_API const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
+CML_API float cmlGetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
 CML_API void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer);
 
 

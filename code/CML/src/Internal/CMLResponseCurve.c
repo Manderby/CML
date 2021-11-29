@@ -15,7 +15,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve,
   if(!dstcurve){dstcurve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
   dstcurve->forwardfunc = cmlDuplicateFunction(srccurve->forwardfunc);
   dstcurve->backwardfunc = cmlDuplicateFunction(srccurve->backwardfunc);
-  dstcurve->functiontype = srccurve->functiontype;
+  dstcurve->functionType = srccurve->functionType;
   return dstcurve;
 }
 
@@ -37,57 +37,57 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
   case CML_RESPONSE_LINEAR:
     curve->forwardfunc  = cmlCreateLinearResponse();
     curve->backwardfunc = cmlCreateLinearResponse();
-    curve->functiontype = CML_FUNCTION_LINEAR;
+    curve->functionType = CML_FUNCTION_LINEAR;
     break;
   case CML_RESPONSE_SQRT:
     curve->forwardfunc  = cmlCreateGammaResponse(.5f); // todo: create functions
     curve->backwardfunc = cmlCreateGammaResponse(2.f); // for that.
-    curve->functiontype = CML_FUNCTION_SQRT;
+    curve->functionType = CML_FUNCTION_SQRT;
     break;
   case CML_RESPONSE_GAMMA_ADOBE_98:
     curve->forwardfunc  = cmlCreateGammaResponse(cmlInverse(2.f + 51.f / 256.f));
     curve->backwardfunc = cmlCreateGammaResponse(2.f + 51.f / 256.f);
-    curve->functiontype = CML_FUNCTION_GAMMA;
+    curve->functionType = CML_FUNCTION_GAMMA;
     break;
   case CML_RESPONSE_GAMMA_1_8:
     curve->forwardfunc  = cmlCreateGammaResponse(cmlInverse(1.8f));
     curve->backwardfunc = cmlCreateGammaResponse(1.8f);
-    curve->functiontype = CML_FUNCTION_GAMMA;
+    curve->functionType = CML_FUNCTION_GAMMA;
     break;
   case CML_RESPONSE_GAMMA_1_9:
     curve->forwardfunc  = cmlCreateGammaResponse(cmlInverse(1.9f));
     curve->backwardfunc = cmlCreateGammaResponse(1.9f);
-    curve->functiontype = CML_FUNCTION_GAMMA;
+    curve->functionType = CML_FUNCTION_GAMMA;
     break;
   case CML_RESPONSE_GAMMA_2_2:
     curve->forwardfunc  = cmlCreateGammaResponse(cmlInverse(2.2f));
     curve->backwardfunc = cmlCreateGammaResponse(2.2f);
-    curve->functiontype = CML_FUNCTION_GAMMA;
+    curve->functionType = CML_FUNCTION_GAMMA;
     break;
   case CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT:
     curve->forwardfunc  = cmlCreateGammaLinearResponse(1.f / 0.45f, 0.099f, 4.5f, 0.018f);
     curve->backwardfunc = cmlCreateInverseGammaLinearResponse(1.f / 0.45f, 0.099f, 4.5f, 0.018f);
-    curve->functiontype = CML_FUNCTION_GAMMA_LINEAR;
+    curve->functionType = CML_FUNCTION_GAMMA_LINEAR;
     break;
   case CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT:
     curve->forwardfunc  = cmlCreateGammaLinearResponse(1.f / 0.45f, 0.0993f, 4.5f, 0.0181f);
     curve->backwardfunc = cmlCreateInverseGammaLinearResponse(1.f / 0.45f, 0.0993f, 4.5f, 0.0181f);
-    curve->functiontype = CML_FUNCTION_GAMMA_LINEAR;
+    curve->functionType = CML_FUNCTION_GAMMA_LINEAR;
     break;
   case CML_RESPONSE_SRGB:
     curve->forwardfunc  = cmlCreateXYZTosRGBResponse();
     curve->backwardfunc = cmlCreatesRGBToXYZResponse();
-    curve->functiontype = CML_FUNCTION_SRGB;
+    curve->functionType = CML_FUNCTION_SRGB;
     break;
   case CML_RESPONSE_LSTAR:
     curve->forwardfunc  = cmlCreateYToLStarResponse();
     curve->backwardfunc = cmlCreateLStarToYResponse();
-    curve->functiontype = CML_FUNCTION_LSTAR;
+    curve->functionType = CML_FUNCTION_LSTAR;
     break;
   case CML_RESPONSE_LSTAR_STANDARD:
     curve->forwardfunc  = cmlCreateYToLStarStandardResponse();
     curve->backwardfunc = cmlCreateLStarToYStandardResponse();
-    curve->functiontype = CML_FUNCTION_LSTAR_STANDARD;
+    curve->functionType = CML_FUNCTION_LSTAR_STANDARD;
     break;
   default:
     #if CML_DEBUG
@@ -109,7 +109,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
                                                      float param2,
                                                      float param3){
   if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
-  curve->functiontype = CML_FUNCTION_GAMMA_LINEAR;
+  curve->functionType = CML_FUNCTION_GAMMA_LINEAR;
   curve->forwardfunc  = cmlCreateGammaLinearResponse(param0, param1, param2, param3);
   curve->backwardfunc = cmlCreateInverseGammaLinearResponse(param0, param1, param2, param3);
   return curve;
@@ -117,29 +117,29 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
 
 
 
-CML_API void CMLclearResponseCurve(CMLResponseCurve* curve){
+CML_API void cmlClearResponseCurve(CMLResponseCurve* curve){
   cmlReleaseFunction(curve->backwardfunc);
   cmlReleaseFunction(curve->forwardfunc);
 }
 
-CML_API void CMLdestroyResponseCurve(CMLResponseCurve* curve){
-  CMLclearResponseCurve(curve);
+CML_API void cmlDestroyResponseCurve(CMLResponseCurve* curve){
+  cmlClearResponseCurve(curve);
   free(curve);
 }
 
 
 
-CML_API CMLFunction* CMLgetResponseCurveFunc(const CMLResponseCurve* curve){
+CML_API CMLFunction* cmlGetResponseCurveFunc(const CMLResponseCurve* curve){
   return curve->backwardfunc;
 }
-CML_API CMLFunction* CMLgetResponseCurveInvFunc(const CMLResponseCurve* curve){
+CML_API CMLFunction* cmlGetResponseCurveInvFunc(const CMLResponseCurve* curve){
   return curve->forwardfunc;
 }
-//CML_API CMLFunctionType CMLgetResponseCurveFunctionType(const CMLResponseCurve* curve){
+//CML_API CMLFunctionType cmlGetResponseCurveFunctionType(const CMLResponseCurve* curve){
 //  return curve->type;
 //}
-CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
-  switch(curve->functiontype){
+CML_API float cmlGetResponseCurveParam0(const CMLResponseCurve* curve){
+  switch(curve->functionType){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 2.0f; break;
   case CML_FUNCTION_GAMMA: return cmlGetFunctionParameter(curve->backwardfunc, 0); break;
@@ -155,8 +155,8 @@ CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve){
     break;
   }
 }
-CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
-  switch(curve->functiontype){
+CML_API float cmlGetResponseCurveParam1(const CMLResponseCurve* curve){
+  switch(curve->functionType){
   case CML_FUNCTION_LINEAR: return 0.0f; break;
   case CML_FUNCTION_SQRT: return 0.0f; break;
   case CML_FUNCTION_GAMMA: return 0.0f; break;
@@ -172,8 +172,8 @@ CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve){
     break;
   }
 }
-CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
-  switch(curve->functiontype){
+CML_API float cmlGetResponseCurveParam2(const CMLResponseCurve* curve){
+  switch(curve->functionType){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 1.0f; break;
   case CML_FUNCTION_GAMMA: return 1.0f; break;
@@ -189,8 +189,8 @@ CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve){
     break;
   }
 }
-CML_API float CMLgetResponseCurveParam3(const CMLResponseCurve* curve){
-  switch(curve->functiontype){
+CML_API float cmlGetResponseCurveParam3(const CMLResponseCurve* curve){
+  switch(curve->functionType){
   case CML_FUNCTION_LINEAR: return 1.0f; break;
   case CML_FUNCTION_SQRT: return 0.0f; break;
   case CML_FUNCTION_GAMMA: return 0.0f; break;

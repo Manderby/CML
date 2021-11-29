@@ -16,7 +16,7 @@ version will be available to all.
 
 unfinished Version 1.0.3
 ------------------------
-- Reenabled whitepoint for conversions when division by zero occurs.
+- Reenabled whitePoint for conversions when division by zero occurs.
 - Started to rename all API symbols
 - Started to work on object structures.
 - Added some NALib stuff like allocation functions or macros.
@@ -33,7 +33,7 @@ Version 1.0.2
 Version 1.0.1
 -------------
 - Added linear-zero extrapolation method and corrected all functions.
-- CMLgetIntervalCount is now called cmlGetSampleCount
+- cmlGetIntervalCount is now called cmlGetSampleCount
 - Added cmlGetStepSize
 - Changed BaseAPI such that conversions from or to Lab and Luv require one less
   parameter. Only CIELAB and CIELUV possible though.
@@ -66,7 +66,7 @@ this scheme but rather more is subject to the decision of the author.
 
 Version 0.9.9.2
 ---------------
-- Some computations do not require a whitepoint anymore
+- Some computations do not require a whitePoint anymore
 - Radiometry works very stable now.
 - Revisited Lab computation. LStar response curve is not f(-x) = -f(x) anymore.
 - Correlated Color Temperature is only computed for unknown spectra

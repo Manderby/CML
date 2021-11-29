@@ -1,16 +1,16 @@
 
 // type:                  Defines, what spectral distribution functions to use.
-// illuminationSpectrum:  The spectrum function of the desired reference
+// illumination:          The spectrum function of the desired reference
 //                        illumination. This observer will duplicate the
 //                        function.
 // colorimetricBase:      The Y value of the reference illumination.
 //                        In colorimetry, this is usually 1 or 100.
 //                        If you use 0, computation is radiometric.
-CML_API CMLObserver* cmlCreateObserverWithIllumination(
-                                            CMLObserver* observer,
-                                         CMLObserverType type,
-                                        CMLIllumination* illumination,
-                                                   float colorimetricBase);
+CML_API CMLObserver* cmlCreateObserver(
+  CMLObserver* observer,
+  CMLObserverType type,
+  CMLIllumination* illumination,
+  float colorimetricBase);
 
 CML_API void cmlClearObserver  (CMLObserver* observer);
 CML_API void cmlDestroyObserver(CMLObserver* observer);
@@ -19,7 +19,7 @@ CML_API float                  cmlGetObserverRadiometricScale     (const CMLObse
 CML_API float                  cmlGetObserverColorimetricBase     (const CMLObserver* observer);
 CML_API const CMLFunction*     cmlGetObserverSpecDistFunction     (const CMLObserver* observer, CMLInt index);
 
-CML_API CMLObserverType        cmlGetObserverType                 (const CMLObserver* observer);
+CML_API CMLObserverType        cml_GetObserverType                 (const CMLObserver* observer);
 
 CML_API const CMLIllumination* cmlGetReferenceIllumination        (const CMLObserver* observer);
 CML_API const CMLFunction*     cmlGetReferenceIlluminationSpectrum(const CMLObserver* observer);

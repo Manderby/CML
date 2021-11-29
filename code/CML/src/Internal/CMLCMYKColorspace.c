@@ -6,7 +6,7 @@
 
 
 
-CML_API CMLCMYKTransformType CMLgetCMYKTransform(const CMLColorMachine* cm){
+CML_API CMLCMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
   return cm->cmykspace.transform;
 }
 

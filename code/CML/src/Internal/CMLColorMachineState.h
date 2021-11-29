@@ -43,9 +43,9 @@ struct CML_HIDDEN CMLColorMachine{
 //    CMLIlluminationType           state;
 //    CMLFunction*                  spectrum;
 //    CMLVec3                       inverseWhitepointXYZ;
-//    CMLVec3                       whitepointXYZ;
-//    CMLVec3                       whitepointYxy;
-//    CMLVec3                       whitepointYupvp;
+//    CMLVec3                       whitePointXYZ;
+//    CMLVec3                       whitePointYxy;
+//    CMLVec3                       whitePointYupvp;
 //    float                         temperature;
 //  } illumination;
   

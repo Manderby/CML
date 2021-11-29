@@ -20,7 +20,7 @@
 
 
 
-CML_API void CMLgetVersion(CMLByte version[4]){
+CML_API void cmlGetVersion(CMLByte version[4]){
   #if CML_DEBUG
     version[0] = 1;
     version[1] = 0;
@@ -41,7 +41,7 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   CMLColorMachine* cm = (CMLColorMachine*)cmlAllocate(sizeof(CMLColorMachine));
 
   CMLIllumination* referenceillumination = cmlCreateIlluminationWithPreset(CML_NULL, CML_ILLUMINATION_D65, 0);
-  cmlCreateObserverWithIllumination(  &(cm->observer),
+  cmlCreateObserver(  &(cm->observer),
                                               CML_OBSERVER_2DEG_CIE_1931,
                                               referenceillumination,
                                               1.f);
@@ -108,11 +108,11 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
 
 CML_API void CMLreleaseColorMachine(CMLColorMachine* cm){
   cmlClearObserver(&(cm->observer));
-  CMLclearResponseCurve(&(cm->rgbspace.responseR));
-  CMLclearResponseCurve(&(cm->rgbspace.responseG));
-  CMLclearResponseCurve(&(cm->rgbspace.responseB));
-  CMLclearResponseCurve(&(cm->labspace.responseL));
-  CMLclearResponseCurve(&(cm->labspace.responseLStar));
+  cmlClearResponseCurve(&(cm->rgbspace.responseR));
+  cmlClearResponseCurve(&(cm->rgbspace.responseG));
+  cmlClearResponseCurve(&(cm->rgbspace.responseB));
+  cmlClearResponseCurve(&(cm->labspace.responseL));
+  cmlClearResponseCurve(&(cm->labspace.responseLStar));
   free(cm);
 }
 
@@ -143,7 +143,7 @@ CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
 
 
 //
-//CMLIntegrationMethod CMLgetIntegrationMethod(const CMLColorMachine* cm){
+//CMLIntegrationMethod cmlGetIntegrationMethod(const CMLColorMachine* cm){
 //  return cm->inputoutput.method;
 //}
 //
@@ -155,12 +155,12 @@ CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
 
 
 
-CML_API CMLIntegerMappingType CMLgetIntegerMappingType(const CMLColorMachine* cm){
+CML_API CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm){
   return cm->inputoutput.integermapping;
 }
 
 
-CML_API void CMLget8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
@@ -169,7 +169,7 @@ CML_API void CMLget8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint3
 }
 
 
-CML_API void CMLget16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_API void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif

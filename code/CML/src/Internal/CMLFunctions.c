@@ -74,7 +74,7 @@ CML_API float cmlGetFunctionParameter(const CMLFunction* func, size_t index){
 
 
 
-CML_HIDEF CMLDefinitionRange CMLgetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
+CML_HIDEF CMLDefinitionRange cmlGetDefinitionRangeOf2Functions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
   
   float minsamplecoord1;
   float maxsamplecoord1;
@@ -125,7 +125,7 @@ CML_API float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
   CMLIntegrationMethod type;
   float sum = 0.f;
 
-  CMLDefinitionRange filterrange = CMLgetDefinitionRangeOf2Functions(func, filter, CML_TRUE);
+  CMLDefinitionRange filterrange = cmlGetDefinitionRangeOf2Functions(func, filter, CML_TRUE);
   if(filterrange.minSampleCoord > filterrange.maxSampleCoord){return 0.f;}
   
   #if CML_DEBUG
@@ -693,16 +693,16 @@ CML_HIDDEN const float dilluminantS2[CML_D_ILLUMINANT_ENTRYCOUNT] =
    9.60f,  8.50f,  7.00f,  7.60f,  8.00f,  6.70f,  5.20f,  7.40f,  6.80f,  7.00f,
    6.40f,  5.50f,  6.10f,  6.50f};
 
-CML_HIDEF void CMLInternalComputeDIlluminantWhitePoint(float* whitepoint, float temp){
+CML_HIDEF void CMLInternalComputeDIlluminantWhitePoint(float* whitePoint, float temp){
   if(temp < 4000.f){temp = 4000.f;}
   if(temp > 25000.f){temp = 25000.f;}
   
   if(temp <= 7000.f){
-    whitepoint[0] = ((-4.607e9f / temp + 2.9678e6f) / temp + 0.09911e3f) / temp + 0.244063f;
+    whitePoint[0] = ((-4.607e9f / temp + 2.9678e6f) / temp + 0.09911e3f) / temp + 0.244063f;
   }else{
-    whitepoint[0] = ((-2.0064e9f / temp + 1.9018e6f) / temp + 0.24748e3f) / temp + 0.23704f;
+    whitePoint[0] = ((-2.0064e9f / temp + 1.9018e6f) / temp + 0.24748e3f) / temp + 0.23704f;
   }
-  whitepoint[1] = -3.f * whitepoint[0] * whitepoint[0] + 2.87f * whitepoint[0] - 0.275f;
+  whitePoint[1] = -3.f * whitePoint[0] * whitePoint[0] + 2.87f * whitePoint[0] - 0.275f;
 }
 
 // todo make temperature a parameter
@@ -713,16 +713,16 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature){
   float M2;
   CMLuint32 l;
   float* array;
-  float whitepoint[2];
+  float whitePoint[2];
   #if CML_DEBUG
     if(temperature <= 0){cmlError("Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
   array = (float*)cmlAllocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
-  CMLInternalComputeDIlluminantWhitePoint(whitepoint, temperature);
-  Minv = cmlInverse(0.0241f +  0.2562f * whitepoint[0] -  0.7341f * whitepoint[1]);
-  M1 = (-1.3515f -  1.7703f * whitepoint[0] +  5.9114f * whitepoint[1]) * Minv;
-  M2 = ( 0.03f   - 31.4424f * whitepoint[0] + 30.0717f * whitepoint[1]) * Minv;
+  CMLInternalComputeDIlluminantWhitePoint(whitePoint, temperature);
+  Minv = cmlInverse(0.0241f +  0.2562f * whitePoint[0] -  0.7341f * whitePoint[1]);
+  M1 = (-1.3515f -  1.7703f * whitePoint[0] +  5.9114f * whitePoint[1]) * Minv;
+  M2 = ( 0.03f   - 31.4424f * whitePoint[0] + 30.0717f * whitePoint[1]) * Minv;
   for(l=0; l<CML_D_ILLUMINANT_ENTRYCOUNT; ++l){
     array[l] = dilluminantS0[l] + M1*dilluminantS1[l] + M2*dilluminantS2[l];
   }
@@ -1323,7 +1323,7 @@ CML_HIDDEN void CMLInternalConstructFunctionAddFunction(float* params, void** da
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_FALSE);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_FALSE);
   *defRange = newrange;
 }
 
@@ -1372,7 +1372,7 @@ CML_HIDDEN void CMLInternalConstructFunctionSubFunction(float* params, void** da
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_FALSE);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_FALSE);
   *defRange = newrange;
 }
 
@@ -1422,7 +1422,7 @@ CML_HIDDEN void CMLInternalConstructFunctionMulFunction(float* params, void** da
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_TRUE);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_TRUE);
   *defRange = newrange;
 }
 
@@ -1473,7 +1473,7 @@ CML_HIDDEN void CMLInternalConstructFunctionDivFunction(float* params, void** da
   thisdata = (CMLInternalFunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
-  newrange = CMLgetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_TRUE);
+  newrange = cmlGetDefinitionRangeOf2Functions(indata->func1, indata->func2, CML_TRUE);
   *defRange = newrange;
 }
 

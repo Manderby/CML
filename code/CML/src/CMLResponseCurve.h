@@ -1,33 +1,35 @@
 
 CML_API CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
-                                         CMLResponseCurve* curve,
-//                                           CMLFunctionType type,
-                                                     float param0,
-                                                     float param1,
-                                                     float param2,
-                                                     float param3);
+  CMLResponseCurve* curve,
+// CMLFunctionType type,
+  float param0,
+  float param1,
+  float param2,
+  float param3);
 
-CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve, CMLResponseCurve* srccurve);
+CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(
+  CMLResponseCurve* dstcurve,
+  CMLResponseCurve* srccurve);
 
 CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
-                                        CMLResponseCurve* curve,
-                                   CMLResponseCurvePreset preset);
+  CMLResponseCurve* curve,
+  CMLResponseCurvePreset preset);
 
-CML_API void CMLclearResponseCurve(CMLResponseCurve* curve);
-CML_API void CMLdestroyResponseCurve(CMLResponseCurve* curve);
+CML_API void cmlClearResponseCurve(CMLResponseCurve* curve);
+CML_API void cmlDestroyResponseCurve(CMLResponseCurve* curve);
 
-// ForwardFunc points away from XYZ, BackwardFunc towards it. Meaning:
-// For an RGB space, ForwardFunc is needed for the transformation XYZ->RGB
-// whereas BackwardFunc is needed for the transformation RGB->XYZ.
-// For an Lab space, ForwardFunc is needed for the transformation XYZ->Lab
-// whereas BackwardFunc is needed for the transformation Lab->XYZ.
-CML_API CMLFunction* CMLgetResponseCurveFunc(const CMLResponseCurve* curve);
-CML_API CMLFunction* CMLgetResponseCurveInvFunc(const CMLResponseCurve* curve);
-//CML_API CMLFunctionType CMLgetResponseCurveFunctionType(const CMLResponseCurve* curve);
-CML_API float CMLgetResponseCurveParam0(const CMLResponseCurve* curve);
-CML_API float CMLgetResponseCurveParam1(const CMLResponseCurve* curve);
-CML_API float CMLgetResponseCurveParam2(const CMLResponseCurve* curve);
-CML_API float CMLgetResponseCurveParam3(const CMLResponseCurve* curve);
+// Func points away from XYZ, InvFunc towards it. Meaning:
+// For an RGB space, Func is needed for the transformation XYZ->RGB
+// whereas InvFunc is needed for the transformation RGB->XYZ.
+// For an Lab space, Func is needed for the transformation XYZ->Lab
+// whereas InvFunc is needed for the transformation Lab->XYZ.
+CML_API CMLFunction* cmlGetResponseCurveFunc(const CMLResponseCurve* curve);
+CML_API CMLFunction* cmlGetResponseCurveInvFunc(const CMLResponseCurve* curve);
+//CML_API CMLFunctionType cmlGetResponseCurveFunctionType(const CMLResponseCurve* curve);
+CML_API float cmlGetResponseCurveParam0(const CMLResponseCurve* curve);
+CML_API float cmlGetResponseCurveParam1(const CMLResponseCurve* curve);
+CML_API float cmlGetResponseCurveParam2(const CMLResponseCurve* curve);
+CML_API float cmlGetResponseCurveParam3(const CMLResponseCurve* curve);
 
 
 
