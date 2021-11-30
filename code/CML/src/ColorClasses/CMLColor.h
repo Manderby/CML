@@ -37,7 +37,7 @@ class SpectralColor;
 
 // The machine which is needed for the color classes:
 extern CMLColorMachine* cmlcm;
-void CMLsetMachineForColorClasses(CMLColorMachine* cm);
+void cmlSetMachineForColorClasses(CMLColorMachine* cm);
 
 
 // Base class for all Colors

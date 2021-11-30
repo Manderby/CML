@@ -3,7 +3,7 @@
 
 CMLColorMachine* cmlcm = CML_NULL;
 
-void CMLsetMachineForColorClasses(CMLColorMachine* cm){
+void cmlSetMachineForColorClasses(CMLColorMachine* cm){
   cmlcm = cm;
 }
 

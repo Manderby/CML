@@ -8,35 +8,35 @@ CML_API CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* 
 }
 
 
-CML_API void CMLsetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation){
+CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation){
   switch(computation){
   case CML_GRAY_FROM_HSL:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferHSL;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayHSL;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferHSL;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayHSL;
     break;
   case CML_GRAY_FROM_HSV:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferHSV;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayHSV;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferHSV;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayHSV;
     break;
   case CML_GRAY_FROM_G:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferG;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayG;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferG;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayG;
     break;
   case CML_GRAY_FROM_LSTAR:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferLSTAR;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayLSTAR;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferLSTAR;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayLSTAR;
     break;
   case CML_GRAY_FROM_L:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferL;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayL;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferL;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayL;
     break;
   case CML_GRAY_FROM_Y:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferY;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayY;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferY;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayY;
     break;
   case CML_GRAY_FROM_YPRIME:
-    cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferYPRIME;
-    cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayYPRIME;
+    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferYPRIME;
+    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayYPRIME;
     break;
   default:
     #if CML_DEBUG

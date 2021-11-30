@@ -232,13 +232,13 @@ CML_HIDDEN static const float z2valencesJuddVos1978[CML_Z2VALENCES_JUDDVOS1978_N
 
 
 
-CML_HIDDEN void CMLInternalrecomputeObserver(CMLColorMachine* cm){
+CML_HIDDEN void cml_recomputeObserver(CMLColorMachine* cm){
   if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_OBSERVER; return;}
   
   // There is nothing to be done here. At least not currently. Maybe in the
   // future. Note: Photopic and Scotopic.
   
-  CMLInternalrecomputeIllumination(cm);
+  cml_recomputeIllumination(cm);
 }
 
 
@@ -306,9 +306,9 @@ CML_API void cmlCreateSpecDistFunctions(CMLFunction* functions[3], CMLObserverTy
 //  return cm->observer.radiometric;
 //}
 //
-//CML_API void CMLsetRadiometricComputation(CMLColorMachine* cm, CMLBool newradiometric){
+//CML_API void cmlSetRadiometricComputation(CMLColorMachine* cm, CMLBool newradiometric){
 //  cm->observer.radiometric = newradiometric;
-//  CMLInternalrecomputeObserver(cm);
+//  cml_recomputeObserver(cm);
 //}
 
 
@@ -322,7 +322,7 @@ CML_API CMLObserverType cmlGetObserverType(const CMLColorMachine* cm){
 }
 
 
-CML_API void CMLsetObserverType(CMLColorMachine* cm, CMLObserverType newobserverType){
+CML_API void cmlSetObserverType(CMLColorMachine* cm, CMLObserverType newobserverType){
 
     float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
     CMLIllumination newillumination;
@@ -336,7 +336,7 @@ CML_API void CMLsetObserverType(CMLColorMachine* cm, CMLObserverType newobserver
 //  cmlReleaseFunction(cm->observer.functions[1]);
 //  cmlReleaseFunction(cm->observer.functions[2]);
 //  cmlCreateSpecDistFunctions(cm->observer.functions, newobserver);
-  CMLInternalrecomputeObserver(cm);
+  cml_recomputeObserver(cm);
 }
 
 
@@ -347,7 +347,7 @@ CML_API void cmlGetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunctio
 }
 
 
-//CML_API void CMLsetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]){
+//CML_API void cmlSetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]){
 //  CMLFunction* tmpfun;
 //  cm->observer.state = CML_OBSERVER_CUSTOM;
 //  tmpfun = cm->observer.functions[0];
@@ -359,7 +359,7 @@ CML_API void cmlGetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunctio
 //  tmpfun = cm->observer.functions[2];
 //  cm->observer.functions[2] = cmlDuplicateFunction(observer[2]);
 //  cmlReleaseFunction(tmpfun);
-//  CMLInternalrecomputeObserver(cm);
+//  cml_recomputeObserver(cm);
 //}
 
 
@@ -371,9 +371,9 @@ CML_API void cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, floa
 //    cmlSet3(xyz, 0.f, 0.f, 0.f);
 //  }else{
     cmlSet3(  xyz,
-              cmlInternalEval(cmlGetObserverSpecDistFunction(&(cm->observer), 0), lambda),
-              cmlInternalEval(cmlGetObserverSpecDistFunction(&(cm->observer), 1), lambda),
-              cmlInternalEval(cmlGetObserverSpecDistFunction(&(cm->observer), 2), lambda));
+              cml_Eval(cmlGetObserverSpecDistFunction(&(cm->observer), 0), lambda),
+              cml_Eval(cmlGetObserverSpecDistFunction(&(cm->observer), 1), lambda),
+              cml_Eval(cmlGetObserverSpecDistFunction(&(cm->observer), 2), lambda));
 //  }
 }
 
@@ -400,8 +400,8 @@ CML_API CMLObserver* cmlCreateObserver(
   cmlSet3(observer->BALFinverseWhitepointXYZ, cmlInverse(observer->BALFwhitePointXYZ[0]),
                                               cmlInverse(observer->BALFwhitePointXYZ[1]),
                                               cmlInverse(observer->BALFwhitePointXYZ[2]));
-  cmlInternalOneXYZtoYxy(observer->BALFwhitePointYxy, observer->BALFwhitePointXYZ, CML_NULL);
-  cmlInternalOneYxytoYupvp(observer->BALFwhitePointYupvp, observer->BALFwhitePointYxy, CML_NULL);
+  cml_OneXYZtoYxy(observer->BALFwhitePointYxy, observer->BALFwhitePointXYZ, CML_NULL);
+  cml_OneYxytoYupvp(observer->BALFwhitePointYupvp, observer->BALFwhitePointYxy, CML_NULL);
   return observer;
 }
 

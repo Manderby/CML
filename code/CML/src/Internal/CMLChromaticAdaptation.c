@@ -53,8 +53,8 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
          -0.08081f,  0.04570f,  0.91822f);
     break;
   }
-  cmlInternalOneYxytoXYZ(whitePointXYZ, whitePointYxy, CML_NULL);
-  cmlInternalOneYxytoXYZ(adaptedwhitePointXYZ, adaptedWhitePointYxy, CML_NULL);
+  cml_OneYxytoXYZ(whitePointXYZ, whitePointYxy, CML_NULL);
+  cml_OneYxytoXYZ(adaptedwhitePointXYZ, adaptedWhitePointYxy, CML_NULL);
   cmlInvertMat33(Minv, M);
   cmlMulMat33Vec3(cs, M, whitePointXYZ);
   cmlMulMat33Vec3(cd, M, adaptedwhitePointXYZ);

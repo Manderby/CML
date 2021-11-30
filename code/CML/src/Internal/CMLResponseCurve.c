@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "CMLInternal.h"
+#include "cml_.h"
 
 
 CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){

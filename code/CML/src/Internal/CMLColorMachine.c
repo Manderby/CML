@@ -52,25 +52,25 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   cmlCreateResponseCurve(&(cm->labspace.responseL));
   cmlCreateResponseCurveWithPreset(&(cm->labspace.responseLStar), CML_RESPONSE_LSTAR);
   
-  cm->GraytoChanneledBuffer = &CMLInternalGraytoChanneledBufferLSTAR;
-  cm->ChanneledBuffertoGray = &CMLInternalChanneledBuffertoGrayLSTAR;
-  cm->XYZtoLab              = &CMLInternalXYZtoLabCIELAB;
-  cm->XYZtoLab_SB           = &CMLInternalXYZtoLabCIELAB_SB;
-  cm->LabtoXYZ              = &CMLInternalLabtoXYZCIELAB;
-  cm->LabtoXYZ_SB           = &CMLInternalLabtoXYZCIELAB_SB;
-  cm->RGBtoCMYK             = &CMLInternalRGBtoCMYKStandard;
-  cm->RGBtoCMYK_SB          = &CMLInternalRGBtoCMYKStandard_SB;
-  cm->CMYKtoRGB             = &CMLInternalCMYKtoRGBStandard;
-  cm->CMYKtoRGB_SB          = &CMLInternalCMYKtoRGBStandard_SB;
+  cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferLSTAR;
+  cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayLSTAR;
+  cm->XYZtoLab              = &cml_XYZtoLabCIELAB;
+  cm->XYZtoLab_SB           = &cml_XYZtoLabCIELAB_SB;
+  cm->LabtoXYZ              = &cml_LabtoXYZCIELAB;
+  cm->LabtoXYZ_SB           = &cml_LabtoXYZCIELAB_SB;
+  cm->RGBtoCMYK             = &cml_RGBtoCMYKStandard;
+  cm->RGBtoCMYK_SB          = &cml_RGBtoCMYKStandard_SB;
+  cm->CMYKtoRGB             = &cml_CMYKtoRGBStandard;
+  cm->CMYKtoRGB_SB          = &cml_CMYKtoRGBStandard_SB;
 
   // Set the recomputation to zero and start locking for the remaining of this
   // function.
   cm->recomputationlockcount = 0;
   cm->recomputationmask = 0;
-  CMLlockRecomputation(cm);
+  cmlLockRecomputation(cm);
 
   // Set the default for the integer mapping
-  CMLsetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
+  cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
   for(i=0; i<CML_MAX_NUMBER_OF_CHANNELS; i++){
     cm->inputoutput.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
     cm->inputoutput.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
@@ -79,34 +79,34 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   }
   
   // Set the default observer.
-  CMLsetObserverType(cm, CML_DEFAULT_2DEG_OBSERVER);
-//  CMLsetRadiometricComputation(cm, CML_FALSE);
+  cmlSetObserverType(cm, CML_DEFAULT_2DEG_OBSERVER);
+//  cmlSetRadiometricComputation(cm, CML_FALSE);
 
   // Set the default RGB space and the according default illumination.
-  CMLsetRGBLUTSize(cm, CML_DEFAULT_RGB_LUT_SIZE);
-  CMLsetRGBColorSpace(cm, CML_DEFAULT_RGB_COLORSPACE);
+  cmlSetRGBLUTSize(cm, CML_DEFAULT_RGB_LUT_SIZE);
+  cmlSetRGBColorSpace(cm, CML_DEFAULT_RGB_COLORSPACE);
 
   // Set the chromatic valence parameters manually to the Hunter Lab original
   // values.
   cm->labspace.adamschromaticityvalenceK = 175.f / 100.f;
   cm->labspace.adamschromaticityvalenceke = 70.f / 175.f;
   // But set the default LAB colorspace.
-  CMLsetLabLUTSize(cm, CML_DEFAULT_LAB_LUT_SIZE);
-  CMLsetLabColorSpace(cm, CML_DEFAULT_LAB_COLORSPACE);
+  cmlSetLabLUTSize(cm, CML_DEFAULT_LAB_LUT_SIZE);
+  cmlSetLabColorSpace(cm, CML_DEFAULT_LAB_COLORSPACE);
 
   // Additional state settings.
-  CMLsetCMYKTransform(cm, CML_DEFAULT_CMYK_TRANSFORM);
-  CMLsetGrayComputationType(cm, CML_DEFAULT_GRAY_COMPUTATION);
+  cmlSetCMYKTransform(cm, CML_DEFAULT_CMYK_TRANSFORM);
+  cmlSetGrayComputationType(cm, CML_DEFAULT_GRAY_COMPUTATION);
   
   // Recompute the whole machine.
-  CMLreleaseRecomputation(cm);
+  cmlReleaseRecomputation(cm);
 
   return cm;
 }
 
 
 
-CML_API void CMLreleaseColorMachine(CMLColorMachine* cm){
+CML_API void cmlReleaseColorMachine(CMLColorMachine* cm){
   cmlClearObserver(&(cm->observer));
   cmlClearResponseCurve(&(cm->rgbspace.responseR));
   cmlClearResponseCurve(&(cm->rgbspace.responseG));
@@ -118,25 +118,25 @@ CML_API void CMLreleaseColorMachine(CMLColorMachine* cm){
 
 
 
-CML_API void CMLlockRecomputation(CMLColorMachine* cm){
+CML_API void cmlLockRecomputation(CMLColorMachine* cm){
   cm->recomputationlockcount ++;
 }
 
 
 
-CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
+CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
   cm->recomputationlockcount --;
   if(cm->recomputationlockcount){return;}
   
-  if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){CMLInternalrecomputeObserver(cm);
-  }else if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){CMLInternalrecomputeIllumination(cm);
+  if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){cml_recomputeObserver(cm);
+  }else if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){cml_recomputeIllumination(cm);
   }else{
     // note that the following recomputations may occur independant of each
     // other.
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_LAB){CMLInternalrecomputeLabColorspace(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY){CMLInternalrecomputeAdamsChromaticityValenceSpace(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES){CMLInternalrecomputeRGBResponses(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB){CMLInternalrecomputeRGBColorspace(cm);}
+    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_LAB){cml_recomputeLabColorspace(cm);}
+    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY){cml_recomputeAdamsChromaticityValenceSpace(cm);}
+    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES){cml_recomputeRGBResponses(cm);}
+    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB){cml_recomputeRGBColorspace(cm);}
   }
   cm->recomputationmask = 0;
 }
@@ -148,9 +148,9 @@ CML_API void CMLreleaseRecomputation(CMLColorMachine* cm){
 //}
 //
 //
-//void CMLsetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod newtype){
+//void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod newtype){
 //  cm->inputoutput.method = newtype;
-//  CMLInternalrecomputeObserver(cm);
+//  cml_recomputeObserver(cm);
 //}
 
 
@@ -178,7 +178,7 @@ CML_API void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint
 }
 
 
-CML_API void CMLset8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_API void cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif

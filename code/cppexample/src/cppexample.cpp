@@ -23,9 +23,9 @@ int main(){
   
   // First thing you need to know: All color classes require one globally shared
   // color machine which they will access by a pointer. You can create a machine
-  // and use the CMLsetMachineForColorClasses method to set this global pointer:
+  // and use the cmlSetMachineForColorClasses method to set this global pointer:
   
-  CMLsetMachineForColorClasses(CMLcreateColorMachine());
+  cmlSetMachineForColorClasses(CMLcreateColorMachine());
 
   // Don't forget to release this machine when you quit your application. See
   // below.
@@ -163,7 +163,7 @@ int main(){
   // The global ColorMachine remains in memory as long as you like. At the end
   // of your application, you can release it:
   
-  CMLreleaseColorMachine(cmlcm);
+  cmlReleaseColorMachine(cmlcm);
 
   printf(" Bye\n");
 

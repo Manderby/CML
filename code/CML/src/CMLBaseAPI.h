@@ -253,7 +253,7 @@ CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset(
 // setting the Y component of the whitePoint to 1.
 // Also note that in order to get the inverse transformation matrix, simply
 // use the cmlInvertMat33 function.
-CML_API void CMLcomputeRGBtoXYZMatrix(
+CML_API void cmlComputeRGBtoXYZMatrix(
   CMLMat33 rgbToXyzMatrix,
   CMLVec3 primaryRYxy,
   CMLVec3 primaryGYxy,

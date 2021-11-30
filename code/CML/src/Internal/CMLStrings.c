@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "CMLInternal.h"
+#include "cml_.h"
 
 CML_HIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
   "Gray",

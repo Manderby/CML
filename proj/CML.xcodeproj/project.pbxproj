@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		908EDD9C2756D5FC008ABF6D /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 908EDD9B2756D5FC008ABF6D /* CMLDefinitions.h */; };
+		908EDD9D2756D5FC008ABF6D /* CMLDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 908EDD9B2756D5FC008ABF6D /* CMLDefinitions.h */; };
+		908EDDA72756D641008ABF6D /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 908EDDA62756D641008ABF6D /* CMLunused.h */; };
+		908EDDA82756D641008ABF6D /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 908EDDA62756D641008ABF6D /* CMLunused.h */; };
 		90BF4FA3274AA2D9001FDE2A /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
 		90BF4FA6274AA698001FDE2A /* libcmldebug.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8E3F1154D77D500A4C836 /* libcmldebug.dylib */; };
 		90BF500B274AAC85001FDE2A /* CMLInvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4FB2274AAC84001FDE2A /* CMLInvert.c */; };
@@ -49,12 +53,8 @@
 		90BF5030274AAC85001FDE2A /* CMLYupvpConversions.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF4FC4274AAC84001FDE2A /* CMLYupvpConversions.c */; };
 		90BF504F274AAC85001FDE2A /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD5274AAC84001FDE2A /* CMLIllumination.h */; };
 		90BF5050274AAC85001FDE2A /* CMLIllumination.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD5274AAC84001FDE2A /* CMLIllumination.h */; };
-		90BF5051274AAC85001FDE2A /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD6274AAC84001FDE2A /* CMLTypes.h */; };
-		90BF5052274AAC85001FDE2A /* CMLTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD6274AAC84001FDE2A /* CMLTypes.h */; };
 		90BF5055274AAC85001FDE2A /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD8274AAC84001FDE2A /* CML.h */; };
 		90BF5056274AAC85001FDE2A /* CML.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FD8274AAC84001FDE2A /* CML.h */; };
-		90BF5059274AAC85001FDE2A /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FDA274AAC84001FDE2A /* CMLConstants.h */; };
-		90BF505A274AAC85001FDE2A /* CMLConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FDA274AAC84001FDE2A /* CMLConstants.h */; };
 		90BF505B274AAC85001FDE2A /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FDB274AAC84001FDE2A /* CMLObserver.h */; };
 		90BF505C274AAC85001FDE2A /* CMLObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FDB274AAC84001FDE2A /* CMLObserver.h */; };
 		90BF505F274AAC85001FDE2A /* CMLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF4FDD274AAC84001FDE2A /* CMLFunctions.h */; };
@@ -127,8 +127,6 @@
 		90BF50A4274AAC85001FDE2A /* CMLHSVColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF5000274AAC85001FDE2A /* CMLHSVColor.h */; };
 		90BF50A5274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
 		90BF50A6274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
-		90BF50A7274AAC85001FDE2A /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF5002274AAC85001FDE2A /* CMLunused.h */; };
-		90BF50A8274AAC85001FDE2A /* CMLunused.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF5002274AAC85001FDE2A /* CMLunused.h */; };
 		90BF908F27523562001EA32C /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF908E27523562001EA32C /* example.cpp */; };
 		90BF90972752356C001EA32C /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90962752356C001EA32C /* cppexample.cpp */; };
 		90BF90C0275237AD001EA32C /* CMLIntegerMapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */; };
@@ -205,6 +203,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		908EDD9B2756D5FC008ABF6D /* CMLDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLDefinitions.h; sourceTree = "<group>"; };
+		908EDDA62756D641008ABF6D /* CMLunused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLunused.h; sourceTree = "<group>"; };
 		90BF4FAA274AAC84001FDE2A /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
 		90BF4FAB274AAC84001FDE2A /* CMLChangelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMLChangelog.txt; sourceTree = "<group>"; };
 		90BF4FB2274AAC84001FDE2A /* CMLInvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLInvert.c; sourceTree = "<group>"; };
@@ -227,9 +227,7 @@
 		90BF4FC3274AAC84001FDE2A /* CMLLabConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLLabConversions.c; sourceTree = "<group>"; };
 		90BF4FC4274AAC84001FDE2A /* CMLYupvpConversions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLYupvpConversions.c; sourceTree = "<group>"; };
 		90BF4FD5274AAC84001FDE2A /* CMLIllumination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLIllumination.h; sourceTree = "<group>"; };
-		90BF4FD6274AAC84001FDE2A /* CMLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLTypes.h; sourceTree = "<group>"; };
 		90BF4FD8274AAC84001FDE2A /* CML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CML.h; sourceTree = "<group>"; };
-		90BF4FDA274AAC84001FDE2A /* CMLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLConstants.h; sourceTree = "<group>"; };
 		90BF4FDB274AAC84001FDE2A /* CMLObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLObserver.h; sourceTree = "<group>"; };
 		90BF4FDD274AAC84001FDE2A /* CMLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLFunctions.h; sourceTree = "<group>"; };
 		90BF4FDE274AAC84001FDE2A /* CMLEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLEnvironment.h; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 		90BF4FFF274AAC85001FDE2A /* CMLYupvpColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYupvpColor.cpp; sourceTree = "<group>"; };
 		90BF5000274AAC85001FDE2A /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
 		90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
-		90BF5002274AAC85001FDE2A /* CMLunused.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLunused.h; sourceTree = "<group>"; };
 		90BF908E27523562001EA32C /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
 		90BF90962752356C001EA32C /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
 		90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIntegerMapping.c; sourceTree = "<group>"; };
@@ -362,15 +359,13 @@
 				90BF4FD8274AAC84001FDE2A /* CML.h */,
 				90BF4FE0274AAC84001FDE2A /* CMLBaseAPI.h */,
 				90BF4FE2274AAC84001FDE2A /* CMLColorMachine.h */,
-				90BF4FDA274AAC84001FDE2A /* CMLConstants.h */,
+				908EDD9B2756D5FC008ABF6D /* CMLDefinitions.h */,
 				90BF4FDE274AAC84001FDE2A /* CMLEnvironment.h */,
 				90BF4FDD274AAC84001FDE2A /* CMLFunctions.h */,
 				90BF4FD5274AAC84001FDE2A /* CMLIllumination.h */,
 				90BF90EC27526480001EA32C /* CMLMath.h */,
 				90BF4FDB274AAC84001FDE2A /* CMLObserver.h */,
 				90BF4FE1274AAC84001FDE2A /* CMLResponseCurve.h */,
-				90BF4FD6274AAC84001FDE2A /* CMLTypes.h */,
-				90BF5002274AAC85001FDE2A /* CMLunused.h */,
 				90BF4FE3274AAC84001FDE2A /* ColorClasses */,
 				90BF4FB1274AAC84001FDE2A /* Conversions */,
 				90BF90AC275237AD001EA32C /* Internal */,
@@ -498,6 +493,7 @@
 				90BF90BD275237AD001EA32C /* CMLIllumination.c */,
 				90BF90BE275237AD001EA32C /* CMLNormedConversions.h */,
 				90BF90BF275237AD001EA32C /* CMLRGBColorspace.c */,
+				908EDDA62756D641008ABF6D /* CMLunused.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -537,8 +533,8 @@
 				90BF90D2275237AD001EA32C /* CMLConverterMacros.h in Headers */,
 				90BF5083274AAC85001FDE2A /* CMLYupvpColor.h in Headers */,
 				90BF90ED27526480001EA32C /* CMLMath.h in Headers */,
+				908EDDA72756D641008ABF6D /* CMLunused.h in Headers */,
 				90BF5097274AAC85001FDE2A /* CMLYuvColor.h in Headers */,
-				90BF50A7274AAC85001FDE2A /* CMLunused.h in Headers */,
 				90BF5065274AAC85001FDE2A /* CMLBaseAPI.h in Headers */,
 				90BF507F274AAC85001FDE2A /* CMLXYZColor.h in Headers */,
 				90BF5069274AAC85001FDE2A /* CMLColorMachine.h in Headers */,
@@ -546,7 +542,6 @@
 				90BF50A3274AAC85001FDE2A /* CMLHSVColor.h in Headers */,
 				90BF90DE275237AD001EA32C /* CMLInternal.h in Headers */,
 				90BF507D274AAC85001FDE2A /* CMLCMYKColor.h in Headers */,
-				90BF5051274AAC85001FDE2A /* CMLTypes.h in Headers */,
 				90BF509D274AAC85001FDE2A /* CMLHSLColor.h in Headers */,
 				90BF5081274AAC85001FDE2A /* CMLGrayColor.h in Headers */,
 				90BF507B274AAC85001FDE2A /* CMLRGBColor.h in Headers */,
@@ -557,10 +552,10 @@
 				90BF508B274AAC85001FDE2A /* CMLLchColor.h in Headers */,
 				90BF5061274AAC85001FDE2A /* CMLEnvironment.h in Headers */,
 				90BF5067274AAC85001FDE2A /* CMLResponseCurve.h in Headers */,
-				90BF5059274AAC85001FDE2A /* CMLConstants.h in Headers */,
 				90BF5091274AAC85001FDE2A /* CMLSpectralColor.h in Headers */,
 				90BF506B274AAC85001FDE2A /* CMLColor.h in Headers */,
 				90BF5055274AAC85001FDE2A /* CML.h in Headers */,
+				908EDD9C2756D5FC008ABF6D /* CMLDefinitions.h in Headers */,
 				90BF508F274AAC85001FDE2A /* CMLLuvColor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,8 +570,8 @@
 				90BF90D3275237AD001EA32C /* CMLConverterMacros.h in Headers */,
 				90BF5084274AAC85001FDE2A /* CMLYupvpColor.h in Headers */,
 				90BF90EE27526480001EA32C /* CMLMath.h in Headers */,
+				908EDDA82756D641008ABF6D /* CMLunused.h in Headers */,
 				90BF5098274AAC85001FDE2A /* CMLYuvColor.h in Headers */,
-				90BF50A8274AAC85001FDE2A /* CMLunused.h in Headers */,
 				90BF5066274AAC85001FDE2A /* CMLBaseAPI.h in Headers */,
 				90BF5080274AAC85001FDE2A /* CMLXYZColor.h in Headers */,
 				90BF506A274AAC85001FDE2A /* CMLColorMachine.h in Headers */,
@@ -584,7 +579,6 @@
 				90BF50A4274AAC85001FDE2A /* CMLHSVColor.h in Headers */,
 				90BF90DF275237AD001EA32C /* CMLInternal.h in Headers */,
 				90BF507E274AAC85001FDE2A /* CMLCMYKColor.h in Headers */,
-				90BF5052274AAC85001FDE2A /* CMLTypes.h in Headers */,
 				90BF509E274AAC85001FDE2A /* CMLHSLColor.h in Headers */,
 				90BF5082274AAC85001FDE2A /* CMLGrayColor.h in Headers */,
 				90BF507C274AAC85001FDE2A /* CMLRGBColor.h in Headers */,
@@ -595,10 +589,10 @@
 				90BF508C274AAC85001FDE2A /* CMLLchColor.h in Headers */,
 				90BF5062274AAC85001FDE2A /* CMLEnvironment.h in Headers */,
 				90BF5068274AAC85001FDE2A /* CMLResponseCurve.h in Headers */,
-				90BF505A274AAC85001FDE2A /* CMLConstants.h in Headers */,
 				90BF5092274AAC85001FDE2A /* CMLSpectralColor.h in Headers */,
 				90BF506C274AAC85001FDE2A /* CMLColor.h in Headers */,
 				90BF5056274AAC85001FDE2A /* CML.h in Headers */,
+				908EDD9D2756D5FC008ABF6D /* CMLDefinitions.h in Headers */,
 				90BF5090274AAC85001FDE2A /* CMLLuvColor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -69,7 +69,7 @@ int main(){
   // conversions.
 
   // The following function creates a new ColorMachine. You can deallocate
-  // the machine later with CMLreleaseColorMachine().
+  // the machine later with cmlReleaseColorMachine().
 
   CMLColorMachine* cm = CMLcreateColorMachine();
 
@@ -100,7 +100,7 @@ int main(){
   // Now, the default RGB colorspace of a newly created ColorMachine is sRGB.
   // But you can change that easily for example to Adobe 98:
   
-  CMLsetRGBColorSpace(cm, CML_RGB_ADOBE_98);
+  cmlSetRGBColorSpace(cm, CML_RGB_ADOBE_98);
   printf("Current RGB colorspace: %s\n", CMLgetRGBColorspaceString(CMLgetRGBColorSpace(cm)));
 
   // Now, when converting back the xyz value of our orange color to RGB, we
@@ -113,14 +113,14 @@ int main(){
   // change the Observer to 10 Degree and the Illumination to a D illuminant
   // with 5555 degree Kelvin
 
-  CMLsetObserverType(cm, CML_OBSERVER_10DEG_CIE_1964);
-  CMLsetIlluminationType(cm, CML_ILLUMINATION_D_ILLUMINANT);
-  CMLsetIlluminationTemperature(cm, 5555.f);
+  cmlSetObserverType(cm, CML_OBSERVER_10DEG_CIE_1964);
+  cmlSetIlluminationType(cm, CML_ILLUMINATION_D_ILLUMINANT);
+  cmlSetIlluminationTemperature(cm, 5555.f);
 
   // These settings will all be handeled one by one and therefore the color
   // machine will recompute itself after each setting. To avoid recomputation
-  // when multiple settings need to be done, see methods CMLlockRecomputation
-  // and CMLreleaseRecomputation for more speed.
+  // when multiple settings need to be done, see methods cmlLockRecomputation
+  // and cmlReleaseRecomputation for more speed.
 
   // After setting the state of the machine, several states can be read out.
   // For example:
@@ -210,8 +210,8 @@ int main(){
   // the LUT. It is recommended to use the number 32 to disable the LUT as an
   // indication that all computation will be done with floats.
   
-  CMLsetRGBLUTSize(cm2, 16);
-  CMLsetLabLUTSize(cm2, 16);
+  cmlSetRGBLUTSize(cm2, 16);
+  cmlSetLabLUTSize(cm2, 16);
 
   printf("Converting array with 16 Bit LUT... ");
   fflush(stdout);
@@ -313,7 +313,7 @@ int main(){
   // You can use this function for example, to set this spectrum as the
   // illumination spectrum of the machine:
 
-  CMLsetIlluminationSpectrum(cm3, luminancefunction);
+  cmlSetIlluminationSpectrum(cm3, luminancefunction);
   CMLgetWhitePointYxy(cm3, wpYxy);
   printf("New whitepoint: %f, %f, %f\n", wpYxy[0], wpYxy[1], wpYxy[2]);
 
@@ -354,7 +354,7 @@ int main(){
   // the color again. Note that the resulting values might be slightly different
   // due to numerical errors.
   
-//  CMLsetRadiometricComputation(cm3, CML_TRUE);
+//  cmlSetRadiometricComputation(cm3, CML_TRUE);
   cmlSpectrumRemissionToXYZ(cm3, xyz, remissionfunction, 1);
   printf("Radiometric Remission in XYZ: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
@@ -437,7 +437,7 @@ int main(){
   
   // Compute the matrix and prepare the response curve:
   CMLMat33 rgbtoxyzmatrix;
-  CMLcomputeRGBtoXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], srgbwp);
+  cmlComputeRGBtoXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], srgbwp);
   CMLFunction* srgbresponse = CMLcreatesRGBToXYZResponse();
   
   // Convert the color:
@@ -475,10 +475,10 @@ int main(){
   // Remember that ColorMachine objects remain in memory as long as you like.
   // You have to release each machine by yourself.
 
-  CMLreleaseColorMachine(cm);
-  CMLreleaseColorMachine(cm2);
-  CMLreleaseColorMachine(cm3);
-  CMLreleaseColorMachine(cm4);
+  cmlReleaseColorMachine(cm);
+  cmlReleaseColorMachine(cm2);
+  cmlReleaseColorMachine(cm3);
+  cmlReleaseColorMachine(cm4);
   
   printf(" Bye\n");
 

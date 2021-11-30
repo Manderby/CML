@@ -5,105 +5,105 @@
 
 
 CML_API void cmlConvertXYZtoYxy (CMLVec3 yxy , const CMLVec3 xyz, const CMLVec3 whitePointYxy){
-  cmlInternalOneXYZtoYxy(yxy, xyz, whitePointYxy);
+  cml_OneXYZtoYxy(yxy, xyz, whitePointYxy);
 }
 
 CML_API void cmlConvertYxytoXYZ (CMLVec3 xyz , const CMLVec3 yxy, const CMLVec3 whitePointXYZ){
-  cmlInternalOneYxytoXYZ(xyz, yxy, whitePointXYZ);
+  cml_OneYxytoXYZ(xyz, yxy, whitePointXYZ);
 }
 
 CML_API void cmlConvertYxytoYupvp(CMLVec3 yupvp , const CMLVec3 yxy, const CMLVec3 whitePointYupvp){
-  cmlInternalOneYxytoYupvp(yupvp, yxy, whitePointYupvp);
+  cml_OneYxytoYupvp(yupvp, yxy, whitePointYupvp);
 }
 
 CML_API void cmlConvertYupvptoYxy (CMLVec3 yxy , const CMLVec3 yupvp, const CMLVec3 whitePointYxy){
-  cmlInternalOneYupvptoYxy(yxy, yupvp, whitePointYxy);
+  cml_OneYupvptoYxy(yxy, yupvp, whitePointYxy);
 }
 
 CML_API void cmlConvertYupvptoYuv (CMLVec3 yuv , const CMLVec3 yupvp){
-  cmlInternalOneYupvptoYuv(yuv, yupvp);
+  cml_OneYupvptoYuv(yuv, yupvp);
 }
 
 CML_API void cmlConvertYuvtoYupvp (CMLVec3 yupvp , const CMLVec3 yuv){
-  cmlInternalOneYuvtoYupvp(yupvp, yuv);
+  cml_OneYuvtoYupvp(yupvp, yuv);
 }
 
 CML_API void cmlConvertYupvptoLuv (CMLVec3 luv , const CMLVec3 yupvp, const CMLVec3 whitePointYupvp){
   CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
-  cmlInternalOneYupvptoLuv(luv, yupvp, whitePointYupvp, lineartoLStarResponse);
+  cml_OneYupvptoLuv(luv, yupvp, whitePointYupvp, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
 CML_API void cmlConvertLuvtoYupvp (CMLVec3 yupvp , const CMLVec3 luv, const CMLVec3 whitePointYupvp){
   CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
-  cmlInternalOneLuvtoYupvp(yupvp, luv, whitePointYupvp, LStartoLinearResponse);
+  cml_OneLuvtoYupvp(yupvp, luv, whitePointYupvp, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }
 
 CML_API void cmlConvertXYZtoLab(CMLVec3 lab , const CMLVec3 xyz , const CMLVec3 whitePointXYZ){
   CMLFunction* lineartoLStarResponse = cmlCreateYToLStarResponse();
   CMLVec3 inverseWhitepointXYZ = {cmlInverse(whitePointXYZ[0]), cmlInverse(whitePointXYZ[1]), cmlInverse(whitePointXYZ[2])};
-  cmlInternalOneXYZtoCIELAB(lab, xyz, inverseWhitepointXYZ, lineartoLStarResponse);
+  cml_OneXYZtoCIELAB(lab, xyz, inverseWhitepointXYZ, lineartoLStarResponse);
   cmlReleaseFunction(lineartoLStarResponse);
 }
 
 CML_API void cmlConvertLabtoXYZ(CMLVec3 xyz , const CMLVec3 lab , const CMLVec3 whitePointXYZ){
   CMLFunction* LStartoLinearResponse = cmlCreateLStarToYResponse();
-  cmlInternalOneCIELABtoXYZ(xyz, lab, whitePointXYZ, LStartoLinearResponse);
+  cml_OneCIELABtoXYZ(xyz, lab, whitePointXYZ, LStartoLinearResponse);
   cmlReleaseFunction(LStartoLinearResponse);
 }
 
 CML_API void cmlConvertLabtoLch (CMLVec3 lch , const CMLVec3 lab ){
-  cmlInternalOneLabtoLch(lch, lab);
+  cml_OneLabtoLch(lch, lab);
 }
 
 CML_API void cmlConvertLchtoLab (CMLVec3 lab , const CMLVec3 lch ){
-  cmlInternalOneLchtoLab(lab, lch);
+  cml_OneLchtoLab(lab, lch);
 }
 
 CML_API void cmlConvertXYZtoRGB (CMLVec3 rgb , const CMLVec3 xyz, const CMLMat33 XYZtoRGBmatrix, const CMLFunction* LineartoRResponse, const CMLFunction* LineartoGResponse, const CMLFunction* LineartoBResponse){
-  cmlInternalOneXYZtoRGB(rgb, xyz, XYZtoRGBmatrix, LineartoRResponse, LineartoGResponse, LineartoBResponse);
+  cml_OneXYZtoRGB(rgb, xyz, XYZtoRGBmatrix, LineartoRResponse, LineartoGResponse, LineartoBResponse);
 }
 
 CML_API void cmlConvertRGBtoXYZ (CMLVec3 xyz , const CMLVec3 rgb, const CMLMat33 RGBtoXYZmatrix, const CMLFunction* RtoLinearResponse, const CMLFunction* GtoLinearResponse, const CMLFunction* BtoLinearResponse){
-  cmlInternalOneRGBtoXYZ(xyz, rgb, RGBtoXYZmatrix, RtoLinearResponse, GtoLinearResponse, BtoLinearResponse);
+  cml_OneRGBtoXYZ(xyz, rgb, RGBtoXYZmatrix, RtoLinearResponse, GtoLinearResponse, BtoLinearResponse);
 }
 
 CML_API void cmlConvertRGBtoYCbCr (CMLVec3 ycbcr , const CMLVec3 rgb, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitePointXYZ){
   CMLVec3 inversewhitePointXYZ;
   cmlSet3(inversewhitePointXYZ, cmlInverse(whitePointXYZ[0]), cmlInverse(whitePointXYZ[1]), cmlInverse(whitePointXYZ[2]));
-  cmlInternalOneRGBtoYCbCr(ycbcr, rgb, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
+  cml_OneRGBtoYCbCr(ycbcr, rgb, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
 
 CML_API void cmlConvertYCbCrtoRGB (CMLVec3 rgb , const CMLVec3 ycbcr, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitePointXYZ){
   CMLVec3 inversewhitePointXYZ;
   cmlSet3(inversewhitePointXYZ, cmlInverse(whitePointXYZ[0]), cmlInverse(whitePointXYZ[1]), cmlInverse(whitePointXYZ[2]));
-  cmlInternalOneYCbCrtoRGB(rgb, ycbcr, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
+  cml_OneYCbCrtoRGB(rgb, ycbcr, redprimaryYxy, blueprimaryYxy, inversewhitePointXYZ);
 }
 
 CML_API void cmlConvertRGBtoHSV (CMLVec3 hsv , const CMLVec3 rgb){
-  cmlInternalOneRGBtoHSV(hsv, rgb);
+  cml_OneRGBtoHSV(hsv, rgb);
 }
 
 CML_API void cmlConvertHSVtoRGB (CMLVec3 rgb , const CMLVec3 hsv){
-  cmlInternalOneHSVtoRGB(rgb, hsv);
+  cml_OneHSVtoRGB(rgb, hsv);
 }
 
 CML_API void cmlConvertHSVtoHSL (CMLVec3 hsl , const CMLVec3 hsv){
-  cmlInternalOneHSVtoHSL(hsl, hsv);
+  cml_OneHSVtoHSL(hsl, hsv);
 }
 
 CML_API void cmlConvertHSLtoHSV (CMLVec3 hsv , const CMLVec3 hsl){
-  cmlInternalOneHSLtoHSV(hsv, hsl);
+  cml_OneHSLtoHSV(hsv, hsl);
 }
 
 
 CML_API void cmlConvertIlluminationSpectrumtoXYZ (CMLVec3 xyz , const CMLFunction* specIll, const CMLObserver* observer){
-  cmlInternalOneIlluminationSpectrumtoXYZ(xyz, specIll, observer);
+  cml_OneIlluminationSpectrumtoXYZ(xyz, specIll, observer);
 }
 
 CML_API void cmlConvertRemissionSpectrumtoXYZ (CMLVec3 xyz, const CMLFunction* specRem, const CMLFunction* specIll, const CMLObserver* observer){
-  cmlInternalOneRemissionSpectrumtoXYZ(xyz, specRem, specIll, observer);
+  cml_OneRemissionSpectrumtoXYZ(xyz, specRem, specIll, observer);
 }
 
 

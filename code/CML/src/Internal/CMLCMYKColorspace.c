@@ -11,19 +11,19 @@ CML_API CMLCMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
 }
 
 
-CML_API void CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
+CML_API void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
   switch(transform){
   case CML_CMYK_STANDARD_TRANSFORM:
-    cm->RGBtoCMYK = &CMLInternalRGBtoCMYKStandard;
-    cm->RGBtoCMYK_SB = &CMLInternalRGBtoCMYKStandard_SB;
-    cm->CMYKtoRGB = &CMLInternalCMYKtoRGBStandard;
-    cm->CMYKtoRGB_SB = &CMLInternalCMYKtoRGBStandard_SB;
+    cm->RGBtoCMYK = &cml_RGBtoCMYKStandard;
+    cm->RGBtoCMYK_SB = &cml_RGBtoCMYKStandard_SB;
+    cm->CMYKtoRGB = &cml_CMYKtoRGBStandard;
+    cm->CMYKtoRGB_SB = &cml_CMYKtoRGBStandard_SB;
     break;
   case CML_CMYK_UCR_TRANSFORM:
-    cm->RGBtoCMYK = &CMLInternalRGBtoCMYKUCR;
-    cm->RGBtoCMYK_SB = &CMLInternalRGBtoCMYKUCR_SB;
-    cm->CMYKtoRGB = &CMLInternalCMYKtoRGBUCR;
-    cm->CMYKtoRGB_SB = &CMLInternalCMYKtoRGBUCR_SB;
+    cm->RGBtoCMYK = &cml_RGBtoCMYKUCR;
+    cm->RGBtoCMYK_SB = &cml_RGBtoCMYKUCR_SB;
+    cm->CMYKtoRGB = &cml_CMYKtoRGBUCR;
+    cm->CMYKtoRGB_SB = &cml_CMYKtoRGBUCR_SB;
     break;
   default:
     #if CML_DEBUG

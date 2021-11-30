@@ -20,13 +20,13 @@ CML_API void                  cmlGetVersion(CMLByte version[4]);
 
 // Create and destroy ColorMachines with these functions:
 CML_API CMLColorMachine*      cmlCreateColorMachine(void);
-CML_API void                  CMLreleaseColorMachine(CMLColorMachine* cm);
+CML_API void                  cmlReleaseColorMachine(CMLColorMachine* cm);
 
 // If you have multiple state changes to set, lock the recomputation, set all
 // desired values and release the recomputation. Doing so, the ColorMachine
 // will only perform all necessary recomputations once and only once.
-CML_API void                  CMLlockRecomputation(CMLColorMachine* cm);
-CML_API void                  CMLreleaseRecomputation(CMLColorMachine* cm);
+CML_API void                  cmlLockRecomputation(CMLColorMachine* cm);
+CML_API void                  cmlReleaseRecomputation(CMLColorMachine* cm);
 
 // The integer mapping defines, how floats are mapped to integers.
 // Additionally, integers can have lower and upper cutoffs. This means that
@@ -35,9 +35,9 @@ CML_API void                  CMLreleaseRecomputation(CMLColorMachine* cm);
 // channels up to CML_MAX_NUMBER_OF_CHANNELS. Note that cutoffs may also be
 // negative.
 CML_API CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm);
-CML_API void                  CMLsetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type);
+CML_API void                  cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type);
 CML_API void                  cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel);
-CML_API void                  CMLset8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel);
+CML_API void                  cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel);
 CML_API void                  cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel);
 CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel);
 
@@ -45,15 +45,15 @@ CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 m
 // without or with normalization to Y=1. Set CML_TRUE for radiometric and
 // CML_FALSE for colorimetric. Default is colorimetric.
 //CML_API CMLBool               cmlGetRadiometricComputation(CMLColorMachine* cm);
-//CML_API void                  CMLsetRadiometricComputation(CMLColorMachine* cm, CMLBool radiometric);
+//CML_API void                  cmlSetRadiometricComputation(CMLColorMachine* cm, CMLBool radiometric);
 
 // The observer defines if the 2 degree or the 10 degree model and what data
 // set is used. Initial setting is 2 degrees of CIE recommendation.
 CML_API const CMLObserver*    cmlGetObserver(const CMLColorMachine* cm);
 CML_API CMLObserverType       cmlGetObserverType(const CMLColorMachine* cm);
-CML_API void                  CMLsetObserverType(CMLColorMachine* cm, CMLObserverType newobserver);
+CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserverType newobserver);
 CML_API void                  cmlGetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunction* observer[3]);
-//CML_API void                  CMLsetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]);
+//CML_API void                  cmlSetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]);
 CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda);
 
 // The illumination defines the current illumination assumed. This includes
@@ -64,13 +64,13 @@ CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, 
 // Note that the setIlluminationTemperature method will only take effect with
 // the Blackbody and custom D illuminant. Otherwise, the input is ignored.
 CML_API CMLIlluminationType   cmlGetIlluminationType(CMLColorMachine* cm);
-CML_API void                  CMLsetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType);
+CML_API void                  cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType);
 CML_API float                 cmlGetIlluminationTemperature(const CMLColorMachine* cm);
-CML_API void                  CMLsetIlluminationTemperature(CMLColorMachine* cm, float temp);
+CML_API void                  cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp);
 CML_API const CMLFunction*    cmlGetIlluminationSpectrum(const CMLColorMachine* cm);
-CML_API void                  CMLsetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* spectrum);
+CML_API void                  cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* spectrum);
 CML_API void                  cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYxy);
-CML_API void                  CMLsetWhitePointYxy(CMLColorMachine* cm, const float* yxy);
+CML_API void                  cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy);
 
 // These functions set the computation of the Lab space. Default is CIELAB.
 // The functions setting K and ke will only take effect if the
@@ -80,16 +80,16 @@ CML_API void                  CMLsetWhitePointYxy(CMLColorMachine* cm, const flo
 // Be aware that most Lab spaces (including CIELAB) are relative to a specific
 // whitePoint which in CML is defined by the current illumination.
 CML_API CMLLabColorSpaceType  cmlGetLabColorSpace(const CMLColorMachine* cm);
-CML_API void                  CMLsetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labspace);
+CML_API void                  cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labspace);
 CML_API void                  cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke);
-CML_API void                  CMLsetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
+CML_API void                  cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
 CML_API CMLuint8              cmlGetLabLUTSize(const CMLColorMachine* cm);
-CML_API void                  CMLsetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits);
+CML_API void                  cmlSetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits);
 CML_API const CMLFunction*    cmlGetLtoLinearResponse(const CMLColorMachine* cm);
 CML_API const CMLFunction*    cmlGetLineartoLResponse(const CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm);
 //CML_API CMLFunctionType       cmlGetLabResponseCurveFunctionType(const CMLColorMachine* cm);
-CML_API void                  CMLsetResponseL(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                  cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response);
 //CML_API float                 cmlGetLabGamma(const CMLColorMachine* cm);
 
 // The RGB colorspace defines, which CMLIlluminationType (including white point)
@@ -105,22 +105,22 @@ CML_API void                  CMLsetResponseL(CMLColorMachine* cm, CMLResponseCu
 // previous response curve. The setResponseRGB function will set the same
 // response for R, G and B.
 CML_API CMLRGBColorSpace      cmlGetRGBColorSpace(const CMLColorMachine* cm);
-CML_API void                  CMLsetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorSpaceType);
+CML_API void                  cmlSetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorSpaceType);
 CML_API void                  cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
-CML_API void                  CMLsetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_API void                  cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
 //CML_API void                  cmlGetRGBtoLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
 //CML_API void                  cmlGetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
 //CML_API void                  cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType responsetypes[3]);
 //CML_API void                  cmlGetRGBGammas(const CMLColorMachine* cm, float gammas[3]);
-CML_API void                  CMLsetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                  cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
 CML_API const CMLResponseCurve* cmlGetResponseR  (CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseG  (CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm);
-CML_API void                  CMLsetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                  CMLsetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                  CMLsetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                  cmlSetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                  cmlSetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                  cmlSetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
 CML_API CMLuint8              cmlGetRGBLUTSize(const CMLColorMachine* cm);
-CML_API void                  CMLsetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits);
+CML_API void                  cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits);
 
 
 // Transformation from RGB to CMYK can be achieved using different approaches
@@ -128,13 +128,13 @@ CML_API void                  CMLsetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bit
 // transform is implemented.
 // Initial setting is standard transform.
 CML_API CMLCMYKTransformType  cmlGetCMYKTransform(const CMLColorMachine* cm);
-CML_API void                  CMLsetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform);
+CML_API void                  cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform);
 
 // Transformation from any Color to Gray and vice versa can be achieved using
 // different approaches. Initial setting is the computation from the
 // L* value (CIELAB).
 CML_API CMLGrayComputationType  cmlGetGrayComputationType(const CMLColorMachine* cm);
-CML_API void                    CMLsetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation);
+CML_API void                    cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation);
 
 
 
