@@ -578,17 +578,17 @@
 // The format of the array is:
 // temperature, Y2, x2, y2, Y10, x10, y10
 //static const float illuminationvalues[CML_NUMBER_OF_ILLUMINATIONS][7] = {
-//  {5000.f,              100.f, .0f    ,  .0f    ,  100.f, .0f    ,  .0f    },   // CML_ILLUMINATION_BLACKBODY    *
+//  {5000.f,              100.f, .0f,  .0f,  100.f, .0f,  .0f    },   // CML_ILLUMINATION_BLACKBODY    *
 //  {2848.f,              100.f, .44758f,  .40745f,  100.f, .45117f,  .40594f},   // CML_ILLUMINATION_A_CIE        *
 //  {2848.f * CML_A_TEMPERATURE_CORRECTION_FACTOR,  100.f, .44757f,  .40745f,  100.f, .45117f,  .40594f},   // CML_ILLUMINATION_A_EXACT      *
-//  {4874.f,              100.f, .34842f,  .35161f,  100.f, .3498f ,  .3527f },   // CML_ILLUMINATION_B            *
+//  {4874.f,              100.f, .34842f,  .35161f,  100.f, .3498f,  .3527f },   // CML_ILLUMINATION_B            *
 //  {6774.f,              100.f, .31006f,  .31616f,  100.f, .31039f,  .31905f},   // CML_ILLUMINATION_C            *
-//  {5000.f,              100.f, .0f    ,  .0f    ,  100.f, .0f    ,  .0f    },   // CML_ILLUMINATION_D_ILLUMINANT *
+//  {5000.f,              100.f, .0f,  .0f,  100.f, .0f,  .0f    },   // CML_ILLUMINATION_D_ILLUMINANT *
 //  {5000.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .34567f,  .35850f,  100.f, .34773f,  .35952f},   // CML_ILLUMINATION_D50          *
 //  {5500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .33242f,  .34743f,  100.f, .33411f,  .34877f},   // CML_ILLUMINATION_D55          *
 //  {6500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .31271f,  .32902f,  100.f, .31382f,  .33100f},   // CML_ILLUMINATION_D65          *
 //  {7500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .29902f,  .31485f,  100.f, .29968f,  .31740f},   // CML_ILLUMINATION_D75          *
-//  {9300.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .28480f,  .29320f,  100.f, .0f    ,  .0f    },   // CML_ILLUMINATION_D93          *
+//  {9300.f * CML_D_TEMPERATURE_CORRECTION_FACTOR,  100.f, .28480f,  .29320f,  100.f, .0f,  .0f    },   // CML_ILLUMINATION_D93          *
 //  {5455.f,              100.f,  1.f/3.f,  1.f/3.f, 100.f,  1.f/3.f,  1.f/3.f},  // CML_ILLUMINATION_E            *
 //  {6430.f,              100.f, .31310f,  .33727f,  100.f, .31811f,  .33559f},   // CML_ILLUMINATION_F1           *
 //  {4230.f,              100.f, .37208f,  .37529f,  100.f, .37925f,  .36733f},   // CML_ILLUMINATION_F2           *
@@ -602,7 +602,7 @@
 //  {5000.f,              100.f, .34609f,  .35986f,  100.f, .35090f,  .35444f},   // CML_ILLUMINATION_F10          *
 //  {4000.f,              100.f, .38052f,  .37713f,  100.f, .38541f,  .37123f},   // CML_ILLUMINATION_F11          *
 //  {3000.f,              100.f, .43695f,  .40441f,  100.f, .44256f,  .39717f},   // CML_ILLUMINATION_F12          *
-//  {3000.f,              100.f, .0f    ,  .0f    ,  100.f, .0f    ,  .0f    },   // CML_ILLUMINATION_XENON        *
+//  {3000.f,              100.f, .0f,  .0f,  100.f, .0f,  .0f    },   // CML_ILLUMINATION_XENON        *
 //};
 
 

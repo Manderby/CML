@@ -20,12 +20,12 @@
 // When the conversion results in a division by zero the values of the
 // whitePoint with Y=0 will be set. When NULL is provided as whitePoint,
 // the values will be set to 0.
-CML_API void cmlConvertXYZtoYxy(
+CML_API void cmlConvertXYZToYxy(
   CMLVec3 yxy,
   const CMLVec3 xyz,
   const CMLVec3 whitePointYxy);
 
-CML_API void cmlConvertYxytoXYZ(
+CML_API void cmlConvertYxyToXYZ(
   CMLVec3 xyz,
   const CMLVec3 yxy,
   const CMLVec3 whitePointXYZ);
@@ -36,12 +36,12 @@ CML_API void cmlConvertYxytoXYZ(
 // When the conversion results in a division by zero the values of the
 // whitePoint with Y=0 will be set. When NULL is provided as whitePoint,
 // the values will be set to 0.
-CML_API void cmlConvertYxytoYupvp(
+CML_API void cmlConvertYxyToYupvp(
   CMLVec3 yupvp,
   const CMLVec3 yxy,
   const CMLVec3 whitePointYupvp);
 
-CML_API void cmlConvertYupvptoYxy(
+CML_API void cmlConvertYupvpToYxy(
   CMLVec3 yxy,
   const CMLVec3 yupvp,
   const CMLVec3 whitePointYxy);
@@ -49,23 +49,23 @@ CML_API void cmlConvertYupvptoYxy(
 
 
 // Convert between Yupvp and Yuv.
-CML_API void cmlConvertYupvptoYuv(
+CML_API void cmlConvertYupvpToYuv(
   CMLVec3 yuv,
   const CMLVec3 yupvp);
 
-CML_API void cmlConvertYuvtoYupvp(
+CML_API void cmlConvertYuvToYupvp(
   CMLVec3 yupvp,
   const CMLVec3 yuv);
 
 
 
 // Convert between Yupvp and Luv.
-CML_API void cmlConvertYupvptoLuv(
+CML_API void cmlConvertYupvpToLuv(
   CMLVec3 luv,
   const CMLVec3 yupvp,
   const CMLVec3 whitePointYupvp);
 
-CML_API void cmlConvertLuvtoYupvp(
+CML_API void cmlConvertLuvToYupvp(
   CMLVec3 yupvp,
   const CMLVec3 luv,
   const CMLVec3 whitePointYupvp);
@@ -75,12 +75,12 @@ CML_API void cmlConvertLuvtoYupvp(
 // Convert between XYZ and Lab.
 // Note that the BaseAPI only supports CIELAB. Use ColorMachines if you need
 // other Lab spaces like Hunter lab or chromatic valence spaces.
-CML_API void cmlConvertXYZtoLab(
+CML_API void cmlConvertXYZToLab(
   CMLVec3 lab,
   const CMLVec3 xyz,
   const CMLVec3 whitePointXYZ);
 
-CML_API void cmlConvertLabtoXYZ(
+CML_API void cmlConvertLabToXYZ(
   CMLVec3 xyz,
   const CMLVec3 lab,
   const CMLVec3 whitePointXYZ);
@@ -88,44 +88,44 @@ CML_API void cmlConvertLabtoXYZ(
 
 
 // Convert between Lab and Lch.
-CML_API void cmlConvertLabtoLch(
+CML_API void cmlConvertLabToLch(
   CMLVec3 lch,
   const CMLVec3 lab);
 
-CML_API void cmlConvertLchtoLab(
+CML_API void cmlConvertLchToLab(
   CMLVec3 lab,
   const CMLVec3 lch);
 
 
 
 // Convert between XYZ and RGB.
-CML_API void cmlConvertXYZtoRGB(
+CML_API void cmlConvertXYZToRGB(
   CMLVec3 rgb,
   const CMLVec3 xyz,
-  const CMLMat33 XYZtoRGBmatrix,
-  const CMLFunction* LineartoRResponse,
-  const CMLFunction* LineartoGResponse,
-  const CMLFunction* LineartoBResponse);
+  const CMLMat33 XYZToRGBMatrix,
+  const CMLFunction* linearToRResponse,
+  const CMLFunction* linearToGResponse,
+  const CMLFunction* linearToBResponse);
 
-CML_API void cmlConvertRGBtoXYZ(
+CML_API void cmlConvertRGBToXYZ(
   CMLVec3 xyz,
   const CMLVec3 rgb,
-  const CMLMat33 RGBtoXYZmatrix,
-  const CMLFunction* RtoLinearResponse,
-  const CMLFunction* GtoLinearResponse,
-  const CMLFunction* BtoLinearResponse);
+  const CMLMat33 RGBToXYZMatrix,
+  const CMLFunction* RToLinearResponse,
+  const CMLFunction* GToLinearResponse,
+  const CMLFunction* BToLinearResponse);
 
 
 
 // Convert between RGB and YCbCr.
-CML_API void cmlConvertRGBtoYCbCr(
+CML_API void cmlConvertRGBToYCbCr(
   CMLVec3 ycbcr,
   const CMLVec3 rgb,
   const CMLVec3 redprimaryYxy,
   const CMLVec3 blueprimaryYxy,
   const CMLVec3 whitePointXYZ);
 
-CML_API void cmlConvertYCbCrtoRGB(
+CML_API void cmlConvertYCbCrToRGB(
   CMLVec3 rgb,
   const CMLVec3 ycbcr,
   const CMLVec3 redprimaryYxy,
@@ -135,22 +135,22 @@ CML_API void cmlConvertYCbCrtoRGB(
 
 
 // Convert between RGB and HSV.
-CML_API void cmlConvertRGBtoHSV(
+CML_API void cmlConvertRGBToHSV(
   CMLVec3 hsv,
   const CMLVec3 rgb);
 
-CML_API void cmlConvertHSVtoRGB(
+CML_API void cmlConvertHSVToRGB(
   CMLVec3 rgb,
   const CMLVec3 hsv);
 
 
 
 // Betwen HSV and HSL.
-CML_API void cmlConvertHSVtoHSL(
+CML_API void cmlConvertHSVToHSL(
   CMLVec3 hsl,
   const CMLVec3 hsv);
 
-CML_API void cmlConvertHSLtoHSV(
+CML_API void cmlConvertHSLToHSV(
   CMLVec3 hsv,
   const CMLVec3 hsl);
 
@@ -159,7 +159,7 @@ CML_API void cmlConvertHSLtoHSV(
 // Betwen Spectrum and XYZ.
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by its Y component.
-CML_API void cmlConvertIlluminationSpectrumtoXYZ(
+CML_API void cmlConvertIlluminationSpectrumToXYZ(
   CMLVec3 xyz,
   const CMLFunction* specIll,
   const CMLObserver* observer);
@@ -167,7 +167,7 @@ CML_API void cmlConvertIlluminationSpectrumtoXYZ(
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by the Y component of
 // the white point defined by the illumination.
-CML_API void cmlConvertRemissionSpectrumtoXYZ(
+CML_API void cmlConvertRemissionSpectrumToXYZ(
   CMLVec3 xyz,
   const CMLFunction* specRem,
   const CMLFunction* specIll,
@@ -186,9 +186,9 @@ CML_API void cmlComputeChromaticAdaptationMatrix(
   CMLVec3 adaptedWhitePointYxy,
   CMLVec3 whitePointYxy);
 
-// Convert xyz to the chromatic adapted adaptxyz
-CML_API void cmlConvertXYZtoChromaticAdaptedXYZ(
-  CMLVec3 adaptxyz,
+// Convert xyz to the chromatic adapted adaptXYZ
+CML_API void cmlConvertXYZToChromaticAdaptedXYZ(
+  CMLVec3 adaptXYZ,
   const CMLVec3 xyz,
   const CMLMat33 matrix);
 
@@ -253,7 +253,7 @@ CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset(
 // setting the Y component of the whitePoint to 1.
 // Also note that in order to get the inverse transformation matrix, simply
 // use the cmlInvertMat33 function.
-CML_API void cmlComputeRGBtoXYZMatrix(
+CML_API void cmlComputeRGBToXYZMatrix(
   CMLMat33 rgbToXyzMatrix,
   CMLVec3 primaryRYxy,
   CMLVec3 primaryGYxy,

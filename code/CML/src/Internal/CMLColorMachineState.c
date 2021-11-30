@@ -5,7 +5,7 @@
 
 
 //CML_HIDDEN void cml_setResponseR(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[0]),
+//  setupResponse(  &(cm->rgbspace.RGBToLinearResponses[0]),
 //                  &(cm->rgbspace.LineartoRGBResponses[0]),
 //                  &(cm->rgbspace.responsetypes[0]),
 //                  &(cm->rgbspace.responseparams0[0]),
@@ -16,7 +16,7 @@
 //                  param0, param1, param2);
 //}
 //CML_HIDDEN void cml_setResponseG(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[1]),
+//  setupResponse(  &(cm->rgbspace.RGBToLinearResponses[1]),
 //                  &(cm->rgbspace.LineartoRGBResponses[1]),
 //                  &(cm->rgbspace.responsetypes[1]),
 //                  &(cm->rgbspace.responseparams0[1]),
@@ -27,7 +27,7 @@
 //                  param0, param1, param2);
 //}
 //CML_HIDDEN void cml_setResponseB(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbspace.RGBtoLinearResponses[2]),
+//  setupResponse(  &(cm->rgbspace.RGBToLinearResponses[2]),
 //                  &(cm->rgbspace.LineartoRGBResponses[2]),
 //                  &(cm->rgbspace.responsetypes[2]),
 //                  &(cm->rgbspace.responseparams0[2]),

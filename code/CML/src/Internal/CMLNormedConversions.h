@@ -158,15 +158,15 @@ CML_HIDEF void cml_YupvpToNormedOutput(float* CML_RESTRICT output, const float* 
 }
 
 CML_HIDEF void cml_LabToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT lab){
-  output[0] = (lab[0]                ) * CML_Lab_L_INVRANGE;
+  output[0] = (lab[0]) * CML_Lab_L_INVRANGE;
   output[1] = (lab[1] - CML_Lab_a_MIN) * CML_Lab_a_INVRANGE;
   output[2] = (lab[2] - CML_Lab_b_MIN) * CML_Lab_b_INVRANGE;
 }
 
 CML_HIDEF void cml_LchToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT lch){
-  output[0] = (lch[0]                ) * CML_Lch_L_INVRANGE;
-  output[1] = (lch[1]                ) * CML_Lch_c_INVRANGE;
-  output[2] = (lch[2]                ) * CML_Lch_h_INVRANGE;
+  output[0] = (lch[0]) * CML_Lch_L_INVRANGE;
+  output[1] = (lch[1]) * CML_Lch_c_INVRANGE;
+  output[2] = (lch[2]) * CML_Lch_h_INVRANGE;
 }
 
 CML_HIDEF void cml_LuvToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT luv){

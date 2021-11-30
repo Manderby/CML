@@ -1,6 +1,6 @@
 
 #include "CML.h"
-#include "cml_.h"
+#include "CMLInternal.h"
 
 CML_HIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
   "Gray",
@@ -59,7 +59,7 @@ CML_HIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] =
   "F11 (Philips TL84, Ultralume 40)", // CML_ILLUMINATION_F11
   "F12 (Philips TL83, Ultralume 30)", // CML_ILLUMINATION_F12
   "Spectrocam Xenon Lamp",            // CML_ILLUMINATION_XENON
-  "Custom Whitepoint",                // CML_ILLUMINATION_CUSTOM_WHITEPOINT
+  "Custom WhitePoint",                // CML_ILLUMINATION_CUSTOM_WHITEPOINT
   "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
@@ -69,7 +69,7 @@ CML_HIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Best",                 // CML_RGB_BEST
   "Beta",                 // CML_RGB_BETA
   "Bruce",                // CML_RGB_BRUCE
-  "CIE"  ,                // CML_RGB_CIE
+  "CIE",                // CML_RGB_CIE
   "ColorMatch",           // CML_RGB_COLORMATCH
   "Don 4",                // CML_RGB_DON4
   "EBU Monitor",          // CML_RGB_EBU_MONITOR
@@ -81,7 +81,7 @@ CML_HIDDEN static const char* rgbspacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Rec. BT.709",          // CML_RGB_REC_BT_709
   "Rec. BT.2020",         // CML_RGB_REC_BT_2020
   "Kodak DC",             // CML_RGB_KODAK_DC
-  "NTSC 53"  ,            // CML_RGB_NTSC_53
+  "NTSC 53",            // CML_RGB_NTSC_53
   "PAL/SECAM (EBU 3213)", // CML_RGB_PAL_SECAM_EBU
   "ROMM (Prophoto)",      // CML_RGB_ROMM_PROPHOTO
   "SMPTE-C",              // CML_RGB_SMPTE_C

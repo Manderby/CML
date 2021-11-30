@@ -127,7 +127,7 @@
 		90BF50A4274AAC85001FDE2A /* CMLHSVColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF5000274AAC85001FDE2A /* CMLHSVColor.h */; };
 		90BF50A5274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
 		90BF50A6274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
-		90BF908F27523562001EA32C /* example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF908E27523562001EA32C /* example.cpp */; };
+		90BF908F27523562001EA32C /* example.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF908E27523562001EA32C /* example.c */; };
 		90BF90972752356C001EA32C /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90962752356C001EA32C /* cppexample.cpp */; };
 		90BF90C0275237AD001EA32C /* CMLIntegerMapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */; };
 		90BF90C1275237AD001EA32C /* CMLIntegerMapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */; };
@@ -264,7 +264,7 @@
 		90BF4FFF274AAC85001FDE2A /* CMLYupvpColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYupvpColor.cpp; sourceTree = "<group>"; };
 		90BF5000274AAC85001FDE2A /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
 		90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
-		90BF908E27523562001EA32C /* example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = example.cpp; sourceTree = "<group>"; };
+		90BF908E27523562001EA32C /* example.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = example.c; sourceTree = "<group>"; };
 		90BF90962752356C001EA32C /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
 		90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIntegerMapping.c; sourceTree = "<group>"; };
 		90BF90AE275237AD001EA32C /* CMLCMYKColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKColorspace.c; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 		90BF908D27523562001EA32C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				90BF908E27523562001EA32C /* example.cpp */,
+				90BF908E27523562001EA32C /* example.c */,
 				90BF90F3275264D0001EA32C /* Timer.h */,
 			);
 			path = src;
@@ -474,25 +474,25 @@
 		90BF90AC275237AD001EA32C /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */,
-				90BF90AE275237AD001EA32C /* CMLCMYKColorspace.c */,
-				90BF90AF275237AD001EA32C /* CMLFunctions.c */,
-				90BF90B0275237AD001EA32C /* CMLInternal.c */,
-				90BF90B1275237AD001EA32C /* CMLColorMachineState.c */,
-				90BF90B2275237AD001EA32C /* CMLObserver.c */,
-				90BF90B3275237AD001EA32C /* CMLLabColorspace.c */,
 				90BF90B4275237AD001EA32C /* CMLBaseAPI.c */,
-				90BF90B5275237AD001EA32C /* CMLResponseCurve.c */,
-				90BF90B6275237AD001EA32C /* CMLConverterMacros.h */,
-				90BF90B7275237AD001EA32C /* CMLColorMachine.c */,
-				90BF90B8275237AD001EA32C /* CMLStrings.c */,
 				90BF90B9275237AD001EA32C /* CMLChromaticAdaptation.c */,
-				90BF90BA275237AD001EA32C /* CMLGrayColorspace.c */,
+				90BF90AE275237AD001EA32C /* CMLCMYKColorspace.c */,
+				90BF90B7275237AD001EA32C /* CMLColorMachine.c */,
+				90BF90B1275237AD001EA32C /* CMLColorMachineState.c */,
 				90BF90BB275237AD001EA32C /* CMLColorMachineState.h */,
-				90BF90BC275237AD001EA32C /* CMLInternal.h */,
+				90BF90B6275237AD001EA32C /* CMLConverterMacros.h */,
+				90BF90AF275237AD001EA32C /* CMLFunctions.c */,
+				90BF90BA275237AD001EA32C /* CMLGrayColorspace.c */,
 				90BF90BD275237AD001EA32C /* CMLIllumination.c */,
+				90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */,
+				90BF90B0275237AD001EA32C /* CMLInternal.c */,
+				90BF90BC275237AD001EA32C /* CMLInternal.h */,
+				90BF90B3275237AD001EA32C /* CMLLabColorspace.c */,
 				90BF90BE275237AD001EA32C /* CMLNormedConversions.h */,
+				90BF90B2275237AD001EA32C /* CMLObserver.c */,
+				90BF90B5275237AD001EA32C /* CMLResponseCurve.c */,
 				90BF90BF275237AD001EA32C /* CMLRGBColorspace.c */,
+				90BF90B8275237AD001EA32C /* CMLStrings.c */,
 				908EDDA62756D641008ABF6D /* CMLunused.h */,
 			);
 			path = Internal;
@@ -707,7 +707,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90BF908F27523562001EA32C /* example.cpp in Sources */,
+				90BF908F27523562001EA32C /* example.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

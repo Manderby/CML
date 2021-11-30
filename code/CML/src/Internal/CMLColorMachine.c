@@ -54,10 +54,10 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   
   cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferLSTAR;
   cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayLSTAR;
-  cm->XYZtoLab              = &cml_XYZtoLabCIELAB;
-  cm->XYZtoLab_SB           = &cml_XYZtoLabCIELAB_SB;
-  cm->LabtoXYZ              = &cml_LabtoXYZCIELAB;
-  cm->LabtoXYZ_SB           = &cml_LabtoXYZCIELAB_SB;
+  cm->XYZToLab              = &cml_XYZToLabCIELAB;
+  cm->XYZToLab_SB           = &cml_XYZToLabCIELAB_SB;
+  cm->LabToXYZ              = &cml_LabToXYZCIELAB;
+  cm->LabToXYZ_SB           = &cml_LabToXYZCIELAB_SB;
   cm->RGBtoCMYK             = &cml_RGBtoCMYKStandard;
   cm->RGBtoCMYK_SB          = &cml_RGBtoCMYKStandard_SB;
   cm->CMYKtoRGB             = &cml_CMYKtoRGBStandard;
@@ -148,8 +148,8 @@ CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
 //}
 //
 //
-//void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod newtype){
-//  cm->inputoutput.method = newtype;
+//void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod type){
+//  cm->inputoutput.method = type;
 //  cml_recomputeObserver(cm);
 //}
 

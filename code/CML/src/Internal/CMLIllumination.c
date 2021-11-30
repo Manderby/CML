@@ -176,9 +176,9 @@ CML_HIDDEN static const float xenonilluminant[] = {
 // Found at brucelindbloom.com
 #define CML_ROBERTSON_SAMPLECOUNT 31
 CML_HIDDEN static const float robertsonrt[] = {
-  CML_SINGULARITY ,10.0e-6f,  20.0e-6f,  30.0e-6f,  40.0e-6f,  50.0e-6f,  60.0e-6f,  70.0e-6f,  80.0e-6f,  90.0e-6f,
-  100.0e-6f       , 125.0e-6f, 150.0e-6f, 175.0e-6f, 200.0e-6f, 225.0e-6f, 250.0e-6f, 275.0e-6f, 300.0e-6f, 325.0e-6f,
-  350.0e-6f       , 375.0e-6f, 400.0e-6f, 425.0e-6f, 450.0e-6f, 475.0e-6f, 500.0e-6f, 525.0e-6f, 550.0e-6f, 575.0e-6f,
+  CML_SINGULARITY,10.0e-6f,  20.0e-6f,  30.0e-6f,  40.0e-6f,  50.0e-6f,  60.0e-6f,  70.0e-6f,  80.0e-6f,  90.0e-6f,
+  100.0e-6f, 125.0e-6f, 150.0e-6f, 175.0e-6f, 200.0e-6f, 225.0e-6f, 250.0e-6f, 275.0e-6f, 300.0e-6f, 325.0e-6f,
+  350.0e-6f, 375.0e-6f, 400.0e-6f, 425.0e-6f, 450.0e-6f, 475.0e-6f, 500.0e-6f, 525.0e-6f, 550.0e-6f, 575.0e-6f,
   600.0e-6f};
 CML_HIDDEN static const float robertsonu[] = {
   0.18006f, 0.18066f, 0.18133f, 0.18208f, 0.18293f, 0.18388f, 0.18494f, 0.18611f, 0.18740f, 0.18880f,
@@ -192,8 +192,8 @@ CML_HIDDEN static const float robertsonv[] = {
   0.36051f};
 CML_HIDDEN static const float robertsont[] = {
   -0.24341f, -0.25479f, -0.26876f, -0.28539f, -0.30470f, -0.32675f, -0.35156f, -0.37915f, -0.40955f, -0.44278f,
-  -0.47888f, -0.58204f, -0.70471f, -0.84901f, -1.0182f , -1.2168f , -1.4512f , -1.7298f , -2.0637f , -2.4681f ,
-  -2.9641f , -3.5814f , -4.3633f , -5.3762f , -6.7262f , -8.5955f , -11.324f , -15.628f , -23.325f , -40.770f ,
+  -0.47888f, -0.58204f, -0.70471f, -0.84901f, -1.0182f, -1.2168f, -1.4512f, -1.7298f, -2.0637f, -2.4681f,
+  -2.9641f, -3.5814f, -4.3633f, -5.3762f, -6.7262f, -8.5955f, -11.324f, -15.628f, -23.325f, -40.770f,
   -116.45f };
 
 
@@ -317,8 +317,8 @@ CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
   if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_ILLUMINATION; return;}
   
 //  if(cm->illumination.spectrum){
-//    cml_IlluminationSpectrumtoXYZ(cm->illumination.whitePointXYZ, cm->illumination.spectrum, (const CMLFunction* const *)(cm->observer.functions));
-//    cml_XYZtoYxy(cm->illumination.whitePointYxy, cm->illumination.whitePointXYZ, CML_NULL, 1);
+//    cml_IlluminationSpectrumToXYZ(cm->illumination.whitePointXYZ, cm->illumination.spectrum, (const CMLFunction* const *)(cm->observer.functions));
+//    cml_XYZToYxy(cm->illumination.whitePointYxy, cm->illumination.whitePointXYZ, CML_NULL, 1);
 //  }
 //
 //  if(cm->observer.radiometric){
@@ -326,9 +326,9 @@ CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
 //  }else{
 //    cmlSet3(computationwhitePoint, 1.f, cm->illumination.whitePointYxy[1], cm->illumination.whitePointYxy[2]);
 //  }
-//  cml_YxytoXYZ(cm->illumination.whitePointXYZ, computationwhitePoint, CML_NULL, 1);
-//  cmlSet3(cm->illumination.inverseWhitepointXYZ, cmlInverse(cm->illumination.whitePointXYZ[0]), cmlInverse(cm->illumination.whitePointXYZ[1]), cmlInverse(cm->illumination.whitePointXYZ[2]));
-//  cml_YxytoYupvp(cm->illumination.whitePointYupvp, computationwhitePoint, CML_NULL, 1);
+//  cml_YxyToXYZ(cm->illumination.whitePointXYZ, computationwhitePoint, CML_NULL, 1);
+//  cmlSet3(cm->illumination.inverseWhitePointXYZ, cmlInverse(cm->illumination.whitePointXYZ[0]), cmlInverse(cm->illumination.whitePointXYZ[1]), cmlInverse(cm->illumination.whitePointXYZ[2]));
+//  cml_YxyToYupvp(cm->illumination.whitePointYupvp, computationwhitePoint, CML_NULL, 1);
 
   // Now, all whitePoints are computed.
 
@@ -363,7 +363,7 @@ CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
 //    // Any other illumination is computed using Robertson
 //    {
 //      CMLVec3 whitePointYuv;
-//      cml_YupvptoYuv(whitePointYuv, cm->illumination.whitePointYupvp, 1);
+//      cml_YupvpToYuv(whitePointYuv, cm->illumination.whitePointYupvp, 1);
 //      cm->illumination.temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
 //    }
 //    break;
@@ -459,7 +459,7 @@ CML_API void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* 
 
 
 CML_API void cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYxy){
-  cmlCpy3(whitePointYxy, cmlGetReferenceWhitepointYxy(&(cm->observer)));
+  cmlCpy3(whitePointYxy, cmlGetReferenceWhitePointYxy(&(cm->observer)));
 }
 
 
@@ -467,7 +467,7 @@ CML_API void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
 
     CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
     float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitepoint(CML_NULL, yxy);
+    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitePoint(CML_NULL, yxy);
     cmlClearObserver(&(cm->observer));
     cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
     cmlClearIllumination(newillumination);
@@ -534,7 +534,7 @@ CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumi
     {
       illumination->BALFtemperature = 0.f;
 //      CMLVec3 whitePointYuv;
-//      cml_OneYupvptoYuv(whitePointYuv, cm->illumination.whitePointYupvp);
+//      cml_OneYupvpToYuv(whitePointYuv, cm->illumination.whitePointYupvp);
 //      cm->illumination.temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
     }
     break;
@@ -549,31 +549,31 @@ CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination
   illumination->BALFtemperature = 0.f;
   illumination->BALFspectrum = cmlDuplicateFunction(spectrum);
 
-  cml_OneIlluminationSpectrumtoXYZ(illumination->BALFradiometricXYZ, illumination->BALFspectrum, observer);
+  cml_OneIlluminationSpectrumToXYZ(illumination->BALFradiometricXYZ, illumination->BALFspectrum, observer);
 
   CMLVec3 whitePointYxy;
   CMLVec3 whitePointYupvp;
   CMLVec3 whitePointYuv;
-  cml_OneXYZtoYxy(whitePointYxy, illumination->BALFradiometricXYZ, CML_NULL);
-  cml_OneYxytoYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
-  cml_OneYupvptoYuv(whitePointYuv, whitePointYupvp);
+  cml_OneXYZToYxy(whitePointYxy, illumination->BALFradiometricXYZ, CML_NULL);
+  cml_OneYxyToYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
+  cml_OneYupvpToYuv(whitePointYuv, whitePointYupvp);
   illumination->BALFtemperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
 
   return illumination;
 }
 
 
-CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitepoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy){
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy){
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   illumination->BALFspectrum = NULL;
   
-  cml_OneYxytoXYZ(illumination->BALFradiometricXYZ, whitePointYxy, CML_NULL);
+  cml_OneYxyToXYZ(illumination->BALFradiometricXYZ, whitePointYxy, CML_NULL);
 
   CMLVec3 whitePointYupvp;
   CMLVec3 whitePointYuv;
-  cml_OneYxytoYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
-  cml_OneYupvptoYuv(whitePointYuv, whitePointYupvp);
+  cml_OneYxyToYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
+  cml_OneYupvpToYuv(whitePointYuv, whitePointYupvp);
   illumination->BALFtemperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
 
   return illumination;
@@ -608,7 +608,7 @@ CML_API float cmlGetIlluminationCorrelatedColorTemperature(const CMLIllumination
 //    // Computation takes long. Compute on demand.
 //    return 0.f;
 ////    CMLVec3 whitePointYuv;
-////    cml_OneYupvptoYuv(whitePointYuv, cm->illumination.whitePointYupvp);
+////    cml_OneYupvpToYuv(whitePointYuv, cm->illumination.whitePointYupvp);
 ////    cm->illumination.temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
 //  }
   if(!illumination->BALFtemperature){return CML_TEMPERATURE_D65;}
@@ -617,7 +617,7 @@ CML_API float cmlGetIlluminationCorrelatedColorTemperature(const CMLIllumination
 
 CML_API void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer){
   if(illumination->BALFspectrum){
-    cml_OneIlluminationSpectrumtoXYZ(dest, illumination->BALFspectrum, observer);
+    cml_OneIlluminationSpectrumToXYZ(dest, illumination->BALFspectrum, observer);
   }else{
     cmlCpy3(dest, illumination->BALFradiometricXYZ);
   }

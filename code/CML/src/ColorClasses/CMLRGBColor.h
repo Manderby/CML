@@ -1,8 +1,8 @@
 
 // RGBColor is a 3-dimensional vector
-// R-Range: (0,1), 0 represents no red  , 1 represents full red
+// R-Range: (0,1), 0 represents no red, 1 represents full red
 // G-Range: (0,1), 0 represents no green, 1 represents full green
-// B-Range: (0,1), 0 represents no blue , 1 represents full blue
+// B-Range: (0,1), 0 represents no blue, 1 represents full blue
 // The bounds are defined as constants in CMLConstants.h
 
 class RGBColor : public Color{

@@ -23,6 +23,8 @@ CML_HIDEF void cml_Data16WithFloatInterval(CMLWord* out, float in, CMLWord offse
   *out = offset + ((in == 1.f) ? (CMLWord)range : (CMLWord)(in*(range + 1.f)));
 }
 
+
+
 CML_HIDEF void cml_Data8WithFloat1Floor(const CMLColorMachine* cm, CMLByte* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data8WithFloatFloor(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
 }
@@ -38,6 +40,8 @@ CML_HIDEF void cml_Data8WithFloat4Floor(const CMLColorMachine* cm, CMLByte* CML_
   cml_Data8WithFloatFloor(&(out[3]), in[3], cm->inputoutput.offset8Bit[3], cm->inputoutput.range8Bit[3]);
 }
 
+
+
 CML_HIDEF void cml_Data8WithFloat1Box(const CMLColorMachine* cm, CMLByte* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data8WithFloatBox(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
 }
@@ -52,6 +56,8 @@ CML_HIDEF void cml_Data8WithFloat4Box(const CMLColorMachine* cm, CMLByte* CML_RE
   cml_Data8WithFloatBox(&(out[2]), in[2], cm->inputoutput.offset8Bit[2], cm->inputoutput.range8Bit[2]);
   cml_Data8WithFloatBox(&(out[3]), in[3], cm->inputoutput.offset8Bit[3], cm->inputoutput.range8Bit[3]);
 }
+
+
 
 CML_HIDEF void cml_Data8WithFloat1Interval(const CMLColorMachine* cm, CMLByte* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data8WithFloatInterval(&(out[0]), in[0], cm->inputoutput.offset8Bit[0], cm->inputoutput.range8Bit[0]);
@@ -69,6 +75,7 @@ CML_HIDEF void cml_Data8WithFloat4Interval(const CMLColorMachine* cm, CMLByte* C
 }
 
 
+
 CML_HIDEF void cml_Data16WithFloat1Floor(const CMLColorMachine* cm, CMLWord* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data16WithFloatFloor(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
 }
@@ -84,6 +91,8 @@ CML_HIDEF void cml_Data16WithFloat4Floor(const CMLColorMachine* cm, CMLWord* CML
   cml_Data16WithFloatFloor(&(out[3]), in[3], cm->inputoutput.offset16Bit[3], cm->inputoutput.range16Bit[3]);
 }
 
+
+
 CML_HIDEF void cml_Data16WithFloat1Box(const CMLColorMachine* cm, CMLWord* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data16WithFloatBox(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
 }
@@ -98,6 +107,8 @@ CML_HIDEF void cml_Data16WithFloat4Box(const CMLColorMachine* cm, CMLWord* CML_R
   cml_Data16WithFloatBox(&(out[2]), in[2], cm->inputoutput.offset16Bit[2], cm->inputoutput.range16Bit[2]);
   cml_Data16WithFloatBox(&(out[3]), in[3], cm->inputoutput.offset16Bit[3], cm->inputoutput.range16Bit[3]);
 }
+
+
 
 CML_HIDEF void cml_Data16WithFloat1Interval(const CMLColorMachine* cm, CMLWord* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_Data16WithFloatInterval(&(out[0]), in[0], cm->inputoutput.offset16Bit[0], cm->inputoutput.range16Bit[0]);
@@ -116,31 +127,31 @@ CML_HIDEF void cml_Data16WithFloat4Interval(const CMLColorMachine* cm, CMLWord* 
 
 
 
-CML_API void cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType newtype){
-  switch(newtype){
+CML_API void cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type){
+  switch(type){
   case CML_INTEGER_MAPPING_FLOOR:
-    cm->float1ToData8          = &cml_Data8WithFloat1Floor;
-    cm->float3ToData8          = &cml_Data8WithFloat3Floor;
-    cm->float4ToData8          = &cml_Data8WithFloat4Floor;
-    cm->float1ToData16         = &cml_Data16WithFloat1Floor;
-    cm->float3ToData16         = &cml_Data16WithFloat3Floor;
-    cm->float4ToData16         = &cml_Data16WithFloat4Floor;
+    cm->float1ToData8  = &cml_Data8WithFloat1Floor;
+    cm->float3ToData8  = &cml_Data8WithFloat3Floor;
+    cm->float4ToData8  = &cml_Data8WithFloat4Floor;
+    cm->float1ToData16 = &cml_Data16WithFloat1Floor;
+    cm->float3ToData16 = &cml_Data16WithFloat3Floor;
+    cm->float4ToData16 = &cml_Data16WithFloat4Floor;
     break;
   case CML_INTEGER_MAPPING_BOX:
-    cm->float1ToData8          = &cml_Data8WithFloat1Box;
-    cm->float3ToData8          = &cml_Data8WithFloat3Box;
-    cm->float4ToData8          = &cml_Data8WithFloat4Box;
-    cm->float1ToData16         = &cml_Data16WithFloat1Box;
-    cm->float3ToData16         = &cml_Data16WithFloat3Box;
-    cm->float4ToData16         = &cml_Data16WithFloat4Box;
+    cm->float1ToData8  = &cml_Data8WithFloat1Box;
+    cm->float3ToData8  = &cml_Data8WithFloat3Box;
+    cm->float4ToData8  = &cml_Data8WithFloat4Box;
+    cm->float1ToData16 = &cml_Data16WithFloat1Box;
+    cm->float3ToData16 = &cml_Data16WithFloat3Box;
+    cm->float4ToData16 = &cml_Data16WithFloat4Box;
     break;
   case CML_INTEGER_MAPPING_INTERVAL:
-    cm->float1ToData8          = &cml_Data8WithFloat1Interval;
-    cm->float3ToData8          = &cml_Data8WithFloat3Interval;
-    cm->float4ToData8          = &cml_Data8WithFloat4Interval;
-    cm->float1ToData16         = &cml_Data16WithFloat1Interval;
-    cm->float3ToData16         = &cml_Data16WithFloat3Interval;
-    cm->float4ToData16         = &cml_Data16WithFloat4Interval;
+    cm->float1ToData8  = &cml_Data8WithFloat1Interval;
+    cm->float3ToData8  = &cml_Data8WithFloat3Interval;
+    cm->float4ToData8  = &cml_Data8WithFloat4Interval;
+    cm->float1ToData16 = &cml_Data16WithFloat1Interval;
+    cm->float3ToData16 = &cml_Data16WithFloat3Interval;
+    cm->float4ToData16 = &cml_Data16WithFloat4Interval;
     break;
   default:
     #if CML_DEBUG
@@ -149,8 +160,9 @@ CML_API void cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType
     return;
     break;
   }
-  cm->inputoutput.integermapping = newtype;
+  cm->inputoutput.integermapping = type;
 }
+
 
 
 // This is free and unencumbered software released into the public domain.

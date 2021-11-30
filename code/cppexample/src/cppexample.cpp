@@ -25,7 +25,7 @@ int main(){
   // color machine which they will access by a pointer. You can create a machine
   // and use the cmlSetMachineForColorClasses method to set this global pointer:
   
-  cmlSetMachineForColorClasses(CMLcreateColorMachine());
+  cmlSetMachineForColorClasses(cmlCreateColorMachine());
 
   // Don't forget to release this machine when you quit your application. See
   // below.
@@ -156,9 +156,9 @@ int main(){
   
   printf("\nCleaning up and quitting...");
 
-  /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////
   // Cleaning up
-  /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////
 
   // The global ColorMachine remains in memory as long as you like. At the end
   // of your application, you can release it:

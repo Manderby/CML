@@ -23,10 +23,10 @@ CML_API CMLObserverType        cml_GetObserverType                 (const CMLObs
 
 CML_API const CMLIllumination* cmlGetReferenceIllumination        (const CMLObserver* observer);
 CML_API const CMLFunction*     cmlGetReferenceIlluminationSpectrum(const CMLObserver* observer);
-CML_API const float*           cmlGetReferenceWhitepointXYZ       (const CMLObserver* observer);
-CML_API const float*           cmlGetReferenceInverseWhitepointXYZ(const CMLObserver* observer);
-CML_API const float*           cmlGetReferenceWhitepointYxy       (const CMLObserver* observer);
-CML_API const float*           cmlGetReferenceWhitepointYupvp     (const CMLObserver* observer);
+CML_API const float*           cmlGetReferenceWhitePointXYZ       (const CMLObserver* observer);
+CML_API const float*           cmlGetReferenceInverseWhitePointXYZ(const CMLObserver* observer);
+CML_API const float*           cmlGetReferenceWhitePointYxy       (const CMLObserver* observer);
+CML_API const float*           cmlGetReferenceWhitePointYupvp     (const CMLObserver* observer);
 
 
 

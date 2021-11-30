@@ -397,11 +397,11 @@ CML_API CMLObserver* cmlCreateObserver(
                                          colorimetricBase,
                                          observer->BALFwhitePointXYZ[2] * observer->BALFradiometricScale);
   }
-  cmlSet3(observer->BALFinverseWhitepointXYZ, cmlInverse(observer->BALFwhitePointXYZ[0]),
+  cmlSet3(observer->BALFinverseWhitePointXYZ, cmlInverse(observer->BALFwhitePointXYZ[0]),
                                               cmlInverse(observer->BALFwhitePointXYZ[1]),
                                               cmlInverse(observer->BALFwhitePointXYZ[2]));
-  cml_OneXYZtoYxy(observer->BALFwhitePointYxy, observer->BALFwhitePointXYZ, CML_NULL);
-  cml_OneYxytoYupvp(observer->BALFwhitePointYupvp, observer->BALFwhitePointYxy, CML_NULL);
+  cml_OneXYZToYxy(observer->BALFwhitePointYxy, observer->BALFwhitePointXYZ, CML_NULL);
+  cml_OneYxyToYupvp(observer->BALFwhitePointYupvp, observer->BALFwhitePointYxy, CML_NULL);
   return observer;
 }
 
@@ -456,19 +456,19 @@ CML_API const CMLFunction* cmlGetReferenceIlluminationSpectrum(const CMLObserver
   return cml_GetIlluminationSpectrum(&(observer->BALFillumination));
 }
 
-CML_API const float* cmlGetReferenceWhitepointXYZ(const CMLObserver* observer){
+CML_API const float* cmlGetReferenceWhitePointXYZ(const CMLObserver* observer){
   return observer->BALFwhitePointXYZ;
 }
 
-CML_API const float* cmlGetReferenceInverseWhitepointXYZ(const CMLObserver* observer){
-  return observer->BALFinverseWhitepointXYZ;
+CML_API const float* cmlGetReferenceInverseWhitePointXYZ(const CMLObserver* observer){
+  return observer->BALFinverseWhitePointXYZ;
 }
 
-CML_API const float* cmlGetReferenceWhitepointYxy(const CMLObserver* observer){
+CML_API const float* cmlGetReferenceWhitePointYxy(const CMLObserver* observer){
   return observer->BALFwhitePointYxy;
 }
 
-CML_API const float* cmlGetReferenceWhitepointYupvp(const CMLObserver* observer){
+CML_API const float* cmlGetReferenceWhitePointYupvp(const CMLObserver* observer){
   return observer->BALFwhitePointYupvp;
 }
 

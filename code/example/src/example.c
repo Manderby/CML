@@ -15,7 +15,7 @@ int main(){
   // either 0 for Release or 1 for Debug.
   
   CMLByte version[4];
-  CMLgetVersion(version);
+  cmlGetVersion(version);
   printf("CML Version: %u.%u.%u (%s)\n", version[0], version[1], version[2], version[3]?"Debug":"Release");
   
   // The Debug version is only available to you upon special request to the
@@ -71,7 +71,7 @@ int main(){
   // The following function creates a new ColorMachine. You can deallocate
   // the machine later with cmlReleaseColorMachine().
 
-  CMLColorMachine* cm = CMLcreateColorMachine();
+  CMLColorMachine* cm = cmlCreateColorMachine();
 
   // Note that a new machine sets sRGB as the default RGB colorspace.
   // Now for example, converting RGB to XYZ is as simple as that:
@@ -101,7 +101,7 @@ int main(){
   // But you can change that easily for example to Adobe 98:
   
   cmlSetRGBColorSpace(cm, CML_RGB_ADOBE_98);
-  printf("Current RGB colorspace: %s\n", CMLgetRGBColorspaceString(CMLgetRGBColorSpace(cm)));
+  printf("Current RGB colorspace: %s\n", cmlGetRGBColorspaceString(cmlGetRGBColorSpace(cm)));
 
   // Now, when converting back the xyz value of our orange color to RGB, we
   // get different RGB values:
@@ -126,10 +126,10 @@ int main(){
   // For example:
 
   CMLVec3 wpYxy;
-  CMLgetWhitePointYxy(cm, wpYxy);
+  cmlGetWhitePointYxy(cm, wpYxy);
   printf("Current whitepoint: %f, %f, %f\n", wpYxy[0], wpYxy[1], wpYxy[2]);
   
-  // Note that CMLgetWhitePointYxy will always return a radiometric Yxy color.
+  // Note that cmlGetWhitePointYxy will always return a radiometric Yxy color.
   // This means that the Y component may NOT be 1.
   
   // Also note that by the time, due to our changes of the state machine, a
@@ -137,7 +137,7 @@ int main(){
   // before (which was Adobe 98). As this is a non-standard situation, the
   // resulting RGB colorspace is "Custom":
   
-  printf("Current RGB colorspace: %s\n", CMLgetRGBColorspaceString(CMLgetRGBColorSpace(cm)));
+  printf("Current RGB colorspace: %s\n", cmlGetRGBColorspaceString(cmlGetRGBColorSpace(cm)));
 
   // As we still have the orange stored in xyz, let's see what the RGB value
   // of that orange is in this strange RGB colorspace...
@@ -166,7 +166,7 @@ int main(){
   //
   // To illustrate this, we create a fresh ColorMachine and do a speed test.
   
-  CMLColorMachine* cm2 = CMLcreateColorMachine();
+  CMLColorMachine* cm2 = cmlCreateColorMachine();
   
   // Let's do this with some large arrays:
   size_t millioncolors = 10;
@@ -260,7 +260,7 @@ int main(){
   // If you have spectral data, use a CMLFunction. We create a fresh machine
   // to illustrate this with an example:
   
-  CMLColorMachine* cm3 = CMLcreateColorMachine();
+  CMLColorMachine* cm3 = cmlCreateColorMachine();
  
   // Let's assume you have an array of float values, filled with the spectral
   // sampling points of a light source. Additionally, you know the wavelengths
@@ -274,7 +274,7 @@ int main(){
   // With these informations, you can simply create a CMLFunction representing
   // this spectrum:
 
-  CMLFunction* luminancefunction = CMLcreateArrayFunction(
+  CMLFunction* luminancefunction = cmlCreateArrayFunction(
                                       luminancedata,
                                       CML_FALSE,
                                       datacount,
@@ -301,31 +301,31 @@ int main(){
   // This function instance can now be used. For example, you can retrieve the
   // value at 555 nm:
 
-  printf("Spectral data at 500 nm: %f\n", CMLeval(luminancefunction, 500.f));
+  printf("Spectral data at 500 nm: %f\n", cmlEval(luminancefunction, 500.f));
   
   
   // You can do the same thing by filtering the luminancefunction with a Dirac
   // filter:
-  CMLFunction* dirac = CMLcreateDiracFilter(500.f);
-  printf("Spectral data at 500 nm: %f\n", CMLfilterFunction(luminancefunction, dirac));
+  CMLFunction* dirac = cmlCreateDiracFilter(500.f);
+  printf("Spectral data at 500 nm: %f\n", cmlFilterFunction(luminancefunction, dirac));
   cmlReleaseFunction(dirac);
   
   // You can use this function for example, to set this spectrum as the
   // illumination spectrum of the machine:
 
   cmlSetIlluminationSpectrum(cm3, luminancefunction);
-  CMLgetWhitePointYxy(cm3, wpYxy);
+  cmlGetWhitePointYxy(cm3, wpYxy);
   printf("New whitepoint: %f, %f, %f\n", wpYxy[0], wpYxy[1], wpYxy[2]);
 
   // Remember that the Y component of the whitepoint returned by the
-  // CMLgetWhitePointYxy function will always be a radiometric value.
+  // cmlGetWhitePointYxy function will always be a radiometric value.
 
   // Now we create a remission color:
   
   float remissiondata[10] = {  .2f, .3f, .6f, .7f, 1.f,
                               1.2f, .9f, .6f, .2f, .0f};
 
-  CMLFunction* remissionfunction = CMLcreateArrayFunction(
+  CMLFunction* remissionfunction = cmlCreateArrayFunction(
                                       remissiondata,
                                       CML_FALSE,
                                       datacount,
@@ -362,7 +362,7 @@ int main(){
   // illumination spectrum perfectly:
 
   CMLVec3 yxy;
-  CMLFunction* constfunction = CMLcreateConstFilter(1.f);
+  CMLFunction* constfunction = cmlCreateConstFilter(1.f);
   cmlSpectrumRemissionToYxy(cm3, yxy, constfunction, 1);
   printf("Lambertian surface: %f, %f, %f\n", yxy[0], yxy[1], yxy[2]);
 
@@ -403,7 +403,7 @@ int main(){
   // If you want to convert one color into another, use the CMLconvertXXX
   // functions of the BaseAPI:
   
-  CMLconvertRGBtoHSV(hsv, orange);
+  cmlConvertRGBToHSV(hsv, orange);
   printf("HSV color: %f, %f, %f\n", hsv[0], hsv[1], hsv[2]);
 
   // Some conversion need more parameters though. And this is where color
@@ -420,28 +420,28 @@ int main(){
   // Get all needed information for sRGB:
   CMLVec3 primariesYxy[3];
 //  float gamma;
-  CMLIlluminationType illuminationtype = CMLgetRGBColorSpaceIlluminationType(CML_RGB_SRGB);
-  CMLgetRGBColorSpacePrimaries(CML_RGB_SRGB, primariesYxy[0], primariesYxy[1], primariesYxy[2]);
+  CMLIlluminationType illuminationtype = cmlGetRGBColorSpaceIlluminationType(CML_RGB_SRGB);
+  cmlGetRGBColorSpacePrimaries(CML_RGB_SRGB, primariesYxy[0], primariesYxy[1], primariesYxy[2]);
 
   // Compute the colorimetric whitepoint:
   CMLIllumination* illumination = cmlCreateIlluminationWithPreset(CML_NULL, illuminationtype, 0);
-  CMLObserver* observer = cmlCreateObserverWithIllumination(CML_NULL, CML_OBSERVER_2DEG_CIE_1931, illumination, 100.f);
+  CMLObserver* observer = cmlCreateObserver(CML_NULL, CML_OBSERVER_2DEG_CIE_1931, illumination, 100.f);
 //  CMLFunction* illumination = cmlCreateIlluminationSpectrum(illuminationtype, 0.f);
 //  CMLVec3 wpXYZ;
 //  CMLFunction* specdistfuncs[3];
 //  cmlCreateSpecDistFunctions(specdistfuncs, CML_OBSERVER_2DEG_CIE_1931);
-//  CMLconvertIlluminationSpectrumtoXYZ(wpXYZ, illumination, specdistfuncs[0], specdistfuncs[1], specdistfuncs[2]);
+//  CMLconvertIlluminationSpectrumToXYZ(wpXYZ, illumination, specdistfuncs[0], specdistfuncs[1], specdistfuncs[2]);
 //  cmlDiv3(wpXYZ, wpXYZ[1]);
-//  CMLconvertXYZtoYxy(wpYxy, wpXYZ, CML_NULL);
-  const float* srgbwp = cmlGetReferenceWhitepointYxy(observer);
+//  CMLconvertXYZToYxy(wpYxy, wpXYZ, CML_NULL);
+  const float* srgbwp = cmlGetReferenceWhitePointYxy(observer);
   
   // Compute the matrix and prepare the response curve:
   CMLMat33 rgbtoxyzmatrix;
-  cmlComputeRGBtoXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], srgbwp);
-  CMLFunction* srgbresponse = CMLcreatesRGBToXYZResponse();
+  cmlComputeRGBToXYZMatrix(rgbtoxyzmatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], srgbwp);
+  CMLFunction* srgbresponse = cmlCreatesRGBToXYZResponse();
   
   // Convert the color:
-  CMLconvertRGBtoXYZ(xyz, orange, rgbtoxyzmatrix, srgbresponse, srgbresponse, srgbresponse);
+  cmlConvertRGBToXYZ(xyz, orange, rgbtoxyzmatrix, srgbresponse, srgbresponse, srgbresponse);
   printf("XYZ color: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
 
   // Release all functions.
@@ -454,7 +454,7 @@ int main(){
   // ... but then again, take a look at how RGB to XYZ conversion is done
   // using a Colormachine:
   
-  CMLColorMachine* cm4 = CMLcreateColorMachine();
+  CMLColorMachine* cm4 = cmlCreateColorMachine();
   cmlRGBToXYZ(cm4, xyz, orange, 1);
   printf("XYZ color: %f, %f, %f\n", xyz[0], xyz[1], xyz[2]);
   
@@ -468,9 +468,9 @@ int main(){
   
   printf("\nCleaning up and quitting...");
 
-  /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////
   // Cleaning up
-  /////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////
 
   // Remember that ColorMachine objects remain in memory as long as you like.
   // You have to release each machine by yourself.
