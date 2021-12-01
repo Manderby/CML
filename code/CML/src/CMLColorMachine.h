@@ -11,12 +11,8 @@
 // State Machine
 // ///////////////////////////////////////////////
 
-// Returns a pointer to 4 Bytes denoting unsigned 8-bit-integers as follows:
-// version[0]: Main Version number (technology changes)
-// version[1]: Sub Version number (large features, API changes)
-// version[2]: Subsub Version number (small features, new API)
-// version[3]: Either 0 for release or 1 for debug version
-CML_API void                  cmlGetVersion(CMLByte version[4]);
+// Returns the current version number.
+CML_API CMLuint32             cmlGetVersion(void);
 
 // Create and destroy ColorMachines with these functions:
 CML_API CMLColorMachine*      cmlCreateColorMachine(void);
@@ -74,13 +70,13 @@ CML_API void                  cmlSetWhitePointYxy(CMLColorMachine* cm, const flo
 
 // These functions set the computation of the Lab space. Default is CIELAB.
 // The functions setting K and ke will only take effect if the
-// labspace is set to CML_LAB_ADAMS_CROMATIC_VALENCE. Otherwise, the input
+// labSpace is set to CML_LAB_ADAMS_CROMATIC_VALENCE. Otherwise, the input
 // is ignored. When setting a custom response, the gamma parameter will only
 // be used with gamma responses.
 // Be aware that most Lab spaces (including CIELAB) are relative to a specific
 // whitePoint which in CML is defined by the current illumination.
 CML_API CMLLabColorSpaceType  cmlGetLabColorSpace(const CMLColorMachine* cm);
-CML_API void                  cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labspace);
+CML_API void                  cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace);
 CML_API void                  cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke);
 CML_API void                  cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
 CML_API CMLuint8              cmlGetLabLUTSize(const CMLColorMachine* cm);

@@ -5,42 +5,42 @@
 
 
 
-CML_HIDDEN void cml_GraytoChanneledBufferHSL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferHSL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
   cmlSet3(buffer, 0.f, 0.f, luminance);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferHSV(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferHSV(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
   cmlSet3(buffer, 0.f, 0.f, luminance);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferG(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferG(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
   cmlSet3(buffer, luminance, luminance, luminance);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
   cmlSet3(buffer, 100.f * luminance, 0.f, 0.f);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
   cmlSet3(buffer, 100.f * luminance, 0.f, 0.f);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance = 1.f - *gray;
   const float* whitePointYxy = cmlGetReferenceWhitePointYxy(&(cm->observer));
   cmlSet3(buffer, luminance, whitePointYxy[1], whitePointYxy[2]);
 }
-CML_HIDDEN void cml_GraytoChanneledBufferYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
+CML_HIDDEN void cml_GrayToChanneledBufferYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance;
   CML_UNUSED(cm);
   luminance = 1.f - *gray;
@@ -50,31 +50,31 @@ CML_HIDDEN void cml_GraytoChanneledBufferYPRIME(const CMLColorMachine* cm, float
 
 
 
-CML_HIDDEN void cml_ChanneledBuffertoGrayHSL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayHSL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - buffer[2];
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayHSV(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayHSV(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - buffer[2];
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayG(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayG(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - buffer[1];
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - (buffer[0] * .01f);
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - (buffer[0] * .01f);
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - buffer[0];
 }
-CML_HIDDEN void cml_ChanneledBuffertoGrayYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
+CML_HIDDEN void cml_ChanneledBufferToGrayYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
   *gray = 1.f - buffer[0];
 }
@@ -83,11 +83,11 @@ CML_HIDDEN void cml_ChanneledBuffertoGrayYPRIME(const CMLColorMachine* cm, float
 
 
 CML_HIDDEN void cml_XYZToLabCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  cml_XYZToCIELAB(out, in, count, cmlGetReferenceInverseWhitePointXYZ(&(cm->observer)), cm->labspace.responseL.forwardfunc);
+  cml_XYZToCIELAB(out, in, count, cmlGetReferenceInverseWhitePointXYZ(&(cm->observer)), cm->labSpace.responseL.forwardfunc);
 }
 
 CML_HIDDEN void cml_XYZToLabCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
-  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetReferenceInverseWhitePointXYZ(&(cm->observer)), cm->labspace.responseL.forwardfunc);
+  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetReferenceInverseWhitePointXYZ(&(cm->observer)), cm->labSpace.responseL.forwardfunc);
 }
 
 
@@ -99,7 +99,7 @@ CML_HIDDEN void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* C
     float yr = in[1] * inverseWhitePointXYZ[1];
     float zr = in[2] * inverseWhitePointXYZ[2];
     
-    float fy = cml_Eval(cm->labspace.responseL.forwardfunc, yr);
+    float fy = cml_Eval(cm->labSpace.responseL.forwardfunc, yr);
     out[0] = 100.f * fy;
 
     if(fy == 0.f){
@@ -107,8 +107,8 @@ CML_HIDDEN void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* C
       out[2] = 0.f;
     }else{
       float fyinverse = cmlInverse(fy);
-      out[1] = (xr - yr) * cm->labspace.adamschromaticityvalenceK * 100.f * fyinverse;
-      out[2] = (yr - zr) * cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f * fyinverse;
+      out[1] = (xr - yr) * cm->labSpace.adamsChromaticityValenceK * 100.f * fyinverse;
+      out[2] = (yr - zr) * cm->labSpace.adamsChromaticityValenceK * cm->labSpace.adamsChromaticityValenceke * 100.f * fyinverse;
     }
 
     in += CML_XYZ_NUMCHANNELS;
@@ -125,7 +125,7 @@ CML_HIDDEN void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float
     float yr = buf[1] * inverseWhitePointXYZ[1];
     float zr = buf[2] * inverseWhitePointXYZ[2];
     
-    float fy = cml_Eval(cm->labspace.responseL.forwardfunc, yr);
+    float fy = cml_Eval(cm->labSpace.responseL.forwardfunc, yr);
     buf[0] = 100.f * fy;
 
     if(fy == 0.f){
@@ -133,8 +133,8 @@ CML_HIDDEN void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float
       buf[2] = 0.f;
     }else{
       float fyinverse = cmlInverse(fy);
-      buf[1] = (xr - yr) * cm->labspace.adamschromaticityvalenceK * 100.f * fyinverse;
-      buf[2] = (yr - zr) * cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f * fyinverse;
+      buf[1] = (xr - yr) * cm->labSpace.adamsChromaticityValenceK * 100.f * fyinverse;
+      buf[2] = (yr - zr) * cm->labSpace.adamsChromaticityValenceK * cm->labSpace.adamsChromaticityValenceke * 100.f * fyinverse;
     }
 
     buf += floatAlign;
@@ -144,12 +144,12 @@ CML_HIDDEN void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float
 
 
 CML_HIDDEN void cml_LabToXYZCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  cml_CIELABToXYZ(out, in, count, cmlGetReferenceWhitePointXYZ(&(cm->observer)), cm->labspace.responseL.backwardfunc);
+  cml_CIELABToXYZ(out, in, count, cmlGetReferenceWhitePointXYZ(&(cm->observer)), cm->labSpace.responseL.backwardfunc);
 }
 
 
 CML_HIDDEN void cml_LabToXYZCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
-  cml_CIELABToXYZ_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZ(&(cm->observer)), cm->labspace.responseL.backwardfunc);
+  cml_CIELABToXYZ_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZ(&(cm->observer)), cm->labSpace.responseL.backwardfunc);
 }
 
 
@@ -161,14 +161,14 @@ CML_HIDDEN void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* 
     float xr, yr, zr;
     
     float fy = in[0] * .01f;
-    yr = cml_Eval(cm->labspace.responseL.backwardfunc, fy);
+    yr = cml_Eval(cm->labSpace.responseL.backwardfunc, fy);
 
-    if((cm->labspace.adamschromaticityvalenceK == 0.f) || (cm->labspace.adamschromaticityvalenceke == 0.f)){
+    if((cm->labSpace.adamsChromaticityValenceK == 0.f) || (cm->labSpace.adamsChromaticityValenceke == 0.f)){
       xr = 0.f;
       zr = 0.f;
     }else{
-      xr = yr + fy * in[1] / (cm->labspace.adamschromaticityvalenceK * 100.f);
-      zr = yr - fy * in[2] / (cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f);
+      xr = yr + fy * in[1] / (cm->labSpace.adamsChromaticityValenceK * 100.f);
+      zr = yr - fy * in[2] / (cm->labSpace.adamsChromaticityValenceK * cm->labSpace.adamsChromaticityValenceke * 100.f);
     }
 
     out[0] = xr * whitePointXYZ[0];
@@ -189,14 +189,14 @@ CML_HIDDEN void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, floa
     float xr, yr, zr;
     
     float fy = buf[0] * .01f;
-    yr = cml_Eval(cm->labspace.responseL.backwardfunc, fy);
+    yr = cml_Eval(cm->labSpace.responseL.backwardfunc, fy);
 
-    if((cm->labspace.adamschromaticityvalenceK == 0.f) || (cm->labspace.adamschromaticityvalenceke == 0.f)){
+    if((cm->labSpace.adamsChromaticityValenceK == 0.f) || (cm->labSpace.adamsChromaticityValenceke == 0.f)){
       xr = 0.f;
       zr = 0.f;
     }else{
-      xr = yr + fy * buf[1] / (cm->labspace.adamschromaticityvalenceK * 100.f);
-      zr = yr - fy * buf[2] / (cm->labspace.adamschromaticityvalenceK * cm->labspace.adamschromaticityvalenceke * 100.f);
+      xr = yr + fy * buf[1] / (cm->labSpace.adamsChromaticityValenceK * 100.f);
+      zr = yr - fy * buf[2] / (cm->labSpace.adamsChromaticityValenceK * cm->labSpace.adamsChromaticityValenceke * 100.f);
     }
 
     buf[0] = xr * whitePointXYZ[0];
@@ -209,7 +209,7 @@ CML_HIDDEN void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, floa
 }
 
 
-CML_HIDDEN void cml_RGBtoCMYKStandard(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HIDDEN void cml_RGBToCMYKStandard(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -224,7 +224,7 @@ CML_HIDDEN void cml_RGBtoCMYKStandard(const CMLColorMachine* cm, float* CML_REST
   }
 }
 
-CML_HIDDEN void cml_RGBtoCMYKStandard_SB(const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
+CML_HIDDEN void cml_RGBToCMYKStandard_SB(const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
   CML_UNUSED(cm);
   while(count){
 
@@ -240,7 +240,7 @@ CML_HIDDEN void cml_RGBtoCMYKStandard_SB(const CMLColorMachine* cm, float* buf, 
 
 
 
-CML_HIDDEN void cml_RGBtoCMYKUCR(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HIDDEN void cml_RGBToCMYKUCR(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -260,7 +260,7 @@ CML_HIDDEN void cml_RGBtoCMYKUCR(const CMLColorMachine* cm, float* CML_RESTRICT 
   }
 }
 
-CML_HIDDEN void cml_RGBtoCMYKUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
+CML_HIDDEN void cml_RGBToCMYKUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
   CML_UNUSED(cm);
   while(count){
 
@@ -281,7 +281,7 @@ CML_HIDDEN void cml_RGBtoCMYKUCR_SB(const CMLColorMachine* cm, float* buf, size_
 
 
 
-CML_HIDDEN void cml_CMYKtoRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HIDDEN void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -296,7 +296,7 @@ CML_HIDDEN void cml_CMYKtoRGBStandard (const CMLColorMachine* cm, float* CML_RES
 }
 
 
-CML_HIDDEN void cml_CMYKtoRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
+CML_HIDDEN void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
   CML_UNUSED(cm);
   while(count){
 
@@ -310,7 +310,7 @@ CML_HIDDEN void cml_CMYKtoRGBStandard_SB (const CMLColorMachine* cm, float* buf,
 }
 
 
-CML_HIDDEN void cml_CMYKtoRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HIDDEN void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -325,7 +325,7 @@ CML_HIDDEN void cml_CMYKtoRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT
 }
 
 
-CML_HIDDEN void cml_CMYKtoRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
+CML_HIDDEN void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign){
   CML_UNUSED(cm);
   while(count){
 

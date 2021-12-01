@@ -3,18 +3,12 @@
 #include "CMLColorMachineState.h"
 
 
-CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
-                                CMLChromaticAdaptationType adaptationType,
-                                                   CMLVec3 adaptedWhitePointYxy,
-                                                   CMLVec3 whitePointYxy){
-
-  CMLMat33 M;
-  CMLVec3  whitePointXYZ;
-  CMLVec3  adaptedwhitePointXYZ;
-  CMLMat33 Minv;
-  CMLVec3  cs;
-  CMLVec3  cd;
-  
+CML_API void cmlComputeChromaticAdaptationMatrix(
+  CMLMat33 matrix,
+  CMLChromaticAdaptationType adaptationType,
+  CMLVec3 adaptedWhitePointYxy,
+  CMLVec3 whitePointYxy)
+{
   #if CML_DEBUG
     if(adaptationType != CML_CHROMATIC_ADAPTATION_NONE){
       if(whitePointYxy[2] == 0.f)
@@ -24,35 +18,47 @@ CML_API void cmlComputeChromaticAdaptationMatrix(  CMLMat33 matrix,
     }
   #endif
 
+  CMLMat33 M;
+
   // Note that the matrices are stored column first!
   switch(adaptationType){
   case CML_CHROMATIC_ADAPTATION_NONE:
     {
       float scale = adaptedWhitePointYxy[0] / whitePointYxy[0];
       cmlSetMat33(matrix,
-            scale,     0.f,       0.f,
-            0.f,       scale,     0.f,
-            0.f,       0.f,       scale);
+        scale, 0.f,   0.f,
+        0.f,   scale, 0.f,
+        0.f,   0.f,   scale);
       return;
       break;
     }
   default:
-  case CML_CHROMATIC_ADAPTATION_XYZ_SCALING: cmlSetMat33(M,
-          1.f,       0.f,       0.f,
-          0.f,       1.f,       0.f,
-          0.f,       0.f,       1.f);
+  case CML_CHROMATIC_ADAPTATION_XYZ_SCALING:
+    cmlSetMat33(M,
+      1.f, 0.f, 0.f,
+      0.f, 1.f, 0.f,
+      0.f, 0.f, 1.f);
     break;
-  case CML_CHROMATIC_ADAPTATION_BRADFORD: cmlSetMat33(M,
-          0.8951f,  -0.7502f,   0.0389f,
-          0.2664f,   1.7135f,  -0.0685f,
-         -0.1614f,   0.0367f,   1.0296f);
+  case CML_CHROMATIC_ADAPTATION_BRADFORD:
+    cmlSetMat33(M,
+       0.8951f, -0.7502f,  0.0389f,
+       0.2664f,  1.7135f, -0.0685f,
+      -0.1614f,  0.0367f,  1.0296f);
     break;
-  case CML_CHROMATIC_ADAPTATION_VON_KRIES: cmlSetMat33(M,
-          0.40024f, -0.22630f,  0.f,
-          0.70760f,  1.16532f,  0.f,
-         -0.08081f,  0.04570f,  0.91822f);
+  case CML_CHROMATIC_ADAPTATION_VON_KRIES:
+    cmlSetMat33(M,
+       0.40024f, -0.22630f,  0.f,
+       0.70760f,  1.16532f,  0.f,
+      -0.08081f,  0.04570f,  0.91822f);
     break;
   }
+
+  CMLVec3  whitePointXYZ;
+  CMLVec3  adaptedwhitePointXYZ;
+  CMLMat33 Minv;
+  CMLVec3  cs;
+  CMLVec3  cd;
+
   cml_OneYxyToXYZ(whitePointXYZ, whitePointYxy, CML_NULL);
   cml_OneYxyToXYZ(adaptedwhitePointXYZ, adaptedWhitePointYxy, CML_NULL);
   cmlInvertMat33(Minv, M);

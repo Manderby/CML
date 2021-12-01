@@ -86,7 +86,7 @@ CML_API void cmlRGBToHSL (const CMLColorMachine* cm, CMLOutput hsl, CMLInput rgb
 
 CML_API void cmlRGBToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput rgb, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(cmyk, rgb, CML_CMYK_NUMCHANNELS, CML_RGB_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(*cm->RGBtoCMYK);
+  CML_CONVERTER_FIRST_STEP(*cm->RGBToCMYK);
 }
 
 

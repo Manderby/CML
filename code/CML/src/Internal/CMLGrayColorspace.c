@@ -4,39 +4,39 @@
 
 
 CML_API CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
-  return cm->grayspace.computation;
+  return cm->graySpace.computation;
 }
 
 
 CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation){
   switch(computation){
   case CML_GRAY_FROM_HSL:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferHSL;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayHSL;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferHSL;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayHSL;
     break;
   case CML_GRAY_FROM_HSV:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferHSV;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayHSV;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferHSV;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayHSV;
     break;
   case CML_GRAY_FROM_G:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferG;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayG;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferG;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayG;
     break;
   case CML_GRAY_FROM_LSTAR:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferLSTAR;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayLSTAR;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
     break;
   case CML_GRAY_FROM_L:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferL;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayL;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferL;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayL;
     break;
   case CML_GRAY_FROM_Y:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferY;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayY;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferY;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayY;
     break;
   case CML_GRAY_FROM_YPRIME:
-    cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferYPRIME;
-    cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayYPRIME;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferYPRIME;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayYPRIME;
     break;
   default:
     #if CML_DEBUG
@@ -45,14 +45,14 @@ CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
     return;
     break;
   }
-  cm->grayspace.computation = computation;
+  cm->graySpace.computation = computation;
 }
 
 
 
 
-//CMLBool              ColorMachine::getGrayChannelInterpretation() const                            {return (s->grayspace.interpretation == CML_MAX_IS_WHITE);}
-//void              ColorMachine::setGrayChannelInterpretation(CMLChannelInterpretationType newinterpretation)  {s->grayspace.interpretation = newinterpretation;}
+//CMLBool              ColorMachine::getGrayChannelInterpretation() const                            {return (s->graySpace.interpretation == CML_MAX_IS_WHITE);}
+//void              ColorMachine::setGrayChannelInterpretation(CMLChannelInterpretationType newinterpretation)  {s->graySpace.interpretation = newinterpretation;}
 
 
 

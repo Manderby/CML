@@ -20,18 +20,8 @@
 
 
 
-CML_API void cmlGetVersion(CMLByte version[4]){
-  #if CML_DEBUG
-    version[0] = 1;
-    version[1] = 0;
-    version[2] = 2;
-    version[3] = 1;
-  #else
-    version[0] = 1;
-    version[1] = 0;
-    version[2] = 2;
-    version[3] = 0;
-  #endif
+CML_API CMLuint32 cmlGetVersion(){
+  return 2;
 }
 
 
@@ -40,38 +30,38 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cmlAllocate(sizeof(CMLColorMachine));
 
-  CMLIllumination* referenceillumination = cmlCreateIlluminationWithPreset(CML_NULL, CML_ILLUMINATION_D65, 0);
-  cmlCreateObserver(  &(cm->observer),
-                                              CML_OBSERVER_2DEG_CIE_1931,
-                                              referenceillumination,
-                                              1.f);
+  CMLIllumination* referenceIllumination = cmlCreateIlluminationWithPreset(CML_NULL, CML_ILLUMINATION_D65, 0);
+  cmlCreateObserver(&(cm->observer),
+    CML_OBSERVER_2DEG_CIE_1931,
+    referenceIllumination,
+    1.f);
 
-  cmlCreateResponseCurve(&(cm->rgbspace.responseR));
-  cmlCreateResponseCurve(&(cm->rgbspace.responseG));
-  cmlCreateResponseCurve(&(cm->rgbspace.responseB));
-  cmlCreateResponseCurve(&(cm->labspace.responseL));
-  cmlCreateResponseCurveWithPreset(&(cm->labspace.responseLStar), CML_RESPONSE_LSTAR);
+  cmlCreateResponseCurve(&(cm->rgbSpace.responseR));
+  cmlCreateResponseCurve(&(cm->rgbSpace.responseG));
+  cmlCreateResponseCurve(&(cm->rgbSpace.responseB));
+  cmlCreateResponseCurve(&(cm->labSpace.responseL));
+  cmlCreateResponseCurveWithPreset(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
   
-  cm->GraytoChanneledBuffer = &cml_GraytoChanneledBufferLSTAR;
-  cm->ChanneledBuffertoGray = &cml_ChanneledBuffertoGrayLSTAR;
+  cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
+  cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
   cm->XYZToLab              = &cml_XYZToLabCIELAB;
   cm->XYZToLab_SB           = &cml_XYZToLabCIELAB_SB;
   cm->LabToXYZ              = &cml_LabToXYZCIELAB;
   cm->LabToXYZ_SB           = &cml_LabToXYZCIELAB_SB;
-  cm->RGBtoCMYK             = &cml_RGBtoCMYKStandard;
-  cm->RGBtoCMYK_SB          = &cml_RGBtoCMYKStandard_SB;
-  cm->CMYKtoRGB             = &cml_CMYKtoRGBStandard;
-  cm->CMYKtoRGB_SB          = &cml_CMYKtoRGBStandard_SB;
+  cm->RGBToCMYK             = &cml_RGBToCMYKStandard;
+  cm->RGBToCMYK_SB          = &cml_RGBToCMYKStandard_SB;
+  cm->CMYKToRGB             = &cml_CMYKToRGBStandard;
+  cm->CMYKToRGB_SB          = &cml_CMYKToRGBStandard_SB;
 
   // Set the recomputation to zero and start locking for the remaining of this
   // function.
-  cm->recomputationlockcount = 0;
-  cm->recomputationmask = 0;
+  cm->recomputationLockCount = 0;
+  cm->recomputationMask = 0;
   cmlLockRecomputation(cm);
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
-  for(i=0; i<CML_MAX_NUMBER_OF_CHANNELS; i++){
+  for(i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
     cm->inputoutput.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
     cm->inputoutput.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
     cm->inputoutput.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
@@ -88,8 +78,9 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
 
   // Set the chromatic valence parameters manually to the Hunter Lab original
   // values.
-  cm->labspace.adamschromaticityvalenceK = 175.f / 100.f;
-  cm->labspace.adamschromaticityvalenceke = 70.f / 175.f;
+  
+  cm->labSpace.adamsChromaticityValenceK = CML_ADAMS_CHROMATICITY_HUNTER_ORIGINAL_K;
+  cm->labSpace.adamsChromaticityValenceke = CML_ADAMS_CHROMATICITY_HUNTER_ORIGINAL_KE;
   // But set the default LAB colorspace.
   cmlSetLabLUTSize(cm, CML_DEFAULT_LAB_LUT_SIZE);
   cmlSetLabColorSpace(cm, CML_DEFAULT_LAB_COLORSPACE);
@@ -108,37 +99,37 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
 
 CML_API void cmlReleaseColorMachine(CMLColorMachine* cm){
   cmlClearObserver(&(cm->observer));
-  cmlClearResponseCurve(&(cm->rgbspace.responseR));
-  cmlClearResponseCurve(&(cm->rgbspace.responseG));
-  cmlClearResponseCurve(&(cm->rgbspace.responseB));
-  cmlClearResponseCurve(&(cm->labspace.responseL));
-  cmlClearResponseCurve(&(cm->labspace.responseLStar));
+  cmlClearResponseCurve(&(cm->rgbSpace.responseR));
+  cmlClearResponseCurve(&(cm->rgbSpace.responseG));
+  cmlClearResponseCurve(&(cm->rgbSpace.responseB));
+  cmlClearResponseCurve(&(cm->labSpace.responseL));
+  cmlClearResponseCurve(&(cm->labSpace.responseLStar));
   free(cm);
 }
 
 
 
 CML_API void cmlLockRecomputation(CMLColorMachine* cm){
-  cm->recomputationlockcount ++;
+  cm->recomputationLockCount ++;
 }
 
 
 
 CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
-  cm->recomputationlockcount --;
-  if(cm->recomputationlockcount){return;}
+  cm->recomputationLockCount --;
+  if(cm->recomputationLockCount){return;}
   
-  if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){cml_recomputeObserver(cm);
-  }else if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){cml_recomputeIllumination(cm);
+  if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){cml_recomputeObserver(cm);
+  }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){cml_recomputeIllumination(cm);
   }else{
     // note that the following recomputations may occur independant of each
     // other.
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_LAB){cml_recomputeLabColorspace(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY){cml_recomputeAdamsChromaticityValenceSpace(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES){cml_recomputeRGBResponses(cm);}
-    if(cm->recomputationmask & CML_COLORMACHINE_RECOMPUTE_RGB){cml_recomputeRGBColorspace(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_LAB){cml_recomputeLabColorspace(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY){cml_recomputeAdamsChromaticityValenceSpace(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES){cml_recomputeRGBResponses(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_RGB){cml_recomputeRGBColorspace(cm);}
   }
-  cm->recomputationmask = 0;
+  cm->recomputationMask = 0;
 }
 
 

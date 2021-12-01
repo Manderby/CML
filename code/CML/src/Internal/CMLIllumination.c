@@ -314,7 +314,7 @@ CML_API float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
 CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
 //  CMLVec3 computationwhitePoint;
 
-  if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_ILLUMINATION; return;}
+  if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_ILLUMINATION; return;}
   
 //  if(cm->illumination.spectrum){
 //    cml_IlluminationSpectrumToXYZ(cm->illumination.whitePointXYZ, cm->illumination.spectrum, (const CMLFunction* const *)(cm->observer.functions));
@@ -494,6 +494,11 @@ CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumin
 
 
 CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
+  #if CML_DEBUG
+    if(type != CML_ILLUMINATION_BLACKBODY && type != CML_ILLUMINATION_BLACKBODY && temperature != 0)
+      cmlError("Temperature should be zero except for blackbody or D illuminant type.");
+  #endif
+
   illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = type;
   illumination->BALFtemperature = temperature;

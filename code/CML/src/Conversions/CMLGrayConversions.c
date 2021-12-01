@@ -5,7 +5,7 @@
 
 
 CML_HIDEF CMLColorConverter cml_GetGrayToAnythingColorConverter(const CMLColorMachine* cm, CMLColorType outputSystem){
-  switch(cm->grayspace.computation){
+  switch(cm->graySpace.computation){
   case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSL);
   case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(outputSystem, CML_COLOR_HSV);
   case CML_GRAY_FROM_G      : return cmlGetColorConverter(outputSystem, CML_COLOR_RGB);
@@ -22,7 +22,7 @@ CML_HIDEF CMLColorConverter cml_GetGrayToAnythingColorConverter(const CMLColorMa
 }
 
 CML_HIDEF CMLColorConverter cml_GetAnythingColorToGrayColorConverter(const CMLColorMachine* cm, CMLColorType inputSystem){
-  switch(cm->grayspace.computation){
+  switch(cm->graySpace.computation){
   case CML_GRAY_FROM_HSL    : return cmlGetColorConverter(CML_COLOR_HSL, inputSystem);
   case CML_GRAY_FROM_HSV    : return cmlGetColorConverter(CML_COLOR_HSV, inputSystem);
   case CML_GRAY_FROM_G      : return cmlGetColorConverter(CML_COLOR_RGB, inputSystem);
@@ -59,7 +59,7 @@ CML_HIDEF void cml_ConvertGrayToColorspace(const CMLColorMachine* cm, float* out
   float c[CML_MAX_NUMBER_OF_CHANNELS];
   CMLColorConverter grayConverter = cml_GetGrayToAnythingColorConverter(cm, outputSystem);
   for(size_t i = 0; i < count; i++){
-    cm->GraytoChanneledBuffer(cm, c, in);
+    cm->GrayToChanneledBuffer(cm, c, in);
     (*grayConverter)(cm, out, c, 1);
     in +=1;
     out += outputChannelCount;
@@ -125,7 +125,7 @@ CML_HIDEF void cml_ConvertColorspaceToGray(const CMLColorMachine* cm, float* out
   CMLColorConverter grayConverter = cml_GetAnythingColorToGrayColorConverter(cm, inputSystem);
   for(size_t i = 0; i < count; i++){
     (*grayConverter)(cm, c, in, 1);
-    cm->ChanneledBuffertoGray(cm, out, c);
+    cm->ChanneledBufferToGray(cm, out, c);
     in += inputChannelCount;
     out += 1;
   }
@@ -186,7 +186,7 @@ CML_API void cmlSpectrumIlluminationToGray(const CMLColorMachine* cm, CMLOutput 
   CMLColorConverter grayConverter = cml_GetAnythingColorToGrayColorConverter(cm, CML_COLOR_SPECTRUM_ILLUMINATION);
   for(size_t i = 0; i < count; i++){
     (*grayConverter)(cm, c, in, 1);
-    cm->ChanneledBuffertoGray(cm, out, c);
+    cm->ChanneledBufferToGray(cm, out, c);
     in += 1;
     out += 1;
   }
@@ -199,7 +199,7 @@ CML_API void cmlSpectrumRemissionToGray(const CMLColorMachine* cm, CMLOutput gra
   CMLColorConverter grayConverter = cml_GetAnythingColorToGrayColorConverter(cm, CML_COLOR_SPECTRUM_REMISSION);
   for(size_t i = 0; i < count; i++){
     (*grayConverter)(cm, c, in, 1);
-    cm->ChanneledBuffertoGray(cm, out, c);
+    cm->ChanneledBufferToGray(cm, out, c);
     in += 1;
     out += 1;
   }

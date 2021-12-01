@@ -233,7 +233,7 @@ CML_HIDDEN static const float z2valencesJuddVos1978[CML_Z2VALENCES_JUDDVOS1978_N
 
 
 CML_HIDDEN void cml_recomputeObserver(CMLColorMachine* cm){
-  if(cm->recomputationlockcount){cm->recomputationmask |= CML_COLORMACHINE_RECOMPUTE_OBSERVER; return;}
+  if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_OBSERVER; return;}
   
   // There is nothing to be done here. At least not currently. Maybe in the
   // future. Note: Photopic and Scotopic.

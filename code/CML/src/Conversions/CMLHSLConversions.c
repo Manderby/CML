@@ -103,7 +103,7 @@ CML_API void cmlHSLToHSV (const CMLColorMachine* cm, CMLOutput hsv, CMLInput hsl
 CML_API void cmlHSLToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput hsl, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(cmyk, hsl, CML_CMYK_NUMCHANNELS, CML_HSL_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(CMLCMHSLToHSV);
-  (*cm->RGBtoCMYK_SB)(cm, out, count, floatAlign);
+  (*cm->RGBToCMYK_SB)(cm, out, count, floatAlign);
 }
 
 

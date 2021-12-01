@@ -92,7 +92,7 @@ CML_API void cmlLabToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput la
   CML_CONVERTER_INOUT_PARAMETER(cmyk, lab, CML_CMYK_NUMCHANNELS, CML_Lab_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->LabToXYZ);
   CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
-  (*cm->RGBtoCMYK_SB)(cm, out, count, floatAlign);
+  (*cm->RGBToCMYK_SB)(cm, out, count, floatAlign);
 }
 
 

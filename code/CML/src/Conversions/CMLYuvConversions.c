@@ -104,7 +104,7 @@ CML_API void cmlYuvToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput yu
   CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
   CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
   CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
-  (*cm->RGBtoCMYK_SB)(cm, out, count, floatAlign);
+  (*cm->RGBToCMYK_SB)(cm, out, count, floatAlign);
 }
 
 

@@ -4,26 +4,24 @@
 
 
 
-
-
 CML_API CMLCMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
-  return cm->cmykspace.transform;
+  return cm->cmykSpace.transform;
 }
 
 
 CML_API void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform){
   switch(transform){
   case CML_CMYK_STANDARD_TRANSFORM:
-    cm->RGBtoCMYK = &cml_RGBtoCMYKStandard;
-    cm->RGBtoCMYK_SB = &cml_RGBtoCMYKStandard_SB;
-    cm->CMYKtoRGB = &cml_CMYKtoRGBStandard;
-    cm->CMYKtoRGB_SB = &cml_CMYKtoRGBStandard_SB;
+    cm->RGBToCMYK    = &cml_RGBToCMYKStandard;
+    cm->RGBToCMYK_SB = &cml_RGBToCMYKStandard_SB;
+    cm->CMYKToRGB    = &cml_CMYKToRGBStandard;
+    cm->CMYKToRGB_SB = &cml_CMYKToRGBStandard_SB;
     break;
   case CML_CMYK_UCR_TRANSFORM:
-    cm->RGBtoCMYK = &cml_RGBtoCMYKUCR;
-    cm->RGBtoCMYK_SB = &cml_RGBtoCMYKUCR_SB;
-    cm->CMYKtoRGB = &cml_CMYKtoRGBUCR;
-    cm->CMYKtoRGB_SB = &cml_CMYKtoRGBUCR_SB;
+    cm->RGBToCMYK    = &cml_RGBToCMYKUCR;
+    cm->RGBToCMYK_SB = &cml_RGBToCMYKUCR_SB;
+    cm->CMYKToRGB    = &cml_CMYKToRGBUCR;
+    cm->CMYKToRGB_SB = &cml_CMYKToRGBUCR_SB;
     break;
   default:
     #if CML_DEBUG
@@ -32,7 +30,7 @@ CML_API void cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType trans
     return;
     break;
   }
-  cm->cmykspace.transform = transform;
+  cm->cmykSpace.transform = transform;
 }
 
 

@@ -421,7 +421,7 @@ CML_DEF void cmlGrayToData8(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[1];
     cml_GrayToNormedOutput(tmp, in);
-    (*cm->float1ToData8)(cm, out, tmp);
+    (*cm->Float1ToData8)(cm, out, tmp);
     in += 1;
     out += 1;
   }
@@ -433,7 +433,7 @@ CML_DEF void cmlXYZToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_XYZToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -445,7 +445,7 @@ CML_DEF void cmlYxyToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YxyToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -457,7 +457,7 @@ CML_DEF void cmlYuvToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YuvToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -469,7 +469,7 @@ CML_DEF void cmlYupvpToData8(const CMLColorMachine* cm, CMLOutput output, CMLInp
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YupvpToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -481,7 +481,7 @@ CML_DEF void cmlLabToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LabToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -493,7 +493,7 @@ CML_DEF void cmlLchToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LchToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -505,7 +505,7 @@ CML_DEF void cmlLuvToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LuvToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -517,7 +517,7 @@ CML_DEF void cmlRGBToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_RGBToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -529,7 +529,7 @@ CML_DEF void cmlYCbCrToData8(const CMLColorMachine* cm, CMLOutput output, CMLInp
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YCbCrToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -541,7 +541,7 @@ CML_DEF void cmlHSVToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_HSVToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -553,7 +553,7 @@ CML_DEF void cmlHSLToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_HSLToNormedOutput(tmp, in);
-    (*cm->float3ToData8)(cm, out, tmp);
+    (*cm->Float3ToData8)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -565,7 +565,7 @@ CML_DEF void cmlCMYKToData8(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[4];
     cml_CMYKToNormedOutput(tmp, in);
-    (*cm->float4ToData8)(cm, out, tmp);
+    (*cm->Float4ToData8)(cm, out, tmp);
     in += 4;
     out += 4;
   }
@@ -583,7 +583,7 @@ CML_DEF void cmlGrayToData16(const CMLColorMachine* cm, CMLOutput output, CMLInp
   for(size_t i = 0; i < count; i++){
     float tmp[1];
     cml_GrayToNormedOutput(tmp, in);
-    (*cm->float1ToData16)(cm, out, tmp);
+    (*cm->Float1ToData16)(cm, out, tmp);
     in += 1;
     out += 1;
   }
@@ -595,7 +595,7 @@ CML_DEF void cmlXYZToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_XYZToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -607,7 +607,7 @@ CML_DEF void cmlYxyToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YxyToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -619,7 +619,7 @@ CML_DEF void cmlYuvToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YuvToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -631,7 +631,7 @@ CML_DEF void cmlYupvpToData16(const CMLColorMachine* cm, CMLOutput output, CMLIn
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YupvpToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -643,7 +643,7 @@ CML_DEF void cmlLabToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LabToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -655,7 +655,7 @@ CML_DEF void cmlLchToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LchToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -667,7 +667,7 @@ CML_DEF void cmlLuvToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_LuvToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -679,7 +679,7 @@ CML_DEF void cmlRGBToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_RGBToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -691,7 +691,7 @@ CML_DEF void cmlYCbCrToData16(const CMLColorMachine* cm, CMLOutput output, CMLIn
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_YCbCrToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -703,7 +703,7 @@ CML_DEF void cmlHSVToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_HSVToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -715,7 +715,7 @@ CML_DEF void cmlHSLToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
   for(size_t i = 0; i < count; i++){
     float tmp[3];
     cml_HSLToNormedOutput(tmp, in);
-    (*cm->float3ToData16)(cm, out, tmp);
+    (*cm->Float3ToData16)(cm, out, tmp);
     in += 3;
     out += 3;
   }
@@ -727,7 +727,7 @@ CML_DEF void cmlCMYKToData16(const CMLColorMachine* cm, CMLOutput output, CMLInp
   for(size_t i = 0; i < count; i++){
     float tmp[4];
     cml_CMYKToNormedOutput(tmp, in);
-    (*cm->float4ToData16)(cm, out, tmp);
+    (*cm->Float4ToData16)(cm, out, tmp);
     in += 4;
     out += 4;
   }

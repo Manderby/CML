@@ -382,6 +382,10 @@ typedef void (*CMLNormedConverter)(
 // Currently, CML supports channeled colors of up to 4 channels
 #define CML_MAX_NUMBER_OF_CHANNELS 4
 
+#define CML_ADAMS_CHROMATICITY_HUNTER_APPROX_K  (175.f / 198.04f)
+#define CML_ADAMS_CHROMATICITY_HUNTER_APPROX_KE (70.f  / 218.11f)
+#define CML_ADAMS_CHROMATICITY_HUNTER_ORIGINAL_K  (175.f / 100.f)
+#define CML_ADAMS_CHROMATICITY_HUNTER_ORIGINAL_KE (70.f / 175.f)
 
 
 // This is free and unencumbered software released into the public domain.
