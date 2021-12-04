@@ -69,7 +69,7 @@ CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
 
 
 
-CML_IDEF void* cmlAllocate(size_t size){
+CML_IDEF void* cml_Allocate(size_t size){
   void* ptr; // Declaration before implementation.
   #if CML_DEBUG
     if(size < 1)
@@ -87,13 +87,13 @@ CML_IDEF void* cmlAllocate(size_t size){
 }
 
 
-CML_IDEF void* cmlAllocateIfNull(void* ptr, size_t size){
+CML_IDEF void* cml_AllocateIfNull(void* ptr, size_t size){
   #if CML_DEBUG
     if(size < 1)
       cmlError("size is smaller than 1 .");
   #endif
   if(ptr == CML_NULL){
-    return cmlAllocate(size);
+    return cml_Allocate(size);
   }else{
     return ptr;
   }

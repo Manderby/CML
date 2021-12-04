@@ -480,7 +480,7 @@ CML_API void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
 }
 
 CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
+  illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = src->BALFtype;
   illumination->BALFtemperature = src->BALFtemperature;
   if(src->BALFspectrum){
@@ -499,7 +499,7 @@ CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumi
       cmlError("Temperature should be zero except for blackbody or D illuminant type.");
   #endif
 
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
+  illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = type;
   illumination->BALFtemperature = temperature;
   illumination->BALFspectrum = cmlCreateIlluminationSpectrum(illumination->BALFtype, illumination->BALFtemperature);
@@ -549,7 +549,7 @@ CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumi
 
 
 CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
+  illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = CML_ILLUMINATION_CUSTOM_SPECTRUM;
   illumination->BALFtemperature = 0.f;
   illumination->BALFspectrum = cmlDuplicateFunction(spectrum);
@@ -569,7 +569,7 @@ CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination
 
 
 CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy){
-  illumination = cmlAllocateIfNull(illumination, sizeof(CMLIllumination));
+  illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
   illumination->BALFtype = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   illumination->BALFspectrum = NULL;
   

@@ -123,8 +123,8 @@ CML_API void                  cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bit
 // like UCR, GCR or standard transform. Currently, only UCR and standard
 // transform is implemented.
 // Initial setting is standard transform.
-CML_API CMLCMYKTransformType  cmlGetCMYKTransform(const CMLColorMachine* cm);
-CML_API void                  cmlSetCMYKTransform(CMLColorMachine* cm, CMLCMYKTransformType transform);
+CML_API cml_CMYKTransformType  cmlGetCMYKTransform(const CMLColorMachine* cm);
+CML_API void                  cmlSetCMYKTransform(CMLColorMachine* cm, cml_CMYKTransformType transform);
 
 // Transformation from any Color to Gray and vice versa can be achieved using
 // different approaches. Initial setting is the computation from the

@@ -160,7 +160,7 @@ typedef enum{
   CML_CMYK_STANDARD_TRANSFORM = 0,
   CML_CMYK_UCR_TRANSFORM,
   CML_NUMBER_OF_CMYK_TRANSFORMS
-} CMLCMYKTransformType;
+} cml_CMYKTransformType;
 
 // Enumerates the predefined chromatic adaptations
 typedef enum{
@@ -202,7 +202,7 @@ CML_API const char* cmlGetLabSpaceTypeString            (CMLLabColorSpaceType la
 CML_API const char* cmlGetRGBResponsePresetString       (CMLResponseCurvePreset preset);
 CML_API const char* cmlGetFunctionTypeString            (CMLFunctionType functionType);
 CML_API const char* cmlGetGrayComputationTypeString     (CMLGrayComputationType computationType);
-CML_API const char* cmlGetCMYKTransformTypeString       (CMLCMYKTransformType transformType);
+CML_API const char* cmlGetCMYKTransformTypeString       (cml_CMYKTransformType transformType);
 CML_API const char* cmlGetChromaticAdaptationTypeString (CMLChromaticAdaptationType chromaticAdaptationType);
 
 

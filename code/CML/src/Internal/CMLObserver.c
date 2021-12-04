@@ -382,7 +382,7 @@ CML_API CMLObserver* cmlCreateObserver(
                                          CMLObserverType type,
                                         CMLIllumination* illumination,
                                                    float colorimetricBase){
-  observer = cmlAllocateIfNull(observer, sizeof(CMLObserver));
+  observer = cml_AllocateIfNull(observer, sizeof(CMLObserver));
   observer->BALFtype = type;
   cmlCreateSpecDistFunctions(observer->BALFspecdistfunctions, observer->BALFtype);
   cmlCreateIlluminationDuplicate(&(observer->BALFillumination), illumination);

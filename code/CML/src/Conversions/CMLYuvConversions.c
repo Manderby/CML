@@ -23,87 +23,87 @@ CML_API void cmlYuvToYuv (const CMLColorMachine* cm, CMLOutput yuvd, CMLInput yu
 
 CML_API void cmlYuvToXYZ (const CMLColorMachine* cm, CMLOutput xyz, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(xyz, yuv, CML_XYZ_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToYxy (const CMLColorMachine* cm, CMLOutput yxy, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(yxy, yuv, CML_Yxy_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToYupvp (const CMLColorMachine* cm, CMLOutput yupvp, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(yupvp, yuv, CML_Yupvp_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
 }
 
 CML_API void cmlYuvToLab (const CMLColorMachine* cm, CMLOutput lab, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(lab, yuv, CML_Lab_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
   (*cm->XYZToLab_SB)(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToLch (const CMLColorMachine* cm, CMLOutput lch, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(lch, yuv, CML_Lch_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
   (*cm->XYZToLab_SB)(cm, out, count, floatAlign);
-  CMLCMLabToLch_SB(cm, out, count, floatAlign);
+  cml_CMLabToLch_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToLuv (const CMLColorMachine* cm, CMLOutput luv, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(luv, yuv, CML_Luv_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToLuv_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToLuv_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToRGB (const CMLColorMachine* cm, CMLOutput rgb, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(rgb, yuv, CML_RGB_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
-  CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToRGB_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(ycbcr, yuv, CML_YCbCr_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
-  CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
-  CMLCMRGBToYCbCr_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToRGB_SB(cm, out, count, floatAlign);
+  cml_CMRGBToYCbCr_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToHSV (const CMLColorMachine* cm, CMLOutput hsv, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(hsv, yuv, CML_HSV_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
-  CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
-  CMLCMRGBToHSV_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToRGB_SB(cm, out, count, floatAlign);
+  cml_CMRGBToHSV_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToHSL (const CMLColorMachine* cm, CMLOutput hsl, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(hsl, yuv, CML_HSL_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
-  CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
-  CMLCMRGBToHSV_SB(cm, out, count, floatAlign);
-  CMLCMHSVToHSL_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToRGB_SB(cm, out, count, floatAlign);
+  cml_CMRGBToHSV_SB(cm, out, count, floatAlign);
+  cml_CMHSVToHSL_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlYuvToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput yuv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(cmyk, yuv, CML_CMYK_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMYuvToYupvp);
-  CMLCMYupvpToYxy_SB(cm, out, count, floatAlign);
-  CMLCMYxyToXYZ_SB(cm, out, count, floatAlign);
-  CMLCMXYZToRGB_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMYuvToYupvp);
+  cml_CMYupvpToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToRGB_SB(cm, out, count, floatAlign);
   (*cm->RGBToCMYK_SB)(cm, out, count, floatAlign);
 }
 

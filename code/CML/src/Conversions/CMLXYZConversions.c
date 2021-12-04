@@ -23,20 +23,20 @@ CML_API void cmlXYZToXYZ (const CMLColorMachine* cm, CMLOutput xyzd, CMLInput xy
 
 CML_API void cmlXYZToYxy (const CMLColorMachine* cm, CMLOutput yxy, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(yxy, xyz, CML_Yxy_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToYxy);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToYxy);
 }
 
 CML_API void cmlXYZToYuv (const CMLColorMachine* cm, CMLOutput yuv, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(yuv, xyz, CML_Yuv_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToYxy);
-  CMLCMYxyToYupvp_SB(cm, out, count, floatAlign);
-  CMLCMYupvpToYuv_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToYxy);
+  cml_CMYxyToYupvp_SB(cm, out, count, floatAlign);
+  cml_CMYupvpToYuv_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToYupvp (const CMLColorMachine* cm, CMLOutput yupvp, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(yupvp, xyz, CML_Yupvp_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToYxy);
-  CMLCMYxyToYupvp_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToYxy);
+  cml_CMYxyToYupvp_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToLab (const CMLColorMachine* cm, CMLOutput lab, CMLInput xyz, size_t count){
@@ -47,43 +47,43 @@ CML_API void cmlXYZToLab (const CMLColorMachine* cm, CMLOutput lab, CMLInput xyz
 CML_API void cmlXYZToLch (const CMLColorMachine* cm, CMLOutput lch, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(lch, xyz, CML_Lch_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(*cm->XYZToLab);
-  CMLCMLabToLch_SB(cm, out, count, floatAlign);
+  cml_CMLabToLch_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToLuv (const CMLColorMachine* cm, CMLOutput luv, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(luv, xyz, CML_Luv_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToYxy);
-  CMLCMYxyToYupvp_SB(cm, out, count, floatAlign);
-  CMLCMYupvpToLuv_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToYxy);
+  cml_CMYxyToYupvp_SB(cm, out, count, floatAlign);
+  cml_CMYupvpToLuv_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToRGB (const CMLColorMachine* cm, CMLOutput rgb, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(rgb, xyz, CML_RGB_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToRGB);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToRGB);
 }
 
 CML_API void cmlXYZToYCbCr (const CMLColorMachine* cm, CMLOutput ycbcr, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(ycbcr, xyz, CML_YCbCr_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToRGB);
-  CMLCMRGBToYCbCr_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToRGB);
+  cml_CMRGBToYCbCr_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToHSV (const CMLColorMachine* cm, CMLOutput hsv, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(hsv, xyz, CML_HSV_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToRGB);
-  CMLCMRGBToHSV_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToRGB);
+  cml_CMRGBToHSV_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToHSL (const CMLColorMachine* cm, CMLOutput hsl, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(hsl, xyz, CML_HSL_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToRGB);
-  CMLCMRGBToHSV_SB(cm, out, count, floatAlign);
-  CMLCMHSVToHSL_SB(cm, out, count, floatAlign);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToRGB);
+  cml_CMRGBToHSV_SB(cm, out, count, floatAlign);
+  cml_CMHSVToHSL_SB(cm, out, count, floatAlign);
 }
 
 CML_API void cmlXYZToCMYK(const CMLColorMachine* cm, CMLOutput cmyk, CMLInput xyz, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(cmyk, xyz, CML_CMYK_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
-  CML_CONVERTER_FIRST_STEP(CMLCMXYZToRGB);
+  CML_CONVERTER_FIRST_STEP(cml_CMXYZToRGB);
   (*cm->RGBToCMYK_SB)(cm, out, count, floatAlign);
 }
 

@@ -12,11 +12,11 @@
 
 
 CML_API CMLFunction* cmlCreateFunction(CMLFunctionEvaluator evaluator, CMLFunctionConstructor constructor, CMLFunctionDesctructor destructor, CMLuint32 floatParams, const void* input){
-  CMLFunction* newfunction = (CMLFunction*)cmlAllocate(sizeof(CMLFunction));
+  CMLFunction* newfunction = (CMLFunction*)cml_Allocate(sizeof(CMLFunction));
   newfunction->refcount = 1;
   newfunction->paramcount = floatParams;
   if(floatParams){
-    newfunction->params = (float*)cmlAllocate(floatParams * sizeof(float));
+    newfunction->params = (float*)cml_Allocate(floatParams * sizeof(float));
   }else{
     newfunction->params = NULL;
   }
@@ -232,7 +232,7 @@ CML_API void cmlGetFunctionDefinitionRange(
 
 CML_API CMLFunction* cmlSampleArrayFunction(const CMLFunction* func, float minimalCoord, float maximalCoord, size_t entryCount, CMLInterpolationMethod interpolationMethod, CMLExtrapolationMethod lowerExtrapolationMethod, CMLExtrapolationMethod upperExtrapolationMethod){
   size_t i;
-  float* buffer = (float*)cmlAllocate(sizeof(float) * entryCount);
+  float* buffer = (float*)cml_Allocate(sizeof(float) * entryCount);
   for(i=0; i<entryCount; i++){
     float coord = minimalCoord + ((float)i / (float)(entryCount-1)) * (maximalCoord - minimalCoord);
     buffer[i] = cml_Eval(func, coord);
@@ -410,7 +410,7 @@ CML_HIDDEN void cml_ConstructArrayFunction(float* params, void** data, CMLDefini
   params = params; // no warning
   cml_ArrayFunctionStorage* storage;
   cml_ArrayFunctionDescriptor* desc = (cml_ArrayFunctionDescriptor*)input;
-  *data = cmlAllocate(sizeof(cml_ArrayFunctionStorage));
+  *data = cml_Allocate(sizeof(cml_ArrayFunctionStorage));
   storage = (cml_ArrayFunctionStorage*)(*data);
   storage->array = desc->buffer;
   storage->size = desc->entryCount;
@@ -569,7 +569,7 @@ CML_HIDDEN void cml_ConstructBlackBody(float* params, void** data, CMLDefinition
     #endif
     return;
   }
-  *data = cmlAllocate(sizeof(float));
+  *data = cml_Allocate(sizeof(float));
   c = (float*)(*data);
   // *c = (CML_PLANCK * CMLIGHT_SPEED_VAC) / (CML_BOLTZMANN * temp);
   if(temperature == CML_INFINITY){
@@ -718,7 +718,7 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature){
     if(temperature <= 0){cmlError("Temperature must be greater than 0 Kelvin.");}
   #endif
   // Note that the array will be deleted by the CMLArray.
-  array = (float*)cmlAllocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
+  array = (float*)cml_Allocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
   cml_ComputeDIlluminantWhitePoint(whitePoint, temperature);
   Minv = cmlInverse(0.0241f +  0.2562f * whitePoint[0] -  0.7341f * whitePoint[1]);
   M1 = (-1.3515f -  1.7703f * whitePoint[0] +  5.9114f * whitePoint[1]) * Minv;
@@ -834,7 +834,7 @@ CML_HIDDEN void cml_ConstructGammaLinearResponse(float* params, void** data, CML
   params[1] = ((GammaLinearInputParameters*)input)->offset;
   params[2] = ((GammaLinearInputParameters*)input)->linScale;
   params[3] = ((GammaLinearInputParameters*)input)->split;
-  *data = cmlAllocate(sizeof(GammaLinearStruct));
+  *data = cml_Allocate(sizeof(GammaLinearStruct));
   ((GammaLinearStruct*)(*data))->invgamma = cmlInverse(params[0]);
   ((GammaLinearStruct*)(*data))->offset = params[1];
   ((GammaLinearStruct*)(*data))->curvescale = params[1] + 1.f;
@@ -891,7 +891,7 @@ CML_HIDDEN void cml_ConstructInverseGammaLinearResponse(float* params, void** da
   params[1] = ((GammaLinearInputParameters*)input)->offset;
   params[2] = ((GammaLinearInputParameters*)input)->linScale;
   params[3] = ((GammaLinearInputParameters*)input)->split;
-  *data = cmlAllocate(sizeof(InverseGammaLinearStruct));
+  *data = cml_Allocate(sizeof(InverseGammaLinearStruct));
   ((InverseGammaLinearStruct*)(*data))->gamma = params[0];
   ((InverseGammaLinearStruct*)(*data))->offset = params[1];
   ((InverseGammaLinearStruct*)(*data))->invcurvescale = cmlInverse(params[1] + 1.f);
@@ -1150,7 +1150,7 @@ CML_HIDDEN float cml_EvaluateDiracFilter(float* params, const void* data, float 
 CML_HIDDEN void cml_ConstructDiracFilter(float* params, void** data, CMLDefinitionRange* defRange, const void* input){
   params = params; // no warning
   float pos = *((float*)input);
-  *data = cmlAllocate(sizeof(float));
+  *data = cml_Allocate(sizeof(float));
   *((float*)(*data)) = pos;
   defRange->minSampleCoord = pos;
   defRange->maxSampleCoord = pos;
@@ -1195,7 +1195,7 @@ CML_HIDDEN void cml_ConstructConstFilter(float* params, void** data, CMLDefiniti
   float value;
   defRange = defRange;
   value = *((float*)input);
-  *data = cmlAllocate(sizeof(float));
+  *data = cml_Allocate(sizeof(float));
   *((float*)(*data)) = value;
 }
 
@@ -1241,7 +1241,7 @@ CML_HIDDEN void cml_ConstructCutFilter(float* params, void** data, CMLDefinition
   params = params; // no warning
   cml_CutFilterRange* range;
   cml_CutFilterRange* inrange = (cml_CutFilterRange*)(input);
-  *data = cmlAllocate(sizeof(cml_CutFilterRange));
+  *data = cml_Allocate(sizeof(cml_CutFilterRange));
   range = (cml_CutFilterRange*)(*data);
   range->min = inrange->min;
   range->max = inrange->max;
@@ -1319,7 +1319,7 @@ CML_HIDDEN void cml_ConstructFunctionAddFunction(float* params, void** data, CML
   cml_FunctionFunctionStorage* thisdata;
   CMLDefinitionRange newrange;
   cml_FunctionFunctionInput* indata = (cml_FunctionFunctionInput*)(input);
-  *data = cmlAllocate(sizeof(cml_FunctionFunctionStorage));
+  *data = cml_Allocate(sizeof(cml_FunctionFunctionStorage));
   thisdata = (cml_FunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
@@ -1368,7 +1368,7 @@ CML_HIDDEN void cml_ConstructFunctionSubFunction(float* params, void** data, CML
   cml_FunctionFunctionStorage* thisdata;
   CMLDefinitionRange newrange;
   cml_FunctionFunctionInput* indata = (cml_FunctionFunctionInput*)(input);
-  *data = cmlAllocate(sizeof(cml_FunctionFunctionStorage));
+  *data = cml_Allocate(sizeof(cml_FunctionFunctionStorage));
   thisdata = (cml_FunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
@@ -1418,7 +1418,7 @@ CML_HIDDEN void cml_ConstructFunctionMulFunction(float* params, void** data, CML
   cml_FunctionFunctionStorage* thisdata;
   CMLDefinitionRange newrange;
   cml_FunctionFunctionInput* indata = (cml_FunctionFunctionInput*)(input);
-  *data = cmlAllocate(sizeof(cml_FunctionFunctionStorage));
+  *data = cml_Allocate(sizeof(cml_FunctionFunctionStorage));
   thisdata = (cml_FunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
@@ -1469,7 +1469,7 @@ CML_HIDDEN void cml_ConstructFunctionDivFunction(float* params, void** data, CML
   cml_FunctionFunctionStorage* thisdata;
   CMLDefinitionRange newrange;
   cml_FunctionFunctionInput* indata = (cml_FunctionFunctionInput*)(input);
-  *data = cmlAllocate(sizeof(cml_FunctionFunctionStorage));
+  *data = cml_Allocate(sizeof(cml_FunctionFunctionStorage));
   thisdata = (cml_FunctionFunctionStorage*)(*data);
   thisdata->func1 = cmlDuplicateFunction(indata->func1);
   thisdata->func2 = cmlDuplicateFunction(indata->func2);
@@ -1517,7 +1517,7 @@ CML_HIDDEN void cml_ConstructFunctionMulScalar(float* params, void** data, CMLDe
   params = params; // no warning
   cml_FunctionScalarStorage* thisdata;
   cml_FunctionScalarInput* indata = (cml_FunctionScalarInput*)(input);
-  *data = cmlAllocate(sizeof(cml_FunctionScalarStorage));
+  *data = cml_Allocate(sizeof(cml_FunctionScalarStorage));
   thisdata = (cml_FunctionScalarStorage*)(*data);
   thisdata->func = cmlDuplicateFunction(indata->func);
   thisdata->scalar = indata->scalar;

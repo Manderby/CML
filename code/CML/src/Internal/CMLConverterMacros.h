@@ -64,7 +64,7 @@
     CMLuint32 floatAlign;\
     register CMLBool sameBuffer;\
     if(!outsymbol){\
-      out = (float*)cmlAllocate(count * outchannels * sizeof(float));\
+      out = (float*)cml_Allocate(count * outchannels * sizeof(float));\
       sameBuffer = CML_FALSE;\
       floatAlign = outchannels;\
     }else if(insymbol == outsymbol){\
@@ -89,7 +89,7 @@
     CMLuint32 floatAlign;\
     register CMLBool sameBuffer;\
     if(!outsymbol){\
-      out = (float*)cmlAllocate(count * outchannels * sizeof(float));\
+      out = (float*)cml_Allocate(count * outchannels * sizeof(float));\
       sameBuffer = CML_FALSE;\
       floatAlign = outchannels;\
     }else if(insymbol == outsymbol){\
@@ -125,7 +125,7 @@
   float* out;\
   const CMLFunction* in = insymbol;\
   if(!outsymbol){\
-    out = (float*)cmlAllocate(count * outchannels * sizeof(float));\
+    out = (float*)cml_Allocate(count * outchannels * sizeof(float));\
   }else{\
     out = outsymbol;\
   }\
@@ -133,7 +133,7 @@
   float* xyzbuf;\
   CMLuint32 floatAlign;\
   if(outchannels < CML_XYZ_NUMCHANNELS){\
-    xyzbuf = (float*)cmlAllocate(count * CML_XYZ_NUMCHANNELS * sizeof(float));\
+    xyzbuf = (float*)cml_Allocate(count * CML_XYZ_NUMCHANNELS * sizeof(float));\
     sameBuffer = CML_FALSE;\
     floatAlign = CML_XYZ_NUMCHANNELS;\
   }else{\

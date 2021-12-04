@@ -170,7 +170,7 @@ CML_API const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
 CML_API const char* cmlGetRGBColorspaceString(CMLRGBColorSpace colorSpaceType){
   return rgbSpacestrings[colorSpaceType];
 }
-CML_API const char* cmlGetCMYKTransformTypeString(CMLCMYKTransformType transformType){
+CML_API const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
   return cmyktransformstrings[transformType];
 }
 CML_API const char* cmlGetGrayComputationTypeString(CMLGrayComputationType computationType){

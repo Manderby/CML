@@ -4,7 +4,7 @@
 
 
 CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
-  if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
+  if(!curve){curve = (CMLResponseCurve*)cml_Allocate(sizeof(CMLResponseCurve));}
   curve->forwardfunc = NULL;
   curve->backwardfunc = NULL;
   return curve;
@@ -12,7 +12,7 @@ CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve){
 
 
 CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve, CMLResponseCurve* srccurve){
-  if(!dstcurve){dstcurve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
+  if(!dstcurve){dstcurve = (CMLResponseCurve*)cml_Allocate(sizeof(CMLResponseCurve));}
   dstcurve->forwardfunc = cmlDuplicateFunction(srccurve->forwardfunc);
   dstcurve->backwardfunc = cmlDuplicateFunction(srccurve->backwardfunc);
   dstcurve->functionType = srccurve->functionType;
@@ -23,7 +23,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveCopy(CMLResponseCurve* dstcurve,
 CML_API CMLResponseCurve* cmlCreateResponseCurveWithPreset(
                                         CMLResponseCurve* curve,
                                    CMLResponseCurvePreset preset){
-  if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
+  if(!curve){curve = (CMLResponseCurve*)cml_Allocate(sizeof(CMLResponseCurve));}
 //  curve->type = type;
 //  curve->param0 = param0;
 //  curve->param1 = param1;
@@ -108,7 +108,7 @@ CML_API CMLResponseCurve* cmlCreateResponseCurveWith4ParamsFunction(
                                                      float param1,
                                                      float param2,
                                                      float param3){
-  if(!curve){curve = (CMLResponseCurve*)cmlAllocate(sizeof(CMLResponseCurve));}
+  if(!curve){curve = (CMLResponseCurve*)cml_Allocate(sizeof(CMLResponseCurve));}
   curve->functionType = CML_FUNCTION_GAMMA_LINEAR;
   curve->forwardfunc  = cmlCreateGammaLinearResponse(param0, param1, param2, param3);
   curve->backwardfunc = cmlCreateInverseGammaLinearResponse(param0, param1, param2, param3);

@@ -28,7 +28,7 @@ CML_API CMLuint32 cmlGetVersion(){
 
 CML_API CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
-  CMLColorMachine* cm = (CMLColorMachine*)cmlAllocate(sizeof(CMLColorMachine));
+  CMLColorMachine* cm = (CMLColorMachine*)cml_Allocate(sizeof(CMLColorMachine));
 
   CMLIllumination* referenceIllumination = cmlCreateIlluminationWithPreset(CML_NULL, CML_ILLUMINATION_D65, 0);
   cmlCreateObserver(&(cm->observer),
