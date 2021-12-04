@@ -158,7 +158,7 @@ public:
 #include "CMLYCbCrColor.h"
 #include "CMLHSVColor.h"
 #include "CMLHSLColor.h"
-#include "cml_CMYKColor.h"
+#include "CMLCMYKColor.h"
 #include "CMLSpectralColor.h"
 
 

@@ -101,7 +101,7 @@ typedef enum{
   CML_RGB_SMPTE_C,
   CML_RGB_SRGB,
   CML_RGB_WIDE_GAMUT,
-  CML_RGB_CUSTOM,
+  CML_RGB_CUSTOM,           // custom RGB is always the last one.
   CML_NUMBER_OF_RGB_SPACES
 } CMLRGBColorSpace;
 
@@ -117,7 +117,8 @@ typedef enum{
 
 // Enumerates the predefined response curves
 typedef enum{
-  CML_RESPONSE_LINEAR = 0,
+  CML_RESPONSE_UNDEFINED = 0,
+  CML_RESPONSE_LINEAR,
   CML_RESPONSE_SQRT,
   CML_RESPONSE_GAMMA_ADOBE_98,
   CML_RESPONSE_GAMMA_1_8,
@@ -133,7 +134,8 @@ typedef enum{
 
 // Enumerates the predefined function types
 typedef enum{
-  CML_FUNCTION_LINEAR = 0,
+  CML_FUNCTION_UNDEFINED = 0,
+  CML_FUNCTION_LINEAR,
   CML_FUNCTION_SQRT,
   CML_FUNCTION_GAMMA,
   CML_FUNCTION_GAMMA_LINEAR,

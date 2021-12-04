@@ -3,13 +3,13 @@
 #include "CMLColorMachineState.h"
 
 
-CML_HIDDEN static const CMLIlluminationType rgbSpaceilluminations[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HDEF static const CMLIlluminationType rgbSpaceIlluminations[CML_NUMBER_OF_RGB_SPACES] = {
   CML_ILLUMINATION_D65,     // CML_RGB_ADOBE_98
   CML_ILLUMINATION_D65,     // CML_RGB_APPLE
   CML_ILLUMINATION_D50,     // CML_RGB_BEST
   CML_ILLUMINATION_D50,     // CML_RGB_BETA
   CML_ILLUMINATION_D65,     // CML_RGB_BRUCE
-  CML_ILLUMINATION_E,     // CML_RGB_CIE
+  CML_ILLUMINATION_E,       // CML_RGB_CIE
   CML_ILLUMINATION_D50,     // CML_RGB_COLORMATCH
   CML_ILLUMINATION_D50,     // CML_RGB_DON4
   CML_ILLUMINATION_D50,     // CML_RGB_EBU_MONITOR
@@ -21,7 +21,7 @@ CML_HIDDEN static const CMLIlluminationType rgbSpaceilluminations[CML_NUMBER_OF_
   CML_ILLUMINATION_D65,     // CML_RGB_REC_BT_709
   CML_ILLUMINATION_D65,     // CML_RGB_REC_BT_2020
   CML_ILLUMINATION_D50,     // CML_RGB_KODAK_DC
-  CML_ILLUMINATION_C,     // CML_RGB_NTSC_53
+  CML_ILLUMINATION_C,       // CML_RGB_NTSC_53
   CML_ILLUMINATION_D65,     // CML_RGB_PAL_SECAM_EBU
   CML_ILLUMINATION_D50,     // CML_RGB_ROMM_PROPHOTO
   CML_ILLUMINATION_D65,     // CML_RGB_SMPTE_C
@@ -30,180 +30,97 @@ CML_HIDDEN static const CMLIlluminationType rgbSpaceilluminations[CML_NUMBER_OF_
   CML_ILLUMINATION_D65,     // CML_RGB_CUSTOM
 };
 
-CML_HIDDEN static const CMLResponseCurvePreset rgbSpaceresponsepresets[CML_NUMBER_OF_RGB_SPACES] = {
-  CML_RESPONSE_GAMMA_ADOBE_98,         // CML_RGB_ADOBE_98
-  CML_RESPONSE_GAMMA_1_8,         // CML_RGB_APPLE
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_BEST
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_BETA
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_BRUCE
-  CML_RESPONSE_LINEAR,        // CML_RGB_CIE
-  CML_RESPONSE_GAMMA_1_8,         // CML_RGB_COLORMATCH
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_DON4
-  CML_RESPONSE_GAMMA_1_9,         // CML_RGB_EBU_MONITOR
-  CML_RESPONSE_GAMMA_1_8,         // CML_RGB_ECI
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_EKTA_SPACE_PS5
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_HDTV
-  CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT,      // CML_RGB_REC_BT_601_525
+CML_HDEF static const CMLResponseCurvePreset rgbSpaceResponsePresets[CML_NUMBER_OF_RGB_SPACES] = {
+  CML_RESPONSE_GAMMA_ADOBE_98,             // CML_RGB_ADOBE_98
+  CML_RESPONSE_GAMMA_1_8,                  // CML_RGB_APPLE
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_BEST
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_BETA
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_BRUCE
+  CML_RESPONSE_LINEAR,                     // CML_RGB_CIE
+  CML_RESPONSE_GAMMA_1_8,                  // CML_RGB_COLORMATCH
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_DON4
+  CML_RESPONSE_GAMMA_1_9,                  // CML_RGB_EBU_MONITOR
+  CML_RESPONSE_GAMMA_1_8,                  // CML_RGB_ECI
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_EKTA_SPACE_PS5
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_HDTV
+  CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT,  // CML_RGB_REC_BT_601_525
   CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT,  // CML_RGB_REC_BT_601_625
   CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT,  // CML_RGB_REC_BT_709
   CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT,  // CML_RGB_REC_BT_2020
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_KODAK_DC
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_NTSC_53
-  CML_RESPONSE_SRGB,          // CML_RGB_PAL_SECAM_EBU
-  CML_RESPONSE_GAMMA_1_8,         // CML_RGB_ROMM_PROPHOTO
-  CML_RESPONSE_SRGB,          // CML_RGB_SMPTE_C
-  CML_RESPONSE_SRGB,          // CML_RGB_SRGB
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_WIDE_GAMUT
-  CML_RESPONSE_GAMMA_2_2,         // CML_RGB_CUSTOM
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_KODAK_DC
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_NTSC_53
+  CML_RESPONSE_SRGB,                       // CML_RGB_PAL_SECAM_EBU
+  CML_RESPONSE_GAMMA_1_8,                  // CML_RGB_ROMM_PROPHOTO
+  CML_RESPONSE_SRGB,                       // CML_RGB_SMPTE_C
+  CML_RESPONSE_SRGB,                       // CML_RGB_SRGB
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_WIDE_GAMUT
+  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_CUSTOM
+};
+
+// array ordering: {xr, yr, xg, yg, xb, yb}
+CML_HDEF static const float rgbSpaceprimaries[CML_NUMBER_OF_RGB_SPACES][6] = {
+  {0.6400f,   0.3300f,   0.2100f,   0.7100f,   0.1500f,   0.0600f},   // CML_RGB_ADOBE_98
+  {0.6250f,   0.3400f,   0.2800f,   0.5950f,   0.1550f,   0.0700f},   // CML_RGB_APPLE
+  {0.7347f,   0.2653f,   0.2150f,   0.7750f,   0.1300f,   0.0350f},   // CML_RGB_BEST
+  {0.6888f,   0.3112f,   0.1986f,   0.7551f,   0.1265f,   0.0352f},   // CML_RGB_BETA
+  {0.6400f,   0.3300f,   0.2800f,   0.6500f,   0.1500f,   0.0600f},   // CML_RGB_BRUCE
+  {0.734690f, 0.265310f, 0.272958f, 0.718062f, 0.166446f, 0.008964f}, // CML_RGB_CIE
+  {0.6300f,   0.3400f,   0.2950f,   0.6050f,   0.1500f,   0.0750f},   // CML_RGB_COLORMATCH
+  {0.6960f,   0.3000f,   0.2150f,   0.7650f,   0.1300f,   0.0350f},   // CML_RGB_DON4
+  {0.6314f,   0.3391f,   0.2809f,   0.5971f,   0.1487f,   0.0645f},   // CML_RGB_EBU_MONITOR
+  {0.6700f,   0.3300f,   0.2100f,   0.7100f,   0.1400f,   0.0800f},   // CML_RGB_ECI
+  {0.6950f,   0.3050f,   0.2600f,   0.7000f,   0.1100f,   0.0050f},   // CML_RGB_EKTA_SPACE_PS5
+  {0.6400f,   0.3300f,   0.3297f,   0.6593f,   0.1500f,   0.0600f},   // CML_RGB_HDTV
+  {0.6300f,   0.3400f,   0.3100f,   0.5950f,   0.1550f,   0.0700f},   // CML_RGB_REC_BT_601_525
+  {0.6400f,   0.3300f,   0.2900f,   0.6000f,   0.1500f,   0.0600f},   // CML_RGB_REC_BT_601_625
+  {0.6400f,   0.3300f,   0.3000f,   0.6000f,   0.1500f,   0.0600f},   // CML_RGB_REC_BT_709
+  {0.7080f,   0.2920f,   0.1700f,   0.7970f,   0.1310f,   0.0460f},   // CML_RGB_REC_BT_2020
+  {0.6492f,   0.3314f,   0.3219f,   0.5997f,   0.1548f,   0.0646f},   // CML_RGB_KODAK_DC
+  {0.6700f,   0.3300f,   0.2100f,   0.7100f,   0.1400f,   0.0800f},   // CML_RGB_NTSC_53
+  {0.6400f,   0.3300f,   0.2900f,   0.6000f,   0.1500f,   0.0600f},   // CML_RGB_PAL_SECAM_EBU
+  {0.7347f,   0.2653f,   0.1596f,   0.8404f,   0.0366f,   0.0001f},   // CML_RGB_ROMM_PROPHOTO
+  {0.6300f,   0.3400f,   0.3100f,   0.5950f,   0.1550f,   0.0700f},   // CML_RGB_SMPTE_C
+  {0.6400f,   0.3300f,   0.3000f,   0.6000f,   0.1500f,   0.0600f},   // CML_RGB_SRGB
+  {0.734690f, 0.265310f, 0.114161f, 0.826207f, 0.156641f, 0.017705f}, // CML_RGB_WIDE_GAMUT
+  {0.6400f,   0.3300f,   0.3000f,   0.6000f,   0.1500f,   0.0600f}    // CML_RGB_CUSTOM
 };
 
 
 
-// gamma, offset, linScale for R, G and B
-// with the following computation:
-// (1+offset) * powf(x, 1/gamma) - offset   if x => split
-// x * linScale                              if x < split
-// split will be computed automatically.
-
-//CML_HIDDEN static const float rgbSpaceresponseparams[CML_NUMBER_OF_RGB_SPACES][12] = {
-//  { 2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
-//    2.f + 51.f / 256.f, 0.f, 1.f, 0.f,
-//    2.f + 51.f / 256.f, 0.f, 1.f, 0.f},   // CML_RGB_ADOBE_98
-//  { 1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f},   // CML_RGB_APPLE
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_BEST
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_BETA
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_BRUCE
-//  { 1.0f, 0.f, 1.f, 0.f,
-//    1.0f, 0.f, 1.f, 0.f,
-//    1.0f, 0.f, 1.f, 0.f},   // CML_RGB_CIE
-//  { 1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f},   // CML_RGB_COLORMATCH
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_DON4
-//  { 1.9f, 0.f, 1.f, 0.f,
-//    1.9f, 0.f, 1.f, 0.f,
-//    1.9f, 0.f, 1.f, 0.f},   // CML_RGB_EBU_MONITOR
-//  { 1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f},   // CML_RGB_ECI
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_EKTA_SPACE_PS5
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_HDTV
-//  { 1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_525
-//  { 1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_601_625
-//  { 1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f,
-//    1.f / 0.45f, 0.099f, 4.5f, 0.018f},   // CML_RGB_REC_BT_709
-//  { 1.f / 0.45f, 0.0993f, 4.5f, 0.0181f,
-//    1.f / 0.45f, 0.0993f, 4.5f, 0.0181f,
-//    1.f / 0.45f, 0.0993f, 4.5f, 0.0181f},   // CML_RGB_REC_BT_2020
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_KODAK_DC
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_NTSC_53
-//  { 2.2f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.2f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.2f, 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_PAL_SECAM_EBU
-//  { 1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f,
-//    1.8f, 0.f, 1.f, 0.f},   // CML_RGB_ROMM_PROPHOTO
-//  { 2.2f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.2f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.2f, 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SMPTE_C
-//  { 2.4f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.4f, 0.055f, 12.92f, 0.0031306684425f,
-//    2.4f, 0.055f, 12.92f, 0.0031306684425f},   // CML_RGB_SRGB
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_WIDE_GAMUT
-//  { 2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f,
-//    2.2f, 0.f, 1.f, 0.f},   // CML_RGB_CUSTOM
-//};
-
-// array usage:
-// xr, yr, xg, yg, xb, yb
-// gamma, offset, linScale,
-CML_HIDDEN static const float rgbSpaceprimaries[CML_NUMBER_OF_RGB_SPACES][9] = {
-  {0.6400f, 0.3300f, 0.2100f, 0.7100f, 0.1500f, 0.0600f},   // CML_RGB_ADOBE_98
-  {0.6250f, 0.3400f, 0.2800f, 0.5950f, 0.1550f, 0.0700f},   // CML_RGB_APPLE
-  {0.7347f, 0.2653f, 0.2150f, 0.7750f, 0.1300f, 0.0350f},   // CML_RGB_BEST
-  {0.6888f, 0.3112f, 0.1986f, 0.7551f, 0.1265f, 0.0352f},   // CML_RGB_BETA
-  {0.6400f, 0.3300f, 0.2800f, 0.6500f, 0.1500f, 0.0600f},   // CML_RGB_BRUCE
-  {0.734690f, 0.265310f, 0.272958f, 0.718062f, 0.166446f, 0.008964f},   // CML_RGB_CIE
-  {0.6300f, 0.3400f, 0.2950f, 0.6050f, 0.1500f, 0.0750f},   // CML_RGB_COLORMATCH
-  {0.6960f, 0.3000f, 0.2150f, 0.7650f, 0.1300f, 0.0350f},   // CML_RGB_DON4
-  {0.6314f, 0.3391f, 0.2809f, 0.5971f, 0.1487f, 0.0645f},   // CML_RGB_EBU_MONITOR
-  {0.6700f, 0.3300f, 0.2100f, 0.7100f, 0.1400f, 0.0800f},   // CML_RGB_ECI
-  {0.6950f, 0.3050f, 0.2600f, 0.7000f, 0.1100f, 0.0050f},   // CML_RGB_EKTA_SPACE_PS5
-  {0.6400f, 0.3300f, 0.3297f, 0.6593f, 0.1500f, 0.0600f},   // CML_RGB_HDTV
- {0.6300f, 0.3400f, 0.3100f, 0.5950f, 0.1550f, 0.0700f},   // CML_RGB_REC_BT_601_525
- {0.6400f, 0.3300f, 0.2900f, 0.6000f, 0.1500f, 0.0600f},   // CML_RGB_REC_BT_601_625
- {0.6400f, 0.3300f, 0.3000f, 0.6000f, 0.1500f, 0.0600f},   // CML_RGB_REC_BT_709
- {0.7080f, 0.2920f, 0.1700f, 0.7970f, 0.1310f, 0.0460f},   // CML_RGB_REC_BT_2020
-  {0.6492f, 0.3314f, 0.3219f, 0.5997f, 0.1548f, 0.0646f},   // CML_RGB_KODAK_DC
-  {0.6700f, 0.3300f, 0.2100f, 0.7100f, 0.1400f, 0.0800f},   // CML_RGB_NTSC_53
-  {0.6400f, 0.3300f, 0.2900f, 0.6000f, 0.1500f, 0.0600f},   // CML_RGB_PAL_SECAM_EBU
-  {0.7347f, 0.2653f, 0.1596f, 0.8404f, 0.0366f, 0.0001f},   // CML_RGB_ROMM_PROPHOTO
-  {0.6300f, 0.3400f, 0.3100f, 0.5950f, 0.1550f, 0.0700f},   // CML_RGB_SMPTE_C
-  {0.6400f, 0.3300f, 0.3000f, 0.6000f, 0.1500f, 0.0600f},   // CML_RGB_SRGB
-  {0.734690f, 0.265310f, 0.114161f, 0.826207f, 0.156641f, 0.017705f},   // CML_RGB_WIDE_GAMUT
-  {0.6400f, 0.3300f, 0.3000f, 0.6000f, 0.1500f, 0.0600f}   // CML_RGB_CUSTOM
-};
-
-
-
-CML_HIDDEN void cml_recomputeRGBResponses(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeRGBResponses(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES; return;}
   
-  CMLResponseCurve* responseR = cmlCreateResponseCurveWithPreset(NULL, rgbSpaceresponsepresets[cm->rgbSpace.state]);
-  CMLResponseCurve* responseG = cmlCreateResponseCurveWithPreset(NULL, rgbSpaceresponsepresets[cm->rgbSpace.state]);
-  CMLResponseCurve* responseB = cmlCreateResponseCurveWithPreset(NULL, rgbSpaceresponsepresets[cm->rgbSpace.state]);
-  cmlSetResponseR(cm, responseR);
-  cmlSetResponseG(cm, responseG);
-  cmlSetResponseB(cm, responseB);
-  cmlDestroyResponseCurve(responseR);
-  cmlDestroyResponseCurve(responseG);
-  cmlDestroyResponseCurve(responseB);
-  
+  CMLResponseCurve responseR;
+  CMLResponseCurve responseG;
+  CMLResponseCurve responseB;
+  cmlInitResponseCurveWithPreset(&responseR, rgbSpaceResponsePresets[cm->rgbSpace.state]);
+  cmlInitResponseCurveWithPreset(&responseG, rgbSpaceResponsePresets[cm->rgbSpace.state]);
+  cmlInitResponseCurveWithPreset(&responseB, rgbSpaceResponsePresets[cm->rgbSpace.state]);
+  cmlSetResponseR(cm, &responseR);
+  cmlSetResponseG(cm, &responseG);
+  cmlSetResponseB(cm, &responseB);
+  cmlClearResponseCurve(&responseR);
+  cmlClearResponseCurve(&responseG);
+  cmlClearResponseCurve(&responseB);
 }
 
 
-CML_HIDDEN void cml_recomputeRGBColorspace(CMLColorMachine* cm){
-  CMLVec3 normedwhitePointYxy;
 
+CML_HDEF void cml_recomputeRGBColorspace(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_RGB; return;}
 
-  if(cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer))) != rgbSpaceilluminations[cm->rgbSpace.state]){
+  if(cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer))) != rgbSpaceIlluminations[cm->rgbSpace.state]){
     cm->rgbSpace.state = CML_RGB_CUSTOM;
   }
 
-  cmlCpy3(normedwhitePointYxy, cmlGetReferenceWhitePointYxy(&(cm->observer)));
+  CMLVec3 normedWhitePointYxy;
+  cmlCpy3(normedWhitePointYxy, cmlGetReferenceWhitePointYxy(&(cm->observer)));
 //  if(!cm->observer.radiometric){
-//    normedwhitePointYxy[0] = 1.f;
+//    normedWhitePointYxy[0] = 1.f;
 //  }
   
-  cmlComputeRGBToXYZMatrix(cm->rgbSpace.matrix, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2], normedwhitePointYxy);
-  cmlInvertMat33(cm->rgbSpace.matrixinv, cm->rgbSpace.matrix);
+  cmlComputeRGBToXYZMatrix(cm->rgbSpace.matrix, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2], normedWhitePointYxy);
+  cmlInvertMat33(cm->rgbSpace.matrixInv, cm->rgbSpace.matrix);
   
   cml_recomputeRGBResponses(cm);
 }
@@ -216,13 +133,13 @@ CML_API CMLRGBColorSpace cmlGetRGBColorSpace(const CMLColorMachine* cm){
 
 
 CML_API void cmlSetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorSpaceType){    
-  // Multiple changes need to be made. (Illumination and RGBspace)
+  // Multiple changes need to be made. (Illumination and RGBSpace)
   cmlLockRecomputation(cm);
   
   cm->rgbSpace.state = colorSpaceType;
   if(cm->rgbSpace.state != CML_RGB_CUSTOM){
     cmlGetRGBColorSpacePrimaries(colorSpaceType, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2]);
-    cmlSetIlluminationType(cm, rgbSpaceilluminations[cm->rgbSpace.state]);
+    cmlSetIlluminationType(cm, rgbSpaceIlluminations[cm->rgbSpace.state]);
   }
   cml_recomputeRGBColorspace(cm);
   
@@ -250,16 +167,16 @@ CML_API void cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]){
 
 
 //CML_API void cmlGetRGBToLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
-//  responses[0] = cm->rgbSpace.responseR.backwardfunc;
-//  responses[1] = cm->rgbSpace.responseG.backwardfunc;
-//  responses[2] = cm->rgbSpace.responseB.backwardfunc;
+//  responses[0] = cm->rgbSpace.responseR.backwardFunc;
+//  responses[1] = cm->rgbSpace.responseG.backwardFunc;
+//  responses[2] = cm->rgbSpace.responseB.backwardFunc;
 //}
 
 
 //CML_API void cmlGetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]){
-//  responses[0] = cm->rgbSpace.responseR.forwardfunc;
-//  responses[1] = cm->rgbSpace.responseG.forwardfunc;
-//  responses[2] = cm->rgbSpace.responseB.forwardfunc;
+//  responses[0] = cm->rgbSpace.responseR.forwardFunc;
+//  responses[1] = cm->rgbSpace.responseG.forwardFunc;
+//  responses[2] = cm->rgbSpace.responseB.forwardFunc;
 //}
 
 
@@ -295,28 +212,28 @@ CML_API const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm){
 
 CML_API void cmlSetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseR));
-  cmlCreateResponseCurveCopy((&cm->rgbSpace.responseR), response);
-//  cm->rgbSpace.responseR.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
-//  cm->rgbSpace.responseR.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
-//  cmlCreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseR), type, param0, param1, param2, param3);
+  cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseR), response);
+//  cm->rgbSpace.responseR.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
+//  cm->rgbSpace.responseR.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
+//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseR), type, param0, param1, param2, param3);
 }
 
 
 CML_API void cmlSetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseG));
-  cmlCreateResponseCurveCopy((&cm->rgbSpace.responseG), response);
-//  cm->rgbSpace.responseG.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
-//  cm->rgbSpace.responseG.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
-//  cmlCreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseG), type, param0, param1, param2, param3);
+  cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseG), response);
+//  cm->rgbSpace.responseG.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
+//  cm->rgbSpace.responseG.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
+//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseG), type, param0, param1, param2, param3);
 }
 
 
 CML_API void cmlSetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseB));
-  cmlCreateResponseCurveCopy((&cm->rgbSpace.responseB), response);
-//  cm->rgbSpace.responseB.forwardfunc = cmlDuplicateFunction(response->forwardfunc);
-//  cm->rgbSpace.responseB.backwardfunc = cmlDuplicateFunction(response->backwardfunc);
-//  cmlCreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseB), type, param0, param1, param2, param3);
+  cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseB), response);
+//  cm->rgbSpace.responseB.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
+//  cm->rgbSpace.responseB.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
+//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseB), type, param0, param1, param2, param3);
 }
 
 
@@ -352,10 +269,9 @@ CML_API void cmlGetRGBColorSpacePrimaries(CMLRGBColorSpace colorSpaceType, CMLVe
 }
 
 
-CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(
-                                  CMLRGBColorSpace      colorSpaceType){
+CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(CMLRGBColorSpace colorSpaceType){
   if(colorSpaceType < CML_RGB_CUSTOM){
-    return rgbSpaceilluminations[colorSpaceType];
+    return rgbSpaceIlluminations[colorSpaceType];
   }else{
     #if CML_DEBUG
       cmlError("Invalid RGB colorspace.");
@@ -364,10 +280,9 @@ CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(
   }
 }
 
-CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset
-                                      (CMLRGBColorSpace colorSpaceType){
+CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset(CMLRGBColorSpace colorSpaceType){
   if(colorSpaceType < CML_RGB_CUSTOM){
-    return rgbSpaceresponsepresets[colorSpaceType];
+    return rgbSpaceResponsePresets[colorSpaceType];
   }else{
     #if CML_DEBUG
       cmlError("Invalid RGB colorspace.");

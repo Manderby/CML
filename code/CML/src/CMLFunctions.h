@@ -31,6 +31,10 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 // responses simply expand the linear curvature.
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
+//
+// The GammaLinearResponse is computed according to the following formula:
+// (1+offset) * powf(x, 1/gamma) - offset    if x => split
+// x * linScale                              if x <  split
 CML_API CMLFunction* cmlCreateLinearResponse(void);
 CML_API CMLFunction* cmlCreateGammaResponse(float gamma);
 CML_API CMLFunction* cmlCreateGammaLinearResponse(float linScale, float offset, float gamma, float split);

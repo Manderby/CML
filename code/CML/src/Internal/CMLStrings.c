@@ -2,7 +2,7 @@
 #include "CML.h"
 #include "CMLInternal.h"
 
-CML_HIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
+CML_HIDDEN static const char* colorTypeStrings[CML_NUMBER_OF_COLORTYPES] = {
   "Gray",
   "XYZ",
   "Yxy",
@@ -20,20 +20,20 @@ CML_HIDDEN static const char* colortypestrings[CML_NUMBER_OF_COLORTYPES] = {
   "Remission Spectrum"
 };
 
-CML_HIDDEN static const char* observerstrings[CML_NUMBER_OF_OBSERVERS] = {
+CML_HIDDEN static const char* observerStrings[CML_NUMBER_OF_OBSERVERS] = {
 //  "1931 2 deg (1 nm steps)",                  // CML_OBSERVER_2DEG_1931
 //  "1964 10 deg (1 nm steps)",                 // CML_OBSERVER_10DEG_1964
-  "CIE 1931 2 deg",     // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
-  "CIE 1964 10 deg",    // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
-//  "ISO-13655 2 deg",     // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
-  "Judd 1951 2 deg",            // CML_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
-  "Judd Vos 1978 2 deg",         // CML_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
+  "CIE 1931 2 deg",                           // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
+  "CIE 1964 10 deg",                          // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
+//  "ISO-13655 2 deg",                          // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
+  "Judd 1951 2 deg",                          // CML_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
+  "Judd Vos 1978 2 deg",                      // CML_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
 //  "Stiles Burch 1955 2 deg (5 nm steps)",     // CML_OBSERVER_2DEG_STILES_BURCH_1955
 //  "Shaw Fairchild 1997 2 deg (5 nm steps)",   // CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997
   "Custom Observer",                          // CML_OBSERVER_CUSTOM
 };
 
-CML_HIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] = {
+CML_HIDDEN static const char* illuminationStrings[CML_NUMBER_OF_ILLUMINATIONS] = {
   "Blackbody",                        // CML_ILLUMINATION_BLACKBODY
   "A (CIE Standard)",                 // CML_ILLUMINATION_A_CIE
   "A (with Planck locus shift)",      // CML_ILLUMINATION_A_EXACT
@@ -63,13 +63,13 @@ CML_HIDDEN static const char* illuminationstrings[CML_NUMBER_OF_ILLUMINATIONS] =
   "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
-CML_HIDDEN static const char* rgbSpacestrings[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HIDDEN static const char* rgbSpaceStrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Adobe 98",             // CML_RGB_ADOBE_98
   "Apple",                // CML_RGB_APPLE
   "Best",                 // CML_RGB_BEST
   "Beta",                 // CML_RGB_BETA
   "Bruce",                // CML_RGB_BRUCE
-  "CIE",                // CML_RGB_CIE
+  "CIE",                  // CML_RGB_CIE
   "ColorMatch",           // CML_RGB_COLORMATCH
   "Don 4",                // CML_RGB_DON4
   "EBU Monitor",          // CML_RGB_EBU_MONITOR
@@ -81,7 +81,7 @@ CML_HIDDEN static const char* rgbSpacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Rec. BT.709",          // CML_RGB_REC_BT_709
   "Rec. BT.2020",         // CML_RGB_REC_BT_2020
   "Kodak DC",             // CML_RGB_KODAK_DC
-  "NTSC 53",            // CML_RGB_NTSC_53
+  "NTSC 53",              // CML_RGB_NTSC_53
   "PAL/SECAM (EBU 3213)", // CML_RGB_PAL_SECAM_EBU
   "ROMM (Prophoto)",      // CML_RGB_ROMM_PROPHOTO
   "SMPTE-C",              // CML_RGB_SMPTE_C
@@ -90,7 +90,7 @@ CML_HIDDEN static const char* rgbSpacestrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Custom",               // CML_RGB_WIDE_GAMUT
 };
 
-CML_HIDDEN static const char* labSpacestrings[CML_NUMBER_OF_LAB_SPACES] = {
+CML_HIDDEN static const char* labSpaceStrings[CML_NUMBER_OF_LAB_SPACES] = {
   "CIELAB L*a*b* 1976",           // CML_LAB_CIELAB
   "Custom L",                     // CML_LAB_CUSTOM_L
   "Hunter Lab 1948 Approximated", // CML_LAB_HUNTER_APPROXIMATE
@@ -98,83 +98,86 @@ CML_HIDDEN static const char* labSpacestrings[CML_NUMBER_OF_LAB_SPACES] = {
   "Adams chromatic valence",      // CML_LAB_ADAMS_CROMATIC_VALENCE
 };
 
-CML_HIDDEN static const char* functionTypestrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
-  "Linear",           // CML_FUNCTION_LINEAR
-  "Sqrt",             // CML_FUNCTION_SQRT
-  "Gamma",            // CML_FUNCTION_GAMMA
-  "Gamma, Offset, Linear",   // CML_FUNCTION_GAMMA_LINEAR
-  "sRGB",             // CML_FUNCTION_SRGB
-  "L*",               // CML_FUNCTION_LSTAR
-  "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
+CML_HIDDEN static const char* functionTypeStrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
+  "Undefined",             // CML_FUNCTION_UNDEFINED
+  "Linear",                // CML_FUNCTION_LINEAR
+  "Sqrt",                  // CML_FUNCTION_SQRT
+  "Gamma",                 // CML_FUNCTION_GAMMA
+  "Gamma, Offset, Linear", // CML_FUNCTION_GAMMA_LINEAR
+  "sRGB",                  // CML_FUNCTION_SRGB
+  "L*",                    // CML_FUNCTION_LSTAR
+  "L* Standard",           // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CML_HIDDEN static const char* rgbresponsepresetstrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
-  "Linear",           // CML_FUNCTION_LINEAR
-  "Sqrt",             // CML_FUNCTION_SQRT
-  "Gamma Adobe 98",   // CML_RESPONSE_GAMMA_ADOBE_98
-  "Gamma 1.8",        // CML_RESPONSE_GAMMA_1_8
-  "Gamma 1.9",        // CML_RESPONSE_GAMMA_1_9
-  "Gamma 2.2",        // CML_RESPONSE_GAMMA_2_2
+CML_HIDDEN static const char* rgbResponsePresetStrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
+  "Undefined",           // CML_RESPONSE_UNDEFINED
+  "Linear",              // CML_RESPONSE_LINEAR
+  "Sqrt",                // CML_RESPONSE_SQRT
+  "Gamma Adobe 98",      // CML_RESPONSE_GAMMA_ADOBE_98
+  "Gamma 1.8",           // CML_RESPONSE_GAMMA_1_8
+  "Gamma 1.9",           // CML_RESPONSE_GAMMA_1_9
+  "Gamma 2.2",           // CML_RESPONSE_GAMMA_2_2
   "Gamma Rec BT 10 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT
   "Gamma Rec BT 12 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT
-  "sRGB",             // CML_FUNCTION_SRGB
-  "L*",               // CML_FUNCTION_LSTAR
-  "L* Standard",      // CML_FUNCTION_LSTAR_STANDARD
+  "sRGB",                // CML_RESPONSE_SRGB
+  "L*",                  // CML_RESPONSE_LSTAR
+  "L* Standard",         // CML_RESPONSE_LSTAR_STANDARD
 };
 
-CML_HIDDEN static const char* graycomputationstrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
-  "L (HSL)",              // CML_GRAY_FROM_HSL
-  "V (HSV)",              // CML_GRAY_FROM_HSV
-  "G (RGB)",              // CML_GRAY_FROM_G
-  "L* (CIELAB, Luv)",     // CML_GRAY_FROM_LSTAR
-  "L (Lab, Lch)",         // CML_GRAY_FROM_L
-  "Y (XYZ, Yxy, Yuv)",    // CML_GRAY_FROM_Y
-  "Y' (YCbCr)",           // CML_GRAY_FROM_YPRIME
+CML_HIDDEN static const char* grayComputationStrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
+  "L (HSL)",             // CML_GRAY_FROM_HSL
+  "V (HSV)",             // CML_GRAY_FROM_HSV
+  "G (RGB)",             // CML_GRAY_FROM_G
+  "L* (CIELAB, Luv)",    // CML_GRAY_FROM_LSTAR
+  "L (Lab, Lch)",        // CML_GRAY_FROM_L
+  "Y (XYZ, Yxy, Yuv)",   // CML_GRAY_FROM_Y
+  "Y' (YCbCr)",          // CML_GRAY_FROM_YPRIME
 };
 
-CML_HIDDEN static const char* cmyktransformstrings[CML_NUMBER_OF_CMYK_TRANSFORMS] = {
-  "Standard",           // CML_CMYK_STANDARD_TRANSFORM
-  "UCR",                // CML_CMYK_UCR_TRANSFORM
-//  "GCR",              // CML_CMYK_GCR_TRANSFORM
+CML_HIDDEN static const char* cmykTransformStrings[CML_NUMBER_OF_CMYK_TRANSFORMS] = {
+  "Standard",            // CML_CMYK_STANDARD_TRANSFORM
+  "UCR",                 // CML_CMYK_UCR_TRANSFORM
+//  "GCR",               // CML_CMYK_GCR_TRANSFORM
 };
 
-CML_HIDDEN static const char* chromaticAdaptationstrings[CML_NUMBER_OF_CHROMATIC_ADAPTATIONS] = {
-  "No adaptation",      // CML_CHROMATIC_ADAPTATION_NONE
-  "XYZ scaling",        // CML_CHROMATIC_ADAPTATION_XYZ_SCALING
-  "Bradford",           // CML_CHROMATIC_ADAPTATION_BRADFORD
-  "Von Kries"           // CML_CHROMATIC_ADAPTATION_VON_KRIES
+CML_HIDDEN static const char* chromaticAdaptationStrings[CML_NUMBER_OF_CHROMATIC_ADAPTATIONS] = {
+  "No adaptation",       // CML_CHROMATIC_ADAPTATION_NONE
+  "XYZ scaling",         // CML_CHROMATIC_ADAPTATION_XYZ_SCALING
+  "Bradford",            // CML_CHROMATIC_ADAPTATION_BRADFORD
+  "Von Kries"            // CML_CHROMATIC_ADAPTATION_VON_KRIES
 };
+
 
 
 CML_API const char* cmlGetColorTypeString(CMLColorType colorType){
-  return colortypestrings[colorType];
+  return colorTypeStrings[colorType];
 }
 CML_API const char* cmlGetObserverTypeString(CMLObserverType observerType){
-  return observerstrings[observerType];
+  return observerStrings[observerType];
 }
 CML_API const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminationType){
-  return illuminationstrings[illuminationType];
+  return illuminationStrings[illuminationType];
 }
 CML_API const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticAdaptationType){
-  return chromaticAdaptationstrings[chromaticAdaptationType];
+  return chromaticAdaptationStrings[chromaticAdaptationType];
 }
 CML_API const char* cmlGetLabSpaceTypeString(CMLLabColorSpaceType labSpaceType){
-  return labSpacestrings[labSpaceType];
+  return labSpaceStrings[labSpaceType];
 }
 CML_API const char* cmlGetRGBResponsePresetString(CMLResponseCurvePreset preset){
-  return rgbresponsepresetstrings[preset];
+  return rgbResponsePresetStrings[preset];
 }
 CML_API const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
-  return functionTypestrings[functionType];
+  return functionTypeStrings[functionType];
 }
 CML_API const char* cmlGetRGBColorspaceString(CMLRGBColorSpace colorSpaceType){
-  return rgbSpacestrings[colorSpaceType];
+  return rgbSpaceStrings[colorSpaceType];
 }
 CML_API const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
-  return cmyktransformstrings[transformType];
+  return cmykTransformStrings[transformType];
 }
 CML_API const char* cmlGetGrayComputationTypeString(CMLGrayComputationType computationType){
-  return graycomputationstrings[computationType];
+  return grayComputationStrings[computationType];
 }
 
 

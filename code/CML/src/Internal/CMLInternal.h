@@ -31,8 +31,8 @@ struct CML_HIDDEN CMLFunction{
 
 
 struct CMLResponseCurve{
-  CMLFunction* forwardfunc;     // converting from luminance space
-  CMLFunction* backwardfunc;    // converting to luminance space
+  CMLFunction* forwardFunc;     // converting from luminance space
+  CMLFunction* backwardFunc;    // converting to luminance space
   CMLFunctionType functionType;
 };
 
@@ -55,9 +55,6 @@ struct CMLObserver{
   CMLVec3                       BALFwhitePointYxy;
   CMLVec3                       BALFwhitePointYupvp;
 };
-
-
-CML_HIDDEN CMLResponseCurve* cmlCreateResponseCurve(CMLResponseCurve* curve);
 
 
 CML_HIDEF float cml_Eval(const CMLFunction* function, float x){

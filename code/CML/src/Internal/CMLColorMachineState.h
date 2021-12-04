@@ -56,7 +56,7 @@ struct CML_HIDDEN CMLColorMachine{
     CMLResponseCurve              responseG;
     CMLResponseCurve              responseB;
     CMLMat33                      matrix;
-    CMLMat33                      matrixinv;
+    CMLMat33                      matrixInv;
     CMLuint8                      lutsize;
   } rgbSpace;
   
@@ -160,13 +160,13 @@ CML_HIDEF void cml_CMYuvToYupvp (const CMLColorMachine* cm, float* CML_RESTRICT 
 CML_HIDEF void cml_CMYuvToYupvp_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
   {cm = cm; cml_YuvToYupvp_SB(buf, count, floatAlign);}
 CML_HIDEF void cml_CMYupvpToLuv (const CMLColorMachine* cm, float* CML_RESTRICT luv, const float* CML_RESTRICT yupvp, size_t count)
-  {cml_YupvpToLuv(luv, yupvp, count, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.forwardfunc);}
+  {cml_YupvpToLuv(luv, yupvp, count, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.forwardFunc);}
 CML_HIDEF void cml_CMYupvpToLuv_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
-  {cml_YupvpToLuv_SB(buf, count, floatAlign, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.forwardfunc);}
+  {cml_YupvpToLuv_SB(buf, count, floatAlign, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.forwardFunc);}
 CML_HIDEF void cml_CMLuvToYupvp (const CMLColorMachine* cm, float* CML_RESTRICT yupvp, const float* CML_RESTRICT luv, size_t count)
-  {cml_LuvToYupvp(yupvp, luv, count, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.backwardfunc);}
+  {cml_LuvToYupvp(yupvp, luv, count, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.backwardFunc);}
 CML_HIDEF void cml_CMLuvToYupvp_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
-  {cml_LuvToYupvp_SB(buf, count, floatAlign, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.backwardfunc);}
+  {cml_LuvToYupvp_SB(buf, count, floatAlign, cmlGetReferenceWhitePointYupvp(&(cm->observer)), cm->labSpace.responseLStar.backwardFunc);}
 CML_HIDEF void cml_CMLabToLch   (const CMLColorMachine* cm, float* CML_RESTRICT lch, const float* CML_RESTRICT lab, size_t count)
   {cm = cm; cml_LabToLch(lch, lab, count);}
 CML_HIDEF void cml_CMLabToLch_SB   (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
@@ -176,13 +176,13 @@ CML_HIDEF void cml_CMLchToLab   (const CMLColorMachine* cm, float* CML_RESTRICT 
 CML_HIDEF void cml_CMLchToLab_SB   (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
   {cm = cm; cml_LchToLab_SB(buf, count, floatAlign);}
 CML_HIDEF void cml_CMXYZToRGB   (const CMLColorMachine* cm, float* CML_RESTRICT rgb, const float* CML_RESTRICT xyz, size_t count)
-  {cml_XYZToRGB(rgb, xyz, count, cm->rgbSpace.matrixinv, cm->rgbSpace.responseR.forwardfunc, cm->rgbSpace.responseG.forwardfunc, cm->rgbSpace.responseB.forwardfunc);}
+  {cml_XYZToRGB(rgb, xyz, count, cm->rgbSpace.matrixInv, cm->rgbSpace.responseR.forwardFunc, cm->rgbSpace.responseG.forwardFunc, cm->rgbSpace.responseB.forwardFunc);}
 CML_HIDEF void cml_CMXYZToRGB_SB   (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
-  {cml_XYZToRGB_SB(buf, count, floatAlign, cm->rgbSpace.matrixinv, cm->rgbSpace.responseR.forwardfunc, cm->rgbSpace.responseG.forwardfunc, cm->rgbSpace.responseB.forwardfunc);}
+  {cml_XYZToRGB_SB(buf, count, floatAlign, cm->rgbSpace.matrixInv, cm->rgbSpace.responseR.forwardFunc, cm->rgbSpace.responseG.forwardFunc, cm->rgbSpace.responseB.forwardFunc);}
 CML_HIDEF void cml_CMRGBToXYZ   (const CMLColorMachine* cm, float* CML_RESTRICT xyz, const float* CML_RESTRICT rgb, size_t count)
-  {cml_RGBToXYZ(xyz, rgb, count, cm->rgbSpace.matrix, cm->rgbSpace.responseR.backwardfunc, cm->rgbSpace.responseG.backwardfunc, cm->rgbSpace.responseB.backwardfunc);}
+  {cml_RGBToXYZ(xyz, rgb, count, cm->rgbSpace.matrix, cm->rgbSpace.responseR.backwardFunc, cm->rgbSpace.responseG.backwardFunc, cm->rgbSpace.responseB.backwardFunc);}
 CML_HIDEF void cml_CMRGBToXYZ_SB   (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)
-  {cml_RGBToXYZ_SB(buf, count, floatAlign, cm->rgbSpace.matrix, cm->rgbSpace.responseR.backwardfunc, cm->rgbSpace.responseG.backwardfunc, cm->rgbSpace.responseB.backwardfunc);}
+  {cml_RGBToXYZ_SB(buf, count, floatAlign, cm->rgbSpace.matrix, cm->rgbSpace.responseR.backwardFunc, cm->rgbSpace.responseG.backwardFunc, cm->rgbSpace.responseB.backwardFunc);}
 CML_HIDEF void cml_CMRGBToYCbCr (const CMLColorMachine* cm, float* CML_RESTRICT ycbcr, const float* CML_RESTRICT rgb, size_t count)
   {cml_RGBToYCbCr(ycbcr, rgb, count, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceInverseWhitePointXYZ(&(cm->observer)));}
 CML_HIDEF void cml_CMRGBToYCbCr_SB (const CMLColorMachine* cm, float* buf, size_t count, CMLuint32 floatAlign)

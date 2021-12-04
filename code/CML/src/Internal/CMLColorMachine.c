@@ -36,11 +36,11 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
     referenceIllumination,
     1.f);
 
-  cmlCreateResponseCurve(&(cm->rgbSpace.responseR));
-  cmlCreateResponseCurve(&(cm->rgbSpace.responseG));
-  cmlCreateResponseCurve(&(cm->rgbSpace.responseB));
-  cmlCreateResponseCurve(&(cm->labSpace.responseL));
-  cmlCreateResponseCurveWithPreset(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
+  cmlInitResponseCurve(&(cm->rgbSpace.responseR));
+  cmlInitResponseCurve(&(cm->rgbSpace.responseG));
+  cmlInitResponseCurve(&(cm->rgbSpace.responseB));
+  cmlInitResponseCurve(&(cm->labSpace.responseL));
+  cmlInitResponseCurveWithPreset(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
   
   cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
   cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
