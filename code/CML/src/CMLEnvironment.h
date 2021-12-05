@@ -72,7 +72,6 @@
 
 #define CML_API   CML_LINKER_EXPORT
 #define CML_DEF   CML_LINKER_EXPORT
-#define CML_HAPI  CML_LINKER_NO_EXPORT
 #define CML_HDEF  CML_LINKER_NO_EXPORT
 #define CML_IAPI  static CML_INLINE
 #define CML_IDEF  static CML_INLINE
@@ -97,7 +96,7 @@ typedef int           CMLBool;
 // ////////////////////////////////////////////
 
 #ifndef CML_DEBUG
-  #if CML_DEBUG
+  #ifndef NDEBUG
     #define CML_DEBUG 1
   #else
     #define CML_DEBUG 0

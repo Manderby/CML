@@ -61,8 +61,8 @@ CML_IDEF size_t cmlGetSampleCount(float min, float max, float stepSize){
   return (size_t)(cmlRound((max - min) * cmlInverse(stepSize))) + 1;
 }
 
-CML_IDEF float cmlGetStepSize(float min, float max, size_t samplecount){
-  return (max-min) * cmlInverse((float)samplecount - 1);
+CML_IDEF float cmlGetStepSize(float min, float max, size_t sampleCount){
+  return (max-min) * cmlInverse((float)sampleCount - 1);
 }
 
 

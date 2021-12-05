@@ -173,7 +173,22 @@ typedef enum{
   CML_NUMBER_OF_CHROMATIC_ADAPTATIONS
 } CMLChromaticAdaptationType;
 
-// Enumerates the predefined interpolation methods of array functions
+// Enumerates the predefined interpolation methods of array functions.
+// If you are uncertain, you should probably choose either linear or floor.
+//
+// In the following table, you can see the output of an interpolation
+// given two sampling points 1.00 and 2.00. Values denoted with "out"
+// are not in the interpolation range anymore and will be covered by
+// the extrapolation method.
+//
+// Samples:                  X                 X
+// Input value:  0.49  0.50  1.00  1.49  1.50  2.00  2.49  2.50  3.00
+// --------------------------------------------------------------------
+// None:         out   out   1.00  0.00  0.00  2.00  out   out   out
+// Floor:        out   out   1.00  1.00  1.00  2.00  2.00  2.00  out
+// Box:          out   1.00  1.00  1.00  2.00  2.00  2.00  out   out
+// Interval:     out   out   1.00  1.00  1.00  2.00  out   out   out
+// Linear:       out   out   1.00  1.49  1.50  2.00  out   out   out
 typedef enum{
   CML_INTERPOLATION_NONE = 0,
   CML_INTERPOLATION_FLOOR,
@@ -184,6 +199,20 @@ typedef enum{
 
 // Enumerates the predefined extrapolation methods of array functions
 // If you are uncertain, you should probably choose LINEAR_ZERO.
+//
+// In the following table, you can see the output of an extrapolation
+// upwards given two sampling points 1.00 and 2.00. Using the method for
+// extrapolation downwards is just mirrored.
+// Note that the range in which extrapolation takes place is determined by the
+// interpolation method, see above. Here, "Linear" is assumed.
+//
+// Samples:      X     X
+// Input value:  1.00  2.00  2.25  2.50  2.75  3.00  3.25
+// ------------------------------------------------------
+// Clamp Zero:   1.00  2.00  0.00  0.00  0.00  0.00  0.00
+// Linear Zero:  1.00  2.00  1.50  1.00  0.50  0.00  0.00
+// Clamp Value:  1.00  2.00  2.00  2.00  2.00  2.00  2.00
+// Gradient:     1.00  2.00  2.25  2.50  2.75  3.00  3.25
 typedef enum{
   CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
   CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepSize, then 0

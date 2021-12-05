@@ -63,33 +63,42 @@ CML_API CMLFunction* cmlCreateFunctionDivFunction( const CMLFunction* func1, con
 CML_API CMLFunction* cmlCreateFunctionMulScalar(   const CMLFunction* func,  float scalar);
 
 // Array Functions:
-// Use the following function to crate arbitrary functions where an array with
-// sampling points is given. The ownBuffer parameter depicts if the function
-// shall take ownership of the buffer. If this parameter is CML_TRUE, the buffer
-// will automatically be deallocated with free() when the function is no longer
-// needed. If you choose to do so, make sure the buffer is allocated with
-// malloc.
+
+// Use the following struct to define, how an array function shall handle
+// the array values and its interpolation and extrapolation.
+typedef struct CMLArrayFunctionSettings CMLArrayFunctionSettings;
+struct CMLArrayFunctionSettings{
+  size_t entryCount;
+  float minimalCoord;
+  float maximalCoord;
+  CMLInterpolationMethod interpolationMethod;
+  CMLExtrapolationMethod lowerExtrapolationMethod;
+  CMLExtrapolationMethod upperExtrapolationMethod;
+};
+
+// This struct is used to create an array with an existing buffer array.
+// The ownBuffer parameter depicts if the function shall take ownership of the
+// buffer. If this parameter is CML_TRUE, the buffer will automatically be
+// deallocated with free() when the function is no longer needed. If you choose
+// to do so, make sure the buffer is allocated with malloc.
 // todo: allow arbitrary destructor methods.
-CML_API CMLFunction* cmlCreateArrayFunction(
-  const float* buffer,
-  CMLBool ownBuffer,
-  size_t entryCount,
-  float minimalCoord,
-  float maximalCoord,
-  CMLInterpolationMethod interpolationMethod,
-  CMLExtrapolationMethod lowerExtrapolationMethod,
-  CMLExtrapolationMethod upperExtrapolationMethod);
+typedef struct CMLArrayFunctionInput CMLArrayFunctionInput;
+struct CMLArrayFunctionInput{
+  const float* buffer;
+  CMLBool ownBuffer;
+  CMLArrayFunctionSettings settings;
+};
+
+// Use this function to crate arbitrary functions where an array with
+// sampling points is given.
+CML_API CMLFunction* cmlCreateArrayFunction(CMLArrayFunctionInput input);
 
 // If you already have an (arbitrary) function and you want to convert it to an
-// array function (very much like a lookup-table), use the following method:
+// array function (very much like a lookup-table), use the following method.
+// The result is an ArrayFunction without any references to the original func.
 CML_API CMLFunction* cmlSampleArrayFunction(
   const CMLFunction* func,
-  float minimalCoord,
-  float maximalCoord,
-  size_t entryCount,
-  CMLInterpolationMethod interpolationMethod,
-  CMLExtrapolationMethod lowerExtrapolationMethod,
-  CMLExtrapolationMethod upperExtrapolationMethod);
+  CMLArrayFunctionSettings settings);
 
 
 
@@ -104,7 +113,8 @@ CML_API float cmlEval(const CMLFunction* func, float x);
 // otherwise. The index is 0-based.
 CML_API float cmlGetFunctionParameter(const CMLFunction* func, size_t index);
 
-// Computes the weighted sum of the given function with the given filter.
+// Computes the weighted sum of the given function which is multiplied with
+// the given filter.
 CML_API float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter);
 
 // Returns the maximal value of the given function in the coordinate range.
@@ -160,6 +170,28 @@ typedef void  (*CMLFunctionConstructor)(
   CMLDefinitionRange* defRange,
   const void* input);
 
+// The DESTRUCTOR: This callback function is called when an instance of your
+// CMLFunction gets deallocated.
+//
+// Perform any cleanup and deallocate the data pointer if you did allocate
+// memory. This should look something like this:
+// free(data);
+// Or use the appropriate delete operator if you are using C++.
+typedef void  (*CMLFunctionDesctructor)(
+  void*  data);
+
+// You need to test whether input is CML_NULL.
+// Upon calling cmlCreateFunction, this function will be called right after
+// the constructor function (if any) with the input argument being CML_NULL.
+// This allows you to initialize the definitionRange.
+typedef void (*CMLFunctionInputSetter)(
+  void* data,
+  CMLDefinitionRange* defRange,
+  const void* input);
+
+typedef const void* (*CMLFunctionInputGetter)(
+  void* data);
+
 // The EVALUATOR: This callback function is called whenever cmlEval is called.
 //
 // Perform any computation necessary and return the function result.
@@ -175,29 +207,28 @@ typedef float (*CMLFunctionEvaluator)(
   const void* data,
   float x);
 
-// The DESTRUCTOR: This callback function is called when an instance of your
-// CMLFunction gets deallocated.
-//
-// Perform any cleanup and deallocate the data pointer if you did allocate
-// memory. This should look something like this:
-// free(data);
-// Or use the appropriate delete operator if you are using C++.
-typedef void  (*CMLFunctionDesctructor)(
-  void*  data);
 
 
-// Use the cmlCreateFunction to create an instance of your own CMLFunction.
+// Use cmlCreateFunction to create an instance of your own CMLFunction.
 // The "evaluator" parameter must be a valid function pointer, all other
-// parameters can be CML_NULL. floatParams denotes the number of float input
-// parameters the function contains. They will be available in the constructor
-// and evaluator as array of floats.
+// parameters can be CML_NULL. The floatParamCount parameter denotes the
+// number of float parameters the function stores. They will be available
+// in the constructor and evaluator as array of floats. The input parameter
+// can by any kind of data which will be available to the constructor.
 CML_API CMLFunction* cmlCreateFunction(
-  CMLFunctionEvaluator evaluator,
   CMLFunctionConstructor constructor,
   CMLFunctionDesctructor destructor,
-  CMLuint32 floatParams,
-  const void* input);
+  CMLFunctionInputSetter inputSetter,
+  CMLFunctionInputGetter inputGetter,
+  CMLFunctionEvaluator evaluator,
+  CMLuint32 floatParamCount,
+  const void* input,
+  size_t dataSize);
 
+// Set any kind of input a function requires. The function will store these
+// parameters as a copy and can later be retrieved using the getter function.
+CML_API void cmlSetFunctionInput(CMLFunction* func, const void* input);
+CML_API const void* cmlGetFunctionInput(CMLFunction* func);
 
 
 // //////////////////////////////////////////

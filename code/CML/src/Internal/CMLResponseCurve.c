@@ -4,7 +4,7 @@
 
 
 CML_DEF CMLResponseCurve* cmlAllocResponseCurve(){
-  return malloc(sizeof(CMLResponseCurve));
+  return cml_Allocate(sizeof(CMLResponseCurve));
 }
 
 

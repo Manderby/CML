@@ -86,8 +86,8 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
   }
 
   SpectralColor SpectralColor::operator -() const{
-    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, -1.f);
-    return SpectralColor(newfunction, bodycolor);
+    CMLFunction* newFunction = cmlCreateFunctionMulScalar(spectrum, -1.f);
+    return SpectralColor(newFunction, bodycolor);
   }
 
   SpectralColor SpectralColor::operator +(const SpectralColor& speccolor) const{
@@ -97,8 +97,8 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
-    return SpectralColor(newfunction, bodycolor);
+    CMLFunction* newFunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
+    return SpectralColor(newFunction, bodycolor);
   }
 
   SpectralColor SpectralColor::operator -(const SpectralColor& speccolor) const{
@@ -108,21 +108,21 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
-    return SpectralColor(newfunction, bodycolor);
+    CMLFunction* newFunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
+    return SpectralColor(newFunction, bodycolor);
   }
 
   SpectralColor SpectralColor::operator *(float factor) const{
-    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
-    return SpectralColor(newfunction, bodycolor);
+    CMLFunction* newFunction = cmlCreateFunctionMulScalar(spectrum, factor);
+    return SpectralColor(newFunction, bodycolor);
   }
 
   SpectralColor SpectralColor::operator /(float divisor) const{
     // note: do not redirect this implementation to the * operator. It slows
     // down the implementation as more constructors need to be called.
     float factor = cmlInverse(divisor);
-    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
-    return SpectralColor(newfunction, bodycolor);
+    CMLFunction* newFunction = cmlCreateFunctionMulScalar(spectrum, factor);
+    return SpectralColor(newFunction, bodycolor);
   }
 
   SpectralColor& SpectralColor::operator +=(const Color& anycolor){
@@ -133,9 +133,9 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newFunction = cmlCreateFunctionAddFunction(spectrum, speccolor.spectrum);
     cmlReleaseFunction(spectrum);
-    spectrum = newfunction;
+    spectrum = newFunction;
     return *this;
   }
 
@@ -147,16 +147,16 @@ SpectralColor& SpectralColor::operator =(const SpectralColor& speccolor){
       }
     #endif
 
-    CMLFunction* newfunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
+    CMLFunction* newFunction = cmlCreateFunctionSubFunction(spectrum, speccolor.spectrum);
     cmlReleaseFunction(spectrum);
-    spectrum = newfunction;
+    spectrum = newFunction;
     return *this;
   }
 
   SpectralColor& SpectralColor::operator *=(float factor){
-    CMLFunction* newfunction = cmlCreateFunctionMulScalar(spectrum, factor);
+    CMLFunction* newFunction = cmlCreateFunctionMulScalar(spectrum, factor);
     cmlReleaseFunction(spectrum);
-    spectrum = newfunction;
+    spectrum = newFunction;
     return *this;
   }
 
@@ -205,36 +205,36 @@ SpectralColor SpectralColor::toSpectral() const  {
 
 
 void SpectralColor::from8BitBuffer(const CMLByte* input){
-  input = input;  // no warning
+  CML_UNUSED(input);
 }
 void SpectralColor::from16BitBuffer(const CMLWord* input){
-  input = input;  // no warning
+  CML_UNUSED(input);
 }
 void SpectralColor::fromFloatBuffer(const float* input){
-  input = input;  // no warning
+  CML_UNUSED(input);
 }
 void SpectralColor::to8BitBuffer(CMLByte* output) const {
-  output = output;  // no warning
+  CML_UNUSED(output);
 }
 void SpectralColor::to16BitBuffer(CMLWord* output) const {
-  output = output;  // no warning
+  CML_UNUSED(output);
 }
 void SpectralColor::toFloatBuffer(float* output) const {
-  output = output;  // no warning
+  CML_UNUSED(output);
 }
 
 
 void SpectralColor::fromNormedBuffer(const float* input){
-  input = input;  // no warning
+  CML_UNUSED(input);
 }
 void SpectralColor::toNormedBuffer(float* output) const {
-  output = output;  // no warning
+  CML_UNUSED(output);
 }
 void SpectralColor::fromNormedCartesianBuffer(const float* input){
-  input = input;  // no warning
+  CML_UNUSED(input);
 }
 void SpectralColor::toNormedCartesianBuffer(float* output) const {
-  output = output;  // no warning
+  CML_UNUSED(output);
 }
 
 

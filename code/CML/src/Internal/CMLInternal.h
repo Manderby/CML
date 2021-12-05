@@ -20,13 +20,16 @@
 
 
 struct CML_HIDDEN CMLFunction{
-  size_t refcount;
-  size_t paramcount;
+  size_t refCount;
+  size_t paramCount;
   float* params;
+  size_t dataSize;
   void* data;
   CMLDefinitionRange defRange;
   CMLFunctionEvaluator getValue;
-  CMLFunctionDesctructor destruct;
+  CMLFunctionDesctructor destructor;
+  CMLFunctionInputSetter inputSetter;
+  CMLFunctionInputGetter inputGetter;
 };
 
 

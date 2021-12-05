@@ -3,6 +3,7 @@
 #include "CMLColorMachineState.h"
 
 
+// Common values for several illumination spectra.
 #define CML_ILLUMINATIONSPECTRUM_MIN 380.f
 #define CML_ILLUMINATIONSPECTRUM_MAX 780.f
 #define CML_ILLUMINATIONSPECTRUM_NUM 81
@@ -199,6 +200,17 @@ CML_HIDDEN static const float robertsont[] = {
 
 
 
+CML_HDEF CMLArrayFunctionSettings cml_getCommonIlluminationSpectrumSettings(){
+  CMLArrayFunctionSettings settings = {
+    CML_ILLUMINATIONSPECTRUM_NUM,
+    CML_ILLUMINATIONSPECTRUM_MIN,
+    CML_ILLUMINATIONSPECTRUM_MAX,
+    CML_INTERPOLATION_LINEAR,
+    CML_EXTRAPOLATION_LINEAR_ZERO,
+    CML_EXTRAPOLATION_LINEAR_ZERO};
+  return settings;
+}
+
 CML_API CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminationType, float temperature){  
   switch(illuminationType){
   case CML_ILLUMINATION_BLACKBODY:
@@ -210,12 +222,14 @@ CML_API CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
   case CML_ILLUMINATION_A_EXACT:
     return cmlCreateBlackBody(CML_TEMPERATURE_A);
     break;
-  case CML_ILLUMINATION_B:
-    return cmlCreateArrayFunction(billuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_C:
-    return cmlCreateArrayFunction(cilluminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
+  case CML_ILLUMINATION_B: {
+    CMLArrayFunctionInput input = {billuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_C: {
+    CMLArrayFunctionInput input = {cilluminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
   case CML_ILLUMINATION_D_ILLUMINANT:
     return cmlCreateCIEDIlluminant(temperature);
     break;
@@ -237,45 +251,66 @@ CML_API CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
   case CML_ILLUMINATION_E:
     return cmlCreateConstFilter(1.f);
     break;
-  case CML_ILLUMINATION_F1:
-    return cmlCreateArrayFunction(f1illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F2:
-    return cmlCreateArrayFunction(f2illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F3:
-    return cmlCreateArrayFunction(f3illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F4:
-    return cmlCreateArrayFunction(f4illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F5:
-    return cmlCreateArrayFunction(f5illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F6:
-    return cmlCreateArrayFunction(f6illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F7:
-    return cmlCreateArrayFunction(f7illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F8:
-    return cmlCreateArrayFunction(f8illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F9:
-    return cmlCreateArrayFunction(f9illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F10:
-    return cmlCreateArrayFunction(f10illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F11:
-    return cmlCreateArrayFunction(f11illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_F12:
-    return cmlCreateArrayFunction(f12illuminant, CML_FALSE, CML_ILLUMINATIONSPECTRUM_NUM, CML_ILLUMINATIONSPECTRUM_MIN, CML_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
-  case CML_ILLUMINATION_XENON:
-    return cmlCreateArrayFunction(xenonilluminant, CML_FALSE, CML_XENON_ILLUMINATIONSPECTRUM_NUM, CML_XENON_ILLUMINATIONSPECTRUM_MIN, CML_XENON_ILLUMINATIONSPECTRUM_MAX, CML_INTERPOLATION_LINEAR, CML_EXTRAPOLATION_LINEAR_ZERO, CML_EXTRAPOLATION_LINEAR_ZERO);
-    break;
+  case CML_ILLUMINATION_F1: {
+    CMLArrayFunctionInput input = {f1illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F2: {
+    CMLArrayFunctionInput input = {f2illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F3: {
+    CMLArrayFunctionInput input = {f3illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F4: {
+    CMLArrayFunctionInput input = {f4illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F5: {
+    CMLArrayFunctionInput input = {f5illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F6: {
+    CMLArrayFunctionInput input = {f6illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F7: {
+    CMLArrayFunctionInput input = {f7illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F8: {
+    CMLArrayFunctionInput input = {f8illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F9: {
+    CMLArrayFunctionInput input = {f9illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F10: {
+    CMLArrayFunctionInput input = {f10illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F11: {
+    CMLArrayFunctionInput input = {f11illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_F12: {
+    CMLArrayFunctionInput input = {f12illuminant, CML_FALSE, cml_getCommonIlluminationSpectrumSettings()};
+    return cmlCreateArrayFunction(input);
+    break; }
+  case CML_ILLUMINATION_XENON: {
+    CMLArrayFunctionInput input = {
+      xenonilluminant,
+      CML_FALSE,
+      { CML_XENON_ILLUMINATIONSPECTRUM_NUM,
+        CML_XENON_ILLUMINATIONSPECTRUM_MIN,
+        CML_XENON_ILLUMINATIONSPECTRUM_MAX,
+        CML_INTERPOLATION_LINEAR,
+        CML_EXTRAPOLATION_LINEAR_ZERO,
+        CML_EXTRAPOLATION_LINEAR_ZERO}};
+    return cmlCreateArrayFunction(input);
+    break; }
   default:
     #if CML_DEBUG
       cmlError("Illumination type invalid.");
@@ -495,7 +530,14 @@ CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumin
 
 CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
   #if CML_DEBUG
-    if(type != CML_ILLUMINATION_BLACKBODY && type != CML_ILLUMINATION_BLACKBODY && temperature != 0)
+    if(type != CML_ILLUMINATION_BLACKBODY &&
+      type != CML_ILLUMINATION_D_ILLUMINANT &&
+      type != CML_ILLUMINATION_D50 &&
+      type != CML_ILLUMINATION_D55 &&
+      type != CML_ILLUMINATION_D65 &&
+      type != CML_ILLUMINATION_D75 &&
+      type != CML_ILLUMINATION_D93 &&
+      temperature != 0)
       cmlError("Temperature should be zero except for blackbody or D illuminant type.");
   #endif
 
