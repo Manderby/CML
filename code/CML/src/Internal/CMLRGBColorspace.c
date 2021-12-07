@@ -30,7 +30,7 @@ CML_HDEF static const CMLIlluminationType rgbSpaceIlluminations[CML_NUMBER_OF_RG
   CML_ILLUMINATION_D65,     // CML_RGB_CUSTOM
 };
 
-CML_HDEF static const CMLResponseCurvePreset rgbSpaceResponsePresets[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HDEF static const CMLResponseCurveType rgbSpaceResponseTypes[CML_NUMBER_OF_RGB_SPACES] = {
   CML_RESPONSE_GAMMA_ADOBE_98,             // CML_RGB_ADOBE_98
   CML_RESPONSE_GAMMA_1_8,                  // CML_RGB_APPLE
   CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_BEST
@@ -54,7 +54,7 @@ CML_HDEF static const CMLResponseCurvePreset rgbSpaceResponsePresets[CML_NUMBER_
   CML_RESPONSE_SRGB,                       // CML_RGB_SMPTE_C
   CML_RESPONSE_SRGB,                       // CML_RGB_SRGB
   CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_WIDE_GAMUT
-  CML_RESPONSE_GAMMA_2_2,                  // CML_RGB_CUSTOM
+  CML_RESPONSE_UNDEFINED,                  // CML_RGB_CUSTOM
 };
 
 // array ordering: {xr, yr, xg, yg, xb, yb}
@@ -90,27 +90,29 @@ CML_HDEF static const float rgbSpaceprimaries[CML_NUMBER_OF_RGB_SPACES][6] = {
 CML_HDEF void cml_recomputeRGBResponses(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES; return;}
   
-  CMLResponseCurve responseR;
-  CMLResponseCurve responseG;
-  CMLResponseCurve responseB;
-  cmlInitResponseCurveWithPreset(&responseR, rgbSpaceResponsePresets[cm->rgbSpace.state]);
-  cmlInitResponseCurveWithPreset(&responseG, rgbSpaceResponsePresets[cm->rgbSpace.state]);
-  cmlInitResponseCurveWithPreset(&responseB, rgbSpaceResponsePresets[cm->rgbSpace.state]);
-  cmlSetResponseR(cm, &responseR);
-  cmlSetResponseG(cm, &responseG);
-  cmlSetResponseB(cm, &responseB);
-  cmlClearResponseCurve(&responseR);
-  cmlClearResponseCurve(&responseG);
-  cmlClearResponseCurve(&responseB);
+  if(cm->rgbSpace.type != CML_RGB_CUSTOM){
+    CMLResponseCurve responseR;
+    CMLResponseCurve responseG;
+    CMLResponseCurve responseB;
+    cmlInitResponseCurveWithType(&responseR, rgbSpaceResponseTypes[cm->rgbSpace.type]);
+    cmlInitResponseCurveWithType(&responseG, rgbSpaceResponseTypes[cm->rgbSpace.type]);
+    cmlInitResponseCurveWithType(&responseB, rgbSpaceResponseTypes[cm->rgbSpace.type]);
+    cmlSetResponseR(cm, &responseR);
+    cmlSetResponseG(cm, &responseG);
+    cmlSetResponseB(cm, &responseB);
+    cmlClearResponseCurve(&responseR);
+    cmlClearResponseCurve(&responseG);
+    cmlClearResponseCurve(&responseB);
+  }
 }
 
 
 
-CML_HDEF void cml_recomputeRGBColorspace(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeRGBColorSpace(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_RGB; return;}
 
-  if(cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer))) != rgbSpaceIlluminations[cm->rgbSpace.state]){
-    cm->rgbSpace.state = CML_RGB_CUSTOM;
+  if(cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer))) != rgbSpaceIlluminations[cm->rgbSpace.type]){
+    cm->rgbSpace.type = CML_RGB_CUSTOM;
   }
 
   CMLVec3 normedWhitePointYxy;
@@ -127,21 +129,21 @@ CML_HDEF void cml_recomputeRGBColorspace(CMLColorMachine* cm){
 
 
 
-CML_API CMLRGBColorSpace cmlGetRGBColorSpace(const CMLColorMachine* cm){
-  return cm->rgbSpace.state;
+CML_API CMLRGBColorSpaceType cmlGetRGBColorSpaceType(const CMLColorMachine* cm){
+  return cm->rgbSpace.type;
 }
 
 
-CML_API void cmlSetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorSpaceType){    
+CML_API void cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type){
   // Multiple changes need to be made. (Illumination and RGBSpace)
   cmlLockRecomputation(cm);
   
-  cm->rgbSpace.state = colorSpaceType;
-  if(cm->rgbSpace.state != CML_RGB_CUSTOM){
-    cmlGetRGBColorSpacePrimaries(colorSpaceType, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2]);
-    cmlSetIlluminationType(cm, rgbSpaceIlluminations[cm->rgbSpace.state]);
+  cm->rgbSpace.type = type;
+  if(cm->rgbSpace.type != CML_RGB_CUSTOM){
+    cmlGetRGBColorSpacePrimaries(type, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2]);
+    cmlSetIlluminationType(cm, rgbSpaceIlluminations[cm->rgbSpace.type]);
   }
-  cml_recomputeRGBColorspace(cm);
+  cml_recomputeRGBColorSpace(cm);
   
   cmlReleaseRecomputation(cm);
 }
@@ -155,14 +157,14 @@ CML_API void cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[
 
 
 CML_API void cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]){
-  cm->rgbSpace.state = CML_RGB_CUSTOM;
+  cm->rgbSpace.type = CML_RGB_CUSTOM;
   cm->rgbSpace.primariesYxy[0][1] = primaries[0][1];
   cm->rgbSpace.primariesYxy[0][2] = primaries[0][2];
   cm->rgbSpace.primariesYxy[1][1] = primaries[1][1];
   cm->rgbSpace.primariesYxy[1][2] = primaries[1][2];
   cm->rgbSpace.primariesYxy[2][1] = primaries[2][1];
   cm->rgbSpace.primariesYxy[2][2] = primaries[2][2];
-  cml_recomputeRGBColorspace(cm);
+  cml_recomputeRGBColorSpace(cm);
 }
 
 
@@ -250,17 +252,17 @@ CML_API void cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits){
 }
 
 
-CML_API void cmlGetRGBColorSpacePrimaries(CMLRGBColorSpace colorSpaceType, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy){
-  if(colorSpaceType < CML_RGB_CUSTOM){
+CML_API void cmlGetRGBColorSpacePrimaries(CMLRGBColorSpaceType type, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy){
+  if(type < CML_RGB_CUSTOM){
     primaryRYxy[0] = 1.f;
-    primaryRYxy[1]  = rgbSpaceprimaries[colorSpaceType][0];
-    primaryRYxy[2]  = rgbSpaceprimaries[colorSpaceType][1];
+    primaryRYxy[1]  = rgbSpaceprimaries[type][0];
+    primaryRYxy[2]  = rgbSpaceprimaries[type][1];
     primaryGYxy[0] = 1.f;
-    primaryGYxy[1]  = rgbSpaceprimaries[colorSpaceType][2];
-    primaryGYxy[2]  = rgbSpaceprimaries[colorSpaceType][3];
+    primaryGYxy[1]  = rgbSpaceprimaries[type][2];
+    primaryGYxy[2]  = rgbSpaceprimaries[type][3];
     primaryBYxy[0] = 1.f;
-    primaryBYxy[1]  = rgbSpaceprimaries[colorSpaceType][4];
-    primaryBYxy[2]  = rgbSpaceprimaries[colorSpaceType][5];
+    primaryBYxy[1]  = rgbSpaceprimaries[type][4];
+    primaryBYxy[2]  = rgbSpaceprimaries[type][5];
   }else{
     #if CML_DEBUG
       cmlError("Invalid RGB colorspace.");
@@ -269,9 +271,9 @@ CML_API void cmlGetRGBColorSpacePrimaries(CMLRGBColorSpace colorSpaceType, CMLVe
 }
 
 
-CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(CMLRGBColorSpace colorSpaceType){
-  if(colorSpaceType < CML_RGB_CUSTOM){
-    return rgbSpaceIlluminations[colorSpaceType];
+CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(CMLRGBColorSpaceType type){
+  if(type < CML_RGB_CUSTOM){
+    return rgbSpaceIlluminations[type];
   }else{
     #if CML_DEBUG
       cmlError("Invalid RGB colorspace.");
@@ -280,9 +282,9 @@ CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(CMLRGBColorSpace
   }
 }
 
-CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset(CMLRGBColorSpace colorSpaceType){
-  if(colorSpaceType < CML_RGB_CUSTOM){
-    return rgbSpaceResponsePresets[colorSpaceType];
+CML_API CMLResponseCurveType cmlGetRGBColorSpaceResponseCurveType(CMLRGBColorSpaceType type){
+  if(type < CML_RGB_CUSTOM){
+    return rgbSpaceResponseTypes[type];
   }else{
     #if CML_DEBUG
       cmlError("Invalid RGB colorspace.");

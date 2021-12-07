@@ -30,27 +30,10 @@ struct CML_HIDDEN CMLColorMachine{
     float                         range16Bit[CML_MAX_NUMBER_OF_CHANNELS];
   } inputoutput;
   
-//  struct observer_struct{
-//    CMLObserverType               state;
-//    CMLFunction*                  functions[3];
-//    CMLBool                       radiometric;
-//  } observer;
-  
   CMLObserver observer;
-//  CMLIllumination illumination;
-  
-//  struct illumination_struct{
-//    CMLIlluminationType           state;
-//    CMLFunction*                  spectrum;
-//    CMLVec3                       inverseWhitePointXYZ;
-//    CMLVec3                       whitePointXYZ;
-//    CMLVec3                       whitePointYxy;
-//    CMLVec3                       whitePointYupvp;
-//    float                         temperature;
-//  } illumination;
   
   struct rgbSpace_struct{
-    CMLRGBColorSpace              state;
+    CMLRGBColorSpaceType          type;
     CMLVec3                       primariesYxy[3];
     CMLResponseCurve              responseR;
     CMLResponseCurve              responseG;
@@ -130,10 +113,10 @@ CML_HIDDEN void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size
  
 CML_HIDDEN void cml_recomputeObserver(CMLColorMachine* cm);
 CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm);
+CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm);
 CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm);
 CML_HIDDEN void cml_recomputeRGBResponses(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeRGBColorspace(CMLColorMachine* cm);
+CML_HIDDEN void cml_recomputeRGBColorSpace(CMLColorMachine* cm);
 
 CML_HIDEF void cml_CMXYZToYxy   (const CMLColorMachine* cm, float* CML_RESTRICT yxy, const float* CML_RESTRICT xyz, size_t count)
   {cml_XYZToYxy(yxy, xyz, cmlGetReferenceWhitePointYxy(&(cm->observer)), count);}

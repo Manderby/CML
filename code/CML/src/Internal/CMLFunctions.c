@@ -62,7 +62,7 @@ CML_DEF void cmlSetFunctionInput(CMLFunction* func, const void* input){
   }
 }
 
-CML_DEF const void* cmlGetFunctionInput(CMLFunction* func){
+CML_DEF const void* cmlGetFunctionInput(const CMLFunction* func){
   if(func->inputGetter){
     return func->inputGetter(func->data);
   }else{
@@ -102,19 +102,6 @@ CML_DEF void cmlReleaseFunction(CMLFunction* func){
 
 CML_DEF float cmlEval(const CMLFunction* func, float x){
   return cml_Eval(func, x);
-}
-
-
-
-CML_DEF float cmlGetFunctionParameter(const CMLFunction* func, size_t index){
-  if(index < func->paramCount){
-    return func->params[index];
-  }else{
-    #if CML_DEBUG
-      cmlError("Parameter not existing.");
-    #endif
-    return 0.f;
-  }
 }
 
 
@@ -658,7 +645,7 @@ CML_DEF CMLFunction* cmlCreateBlackBody(float temperature){
     cml_GetBlackBodyInput,
     cml_EvaluateBlackBody,
     0,
-    &temperature,
+    CML_NULL,
     sizeof(CMLBlackBodyData));
   cmlSetFunctionInput(func, &temperature);
   return func;
@@ -854,14 +841,6 @@ CML_DEF CMLFunction* cmlCreateGammaResponse(float gamma){
 // Linear Gamma Response
 // //////////////////////////////////////////////
 
-typedef struct GammaLinearInputParameters{
-  float gamma;
-  float offset;
-  float linScale;
-  float split;
-} GammaLinearInputParameters;
-
-
 typedef struct GammaLinearStruct{
   float invgamma;
   float offset;
@@ -869,7 +848,6 @@ typedef struct GammaLinearStruct{
   float linScale;
   float splitpoint;
 } GammaLinearStruct;
-
 
 CML_HDEF void cml_ConstructGammaLinearResponse(float* params, void** data, CMLDefinitionRange* defRange, const void* input){
   defRange = defRange;
@@ -885,7 +863,6 @@ CML_HDEF void cml_ConstructGammaLinearResponse(float* params, void** data, CMLDe
   ((GammaLinearStruct*)(*data))->splitpoint = params[3];
 }
 
-
 CML_HDEF float cml_EvaluateGammaLinearResponse(float* params, const void* data, float x){
   CML_UNUSED(params);
   if(x > ((GammaLinearStruct*)data)->splitpoint){
@@ -895,11 +872,9 @@ CML_HDEF float cml_EvaluateGammaLinearResponse(float* params, const void* data, 
   }
 }
 
-
 CML_HDEF void cml_DestructGammaLinearResponse(void* data){
   free(data);
 }
-
 
 CML_DEF CMLFunction* cmlCreateGammaLinearResponse(float gamma, float offset, float linScale, float split){
   GammaLinearInputParameters tmpstruct = {gamma, offset, linScale, split};

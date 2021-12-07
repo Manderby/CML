@@ -30,7 +30,7 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cml_Allocate(sizeof(CMLColorMachine));
 
-  CMLIllumination* referenceIllumination = cmlCreateIlluminationWithPreset(CML_NULL, CML_ILLUMINATION_D65, 0);
+  CMLIllumination* referenceIllumination = cmlCreateIlluminationWithType(CML_NULL, CML_ILLUMINATION_D65, 0);
   cmlCreateObserver(&(cm->observer),
     CML_OBSERVER_2DEG_CIE_1931,
     referenceIllumination,
@@ -40,7 +40,7 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   cmlInitResponseCurve(&(cm->rgbSpace.responseG));
   cmlInitResponseCurve(&(cm->rgbSpace.responseB));
   cmlInitResponseCurve(&(cm->labSpace.responseL));
-  cmlInitResponseCurveWithPreset(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
+  cmlInitResponseCurveWithType(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
   
   cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
   cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
@@ -74,7 +74,7 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
 
   // Set the default RGB space and the according default illumination.
   cmlSetRGBLUTSize(cm, CML_DEFAULT_RGB_LUT_SIZE);
-  cmlSetRGBColorSpace(cm, CML_DEFAULT_RGB_COLORSPACE);
+  cmlSetRGBColorSpaceType(cm, CML_DEFAULT_RGB_COLORSPACE);
 
   // Set the chromatic valence parameters manually to the Hunter Lab original
   // values.
@@ -124,10 +124,10 @@ CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
   }else{
     // note that the following recomputations may occur independant of each
     // other.
-    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_LAB){cml_recomputeLabColorspace(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_LAB){cml_recomputeLabColorSpace(cm);}
     if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY){cml_recomputeAdamsChromaticityValenceSpace(cm);}
     if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES){cml_recomputeRGBResponses(cm);}
-    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_RGB){cml_recomputeRGBColorspace(cm);}
+    if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_RGB){cml_recomputeRGBColorSpace(cm);}
   }
   cm->recomputationMask = 0;
 }

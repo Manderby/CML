@@ -121,15 +121,15 @@ CML_API void cmlConvertRGBToXYZ(
 CML_API void cmlConvertRGBToYCbCr(
   CMLVec3 ycbcr,
   const CMLVec3 rgb,
-  const CMLVec3 redprimaryYxy,
-  const CMLVec3 blueprimaryYxy,
+  const CMLVec3 redPrimaryYxy,
+  const CMLVec3 bluePrimaryYxy,
   const CMLVec3 whitePointXYZ);
 
 CML_API void cmlConvertYCbCrToRGB(
   CMLVec3 rgb,
   const CMLVec3 ycbcr,
-  const CMLVec3 redprimaryYxy,
-  const CMLVec3 blueprimaryYxy,
+  const CMLVec3 redPrimaryYxy,
+  const CMLVec3 bluePrimaryYxy,
   const CMLVec3 whitePointXYZ);
 
 
@@ -232,17 +232,17 @@ CML_API float cmlGetCorrelatedColorTemperature(
 // Returns all three primaries of a predefined RGB colorspace. Note that
 // the Y component of the three primaries will always be 1.
 CML_API void cmlGetRGBColorSpacePrimaries(
-  CMLRGBColorSpace colorSpaceType,
+  CMLRGBColorSpaceType type,
   CMLVec3 primaryRYxy,
   CMLVec3 primaryGYxy,
   CMLVec3 primaryBYxy);
   
 // Returns the illumination type of a predefined RGB colorspace.
 CML_API CMLIlluminationType cmlGetRGBColorSpaceIlluminationType(
-  CMLRGBColorSpace colorSpaceType);
+  CMLRGBColorSpaceType type);
   
-CML_API CMLResponseCurvePreset cmlGetRGBColorSpaceResponseCurvePreset(
-  CMLRGBColorSpace colorSpaceType);
+CML_API CMLResponseCurveType cmlGetRGBColorSpaceResponseCurveType(
+  CMLRGBColorSpaceType type);
 
 
 

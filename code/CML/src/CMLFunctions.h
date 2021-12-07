@@ -35,6 +35,14 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 // The GammaLinearResponse is computed according to the following formula:
 // (1+offset) * powf(x, 1/gamma) - offset    if x => split
 // x * linScale                              if x <  split
+
+typedef struct GammaLinearInputParameters{
+  float gamma;
+  float offset;
+  float linScale;
+  float split;
+} GammaLinearInputParameters;
+
 CML_API CMLFunction* cmlCreateLinearResponse(void);
 CML_API CMLFunction* cmlCreateGammaResponse(float gamma);
 CML_API CMLFunction* cmlCreateGammaLinearResponse(float linScale, float offset, float gamma, float split);
@@ -109,10 +117,6 @@ CML_API CMLFunction* cmlSampleArrayFunction(
 // Evaluates the given function at coordinate x
 CML_API float cmlEval(const CMLFunction* func, float x);
 
-// Returns the desired parameter of the function, if it exists. Returns 0
-// otherwise. The index is 0-based.
-CML_API float cmlGetFunctionParameter(const CMLFunction* func, size_t index);
-
 // Computes the weighted sum of the given function which is multiplied with
 // the given filter.
 CML_API float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter);
@@ -155,10 +159,6 @@ CML_API void cmlReleaseFunction(CMLFunction* func);
 // CMLFunction. To do so, your allocation code should look something like this:
 // *data = malloc(sizeof(MyCustomStorage));
 // If you are using C++, you can also use any appropriate new-operator.
-//
-// Note that the advantage of the "params" parameter is that the memory is
-// allocated and deallocated automatically for you and the parameters stored
-// there can be accessed by a call to cmlGetFunctionParameter.
 //
 // The "input" parameter is the argument which you pass to cmlCreateFunction.
 // The "defRange" parameter is a pointer to a CMLDefinitionRange structure
@@ -228,7 +228,7 @@ CML_API CMLFunction* cmlCreateFunction(
 // Set any kind of input a function requires. The function will store these
 // parameters as a copy and can later be retrieved using the getter function.
 CML_API void cmlSetFunctionInput(CMLFunction* func, const void* input);
-CML_API const void* cmlGetFunctionInput(CMLFunction* func);
+CML_API const void* cmlGetFunctionInput(const CMLFunction* func);
 
 
 // //////////////////////////////////////////

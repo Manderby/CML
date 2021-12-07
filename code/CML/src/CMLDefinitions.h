@@ -103,7 +103,7 @@ typedef enum{
   CML_RGB_WIDE_GAMUT,
   CML_RGB_CUSTOM,           // custom RGB is always the last one.
   CML_NUMBER_OF_RGB_SPACES
-} CMLRGBColorSpace;
+} CMLRGBColorSpaceType;
 
 // Enumerates the predefined Lab colorspaces
 typedef enum{
@@ -129,8 +129,10 @@ typedef enum{
   CML_RESPONSE_SRGB,
   CML_RESPONSE_LSTAR,
   CML_RESPONSE_LSTAR_STANDARD,
-  CML_NUMBER_OF_RESPONSE_CURVE_PRESETS
-} CMLResponseCurvePreset;
+  CML_RESPONSE_CUSTOM_GAMMA,
+  CML_RESPONSE_CUSTOM_GAMMA_LINEAR,
+  CML_NUMBER_OF_RESPONSE_CURVE_TYPES
+} CMLResponseCurveType;
 
 // Enumerates the predefined function types
 typedef enum{
@@ -228,9 +230,9 @@ typedef enum{
 CML_API const char* cmlGetColorTypeString               (CMLColorType colorType);
 CML_API const char* cmlGetObserverTypeString            (CMLObserverType observerType);
 CML_API const char* cmlGetIlluminationTypeString        (CMLIlluminationType illuminationType);
-CML_API const char* cmlGetRGBColorspaceString           (CMLRGBColorSpace colorSpaceType);
+CML_API const char* cmlGetRGBColorSpaceTypeString       (CMLRGBColorSpaceType type);
 CML_API const char* cmlGetLabSpaceTypeString            (CMLLabColorSpaceType labSpaceType);
-CML_API const char* cmlGetRGBResponsePresetString       (CMLResponseCurvePreset preset);
+CML_API const char* cmlGetRGBResponseTypeString         (CMLResponseCurveType type);
 CML_API const char* cmlGetFunctionTypeString            (CMLFunctionType functionType);
 CML_API const char* cmlGetGrayComputationTypeString     (CMLGrayComputationType computationType);
 CML_API const char* cmlGetCMYKTransformTypeString       (cml_CMYKTransformType transformType);

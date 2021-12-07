@@ -36,7 +36,7 @@ struct CML_HIDDEN CMLFunction{
 struct CMLResponseCurve{
   CMLFunction* forwardFunc;     // converting from luminance space
   CMLFunction* backwardFunc;    // converting to luminance space
-  CMLFunctionType functionType;
+  CMLResponseCurveType responseType;
 };
 
 
@@ -523,30 +523,30 @@ CML_HIDEF void cml_RGBToXYZ_SB (float* buf, size_t count, CMLuint32 floatAlign, 
 // RGB to YCbCr
 // ////////////////////////////////////
 
-#define cml_ConvertRGBToYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ) \
-  float Kr = redprimaryYxy[0] * inverseWhitePointXYZ[1];\
-  float Kb = blueprimaryYxy[0] * inverseWhitePointXYZ[1];\
+#define cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ) \
+  float Kr = redPrimaryYxy[0] * inverseWhitePointXYZ[1];\
+  float Kb = bluePrimaryYxy[0] * inverseWhitePointXYZ[1];\
   float Y = Kr * in[0] + (1.f - Kr - Kb) * in[1] + Kb * in[2];\
   out[1] = .5f * (in[2] - Y) / (1.f - Kb);\
   out[2] = .5f * (in[0] - Y) / (1.f - Kr);\
   out[0] = Y;
 
-CML_HIDEF void cml_OneRGBToYCbCr (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertRGBToYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneRGBToYCbCr (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+  cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
-CML_HIDEF void cml_OneRGBToYCbCr_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertRGBToYCbCr(buf, buf, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneRGBToYCbCr_SB (float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+  cml_ConvertRGBToYCbCr(buf, buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
 
-CML_HIDEF void cml_RGBToYCbCr (float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_RGBToYCbCr (float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
   cml__START_COUNT_LOOP(count);
-  cml_OneRGBToYCbCr(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
   cml__END_COUNT_LOOP(CML_YCbCr_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cml_RGBToYCbCr_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_RGBToYCbCr_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
   cml__START_COUNT_LOOP(count);
-  cml_OneRGBToYCbCr_SB(buf, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneRGBToYCbCr_SB(buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -620,31 +620,31 @@ CML_HIDEF void cml_LchToLab_SB(float* buf, size_t count, CMLuint32 floatAlign){
 // YCbCr to RGB
 // ////////////////////////////////////
 
-#define cml_ConvertYCbCrToRGB(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ) \
-  float Kr = redprimaryYxy[0] * inverseWhitePointXYZ[1];\
-  float Kb = blueprimaryYxy[0] * inverseWhitePointXYZ[1];\
+#define cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ) \
+  float Kr = redPrimaryYxy[0] * inverseWhitePointXYZ[1];\
+  float Kb = bluePrimaryYxy[0] * inverseWhitePointXYZ[1];\
   float Y = in[0];\
   out[0] = 2.f * in[2] * (1.f - Kr) + Y;\
   out[2] = 2.f * in[1] * (1.f - Kb) + Y;\
   out[1] = (Y - Kr * out[0] - Kb * out[2]) / (1.f - Kr - Kb);
 
 
-CML_HIDEF void cml_OneYCbCrToRGB (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertYCbCrToRGB(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneYCbCrToRGB (float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+  cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
-CML_HIDEF void cml_OneYCbCrToRGB_SB (float* buf, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertYCbCrToRGB(buf, buf, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneYCbCrToRGB_SB (float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+  cml_ConvertYCbCrToRGB(buf, buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
 
-CML_HIDEF void cml_YCbCrToRGB (float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_YCbCrToRGB (float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
   cml__START_COUNT_LOOP(count);
-  cml_OneYCbCrToRGB(out, in, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
   cml__END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_YCbCr_NUMCHANNELS);
 }
 
-CML_HIDEF void cml_YCbCrToRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_YCbCrToRGB_SB (float* buf, size_t count, CMLuint32 floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
   cml__START_COUNT_LOOP(count);
-  cml_OneYCbCrToRGB_SB(buf, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneYCbCrToRGB_SB(buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
 

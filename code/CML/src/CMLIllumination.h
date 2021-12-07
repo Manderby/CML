@@ -1,6 +1,6 @@
 
 CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
-CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
+CML_API CMLIllumination* cmlCreateIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
 CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer);
 CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
 

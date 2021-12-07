@@ -404,9 +404,9 @@ CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
 //    break;
 //  }
 
-  cml_recomputeLabColorspace(cm);
+  cml_recomputeLabColorSpace(cm);
   cml_recomputeAdamsChromaticityValenceSpace(cm);  
-  cml_recomputeRGBColorspace(cm);
+  cml_recomputeRGBColorSpace(cm);
 }
 
 
@@ -420,7 +420,7 @@ CML_API void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType ill
 
   CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
   float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-  CMLIllumination* newillumination = cmlCreateIlluminationWithPreset(CML_NULL, illuminationType, cmlGetIlluminationTemperature(cm));
+  CMLIllumination* newillumination = cmlCreateIlluminationWithType(CML_NULL, illuminationType, cmlGetIlluminationTemperature(cm));
   cmlClearObserver(&(cm->observer));
   cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
   cmlClearIllumination(newillumination);
@@ -449,7 +449,7 @@ CML_API void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
 
     CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
     float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithPreset(CML_NULL, illtype, temp);
+    CMLIllumination* newillumination = cmlCreateIlluminationWithType(CML_NULL, illtype, temp);
     cmlClearObserver(&(cm->observer));
     cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
     cmlClearIllumination(newillumination);
@@ -528,7 +528,7 @@ CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumin
 }
 
 
-CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
+CML_API CMLIllumination* cmlCreateIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature){
   #if CML_DEBUG
     if(type != CML_ILLUMINATION_BLACKBODY &&
       type != CML_ILLUMINATION_D_ILLUMINANT &&

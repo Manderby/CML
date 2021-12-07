@@ -55,7 +55,7 @@ CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, 
 // The illumination defines the current illumination assumed. This includes
 // the whitePoint. Initial setting is the standard illumination of the
 // standard RGB colorspace, which for sRGB is D65.
-// Note that setting the RGB Colorspace will set the illumination implicitely
+// Note that setting the RGB ColorSpace will set the illumination implicitely
 // by default.
 // Note that the setIlluminationTemperature method will only take effect with
 // the Blackbody and custom D illuminant. Otherwise, the input is ignored.
@@ -100,23 +100,24 @@ CML_API void                  cmlSetResponseL(CMLColorMachine* cm, CMLResponseCu
 // responses. If a value of 0 is used, gamma will be set close to the
 // previous response curve. The setResponseRGB function will set the same
 // response for R, G and B.
-CML_API CMLRGBColorSpace      cmlGetRGBColorSpace(const CMLColorMachine* cm);
-CML_API void                  cmlSetRGBColorSpace(CMLColorMachine* cm, CMLRGBColorSpace colorSpaceType);
-CML_API void                  cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
-CML_API void                  cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_API CMLRGBColorSpaceType   cmlGetRGBColorSpaceType(const CMLColorMachine* cm);
+CML_API void                   cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type);
+CML_API void                   cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_API void                   cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
 //CML_API void                  cmlGetRGBToLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
 //CML_API void                  cmlGetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
 //CML_API void                  cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType responsetypes[3]);
 //CML_API void                  cmlGetRGBGammas(const CMLColorMachine* cm, float gammas[3]);
-CML_API void                  cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType types[3]);
 CML_API const CMLResponseCurve* cmlGetResponseR  (CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseG  (CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm);
-CML_API void                  cmlSetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                  cmlSetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                  cmlSetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API CMLuint8              cmlGetRGBLUTSize(const CMLColorMachine* cm);
-CML_API void                  cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits);
+CML_API void                   cmlSetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlSetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlSetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API CMLuint8               cmlGetRGBLUTSize(const CMLColorMachine* cm);
+CML_API void                   cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits);
 
 
 // Transformation from RGB to CMYK can be achieved using different approaches

@@ -29,14 +29,19 @@ CML_API void cmlInitResponseCurveWithCopy(
   CMLResponseCurve* dstCurve,
   CMLResponseCurve* srcCurve);
 
-// Initializes the response curve with the predefined values defined by preset.
-CML_API void cmlInitResponseCurveWithPreset(
+// Initializes the response curve with the predefined values defined by type.
+CML_API void cmlInitResponseCurveWithType(
   CMLResponseCurve* curve,
-  CMLResponseCurvePreset preset);
+  CMLResponseCurveType type);
+
+// Initializes the response curve with a gamma curve.
+CML_API void cmlInitResponseCurveWithCustomGamma(
+  CMLResponseCurve* curve,
+  float gamma);
 
 // Initializes the response curve with a curve containing a gamma with an
 // offset and linear part split at a certain position.
-CML_API void cmlInitResponseCurveWith4ParamsFunction(
+CML_API void cmlInitResponseCurveWithCustomGammaLinear(
   CMLResponseCurve* curve,
   float gamma,
   float offset,
@@ -49,18 +54,12 @@ CML_API void cmlClearResponseCurve(CMLResponseCurve* curve);
 
 
 
+// Returns the response curve type.
+CML_API CMLResponseCurveType cmlGetResponseCurveType(const CMLResponseCurve* curve);
+
 // Getter for the two functions.
 CML_API const CMLFunction* cmlGetResponseCurveFunc(const CMLResponseCurve* curve);
 CML_API const CMLFunction* cmlGetResponseCurveInvFunc(const CMLResponseCurve* curve);
-
-// Returns the function type used in this curve.
-CML_API CMLFunctionType cmlGetResponseCurveFunctionType(const CMLResponseCurve* curve);
-
-// Getter for the parameters of the curve, if applicable.
-CML_API float cmlGetResponseCurveParam0(const CMLResponseCurve* curve);
-CML_API float cmlGetResponseCurveParam1(const CMLResponseCurve* curve);
-CML_API float cmlGetResponseCurveParam2(const CMLResponseCurve* curve);
-CML_API float cmlGetResponseCurveParam3(const CMLResponseCurve* curve);
 
 
 

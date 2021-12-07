@@ -69,16 +69,16 @@ CML_DEF void cmlConvertRGBToXYZ(CMLVec3 xyz, const CMLVec3 rgb, const CMLMat33 R
   cml_OneRGBToXYZ(xyz, rgb, RGBToXYZMatrix, RToLinearResponse, GToLinearResponse, BToLinearResponse);
 }
 
-CML_DEF void cmlConvertRGBToYCbCr(CMLVec3 ycbcr, const CMLVec3 rgb, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitePointXYZ){
+CML_DEF void cmlConvertRGBToYCbCr(CMLVec3 ycbcr, const CMLVec3 rgb, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZ){
   CMLVec3 inverseWhitePointXYZ;
   cmlSet3(inverseWhitePointXYZ, cmlInverse(whitePointXYZ[0]), cmlInverse(whitePointXYZ[1]), cmlInverse(whitePointXYZ[2]));
-  cml_OneRGBToYCbCr(ycbcr, rgb, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneRGBToYCbCr(ycbcr, rgb, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
 
-CML_DEF void cmlConvertYCbCrToRGB(CMLVec3 rgb, const CMLVec3 ycbcr, const CMLVec3 redprimaryYxy, const CMLVec3 blueprimaryYxy, const CMLVec3 whitePointXYZ){
+CML_DEF void cmlConvertYCbCrToRGB(CMLVec3 rgb, const CMLVec3 ycbcr, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZ){
   CMLVec3 inverseWhitePointXYZ;
   cmlSet3(inverseWhitePointXYZ, cmlInverse(whitePointXYZ[0]), cmlInverse(whitePointXYZ[1]), cmlInverse(whitePointXYZ[2]));
-  cml_OneYCbCrToRGB(rgb, ycbcr, redprimaryYxy, blueprimaryYxy, inverseWhitePointXYZ);
+  cml_OneYCbCrToRGB(rgb, ycbcr, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
 }
 
 CML_DEF void cmlConvertRGBToHSV(CMLVec3 hsv, const CMLVec3 rgb){

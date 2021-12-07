@@ -22,7 +22,7 @@ CML_API CMLLabColorSpaceType cmlGetLabColorSpace(const CMLColorMachine* cm){
 
 CML_API void cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace){
   cm->labSpace.state = labSpace;
-  cml_recomputeLabColorspace(cm);
+  cml_recomputeLabColorSpace(cm);
   cml_recomputeAdamsChromaticityValenceSpace(cm);
 }
 
@@ -119,7 +119,7 @@ CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
 
 
 
-CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm){
+CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_LAB; return;}
   CMLResponseCurve responseL;
 
@@ -130,7 +130,7 @@ CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm){
     cm->LabToXYZ = &cml_LabToXYZCIELAB;
     cm->LabToXYZ_SB = &cml_LabToXYZCIELAB_SB;
 //    cmlClearResponseCurve(&(cm->labSpace.responseL));
-    cmlInitResponseCurveWithPreset(&responseL, CML_RESPONSE_LSTAR);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_LSTAR);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
 //    cml_setResponseL(cm, CML_RESPONSE_LSTAR, 0.f, 0.f, 0.f);
@@ -148,7 +148,7 @@ CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm){
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
 //    cmlClearResponseCurve(&(cm->labSpace.responseL));
 //    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithPreset(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
 //    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);
@@ -160,7 +160,7 @@ CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm){
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
 //    cmlClearResponseCurve(&(cm->labSpace.responseL));
 //    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithPreset(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
 //    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);
@@ -172,7 +172,7 @@ CML_HIDDEN void cml_recomputeLabColorspace(CMLColorMachine* cm){
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
 //    cmlClearResponseCurve(&(cm->labSpace.responseL));
 //    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithPreset(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
 //    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);

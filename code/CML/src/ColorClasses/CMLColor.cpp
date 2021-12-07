@@ -55,7 +55,7 @@ void Color::fromBuffer(const float* src, CMLColorType inputtype){
   case CML_COLOR_CMYK:  fromCMYKBuffer(src); break;
   default:
     #if CML_DEBUG
-      cmlError("Undefined Colorspace.");
+      cmlError("Undefined ColorSpace.");
     #endif
     break;
   }
@@ -78,7 +78,7 @@ void Color::toBuffer(float* dest, CMLColorType outputtype) const{
   case CML_COLOR_CMYK:  toCMYKBuffer(dest); break;
   default:
     #if CML_DEBUG
-      cmlError("Undefined Colorspace.");
+      cmlError("Undefined ColorSpace.");
     #endif
     break;
   }

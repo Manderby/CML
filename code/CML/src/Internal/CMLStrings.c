@@ -109,19 +109,21 @@ CML_HIDDEN static const char* functionTypeStrings[CML_NUMBER_OF_FUNCTION_TYPES] 
   "L* Standard",           // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CML_HIDDEN static const char* rgbResponsePresetStrings[CML_NUMBER_OF_RESPONSE_CURVE_PRESETS] = {
-  "Undefined",           // CML_RESPONSE_UNDEFINED
-  "Linear",              // CML_RESPONSE_LINEAR
-  "Sqrt",                // CML_RESPONSE_SQRT
-  "Gamma Adobe 98",      // CML_RESPONSE_GAMMA_ADOBE_98
-  "Gamma 1.8",           // CML_RESPONSE_GAMMA_1_8
-  "Gamma 1.9",           // CML_RESPONSE_GAMMA_1_9
-  "Gamma 2.2",           // CML_RESPONSE_GAMMA_2_2
-  "Gamma Rec BT 10 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT
-  "Gamma Rec BT 12 Bit", // CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT
-  "sRGB",                // CML_RESPONSE_SRGB
-  "L*",                  // CML_RESPONSE_LSTAR
-  "L* Standard",         // CML_RESPONSE_LSTAR_STANDARD
+CML_HIDDEN static const char* rgbResponseTypeStrings[CML_NUMBER_OF_RESPONSE_CURVE_TYPES] = {
+  "Undefined",             // CML_RESPONSE_UNDEFINED
+  "Linear",                // CML_RESPONSE_LINEAR
+  "Sqrt",                  // CML_RESPONSE_SQRT
+  "Gamma Adobe 98",        // CML_RESPONSE_GAMMA_ADOBE_98
+  "Gamma 1.8",             // CML_RESPONSE_GAMMA_1_8
+  "Gamma 1.9",             // CML_RESPONSE_GAMMA_1_9
+  "Gamma 2.2",             // CML_RESPONSE_GAMMA_2_2
+  "Gamma Rec BT 10 Bit",   // CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT
+  "Gamma Rec BT 12 Bit",   // CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT
+  "sRGB",                  // CML_RESPONSE_SRGB
+  "L*",                    // CML_RESPONSE_LSTAR
+  "L* Standard",           // CML_RESPONSE_LSTAR_STANDARD
+  "Custom Gamma",          // CML_RESPONSE_CUSTOM_GAMMA
+  "Custom Gamma + Linear", // CML_RESPONSE_CUSTOM_GAMMA_LINEAR
 };
 
 CML_HIDDEN static const char* grayComputationStrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
@@ -164,14 +166,14 @@ CML_API const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationTy
 CML_API const char* cmlGetLabSpaceTypeString(CMLLabColorSpaceType labSpaceType){
   return labSpaceStrings[labSpaceType];
 }
-CML_API const char* cmlGetRGBResponsePresetString(CMLResponseCurvePreset preset){
-  return rgbResponsePresetStrings[preset];
+CML_API const char* cmlGetRGBResponseTypeString(CMLResponseCurveType type){
+  return rgbResponseTypeStrings[type];
 }
 CML_API const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
   return functionTypeStrings[functionType];
 }
-CML_API const char* cmlGetRGBColorspaceString(CMLRGBColorSpace colorSpaceType){
-  return rgbSpaceStrings[colorSpaceType];
+CML_API const char* cmlGetRGBColorSpaceTypeString(CMLRGBColorSpaceType type){
+  return rgbSpaceStrings[type];
 }
 CML_API const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
   return cmykTransformStrings[transformType];
