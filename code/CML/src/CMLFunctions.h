@@ -173,7 +173,6 @@ CML_API void cmlReleaseFunction(CMLFunction* func);
 // which stores additional informations about your function. You can manipulate
 // this definition range arbitrarily. See explanation below.
 typedef void  (*CMLFunctionConstructor)(
-  float* params,
   void** data,
   CMLDefinitionRange* defRange,
   const void* input);
@@ -211,7 +210,6 @@ typedef const void* (*CMLFunctionInputGetter)(
 //
 // Be advised to write a comment on what unit the input values are expected.
 typedef float (*CMLFunctionEvaluator)(
-  float* params,
   const void* data,
   float x);
 
@@ -229,7 +227,6 @@ CML_API CMLFunction* cmlCreateFunction(
   CMLFunctionInputSetter inputSetter,
   CMLFunctionInputGetter inputGetter,
   CMLFunctionEvaluator evaluator,
-  CMLuint32 floatParamCount,
   const void* input,
   size_t dataSize);
 

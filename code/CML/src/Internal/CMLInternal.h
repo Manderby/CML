@@ -21,8 +21,6 @@
 
 struct CML_HIDDEN CMLFunction{
   size_t refCount;
-  size_t paramCount;
-  float* params;
   size_t dataSize;
   void* data;
   CMLDefinitionRange defRange;
@@ -61,7 +59,7 @@ struct CMLObserver{
 
 
 CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
-  return function->getValue(function->params, function->data, x);
+  return function->getValue(function->data, x);
 }
 
 
