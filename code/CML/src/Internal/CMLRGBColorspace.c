@@ -202,6 +202,12 @@ CML_API void cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlSetResponseB(cm, response);
 }
 
+CML_API void cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const GammaLinearInputParameters* parameters){
+  cm->rgbSpace.customParametersR = *parameters;
+  cm->rgbSpace.customParametersG = *parameters;
+  cm->rgbSpace.customParametersB = *parameters;
+}
+
 CML_API const CMLResponseCurve* cmlGetResponseR  (CMLColorMachine* cm){
   return &(cm->rgbSpace.responseR);
 }
@@ -210,6 +216,18 @@ CML_API const CMLResponseCurve* cmlGetResponseG  (CMLColorMachine* cm){
 }
 CML_API const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm){
   return &(cm->rgbSpace.responseB);
+}
+
+CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersR(const CMLColorMachine* cm){
+  return &cm->rgbSpace.customParametersR;
+}
+
+CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersG(const CMLColorMachine* cm){
+  return &cm->rgbSpace.customParametersG;
+}
+
+CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersB(const CMLColorMachine* cm){
+  return &cm->rgbSpace.customParametersB;
 }
 
 CML_API void cmlSetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){

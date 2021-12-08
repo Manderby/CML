@@ -24,10 +24,8 @@ struct CML_HIDDEN CMLFunction{
   size_t dataSize;
   void* data;
   CMLDefinitionRange defRange;
-  CMLFunctionEvaluator getValue;
+  CMLFunctionEvaluator evaluator;
   CMLFunctionDesctructor destructor;
-  CMLFunctionInputSetter inputSetter;
-  CMLFunctionInputGetter inputGetter;
 };
 
 
@@ -59,7 +57,7 @@ struct CMLObserver{
 
 
 CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
-  return function->getValue(function->data, x);
+  return function->evaluator(function->data, x);
 }
 
 

@@ -173,7 +173,7 @@ CML_API void cmlReleaseFunction(CMLFunction* func);
 // which stores additional informations about your function. You can manipulate
 // this definition range arbitrarily. See explanation below.
 typedef void  (*CMLFunctionConstructor)(
-  void** data,
+  void* data,
   CMLDefinitionRange* defRange,
   const void* input);
 
@@ -186,18 +186,6 @@ typedef void  (*CMLFunctionConstructor)(
 // Or use the appropriate delete operator if you are using C++.
 typedef void  (*CMLFunctionDesctructor)(
   void*  data);
-
-// You need to test whether input is CML_NULL.
-// Upon calling cmlCreateFunction, this function will be called right after
-// the constructor function (if any) with the input argument being CML_NULL.
-// This allows you to initialize the definitionRange.
-typedef void (*CMLFunctionInputSetter)(
-  void* data,
-  CMLDefinitionRange* defRange,
-  const void* input);
-
-typedef const void* (*CMLFunctionInputGetter)(
-  void* data);
 
 // The EVALUATOR: This callback function is called whenever cmlEval is called.
 //
@@ -224,16 +212,10 @@ typedef float (*CMLFunctionEvaluator)(
 CML_API CMLFunction* cmlCreateFunction(
   CMLFunctionConstructor constructor,
   CMLFunctionDesctructor destructor,
-  CMLFunctionInputSetter inputSetter,
-  CMLFunctionInputGetter inputGetter,
   CMLFunctionEvaluator evaluator,
-  const void* input,
-  size_t dataSize);
+  size_t dataSize,
+  const void* input);
 
-// Set any kind of input a function requires. The function will store these
-// parameters as a copy and can later be retrieved using the getter function.
-CML_API void cmlSetFunctionInput(CMLFunction* func, const void* input);
-CML_API const void* cmlGetFunctionInput(const CMLFunction* func);
 
 
 // //////////////////////////////////////////

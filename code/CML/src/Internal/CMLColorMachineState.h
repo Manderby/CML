@@ -38,6 +38,9 @@ struct CML_HIDDEN CMLColorMachine{
     CMLResponseCurve              responseR;
     CMLResponseCurve              responseG;
     CMLResponseCurve              responseB;
+    GammaLinearInputParameters    customParametersR;
+    GammaLinearInputParameters    customParametersG;
+    GammaLinearInputParameters    customParametersB;
     CMLMat33                      matrix;
     CMLMat33                      matrixInv;
     CMLuint8                      lutsize;

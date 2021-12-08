@@ -39,6 +39,12 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
   cmlInitResponseCurve(&(cm->rgbSpace.responseR));
   cmlInitResponseCurve(&(cm->rgbSpace.responseG));
   cmlInitResponseCurve(&(cm->rgbSpace.responseB));
+  
+  GammaLinearInputParameters customGammaLinearParameters = {2.2f, .2f, 1.0f, .1f};
+  cm->rgbSpace.customParametersR = customGammaLinearParameters;
+  cm->rgbSpace.customParametersG = customGammaLinearParameters;
+  cm->rgbSpace.customParametersB = customGammaLinearParameters;
+  
   cmlInitResponseCurve(&(cm->labSpace.responseL));
   cmlInitResponseCurveWithType(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
   
