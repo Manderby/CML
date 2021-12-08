@@ -32,9 +32,16 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 // Note that response curves for the Lab space also should operate on the
 // [0,1]-range. They will be converted to the [0,100]-range automatically.
 //
+// The GammaResponse will compute the following functions:
+// pow(x, 1/gamma)    for the forward function
+// pow(x, gamma)      for the inverse function
+//
 // The GammaLinearResponse is computed according to the following formula:
-// (1+offset) * powf(x, 1/gamma) - offset    if x => split
+// (1+offset) * pow(x, 1/gamma) - offset    if x >= split
 // x * linScale                              if x <  split
+// The inverse is computed as follows:
+// pow((x + offset) / (offset+1), gamma)     if x >= split * linScale
+// x / linScale                              if x <  split * linScale
 
 typedef struct GammaLinearInputParameters{
   float gamma;
@@ -45,6 +52,7 @@ typedef struct GammaLinearInputParameters{
 
 CML_API CMLFunction* cmlCreateLinearResponse(void);
 CML_API CMLFunction* cmlCreateGammaResponse(float gamma);
+CML_API CMLFunction* cmlCreateInverseGammaResponse(float gamma);
 CML_API CMLFunction* cmlCreateGammaLinearResponse(float linScale, float offset, float gamma, float split);
 CML_API CMLFunction* cmlCreateInverseGammaLinearResponse(float linScale, float offset, float gamma, float split);
 CML_API CMLFunction* cmlCreatesRGBToXYZResponse(void);

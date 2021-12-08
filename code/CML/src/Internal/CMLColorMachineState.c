@@ -50,64 +50,6 @@
 //}
 
 
-//CML_HIDDEN void setupResponse(
-//                    CMLFunction** toxyzfunc,
-//                    CMLFunction** fromxyzfunc,
-//                    CMLResponseCurveType* typevar,
-//                    float* gammavar0,
-//                    float* gammavar1,
-//                    float* gammavar2,
-//                    CMLuint8 lutsize,
-//                    CMLResponseCurveType type,
-//                    float param0, float param1, float param2){
-//  
-//  if(param0 == 0.f){
-//    switch(type){
-//    case CML_RESPONSE_LINEAR:
-//      param0 = 1.f;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    case CML_RESPONSE_SQRT:
-//      param0 = 2.f;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    case CML_RESPONSE_GAMMA:
-//      param0 = *gammavar0;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    case CML_RESPONSE_GAMMA_LINEAR:
-//      param0 = *gammavar0;
-//      param1 = *gammavar1;
-//      param2 = *gammavar2;
-//      break;
-//    case CML_RESPONSE_SRGB:
-//      param0 = 2.2f;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    case CML_RESPONSE_LSTAR:
-//      param0 = 2.2f;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    case CML_RESPONSE_LSTAR_STANDARD:
-//      param0 = 2.2f;
-//      param1 = 0.f;
-//      param2 = 1.f;
-//      break;
-//    default:
-//      #if CML_DEBUG
-//        param0 = 2.2f;
-//        param1 = 0.f;
-//        param2 = 1.f;
-//        CMLError("Error in libcml: Response Curve type unknown.\n");
-//      #endif
-//      break;
-//    }
-//  }
 //  
 //  *typevar = type;
 //  *gammavar0 = param0;

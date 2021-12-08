@@ -799,9 +799,16 @@ CML_DEF CMLFunction* cmlCreateLinearResponse(){
 // Gamma Response
 // //////////////////////////////////////////////
 
+typedef struct GammaStruct{
+  float input;
+  float invGamma;
+} GammaStruct;
+
 CML_HDEF void cml_SetGammaResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
   if(input){
-    *((float*)data) = *((const float*)input);
+    GammaStruct* gammaStruct = (GammaStruct*)data;
+    gammaStruct->input = *((const float*)input);
+    gammaStruct->invGamma = cmlInverse(gammaStruct->input);
   }
 }
 
@@ -811,11 +818,11 @@ CML_HDEF const void* cml_GetGammaResponseInput(void* data){
 
 CML_HDEF float cml_EvaluateGammaResponse(float* params, const void* data, float x){
   CML_UNUSED(params);
-  float* gamma = (float*)data;
+  float invGamma = ((GammaStruct*)data)->invGamma;
   if(x < 0.f){
-    return -powf(-x, *gamma);
+    return -powf(-x, invGamma);
   }else{
-    return powf(x, *gamma);
+    return powf(x, invGamma);
   }
 }
 
@@ -828,12 +835,50 @@ CML_DEF CMLFunction* cmlCreateGammaResponse(float gamma){
     cml_EvaluateGammaResponse,
     0,
     CML_NULL,
-    sizeof(float));
+    sizeof(GammaStruct));
   cmlSetFunctionInput(func, &gamma);
   return func;
 }
 
 
+
+// //////////////////////////////////////////////
+// Inverse Gamma Response
+// //////////////////////////////////////////////
+
+CML_HDEF void cml_SetInverseGammaResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  if(input){
+    *((float*)data) = *((const float*)input);
+  }
+}
+
+CML_HDEF const void* cml_GetInverseGammaResponseInput(void* data){
+  return data;
+}
+
+CML_HDEF float cml_EvaluateInverseGammaResponse(float* params, const void* data, float x){
+  CML_UNUSED(params);
+  float* gamma = (float*)data;
+  if(x < 0.f){
+    return -powf(-x, *gamma);
+  }else{
+    return powf(x, *gamma);
+  }
+}
+
+CML_DEF CMLFunction* cmlCreateInverseGammaResponse(float gamma){
+  CMLFunction* func = cmlCreateFunction(
+    CML_NULL,
+    CML_NULL,
+    cml_SetInverseGammaResponseInput,
+    cml_GetInverseGammaResponseInput,
+    cml_EvaluateInverseGammaResponse,
+    0,
+    CML_NULL,
+    sizeof(float));
+  cmlSetFunctionInput(func, &gamma);
+  return func;
+}
 
 
 
@@ -842,47 +887,50 @@ CML_DEF CMLFunction* cmlCreateGammaResponse(float gamma){
 // //////////////////////////////////////////////
 
 typedef struct GammaLinearStruct{
-  float invgamma;
-  float offset;
-  float curvescale;
-  float linScale;
-  float splitpoint;
+  GammaLinearInputParameters input;
+  float invGamma;
+  float curveScale;
 } GammaLinearStruct;
 
-CML_HDEF void cml_ConstructGammaLinearResponse(float* params, void** data, CMLDefinitionRange* defRange, const void* input){
-  defRange = defRange;
-  params[0] = ((GammaLinearInputParameters*)input)->gamma;
-  params[1] = ((GammaLinearInputParameters*)input)->offset;
-  params[2] = ((GammaLinearInputParameters*)input)->linScale;
-  params[3] = ((GammaLinearInputParameters*)input)->split;
-  *data = cml_Allocate(sizeof(GammaLinearStruct));
-  ((GammaLinearStruct*)(*data))->invgamma = cmlInverse(params[0]);
-  ((GammaLinearStruct*)(*data))->offset = params[1];
-  ((GammaLinearStruct*)(*data))->curvescale = params[1] + 1.f;
-  ((GammaLinearStruct*)(*data))->linScale = params[2];
-  ((GammaLinearStruct*)(*data))->splitpoint = params[3];
+CML_HDEF void cml_SetGammaLinearResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  if(input){
+    GammaLinearInputParameters* inputParams = (GammaLinearInputParameters*)input;
+    GammaLinearStruct* gammaLinear = (GammaLinearStruct*)data;
+    gammaLinear->input = *inputParams;
+    gammaLinear->invGamma = cmlInverse(inputParams->gamma);
+    gammaLinear->curveScale = inputParams->offset + 1.f;
+  }
+}
+
+CML_HDEF const void* cml_GetGammaLinearResponseInput(void* data){
+  GammaLinearStruct* gammaLinear = (GammaLinearStruct*)data;
+  return &gammaLinear->input;
 }
 
 CML_HDEF float cml_EvaluateGammaLinearResponse(float* params, const void* data, float x){
   CML_UNUSED(params);
-  if(x > ((GammaLinearStruct*)data)->splitpoint){
-    return (((GammaLinearStruct*)data)->curvescale) * powf(x, ((GammaLinearStruct*)data)->invgamma) - ((GammaLinearStruct*)data)->offset;
+    GammaLinearStruct* gammaLinear = (GammaLinearStruct*)data;
+  if(x > gammaLinear->input.split){
+    return gammaLinear->curveScale * powf(x, gammaLinear->invGamma) - gammaLinear->input.offset;
   }else{
-    return ((GammaLinearStruct*)data)->linScale * x;
+    return gammaLinear->input.linScale * x;
   }
 }
 
-CML_HDEF void cml_DestructGammaLinearResponse(void* data){
-  free(data);
-}
-
 CML_DEF CMLFunction* cmlCreateGammaLinearResponse(float gamma, float offset, float linScale, float split){
-  GammaLinearInputParameters tmpstruct = {gamma, offset, linScale, split};
-//                                  offset / (gamma - 1.f) / linScale};
-//                                  (linScale * offset - 1.f) / (powf(offset, gamma) - 1.f)};
-  return cmlCreateFunction(cml_ConstructGammaLinearResponse, cml_DestructGammaLinearResponse, CML_NULL, CML_NULL, cml_EvaluateGammaLinearResponse, 4, &tmpstruct, 0);
+  GammaLinearInputParameters tmpStruct = {gamma, offset, linScale, split};
+  CMLFunction* func = cmlCreateFunction(
+    CML_NULL,
+    CML_NULL,
+    cml_SetGammaLinearResponseInput,
+    cml_GetGammaLinearResponseInput,
+    cml_EvaluateGammaLinearResponse,
+    0,
+    CML_NULL,
+    sizeof(GammaLinearStruct));
+  cmlSetFunctionInput(func, &tmpStruct);
+  return func;
 }
-
 
 
 
@@ -891,55 +939,53 @@ CML_DEF CMLFunction* cmlCreateGammaLinearResponse(float gamma, float offset, flo
 // //////////////////////////////////////////////
 
 typedef struct InverseGammaLinearStruct{
-  float gamma;
-  float offset;
-  float invcurvescale;
-  float invlinScale;
-  float splitpoint;
+  GammaLinearInputParameters input;
+  float invCurveScale;
+  float invLinScale;
+  float splitPoint;
 } InverseGammaLinearStruct;
 
-CML_HDEF void cml_ConstructInverseGammaLinearResponse(float* params, void** data, CMLDefinitionRange* defRange, const void* input){
-  CML_UNUSED(params);
-  defRange = defRange;
-  params[0] = ((GammaLinearInputParameters*)input)->gamma;
-  params[1] = ((GammaLinearInputParameters*)input)->offset;
-  params[2] = ((GammaLinearInputParameters*)input)->linScale;
-  params[3] = ((GammaLinearInputParameters*)input)->split;
-  *data = cml_Allocate(sizeof(InverseGammaLinearStruct));
-  ((InverseGammaLinearStruct*)(*data))->gamma = params[0];
-  ((InverseGammaLinearStruct*)(*data))->offset = params[1];
-  ((InverseGammaLinearStruct*)(*data))->invcurvescale = cmlInverse(params[1] + 1.f);
-  ((InverseGammaLinearStruct*)(*data))->invlinScale = cmlInverse(params[2]);
-  ((InverseGammaLinearStruct*)(*data))->splitpoint = params[3] * params[2];
-}
-
-
-CML_HDEF float cml_EvaluateInverseGammaLinearResponse(float* params, const void* data, float x){
-  CML_UNUSED(params);
-  if(x > ((InverseGammaLinearStruct*)data)->splitpoint){
-    return powf((x + ((InverseGammaLinearStruct*)data)->offset) * ((InverseGammaLinearStruct*)data)->invcurvescale, ((InverseGammaLinearStruct*)data)->gamma);
-  }else{
-    return ((InverseGammaLinearStruct*)data)->invlinScale * x;
+CML_HDEF void cml_SetInverseGammaLinearResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  if(input){
+    GammaLinearInputParameters* inputParams = (GammaLinearInputParameters*)input;
+    InverseGammaLinearStruct* invGammaLinear = (InverseGammaLinearStruct*)data;
+    invGammaLinear->input = *inputParams;
+    invGammaLinear->invCurveScale = cmlInverse(inputParams->offset + 1.f);
+    invGammaLinear->invLinScale = cmlInverse(inputParams->linScale);
+    invGammaLinear->splitPoint = inputParams->split * inputParams->linScale;
   }
 }
 
-
-CML_HDEF void cml_DestructInverseGammaLinearResponse(void* data){
-  free(data);
+CML_HDEF const void* cml_GetInverseGammaLinearResponseInput(void* data){
+  InverseGammaLinearStruct* invGammaLinear = (InverseGammaLinearStruct*)data;
+  return &invGammaLinear->input;
 }
 
+CML_HDEF float cml_EvaluateInverseGammaLinearResponse(float* params, const void* data, float x){
+  CML_UNUSED(params);
+  InverseGammaLinearStruct* invGammaLinear = (InverseGammaLinearStruct*)data;
+  if(x > invGammaLinear->splitPoint){
+    return powf((x + invGammaLinear->input.offset) * invGammaLinear->invCurveScale, invGammaLinear->input.gamma);
+  }else{
+    return invGammaLinear->invLinScale * x;
+  }
+}
 
 CML_DEF CMLFunction* cmlCreateInverseGammaLinearResponse(float gamma, float offset, float linScale, float split){
-  GammaLinearInputParameters tmpstruct = {gamma, offset, linScale, split};
-//  InverseGammaLinearStruct tmpstruct = { gamma,
-//                                  offset,
-//                                  cmlInverse(offset + 1.f),
-//                                  cmlInverse(linScale),
-//                                  split / linScale};
-//                                  offset / (gamma - 1.f)};
-//                                  linScale * (linScale * offset - 1.f) / (powf(offset, gamma) - 1.f)};
-  return cmlCreateFunction(cml_ConstructInverseGammaLinearResponse, cml_DestructInverseGammaLinearResponse, CML_NULL, CML_NULL, cml_EvaluateInverseGammaLinearResponse, 4, &tmpstruct, 0);
+  GammaLinearInputParameters tmpStruct = {gamma, offset, linScale, split};
+  CMLFunction* func = cmlCreateFunction(
+    CML_NULL,
+    CML_NULL,
+    cml_SetInverseGammaLinearResponseInput,
+    cml_GetInverseGammaLinearResponseInput,
+    cml_EvaluateInverseGammaLinearResponse,
+    4,
+    &tmpStruct,
+    sizeof(InverseGammaLinearStruct));
+  cmlSetFunctionInput(func, &tmpStruct);
+  return func;
 }
+
 
 
 // //////////////////////////////////////////////

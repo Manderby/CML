@@ -32,25 +32,25 @@ CML_DEF void cmlInitResponseCurveWithType(CMLResponseCurve* curve, CMLResponseCu
     curve->forwardFunc  = cmlCreateLinearResponse();
     curve->backwardFunc = cmlCreateLinearResponse();
     break;
-  case CML_RESPONSE_SQRT:
-    curve->forwardFunc  = cmlCreateGammaResponse(.5f);
-    curve->backwardFunc = cmlCreateGammaResponse(2.f);
-    break;
-  case CML_RESPONSE_GAMMA_ADOBE_98:
-    curve->forwardFunc  = cmlCreateGammaResponse(cmlInverse(2.f + 51.f / 256.f));
-    curve->backwardFunc = cmlCreateGammaResponse(2.f + 51.f / 256.f);
-    break;
   case CML_RESPONSE_GAMMA_1_8:
-    curve->forwardFunc  = cmlCreateGammaResponse(cmlInverse(1.8f));
-    curve->backwardFunc = cmlCreateGammaResponse(1.8f);
+    curve->forwardFunc  = cmlCreateGammaResponse(1.8f);
+    curve->backwardFunc = cmlCreateInverseGammaResponse(1.8f);
     break;
   case CML_RESPONSE_GAMMA_1_9:
-    curve->forwardFunc  = cmlCreateGammaResponse(cmlInverse(1.9f));
-    curve->backwardFunc = cmlCreateGammaResponse(1.9f);
+    curve->forwardFunc  = cmlCreateGammaResponse(1.9f);
+    curve->backwardFunc = cmlCreateInverseGammaResponse(1.9f);
+    break;
+  case CML_RESPONSE_GAMMA_2_0:
+    curve->forwardFunc  = cmlCreateGammaResponse(2.f);
+    curve->backwardFunc = cmlCreateInverseGammaResponse(2.f);
+    break;
+  case CML_RESPONSE_GAMMA_ADOBE_98:
+    curve->forwardFunc  = cmlCreateGammaResponse(2.f + 51.f / 256.f);
+    curve->backwardFunc = cmlCreateInverseGammaResponse(2.f + 51.f / 256.f);
     break;
   case CML_RESPONSE_GAMMA_2_2:
-    curve->forwardFunc  = cmlCreateGammaResponse(cmlInverse(.2f));
-    curve->backwardFunc = cmlCreateGammaResponse(2.2f);
+    curve->forwardFunc  = cmlCreateGammaResponse(2.2f);
+    curve->backwardFunc = cmlCreateInverseGammaResponse(2.2f);
     break;
   case CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT:
     curve->forwardFunc  = cmlCreateGammaLinearResponse(1.f / 0.45f, 0.099f, 4.5f, 0.018f);
@@ -90,8 +90,8 @@ CML_DEF void cmlInitResponseCurveWithType(CMLResponseCurve* curve, CMLResponseCu
 
 CML_API void cmlInitResponseCurveWithCustomGamma(CMLResponseCurve* curve, float gamma){
   curve->responseType = CML_RESPONSE_CUSTOM_GAMMA;
-  curve->forwardFunc  = cmlCreateGammaResponse(cmlInverse(gamma));
-  curve->backwardFunc = cmlCreateGammaResponse(gamma);
+  curve->forwardFunc  = cmlCreateGammaResponse(gamma);
+  curve->backwardFunc = cmlCreateInverseGammaResponse(gamma);
 }
 
 CML_DEF void cmlInitResponseCurveWithCustomGammaLinear(CMLResponseCurve* curve, float gamma, float offset, float linScale, float split)

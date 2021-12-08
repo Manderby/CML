@@ -146,36 +146,27 @@ CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm){
     cm->XYZToLab_SB = &cml_XYZToLabChromaticValence_SB;
     cm->LabToXYZ =    &cml_LabToXYZChromaticValence;
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
-//    cmlClearResponseCurve(&(cm->labSpace.responseL));
-//    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_GAMMA_2_0);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
-//    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);
     break;
   case CML_LAB_HUNTER_ORIGINAL:
     cm->XYZToLab =    &cml_XYZToLabChromaticValence;
     cm->XYZToLab_SB = &cml_XYZToLabChromaticValence_SB;
     cm->LabToXYZ =    &cml_LabToXYZChromaticValence;
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
-//    cmlClearResponseCurve(&(cm->labSpace.responseL));
-//    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_GAMMA_2_0);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
-//    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);
     break;
   case CML_LAB_ADAMS_CROMATIC_VALENCE:
     cm->XYZToLab = &cml_XYZToLabChromaticValence;
     cm->XYZToLab_SB = &cml_XYZToLabChromaticValence_SB;
     cm->LabToXYZ = &cml_LabToXYZChromaticValence;
     cm->LabToXYZ_SB = &cml_LabToXYZChromaticValence_SB;
-//    cmlClearResponseCurve(&(cm->labSpace.responseL));
-//    cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), CML_RESPONSE_SQRT, 2.f, 0.f, 1.f, 0.f);
-    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_SQRT);
+    cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_GAMMA_2_0);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
-//    cml_setResponseL(cm, CML_RESPONSE_SQRT, 0.f, 0.f, 0.f);
     break;
   default:
     #if CML_DEBUG

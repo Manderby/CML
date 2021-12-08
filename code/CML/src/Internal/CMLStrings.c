@@ -112,10 +112,10 @@ CML_HIDDEN static const char* functionTypeStrings[CML_NUMBER_OF_FUNCTION_TYPES] 
 CML_HIDDEN static const char* rgbResponseTypeStrings[CML_NUMBER_OF_RESPONSE_CURVE_TYPES] = {
   "Undefined",             // CML_RESPONSE_UNDEFINED
   "Linear",                // CML_RESPONSE_LINEAR
-  "Sqrt",                  // CML_RESPONSE_SQRT
-  "Gamma Adobe 98",        // CML_RESPONSE_GAMMA_ADOBE_98
   "Gamma 1.8",             // CML_RESPONSE_GAMMA_1_8
   "Gamma 1.9",             // CML_RESPONSE_GAMMA_1_9
+  "Gamma 2.0",             // CML_RESPONSE_GAMMA_2_0
+  "Gamma Adobe 98",        // CML_RESPONSE_GAMMA_ADOBE_98
   "Gamma 2.2",             // CML_RESPONSE_GAMMA_2_2
   "Gamma Rec BT 10 Bit",   // CML_RESPONSE_GAMMA_LINEAR_REC_BT_10BIT
   "Gamma Rec BT 12 Bit",   // CML_RESPONSE_GAMMA_LINEAR_REC_BT_12BIT
