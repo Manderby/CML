@@ -14,9 +14,7 @@ int main(){
   // The version is denoted by 4 unsigned 8-bit integers. The last one is
   // either 0 for Release or 1 for Debug.
   
-  CMLByte version[4];
-  cmlGetVersion(version);
-  printf("CML Version: %u.%u.%u (%s)\n", version[0], version[1], version[2], version[3]?"Debug":"Release");
+  printf("CML Version: %d\n", cmlGetVersion());
   
   // The Debug version is only available to you upon special request to the
   // author. In the Debug version, a lot of security tests are performed and
@@ -100,8 +98,8 @@ int main(){
   // Now, the default RGB colorspace of a newly created ColorMachine is sRGB.
   // But you can change that easily for example to Adobe 98:
   
-  cmlSetRGBColorSpace(cm, CML_RGB_ADOBE_98);
-  printf("Current RGB colorspace: %s\n", cmlGetRGBColorspaceString(cmlGetRGBColorSpace(cm)));
+  cmlSetRGBColorSpaceType(cm, CML_RGB_ADOBE_98);
+  printf("Current RGB colorspace: %s\n", cmlGetRGBColorSpaceTypeString(cmlGetRGBColorSpaceType(cm)));
 
   // Now, when converting back the xyz value of our orange color to RGB, we
   // get different RGB values:
@@ -137,7 +135,7 @@ int main(){
   // before (which was Adobe 98). As this is a non-standard situation, the
   // resulting RGB colorspace is "Custom":
   
-  printf("Current RGB colorspace: %s\n", cmlGetRGBColorspaceString(cmlGetRGBColorSpace(cm)));
+  printf("Current RGB colorspace: %s\n", cmlGetRGBColorSpaceTypeString(cmlGetRGBColorSpaceType(cm)));
 
   // As we still have the orange stored in xyz, let's see what the RGB value
   // of that orange is in this strange RGB colorspace...
@@ -266,23 +264,28 @@ int main(){
   // sampling points of a light source. Additionally, you know the wavelengths
   // of the minimal and maximal sampling point.
   const CMLuint32 datacount = 10; 
-  float luminancedata[10] = { 22.f,  74.f, 280.f, 506.f, 638.f,
+  float luminanceData[10] = { 22.f,  74.f, 280.f, 506.f, 638.f,
                              477.f, 361.f, 164.f,  63.f,  13.f};
-  float minlambda = 400.f;
-  float maxlambda = 800.f;
+  float minLambda = 400.f;
+  float maxLambda = 800.f;
 
   // With these informations, you can simply create a CMLFunction representing
   // this spectrum:
+  
+  CMLArrayFunctionSettings arrayFuncSettings = {
+    datacount,
+    minLambda,
+    maxLambda,
+    CML_INTERPOLATION_LINEAR,
+    CML_EXTRAPOLATION_LINEAR_ZERO,
+    CML_EXTRAPOLATION_LINEAR_ZERO};
 
-  CMLFunction* luminancefunction = cmlCreateArrayFunction(
-                                      luminancedata,
-                                      CML_FALSE,
-                                      datacount,
-                                      minlambda,
-                                      maxlambda,
-                                      CML_INTERPOLATION_LINEAR,
-                                      CML_EXTRAPOLATION_LINEAR_ZERO,
-                                      CML_EXTRAPOLATION_LINEAR_ZERO);
+  CMLArrayFunctionInput luminanceFuncInput = {
+    luminanceData,
+    /*ownbuffer:*/ CML_FALSE,
+    arrayFuncSettings};
+
+  CMLFunction* luminancefunction = cmlCreateArrayFunction(luminanceFuncInput);
 
   // CMLFunctions are self-organizing. If a CMLFunction is used in more than
   // one place, it will remain in memory as long as there is at least one place
@@ -322,18 +325,15 @@ int main(){
 
   // Now we create a remission color:
   
-  float remissiondata[10] = {  .2f, .3f, .6f, .7f, 1.f,
+  float remissionData[10] = {  .2f, .3f, .6f, .7f, 1.f,
                               1.2f, .9f, .6f, .2f, .0f};
 
-  CMLFunction* remissionfunction = cmlCreateArrayFunction(
-                                      remissiondata,
-                                      CML_FALSE,
-                                      datacount,
-                                      minlambda,
-                                      maxlambda,
-                                      CML_INTERPOLATION_LINEAR,
-                                      CML_EXTRAPOLATION_LINEAR_ZERO,
-                                      CML_EXTRAPOLATION_LINEAR_ZERO);
+  CMLArrayFunctionInput remissionFuncInput = {
+    remissionData,
+    /*ownbuffer:*/ CML_FALSE,
+    arrayFuncSettings};
+
+  CMLFunction* remissionfunction = cmlCreateArrayFunction(remissionFuncInput);
 
   // We can convert this function to an XYZ value. As this is a remission
   // conversion, the function will multiply with the current illumination
@@ -424,7 +424,7 @@ int main(){
   cmlGetRGBColorSpacePrimaries(CML_RGB_SRGB, primariesYxy[0], primariesYxy[1], primariesYxy[2]);
 
   // Compute the colorimetric whitepoint:
-  CMLIllumination* illumination = cmlCreateIlluminationWithPreset(CML_NULL, illuminationtype, 0);
+  CMLIllumination* illumination = cmlCreateIlluminationWithType(CML_NULL, illuminationtype, 0);
   CMLObserver* observer = cmlCreateObserver(CML_NULL, CML_OBSERVER_2DEG_CIE_1931, illumination, 100.f);
 //  CMLFunction* illumination = cmlCreateIlluminationSpectrum(illuminationtype, 0.f);
 //  CMLVec3 wpXYZ;

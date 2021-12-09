@@ -611,43 +611,43 @@
 //void ColorMachine::adjustIntegrationToObserver(){
 //  switch(s->observer.state){
 //  case CML_OBSERVER_2DEG_1931:
-//    s->inputoutput.minlambda = CML_X2VALENCES_1931_MIN;
-//    s->inputoutput.maxlambda = CML_X2VALENCES_1931_MAX;
+//    s->inputoutput.minLambda = CML_X2VALENCES_1931_MIN;
+//    s->inputoutput.maxLambda = CML_X2VALENCES_1931_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_1931_NUM;
 //    break;
 //  case CML_OBSERVER_10DEG_1964:
-//    s->inputoutput.minlambda = CML_X10VALENCES_1964_MIN;
-//    s->inputoutput.maxlambda = CML_X10VALENCES_1964_MAX;
+//    s->inputoutput.minLambda = CML_X10VALENCES_1964_MIN;
+//    s->inputoutput.maxLambda = CML_X10VALENCES_1964_MAX;
 //    s->inputoutput.samplecount = CML_X10VALENCES_1964_NUM;
 //    break;
 //  case CML_OBSERVER_2DEG_CIE_1931:
-//    s->inputoutput.minlambda = CML_X2VALENCES_CIE1931_MIN;
-//    s->inputoutput.maxlambda = CML_X2VALENCES_CIE1931_MAX;
+//    s->inputoutput.minLambda = CML_X2VALENCES_CIE1931_MIN;
+//    s->inputoutput.maxLambda = CML_X2VALENCES_CIE1931_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_CIE1931_NUM;
 //    break;
 //  case CML_OBSERVER_10DEG_CIE_1964:
-//    s->inputoutput.minlambda = CML_X10VALENCES_CIE1964_MIN;
-//    s->inputoutput.maxlambda = CML_X10VALENCES_CIE1964_MAX;
+//    s->inputoutput.minLambda = CML_X10VALENCES_CIE1964_MIN;
+//    s->inputoutput.maxLambda = CML_X10VALENCES_CIE1964_MAX;
 //    s->inputoutput.samplecount = CML_X10VALENCES_CIE1964_NUM;
 //    break;
 //  case CML_OBSERVER_2DEG_JUDD_1951:
-//    s->inputoutput.minlambda = CML_X2VALENCES_JUDD1951_MIN;
-//    s->inputoutput.maxlambda = CML_X2VALENCES_JUDD1951_MAX;
+//    s->inputoutput.minLambda = CML_X2VALENCES_JUDD1951_MIN;
+//    s->inputoutput.maxLambda = CML_X2VALENCES_JUDD1951_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_JUDD1951_NUM;
 //    break;
 //  case CML_OBSERVER_2DEG_JUDD_VOS_1978:
-//    s->inputoutput.minlambda = CML_X2VALENCES_JUDDVOS1978_MIN;
-//    s->inputoutput.maxlambda = CML_X2VALENCES_JUDDVOS1978_MAX;
+//    s->inputoutput.minLambda = CML_X2VALENCES_JUDDVOS1978_MIN;
+//    s->inputoutput.maxLambda = CML_X2VALENCES_JUDDVOS1978_MAX;
 //    s->inputoutput.samplecount = CML_X2VALENCES_JUDDVOS1978_NUM;
 //    break;
 ////  case CML_OBSERVER_2DEG_STILES_BURCH_1955:
-////    s->inputoutput.minlambda = CML_X2VALENCES_STILESBURCH1955_MIN;
-////    s->inputoutput.maxlambda = CML_X2VALENCES_STILESBURCH1955_MAX;
+////    s->inputoutput.minLambda = CML_X2VALENCES_STILESBURCH1955_MIN;
+////    s->inputoutput.maxLambda = CML_X2VALENCES_STILESBURCH1955_MAX;
 ////    s->inputoutput.samplecount = CML_X2VALENCES_STILESBURCH1955_NUM;
 ////    break;
 ////  case CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997:
-////    s->inputoutput.minlambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MIN;
-////    s->inputoutput.maxlambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MAX;
+////    s->inputoutput.minLambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MIN;
+////    s->inputoutput.maxLambda = CML_X2VALENCES_SHAWFAIRCHILD1997_MAX;
 ////    s->inputoutput.samplecount = CML_X2VALENCES_SHAWFAIRCHILD1997_NUM;
 ////    break;
 //  default:

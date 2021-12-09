@@ -1,4 +1,6 @@
 
+#include <CML.h>
+
 // This class is a timer. It returns the elapsed time with microsecond accuracy
 #if CML_COMPILE_ON_WIN
   #include <windows.h>

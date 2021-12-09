@@ -1,7 +1,12 @@
 .DS_Store
-build/
-publishedbundles/
-*xcodeproj/manderim.*
+._*
+.vs
+*.vcxproj.user
 *xcshareddata*
 *xcuserdata*
 *xcworkspace*
+*.pbxuser
+*.mode2v3
+CONERR*
+build/
+bin/

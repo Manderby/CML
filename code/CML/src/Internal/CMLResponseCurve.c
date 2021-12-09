@@ -1,5 +1,5 @@
 
-#include "CML.h"
+#include "../CML.h"
 #include "../Internal/CMLColorMachineState.h"
 
 
@@ -73,10 +73,14 @@ CML_DEF void cmlInitResponseCurveWithType(CMLResponseCurve* curve, CMLResponseCu
     curve->backwardFunc = cmlCreateLStarToYStandardResponse();
     break;
   case CML_RESPONSE_CUSTOM_GAMMA:
-    cmlError("Use cmlInitResponseCurveWithCustomGamma to initialize a resopnse curve with custom gamma.");
+    #if CML_DEBUG
+      cmlError("Use cmlInitResponseCurveWithCustomGamma to initialize a resopnse curve with custom gamma.");
+    #endif
     break;
   case CML_RESPONSE_CUSTOM_GAMMA_LINEAR:
-    cmlError("Use cmlInitResponseCurveWithCustomGammaLinear to initialize a resopnse curve with custom gamma + linear.");
+    #if CML_DEBUG
+      cmlError("Use cmlInitResponseCurveWithCustomGammaLinear to initialize a resopnse curve with custom gamma + linear.");
+    #endif
     break;
   default:
     #if CML_DEBUG

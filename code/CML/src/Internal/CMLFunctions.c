@@ -1,5 +1,5 @@
 
-#include "CML.h"
+#include "../CML.h"
 #include "CMLColorMachineState.h"
 
 
@@ -213,7 +213,7 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
     // Finally, go though all temp sums and add those to the final sum where
     // sampleCount has a binary 1
     for(size_t i = 0; i < 8 * sizeof(size_t); i++){
-      if(sampleCount & (1 << i)){
+      if(sampleCount & ((size_t)1 << i)){
         sum += tmpSums[i];
       }
     }
