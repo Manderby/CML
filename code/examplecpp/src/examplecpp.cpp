@@ -9,8 +9,8 @@ int main(){
   //
   // In this file, some examples are shown on how to use CML with C++ classes.
   //
-  // Feel free to experiment. For further information, please refer to the many
-  // comments in the Header-Files of CML.
+  // Feel free to experiment. For further information, please refer to the
+  // many comments in the Header-Files of CML.
 
   printf("Working with CML C++ classes\n");
 
@@ -21,9 +21,10 @@ int main(){
   // The files are located at YourIncludeDirectory/CML/ColorClasses and
   // you can load all classes by including the CMLColor.h file as seen above.
   
-  // First thing you need to know: All color classes require one globally shared
-  // color machine which they will access by a pointer. You can create a machine
-  // and use the cmlSetMachineForColorClasses method to set this global pointer:
+  // First thing you need to know: All color classes require one globally
+  // shared color machine which they will access in the background. You can
+  // create a machine and use the cmlSetMachineForColorClasses method to set
+  // this global machine:
   
   cmlSetMachineForColorClasses(cmlCreateColorMachine());
 
@@ -43,7 +44,7 @@ int main(){
   // Now, we can simply create a color:
   RGBColor orange(1.f, .3f, 0.f);
   
-  // You can set and get all channel components by using the bracketing []
+  // You can set and get all channel components by using the bracket []
   // operator:
   
   orange[1] = .5f;
@@ -83,24 +84,28 @@ int main(){
   // You can use the default mathematical operators with color classes:
   
   RGBColor lightblue(.2f, 1.f, 1.f);
-  RGBColor combinedcolor = orange + lightblue;
-  printf("Combined Color: %f, %f, %f\n", combinedcolor[0], combinedcolor[1], combinedcolor[2]);
+  RGBColor combinedColor = orange + lightblue;
+  printf("Combined Color: %f, %f, %f\n",
+    combinedColor[0], combinedColor[1], combinedColor[2]);
 
   // This is not particularly meaningful but if for example, we divide this
   // combined color by 2, we get the average of orange and lightblue:
   
-  combinedcolor /= 2.f;
-  printf("Averaged Color: %f, %f, %f\n", combinedcolor[0], combinedcolor[1], combinedcolor[2]);
+  combinedColor /= 2.f;
+  printf("Averaged Color: %f, %f, %f\n",
+    combinedColor[0], combinedColor[1], combinedColor[2]);
   
   // Note that this also works with color spaces which normally would not be
   // easily averageable, like the Lch colorspace which by its nature, is
-  // described in a polar coordinate system. Such colorspaces will be converted
-  // to a cartesian space and the result will be computed with these values.
+  // described in a polar coordinate system. Such colorspaces will be
+  // converted to a cartesian space and the result will be computed with
+  // these values.
   
   LchColor lch1(50.f, .85f, 75.f);
   LchColor lch2(50.f, .9f, 70.f);
-  LchColor lchaverage = (lch1 + lch2) / 2.f;
-  printf("Averaged Lch: %f, %f, %f\n", lchaverage[0], lchaverage[1], lchaverage[2]);
+  LchColor lchAverage = (lch1 + lch2) / 2.f;
+  printf("Averaged Lch: %f, %f, %f\n",
+    lchAverage[0], lchAverage[1], lchAverage[2]);
 
   // Or for example, if you would like to know the distance between two colors:
   
@@ -121,8 +126,8 @@ int main(){
   // Many Color classes have additional methods which you can use. For example
   // inverting colors:
   
-  RGBColor inverseorange = orange.getInverse();
-  printf("Inverse Orange: %f, %f, %f\n", inverseorange[0], inverseorange[1], inverseorange[2]);
+  RGBColor inverseOrange = orange.getInverse();
+  printf("Inverse Orange: %f, %f, %f\n", inverseOrange[0], inverseOrange[1], inverseOrange[2]);
 
   // Or if you need your colors to be clamped to the minimal and maximal bounds:
   
