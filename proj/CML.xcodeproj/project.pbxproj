@@ -128,7 +128,6 @@
 		90BF50A5274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
 		90BF50A6274AAC85001FDE2A /* CMLYCbCrColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */; };
 		90BF908F27523562001EA32C /* example.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF908E27523562001EA32C /* example.c */; };
-		90BF90972752356C001EA32C /* cppexample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90962752356C001EA32C /* cppexample.cpp */; };
 		90BF90C0275237AD001EA32C /* CMLIntegerMapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */; };
 		90BF90C1275237AD001EA32C /* CMLIntegerMapping.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */; };
 		90BF90C2275237AD001EA32C /* CMLCMYKColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90AE275237AD001EA32C /* CMLCMYKColorspace.c */; };
@@ -169,6 +168,7 @@
 		90BF90E5275237AD001EA32C /* CMLRGBColorspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 90BF90BF275237AD001EA32C /* CMLRGBColorspace.c */; };
 		90BF90ED27526480001EA32C /* CMLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF90EC27526480001EA32C /* CMLMath.h */; };
 		90BF90EE27526480001EA32C /* CMLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 90BF90EC27526480001EA32C /* CMLMath.h */; };
+		90F843C72762A1E9000A8A51 /* examplecpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90F843C62762A1E9000A8A51 /* examplecpp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,7 +265,6 @@
 		90BF5000274AAC85001FDE2A /* CMLHSVColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLHSVColor.h; sourceTree = "<group>"; };
 		90BF5001274AAC85001FDE2A /* CMLYCbCrColor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMLYCbCrColor.cpp; sourceTree = "<group>"; };
 		90BF908E27523562001EA32C /* example.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = example.c; sourceTree = "<group>"; };
-		90BF90962752356C001EA32C /* cppexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cppexample.cpp; sourceTree = "<group>"; };
 		90BF90AD275237AD001EA32C /* CMLIntegerMapping.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLIntegerMapping.c; sourceTree = "<group>"; };
 		90BF90AE275237AD001EA32C /* CMLCMYKColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLCMYKColorspace.c; sourceTree = "<group>"; };
 		90BF90AF275237AD001EA32C /* CMLFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLFunctions.c; sourceTree = "<group>"; };
@@ -287,6 +286,8 @@
 		90BF90BF275237AD001EA32C /* CMLRGBColorspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CMLRGBColorspace.c; sourceTree = "<group>"; };
 		90BF90EC27526480001EA32C /* CMLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMLMath.h; sourceTree = "<group>"; };
 		90BF90F3275264D0001EA32C /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		90F843C42762A1E9000A8A51 /* examplecpp.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = examplecpp.vcxproj; sourceTree = "<group>"; };
+		90F843C62762A1E9000A8A51 /* examplecpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = examplecpp.cpp; sourceTree = "<group>"; };
 		B92F506F140A76D100075896 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98F4D5D15E4059C0080C96E /* cppexample */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cppexample; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99F4BBF13F8AC4C009465D9 /* libcml.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcml.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,23 +455,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		90BF90942752356C001EA32C /* cppexample */ = {
-			isa = PBXGroup;
-			children = (
-				90BF90952752356C001EA32C /* src */,
-			);
-			name = cppexample;
-			path = ../code/cppexample;
-			sourceTree = "<group>";
-		};
-		90BF90952752356C001EA32C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				90BF90962752356C001EA32C /* cppexample.cpp */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		90BF90AC275237AD001EA32C /* Internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,12 +482,30 @@
 			path = Internal;
 			sourceTree = "<group>";
 		};
+		90F843C32762A1E9000A8A51 /* examplecpp */ = {
+			isa = PBXGroup;
+			children = (
+				90F843C42762A1E9000A8A51 /* examplecpp.vcxproj */,
+				90F843C52762A1E9000A8A51 /* src */,
+			);
+			name = examplecpp;
+			path = ../code/examplecpp;
+			sourceTree = "<group>";
+		};
+		90F843C52762A1E9000A8A51 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				90F843C62762A1E9000A8A51 /* examplecpp.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		B99F4BA313F8ABFF009465D9 = {
 			isa = PBXGroup;
 			children = (
 				90BF4FA7274AAC84001FDE2A /* CML */,
 				90BF908C27523562001EA32C /* example */,
-				90BF90942752356C001EA32C /* cppexample */,
+				90F843C32762A1E9000A8A51 /* examplecpp */,
 				B99F4BB513F8AC31009465D9 /* Products */,
 				90BF4FA2274AA2D9001FDE2A /* Frameworks */,
 			);
@@ -618,9 +620,9 @@
 			productReference = B92F506F140A76D100075896 /* Test */;
 			productType = "com.apple.product-type.tool";
 		};
-		B98F4D5C15E4059C0080C96E /* cppexample */ = {
+		B98F4D5C15E4059C0080C96E /* examplecpp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "cppexample" */;
+			buildConfigurationList = B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "examplecpp" */;
 			buildPhases = (
 				B98F4D5A15E4059C0080C96E /* Sources */,
 				B98F4D5B15E4059C0080C96E /* Frameworks */,
@@ -631,7 +633,7 @@
 				90BF50AC274AACC9001FDE2A /* PBXTargetDependency */,
 				90BF50AE274AACC9001FDE2A /* PBXTargetDependency */,
 			);
-			name = cppexample;
+			name = examplecpp;
 			productName = cppexample;
 			productReference = B98F4D5D15E4059C0080C96E /* cppexample */;
 			productType = "com.apple.product-type.tool";
@@ -697,7 +699,7 @@
 				B99F4BBE13F8AC4C009465D9 /* libcml */,
 				B92F506E140A76D100075896 /* example */,
 				B9E8E3F0154D77D500A4C836 /* libcmldebug */,
-				B98F4D5C15E4059C0080C96E /* cppexample */,
+				B98F4D5C15E4059C0080C96E /* examplecpp */,
 			);
 		};
 /* End PBXProject section */
@@ -715,7 +717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90BF90972752356C001EA32C /* cppexample.cpp in Sources */,
+				90F843C72762A1E9000A8A51 /* examplecpp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,7 +1262,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "cppexample" */ = {
+		B98F4D6215E405BE0080C96E /* Build configuration list for PBXNativeTarget "examplecpp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B98F4D5F15E4059C0080C96E /* Debug */,

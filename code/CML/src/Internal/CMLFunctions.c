@@ -753,6 +753,7 @@ typedef struct GammaStruct{
 } GammaStruct;
 
 CML_HDEF void cml_ConstructGammaResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  CML_UNUSED(defRange);
   GammaStruct* gammaStruct = (GammaStruct*)data;
   gammaStruct->input = *((const float*)input);
   gammaStruct->invGamma = cmlInverse(gammaStruct->input);
@@ -787,6 +788,7 @@ CML_DEF CMLFunction* cmlCreateGammaResponse(float gamma){
 // //////////////////////////////////////////////
 
 CML_HDEF void cml_ConstructInverseGammaResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  CML_UNUSED(defRange);
   *((float*)data) = *((const float*)input);
 }
 
@@ -825,6 +827,7 @@ typedef struct GammaLinearStruct{
 } GammaLinearStruct;
 
 CML_HDEF void cml_ConstructGammaLinearResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  CML_UNUSED(defRange);
   GammaLinearInputParameters* inputParams = (GammaLinearInputParameters*)input;
   GammaLinearStruct* gammaLinear = (GammaLinearStruct*)data;
   gammaLinear->input = *inputParams;
@@ -870,6 +873,7 @@ typedef struct InverseGammaLinearStruct{
 } InverseGammaLinearStruct;
 
 CML_HDEF void cml_ConstructInverseGammaLinearResponseInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  CML_UNUSED(defRange);
   GammaLinearInputParameters* inputParams = (GammaLinearInputParameters*)input;
   InverseGammaLinearStruct* invGammaLinear = (InverseGammaLinearStruct*)data;
   invGammaLinear->input = *inputParams;
@@ -1129,6 +1133,7 @@ CML_DEF CMLFunction* cmlCreateDiracFilter(float wavelength){
 // //////////////////////////////////////////////
 
 CML_HDEF void cml_ConstructConstantFilterInput(void* data, CMLDefinitionRange* defRange, const void* input){
+  CML_UNUSED(defRange);
   *((float*)data) = *((const float*)input);
 }
 
@@ -1163,7 +1168,8 @@ typedef struct CML_HDEF CMLCutFilterInput{
 } CMLCutFilterInput;
 
 CML_HDEF void cml_ConstructCutFilterInput(void* data, CMLDefinitionRange* defRange, const void* input){
-  CMLCutFilterInput* range = (CMLCutFilterInput*)data;
+  CML_UNUSED(input);
+  CMLCutFilterInput* range = (CMLCutFilterInput*)input;
   *((CMLCutFilterInput*)data) = *range;
   defRange->minNonTrivialCoord = range->min;
   defRange->maxNonTrivialCoord = range->max;
