@@ -1,33 +1,40 @@
 
-// (c) Manderim GmbH
-// This is proprietary software. Any use without the explicit acknowledgement
-// of the author of this software is prohibited and any liability is disclamed.
-// Terms of a separate contract may apply.
+CML_API CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
+CML_API CMLIllumination* cmlCreateIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer);
+CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
+
+CML_API void cmlClearIllumination  (CMLIllumination* illumination);
+CML_API void cmlDestroyIllumination(CMLIllumination* illumination);
+
+CML_API CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
+CML_API const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
+CML_API float cmlGetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
+CML_API void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer);
 
 
-CML_API CMLIllumination* cmlCreateIlluminationWithPreset(CMLIlluminationType type, float temperature);
-CML_API CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(const CMLMOBFunction* spectrum);
-//CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhite(const CMLVec3 whiteYxy);
 
-CML_API CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination);
-CML_API const CMLMOBFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination);
-CML_API float cmlGetCorrelatedColorTemperature(const CMLIllumination* illumination);
+// This is free and unencumbered software released into the public domain.
 
-// Creates and returns a new spectrum with the given input parameters. The
-// temperature parameter is expected in [Degree Kelvin] for the illumination
-// types CML_ILLUMINATION_BLACKBODY and CML_ILLUMINATION_D_ILLUMINANT. For any
-// other type, the temperature parameter is ignored. The returned CMLFunction
-// must be deleted manually. Only types denoting built-in illuminations are
-// valid (no custom illuminations). Invalid illumination types will return
-// CML_NULL.
-CML_API CMLMOBFunction* cmlCreateIlluminationSpectrum(
-                                    CMLIlluminationType illuminationtype,
-                                    float               temperature);
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
 
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
 
-// Returns the correlated color temperature in [Degree Kelvin] for a given
-// white in Yuv. Currently, the Robertson method is implemented.
-// Beware! This function expects Yuv, not Yxy!
-CML_API float cmlComputeCorrelatedColorTemperature(
-                                    const CMLVec3       whiteYuv);
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
 
+// For more information, please refer to <http://unlicense.org/>

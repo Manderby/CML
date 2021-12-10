@@ -1,246 +1,242 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|x64">
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\CML.h" />
-    <ClInclude Include="src\CMLColor.h" />
-    <ClInclude Include="src\CMLConstants.h" />
-    <ClInclude Include="src\CMLContext.h" />
-    <ClInclude Include="src\CMLDefinitions.h" />
-    <ClInclude Include="src\CMLFunction.h" />
-    <ClInclude Include="src\CMLFunctionVector.h" />
-    <ClInclude Include="src\CMLIllumination.h" />
-    <ClInclude Include="src\CMLInlines.h" />
-    <ClInclude Include="src\CMLObserver.h" />
-    <ClInclude Include="src\CMLResponseCurve.h" />
-    <ClInclude Include="src\CMLRGBSpace.h" />
-    <ClInclude Include="src\CMLTypes.h" />
-    <ClInclude Include="src\CMLunused.h" />
-    <ClInclude Include="src\MOB.h" />
-    <ClInclude Include="src\MOBInternal.h" />
-    <ClInclude Include="src\StateMachine\CMLColorMachineState.h" />
-    <ClInclude Include="src\StateMachine\CMLInternal.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\CMLColor.c" />
-    <ClCompile Include="src\CMLColorspace.c" />
-    <ClCompile Include="src\CMLColorspaceAbstract.c" />
-    <ClCompile Include="src\CMLColorspaceClass.c" />
-    <ClCompile Include="src\CMLContext.c" />
-    <ClCompile Include="src\CMLConverter.c" />
-    <ClCompile Include="src\CMLConverterClass.c" />
-    <ClCompile Include="src\CMLConverterUnit.c" />
-    <ClCompile Include="src\CMLEncoding.c" />
-    <ClCompile Include="src\CMLFunction.c" />
-    <ClCompile Include="src\CMLFunctionVector.c" />
-    <ClCompile Include="src\CMLIllumination.c" />
-    <ClCompile Include="src\CMLInternal.c" />
-    <ClCompile Include="src\CMLObserver.c" />
-    <ClCompile Include="src\CMLResponseCurve.c" />
-    <ClCompile Include="src\CMLRGBSpace.c" />
-    <ClCompile Include="src\CMLSetting.c" />
-    <ClCompile Include="src\CMLStrings.c" />
-    <ClCompile Include="src\Colorspaces\CMLHSLSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLHSVSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLLabSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLLchSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLLuvSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLRGBSpaceInternal.c" />
-    <ClCompile Include="src\Colorspaces\CMLSpectrumRadiometricSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLSpectrumRemissionSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLXYZSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLYCbCrSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLYupvpSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLYuvSpace.c" />
-    <ClCompile Include="src\Colorspaces\CMLYxySpace.c" />
-    <ClCompile Include="src\Conversions\CMLDefaulttoNorm.c" />
-    <ClCompile Include="src\Conversions\CMLGrayConversions.c" />
-    <ClCompile Include="src\Conversions\CMLHSLtoHSV.c" />
-    <ClCompile Include="src\Conversions\CMLHSVtoHSL.c" />
-    <ClCompile Include="src\Conversions\CMLHSVtoRGB.c" />
-    <ClCompile Include="src\Conversions\CMLInputOutputConversions.c" />
-    <ClCompile Include="src\Conversions\CMLLabtoLch.c" />
-    <ClCompile Include="src\Conversions\CMLLabtoXYZ.c" />
-    <ClCompile Include="src\Conversions\CMLLchtoLab.c" />
-    <ClCompile Include="src\Conversions\CMLLuvtoYupvp.c" />
-    <ClCompile Include="src\Conversions\CMLRadiometrictoRemission.c" />
-    <ClCompile Include="src\Conversions\CMLRadiometrictoXYZ.c" />
-    <ClCompile Include="src\Conversions\CMLRemissiontoRadiometric.c" />
-    <ClCompile Include="src\Conversions\CMLRGBtoHSV.c" />
-    <ClCompile Include="src\Conversions\CMLRGBtoRadiometric.c" />
-    <ClCompile Include="src\Conversions\CMLRGBtoXYZ.c" />
-    <ClCompile Include="src\Conversions\CMLRGBtoYCbCr.c" />
-    <ClCompile Include="src\Conversions\CMLXYZtoLab.c" />
-    <ClCompile Include="src\Conversions\CMLXYZtoRGB.c" />
-    <ClCompile Include="src\Conversions\CMLXYZtoYxy.c" />
-    <ClCompile Include="src\Conversions\CMLYCbCrtoRGB.c" />
-    <ClCompile Include="src\Conversions\CMLYupvptoLuv.c" />
-    <ClCompile Include="src\Conversions\CMLYupvptoYuv.c" />
-    <ClCompile Include="src\Conversions\CMLYupvptoYxy.c" />
-    <ClCompile Include="src\Conversions\CMLYuvtoYupvp.c" />
-    <ClCompile Include="src\Conversions\CMLYxytoXYZ.c" />
-    <ClCompile Include="src\Conversions\CMLYxytoYupvp.c" />
-    <ClCompile Include="src\MOB.c" />
-    <ClCompile Include="src\StateMachine\CMLChromaticAdaptation.c" />
-    <ClCompile Include="src\StateMachine\CMLCMYKColorspace.c" />
-    <ClCompile Include="src\StateMachine\CMLColorMachine.c" />
-    <ClCompile Include="src\StateMachine\CMLColorMachineState.c" />
-    <ClCompile Include="src\StateMachine\CMLGrayColorspace.c" />
-    <ClCompile Include="src\StateMachine\CMLLabColorspace.c" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A4DDC378-5971-4A78-AAF4-BC6B98AF2369}</ProjectGuid>
-    <RootNamespace>DLL</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{29073bb4-4b45-4493-ac94-392606e2dd13}</ProjectGuid>
+    <RootNamespace>CML</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetName>libcml</TargetName>
-    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>libcml</TargetName>
-    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
-    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>libcml</TargetName>
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
+    <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\bin\$(ProjectName)_$(Configuration)_$(Platform)\</OutDir>
     <IntDir>$(ProjectDir)..\..\build\$(ProjectName)_$(Configuration)_$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <ExceptionHandling>false</ExceptionHandling>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AssemblyDebug>true</AssemblyDebug>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ExceptionHandling>false</ExceptionHandling>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AssemblyDebug>false</AssemblyDebug>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\lib\NALib\code\NALib\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="res\CMLChangelog.txt" />
+    <Text Include="res\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CML.h" />
+    <ClInclude Include="src\CMLBaseAPI.h" />
+    <ClInclude Include="src\CMLColorMachine.h" />
+    <ClInclude Include="src\CMLDefinitions.h" />
+    <ClInclude Include="src\CMLEnvironment.h" />
+    <ClInclude Include="src\CMLFunctions.h" />
+    <ClInclude Include="src\CMLIllumination.h" />
+    <ClInclude Include="src\CMLMath.h" />
+    <ClInclude Include="src\CMLObserver.h" />
+    <ClInclude Include="src\CMLResponseCurve.h" />
+    <ClInclude Include="src\ColorClasses\CMLCMYKColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLGrayColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLHSLColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLHSVColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLLabColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLLchColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLLuvColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLRGBColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLSpectralColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLXYZColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLYCbCrColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLYupvpColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLYuvColor.h" />
+    <ClInclude Include="src\ColorClasses\CMLYxyColor.h" />
+    <ClInclude Include="src\Internal\CMLColorMachineState.h" />
+    <ClInclude Include="src\Internal\CMLConverterMacros.h" />
+    <ClInclude Include="src\Internal\CMLInternal.h" />
+    <ClInclude Include="src\Internal\CMLNormedConversions.h" />
+    <ClInclude Include="src\Internal\CMLunused.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ColorClasses\CMLCMYKColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLGrayColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLHSLColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLHSVColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLLabColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLLchColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLLuvColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLRGBColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLSpectralColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLXYZColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLYCbCrColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLYupvpColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLYuvColor.cpp" />
+    <ClCompile Include="src\ColorClasses\CMLYxyColor.cpp" />
+    <ClCompile Include="src\Conversions\CMLClamp.c" />
+    <ClCompile Include="src\Conversions\CMLCMYKConversions.c" />
+    <ClCompile Include="src\Conversions\CMLColorMachineConversions.c" />
+    <ClCompile Include="src\Conversions\CMLGrayConversions.c" />
+    <ClCompile Include="src\Conversions\CMLHSLConversions.c" />
+    <ClCompile Include="src\Conversions\CMLHSVConversions.c" />
+    <ClCompile Include="src\Conversions\CMLInputOutputConversions.c" />
+    <ClCompile Include="src\Conversions\CMLInvert.c" />
+    <ClCompile Include="src\Conversions\CMLLabConversions.c" />
+    <ClCompile Include="src\Conversions\CMLLchConversions.c" />
+    <ClCompile Include="src\Conversions\CMLLuvConversions.c" />
+    <ClCompile Include="src\Conversions\CMLNormedConversions.c" />
+    <ClCompile Include="src\Conversions\CMLRGBConversions.c" />
+    <ClCompile Include="src\Conversions\CMLSpectralConversions.c" />
+    <ClCompile Include="src\Conversions\CMLXYZConversions.c" />
+    <ClCompile Include="src\Conversions\CMLYCbCrConversions.c" />
+    <ClCompile Include="src\Conversions\CMLYupvpConversions.c" />
+    <ClCompile Include="src\Conversions\CMLYuvConversions.c" />
+    <ClCompile Include="src\Conversions\CMLYxyConversions.c" />
+    <ClCompile Include="src\Internal\CMLBaseAPI.c" />
+    <ClCompile Include="src\Internal\CMLChromaticAdaptation.c" />
+    <ClCompile Include="src\Internal\CMLCMYKColorspace.c" />
+    <ClCompile Include="src\Internal\CMLColorMachine.c" />
+    <ClCompile Include="src\Internal\CMLColorMachineState.c" />
+    <ClCompile Include="src\Internal\CMLFunctions.c" />
+    <ClCompile Include="src\Internal\CMLGrayColorspace.c" />
+    <ClCompile Include="src\Internal\CMLIllumination.c" />
+    <ClCompile Include="src\Internal\CMLIntegerMapping.c" />
+    <ClCompile Include="src\Internal\CMLInternal.c" />
+    <ClCompile Include="src\Internal\CMLLabColorspace.c" />
+    <ClCompile Include="src\Internal\CMLObserver.c" />
+    <ClCompile Include="src\Internal\CMLResponseCurve.c" />
+    <ClCompile Include="src\Internal\CMLRGBColorspace.c" />
+    <ClCompile Include="src\Internal\CMLStrings.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
