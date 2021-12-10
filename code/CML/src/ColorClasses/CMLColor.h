@@ -3,6 +3,9 @@
 
 #include "../CML.h"
 
+// Disabling the warning about uninitialized members. Because that is how CML
+// is designed.
+#pragma warning( disable: 26495 )
 
 #if CML_COMPILE_ON_MAC_OSX
   // Mac OS X uses some symbols which are equal to the classes provided with

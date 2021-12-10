@@ -168,31 +168,36 @@ int main(){
   printf("Preparing %i million random RGB values to convert to Lab... ",
     (int)millionColors);
   fflush(stdout);
-
-  float *randvalues = (float*)malloc(sizeof(float)*millionColors*1000000*3);
-  float *outvalues  = (float*)malloc(sizeof(float)*millionColors*1000000*3);
-  for(size_t i = 0; i < millionColors * 1000000; i++){
-    randvalues[i * 3 + 0] = rand()/(float)RAND_MAX;
-    randvalues[i * 3 + 1] = rand()/(float)RAND_MAX;
-    randvalues[i * 3 + 2] = rand()/(float)RAND_MAX;
-    outvalues[i * 3 + 0] = 0.f;
-    outvalues[i * 3 + 1] = 0.f;
-    outvalues[i * 3 + 2] = 0.f;
-  }
-  printf("Done\n");
-  fflush(stdout);
-
-  // Now, let's convert the values and measure the time.
-  printf("Converting array with float precision... ");
-  fflush(stdout);
-
   CMLTimer timer;
-  timer = cmlStartTimer();
+
+  float *randValues = (float*)malloc(sizeof(float)*millionColors*1000000*3);
+  float *outValues  = (float*)malloc(sizeof(float)*millionColors*1000000*3);
+  if(randValues && outValues){
+    for(size_t i = 0; i < millionColors * 1000000; i++){
+      randValues[i * 3 + 0] = rand()/(float)RAND_MAX;
+      randValues[i * 3 + 1] = rand()/(float)RAND_MAX;
+      randValues[i * 3 + 2] = rand()/(float)RAND_MAX;
+      outValues[i * 3 + 0] = 0.f;
+      outValues[i * 3 + 1] = 0.f;
+      outValues[i * 3 + 2] = 0.f;
+    }
+    printf("Done\n");
+    fflush(stdout);
+
+    // Now, let's convert the values and measure the time.
+    printf("Converting array with float precision... ");
+    fflush(stdout);
+
+    timer = cmlStartTimer();
   
-  cmlRGBToLab(cm2, outvalues, randvalues, millionColors * 1000000);
+    cmlRGBToLab(cm2, outValues, randValues, millionColors * 1000000);
   
-  printf("Done after %1.02f seconds\n", cmlTimerGetSeconds(timer));
-  fflush(stdout);
+    printf("Done after %1.02f seconds\n", cmlTimerGetSeconds(timer));
+    fflush(stdout);
+  }else{
+    printf("Insufficient memory\n");
+    fflush(stdout);
+  }
 
   // Many conversions get even faster, if a lookup table (LUT) is used.
   // Not with the Debug-Version though!
@@ -208,14 +213,14 @@ int main(){
 
   timer = cmlStartTimer();
   
-  cmlRGBToLab(cm2, outvalues, randvalues, millionColors * 1000000);
+  cmlRGBToLab(cm2, outValues, randValues, millionColors * 1000000);
   
   printf("Done after %1.02f seconds\n", cmlTimerGetSeconds(timer));
   fflush(stdout);
 
 
-  free(outvalues);
-  free(randvalues);
+  free(outValues);
+  free(randValues);
 
 
 

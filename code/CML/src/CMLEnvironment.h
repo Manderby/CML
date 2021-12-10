@@ -5,7 +5,7 @@
 
 
 #include <sys/types.h>  // base types
-#include <stdlib.h>     // Just for the NULL
+#include <stdlib.h>     // NULL and size_t
 #include <string.h>     // memset and memcpy
 
 

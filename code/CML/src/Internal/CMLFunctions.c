@@ -275,7 +275,7 @@ CML_HDEF float cml_ArrayFunctionInterpolateFloor(const CMLArrayFunctionData* arr
 
 // Returns the value stored at round(index).
 CML_HDEF float cml_ArrayFunctionInterpolateBox(const CMLArrayFunctionData* arrayFunctionData, float index){
-  return arrayFunctionData->input.buffer[(size_t)(index + .5f)];
+  return arrayFunctionData->input.buffer[(size_t)((float)index + .5f)];
 }
 
 // Returns the value stored at floor(index). The difference to the Floor method
