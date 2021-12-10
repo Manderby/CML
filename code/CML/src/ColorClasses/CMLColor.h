@@ -3,11 +3,11 @@
 
 #include "../CML.h"
 
-// Disabling the warning about uninitialized members. Because that is how CML
-// is designed.
-#pragma warning( disable: 26495 )
-
-#if CML_COMPILE_ON_MAC_OSX
+#if CML_COMPILE_ON_WIN
+  // Disabling the warning about uninitialized members. Because that is how CML
+  // is designed.
+  #pragma warning( disable: 26495 )
+#elif CML_COMPILE_ON_MAC_OSX
   // Mac OS X uses some symbols which are equal to the classes provided with
   // this library. But as quickdraw is deprecated, this should not be a problem
   // to exclude it from compilation.
