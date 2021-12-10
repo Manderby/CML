@@ -6,8 +6,7 @@ CML is a self-contained implementation of color transformations used in
 scientific color science and standards, based on informations from the
 literature and reference material from standartization institutes.
 
-CML is written in C and is available in this package as a precompiled
-dynamic library.
+CML is written in C and can be used as a static or dynamic library.
 
 If you consider incorporating CML into a bigger project and need (paid) help
 in engineering, feel free to contact.
@@ -19,10 +18,13 @@ Email: cml@manderc.com
 
 
 
-Installation
-============
+Usage
+=====
 
-The folder "include/CML" contains all needed header files as well as the
+Create a static or dynamic library with the contents of src/CML. There is
+a Visual Studio project prepared for that in that folder.
+
+The base src folder "CML" contains all needed header files as well as the
 header- and implementation-files of the color classes. It is recommended to
 copy the folder "CML" as a whole to the default include directory of your IDE,
 your system or any place of your desire. It is recommended to use the following
