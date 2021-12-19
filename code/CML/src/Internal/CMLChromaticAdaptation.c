@@ -3,7 +3,7 @@
 #include "CMLColorMachineState.h"
 
 
-CML_API void cmlComputeChromaticAdaptationMatrix(
+CML_DEF void cmlComputeChromaticAdaptationMatrix(
   CMLMat33 matrix,
   CMLChromaticAdaptationType adaptationType,
   CMLVec3 adaptedWhitePointYxy,
@@ -22,16 +22,14 @@ CML_API void cmlComputeChromaticAdaptationMatrix(
 
   // Note that the matrices are stored column first!
   switch(adaptationType){
-  case CML_CHROMATIC_ADAPTATION_NONE:
-    {
-      float scale = adaptedWhitePointYxy[0] / whitePointYxy[0];
-      cmlSetMat33(matrix,
-        scale, 0.f,   0.f,
-        0.f,   scale, 0.f,
-        0.f,   0.f,   scale);
-      return;
-      break;
-    }
+  case CML_CHROMATIC_ADAPTATION_NONE: {
+    float scale = adaptedWhitePointYxy[0] / whitePointYxy[0];
+    cmlSetMat33(matrix,
+      scale, 0.f,   0.f,
+      0.f,   scale, 0.f,
+      0.f,   0.f,   scale);
+    return;
+    break; }
   default:
   case CML_CHROMATIC_ADAPTATION_XYZ_SCALING:
     cmlSetMat33(M,
@@ -54,16 +52,16 @@ CML_API void cmlComputeChromaticAdaptationMatrix(
   }
 
   CMLVec3  whitePointXYZ;
-  CMLVec3  adaptedwhitePointXYZ;
+  CMLVec3  adaptedWhitePointXYZ;
   CMLMat33 Minv;
   CMLVec3  cs;
   CMLVec3  cd;
 
   cml_OneYxyToXYZ(whitePointXYZ, whitePointYxy, CML_NULL);
-  cml_OneYxyToXYZ(adaptedwhitePointXYZ, adaptedWhitePointYxy, CML_NULL);
+  cml_OneYxyToXYZ(adaptedWhitePointXYZ, adaptedWhitePointYxy, CML_NULL);
   cmlInvertMat33(Minv, M);
   cmlMulMat33Vec3(cs, M, whitePointXYZ);
-  cmlMulMat33Vec3(cd, M, adaptedwhitePointXYZ);
+  cmlMulMat33Vec3(cd, M, adaptedWhitePointXYZ);
   cmlDiv3componentwise(cd, cs);
   cmlScaleMat33Vec3(Minv, cd);
   cmlMulMat33Mat33(matrix, Minv, M);

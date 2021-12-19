@@ -233,27 +233,18 @@ CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersB(con
 CML_API void cmlSetResponseR(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseR));
   cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseR), response);
-//  cm->rgbSpace.responseR.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
-//  cm->rgbSpace.responseR.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
-//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseR), type, param0, param1, param2, param3);
 }
 
 
 CML_API void cmlSetResponseG(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseG));
   cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseG), response);
-//  cm->rgbSpace.responseG.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
-//  cm->rgbSpace.responseG.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
-//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseG), type, param0, param1, param2, param3);
 }
 
 
 CML_API void cmlSetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->rgbSpace.responseB));
   cmlInitResponseCurveWithCopy((&cm->rgbSpace.responseB), response);
-//  cm->rgbSpace.responseB.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
-//  cm->rgbSpace.responseB.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
-//  cml_CreateResponseCurveWithParamFunction(&(cm->rgbSpace.responseB), type, param0, param1, param2, param3);
 }
 
 

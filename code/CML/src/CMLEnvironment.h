@@ -15,7 +15,7 @@
 // ////////////////////////////////////////////
 
 #if (defined _WIN64) || (defined _WIN32) || (defined WIN32)
-  #define CML_COMPILE_ON_WIN 1
+  #define CML_COMPILE_ON_WINDOWS 1
 #elif (defined __APPLE__)
   #define CML_COMPILE_ON_MAC_OSX 1
 #else
@@ -28,7 +28,7 @@
 // System dependent macros and type definitions
 // ////////////////////////////////////////////
 
-#if CML_COMPILE_ON_WIN
+#if CML_COMPILE_ON_WINDOWS
   #define CML_INLINE _inline
   #ifndef CML_INLINE
     #define CML_INLINE __inline
@@ -104,7 +104,7 @@ typedef int           CMLBool;
 #endif
 
 #if CML_DEBUG
-  #if CML_COMPILE_ON_WIN
+  #if CML_COMPILE_ON_WINDOWS
     #include <io.h>
     #include <share.h>
     #include <direct.h>

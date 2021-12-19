@@ -1,7 +1,7 @@
 
 #include <stdlib.h>
 
-#if CML_COMPILE_ON_WIN
+#if CML_COMPILE_ON_WINDOWS
   #define CML_HIDDEN
   #define CML_RESTRICT    __restrict
 #elif CML_COMPILE_ON_MAC_OSX

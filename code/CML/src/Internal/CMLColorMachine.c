@@ -20,13 +20,13 @@
 
 
 
-CML_API CMLuint32 cmlGetVersion(){
+CML_DEF CMLuint32 cmlGetVersion(){
   return 2;
 }
 
 
 
-CML_API CMLColorMachine* cmlCreateColorMachine(){
+CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cml_Allocate(sizeof(CMLColorMachine));
 
@@ -103,7 +103,7 @@ CML_API CMLColorMachine* cmlCreateColorMachine(){
 
 
 
-CML_API void cmlReleaseColorMachine(CMLColorMachine* cm){
+CML_DEF void cmlReleaseColorMachine(CMLColorMachine* cm){
   cmlClearObserver(&(cm->observer));
   cmlClearResponseCurve(&(cm->rgbSpace.responseR));
   cmlClearResponseCurve(&(cm->rgbSpace.responseG));
@@ -115,13 +115,13 @@ CML_API void cmlReleaseColorMachine(CMLColorMachine* cm){
 
 
 
-CML_API void cmlLockRecomputation(CMLColorMachine* cm){
+CML_DEF void cmlLockRecomputation(CMLColorMachine* cm){
   cm->recomputationLockCount ++;
 }
 
 
 
-CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
+CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
   cm->recomputationLockCount --;
   if(cm->recomputationLockCount){return;}
   
@@ -152,12 +152,12 @@ CML_API void cmlReleaseRecomputation(CMLColorMachine* cm){
 
 
 
-CML_API CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm){
+CML_DEF CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm){
   return cm->inputoutput.integermapping;
 }
 
 
-CML_API void cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_DEF void cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
@@ -166,7 +166,7 @@ CML_API void cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint3
 }
 
 
-CML_API void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_DEF void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
@@ -175,7 +175,7 @@ CML_API void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint
 }
 
 
-CML_API void cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_DEF void cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
@@ -184,7 +184,7 @@ CML_API void cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, 
 }
 
 
-CML_API void cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_DEF void cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif

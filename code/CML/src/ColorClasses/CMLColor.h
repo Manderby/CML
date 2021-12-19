@@ -3,7 +3,7 @@
 
 #include "../CML.h"
 
-#if CML_COMPILE_ON_WIN
+#if CML_COMPILE_ON_WINDOWS
   // Disabling the warning about uninitialized members. Because that is how CML
   // is designed.
   #pragma warning( disable: 26495 )

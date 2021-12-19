@@ -113,6 +113,7 @@ CML_DEF void cmlClearResponseCurve(CMLResponseCurve* curve){
 }
 
 
+
 CML_DEF CMLResponseCurveType cmlGetResponseCurveType(const CMLResponseCurve* curve){
   return curve->responseType;
 }

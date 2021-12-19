@@ -188,13 +188,13 @@ CML_HIDEF void cml_YCbCrToNormedOutput(float* CML_RESTRICT output, const float* 
 }
 
 CML_HIDEF void cml_HSVToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT hsv){
-  output[0] =  hsv[0]                  * CML_HSV_H_INVRANGE;
+  output[0] =  hsv[0] * CML_HSV_H_INVRANGE;
   output[1] =  hsv[1];
   output[2] =  hsv[2];
 }
 
 CML_HIDEF void cml_HSLToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT hsl){
-  output[0] =  hsl[0]                  * CML_HSL_H_INVRANGE;
+  output[0] =  hsl[0] * CML_HSL_H_INVRANGE;
   output[1] =  hsl[1];
   output[2] =  hsl[2];
 }

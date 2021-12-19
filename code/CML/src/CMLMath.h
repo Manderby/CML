@@ -5,7 +5,7 @@
 
 #include <math.h>
 
-#if CML_COMPILE_ON_WIN
+#if CML_COMPILE_ON_WINDOWS
   #define cmlCbrt(x)  (powf(x, 1.f / 3.f))
   #define cmlRound(x) (floorf(x + .5f))
 #elif CML_COMPILE_ON_MAC_OSX

@@ -4,12 +4,12 @@
 
 
 
-CML_API cml_CMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
+CML_DEF cml_CMYKTransformType cmlGetCMYKTransform(const CMLColorMachine* cm){
   return cm->cmykSpace.transform;
 }
 
 
-CML_API void cmlSetCMYKTransform(CMLColorMachine* cm, cml_CMYKTransformType transform){
+CML_DEF void cmlSetCMYKTransform(CMLColorMachine* cm, cml_CMYKTransformType transform){
   switch(transform){
   case CML_CMYK_STANDARD_TRANSFORM:
     cm->RGBToCMYK    = &cml_RGBToCMYKStandard;
