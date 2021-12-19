@@ -2,7 +2,7 @@
 #include "../CML.h"
 #include "CMLInternal.h"
 
-CML_HIDDEN static const char* colorTypeStrings[CML_NUMBER_OF_COLORTYPES] = {
+CML_HDEF const char* colorTypeStrings[CML_COLOR_COUNT] = {
   "Gray",
   "XYZ",
   "Yxy",
@@ -20,9 +20,7 @@ CML_HIDDEN static const char* colorTypeStrings[CML_NUMBER_OF_COLORTYPES] = {
   "Remission Spectrum"
 };
 
-CML_HIDDEN static const char* observerStrings[CML_NUMBER_OF_OBSERVERS] = {
-//  "1931 2 deg (1 nm steps)",                  // CML_OBSERVER_2DEG_1931
-//  "1964 10 deg (1 nm steps)",                 // CML_OBSERVER_10DEG_1964
+CML_HDEF const char* observerStrings[CML_OBSERVER_COUNT] = {
   "CIE 1931 2 deg",                           // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
   "CIE 1964 10 deg",                          // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
 //  "ISO-13655 2 deg",                          // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
@@ -33,7 +31,7 @@ CML_HIDDEN static const char* observerStrings[CML_NUMBER_OF_OBSERVERS] = {
   "Custom Observer",                          // CML_OBSERVER_CUSTOM
 };
 
-CML_HIDDEN static const char* illuminationStrings[CML_NUMBER_OF_ILLUMINATIONS] = {
+CML_HDEF const char* illuminationStrings[CML_ILLUMINATION_COUNT] = {
   "Blackbody",                        // CML_ILLUMINATION_BLACKBODY
   "A (CIE Standard)",                 // CML_ILLUMINATION_A_CIE
   "A (with Planck locus shift)",      // CML_ILLUMINATION_A_EXACT
@@ -63,7 +61,7 @@ CML_HIDDEN static const char* illuminationStrings[CML_NUMBER_OF_ILLUMINATIONS] =
   "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
-CML_HIDDEN static const char* rgbSpaceStrings[CML_NUMBER_OF_RGB_SPACES] = {
+CML_HDEF const char* rgbSpaceStrings[CML_RGB_COUNT] = {
   "Adobe 98",             // CML_RGB_ADOBE_98
   "Apple",                // CML_RGB_APPLE
   "Best",                 // CML_RGB_BEST
@@ -90,7 +88,7 @@ CML_HIDDEN static const char* rgbSpaceStrings[CML_NUMBER_OF_RGB_SPACES] = {
   "Custom",               // CML_RGB_WIDE_GAMUT
 };
 
-CML_HIDDEN static const char* labSpaceStrings[CML_NUMBER_OF_LAB_SPACES] = {
+CML_HDEF const char* labSpaceStrings[CML_LAB_COUNT] = {
   "CIELAB L*a*b* 1976",           // CML_LAB_CIELAB
   "Custom L",                     // CML_LAB_CUSTOM_L
   "Hunter Lab 1948 Approximated", // CML_LAB_HUNTER_APPROXIMATE
@@ -98,7 +96,7 @@ CML_HIDDEN static const char* labSpaceStrings[CML_NUMBER_OF_LAB_SPACES] = {
   "Adams chromatic valence",      // CML_LAB_ADAMS_CROMATIC_VALENCE
 };
 
-CML_HIDDEN static const char* functionTypeStrings[CML_NUMBER_OF_FUNCTION_TYPES] = {
+CML_HDEF const char* functionTypeStrings[CML_FUNCTION_COUNT] = {
   "Undefined",             // CML_FUNCTION_UNDEFINED
   "Linear",                // CML_FUNCTION_LINEAR
   "Sqrt",                  // CML_FUNCTION_SQRT
@@ -109,7 +107,7 @@ CML_HIDDEN static const char* functionTypeStrings[CML_NUMBER_OF_FUNCTION_TYPES] 
   "L* Standard",           // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CML_HIDDEN static const char* rgbResponseTypeStrings[CML_NUMBER_OF_RESPONSE_CURVE_TYPES] = {
+CML_HDEF const char* rgbResponseTypeStrings[CML_RESPONSE_CUSTOM_COUNT] = {
   "Undefined",             // CML_RESPONSE_UNDEFINED
   "Linear",                // CML_RESPONSE_LINEAR
   "Gamma 1.8",             // CML_RESPONSE_GAMMA_1_8
@@ -126,7 +124,7 @@ CML_HIDDEN static const char* rgbResponseTypeStrings[CML_NUMBER_OF_RESPONSE_CURV
   "Custom Gamma + Linear", // CML_RESPONSE_CUSTOM_GAMMA_LINEAR
 };
 
-CML_HIDDEN static const char* grayComputationStrings[CML_NUMBER_OF_GRAY_COMPUTATIONS] = {
+CML_HDEF const char* grayComputationStrings[CML_GRAY_COUNT] = {
   "L (HSL)",             // CML_GRAY_FROM_HSL
   "V (HSV)",             // CML_GRAY_FROM_HSV
   "G (RGB)",             // CML_GRAY_FROM_G
@@ -136,13 +134,13 @@ CML_HIDDEN static const char* grayComputationStrings[CML_NUMBER_OF_GRAY_COMPUTAT
   "Y' (YCbCr)",          // CML_GRAY_FROM_YPRIME
 };
 
-CML_HIDDEN static const char* cmykTransformStrings[CML_NUMBER_OF_CMYK_TRANSFORMS] = {
+CML_HDEF const char* cmykTransformStrings[CML_CMYK_COUNT] = {
   "Standard",            // CML_CMYK_STANDARD_TRANSFORM
   "UCR",                 // CML_CMYK_UCR_TRANSFORM
 //  "GCR",               // CML_CMYK_GCR_TRANSFORM
 };
 
-CML_HIDDEN static const char* chromaticAdaptationStrings[CML_NUMBER_OF_CHROMATIC_ADAPTATIONS] = {
+CML_HDEF const char* chromaticAdaptationStrings[CML_CHROMATIC_ADAPTATION_COUNT] = {
   "No adaptation",       // CML_CHROMATIC_ADAPTATION_NONE
   "XYZ scaling",         // CML_CHROMATIC_ADAPTATION_XYZ_SCALING
   "Bradford",            // CML_CHROMATIC_ADAPTATION_BRADFORD
@@ -151,34 +149,34 @@ CML_HIDDEN static const char* chromaticAdaptationStrings[CML_NUMBER_OF_CHROMATIC
 
 
 
-CML_API const char* cmlGetColorTypeString(CMLColorType colorType){
+CML_DEF const char* cmlGetColorTypeString(CMLColorType colorType){
   return colorTypeStrings[colorType];
 }
-CML_API const char* cmlGetObserverTypeString(CMLObserverType observerType){
+CML_DEF const char* cmlGetObserverTypeString(CMLObserverType observerType){
   return observerStrings[observerType];
 }
-CML_API const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminationType){
+CML_DEF const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminationType){
   return illuminationStrings[illuminationType];
 }
-CML_API const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticAdaptationType){
+CML_DEF const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticAdaptationType){
   return chromaticAdaptationStrings[chromaticAdaptationType];
 }
-CML_API const char* cmlGetLabSpaceTypeString(CMLLabColorSpaceType labSpaceType){
+CML_DEF const char* cmlGetLabSpaceTypeString(CMLLabColorSpaceType labSpaceType){
   return labSpaceStrings[labSpaceType];
 }
-CML_API const char* cmlGetRGBResponseTypeString(CMLResponseCurveType type){
+CML_DEF const char* cmlGetRGBResponseTypeString(CMLResponseCurveType type){
   return rgbResponseTypeStrings[type];
 }
-CML_API const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
+CML_DEF const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
   return functionTypeStrings[functionType];
 }
-CML_API const char* cmlGetRGBColorSpaceTypeString(CMLRGBColorSpaceType type){
+CML_DEF const char* cmlGetRGBColorSpaceTypeString(CMLRGBColorSpaceType type){
   return rgbSpaceStrings[type];
 }
-CML_API const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
+CML_DEF const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
   return cmykTransformStrings[transformType];
 }
-CML_API const char* cmlGetGrayComputationTypeString(CMLGrayComputationType computationType){
+CML_DEF const char* cmlGetGrayComputationTypeString(CMLGrayComputationType computationType){
   return grayComputationStrings[computationType];
 }
 

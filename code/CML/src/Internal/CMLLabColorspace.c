@@ -4,12 +4,6 @@
 
 
   
-//  // There exist different Delta-E computations, simple and complex ones.
-//  // Initial setting is Delta-E-1976 (the euclidian distance).
-//  // After setting the compuation model, all subsequent delta-E computations
-//  // will be computed accordingly.
-//  float DeltaE(const float* CML_RESTRICT Lab1, const float* CML_RESTRICT Lab2) const;
-
 
 
 
@@ -87,11 +81,6 @@ CML_API void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
 //  cm->labSpace.responseL.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
 //  cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), type, param0, param1, param2, param3);
 }
-
-
-//CML_API float cmlGetLabGamma(const CMLColorMachine* cm){
-//  return cm->labSpace.responseL.param0;
-//}
 
 
 CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
@@ -179,24 +168,24 @@ CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm){
 
 
 
-//void cmlSetDeltaEComputation(CMLColorMachine* cm, CMLDeltaEComputationType computation){
-//  cm->labSpace.deltaecomputation = computation;
-//}
+void cmlSetDeltaEComputation(CMLColorMachine* cm, CMLDeltaEComputationType computation){
+  cm->labSpace.deltaEComputation = computation;
+}
 
 
-//float ColorMachine::DeltaE(const float* CML_RESTRICT Lab1, const float* CML_RESTRICT Lab2) const{
-//  float delta[3];
-//  switch(s->labSpace.deltaecomputation){
-//  case CML_DELTA_E_1976:
-//    cmlCpy3(delta, Lab1);
-//    cmlSub3(delta, Lab2);
-//    return cmlLength3(delta);
-//    break;
-//  default: break;
-//  }
-//  return 0;
-//}
-//
+float deltaE(CMLColorMachine* cm, const float* CML_RESTRICT lab1, const float* CML_RESTRICT lab2){
+  float delta[3];
+  switch(cm->labSpace.deltaEComputation){
+  case CML_DELTA_E_1976:
+    cmlCpy3(delta, lab1);
+    cmlSub3(delta, lab2);
+    return cmlLength3(delta);
+    break;
+  default: break;
+  }
+  return 0;
+}
+
 
 
 

@@ -43,13 +43,6 @@ CML_API CMLFunction* cmlCreateCIEDIlluminant(float temperature);
 // pow((x + offset) / (offset+1), gamma)     if x >= split * linScale
 // x / linScale                              if x <  split * linScale
 
-typedef struct GammaLinearInputParameters{
-  float gamma;
-  float offset;
-  float linScale;
-  float split;
-} GammaLinearInputParameters;
-
 CML_API CMLFunction* cmlCreateLinearResponse(void);
 CML_API CMLFunction* cmlCreateGammaResponse(float gamma);
 CML_API CMLFunction* cmlCreateInverseGammaResponse(float gamma);

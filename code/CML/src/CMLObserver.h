@@ -19,8 +19,6 @@ CML_API float                  cmlGetObserverRadiometricScale     (const CMLObse
 CML_API float                  cmlGetObserverColorimetricBase     (const CMLObserver* observer);
 CML_API const CMLFunction*     cmlGetObserverSpecDistFunction     (const CMLObserver* observer, CMLInt index);
 
-CML_API CMLObserverType        cml_GetObserverType                 (const CMLObserver* observer);
-
 CML_API const CMLIllumination* cmlGetReferenceIllumination        (const CMLObserver* observer);
 CML_API const CMLFunction*     cmlGetReferenceIlluminationSpectrum(const CMLObserver* observer);
 CML_API const float*           cmlGetReferenceWhitePointXYZ       (const CMLObserver* observer);

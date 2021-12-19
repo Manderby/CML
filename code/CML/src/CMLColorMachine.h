@@ -46,7 +46,7 @@ CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 m
 // The observer defines if the 2 degree or the 10 degree model and what data
 // set is used. Initial setting is 2 degrees of CIE recommendation.
 CML_API const CMLObserver*    cmlGetObserver(const CMLColorMachine* cm);
-CML_API CMLObserverType       cmlGetObserverType(const CMLColorMachine* cm);
+CML_API CMLObserverType       cmlGetObserverType(const CMLObserver* observer);
 CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserverType newobserver);
 CML_API void                  cmlGetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunction* observer[3]);
 //CML_API void                  cmlSetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]);
@@ -59,7 +59,6 @@ CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, 
 // by default.
 // Note that the setIlluminationTemperature method will only take effect with
 // the Blackbody and custom D illuminant. Otherwise, the input is ignored.
-CML_API CMLIlluminationType   cmlGetIlluminationType(CMLColorMachine* cm);
 CML_API void                  cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType);
 CML_API float                 cmlGetIlluminationTemperature(const CMLColorMachine* cm);
 CML_API void                  cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp);
@@ -84,9 +83,13 @@ CML_API void                  cmlSetLabLUTSize(CMLColorMachine* cm, CMLuint8 bit
 CML_API const CMLFunction*    cmlGetLtoLinearResponse(const CMLColorMachine* cm);
 CML_API const CMLFunction*    cmlGetLineartoLResponse(const CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm);
-//CML_API CMLFunctionType       cmlGetLabResponseCurveFunctionType(const CMLColorMachine* cm);
 CML_API void                  cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response);
-//CML_API float                 cmlGetLabGamma(const CMLColorMachine* cm);
+CML_API void                  cmlSetDeltaEComputation(CMLColorMachine* cm, CMLDeltaEComputationType computation);
+// There exist different Delta-E computations, simple and complex ones.
+// Initial setting is Delta-E-1976 (the euclidian distance).
+// After setting the compuation model, all subsequent delta-E computations
+// will be computed accordingly.
+CML_API float                 deltaE(CMLColorMachine* cm, const float* CML_RESTRICT lab1, const float* CML_RESTRICT lab2);
 
 // The RGB colorspace defines, which CMLIlluminationType (including white point)
 // and which r, g and b coordinates are used for conversions between XYZ and
@@ -100,14 +103,17 @@ CML_API void                  cmlSetResponseL(CMLColorMachine* cm, CMLResponseCu
 // responses. If a value of 0 is used, gamma will be set close to the
 // previous response curve. The setResponseRGB function will set the same
 // response for R, G and B.
+typedef struct GammaLinearInputParameters{
+  float gamma;
+  float offset;
+  float linScale;
+  float split;
+} GammaLinearInputParameters;
+
 CML_API CMLRGBColorSpaceType   cmlGetRGBColorSpaceType(const CMLColorMachine* cm);
 CML_API void                   cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type);
 CML_API void                   cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
 CML_API void                   cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
-//CML_API void                  cmlGetRGBToLinearResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
-//CML_API void                  cmlGetLineartoRGBResponses(const CMLColorMachine* cm, const CMLFunction* responses[3]);
-//CML_API void                  cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType responsetypes[3]);
-//CML_API void                  cmlGetRGBGammas(const CMLColorMachine* cm, float gammas[3]);
 CML_API void                   cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
 CML_API void cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const GammaLinearInputParameters* parameters);
 CML_API void                   cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType types[3]);

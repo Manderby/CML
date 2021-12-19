@@ -24,10 +24,10 @@ struct CML_HIDDEN CMLColorMachine{
 
   struct inputoutput_struct{
     CMLIntegerMappingType         integermapping;
-    CMLByte                       offset8Bit[CML_MAX_NUMBER_OF_CHANNELS];
-    float                         range8Bit[CML_MAX_NUMBER_OF_CHANNELS];
+    CMLByte                       offset8Bit [CML_MAX_NUMBER_OF_CHANNELS];
+    float                         range8Bit  [CML_MAX_NUMBER_OF_CHANNELS];
     CMLWord                       offset16Bit[CML_MAX_NUMBER_OF_CHANNELS];
-    float                         range16Bit[CML_MAX_NUMBER_OF_CHANNELS];
+    float                         range16Bit [CML_MAX_NUMBER_OF_CHANNELS];
   } inputoutput;
   
   CMLObserver observer;
@@ -57,7 +57,7 @@ struct CML_HIDDEN CMLColorMachine{
     CMLuint8                      lutsize;
     float                         adamsChromaticityValenceK;
     float                         adamsChromaticityValenceke;
-//    CMLDeltaEComputationType      deltaecomputation;
+    CMLDeltaEComputationType      deltaEComputation;
   } labSpace;
   
   struct graySpace_struct{

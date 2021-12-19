@@ -16,14 +16,14 @@ typedef enum{
   CML_COLOR_CMYK,
   CML_COLOR_SPECTRUM_ILLUMINATION,
   CML_COLOR_SPECTRUM_REMISSION,
-  CML_NUMBER_OF_COLORTYPES
+  CML_COLOR_COUNT
 } CMLColorType;
 
 // Enumerates the predefined integration computation types
 typedef enum{
   CML_INTEGRATION_SIMPLE = 0,
   CML_INTEGRATION_BINARY_PAIRS,
-  CML_NUMBER_OF_INTEGRATION_TYPES
+  CML_INTEGRATION_COUNT
 } CMLIntegrationMethod;
 
 // Enumerates the predefined integer mapping types
@@ -31,17 +31,19 @@ typedef enum{
   CML_INTEGER_MAPPING_FLOOR = 0,
   CML_INTEGER_MAPPING_BOX,
   CML_INTEGER_MAPPING_INTERVAL,
-  CML_NUMBER_OF_INTEGER_MAPPING_TYPES
+  CML_INTEGER_MAPPING_COUNT
 } CMLIntegerMappingType;
 
 // Enumerates the predefined observers
 typedef enum{
   CML_OBSERVER_2DEG_CIE_1931 = 0,
   CML_OBSERVER_10DEG_CIE_1964,
+//  CML_OBSERVER_2DEG_ISO_13655,
   CML_OBSERVER_2DEG_JUDD_1951,
   CML_OBSERVER_2DEG_JUDD_VOS_1978,
+//  CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997,
   CML_OBSERVER_CUSTOM,
-  CML_NUMBER_OF_OBSERVERS
+  CML_OBSERVER_COUNT
 } CMLObserverType;
 
 // Enumerates the predefined illuminations
@@ -73,7 +75,7 @@ typedef enum{
   CML_ILLUMINATION_XENON,
   CML_ILLUMINATION_CUSTOM_WHITEPOINT,
   CML_ILLUMINATION_CUSTOM_SPECTRUM,
-  CML_NUMBER_OF_ILLUMINATIONS
+  CML_ILLUMINATION_COUNT
 } CMLIlluminationType;
 
 // Enumerates the predefined RGB colorspaces
@@ -102,7 +104,7 @@ typedef enum{
   CML_RGB_SRGB,
   CML_RGB_WIDE_GAMUT,
   CML_RGB_CUSTOM,           // custom RGB is always the last one.
-  CML_NUMBER_OF_RGB_SPACES
+  CML_RGB_COUNT
 } CMLRGBColorSpaceType;
 
 // Enumerates the predefined Lab colorspaces
@@ -112,8 +114,13 @@ typedef enum{
   CML_LAB_HUNTER_APPROXIMATE,
   CML_LAB_HUNTER_ORIGINAL,
   CML_LAB_ADAMS_CROMATIC_VALENCE,
-  CML_NUMBER_OF_LAB_SPACES
+  CML_LAB_COUNT
 } CMLLabColorSpaceType;
+
+typedef enum{
+  CML_DELTA_E_1976,
+  CML_DELTA_E_COUNT
+} CMLDeltaEComputationType;
 
 // Enumerates the predefined response curves
 typedef enum{
@@ -131,7 +138,7 @@ typedef enum{
   CML_RESPONSE_LSTAR_STANDARD,
   CML_RESPONSE_CUSTOM_GAMMA,
   CML_RESPONSE_CUSTOM_GAMMA_LINEAR,
-  CML_NUMBER_OF_RESPONSE_CURVE_TYPES
+  CML_RESPONSE_CUSTOM_COUNT
 } CMLResponseCurveType;
 
 // Enumerates the predefined function types
@@ -144,7 +151,7 @@ typedef enum{
   CML_FUNCTION_SRGB,
   CML_FUNCTION_LSTAR,
   CML_FUNCTION_LSTAR_STANDARD,
-  CML_NUMBER_OF_FUNCTION_TYPES
+  CML_FUNCTION_COUNT
 } CMLFunctionType;
 
 // Enumerates the predefined Gray computations.
@@ -156,14 +163,14 @@ typedef enum{
   CML_GRAY_FROM_L,        // Lab
   CML_GRAY_FROM_Y,        // XYZ, Yxy, Yuv
   CML_GRAY_FROM_YPRIME,   // YCbCr
-  CML_NUMBER_OF_GRAY_COMPUTATIONS
+  CML_GRAY_COUNT
 } CMLGrayComputationType;
 
 // Enumerates the predefined RGB to CMYK conversions
 typedef enum{
   CML_CMYK_STANDARD_TRANSFORM = 0,
   CML_CMYK_UCR_TRANSFORM,
-  CML_NUMBER_OF_CMYK_TRANSFORMS
+  CML_CMYK_COUNT
 } cml_CMYKTransformType;
 
 // Enumerates the predefined chromatic adaptations
@@ -172,7 +179,7 @@ typedef enum{
   CML_CHROMATIC_ADAPTATION_XYZ_SCALING,
   CML_CHROMATIC_ADAPTATION_BRADFORD,
   CML_CHROMATIC_ADAPTATION_VON_KRIES,
-  CML_NUMBER_OF_CHROMATIC_ADAPTATIONS
+  CML_CHROMATIC_ADAPTATION_COUNT
 } CMLChromaticAdaptationType;
 
 // Enumerates the predefined interpolation methods of array functions.

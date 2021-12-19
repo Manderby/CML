@@ -200,7 +200,7 @@ CML_API void cmlConvertXYZToChromaticAdaptedXYZ(
 // CML_OBSERVER_CUSTOM, the buffer will be filled with CML_NULL pointers.
 CML_API void cmlCreateSpecDistFunctions(
   CMLFunction* functions[3],
-  CMLObserverType observer);
+  CMLObserverType observerType);
 
 
 

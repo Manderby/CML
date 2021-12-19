@@ -11,7 +11,7 @@
 // The values of the B illuminant are from "The CIE Colorimetric Standards and
 // Their Use", 1931, Table V
 // Steps: 5nm
-CML_HIDDEN static const float billuminant[] = {
+CML_HDEF const float billuminant[] = {
     22.4f,  26.85f,  31.30f, 36.18f,  41.30f,  46.62f,  52.1f,   57.7f,   63.2f,  68.37f,
     73.1f,  77.31f,  80.8f,  83.44f,  85.4f,   86.88f,  88.3f,   90.08f,  92.0f,  93.75f,
     95.2f,  96.23f,  96.5f,  95.71f,  94.2f,   92.37f,  90.70f,  89.65f,  89.5f,  90.43f,
@@ -24,7 +24,7 @@ CML_HIDDEN static const float billuminant[] = {
 // The values of the C illuminant are from "The CIE Colorimetric Standards and
 // Their Use", 1931, Table V
 // Steps: 5nm
-CML_HIDDEN static const float cilluminant[] = {
+CML_HDEF const float cilluminant[] = {
     33.0f,  39.92f,  47.4f,  55.17f,  63.3f,  71.81f,  80.6f,  89.53f,  98.1f, 105.8f,
    112.4f, 117.75f, 121.5f, 123.45f, 124.0f, 123.6f,  123.1f, 123.3f,  123.8f, 124.09f,
    123.9f, 122.92f, 120.7f, 116.9f,  112.1f, 106.98f, 102.3f,  98.81f,  96.9f,  96.78f,
@@ -36,7 +36,7 @@ CML_HIDDEN static const float cilluminant[] = {
     59.1f};
 // The values of the F illuminants have been found on wikipedia
 // Steps: 5nm
-CML_HIDDEN static const float f1illuminant[] = {
+CML_HDEF const float f1illuminant[] = {
     1.87f,  2.36f,  2.94f,  3.47f,  5.17f, 19.49f,  6.13f,  6.24f,  7.01f,  7.79f,
     8.56f, 43.67f, 16.94f, 10.72f, 11.35f, 11.89f, 12.37f, 12.75f, 13.f,   13.15f,
    13.23f, 13.17f, 13.13f, 12.85f, 12.52f, 12.2f,  11.83f, 11.5f,  11.22f, 11.05f,
@@ -46,7 +46,7 @@ CML_HIDDEN static const float f1illuminant[] = {
     1.93f,  1.72f,  1.67f,  1.43f,  1.29f,  1.19f,  1.08f,  0.96f,  0.88f,  0.81f,
     0.77f,  0.75f,  0.73f,  0.68f,  0.69f,  0.64f,  0.68f,  0.69f,  0.61f,  0.52f,
     0.43f};
-CML_HIDDEN static const float f2illuminant[] = {
+CML_HDEF const float f2illuminant[] = {
    1.18f,  1.48f,  1.84f,  2.15f,  3.44f, 15.69f,  3.85f,  3.74f,  4.19f,  4.62f,
    5.06f, 34.98f, 11.81f,  6.27f,  6.63f,  6.93f,  7.19f,  7.4f,   7.54f,  7.62f,
    7.65f,  7.62f,  7.62f,  7.45f,  7.28f,  7.15f,  7.05f,  7.04f,  7.16f,  7.47f,
@@ -56,7 +56,7 @@ CML_HIDDEN static const float f2illuminant[] = {
    1.89f,  1.64f,  1.53f,  1.27f,  1.1f,   0.99f,  0.88f,  0.76f,  0.68f,  0.61f,
    0.56f,  0.54f,  0.51f,  0.47f,  0.47f,  0.43f,  0.46f,  0.47f,  0.4f,   0.33f,
    0.27f};
-CML_HIDDEN static const float f3illuminant[] = {
+CML_HDEF const float f3illuminant[] = {
    0.82f,  1.02f,  1.26f,  1.44f,  2.57f, 14.36f,  2.7f,   2.45f,  2.73f,  3.f,
    3.28f, 31.85f,  9.47f,  4.02f,  4.25f,  4.44f,  4.59f,  4.72f,  4.8f,   4.86f,
    4.87f,  4.85f,  4.88f,  4.77f,  4.67f,  4.62f,  4.62f,  4.73f,  4.99f,  5.48f,
@@ -66,7 +66,7 @@ CML_HIDDEN static const float f3illuminant[] = {
    1.99f,  1.7f,   1.55f,  1.27f,  1.09f,  0.96f,  0.83f,  0.71f,  0.62f,  0.54f,
    0.49f,  0.46f,  0.43f,  0.39f,  0.39f,  0.35f,  0.38f,  0.39f,  0.33f,  0.28f,
    0.21f};
-CML_HIDDEN static const float f4illuminant[] = {
+CML_HDEF const float f4illuminant[] = {
    0.57f,  0.7f,   0.87f,  0.98f,  2.01f, 13.75f,  1.95f,  1.59f,  1.76f,  1.93f,
    2.1f,  30.28f,  8.03f,  2.55f,  2.7f,   2.82f,  2.91f,  2.99f,  3.04f,  3.08f,
    3.09f,  3.09f,  3.14f,  3.06f,  3.f,    2.98f,  3.01f,  3.14f,  3.41f,  3.9f,
@@ -76,7 +76,7 @@ CML_HIDDEN static const float f4illuminant[] = {
    2.24f,  1.91f,  1.7f,   1.39f,  1.18f,  1.03f,  0.88f,  0.74f,  0.64f,  0.54f,
    0.49f,  0.46f,  0.42f,  0.37f,  0.37f,  0.33f,  0.35f,  0.36f,  0.31f,  0.26f,
    0.19f};
-CML_HIDDEN static const float f5illuminant[] = {  // exactly the same numbers have been found in argyll
+CML_HDEF const float f5illuminant[] = {  // exactly the same numbers have been found in argyll
    1.87f,  2.35f,  2.92f,  3.45f,  5.1f,  18.91f,  6.f,    6.11f,  6.85f,  7.58f,
    8.31f, 40.76f, 16.06f, 10.32f, 10.91f, 11.4f,  11.83f, 12.17f, 12.4f,  12.54f,
   12.58f, 12.52f, 12.47f, 12.2f,  11.89f, 11.61f, 11.33f, 11.1f,  10.96f, 10.97f,
@@ -86,7 +86,7 @@ CML_HIDDEN static const float f5illuminant[] = {  // exactly the same numbers ha
    1.71f,  1.52f,  1.43f,  1.26f,  1.13f,  1.05f,  0.96f,  0.85f,  0.78f,  0.72f,
    0.68f,  0.67f,  0.65f,  0.61f,  0.62f,  0.59f,  0.62f,  0.64f,  0.55f,  0.47f,
    0.4f};
-CML_HIDDEN static const float f6illuminant[] = {
+CML_HDEF const float f6illuminant[] = {
    1.05f,  1.31f,  1.63f,  1.9f,   3.11f, 14.8f,   3.43f,  3.3f,   3.68f,  4.07f,
    4.45f, 32.61f, 10.74f,  5.48f,  5.78f,  6.03f,  6.25f,  6.41f,  6.52f,  6.58f,
    6.59f,  6.56f,  6.56f,  6.42f,  6.28f,  6.2f,   6.19f,  6.3f,   6.6f,   7.12f,
@@ -96,7 +96,7 @@ CML_HIDDEN static const float f6illuminant[] = {
    1.6f,   1.37f,  1.29f,  1.05f,  0.91f,  0.81f,  0.71f,  0.61f,  0.54f,  0.48f,
    0.44f,  0.43f,  0.4f,   0.37f,  0.38f,  0.35f,  0.39f,  0.41f,  0.33f,  0.26f,
    0.21f};
-CML_HIDDEN static const float f7illuminant[] = {
+CML_HDEF const float f7illuminant[] = {
    2.56f,  3.18f,  3.84f,  4.53f,  6.15f, 19.37f,  7.37f,  7.05f,  7.71f,  8.41f,
    9.15f, 44.14f, 17.52f, 11.35f, 12.f,   12.58f, 13.08f, 13.45f, 13.71f, 13.88f,
   13.95f, 13.93f, 13.82f, 13.64f, 13.43f, 13.25f, 13.08f, 12.93f, 12.78f, 12.6f,
@@ -106,7 +106,7 @@ CML_HIDDEN static const float f7illuminant[] = {
    5.83f,  5.41f,  5.04f,  4.57f,  4.12f,  3.77f,  3.46f,  3.08f,  2.73f,  2.47f,
    2.25f,  2.06f,  1.9f,   1.75f,  1.62f,  1.54f,  1.45f,  1.32f,  1.17f,  0.99f,
    0.81f};
-CML_HIDDEN static const float f8illuminant[] = {  // exactly the same numbers have been found in argyll
+CML_HDEF const float f8illuminant[] = {  // exactly the same numbers have been found in argyll
    1.21f,  1.5f,   1.81f,  2.13f,  3.17f, 13.08f,  3.83f,  3.45f,  3.86f,  4.42f,
    5.09f, 34.1f,  12.42f,  7.68f,  8.6f,   9.46f, 10.24f, 10.84f, 11.33f, 11.71f,
   11.98f, 12.17f, 12.28f, 12.32f, 12.35f, 12.44f, 12.55f, 12.68f, 12.77f, 12.72f,
@@ -116,7 +116,7 @@ CML_HIDDEN static const float f8illuminant[] = {  // exactly the same numbers ha
    9.22f,  8.62f,  8.07f,  7.39f,  6.71f,  6.16f,  5.63f,  5.03f,  4.46f,  4.02f,
    3.66f,  3.36f,  3.09f,  2.85f,  2.65f,  2.51f,  2.37f,  2.15f,  1.89f,  1.61f,
    1.32f};
-CML_HIDDEN static const float f9illuminant[] = {
+CML_HDEF const float f9illuminant[] = {
    0.9f,   1.12f,  1.36f,  1.6f,   2.59f, 12.8f,   3.05f,  2.56f,  2.86f,  3.3f,
    3.82f, 32.62f, 10.77f,  5.84f,  6.57f,  7.25f,  7.86f,  8.35f,  8.75f,  9.06f,
    9.31f,  9.48f,  9.61f,  9.68f,  9.74f,  9.88f, 10.04f, 10.26f, 10.48f, 10.63f,
@@ -126,7 +126,7 @@ CML_HIDDEN static const float f9illuminant[] = {
    8.25f,  7.57f,  7.03f,  6.35f,  5.72f,  5.25f,  4.8f,   4.29f,  3.8f,   3.43f,
    3.12f,  2.86f,  2.64f,  2.43f,  2.26f,  2.14f,  2.02f,  1.83f,  1.61f,  1.38f,
    1.12f};
-CML_HIDDEN static const float f10illuminant[] = {
+CML_HDEF const float f10illuminant[] = {
    1.11f,  0.63f,  0.62f,  0.57f,  1.48f, 12.16f,  2.12f,  2.7f,   3.74f,  5.14f,
    6.75f, 34.39f, 14.86f, 10.4f,  10.76f, 10.67f, 10.11f,  9.27f,  8.29f,  7.29f,
    7.91f, 16.64f, 16.73f, 10.44f,  5.94f,  3.34f,  2.35f,  1.88f,  1.59f,  1.47f,
@@ -136,7 +136,7 @@ CML_HIDDEN static const float f10illuminant[] = {
    1.47f,  1.79f,  1.74f,  1.02f,  1.14f,  3.32f,  4.49f,  2.05f,  0.49f,  0.24f,
    0.21f,  0.21f,  0.24f,  0.24f,  0.21f,  0.17f,  0.21f,  0.22f,  0.17f,  0.12f,
    0.09f};
-CML_HIDDEN static const float f11illuminant[] = {
+CML_HDEF const float f11illuminant[] = {
    0.91f,  0.63f,  0.46f,  0.37f,  1.29f, 12.68f,  1.59f,  1.79f,  2.46f,  3.33f,
    4.49f, 33.94f, 12.13f,  6.95f,  7.19f,  7.12f,  6.72f,  6.13f,  5.46f,  4.79f,
    5.66f, 14.29f, 14.96f,  8.97f,  4.72f,  2.33f,  1.47f,  1.1f,   0.89f,  0.83f,
@@ -146,7 +146,7 @@ CML_HIDDEN static const float f11illuminant[] = {
    1.46f,  1.94f,  2.f,    1.2f,   1.35f,  4.1f,   5.58f,  2.51f,  0.57f,  0.27f,
    0.23f,  0.21f,  0.24f,  0.24f,  0.2f,   0.24f,  0.32f,  0.26f,  0.16f,  0.12f,
    0.09f};
-CML_HIDDEN static const float f12illuminant[] = {
+CML_HDEF const float f12illuminant[] = {
    0.96f,  0.64f,  0.45f,  0.33f,  1.19f, 12.48f,  1.12f,  0.94f,  1.08f,  1.37f,
    1.78f, 29.05f,  7.9f,   2.65f,  2.71f,  2.65f,  2.49f,  2.33f,  2.1f,   1.91f,
    3.01f, 10.83f, 11.88f,  6.88f,  3.43f,  1.49f,  0.92f,  0.71f,  0.6f,   0.63f,
@@ -161,7 +161,7 @@ CML_HIDDEN static const float f12illuminant[] = {
 #define CML_XENON_ILLUMINATIONSPECTRUM_MIN 325.f
 #define CML_XENON_ILLUMINATIONSPECTRUM_MAX 795.f
 #define CML_XENON_ILLUMINATIONSPECTRUM_NUM 95
-CML_HIDDEN static const float xenonilluminant[] = {
+CML_HDEF const float xenonilluminant[] = {
    0.220794f, 0.240550f, 0.281212f, 0.363042f, 0.493282f, 0.582279f, 0.657489f, 0.715563f, 0.797559f, 0.916343f,
    1.066625f, 1.228461f, 1.298467f, 1.373143f, 1.457366f, 1.496117f, 1.509290f, 1.573544f, 1.596359f, 1.495740f,
    1.477898f, 1.521371f, 1.479780f, 1.453196f, 1.532119f, 1.548128f, 1.503433f, 1.428481f, 1.357290f, 1.354425f,
@@ -176,27 +176,26 @@ CML_HIDDEN static const float xenonilluminant[] = {
 
 // Found at brucelindbloom.com
 #define CML_ROBERTSON_SAMPLECOUNT 31
-CML_HIDDEN static const float robertsonrt[] = {
-  CML_SINGULARITY,10.0e-6f,  20.0e-6f,  30.0e-6f,  40.0e-6f,  50.0e-6f,  60.0e-6f,  70.0e-6f,  80.0e-6f,  90.0e-6f,
+CML_HDEF const float robertsonrt[] = {
+  CML_SINGULARITY, 10.0e-6f, 20.0e-6f, 30.0e-6f, 40.0e-6f, 50.0e-6f, 60.0e-6f, 70.0e-6f, 80.0e-6f, 90.0e-6f,
   100.0e-6f, 125.0e-6f, 150.0e-6f, 175.0e-6f, 200.0e-6f, 225.0e-6f, 250.0e-6f, 275.0e-6f, 300.0e-6f, 325.0e-6f,
   350.0e-6f, 375.0e-6f, 400.0e-6f, 425.0e-6f, 450.0e-6f, 475.0e-6f, 500.0e-6f, 525.0e-6f, 550.0e-6f, 575.0e-6f,
   600.0e-6f};
-CML_HIDDEN static const float robertsonu[] = {
+CML_HDEF const float robertsonu[] = {
   0.18006f, 0.18066f, 0.18133f, 0.18208f, 0.18293f, 0.18388f, 0.18494f, 0.18611f, 0.18740f, 0.18880f,
   0.19032f, 0.19462f, 0.19962f, 0.20525f, 0.21142f, 0.21807f, 0.22511f, 0.23247f, 0.24010f, 0.24792f,
   0.25591f, 0.26400f, 0.27218f, 0.28039f, 0.28863f, 0.29685f, 0.30505f, 0.31320f, 0.32129f, 0.32931f,
   0.33724f};
-CML_HIDDEN static const float robertsonv[] = {
+CML_HDEF const float robertsonv[] = {
   0.26352f, 0.26589f, 0.26846f, 0.27119f, 0.27407f, 0.27709f, 0.28021f, 0.28342f, 0.28668f, 0.28997f,
   0.29326f, 0.30141f, 0.30921f, 0.31647f, 0.32312f, 0.32909f, 0.33439f, 0.33904f, 0.34308f, 0.34655f,
   0.34951f, 0.35200f, 0.35407f, 0.35577f, 0.35714f, 0.35823f, 0.35907f, 0.35968f, 0.36011f, 0.36038f,
   0.36051f};
-CML_HIDDEN static const float robertsont[] = {
+CML_HDEF const float robertsont[] = {
   -0.24341f, -0.25479f, -0.26876f, -0.28539f, -0.30470f, -0.32675f, -0.35156f, -0.37915f, -0.40955f, -0.44278f,
   -0.47888f, -0.58204f, -0.70471f, -0.84901f, -1.0182f, -1.2168f, -1.4512f, -1.7298f, -2.0637f, -2.4681f,
   -2.9641f, -3.5814f, -4.3633f, -5.3762f, -6.7262f, -8.5955f, -11.324f, -15.628f, -23.325f, -40.770f,
   -116.45f };
-
 
 
 
@@ -210,6 +209,8 @@ CML_HDEF CMLArrayFunctionSettings cml_getCommonIlluminationSpectrumSettings(void
     CML_EXTRAPOLATION_LINEAR_ZERO};
   return settings;
 }
+
+
 
 CML_DEF CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminationType, float temperature){  
   switch(illuminationType){
@@ -321,18 +322,19 @@ CML_DEF CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
 }
 
 
+
 CML_DEF float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
   float temperature = 0.f;
   float dm = 0.f;
 
   for(size_t i = 0; i < CML_ROBERTSON_SAMPLECOUNT; i++) {
     float di = (whitePointYuv[2] - robertsonv[i]) - robertsont[i] * (whitePointYuv[1] - robertsonu[i]);
-    if ((i > 0) && (di*dm < 0.f)){
+    if ((i > 0) && (di * dm < 0.f)){
       float p;
       // found lines bounding (us, vs) : i-1 and i
-      di /= sqrtf(1.f + robertsont[i-0] * robertsont[i-0]);
-      dm /= sqrtf(1.f + robertsont[i-1] * robertsont[i-1]);
-      p = dm / (dm - di); // interpolation parameter, 0. : i-1, 1. : i
+      di = di * cmlInverse(sqrtf(1.f + robertsont[i-0] * robertsont[i-0]));
+      dm = dm * cmlInverse(sqrtf(1.f + robertsont[i-1] * robertsont[i-1]));
+      p = dm * cmlInverse(dm - di); // interpolation parameter, 0. : i-1, 1. : i
       temperature = cmlInverse((robertsonrt[i] - robertsonrt[i-1]) * p + robertsonrt[i-1]);
       break;
     }
@@ -341,8 +343,6 @@ CML_DEF float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
 
   return temperature;
 }
-
-
 
 
 
@@ -410,20 +410,16 @@ CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
 }
 
 
-CML_DEF CMLIlluminationType   cmlGetIlluminationType(CMLColorMachine* cm){
-  return cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer)));
-}
-
 
 CML_DEF void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType){
   if(illuminationType == CML_ILLUMINATION_CUSTOM_SPECTRUM){return;}
 
-  CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
-  float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-  CMLIllumination* newillumination = cmlCreateIlluminationWithType(CML_NULL, illuminationType, cmlGetIlluminationTemperature(cm));
+  CMLObserverType newObserverType = cmlGetObserverType(&(cm->observer));
+  float newColorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
+  CMLIllumination* newIllumination = cmlCreateIlluminationWithType(CML_NULL, illuminationType, cmlGetIlluminationTemperature(cm));
   cmlClearObserver(&(cm->observer));
-  cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
-  cmlClearIllumination(newillumination);
+  cmlCreateObserver(&(cm->observer), newObserverType, newIllumination, newColorimetricBase);
+  cmlClearIllumination(newIllumination);
 
 //  cm->illumination.state = illuminationType;
 //  cmlReleaseFunction(cm->illumination.spectrum);
@@ -444,15 +440,15 @@ CML_DEF float cmlGetIlluminationTemperature(const CMLColorMachine* cm){
 
 
 CML_DEF void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
-  CMLIlluminationType illtype = cml_GetIlluminationType(cmlGetReferenceIllumination(&(cm->observer)));
-  if((illtype == CML_ILLUMINATION_BLACKBODY) || (illtype == CML_ILLUMINATION_D_ILLUMINANT)){
+  CMLIlluminationType illuminationType = cmlGetIlluminationType(cmlGetReferenceIllumination(&(cm->observer)));
+  if((illuminationType == CML_ILLUMINATION_BLACKBODY) || (illuminationType == CML_ILLUMINATION_D_ILLUMINANT)){
 
-    CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithType(CML_NULL, illtype, temp);
+    CMLObserverType newObserverType = cmlGetObserverType(&(cm->observer));
+    float newColorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
+    CMLIllumination* newIllumination = cmlCreateIlluminationWithType(CML_NULL, illuminationType, temp);
     cmlClearObserver(&(cm->observer));
-    cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
+    cmlCreateObserver(&(cm->observer), newObserverType, newIllumination, newColorimetricBase);
+    cmlClearIllumination(newIllumination);
 
 
 //    cm->illumination.temperature = temp;
@@ -479,12 +475,12 @@ CML_DEF const CMLFunction* cmlGetIlluminationSpectrum(const CMLColorMachine* cm)
 CML_DEF void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* newspectrum){
   if(!newspectrum){return;}
 
-    CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomSpectrum(CML_NULL, newspectrum, &(cm->observer));
+    CMLObserverType newObserverType = cmlGetObserverType(&(cm->observer));
+    float newColorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
+    CMLIllumination* newIllumination = cmlCreateIlluminationWithCustomSpectrum(CML_NULL, newspectrum, &(cm->observer));
     cmlClearObserver(&(cm->observer));
-    cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
+    cmlCreateObserver(&(cm->observer), newObserverType, newIllumination, newColorimetricBase);
+    cmlClearIllumination(newIllumination);
 
 //  cmlReleaseFunction(cm->illumination.spectrum);
 //  cm->illumination.spectrum = cmlDuplicateFunction(newspectrum);
@@ -500,12 +496,12 @@ CML_DEF void cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYx
 
 CML_DEF void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
 
-    CMLObserverType newobserverType = cml_GetObserverType(&(cm->observer));
-    float newcolorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
-    CMLIllumination* newillumination = cmlCreateIlluminationWithCustomWhitePoint(CML_NULL, yxy);
+    CMLObserverType newObserverType = cmlGetObserverType(&(cm->observer));
+    float newColorimetricBase = cmlGetObserverColorimetricBase(&(cm->observer));
+    CMLIllumination* newIllumination = cmlCreateIlluminationWithCustomWhitePoint(CML_NULL, yxy);
     cmlClearObserver(&(cm->observer));
-    cmlCreateObserver(&(cm->observer), newobserverType, newillumination, newcolorimetricBase);
-    cmlClearIllumination(newillumination);
+    cmlCreateObserver(&(cm->observer), newObserverType, newIllumination, newColorimetricBase);
+    cmlClearIllumination(newIllumination);
 
 //  cm->illumination.state = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
 //  cmlReleaseFunction(cm->illumination.spectrum);
@@ -516,7 +512,7 @@ CML_DEF void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
 
 CML_DEF CMLIllumination* cmlCreateIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
   illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = src->BALFtype;
+  illumination->type = src->type;
   illumination->BALFtemperature = src->BALFtemperature;
   if(src->BALFspectrum){
     illumination->BALFspectrum = cmlDuplicateFunction(src->BALFspectrum);
@@ -542,11 +538,11 @@ CML_DEF CMLIllumination* cmlCreateIlluminationWithType(CMLIllumination* illumina
   #endif
 
   illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = type;
+  illumination->type = type;
   illumination->BALFtemperature = temperature;
-  illumination->BALFspectrum = cmlCreateIlluminationSpectrum(illumination->BALFtype, illumination->BALFtemperature);
+  illumination->BALFspectrum = cmlCreateIlluminationSpectrum(illumination->type, illumination->BALFtemperature);
 
-  switch(illumination->BALFtype){
+  switch(illumination->type){
   case CML_ILLUMINATION_BLACKBODY:
     // temperature is already set.
     if(!illumination->BALFtemperature){illumination->BALFtemperature = CML_TEMPERATURE_A;}
@@ -592,7 +588,7 @@ CML_DEF CMLIllumination* cmlCreateIlluminationWithType(CMLIllumination* illumina
 
 CML_DEF CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
   illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = CML_ILLUMINATION_CUSTOM_SPECTRUM;
+  illumination->type = CML_ILLUMINATION_CUSTOM_SPECTRUM;
   illumination->BALFtemperature = 0.f;
   illumination->BALFspectrum = cmlDuplicateFunction(spectrum);
 
@@ -612,7 +608,7 @@ CML_DEF CMLIllumination* cmlCreateIlluminationWithCustomSpectrum(CMLIllumination
 
 CML_DEF CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy){
   illumination = cml_AllocateIfNull(illumination, sizeof(CMLIllumination));
-  illumination->BALFtype = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
+  illumination->type = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   illumination->BALFspectrum = NULL;
   
   cml_OneYxyToXYZ(illumination->BALFradiometricXYZ, whitePointYxy, CML_NULL);
@@ -641,8 +637,8 @@ CML_DEF void cmlDestroyIllumination(CMLIllumination* illumination){
 
 
 
-CML_DEF CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination){
-  return illumination->BALFtype;
+CML_DEF CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination){
+  return illumination->type;
 }
 
 CML_DEF const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination){

@@ -3,13 +3,10 @@
 
 #if CML_COMPILE_ON_WINDOWS
   #define CML_HIDDEN
-  #define CML_RESTRICT    __restrict
 #elif CML_COMPILE_ON_MAC_OSX
   #define CML_HIDDEN      __attribute__ ((visibility("hidden")))
-  #define CML_RESTRICT    __restrict__
 #else
   #define CML_HIDDEN      __attribute__ ((visibility("hidden")))
-  #define CML_RESTRICT
 #endif
 
 
@@ -37,7 +34,7 @@ struct CMLResponseCurve{
 
 
 struct CMLIllumination{
-  CMLIlluminationType           BALFtype;
+  CMLIlluminationType           type;
   CMLFunction*                  BALFspectrum;
   float                         BALFtemperature;
   CMLVec3                       BALFradiometricXYZ;
@@ -45,9 +42,9 @@ struct CMLIllumination{
 
 
 struct CMLObserver{
-  CMLObserverType               BALFtype;
-  CMLFunction*                  BALFspecdistfunctions[3];
-  CMLIllumination               BALFillumination;
+  CMLObserverType               type;
+  CMLFunction*                  specDistFunctions[3];
+  CMLIllumination               illumination;
   float                         BALFradiometricScale;
   CMLVec3                       BALFwhitePointXYZ;
   CMLVec3                       BALFinverseWhitePointXYZ;

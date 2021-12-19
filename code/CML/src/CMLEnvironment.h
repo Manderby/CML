@@ -33,6 +33,7 @@
   #ifndef CML_INLINE
     #define CML_INLINE __inline
   #endif
+  #define CML_RESTRICT __restrict
   #define CML_LINKER_NO_EXPORT
   #define CML_LINKER_EXPORT         __declspec(dllexport)
   #define CML_DEBUG_FUNCTIONSYMBOL __FUNCTION__
@@ -45,6 +46,7 @@
   
 #elif CML_COMPILE_ON_MAC_OSX
   #define CML_INLINE inline
+  #define CML_RESTRICT __restrict__
   #define CML_LINKER_NO_EXPORT      __attribute__ ((visibility("hidden")))
   #define CML_LINKER_EXPORT         __attribute__ ((visibility("default")))
   #define CML_DEBUG_FUNCTIONSYMBOL __func__
