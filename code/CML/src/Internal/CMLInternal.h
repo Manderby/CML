@@ -35,9 +35,9 @@ struct CMLResponseCurve{
 
 struct CMLIllumination{
   CMLIlluminationType           type;
-  CMLFunction*                  BALFspectrum;
-  float                         BALFtemperature;
-  CMLVec3                       BALFradiometricXYZ;
+  CMLFunction*                  spectrum;
+  float                         temperature;
+  CMLVec3                       radiometricXYZ;
 };
 
 
@@ -45,7 +45,7 @@ struct CMLObserver{
   CMLObserverType               type;
   CMLFunction*                  specDistFunctions[3];
   CMLIllumination               illumination;
-  float                         BALFradiometricScale;
+  float                         radiometricScale;
   CMLVec3                       whitePointXYZ;
   CMLVec3                       inverseWhitePointXYZ;
   CMLVec3                       whitePointYxy;
@@ -56,7 +56,7 @@ struct CMLObserver{
 // type:                  Defines, what spectral distribution functions to use.
 // illumination:          The spectrum function of the desired reference
 //                        illumination. This observer will duplicate the
-//                        function.
+//                        function. If NULL, the illuminatino will not change.
 // colorimetricBase:      The Y value of the reference illumination.
 //                        In colorimetry, this is usually 1 or 100.
 //                        If you use 0, computation is radiometric.
@@ -75,6 +75,18 @@ CML_HAPI float cml_GetObserverColorimetricBase(const CMLObserver* observer);
 CML_HAPI const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, CMLInt index);
 
 
+CML_HAPI void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
+CML_HAPI void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
+CML_HAPI void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer);
+CML_HAPI void cml_InitIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
+
+CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
+
+CML_HAPI CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
+CML_HAPI const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
+CML_HAPI float cml_GetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
+CML_HAPI void cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer);
+
 
 
 CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
@@ -86,7 +98,7 @@ CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
 
 
 
-CML_IDEF void* cml_Allocate(size_t size){
+CML_IDEF void* cml_Malloc(size_t size){
   void* ptr; // Declaration before implementation.
   #if CML_DEBUG
     if(size < 1)
@@ -101,19 +113,6 @@ CML_IDEF void* cml_Allocate(size_t size){
     // differs from the non-debug version.
   #endif
   return ptr;
-}
-
-
-CML_IDEF void* cml_AllocateIfNull(void* ptr, size_t size){
-  #if CML_DEBUG
-    if(size < 1)
-      cmlError("size is smaller than 1 .");
-  #endif
-  if(ptr == CML_NULL){
-    return cml_Allocate(size);
-  }else{
-    return ptr;
-  }
 }
 
 

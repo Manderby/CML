@@ -11,12 +11,12 @@ CML_DEF CMLFunction* cmlCreateFunction(
   size_t dataSize,
   const void* input)
 {
-  CMLFunction* newFunction = (CMLFunction*)cml_Allocate(sizeof(CMLFunction));
+  CMLFunction* newFunction = (CMLFunction*)cml_Malloc(sizeof(CMLFunction));
   newFunction->refCount = 1;
   
   newFunction->dataSize = dataSize;
   if(dataSize){
-    newFunction->data = cml_Allocate(dataSize);
+    newFunction->data = cml_Malloc(dataSize);
   }else{
     newFunction->data = CML_NULL;
   }
@@ -522,7 +522,7 @@ CML_DEF CMLFunction* cmlCreateArrayFunction(CMLArrayFunctionInput input){
 }
 
 CML_DEF CMLFunction* cmlSampleArrayFunction(const CMLFunction* func, CMLArrayFunctionSettings settings){
-  float* buffer = (float*)cml_Allocate(sizeof(float) * settings.entryCount);
+  float* buffer = (float*)cml_Malloc(sizeof(float) * settings.entryCount);
   for(size_t i = 0; i < settings.entryCount; i++){
     float coord = settings.minimalCoord + ((float)i / (float)(settings.entryCount-1)) * (settings.maximalCoord - settings.minimalCoord);
     buffer[i] = cml_Eval(func, coord);
@@ -696,7 +696,7 @@ CML_DEF CMLFunction* cmlCreateCIEDIlluminant(float temperature){
   #endif
   
   // Note that the array will be deleted by the CMLArray.
-  float* array = (float*)cml_Allocate(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
+  float* array = (float*)cml_Malloc(CML_D_ILLUMINANT_ENTRYCOUNT * sizeof(float));
 
   float whitePoint[2];
   cml_ComputeDIlluminantWhitePoint(whitePoint, temperature);

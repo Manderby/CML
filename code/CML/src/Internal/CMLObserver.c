@@ -469,13 +469,13 @@ CML_DEF void cmlCreateSpecDistFunctions(CMLFunction* functions[3], CMLObserverTy
 
 
 CML_DEF void cmlSetObserverType(CMLColorMachine* cm, CMLObserverType type){
+  float newColorimetricBase = cmlGetColorimetricBase(cm);
 
-    float newColorimetricBase = cmlGetColorimetricBase(cm);
-    CMLIllumination newIllumination;
-    cmlCreateIlluminationDuplicate(&newIllumination, &(cm->observer.illumination));
-    cml_ClearObserver(&(cm->observer));
-    cml_InitObserver(&(cm->observer), type, &newIllumination, newColorimetricBase);
-    cmlClearIllumination(&newIllumination);
+  CMLIllumination newIllumination;
+  cml_InitIlluminationDuplicate(&newIllumination, &(cm->observer.illumination));
+  cml_ClearObserver(&(cm->observer));
+  cml_InitObserver(&(cm->observer), type, &newIllumination, newColorimetricBase);
+  cml_ClearIllumination(&newIllumination);
 
 //  cm->observer.state = newobserver;
 //  cmlReleaseFunction(cm->observer.functions[0]);
@@ -522,20 +522,21 @@ CML_HDEF void cml_InitObserver(
   CMLIllumination* illumination,
   float colorimetricBase)
 {
-  observer = cml_AllocateIfNull(observer, sizeof(CMLObserver));
   observer->type = type;
   cmlCreateSpecDistFunctions(observer->specDistFunctions, observer->type);
-  cmlCreateIlluminationDuplicate(&(observer->illumination), illumination);
+  if(illumination){
+    cml_InitIlluminationDuplicate(&(observer->illumination), illumination);
+  }
 
   // Set the radiometric scale temporarily to 0 to compute the radiometric XYZ.
-  observer->BALFradiometricScale = 0.;
-  cmlGetIlluminationRadiometricXYZ(illumination, observer->whitePointXYZ, observer);
+  observer->radiometricScale = 0.;
+  cml_GetIlluminationRadiometricXYZ(illumination, observer->whitePointXYZ, observer);
 
   if(colorimetricBase){
-    observer->BALFradiometricScale = colorimetricBase / observer->whitePointXYZ[1];
-    cmlSet3(observer->whitePointXYZ, observer->whitePointXYZ[0] * observer->BALFradiometricScale,
+    observer->radiometricScale = colorimetricBase / observer->whitePointXYZ[1];
+    cmlSet3(observer->whitePointXYZ, observer->whitePointXYZ[0] * observer->radiometricScale,
                                          colorimetricBase,
-                                         observer->whitePointXYZ[2] * observer->BALFradiometricScale);
+                                         observer->whitePointXYZ[2] * observer->radiometricScale);
   }
   cmlSet3(
     observer->inverseWhitePointXYZ,
@@ -552,7 +553,7 @@ CML_HDEF void cml_ClearObserver(CMLObserver* observer){
   cmlReleaseFunction(observer->specDistFunctions[0]);
   cmlReleaseFunction(observer->specDistFunctions[1]);
   cmlReleaseFunction(observer->specDistFunctions[2]);
-  cmlClearIllumination(&(observer->illumination));
+  cml_ClearIllumination(&(observer->illumination));
 }
 
 
@@ -568,8 +569,8 @@ CML_DEF CMLObserverType cmlGetObserverType(const CMLColorMachine* cm){
 
 
 CML_HDEF float cml_GetObserverRadiometricScale(const CMLObserver* observer){
-  if(observer->BALFradiometricScale){
-    return observer->BALFradiometricScale;
+  if(observer->radiometricScale){
+    return observer->radiometricScale;
   }else{
     return 1.f; // when radiometricScale is 0, computation is radiometric.
   }
@@ -581,7 +582,7 @@ CML_DEF float cmlGetRadiometricScale(const CMLColorMachine* cm){
 
 
 CML_HDEF float cml_GetObserverColorimetricBase(const CMLObserver* observer){
-  if(observer->BALFradiometricScale){
+  if(observer->radiometricScale){
     return observer->whitePointXYZ[1];
   }else{
     return 0.f; // when radiometricScale is 0, computation is radiometric
@@ -607,7 +608,7 @@ CML_DEF CMLIlluminationType cmlGetReferenceIlluminationType(const CMLColorMachin
 }
 
 CML_DEF const CMLFunction* cmlGetReferenceIlluminationSpectrum(const CMLColorMachine* cm){
-  return cmlGetIlluminationSpectrum(&(cm->observer.illumination));
+  return cml_GetIlluminationSpectrum(&(cm->observer.illumination));
 }
 
 CML_DEF const float* cmlGetReferenceWhitePointXYZ(const CMLColorMachine* cm){

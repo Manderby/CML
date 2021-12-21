@@ -28,9 +28,10 @@ CML_DEF CMLuint32 cmlGetVersion(){
 
 CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   CMLint32 i;
-  CMLColorMachine* cm = (CMLColorMachine*)cml_Allocate(sizeof(CMLColorMachine));
+  CMLColorMachine* cm = (CMLColorMachine*)cml_Malloc(sizeof(CMLColorMachine));
 
-  CMLIllumination* referenceIllumination = cmlCreateIlluminationWithType(CML_NULL, CML_ILLUMINATION_D65, 0);
+  CMLIllumination* referenceIllumination = cml_Malloc(sizeof(CMLIllumination));
+  cml_InitIlluminationWithType(referenceIllumination, CML_ILLUMINATION_D65, 0);
   cml_InitObserver(
     &(cm->observer),
     CML_OBSERVER_2DEG_CIE_1931,
