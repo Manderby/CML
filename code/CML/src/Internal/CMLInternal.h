@@ -46,11 +46,35 @@ struct CMLObserver{
   CMLFunction*                  specDistFunctions[3];
   CMLIllumination               illumination;
   float                         BALFradiometricScale;
-  CMLVec3                       BALFwhitePointXYZ;
-  CMLVec3                       BALFinverseWhitePointXYZ;
-  CMLVec3                       BALFwhitePointYxy;
-  CMLVec3                       BALFwhitePointYupvp;
+  CMLVec3                       whitePointXYZ;
+  CMLVec3                       inverseWhitePointXYZ;
+  CMLVec3                       whitePointYxy;
+  CMLVec3                       whitePointYupvp;
 };
+
+
+// type:                  Defines, what spectral distribution functions to use.
+// illumination:          The spectrum function of the desired reference
+//                        illumination. This observer will duplicate the
+//                        function.
+// colorimetricBase:      The Y value of the reference illumination.
+//                        In colorimetry, this is usually 1 or 100.
+//                        If you use 0, computation is radiometric.
+CML_HAPI void cml_InitObserver(
+  CMLObserver* observer,
+  CMLObserverType type,
+  CMLIllumination* illumination,
+  float colorimetricBase);
+
+CML_HAPI void cml_ClearObserver  (CMLObserver* observer);
+
+CML_HAPI CMLObserverType cml_GetObserverType(const CMLObserver* observer);
+CML_HAPI float cml_GetObserverRadiometricScale(const CMLObserver* observer);
+CML_HAPI float cml_GetObserverColorimetricBase(const CMLObserver* observer);
+
+CML_HAPI const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, CMLInt index);
+
+
 
 
 CML_HIDEF float cml_Eval(const CMLFunction* function, float x){
@@ -870,34 +894,34 @@ CML_HIDEF void cml_CIELABToXYZ_SB (float* buf, size_t count, CMLuint32 floatAlig
 // ////////////////////////////////////
 
 #define cml_ConvertSpectrumToXYZ(out, in, observer) \
-  out[0] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 0));\
-  out[1] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 1));\
-  out[2] = cmlFilterFunction(in, cmlGetObserverSpecDistFunction(observer, 2));\
-  cmlMul3(out, cmlGetObserverRadiometricScale(observer));    
+  out[0] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 0));\
+  out[1] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 1));\
+  out[2] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 2));\
+  cmlMul3(out, cml_GetObserverRadiometricScale(observer));    
 
-CML_HIDEF void cml_OneIlluminationSpectrumToXYZ (CMLVec3 out, const CMLFunction* in, const CMLObserver* observer){
+CML_HIDEF void cml_OneIlluminationSpectrumToXYZ(CMLVec3 out, const CMLFunction* in, const CMLObserver* observer){
   cml_ConvertSpectrumToXYZ(out, in, observer);
 }
 
-CML_HIDEF void cml_IlluminationSpectrumToXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLObserver* observer){
+CML_HIDEF void cml_IlluminationSpectrumToXYZ(CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLObserver* observer){
   cml__START_COUNT_LOOP(count);
   cml_OneIlluminationSpectrumToXYZ(out, in, observer);
   cml__END_COUNT_LOOP(floatAlign, 1);
 }
 
-CML_HIDEF void cml_OneRemissionSpectrumToXYZ (CMLVec3 out, const CMLFunction* in, const CMLFunction* specIll, const CMLObserver* observer){
+CML_HIDEF void cml_OneRemissionSpectrumToXYZ(CMLVec3 out, const CMLFunction* in, const CMLFunction* specIll, const CMLObserver* observer){
   CMLFunction* remillfunction = cmlCreateFunctionMulFunction(in, specIll);
   cml_OneIlluminationSpectrumToXYZ(out, remillfunction, observer);
   cmlReleaseFunction(remillfunction);
 }
 
-CML_HIDEF void cml_RemissionSpectrumToXYZ (CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLFunction* specIll, const CMLObserver* observer){
+CML_HIDEF void cml_RemissionSpectrumToXYZ(CMLVec3 out, const CMLFunction* in, size_t count, CMLuint32 floatAlign, const CMLFunction* specIll, const CMLObserver* observer){
   if(specIll){
     cml__START_COUNT_LOOP(count);
     cml_OneRemissionSpectrumToXYZ(out, in, specIll, observer);
     cml__END_COUNT_LOOP(floatAlign, 1);
   }else{
-    float base = cmlGetObserverColorimetricBase(observer) * .5f;
+    float base = cml_GetObserverColorimetricBase(observer) * .5f;
     cml__START_COUNT_LOOP(count);
     cmlSet3(out, base, base, base);
     cml__END_COUNT_LOOP(floatAlign, 1);

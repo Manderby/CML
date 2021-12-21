@@ -7,8 +7,8 @@ CML_API CMLIllumination* cmlCreateIlluminationWithCustomWhitePoint(CMLIlluminati
 CML_API void cmlClearIllumination  (CMLIllumination* illumination);
 CML_API void cmlDestroyIllumination(CMLIllumination* illumination);
 
-CML_API CMLIlluminationType cmlGetIlluminationType(const CMLIllumination* illumination);
-CML_API const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
+CML_API CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
+CML_API const CMLFunction* cmlGetIlluminationSpectrum(const CMLIllumination* illumination);
 CML_API float cmlGetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
 CML_API void cmlGetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer);
 

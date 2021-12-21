@@ -45,12 +45,20 @@ CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 m
 
 // The observer defines if the 2 degree or the 10 degree model and what data
 // set is used. Initial setting is 2 degrees of CIE recommendation.
-CML_API const CMLObserver*    cmlGetObserver(const CMLColorMachine* cm);
-CML_API CMLObserverType       cmlGetObserverType(const CMLObserver* observer);
-CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserverType newobserver);
-CML_API void                  cmlGetSpecDistFunctions(const CMLColorMachine* cm, const CMLFunction* observer[3]);
+CML_API CMLObserverType       cmlGetObserverType(const CMLColorMachine* cm);
+CML_API float                 cmlGetRadiometricScale(const CMLColorMachine* cm);
+CML_API float                 cmlGetColorimetricBase(const CMLColorMachine* cm);
+CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserverType type);
+CML_API const CMLFunction*    cmlGetSpecDistFunction(const CMLColorMachine* cm, int index);
 //CML_API void                  cmlSetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]);
 CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda);
+
+CML_API CMLIlluminationType   cmlGetReferenceIlluminationType(const CMLColorMachine* cm);
+CML_API const CMLFunction*    cmlGetReferenceIlluminationSpectrum(const CMLColorMachine* cm);
+CML_API const float*          cmlGetReferenceWhitePointXYZ(const CMLColorMachine* cm);
+CML_API const float*          cmlGetReferenceInverseWhitePointXYZ(const CMLColorMachine* cm);
+CML_API const float*          cmlGetReferenceWhitePointYxy(const CMLColorMachine* cm);
+CML_API const float*          cmlGetReferenceWhitePointYupvp(const CMLColorMachine* cm);
 
 // The illumination defines the current illumination assumed. This includes
 // the whitePoint. Initial setting is the standard illumination of the
@@ -62,7 +70,6 @@ CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, 
 CML_API void                  cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType);
 CML_API float                 cmlGetIlluminationTemperature(const CMLColorMachine* cm);
 CML_API void                  cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp);
-CML_API const CMLFunction*    cmlGetIlluminationSpectrum(const CMLColorMachine* cm);
 CML_API void                  cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* spectrum);
 CML_API void                  cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYxy);
 CML_API void                  cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy);

@@ -92,7 +92,7 @@ CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
 
   switch(cm->labSpace.state){
   case CML_LAB_HUNTER_APPROXIMATE:
-    whitePointXYZ = cmlGetReferenceWhitePointXYZ(&(cm->observer));
+    whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
     Ka = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_K * (whitePointXYZ[0] + whitePointXYZ[1]);
     Kb = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_KE * (whitePointXYZ[1] + whitePointXYZ[2]);
     cm->labSpace.adamsChromaticityValenceK = Ka;

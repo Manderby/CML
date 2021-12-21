@@ -16,8 +16,8 @@
 
 // API to create response curves, spectra and other various 1D-functions.
 #include "CMLFunctions.h"
+
 #include "CMLIllumination.h"
-#include "CMLObserver.h"
 #include "CMLResponseCurve.h"
 
 // Definition of the most basic color API

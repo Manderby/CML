@@ -31,7 +31,8 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   CMLColorMachine* cm = (CMLColorMachine*)cml_Allocate(sizeof(CMLColorMachine));
 
   CMLIllumination* referenceIllumination = cmlCreateIlluminationWithType(CML_NULL, CML_ILLUMINATION_D65, 0);
-  cmlCreateObserver(&(cm->observer),
+  cml_InitObserver(
+    &(cm->observer),
     CML_OBSERVER_2DEG_CIE_1931,
     referenceIllumination,
     1.f);
@@ -104,7 +105,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
 
 
 CML_DEF void cmlReleaseColorMachine(CMLColorMachine* cm){
-  cmlClearObserver(&(cm->observer));
+  cml_ClearObserver(&(cm->observer));
   cmlClearResponseCurve(&(cm->rgbSpace.responseR));
   cmlClearResponseCurve(&(cm->rgbSpace.responseG));
   cmlClearResponseCurve(&(cm->rgbSpace.responseB));
