@@ -594,7 +594,7 @@ CML_DEF float cmlGetColorimetricBase(const CMLColorMachine* cm){
 
 
 
-CML_HDEF const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, CMLInt index){
+CML_HDEF const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, size_t index){
   return observer->specDistFunctions[index];
 }
 CML_DEF const CMLFunction* cmlGetSpecDistFunction(const CMLColorMachine* cm, int index){

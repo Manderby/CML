@@ -145,7 +145,7 @@ void CMYKColor::clamp(){
   cmlClampCMYK(color, 1);
 }
 
-CMLuint32 CMYKColor::getNumChannels() const {return 4;}
+size_t CMYKColor::getNumChannels() const {return 4;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType CMYKColor::getColorType() const{
   return CML_COLOR_CMYK;
 }
 
-void CMYKColor::from8BitBuffer(const CMLByte* input){
+void CMYKColor::from8BitBuffer(const uint8* input){
   cmlData8ToCMYK(cmlcm, color, input, 1);
 }
-void CMYKColor::from16BitBuffer(const CMLWord* input){
+void CMYKColor::from16BitBuffer(const uint16* input){
   cmlData16ToCMYK(cmlcm, color, input, 1);
 }
 void CMYKColor::fromFloatBuffer(const float* input){
   cmlCpy4(color, input);
 }
-void CMYKColor::to8BitBuffer(CMLByte* output) const {
+void CMYKColor::to8BitBuffer(uint8* output) const {
   cmlCMYKToData8(cmlcm, output, color, 1);
 }
-void CMYKColor::to16BitBuffer(CMLWord* output) const {
+void CMYKColor::to16BitBuffer(uint16* output) const {
   cmlCMYKToData16(cmlcm, output, color, 1);
 }
 void CMYKColor::toFloatBuffer(float* output) const {

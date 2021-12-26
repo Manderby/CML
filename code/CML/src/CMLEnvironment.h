@@ -38,11 +38,8 @@
   #define CML_LINKER_EXPORT         __declspec(dllexport)
   #define CML_DEBUG_FUNCTIONSYMBOL __FUNCTION__
 
-  typedef signed __int32    CMLint32;
-  typedef unsigned __int32  CMLuint32;
-  typedef unsigned __int16  CMLuint16;
-  typedef unsigned __int8   CMLuint8;
-  typedef signed __int8     CMLint8;
+  typedef unsigned __int16  uint16;
+  typedef unsigned __int8   uint8;
   
 #elif CML_COMPILE_ON_MAC_OSX
   #define CML_INLINE inline
@@ -51,11 +48,8 @@
   #define CML_LINKER_EXPORT         __attribute__ ((visibility("default")))
   #define CML_DEBUG_FUNCTIONSYMBOL __func__
   
-  typedef int32_t           CMLint32;
-  typedef u_int32_t         CMLuint32;
-  typedef u_int16_t         CMLuint16;
-  typedef u_int8_t          CMLuint8;
-  typedef int8_t            CMLint8;
+  typedef u_int16_t         uint16;
+  typedef u_int8_t          uint8;
   
 #else
   #define CML_INLINE inline
@@ -63,11 +57,8 @@
   #define CML_LINKER_EXPORT
   #define CML_DEBUG_FUNCTIONSYMBOL __func__
 
-  typedef signed int        CMLint32;
-  typedef unsigned int      CMLuint32;
-  typedef unsigned short    CMLuint16;
-  typedef unsigned char     CMLuint8;
-  typedef signed char       CMLint8;
+  typedef unsigned short    uint16;
+  typedef unsigned char     uint8;
 #endif
 
 
@@ -79,10 +70,6 @@
 #define CML_IAPI  static CML_INLINE
 #define CML_IDEF  static CML_INLINE
 #define CML_HIDEF static CML_INLINE CML_LINKER_NO_EXPORT
-
-typedef CMLint32      CMLInt;
-typedef CMLuint16     CMLWord;
-typedef CMLuint8      CMLByte;
 
 typedef int           CMLBool;
 #define CML_TRUE      1

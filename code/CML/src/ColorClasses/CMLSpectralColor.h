@@ -63,7 +63,7 @@ public:
 
   // This method currently always returns inf for spectral colors. There might
   // be a different use in the future. Don't use it.
-  CML_INLINE CMLuint32 getNumChannels() const {return (CMLuint32) -1;}
+  CML_INLINE size_t getNumChannels() const {return (size_t) -1;}
 
   // This method currently does nothing for spectral colors. There might
   // be a different use in the future. Don't use it.
@@ -89,11 +89,11 @@ public:
 
   // Currently, the 8, 16 and float buffer methods do nothing. There might be
   // a different use in the future. Don't use it.
-  void from8BitBuffer(const CMLByte* input);  
-  void from16BitBuffer(const CMLWord* input);  
+  void from8BitBuffer(const uint8* input);  
+  void from16BitBuffer(const uint16* input);  
   void fromFloatBuffer(const float* input);  
-  void to8BitBuffer(CMLByte* output) const;
-  void to16BitBuffer(CMLWord* output) const;
+  void to8BitBuffer(uint8* output) const;
+  void to16BitBuffer(uint16* output) const;
   void toFloatBuffer(float* output) const;  
 
   void fromNormedBuffer(const float* input);  

@@ -154,7 +154,7 @@ void HSVColor::clamp(){
   cmlClampHSV(color, 1);
 }
 
-CMLuint32 HSVColor::getNumChannels() const {return 3;}
+size_t HSVColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -164,19 +164,19 @@ CMLColorType HSVColor::getColorType() const{
   return CML_COLOR_HSV;
 }
 
-void HSVColor::from8BitBuffer(const CMLByte* input){
+void HSVColor::from8BitBuffer(const uint8* input){
   cmlData8ToHSV(cmlcm, color, input, 1);
 }
-void HSVColor::from16BitBuffer(const CMLWord* input){
+void HSVColor::from16BitBuffer(const uint16* input){
   cmlData16ToHSV(cmlcm, color, input, 1);
 }
 void HSVColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void HSVColor::to8BitBuffer(CMLByte* output) const {
+void HSVColor::to8BitBuffer(uint8* output) const {
   cmlHSVToData8(cmlcm, output, color, 1);
 }
-void HSVColor::to16BitBuffer(CMLWord* output) const {
+void HSVColor::to16BitBuffer(uint16* output) const {
   cmlHSVToData16(cmlcm, output, color, 1);
 }
 void HSVColor::toFloatBuffer(float* output) const {

@@ -133,7 +133,7 @@ void GrayColor::clamp(){
   cmlClampGray(color, 1);
 }
 
-CMLuint32 GrayColor::getNumChannels() const {return 1;}
+size_t GrayColor::getNumChannels() const {return 1;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -143,19 +143,19 @@ CMLColorType GrayColor::getColorType() const{
   return CML_COLOR_GRAY;
 }
 
-void GrayColor::from8BitBuffer(const CMLByte* input){
+void GrayColor::from8BitBuffer(const uint8* input){
   cmlData8ToGray(cmlcm, color, input, 1);
 }
-void GrayColor::from16BitBuffer(const CMLWord* input){
+void GrayColor::from16BitBuffer(const uint16* input){
   cmlData16ToGray(cmlcm, color, input, 1);
 }
 void GrayColor::fromFloatBuffer(const float* input){
   color[0] = input[0];
 }
-void GrayColor::to8BitBuffer(CMLByte* output) const {
+void GrayColor::to8BitBuffer(uint8* output) const {
   cmlGrayToData8(cmlcm, output, color, 1);
 }
-void GrayColor::to16BitBuffer(CMLWord* output) const {
+void GrayColor::to16BitBuffer(uint16* output) const {
   cmlGrayToData16(cmlcm, output, color, 1);
 }
 void GrayColor::toFloatBuffer(float* output) const {

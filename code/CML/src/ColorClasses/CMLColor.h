@@ -118,11 +118,11 @@ public:
 
   
   // Converting from or to input-output buffers.
-  virtual void from8BitBuffer(const CMLByte* input)       = 0;  
-  virtual void from16BitBuffer(const CMLWord* input)      = 0;  
+  virtual void from8BitBuffer(const uint8* input)      = 0;
+  virtual void from16BitBuffer(const uint16* input)      = 0;  
   virtual void fromFloatBuffer(const float* input)        = 0;  
-  virtual void to8BitBuffer(CMLByte* output) const        = 0;
-  virtual void to16BitBuffer(CMLWord* output) const       = 0;
+  virtual void to8BitBuffer(uint8* output) const       = 0;
+  virtual void to16BitBuffer(uint16* output) const       = 0;
   virtual void toFloatBuffer(float* output) const         = 0;
 
   // Converting from or to normed buffers. More information about normed
@@ -142,7 +142,7 @@ public:
 
   virtual float length() const = 0;
   virtual void clamp() = 0;
-  virtual CMLuint32 getNumChannels() const = 0;
+  virtual size_t getNumChannels() const = 0;
 
   virtual operator const float*() const = 0;  // Accessor
   virtual operator       float*() = 0;        // Mutator

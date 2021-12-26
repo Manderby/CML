@@ -145,7 +145,7 @@ void YCbCrColor::clamp(){
   cmlClampYCbCr(color, 1);
 }
 
-CMLuint32 YCbCrColor::getNumChannels() const {return 3;}
+size_t YCbCrColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType YCbCrColor::getColorType() const{
   return CML_COLOR_YCbCr;
 }
 
-void YCbCrColor::from8BitBuffer(const CMLByte* input){
+void YCbCrColor::from8BitBuffer(const uint8* input){
   cmlData8ToYCbCr(cmlcm, color, input, 1);
 }
-void YCbCrColor::from16BitBuffer(const CMLWord* input){
+void YCbCrColor::from16BitBuffer(const uint16* input){
   cmlData16ToYCbCr(cmlcm, color, input, 1);
 }
 void YCbCrColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void YCbCrColor::to8BitBuffer(CMLByte* output) const {
+void YCbCrColor::to8BitBuffer(uint8* output) const {
   cmlYCbCrToData8(cmlcm, output, color, 1);
 }
-void YCbCrColor::to16BitBuffer(CMLWord* output) const {
+void YCbCrColor::to16BitBuffer(uint16* output) const {
   cmlYCbCrToData16(cmlcm, output, color, 1);
 }
 void YCbCrColor::toFloatBuffer(float* output) const {

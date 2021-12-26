@@ -39,12 +39,12 @@ CML_API void cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float
 }
 
 
-CML_API CMLuint8 cmlGetLabLUTSize(const CMLColorMachine* cm){
+CML_API uint8 cmlGetLabLUTSize(const CMLColorMachine* cm){
   return cm->labSpace.lutsize;
 }
 
 
-CML_API void cmlSetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits){
+CML_API void cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits){
   CMLLabColorSpaceType curtype;
   if((bits < 1) || (bits > 16)){bits = 32;}
   cm->labSpace.lutsize = bits;

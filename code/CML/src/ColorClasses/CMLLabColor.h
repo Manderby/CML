@@ -64,7 +64,7 @@ public:
   CMLBool inside();
   void clamp();
 
-  CMLuint32 getNumChannels() const;
+  size_t getNumChannels() const;
 
   // ///////////////////////////////////////
   // Converting to different color spaces
@@ -72,11 +72,11 @@ public:
 
   CMLColorType getColorType() const;
 
-  void from8BitBuffer(const CMLByte* input);  
-  void from16BitBuffer(const CMLWord* input);  
+  void from8BitBuffer(const uint8* input);  
+  void from16BitBuffer(const uint16* input);  
   void fromFloatBuffer(const float* input);  
-  void to8BitBuffer(CMLByte* output) const;
-  void to16BitBuffer(CMLWord* output) const;
+  void to8BitBuffer(uint8* output) const;
+  void to16BitBuffer(uint16* output) const;
   void toFloatBuffer(float* output) const;
 
   void fromNormedBuffer(const float* input);  

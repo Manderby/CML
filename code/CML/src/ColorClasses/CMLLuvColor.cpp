@@ -145,7 +145,7 @@ void LuvColor::clamp(){
   cmlClampLuv(color, 1);
 }
 
-CMLuint32 LuvColor::getNumChannels() const {return 3;}
+size_t LuvColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType LuvColor::getColorType() const{
   return CML_COLOR_Luv;
 }
 
-void LuvColor::from8BitBuffer(const CMLByte* input){
+void LuvColor::from8BitBuffer(const uint8* input){
   cmlData8ToLuv(cmlcm, color, input, 1);
 }
-void LuvColor::from16BitBuffer(const CMLWord* input){
+void LuvColor::from16BitBuffer(const uint16* input){
   cmlData16ToLuv(cmlcm, color, input, 1);
 }
 void LuvColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void LuvColor::to8BitBuffer(CMLByte* output) const {
+void LuvColor::to8BitBuffer(uint8* output) const {
   cmlLuvToData8(cmlcm, output, color, 1);
 }
-void LuvColor::to16BitBuffer(CMLWord* output) const {
+void LuvColor::to16BitBuffer(uint16* output) const {
   cmlLuvToData16(cmlcm, output, color, 1);
 }
 void LuvColor::toFloatBuffer(float* output) const {

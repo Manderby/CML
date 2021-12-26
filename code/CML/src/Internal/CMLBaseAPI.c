@@ -111,7 +111,7 @@ CML_DEF void cmlConvertXYZToChromaticAdaptedXYZ(CMLVec3 adaptXYZ, const CMLVec3 
 
 
 
-CML_DEF CMLuint32 cmlGetNumChannels(CMLColorType colorType){
+CML_DEF size_t cmlGetNumChannels(CMLColorType colorType){
   switch(colorType){
   case CML_COLOR_GRAY:  return CML_GRAY_NUMCHANNELS;  break;
   case CML_COLOR_XYZ:   return CML_XYZ_NUMCHANNELS;   break;
@@ -128,7 +128,7 @@ CML_DEF CMLuint32 cmlGetNumChannels(CMLColorType colorType){
   case CML_COLOR_CMYK:  return CML_CMYK_NUMCHANNELS;  break;
   default:
     #if CML_DEBUG
-      cmlError("Invalid Channeled Color Type.");
+      cmlError("Invalid channeled color type.");
     #endif
     return 0;
     break;

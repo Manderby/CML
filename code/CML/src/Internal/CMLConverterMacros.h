@@ -61,7 +61,7 @@
     }\
     float* out;\
     const float* in = insymbol;\
-    CMLuint32 floatAlign;\
+    size_t floatAlign;\
     register CMLBool sameBuffer;\
     if(!outsymbol){\
       out = (float*)cml_Malloc(count * outchannels * sizeof(float));\
@@ -86,7 +86,7 @@
   #define CML_CONVERTER_INOUT_PARAMETER(outsymbol, insymbol, outchannels, inchannels) \
     float* out;\
     const float* in = insymbol;\
-    CMLuint32 floatAlign;\
+    size_t floatAlign;\
     register CMLBool sameBuffer;\
     if(!outsymbol){\
       out = (float*)cml_Malloc(count * outchannels * sizeof(float));\
@@ -131,7 +131,7 @@
   }\
   CMLBool sameBuffer;\
   float* xyzbuf;\
-  CMLuint32 floatAlign;\
+  size_t floatAlign;\
   if(outchannels < CML_XYZ_NUMCHANNELS){\
     xyzbuf = (float*)cml_Malloc(count * CML_XYZ_NUMCHANNELS * sizeof(float));\
     sameBuffer = CML_FALSE;\

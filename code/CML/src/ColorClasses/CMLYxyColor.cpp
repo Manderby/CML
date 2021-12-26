@@ -145,7 +145,7 @@ void YxyColor::clamp(){
   cmlClampYxy(color, 1);
 }
 
-CMLuint32 YxyColor::getNumChannels() const {return 3;}
+size_t YxyColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType YxyColor::getColorType() const{
   return CML_COLOR_Yxy;
 }
 
-void YxyColor::from8BitBuffer(const CMLByte* input){
+void YxyColor::from8BitBuffer(const uint8* input){
   cmlData8ToYxy(cmlcm, color, input, 1);
 }
-void YxyColor::from16BitBuffer(const CMLWord* input){
+void YxyColor::from16BitBuffer(const uint16* input){
   cmlData16ToYxy(cmlcm, color, input, 1);
 }
 void YxyColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void YxyColor::to8BitBuffer(CMLByte* output) const {
+void YxyColor::to8BitBuffer(uint8* output) const {
   cmlYxyToData8(cmlcm, output, color, 1);
 }
-void YxyColor::to16BitBuffer(CMLWord* output) const {
+void YxyColor::to16BitBuffer(uint16* output) const {
   cmlYxyToData16(cmlcm, output, color, 1);
 }
 void YxyColor::toFloatBuffer(float* output) const {

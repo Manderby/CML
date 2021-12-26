@@ -703,7 +703,7 @@ CML_DEF CMLFunction* cmlCreateCIEDIlluminant(float temperature){
   float Minv = cmlInverse(0.0241f +  0.2562f * whitePoint[0] -  0.7341f * whitePoint[1]);
   float M1 = (-1.3515f -  1.7703f * whitePoint[0] +  5.9114f * whitePoint[1]) * Minv;
   float M2 = ( 0.03f   - 31.4424f * whitePoint[0] + 30.0717f * whitePoint[1]) * Minv;
-  for(CMLuint32 l = 0; l < CML_D_ILLUMINANT_ENTRYCOUNT; ++l){
+  for(size_t l = 0; l < CML_D_ILLUMINANT_ENTRYCOUNT; ++l){
     array[l] = dilluminantS0[l] + M1 * dilluminantS1[l] + M2 * dilluminantS2[l];
   }
   

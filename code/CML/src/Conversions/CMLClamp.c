@@ -45,10 +45,10 @@ CML_HIDEF void cml_ClampLab(float* lab){
 }
 
 CML_HIDEF void cml_ClampLch(float* lch){
-  CMLint32 fullangles;
+  int fullangles;
   cml_ClampToRange(&(lch[0]), CML_Lch_L_MIN, CML_Lch_L_MAX);
   cml_ClampToRange(&(lch[1]), CML_Lch_c_MIN, CML_Lch_c_MAX);
-  fullangles = (CMLint32)floorf(lch[2] / CML_Lch_h_MAX);
+  fullangles = (int)floorf(lch[2] / CML_Lch_h_MAX);
   lch[2] -= fullangles * CML_Lch_h_MAX;
 }
 
@@ -71,14 +71,14 @@ CML_HIDEF void cml_ClampYCbCr(float* ycbcr){
 }
 
 CML_HIDEF void cml_ClampHSV(float* hsv){
-  CMLint32 fullangles = (CMLint32)floorf(hsv[0] / CML_HSV_H_MAX);
+  int fullangles = (int)floorf(hsv[0] / CML_HSV_H_MAX);
   hsv[0] -= fullangles * CML_HSV_H_MAX;
   cml_ClampToRange(&(hsv[1]), CML_HSV_S_MIN, CML_HSV_S_MAX);
   cml_ClampToRange(&(hsv[2]), CML_HSV_V_MIN, CML_HSV_V_MAX);
 }
 
 CML_HIDEF void cml_ClampHSL(float* hsl){
-  CMLint32 fullangles = (CMLint32)floorf(hsl[0] / CML_HSL_H_MAX);
+  int fullangles = (int)floorf(hsl[0] / CML_HSL_H_MAX);
   hsl[0] -= fullangles * CML_HSL_H_MAX;
   cml_ClampToRange(&(hsl[1]), CML_HSL_S_MIN, CML_HSL_S_MAX);
   cml_ClampToRange(&(hsl[2]), CML_HSL_L_MIN, CML_HSL_L_MAX);

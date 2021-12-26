@@ -150,7 +150,7 @@ void LabColor::clamp(){
   cmlClampLab(color, 1);
 }
 
-CMLuint32 LabColor::getNumChannels() const {return 3;}
+size_t LabColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -160,19 +160,19 @@ CMLColorType LabColor::getColorType() const{
   return CML_COLOR_Lab;
 }
 
-void LabColor::from8BitBuffer(const CMLByte* input){
+void LabColor::from8BitBuffer(const uint8* input){
   cmlData8ToLab(cmlcm, color, input, 1);
 }
-void LabColor::from16BitBuffer(const CMLWord* input){
+void LabColor::from16BitBuffer(const uint16* input){
   cmlData16ToLab(cmlcm, color, input, 1);
 }
 void LabColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void LabColor::to8BitBuffer(CMLByte* output) const {
+void LabColor::to8BitBuffer(uint8* output) const {
   cmlLabToData8(cmlcm, output, color, 1);
 }
-void LabColor::to16BitBuffer(CMLWord* output) const {
+void LabColor::to16BitBuffer(uint16* output) const {
   cmlLabToData16(cmlcm, output, color, 1);
 }
 void LabColor::toFloatBuffer(float* output) const {

@@ -145,7 +145,7 @@ void RGBColor::clamp(){
   cmlClampRGB(color, 1);
 }
 
-CMLuint32 RGBColor::getNumChannels() const {return 3;}
+size_t RGBColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType RGBColor::getColorType() const{
   return CML_COLOR_RGB;
 }
 
-void RGBColor::from8BitBuffer(const CMLByte* input){
+void RGBColor::from8BitBuffer(const uint8* input){
   cmlData8ToRGB(cmlcm, color, input, 1);
 }
-void RGBColor::from16BitBuffer(const CMLWord* input){
+void RGBColor::from16BitBuffer(const uint16* input){
   cmlData16ToRGB(cmlcm, color, input, 1);
 }
 void RGBColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void RGBColor::to8BitBuffer(CMLByte* output) const {
+void RGBColor::to8BitBuffer(uint8* output) const {
   cmlRGBToData8(cmlcm, output, color, 1);
 }
-void RGBColor::to16BitBuffer(CMLWord* output) const {
+void RGBColor::to16BitBuffer(uint16* output) const {
   cmlRGBToData16(cmlcm, output, color, 1);
 }
 void RGBColor::toFloatBuffer(float* output) const {

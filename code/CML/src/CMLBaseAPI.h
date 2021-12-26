@@ -264,7 +264,7 @@ CML_API void cmlComputeRGBToXYZMatrix(
 
 // Returns the number of channels a specific color type uses. If an invalid
 // color type is given, the returned value will be 0.
-CML_API CMLuint32 cmlGetNumChannels( CMLColorType colorType);
+CML_API size_t cmlGetNumChannels( CMLColorType colorType);
 
 
 

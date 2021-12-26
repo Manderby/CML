@@ -145,7 +145,7 @@ void YuvColor::clamp(){
   cmlClampYuv(color, 1);
 }
 
-CMLuint32 YuvColor::getNumChannels() const {return 3;}
+size_t YuvColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType YuvColor::getColorType() const{
   return CML_COLOR_Yuv;
 }
 
-void YuvColor::from8BitBuffer(const CMLByte* input){
+void YuvColor::from8BitBuffer(const uint8* input){
   cmlData8ToYuv(cmlcm, color, input, 1);
 }
-void YuvColor::from16BitBuffer(const CMLWord* input){
+void YuvColor::from16BitBuffer(const uint16* input){
   cmlData16ToYuv(cmlcm, color, input, 1);
 }
 void YuvColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void YuvColor::to8BitBuffer(CMLByte* output) const {
+void YuvColor::to8BitBuffer(uint8* output) const {
   cmlYuvToData8(cmlcm, output, color, 1);
 }
-void YuvColor::to16BitBuffer(CMLWord* output) const {
+void YuvColor::to16BitBuffer(uint16* output) const {
   cmlYuvToData16(cmlcm, output, color, 1);
 }
 void YuvColor::toFloatBuffer(float* output) const {

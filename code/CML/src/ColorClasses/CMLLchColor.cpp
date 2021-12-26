@@ -154,7 +154,7 @@ void LchColor::clamp(){
   cmlClampLch(color, 1);
 }
 
-CMLuint32 LchColor::getNumChannels() const {return 3;}
+size_t LchColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -164,19 +164,19 @@ CMLColorType LchColor::getColorType() const{
   return CML_COLOR_Lch;
 }
 
-void LchColor::from8BitBuffer(const CMLByte* input){
+void LchColor::from8BitBuffer(const uint8* input){
   cmlData8ToLch(cmlcm, color, input, 1);
 }
-void LchColor::from16BitBuffer(const CMLWord* input){
+void LchColor::from16BitBuffer(const uint16* input){
   cmlData16ToLch(cmlcm, color, input, 1);
 }
 void LchColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void LchColor::to8BitBuffer(CMLByte* output) const {
+void LchColor::to8BitBuffer(uint8* output) const {
   cmlLchToData8(cmlcm, output, color, 1);
 }
-void LchColor::to16BitBuffer(CMLWord* output) const {
+void LchColor::to16BitBuffer(uint16* output) const {
   cmlLchToData16(cmlcm, output, color, 1);
 }
 void LchColor::toFloatBuffer(float* output) const {

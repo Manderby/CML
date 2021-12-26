@@ -12,7 +12,7 @@
 // ///////////////////////////////////////////////
 
 // Returns the current version number.
-CML_API CMLuint32             cmlGetVersion(void);
+CML_API int                   cmlGetVersion(void);
 
 // Create and destroy ColorMachines with these functions:
 CML_API CMLColorMachine*      cmlCreateColorMachine(void);
@@ -32,10 +32,10 @@ CML_API void                  cmlReleaseRecomputation(CMLColorMachine* cm);
 // negative.
 CML_API CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm);
 CML_API void                  cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type);
-CML_API void                  cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel);
-CML_API void                  cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel);
-CML_API void                  cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel);
-CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel);
+CML_API void                  cmlGet8BitCutoffs(const CMLColorMachine* cm, uint8* min, uint8* max, size_t channel);
+CML_API void                  cmlSet8BitCutoffs(CMLColorMachine* cm, uint8 min, uint8 max, size_t channel);
+CML_API void                  cmlGet16BitCutoffs(const CMLColorMachine* cm, uint16* min, uint16* max, size_t channel);
+CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min, uint16 max, size_t channel);
 
 // The radiometric computation flag defines if spectral data shall be converted
 // without or with normalization to Y=1. Set CML_TRUE for radiometric and
@@ -85,8 +85,8 @@ CML_API CMLLabColorSpaceType  cmlGetLabColorSpace(const CMLColorMachine* cm);
 CML_API void                  cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace);
 CML_API void                  cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke);
 CML_API void                  cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
-CML_API CMLuint8              cmlGetLabLUTSize(const CMLColorMachine* cm);
-CML_API void                  cmlSetLabLUTSize(CMLColorMachine* cm, CMLuint8 bits);
+CML_API uint8              cmlGetLabLUTSize(const CMLColorMachine* cm);
+CML_API void                  cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits);
 CML_API const CMLFunction*    cmlGetLtoLinearResponse(const CMLColorMachine* cm);
 CML_API const CMLFunction*    cmlGetLineartoLResponse(const CMLColorMachine* cm);
 CML_API const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm);
@@ -133,8 +133,8 @@ CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersB(con
 CML_API void                   cmlSetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
 CML_API void                   cmlSetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
 CML_API void                   cmlSetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API CMLuint8               cmlGetRGBLUTSize(const CMLColorMachine* cm);
-CML_API void                   cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits);
+CML_API uint8               cmlGetRGBLUTSize(const CMLColorMachine* cm);
+CML_API void                   cmlSetRGBLUTSize(CMLColorMachine* cm, uint8 bits);
 
 
 // Transformation from RGB to CMYK can be achieved using different approaches

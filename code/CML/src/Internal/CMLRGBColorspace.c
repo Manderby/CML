@@ -222,12 +222,12 @@ CML_API void cmlSetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
 
 
 
-CML_API CMLuint8 cmlGetRGBLUTSize(const CMLColorMachine* cm){
+CML_API uint8 cmlGetRGBLUTSize(const CMLColorMachine* cm){
   return cm->rgbSpace.lutsize;
 }
 
 
-CML_API void cmlSetRGBLUTSize(CMLColorMachine* cm, CMLuint8 bits){
+CML_API void cmlSetRGBLUTSize(CMLColorMachine* cm, uint8 bits){
   if((bits < 1) || (bits > 16)){bits = 32;}
   cm->rgbSpace.lutsize = bits;
   cml_recomputeRGBResponses(cm);

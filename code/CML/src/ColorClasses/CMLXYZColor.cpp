@@ -145,7 +145,7 @@ void XYZColor::clamp(){
   cmlClampXYZ(color, 1);
 }
 
-CMLuint32 XYZColor::getNumChannels() const {return 3;}
+size_t XYZColor::getNumChannels() const {return 3;}
 
 // ///////////////////////////////////////
 // Converting to different color spaces
@@ -155,19 +155,19 @@ CMLColorType XYZColor::getColorType() const{
   return CML_COLOR_XYZ;
 }
 
-void XYZColor::from8BitBuffer(const CMLByte* input){
+void XYZColor::from8BitBuffer(const uint8* input){
   cmlData8ToXYZ(cmlcm, color, input, 1);
 }
-void XYZColor::from16BitBuffer(const CMLWord* input){
+void XYZColor::from16BitBuffer(const uint16* input){
   cmlData16ToXYZ(cmlcm, color, input, 1);
 }
 void XYZColor::fromFloatBuffer(const float* input){
   cmlCpy3(color, input);
 }
-void XYZColor::to8BitBuffer(CMLByte* output) const {
+void XYZColor::to8BitBuffer(uint8* output) const {
   cmlXYZToData8(cmlcm, output, color, 1);
 }
-void XYZColor::to16BitBuffer(CMLWord* output) const {
+void XYZColor::to16BitBuffer(uint16* output) const {
   cmlXYZToData16(cmlcm, output, color, 1);
 }
 void XYZColor::toFloatBuffer(float* output) const {

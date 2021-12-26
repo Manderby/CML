@@ -20,14 +20,13 @@
 
 
 
-CML_DEF CMLuint32 cmlGetVersion(){
+CML_DEF int cmlGetVersion(){
   return 2;
 }
 
 
 
 CML_DEF CMLColorMachine* cmlCreateColorMachine(){
-  CMLint32 i;
   CMLColorMachine* cm = (CMLColorMachine*)cml_Malloc(sizeof(CMLColorMachine));
 
   CMLIllumination* referenceIllumination = cml_Malloc(sizeof(CMLIllumination));
@@ -69,7 +68,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
-  for(i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
+  for(size_t i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
     cm->inputoutput.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
     cm->inputoutput.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
     cm->inputoutput.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
@@ -159,38 +158,38 @@ CML_DEF CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm
 }
 
 
-CML_DEF void cmlGet8BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_DEF void cmlGet8BitCutoffs(const CMLColorMachine* cm, uint8* min, uint8* max, size_t channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  *min = (CMLint32)(cm->inputoutput.offset8Bit[channel]);
-  *max = *min + (CMLint32)(cm->inputoutput.range8Bit[channel]);
+  *min = (uint8)(cm->inputoutput.offset8Bit[channel]);
+  *max = *min + (uint8)(cm->inputoutput.range8Bit[channel]);
 }
 
 
-CML_DEF void cmlGet16BitCutoffs(const CMLColorMachine* cm, CMLint32* min, CMLint32* max, CMLuint32 channel){
+CML_DEF void cmlGet16BitCutoffs(const CMLColorMachine* cm, uint16* min, uint16* max, size_t channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  *min = (CMLint32)(cm->inputoutput.offset16Bit[channel]);
-  *max = *min + (CMLint32)(cm->inputoutput.range16Bit[channel]);
+  *min = (uint16)(cm->inputoutput.offset16Bit[channel]);
+  *max = *min + (uint16)(cm->inputoutput.range16Bit[channel]);
 }
 
 
-CML_DEF void cmlSet8BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_DEF void cmlSet8BitCutoffs(CMLColorMachine* cm, uint8 min, uint8 max, size_t channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset8Bit[channel] = (CMLByte)(min);
+  cm->inputoutput.offset8Bit[channel] = (uint8)(min);
   cm->inputoutput.range8Bit[channel] = (float)(max - min);
 }
 
 
-CML_DEF void cmlSet16BitCutoffs(CMLColorMachine* cm, CMLint32 min, CMLint32 max, CMLuint32 channel){
+CML_DEF void cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min, uint16 max, size_t channel){
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset16Bit[channel] = (CMLWord)(min);
+  cm->inputoutput.offset16Bit[channel] = (uint16)(min);
   cm->inputoutput.range16Bit[channel] = (float)(max - min);
 }
 
