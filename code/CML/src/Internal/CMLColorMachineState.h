@@ -23,7 +23,7 @@ struct CML_HIDDEN CMLColorMachine{
   uint8 recomputationMask;
 
   struct inputoutput_struct{
-    CMLIntegerMappingType         integermapping;
+    CMLIntegerMappingType         integerMapping;
     uint8                       offset8Bit [CML_MAX_NUMBER_OF_CHANNELS];
     float                         range8Bit  [CML_MAX_NUMBER_OF_CHANNELS];
     uint16                       offset16Bit[CML_MAX_NUMBER_OF_CHANNELS];
@@ -83,36 +83,36 @@ struct CML_HIDDEN CMLColorMachine{
 };
 
 
-CML_HIDDEN void cml_GrayToChanneledBufferHSL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferHSV(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferG(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_GrayToChanneledBufferYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
-CML_HIDDEN void cml_ChanneledBufferToGrayHSL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayHSV(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayG(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayLSTAR(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_ChanneledBufferToGrayYPRIME(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HIDDEN void cml_XYZToLabCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_XYZToLabCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_XYZToLabChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_XYZToLabChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_LabToXYZCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_LabToXYZCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_RGBToCMYKStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_RGBToCMYKStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_RGBToCMYKUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_RGBToCMYKUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HIDDEN void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HIDDEN void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_GrayToChanneledBufferHSL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferHSV(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferG(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferLStar(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferL(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_GrayToChanneledBufferYPrime(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray);
+CML_HAPI void cml_ChanneledBufferToGrayHSL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayHSV(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayG(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayLStar(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_ChanneledBufferToGrayYPrime(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
+CML_HAPI void cml_XYZToLabCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_XYZToLabCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_XYZToLabChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_XYZToLabChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_LabToXYZCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_LabToXYZCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_RGBToCMYKStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_RGBToCMYKStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_RGBToCMYKUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_RGBToCMYKUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
  
 CML_HIDDEN void cml_recomputeObserver(CMLColorMachine* cm);
 CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm);

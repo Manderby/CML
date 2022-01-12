@@ -23,8 +23,8 @@ CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
     cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayG;
     break;
   case CML_GRAY_FROM_LSTAR:
-    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
-    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLStar;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLStar;
     break;
   case CML_GRAY_FROM_L:
     cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferL;
@@ -35,8 +35,8 @@ CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
     cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayY;
     break;
   case CML_GRAY_FROM_YPRIME:
-    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferYPRIME;
-    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayYPRIME;
+    cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferYPrime;
+    cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayYPrime;
     break;
   default:
     #if CML_DEBUG

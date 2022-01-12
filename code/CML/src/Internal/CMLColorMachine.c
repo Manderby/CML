@@ -49,8 +49,8 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   cmlInitResponseCurve(&(cm->labSpace.responseL));
   cmlInitResponseCurveWithType(&(cm->labSpace.responseLStar), CML_RESPONSE_LSTAR);
   
-  cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLSTAR;
-  cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLSTAR;
+  cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferLStar;
+  cm->ChanneledBufferToGray = &cml_ChanneledBufferToGrayLStar;
   cm->XYZToLab              = &cml_XYZToLabCIELAB;
   cm->XYZToLab_SB           = &cml_XYZToLabCIELAB_SB;
   cm->LabToXYZ              = &cml_LabToXYZCIELAB;
@@ -154,7 +154,7 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
 
 
 CML_DEF CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm){
-  return cm->inputoutput.integermapping;
+  return cm->inputoutput.integerMapping;
 }
 
 
