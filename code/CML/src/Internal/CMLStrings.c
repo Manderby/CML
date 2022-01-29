@@ -107,7 +107,7 @@ CML_HDEF const char* functionTypeStrings[CML_FUNCTION_COUNT] = {
   "L* Standard",           // CML_FUNCTION_LSTAR_STANDARD
 };
 
-CML_HDEF const char* rgbResponseTypeStrings[CML_RESPONSE_CUSTOM_COUNT] = {
+CML_HDEF const char* rgbResponseTypeStrings[CML_RESPONSE_COUNT] = {
   "Undefined",             // CML_RESPONSE_UNDEFINED
   "Linear",                // CML_RESPONSE_LINEAR
   "Gamma 1.8",             // CML_RESPONSE_GAMMA_1_8

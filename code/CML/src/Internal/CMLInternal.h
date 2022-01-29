@@ -10,6 +10,7 @@
 #endif
 
 
+
 // todo: make inline functions or ranges
 #define CML_MAX(a, b) (((a)>(b))?(a):(b))
 #define CML_MIN(a, b) (((a)<(b))?(a):(b))
@@ -33,6 +34,7 @@ struct CMLResponseCurve{
 };
 
 
+typedef struct CMLIllumination    CMLIllumination;
 struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
@@ -41,6 +43,7 @@ struct CMLIllumination{
 };
 
 
+typedef struct CMLObserver        CMLObserver;
 struct CMLObserver{
   CMLObserverType               type;
   CMLFunction*                  specDistFunctions[3];

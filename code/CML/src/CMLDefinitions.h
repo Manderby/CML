@@ -136,9 +136,9 @@ typedef enum{
   CML_RESPONSE_SRGB,
   CML_RESPONSE_LSTAR,
   CML_RESPONSE_LSTAR_STANDARD,
-  CML_RESPONSE_CUSTOM_GAMMA,
+  CML_RESPONSE_CUSTOM_GAMMA,        // custom gammas are always the last ones.
   CML_RESPONSE_CUSTOM_GAMMA_LINEAR,
-  CML_RESPONSE_CUSTOM_COUNT
+  CML_RESPONSE_COUNT
 } CMLResponseCurveType;
 
 // Enumerates the predefined function types
@@ -250,9 +250,8 @@ CML_API const char* cmlGetChromaticAdaptationTypeString (CMLChromaticAdaptationT
 // Some typedefs which are used later in the API:
 typedef struct CMLColorMachine    CMLColorMachine;
 typedef struct CMLFunction        CMLFunction;
-typedef struct CMLResponseCurve   CMLResponseCurve;
 typedef struct CMLObserver        CMLObserver;
-typedef struct CMLIllumination    CMLIllumination;
+typedef struct CMLResponseCurve   CMLResponseCurve;
 typedef struct CMLDefinitionRange CMLDefinitionRange;
 
 typedef void*                     CMLOutput;

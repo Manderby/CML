@@ -28,11 +28,11 @@
 #define CML_SECOND_RAD      1.4387752e-2f
 #define CML_PI2             6.2831853f
 
-#define CML_SINGULARITY   1e-6f
+#define CML_SINGULARITY     1e-6f
 #ifndef HUGE_VALF
-  #define HUGE_VALF ((float)(HUGE_VAL))
+  #define HUGE_VALF         ((float)(HUGE_VAL))
 #endif
-#define CML_INFINITY      HUGE_VALF
+#define CML_INFINITY        HUGE_VALF
 
 
 
@@ -65,6 +65,8 @@ CML_IDEF float cmlGetStepSize(float min, float max, size_t sampleCount){
   return (max-min) * cmlInverse((float)sampleCount - 1);
 }
 
+CML_IDEF float cmlAngle(const float* a) {return atan2f(a[1], a[0]);}
+
 
 
 // ////////////////////////////////////////////
@@ -76,9 +78,9 @@ typedef float CMLVec2[2];
 typedef float CMLVec3[3];
 typedef float CMLVec4[4];
 
-CML_IDEF void    cmlSet1(CMLVec1 d, float a0)                               {d[0] = a0;}
-CML_IDEF void    cmlSet2(CMLVec2 d, float a0, float a1)                     {d[0] = a0; d[1] = a1;}
-CML_IDEF void    cmlSet3(CMLVec3 d, float a0, float a1, float a2)           {d[0] = a0; d[1] = a1; d[2] = a2;}
+CML_IDEF void    cmlSet1(CMLVec1 d, float a0) {d[0] = a0;}
+CML_IDEF void    cmlSet2(CMLVec2 d, float a0, float a1) {d[0] = a0; d[1] = a1;}
+CML_IDEF void    cmlSet3(CMLVec3 d, float a0, float a1, float a2) {d[0] = a0; d[1] = a1; d[2] = a2;}
 CML_IDEF void    cmlSet4(CMLVec4 d, float a0, float a1, float a2, float a3) {d[0] = a0; d[1] = a1; d[2] = a2; d[3] = a3;}
 
 CML_IDEF void    cmlCpy1(CMLVec1 d, const CMLVec1 a) {d[0] = a[0];}
@@ -118,8 +120,6 @@ CML_IDEF float   cmlLength1(const CMLVec1 a) {return fabsf(a[0]);}
 CML_IDEF float   cmlLength2(const CMLVec2 a) {return sqrtf(cmlDot2(a, a));}
 CML_IDEF float   cmlLength3(const CMLVec3 a) {return sqrtf(cmlDot3(a, a));}
 CML_IDEF float   cmlLength4(const CMLVec4 a) {return sqrtf(cmlDot4(a, a));}
-
-CML_IDEF float   cmlAngle(const CMLVec2 a) {return atan2f(a[1], a[0]);}
 
 
 

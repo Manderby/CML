@@ -36,7 +36,7 @@
   #define CML_RESTRICT __restrict
   #define CML_LINKER_NO_EXPORT
   #define CML_LINKER_EXPORT         __declspec(dllexport)
-  #define CML_DEBUG_FUNCTIONSYMBOL __FUNCTION__
+  #define CML_DEBUG_FUNCTIONSYMBOL  __FUNCTION__
 
   typedef unsigned __int16  uint16;
   typedef unsigned __int8   uint8;
@@ -46,7 +46,7 @@
   #define CML_RESTRICT __restrict__
   #define CML_LINKER_NO_EXPORT      __attribute__ ((visibility("hidden")))
   #define CML_LINKER_EXPORT         __attribute__ ((visibility("default")))
-  #define CML_DEBUG_FUNCTIONSYMBOL __func__
+  #define CML_DEBUG_FUNCTIONSYMBOL  __func__
   
   typedef u_int16_t         uint16;
   typedef u_int8_t          uint8;
@@ -55,7 +55,7 @@
   #define CML_INLINE inline
   #define CML_LINKER_NO_EXPORT
   #define CML_LINKER_EXPORT
-  #define CML_DEBUG_FUNCTIONSYMBOL __func__
+  #define CML_DEBUG_FUNCTIONSYMBOL  __func__
 
   typedef unsigned short    uint16;
   typedef unsigned char     uint8;
