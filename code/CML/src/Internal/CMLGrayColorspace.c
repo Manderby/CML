@@ -3,12 +3,12 @@
 #include "CMLColorMachineState.h"
 
 
-CML_API CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
+CML_DEF CMLGrayComputationType cmlGetGrayComputationType(const CMLColorMachine* cm){
   return cm->graySpace.computation;
 }
 
 
-CML_API void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation){
+CML_DEF void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationType computation){
   switch(computation){
   case CML_GRAY_FROM_HSL:
     cm->GrayToChanneledBuffer = &cml_GrayToChanneledBufferHSL;

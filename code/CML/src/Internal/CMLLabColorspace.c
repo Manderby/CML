@@ -9,25 +9,25 @@
 
 
 
-CML_API CMLLabColorSpaceType cmlGetLabColorSpace(const CMLColorMachine* cm){
+CML_DEF CMLLabColorSpaceType cmlGetLabColorSpace(const CMLColorMachine* cm){
   return cm->labSpace.state;
 }
 
 
-CML_API void cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace){
+CML_DEF void cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace){
   cm->labSpace.state = labSpace;
   cml_recomputeLabColorSpace(cm);
   cml_recomputeAdamsChromaticityValenceSpace(cm);
 }
 
 
-CML_API void cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke){
+CML_DEF void cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke){
   *K = cm->labSpace.adamsChromaticityValenceK;
   *ke = cm->labSpace.adamsChromaticityValenceke;
 }
 
 
-CML_API void cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke){
+CML_DEF void cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke){
   if(cm->labSpace.state == CML_LAB_ADAMS_CROMATIC_VALENCE){
     cm->labSpace.adamsChromaticityValenceK = K;
     cm->labSpace.adamsChromaticityValenceke = ke;
@@ -39,12 +39,12 @@ CML_API void cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float
 }
 
 
-CML_API uint8 cmlGetLabLUTSize(const CMLColorMachine* cm){
+CML_DEF uint8 cmlGetLabLUTSize(const CMLColorMachine* cm){
   return cm->labSpace.lutsize;
 }
 
 
-CML_API void cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits){
+CML_DEF void cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits){
   CMLLabColorSpaceType curtype;
   if((bits < 1) || (bits > 16)){bits = 32;}
   cm->labSpace.lutsize = bits;
@@ -54,27 +54,27 @@ CML_API void cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits){
 }
 
 
-CML_API const CMLFunction* cmlGetLtoLinearResponse(const CMLColorMachine* cm){
+CML_DEF const CMLFunction* cmlGetLtoLinearResponse(const CMLColorMachine* cm){
   return cm->labSpace.responseL.backwardFunc;
 }
 
 
-CML_API const CMLFunction* cmlGetLineartoLResponse(const CMLColorMachine* cm){
+CML_DEF const CMLFunction* cmlGetLineartoLResponse(const CMLColorMachine* cm){
   return cm->labSpace.responseL.forwardFunc;
 }
 
 
-CML_API const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm){
+CML_DEF const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm){
   return &(cm->labSpace.responseL);
 }
 
 
-//CML_API CMLResponseCurveType cmlGetLabResponseCurveFunctionType(const CMLColorMachine* cm){
+//CML_DEF CMLResponseCurveType cmlGetLabResponseCurveFunctionType(const CMLColorMachine* cm){
 //  return cm->labSpace.responseL.type;
 //}
 
 
-CML_API void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
+CML_DEF void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->labSpace.responseL));
   cmlInitResponseCurveWithCopy((&cm->labSpace.responseL), response);
 //  cm->labSpace.responseL.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
@@ -83,7 +83,7 @@ CML_API void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
 }
 
 
-CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
   float Ka;
   float Kb;
   const float* whitePointXYZ;
@@ -108,7 +108,7 @@ CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
 
 
 
-CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeLabColorSpace(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_LAB; return;}
   CMLResponseCurve responseL;
 

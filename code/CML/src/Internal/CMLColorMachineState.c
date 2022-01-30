@@ -4,98 +4,9 @@
 
 
 
-//CML_HIDDEN void cml_setResponseR(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbSpace.RGBToLinearResponses[0]),
-//                  &(cm->rgbSpace.LineartoRGBResponses[0]),
-//                  &(cm->rgbSpace.responsetypes[0]),
-//                  &(cm->rgbSpace.responseparams0[0]),
-//                  &(cm->rgbSpace.responseparams1[0]),
-//                  &(cm->rgbSpace.responseparams2[0]),
-//                  cm->rgbSpace.lutsize,
-//                  type,
-//                  param0, param1, param2);
-//}
-//CML_HIDDEN void cml_setResponseG(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbSpace.RGBToLinearResponses[1]),
-//                  &(cm->rgbSpace.LineartoRGBResponses[1]),
-//                  &(cm->rgbSpace.responsetypes[1]),
-//                  &(cm->rgbSpace.responseparams0[1]),
-//                  &(cm->rgbSpace.responseparams1[1]),
-//                  &(cm->rgbSpace.responseparams2[1]),
-//                  cm->rgbSpace.lutsize,
-//                  type,
-//                  param0, param1, param2);
-//}
-//CML_HIDDEN void cml_setResponseB(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->rgbSpace.RGBToLinearResponses[2]),
-//                  &(cm->rgbSpace.LineartoRGBResponses[2]),
-//                  &(cm->rgbSpace.responsetypes[2]),
-//                  &(cm->rgbSpace.responseparams0[2]),
-//                  &(cm->rgbSpace.responseparams1[2]),
-//                  &(cm->rgbSpace.responseparams2[2]),
-//                  cm->rgbSpace.lutsize,
-//                  type,
-//                  param0, param1, param2);
-//}
-//CML_HIDDEN void cml_setResponseL(CMLColorMachine* cm, CMLResponseCurveType type, float param0, float param1, float param2){
-//  setupResponse(  &(cm->labSpace.LtoLinearResponse),
-//                  &(cm->labSpace.LineartoLResponse),
-//                  &(cm->labSpace.responseLtype),
-//                  &(cm->labSpace.responseparam0),
-//                  &(cm->labSpace.responseparam1),
-//                  &(cm->labSpace.responseparam2),
-//                  cm->labSpace.lutsize,
-//                  type,
-//                  param0, param1, param2);
-//}
 
 
-//  
-//  *typevar = type;
-//  *gammavar0 = param0;
-//  *gammavar1 = param1;
-//  *gammavar2 = param2;
-//  cmlReleaseFunction(*toxyzfunc);
-//  cmlReleaseFunction(*fromxyzfunc);
-//  
-//  switch(type){
-//  case CML_RESPONSE_LINEAR:
-//    *toxyzfunc  = cmlCreateLinearResponse();
-//    *fromxyzfunc = cmlCreateLinearResponse();
-//    break;
-//  case CML_RESPONSE_SQRT:
-//    *toxyzfunc  = cmlCreateGammaResponse(2.f);
-//    *fromxyzfunc = cmlCreateGammaResponse(.5f);
-//    break;
-//  case CML_RESPONSE_GAMMA:
-//    *toxyzfunc  = cmlCreateGammaResponse(param0);
-//    *fromxyzfunc = cmlCreateGammaResponse(cmlInverse(param0));
-//    break;
-//  case CML_RESPONSE_GAMMA_LINEAR:
-//    *toxyzfunc  = cmlCreateGammaLinearResponse(param0, param1, param2);
-//    *fromxyzfunc = cmlCreateGammaLinearResponse(cmlInverse(param0), param1, param2);
-//    break;
-//  case CML_RESPONSE_SRGB:
-//    *toxyzfunc  = cmlCreatesRGBToXYZResponse();
-//    *fromxyzfunc = cmlCreateXYZTosRGBResponse();
-//    break;
-//  case CML_RESPONSE_LSTAR:
-//    *toxyzfunc  = cmlCreateLStarToYResponse();
-//    *fromxyzfunc = cmlCreateYToLStarResponse();
-//    break;
-//  case CML_RESPONSE_LSTAR_STANDARD:
-//    *toxyzfunc  = cmlCreateLStarToYStandardResponse();
-//    *fromxyzfunc = cmlCreateYToLStarStandardResponse();
-//    break;
-//  default:
-//    #if CML_DEBUG
-//      *toxyzfunc  = cmlCreateLinearResponse();
-//      *fromxyzfunc = cmlCreateLinearResponse();
-//      CMLError("Error in libcml: Response Curve type unknown.\n");
-//    #endif
-//    break;
-//  }
-//  
+
 //  // Create LUT if needed.
 //  if(lutsize < 32){
 //    CMLFunction* toxyzfunction = cmlSampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (uint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);

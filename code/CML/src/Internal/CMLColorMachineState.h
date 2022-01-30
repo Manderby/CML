@@ -17,7 +17,7 @@ typedef enum{
 
 
 
-struct CML_HIDDEN CMLColorMachine{
+struct CMLColorMachine{
 
   size_t recomputationLockCount;
   uint8 recomputationMask;
@@ -114,12 +114,12 @@ CML_HAPI void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, s
 CML_HAPI void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
 CML_HAPI void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
  
-CML_HIDDEN void cml_recomputeObserver(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeLabColorSpace(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeRGBResponses(CMLColorMachine* cm);
-CML_HIDDEN void cml_recomputeRGBColorSpace(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeObserver(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeIllumination(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeLabColorSpace(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeRGBResponses(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeRGBColorSpace(CMLColorMachine* cm);
 
 CML_HIDEF void cml_CMXYZToYxy(const CMLColorMachine* cm, float* CML_RESTRICT yxy, const float* CML_RESTRICT xyz, size_t count){
   cml_XYZToYxy(yxy, xyz, cmlGetReferenceWhitePointYxy(cm), count);

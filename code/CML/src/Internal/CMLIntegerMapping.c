@@ -127,7 +127,7 @@ CML_HIDEF void cml_Float4ToData16Interval(const CMLColorMachine* cm, uint16* CML
 
 
 
-CML_API void cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type){
+CML_DEF void cmlSetIntegerMappingType(CMLColorMachine* cm, CMLIntegerMappingType type){
   switch(type){
   case CML_INTEGER_MAPPING_FLOOR:
     cm->Float1ToData8  = &cml_Float1ToData8Floor;

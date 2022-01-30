@@ -1,23 +1,13 @@
 
 #include <stdlib.h>
 
-#if CML_COMPILE_ON_WINDOWS
-  #define CML_HIDDEN
-#elif CML_COMPILE_ON_MAC_OSX
-  #define CML_HIDDEN      __attribute__ ((visibility("hidden")))
-#else
-  #define CML_HIDDEN      __attribute__ ((visibility("hidden")))
-#endif
-
-
-
 // todo: make inline functions or ranges
 #define CML_MAX(a, b) (((a)>(b))?(a):(b))
 #define CML_MIN(a, b) (((a)<(b))?(a):(b))
 
 
 
-struct CML_HIDDEN CMLFunction{
+struct CMLFunction{
   size_t refCount;
   size_t dataSize;
   void* data;

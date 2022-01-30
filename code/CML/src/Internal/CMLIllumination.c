@@ -346,7 +346,7 @@ CML_DEF float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
 
 
 
-CML_HIDDEN void cml_recomputeIllumination(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeIllumination(CMLColorMachine* cm){
 //  CMLVec3 computationwhitePoint;
 
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_ILLUMINATION; return;}

@@ -92,7 +92,7 @@ CML_DEF void cmlInitResponseCurveWithType(CMLResponseCurve* curve, CMLResponseCu
   }
 }
 
-CML_API void cmlInitResponseCurveWithCustomGamma(CMLResponseCurve* curve, float gamma){
+CML_DEF void cmlInitResponseCurveWithCustomGamma(CMLResponseCurve* curve, float gamma){
   curve->responseType = CML_RESPONSE_CUSTOM_GAMMA;
   curve->forwardFunc  = cmlCreateGammaResponse(gamma);
   curve->backwardFunc = cmlCreateInverseGammaResponse(gamma);

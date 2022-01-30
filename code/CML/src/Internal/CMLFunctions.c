@@ -238,7 +238,7 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
 // //////////////////////////////////////////////
 
 typedef struct CMLArrayFunctionData CMLArrayFunctionData;
-struct CML_HDEF CMLArrayFunctionData{
+struct CMLArrayFunctionData{
   CMLArrayFunctionInput input;
   
   float minCoord;
