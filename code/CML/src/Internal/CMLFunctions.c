@@ -3,6 +3,14 @@
 #include "CMLColorMachineState.h"
 
 
+CML_DEF CMLIntegration cmlMakeDefaultIntegration(){
+  CMLIntegration integration;
+  integration.stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;
+  integration.method = CML_DEFAULT_INTEGRATION_METHOD;
+  return integration;
+}
+
+
 
 CML_DEF CMLFunction* cmlCreateFunction(
   CMLFunctionConstructor constructor,
@@ -75,10 +83,10 @@ CML_DEF void cmlGetFunctionDefinitionRange(const CMLFunction* func, CMLDefinitio
 
 
 
-CML_DEF float cmlGetFunctionMaxValue(const CMLFunction* func){
+CML_DEF float cmlGetFunctionMaxValue(const CMLFunction* func, const CMLIntegration* integration){
   float max = -CML_INFINITY;
   float stepSize = func->defRange.stepSize;
-  if(stepSize == 0){stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
+  if(stepSize == 0){stepSize = integration->stepSize;}
   size_t sampleCount = cmlGetSampleCount(func->defRange.minSampleCoord, func->defRange.maxSampleCoord, stepSize);
   for(size_t x = 0; x < sampleCount; x ++){
     float coord = func->defRange.minSampleCoord + x * stepSize;
@@ -142,7 +150,7 @@ CML_HIDEF CMLDefinitionRange cml_GetDefinitionRangeOfTwoFunctions(const CMLFunct
 
 
 
-CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter){
+CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter, const CMLIntegration* integration){
   float sum = 0.f;
 
   CMLDefinitionRange filterRange = cml_GetDefinitionRangeOfTwoFunctions(func, filter, CML_TRUE);
@@ -154,14 +162,12 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
   
   // If the stepSize is 0, the function will be filtered as a continuous
   // function with the default integration stepSize.
-  if(filterRange.stepSize == 0.f){filterRange.stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;}
+  if(filterRange.stepSize == 0.f){filterRange.stepSize = integration->stepSize;}
   size_t sampleCount = cmlGetSampleCount(filterRange.minSampleCoord, filterRange.maxSampleCoord, filterRange.stepSize);
   // If there is only one value to compute, the stepSize is manually set to 1
   // to not normalize the final result with a wrong value.
-
-  CMLIntegrationMethod type = CML_DEFAULT_INTEGRATION_TYPE;
   
-  switch(type){
+  switch(integration->method){
   case CML_INTEGRATION_SIMPLE: {
     size_t iStep;
     // Simple sum computation by adding one by one

@@ -143,18 +143,18 @@ CML_HDEF void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float* 
 }
 
 
-CML_HDEF void cml_LabToXYZCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HDEF void cml_LabToXYZCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   cml_CIELABToXYZ(out, in, count, cmlGetReferenceWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
 }
 
 
-CML_HDEF void cml_LabToXYZCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+CML_HDEF void cml_LabToXYZCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   cml_CIELABToXYZ_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
 }
 
 
 
-CML_HDEF void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HDEF void cml_LabToXYZChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   const float* whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
   while(count){
 
@@ -182,7 +182,7 @@ CML_HDEF void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* CM
 }
 
 
-CML_HDEF void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+CML_HDEF void cml_LabToXYZChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   const float* whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
   while(count){
 
@@ -281,7 +281,7 @@ CML_HDEF void cml_RGBToCMYKUCR_SB(const CMLColorMachine* cm, float* buf, size_t 
 
 
 
-CML_HDEF void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HDEF void cml_CMYKToRGBStandard(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -296,7 +296,7 @@ CML_HDEF void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTR
 }
 
 
-CML_HDEF void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+CML_HDEF void cml_CMYKToRGBStandard_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   CML_UNUSED(cm);
   while(count){
 
@@ -310,7 +310,7 @@ CML_HDEF void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, s
 }
 
 
-CML_HDEF void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+CML_HDEF void cml_CMYKToRGBUCR(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
   CML_UNUSED(cm);
   while(count){
 
@@ -325,7 +325,7 @@ CML_HDEF void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT o
 }
 
 
-CML_HDEF void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+CML_HDEF void cml_CMYKToRGBUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   CML_UNUSED(cm);
   while(count){
 

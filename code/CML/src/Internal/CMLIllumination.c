@@ -420,7 +420,7 @@ CML_DEF void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType ill
   CMLIllumination newIllumination;
   cml_InitIlluminationWithType(&newIllumination, illuminationType, cmlGetIlluminationTemperature(cm));
   cml_ClearObserver(&(cm->observer));
-  cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, newColorimetricBase);
+  cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, &(cm->integration), newColorimetricBase);
   cml_ClearIllumination(&newIllumination);
 
 //  cm->illumination.state = illuminationType;
@@ -451,7 +451,7 @@ CML_DEF void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
     CMLIllumination newIllumination;
     cml_InitIlluminationWithType(&newIllumination, illuminationType, temp);
     cml_ClearObserver(&(cm->observer));
-    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, newColorimetricBase);
+    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, &(cm->integration), newColorimetricBase);
     cml_ClearIllumination(&newIllumination);
 
 
@@ -477,9 +477,9 @@ CML_DEF void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* 
     float newColorimetricBase = cmlGetColorimetricBase(cm);
     
     CMLIllumination newIllumination;
-    cml_InitIlluminationWithCustomSpectrum(&newIllumination, newspectrum, &(cm->observer));
+    cml_InitIlluminationWithCustomSpectrum(&newIllumination, newspectrum, &(cm->observer), &(cm->integration));
     cml_ClearObserver(&(cm->observer));
-    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, newColorimetricBase);
+    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, &(cm->integration), newColorimetricBase);
     cml_ClearIllumination(&newIllumination);
 
 //  cmlReleaseFunction(cm->illumination.spectrum);
@@ -502,7 +502,7 @@ CML_DEF void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
     CMLIllumination newIllumination;
     cml_InitIlluminationWithCustomWhitePoint(&newIllumination, yxy);
     cml_ClearObserver(&(cm->observer));
-    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, newColorimetricBase);
+    cml_InitObserver(&(cm->observer), newObserverType, &newIllumination, &(cm->integration), newColorimetricBase);
     cml_ClearIllumination(&newIllumination);
 
 //  cm->illumination.state = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
@@ -584,12 +584,12 @@ CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIll
 }
 
 
-CML_HDEF void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer){
+CML_HDEF void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer, const CMLIntegration* integration){
   illumination->type = CML_ILLUMINATION_CUSTOM_SPECTRUM;
   illumination->temperature = 0.f;
   illumination->spectrum = cmlDuplicateFunction(spectrum);
 
-  cml_OneIlluminationSpectrumToXYZ(illumination->radiometricXYZ, illumination->spectrum, observer);
+  cml_OneIlluminationSpectrumToXYZ(illumination->radiometricXYZ, illumination->spectrum, observer, integration);
 
   CMLVec3 whitePointYxy;
   CMLVec3 whitePointYupvp;
@@ -643,9 +643,9 @@ CML_HDEF float cml_GetIlluminationCorrelatedColorTemperature(const CMLIlluminati
   return illumination->temperature;
 }
 
-CML_HDEF void cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer){
+CML_HDEF void cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer, const CMLIntegration* integration){
   if(illumination->spectrum){
-    cml_OneIlluminationSpectrumToXYZ(dest, illumination->spectrum, observer);
+    cml_OneIlluminationSpectrumToXYZ(dest, illumination->spectrum, observer, integration);
   }else{
     cmlCpy3(dest, illumination->radiometricXYZ);
   }

@@ -29,14 +29,6 @@ CML_DEF int cmlGetVersion(){
 CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   CMLColorMachine* cm = (CMLColorMachine*)cml_Malloc(sizeof(CMLColorMachine));
 
-  CMLIllumination* referenceIllumination = cml_Malloc(sizeof(CMLIllumination));
-  cml_InitIlluminationWithType(referenceIllumination, CML_ILLUMINATION_D65, 0);
-  cml_InitObserver(
-    &(cm->observer),
-    CML_OBSERVER_2DEG_CIE_1931,
-    referenceIllumination,
-    1.f);
-
   cmlInitResponseCurve(&(cm->rgbSpace.responseR));
   cmlInitResponseCurve(&(cm->rgbSpace.responseG));
   cmlInitResponseCurve(&(cm->rgbSpace.responseB));
@@ -65,14 +57,27 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   cm->recomputationLockCount = 0;
   cm->recomputationMask = 0;
   cmlLockRecomputation(cm);
+  
+  // Set the initial integration.
+  cm->integration.method = CML_DEFAULT_INTEGRATION_METHOD;
+  cm->integration.stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;
+
+  CMLIllumination* referenceIllumination = cml_Malloc(sizeof(CMLIllumination));
+  cml_InitIlluminationWithType(referenceIllumination, CML_ILLUMINATION_D65, 0);
+  cml_InitObserver(
+    &(cm->observer),
+    CML_OBSERVER_2DEG_CIE_1931,
+    referenceIllumination,
+    &(cm->integration),
+    1.f);
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
   for(size_t i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
-    cm->inputoutput.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
-    cm->inputoutput.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
-    cm->inputoutput.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
-    cm->inputoutput.range16Bit[i]  = (float)(CML_DEFAULT_16BIT_CEIL_CUTOFF - CML_DEFAULT_16BIT_FLOOR_CUTOFF);
+    cm->serialization.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
+    cm->serialization.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
+    cm->serialization.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;
+    cm->serialization.range16Bit[i]  = (float)(CML_DEFAULT_16BIT_CEIL_CUTOFF - CML_DEFAULT_16BIT_FLOOR_CUTOFF);
   }
   
   // Set the default observer.
@@ -140,21 +145,34 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
 }
 
 
-//
-//CMLIntegrationMethod cmlGetIntegrationMethod(const CMLColorMachine* cm){
-//  return cm->inputoutput.method;
-//}
-//
-//
-//void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod type){
-//  cm->inputoutput.method = type;
-//  cml_recomputeObserver(cm);
-//}
+CML_DEF CMLIntegrationMethod cmlGetIntegrationMethod(const CMLColorMachine* cm){
+  return cm->integration.method;
+}
+
+
+
+CML_DEF void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod integrationMethod){
+  cm->integration.method = integrationMethod;
+  cml_recomputeObserver(cm);
+}
+
+
+
+CML_DEF float cmlGetIntegrationStepSize(const CMLColorMachine* cm){
+  return cm->integration.stepSize;
+}
+
+
+
+CML_DEF void cmlSetIntegrationStepSize(CMLColorMachine* cm, float stepSize){
+  cm->integration.stepSize = stepSize;
+  cml_recomputeObserver(cm);
+}
 
 
 
 CML_DEF CMLIntegerMappingType cmlGetIntegerMappingType(const CMLColorMachine* cm){
-  return cm->inputoutput.integerMapping;
+  return cm->serialization.integerMapping;
 }
 
 
@@ -162,8 +180,8 @@ CML_DEF void cmlGet8BitCutoffs(const CMLColorMachine* cm, uint8* min, uint8* max
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  *min = (uint8)(cm->inputoutput.offset8Bit[channel]);
-  *max = *min + (uint8)(cm->inputoutput.range8Bit[channel]);
+  *min = (uint8)(cm->serialization.offset8Bit[channel]);
+  *max = *min + (uint8)(cm->serialization.range8Bit[channel]);
 }
 
 
@@ -171,8 +189,8 @@ CML_DEF void cmlGet16BitCutoffs(const CMLColorMachine* cm, uint16* min, uint16* 
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  *min = (uint16)(cm->inputoutput.offset16Bit[channel]);
-  *max = *min + (uint16)(cm->inputoutput.range16Bit[channel]);
+  *min = (uint16)(cm->serialization.offset16Bit[channel]);
+  *max = *min + (uint16)(cm->serialization.range16Bit[channel]);
 }
 
 
@@ -180,8 +198,8 @@ CML_DEF void cmlSet8BitCutoffs(CMLColorMachine* cm, uint8 min, uint8 max, size_t
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset8Bit[channel] = (uint8)(min);
-  cm->inputoutput.range8Bit[channel] = (float)(max - min);
+  cm->serialization.offset8Bit[channel] = (uint8)(min);
+  cm->serialization.range8Bit[channel] = (float)(max - min);
 }
 
 
@@ -189,8 +207,8 @@ CML_DEF void cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min, uint16 max, siz
   #if CML_DEBUG
     if(channel >= CML_MAX_NUMBER_OF_CHANNELS){cmlError("Invalid Channel number.");}
   #endif
-  cm->inputoutput.offset16Bit[channel] = (uint16)(min);
-  cm->inputoutput.range16Bit[channel] = (float)(max - min);
+  cm->serialization.offset16Bit[channel] = (uint16)(min);
+  cm->serialization.range16Bit[channel] = (float)(max - min);
 }
 
 

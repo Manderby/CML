@@ -261,16 +261,16 @@ void SpectralColor::toGrayBuffer(float* dest) const {
 }
 void SpectralColor::toXYZBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToXYZ (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToXYZ(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToXYZ (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToXYZ(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYuvBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToYuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYuv(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToYuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYuv(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYupvpBuffer(float* dest) const{
@@ -282,37 +282,37 @@ void SpectralColor::toYupvpBuffer(float* dest) const{
 }
 void SpectralColor::toYxyBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToYxy (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToYxy(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToYxy (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToYxy(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLabBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToLab (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLab(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToLab (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLab(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLchBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToLch (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLch(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToLch (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLch(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toLuvBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToLuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToLuv(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToLuv (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToLuv(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toRGBBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToRGB (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToRGB(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToRGB (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToRGB(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toYCbCrBuffer(float* dest) const{
@@ -324,16 +324,16 @@ void SpectralColor::toYCbCrBuffer(float* dest) const{
 }
 void SpectralColor::toHSVBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToHSV (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToHSV(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToHSV (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToHSV(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toHSLBuffer(float* dest) const  {
   if(bodycolor){
-    cmlSpectrumRemissionToHSL (cmlcm, dest, spectrum, 1);
+    cmlSpectrumRemissionToHSL(cmlcm, dest, spectrum, 1);
   }else{
-    cmlSpectrumIlluminationToHSL (cmlcm, dest, spectrum, 1);
+    cmlSpectrumIlluminationToHSL(cmlcm, dest, spectrum, 1);
   }
 }
 void SpectralColor::toCMYKBuffer(float* dest) const {

@@ -24,6 +24,17 @@ CML_API void                  cmlReleaseColorMachine(CMLColorMachine* cm);
 CML_API void                  cmlLockRecomputation(CMLColorMachine* cm);
 CML_API void                  cmlReleaseRecomputation(CMLColorMachine* cm);
 
+// The integration method defines how integration (for example for spectral
+// functions) will be computed. There is a simple method which is commonly
+// used in many other color implementations or a more accurate and faster
+// computation called "Binary Pairs" which is the default for CML.
+// The stepSize denotes the delta-Lambda which is used when continuous
+// functions need to be integrated.
+CML_API CMLIntegrationMethod  cmlGetIntegrationMethod(const CMLColorMachine* cm);
+CML_API void                  cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod integrationMethod);
+CML_API float                 cmlGetIntegrationStepSize(const CMLColorMachine* cm);
+CML_API void                  cmlSetIntegrationStepSize(CMLColorMachine* cm, float stepSize);
+
 // The integer mapping defines, how floats are mapped to integers.
 // Additionally, integers can have lower and upper cutoffs. This means that
 // the minimal float values are mapped to the lower cutoffs and the maximal
@@ -81,17 +92,17 @@ CML_API void                  cmlSetWhitePointYxy(CMLColorMachine* cm, const flo
 // be used with gamma responses.
 // Be aware that most Lab spaces (including CIELAB) are relative to a specific
 // whitePoint which in CML is defined by the current illumination.
-CML_API CMLLabColorSpaceType  cmlGetLabColorSpace(const CMLColorMachine* cm);
-CML_API void                  cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace);
-CML_API void                  cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke);
-CML_API void                  cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
-CML_API uint8              cmlGetLabLUTSize(const CMLColorMachine* cm);
-CML_API void                  cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits);
-CML_API const CMLFunction*    cmlGetLtoLinearResponse(const CMLColorMachine* cm);
-CML_API const CMLFunction*    cmlGetLineartoLResponse(const CMLColorMachine* cm);
-CML_API const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm);
-CML_API void                  cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                  cmlSetDeltaEComputation(CMLColorMachine* cm, CMLDeltaEComputationType computation);
+CML_API CMLLabColorSpaceType    cmlGetLabColorSpace(const CMLColorMachine* cm);
+CML_API void                    cmlSetLabColorSpace(CMLColorMachine* cm, CMLLabColorSpaceType labSpace);
+CML_API void                    cmlGetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float* K, float* ke);
+CML_API void                    cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float K, float ke);
+CML_API uint8                   cmlGetLabLUTSize(const CMLColorMachine* cm);
+CML_API void                    cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits);
+CML_API const CMLFunction*      cmlGetLtoLinearResponse(const CMLColorMachine* cm);
+CML_API const CMLFunction*      cmlGetLineartoLResponse(const CMLColorMachine* cm);
+CML_API const CMLResponseCurve* cmlGetResponseL(CMLColorMachine* cm);
+CML_API void                    cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                    cmlSetDeltaEComputation(CMLColorMachine* cm, CMLDeltaEComputationType computation);
 // There exist different Delta-E computations, simple and complex ones.
 // Initial setting is Delta-E-1976 (the euclidian distance).
 // After setting the compuation model, all subsequent delta-E computations
@@ -117,23 +128,23 @@ typedef struct GammaLinearInputParameters{
   float split;
 } GammaLinearInputParameters;
 
-CML_API CMLRGBColorSpaceType   cmlGetRGBColorSpaceType(const CMLColorMachine* cm);
-CML_API void                   cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type);
-CML_API void                   cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
-CML_API void                   cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
-CML_API void                   cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const GammaLinearInputParameters* parameters);
-CML_API void                   cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType types[3]);
-CML_API const CMLResponseCurve* cmlGetResponseR  (CMLColorMachine* cm);
-CML_API const CMLResponseCurve* cmlGetResponseG  (CMLColorMachine* cm);
-CML_API const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm);
+CML_API CMLRGBColorSpaceType    cmlGetRGBColorSpaceType(const CMLColorMachine* cm);
+CML_API void                    cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type);
+CML_API void                    cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_API void                    cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_API void                    cmlSetResponseRGB(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                    cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const GammaLinearInputParameters* parameters);
+CML_API void                    cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType types[3]);
+CML_API const CMLResponseCurve* cmlGetResponseR(CMLColorMachine* cm);
+CML_API const CMLResponseCurve* cmlGetResponseG(CMLColorMachine* cm);
+CML_API const CMLResponseCurve* cmlGetResponseB(CMLColorMachine* cm);
 CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersR(const CMLColorMachine* cm);
 CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersG(const CMLColorMachine* cm);
 CML_API const GammaLinearInputParameters* cmlGetCustomGammaLinearParametersB(const CMLColorMachine* cm);
-CML_API void                   cmlSetResponseR  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                   cmlSetResponseG  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API void                   cmlSetResponseB  (CMLColorMachine* cm, CMLResponseCurve* response);
-CML_API uint8               cmlGetRGBLUTSize(const CMLColorMachine* cm);
+CML_API void                   cmlSetResponseR(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlSetResponseG(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API void                   cmlSetResponseB(CMLColorMachine* cm, CMLResponseCurve* response);
+CML_API uint8                  cmlGetRGBLUTSize(const CMLColorMachine* cm);
 CML_API void                   cmlSetRGBLUTSize(CMLColorMachine* cm, uint8 bits);
 
 

@@ -20,6 +20,17 @@ CML_HDEF const char* colorTypeStrings[CML_COLOR_COUNT] = {
   "Remission Spectrum"
 };
 
+CML_HDEF const char* integrationMethodStrings[CML_INTEGRATION_COUNT] = {
+  "Simple",
+  "Binary Pairs",
+};
+
+CML_HDEF const char* integerMappingStrings[CML_INTEGER_MAPPING_COUNT] = {
+  "Floor",
+  "Box",
+  "Interval",
+};
+
 CML_HDEF const char* observerStrings[CML_OBSERVER_COUNT] = {
   "CIE 1931 2 deg",                           // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
   "CIE 1964 10 deg",                          // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
@@ -154,6 +165,12 @@ CML_DEF const char* cmlGetColorTypeString(CMLColorType colorType){
 }
 CML_DEF const char* cmlGetObserverTypeString(CMLObserverType observerType){
   return observerStrings[observerType];
+}
+CML_DEF const char* cmlGetIntegrationMethodString(CMLIntegrationMethod integrationMethod){
+  return integrationMethodStrings[integrationMethod];
+}
+CML_DEF const char* cmlGetIntegerMappingString(CMLIntegerMappingType integerMappingType){
+  return integerMappingStrings[integerMappingType];
 }
 CML_DEF const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminationType){
   return illuminationStrings[illuminationType];

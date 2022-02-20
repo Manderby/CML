@@ -40,14 +40,14 @@ CML_DEF void cmlSetAdamsChromaticityValenceParameters(CMLColorMachine* cm, float
 
 
 CML_DEF uint8 cmlGetLabLUTSize(const CMLColorMachine* cm){
-  return cm->labSpace.lutsize;
+  return cm->labSpace.lutSize;
 }
 
 
 CML_DEF void cmlSetLabLUTSize(CMLColorMachine* cm, uint8 bits){
   CMLLabColorSpaceType curtype;
   if((bits < 1) || (bits > 16)){bits = 32;}
-  cm->labSpace.lutsize = bits;
+  cm->labSpace.lutSize = bits;
   curtype = cm->labSpace.state;
   cm->labSpace.state = CML_LAB_CUSTOM_L;
   cmlSetLabColorSpace(cm, curtype);
@@ -64,7 +64,7 @@ CML_DEF const CMLFunction* cmlGetLineartoLResponse(const CMLColorMachine* cm){
 }
 
 
-CML_DEF const CMLResponseCurve* cmlGetResponseL  (CMLColorMachine* cm){
+CML_DEF const CMLResponseCurve* cmlGetResponseL(CMLColorMachine* cm){
   return &(cm->labSpace.responseL);
 }
 

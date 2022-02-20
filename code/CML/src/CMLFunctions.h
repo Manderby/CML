@@ -10,6 +10,15 @@
 // Do not call free() or delete on a CMLFunction!
 
 
+
+// Functions need to be convolved and integrated. In order to do this with
+// greatest flexibility, an integration setting is needed for all such
+// operations. The following function returns a struct filled with the
+// default integration settings.
+CML_API CMLIntegration cmlMakeDefaultIntegration(void);
+
+
+
 // //////////////////////////////////////////
 // Creating new Functions:
 // //////////////////////////////////////////
@@ -120,10 +129,10 @@ CML_API float cmlEval(const CMLFunction* func, float x);
 
 // Computes the weighted sum of the given function which is multiplied with
 // the given filter.
-CML_API float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter);
+CML_API float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filter, const CMLIntegration* integration);
 
 // Returns the maximal value of the given function in the coordinate range.
-CML_API float cmlGetFunctionMaxValue(const CMLFunction* func);
+CML_API float cmlGetFunctionMaxValue(const CMLFunction* func, const CMLIntegration* integration);
 
 // Places information about the definition range of the given function in the
 // provided DefinitionRange structure.
@@ -165,7 +174,7 @@ CML_API void cmlReleaseFunction(CMLFunction* func);
 // The "defRange" parameter is a pointer to a CMLDefinitionRange structure
 // which stores additional informations about your function. You can manipulate
 // this definition range arbitrarily. See explanation below.
-typedef void  (*CMLFunctionConstructor)(
+typedef void (*CMLFunctionConstructor)(
   void* data,
   CMLDefinitionRange* defRange,
   const void* input);
@@ -177,7 +186,7 @@ typedef void  (*CMLFunctionConstructor)(
 // memory. This should look something like this:
 // free(data);
 // Or use the appropriate delete operator if you are using C++.
-typedef void  (*CMLFunctionDesctructor)(
+typedef void (*CMLFunctionDesctructor)(
   void*  data);
 
 // The EVALUATOR: This callback function is called whenever cmlEval is called.

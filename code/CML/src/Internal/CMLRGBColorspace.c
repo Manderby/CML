@@ -181,13 +181,13 @@ CML_DEF void cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const Gam
   cm->rgbSpace.customParametersB = *parameters;
 }
 
-CML_DEF const CMLResponseCurve* cmlGetResponseR  (CMLColorMachine* cm){
+CML_DEF const CMLResponseCurve* cmlGetResponseR(CMLColorMachine* cm){
   return &(cm->rgbSpace.responseR);
 }
-CML_DEF const CMLResponseCurve* cmlGetResponseG  (CMLColorMachine* cm){
+CML_DEF const CMLResponseCurve* cmlGetResponseG(CMLColorMachine* cm){
   return &(cm->rgbSpace.responseG);
 }
-CML_DEF const CMLResponseCurve* cmlGetResponseB  (CMLColorMachine* cm){
+CML_DEF const CMLResponseCurve* cmlGetResponseB(CMLColorMachine* cm){
   return &(cm->rgbSpace.responseB);
 }
 
@@ -223,13 +223,13 @@ CML_DEF void cmlSetResponseB(CMLColorMachine* cm, CMLResponseCurve* response){
 
 
 CML_DEF uint8 cmlGetRGBLUTSize(const CMLColorMachine* cm){
-  return cm->rgbSpace.lutsize;
+  return cm->rgbSpace.lutSize;
 }
 
 
 CML_DEF void cmlSetRGBLUTSize(CMLColorMachine* cm, uint8 bits){
   if((bits < 1) || (bits > 16)){bits = 32;}
-  cm->rgbSpace.lutsize = bits;
+  cm->rgbSpace.lutSize = bits;
   cml_recomputeRGBResponses(cm);
 }
 

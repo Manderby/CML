@@ -8,9 +8,9 @@
 
 
 //  // Create LUT if needed.
-//  if(lutsize < 32){
-//    CMLFunction* toxyzfunction = cmlSampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (uint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
-//    CMLFunction* fromxyzfunction = cmlSampleArrayFunction(*fromxyzfunc, 0.f, 1.f, 1 << (uint8)lutsize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//  if(lutSize < 32){
+//    CMLFunction* toxyzfunction = cmlSampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (uint8)lutSize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//    CMLFunction* fromxyzfunction = cmlSampleArrayFunction(*fromxyzfunc, 0.f, 1.f, 1 << (uint8)lutSize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
 //    cmlReleaseFunction(*toxyzfunc);
 //    cmlReleaseFunction(*fromxyzfunc);
 //    *toxyzfunc = toxyzfunction;

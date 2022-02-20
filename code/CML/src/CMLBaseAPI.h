@@ -162,7 +162,8 @@ CML_API void cmlConvertHSLToHSV(
 CML_API void cmlConvertIlluminationSpectrumToXYZ(
   CMLVec3 xyz,
   const CMLFunction* specIll,
-  const CMLObserver* observer);
+  const CMLObserver* observer,
+  const CMLIntegration* integration);
 
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by the Y component of
@@ -171,7 +172,8 @@ CML_API void cmlConvertRemissionSpectrumToXYZ(
   CMLVec3 xyz,
   const CMLFunction* specRem,
   const CMLFunction* specIll,
-  const CMLObserver* observer);
+  const CMLObserver* observer,
+  const CMLIntegration* integration);
 
 
 

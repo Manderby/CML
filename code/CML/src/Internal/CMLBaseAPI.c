@@ -97,12 +97,12 @@ CML_DEF void cmlConvertHSLToHSV(CMLVec3 hsv, const CMLVec3 hsl){
   cml_OneHSLToHSV(hsv, hsl);
 }
 
-CML_DEF void cmlConvertIlluminationSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specIll, const CMLObserver* observer){
-  cml_OneIlluminationSpectrumToXYZ(xyz, specIll, observer);
+CML_DEF void cmlConvertIlluminationSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specIll, const CMLObserver* observer, const CMLIntegration* integration){
+  cml_OneIlluminationSpectrumToXYZ(xyz, specIll, observer, integration);
 }
 
-CML_DEF void cmlConvertRemissionSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specRem, const CMLFunction* specIll, const CMLObserver* observer){
-  cml_OneRemissionSpectrumToXYZ(xyz, specRem, specIll, observer);
+CML_DEF void cmlConvertRemissionSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specRem, const CMLFunction* specIll, const CMLObserver* observer, const CMLIntegration* integration){
+  cml_OneRemissionSpectrumToXYZ(xyz, specRem, specIll, observer, integration);
 }
 
 CML_DEF void cmlConvertXYZToChromaticAdaptedXYZ(CMLVec3 adaptXYZ, const CMLVec3 xyz, const CMLMat33 matrix){

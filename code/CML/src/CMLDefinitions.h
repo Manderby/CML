@@ -19,14 +19,61 @@ typedef enum{
   CML_COLOR_COUNT
 } CMLColorType;
 
-// Enumerates the predefined integration computation types
+// Enumerates the predefined integration computation methods.
+//
+// Simple: Simple sum computation by adding one by one.
+// Binary pairs: Highly efficient and accurate integration method developed by
+//   Tobias Stamm. It even outperforms a simple for loop by using the memory
+//   cache and is much more accurate for well-behaving sampling functions as
+//   it combines neighboring values and hence loses much fewer floating point
+//   accuracy when summing these up.
 typedef enum{
   CML_INTEGRATION_SIMPLE = 0,
   CML_INTEGRATION_BINARY_PAIRS,
   CML_INTEGRATION_COUNT
 } CMLIntegrationMethod;
 
-// Enumerates the predefined integer mapping types
+// Enumerates the predefined integer mapping types.
+// If you are uncertain, you should probably choose FLOOR.
+//
+// In CML, all color computations are done in floating point precision. When
+// importing or exporting color values on the other hand, very often 8-bit or
+// 16-bit integer values are expected. Mapping integers to floats is rather
+// straight-forward: floatvalue = intValue / maxIntValue
+// When looking for example at a 2-bit integer, the following mapping will be
+// performed:
+//   0                       1                       2                       3
+//   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+//   0                      1/3                     2/3                      1
+//
+// When mapping from floats to integers on the other hand, the conversion is
+// not straight forward. In the following diagram, three methods are shown.
+// - A (Floor),
+// - B (Box)
+// - C (Interval)
+//
+// Floor (F): intValue = floor(v * maxIntValue)
+// The most common method. With this method, only the input value 1 will be
+// mapped to maxIntValue. A value even slightly smaller than 1 (0.99999) will
+// be mapped to maxIntValue - 1.
+//
+// Box (B): intValue = floor(v * maxIntValue + 0.5)
+// This mapping method maps values around 0 and 1 better to the corresponding
+// integer value.
+//
+// Interval (I): intValue = floor(v * (maxIntValue + 1))   if v < 1.0
+//               intValue = maxIntValue                    if v == 1.0
+// This last method evenly distributes all values but takes a longer time to
+// convert.
+//
+// v 0    1/12  2/12  3/12  4/12  5/12  6/12  7/12  8/12  9/12 10/12 11/12   1
+//   +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+// F |            0          |           1           |          2            3
+//   +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+// B |     0     |           1           |          2            |     3     |
+//   +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+// I |        0        |        1        |        2        |        3        |
+//   +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 typedef enum{
   CML_INTEGER_MAPPING_FLOOR = 0,
   CML_INTEGER_MAPPING_BOX,
@@ -235,6 +282,8 @@ typedef enum{
 // Do not delete the returned pointers. If an invalid input parameter is given,
 // the returned value will be invalid.
 CML_API const char* cmlGetColorTypeString               (CMLColorType colorType);
+CML_API const char* cmlGetIntegrationMethodString       (CMLIntegrationMethod integrationMethod);
+CML_API const char* cmlGetIntegerMappingString          (CMLIntegerMappingType integerMappingType);
 CML_API const char* cmlGetObserverTypeString            (CMLObserverType observerType);
 CML_API const char* cmlGetIlluminationTypeString        (CMLIlluminationType illuminationType);
 CML_API const char* cmlGetRGBColorSpaceTypeString       (CMLRGBColorSpaceType type);
@@ -269,11 +318,15 @@ typedef void (*CMLNormedConverter)(
   CMLInput,
   size_t);
 
-
+typedef struct CMLIntegration CMLIntegration;
+struct CMLIntegration{
+  CMLIntegrationMethod          method;
+  float                         stepSize;
+};
 
 // Any new ColorMachine has the following default settings:
-#define CML_DEFAULT_INTEGRATION_TYPE            CML_INTEGRATION_BINARY_PAIRS
-#define CML_DEFAULT_INTEGER_MAPPING             CML_INTEGER_MAPPING_INTERVAL
+#define CML_DEFAULT_INTEGRATION_METHOD          CML_INTEGRATION_BINARY_PAIRS
+#define CML_DEFAULT_INTEGER_MAPPING             CML_INTEGER_MAPPING_FLOOR
 #define CML_DEFAULT_2DEG_OBSERVER               CML_OBSERVER_2DEG_CIE_1931
 #define CML_DEFAULT_10DEG_OBSERVER              CML_OBSERVER_10DEG_CIE_1964
 #define CML_DEFAULT_8BIT_FLOOR_CUTOFF           0

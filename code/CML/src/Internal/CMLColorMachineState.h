@@ -22,13 +22,15 @@ struct CMLColorMachine{
   size_t recomputationLockCount;
   uint8 recomputationMask;
 
-  struct inputoutput_struct{
+  CMLIntegration integration;
+
+  struct serialization_struct{
     CMLIntegerMappingType         integerMapping;
-    uint8                       offset8Bit [CML_MAX_NUMBER_OF_CHANNELS];
+    uint8                         offset8Bit [CML_MAX_NUMBER_OF_CHANNELS];
     float                         range8Bit  [CML_MAX_NUMBER_OF_CHANNELS];
-    uint16                       offset16Bit[CML_MAX_NUMBER_OF_CHANNELS];
+    uint16                        offset16Bit[CML_MAX_NUMBER_OF_CHANNELS];
     float                         range16Bit [CML_MAX_NUMBER_OF_CHANNELS];
-  } inputoutput;
+  } serialization;
   
   CMLObserver observer;
   
@@ -43,7 +45,7 @@ struct CMLColorMachine{
     GammaLinearInputParameters    customParametersB;
     CMLMat33                      matrix;
     CMLMat33                      matrixInv;
-    uint8                      lutsize;
+    uint8                         lutSize;
   } rgbSpace;
   
   struct cmykSpace_struct{
@@ -54,7 +56,7 @@ struct CMLColorMachine{
     CMLLabColorSpaceType          state;
     CMLResponseCurve              responseL;
     CMLResponseCurve              responseLStar;    // used for Luv
-    uint8                      lutsize;
+    uint8                         lutSize;
     float                         adamsChromaticityValenceK;
     float                         adamsChromaticityValenceke;
     CMLDeltaEComputationType      deltaEComputation;
@@ -97,22 +99,22 @@ CML_HAPI void cml_ChanneledBufferToGrayLStar(const CMLColorMachine* cm, float* C
 CML_HAPI void cml_ChanneledBufferToGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
 CML_HAPI void cml_ChanneledBufferToGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
 CML_HAPI void cml_ChanneledBufferToGrayYPrime(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer);
-CML_HAPI void cml_XYZToLabCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_XYZToLabCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_XYZToLabChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_XYZToLabChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_LabToXYZCIELAB (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_LabToXYZCIELAB_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_LabToXYZChromaticValence (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_LabToXYZChromaticValence_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_RGBToCMYKStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_RGBToCMYKStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_RGBToCMYKUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_RGBToCMYKUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_CMYKToRGBStandard (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_CMYKToRGBStandard_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
-CML_HAPI void cml_CMYKToRGBUCR (const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
-CML_HAPI void cml_CMYKToRGBUCR_SB (const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_XYZToLabCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_XYZToLabCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_LabToXYZCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_LabToXYZCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_LabToXYZChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_LabToXYZChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_RGBToCMYKStandard(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_RGBToCMYKStandard_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_RGBToCMYKUCR(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_RGBToCMYKUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_CMYKToRGBStandard(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_CMYKToRGBStandard_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
+CML_HAPI void cml_CMYKToRGBUCR(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count);
+CML_HAPI void cml_CMYKToRGBUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
  
 CML_HAPI void cml_recomputeObserver(CMLColorMachine* cm);
 CML_HAPI void cml_recomputeIllumination(CMLColorMachine* cm);
@@ -232,12 +234,12 @@ CML_HIDEF void cml_CMHSLToHSV_SB(const CMLColorMachine* cm, float* buf, size_t c
 
 
 CML_HIDEF void cml_CMIlluminationSpectrumToXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz, const CMLFunction* CML_RESTRICT specIll, size_t count, size_t floatAlign){
-  cml_IlluminationSpectrumToXYZ(xyz, specIll, count, floatAlign, &(cm->observer));
+  cml_IlluminationSpectrumToXYZ(xyz, specIll, count, floatAlign, &(cm->observer), &(cm->integration));
 }
 
 CML_HIDEF void cml_CMRemissionSpectrumToXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz, const CMLFunction* CML_RESTRICT specRem, size_t count, size_t floatAlign){
   const CMLFunction* spec = cmlGetReferenceIlluminationSpectrum(cm);
-  cml_RemissionSpectrumToXYZ(xyz, specRem, count, floatAlign, spec, &(cm->observer));
+  cml_RemissionSpectrumToXYZ(xyz, specRem, count, floatAlign, spec, &(cm->observer), &(cm->integration));
 }
 
 
