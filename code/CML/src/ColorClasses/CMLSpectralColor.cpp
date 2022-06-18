@@ -23,9 +23,9 @@ SpectralColor::SpectralColor(float value) :
   cmlReleaseFunction(fun);
 }
 
-SpectralColor::SpectralColor(CMLFunction* newspectrum, CMLBool newbodycolor) :
+SpectralColor::SpectralColor(CMLFunction* newSpectrum, CMLBool newbodycolor) :
   spectrum(CML_NULL), bodycolor(CML_FALSE){
-  init(newspectrum, newbodycolor);
+  init(newSpectrum, newbodycolor);
 }
 
 SpectralColor::SpectralColor(const Color& anycolor) :
@@ -38,14 +38,14 @@ SpectralColor::SpectralColor(const SpectralColor& speccolor) :
   operator =(speccolor);
 }
 
-SpectralColor& SpectralColor::init(CMLFunction* newspectrum, CMLBool newbodycolor){
+SpectralColor& SpectralColor::init(CMLFunction* newSpectrum, CMLBool newbodycolor){
   #if CML_DEBUG
-    if(!newspectrum){
+    if(!newSpectrum){
       cmlError("spectrum is NULL.");
     }
   #endif
   cmlReleaseFunction(spectrum);
-  spectrum = cmlDuplicateFunction(newspectrum);
+  spectrum = cmlDuplicateFunction(newSpectrum);
   #if CML_DEBUG
     if(!spectrum){
       cmlError("Function duplicate returned NULL.");

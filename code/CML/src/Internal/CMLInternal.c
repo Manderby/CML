@@ -83,21 +83,21 @@ CML_HDEF void cml_ChanneledBufferToGrayYPrime(const CMLColorMachine* cm, float* 
 
 
 CML_HDEF void cml_XYZToLabCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  cml_XYZToCIELAB(out, in, count, cmlGetReferenceInverseWhitePointXYZ(cm), cm->labSpace.responseL.forwardFunc);
+  cml_XYZToCIELAB(out, in, count, cmlGetReferenceWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
 }
 
 CML_HDEF void cml_XYZToLabCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetReferenceInverseWhitePointXYZ(cm), cm->labSpace.responseL.forwardFunc);
+  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
 }
 
 
 CML_HDEF void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  const float* inverseWhitePointXYZ = cmlGetReferenceInverseWhitePointXYZ(cm);
+  const float* whitePointXYZInverse = cmlGetReferenceWhitePointXYZInverse(cm);
   while(count){
 
-    float xr = in[0] * inverseWhitePointXYZ[0];
-    float yr = in[1] * inverseWhitePointXYZ[1];
-    float zr = in[2] * inverseWhitePointXYZ[2];
+    float xr = in[0] * whitePointXYZInverse[0];
+    float yr = in[1] * whitePointXYZInverse[1];
+    float zr = in[2] * whitePointXYZInverse[2];
     
     float fy = cml_Eval(cm->labSpace.responseL.forwardFunc, yr);
     out[0] = CML_Lab_L_MAX * fy;
@@ -118,12 +118,12 @@ CML_HDEF void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML
 }
 
 CML_HDEF void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  const float* inverseWhitePointXYZ = cmlGetReferenceInverseWhitePointXYZ(cm);
+  const float* whitePointXYZInverse = cmlGetReferenceWhitePointXYZInverse(cm);
   while(count){
 
-    float xr = buf[0] * inverseWhitePointXYZ[0];
-    float yr = buf[1] * inverseWhitePointXYZ[1];
-    float zr = buf[2] * inverseWhitePointXYZ[2];
+    float xr = buf[0] * whitePointXYZInverse[0];
+    float yr = buf[1] * whitePointXYZInverse[1];
+    float zr = buf[2] * whitePointXYZInverse[2];
     
     float fy = cml_Eval(cm->labSpace.responseL.forwardFunc, yr);
     buf[0] = CML_Lab_L_MAX * fy;

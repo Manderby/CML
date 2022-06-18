@@ -196,16 +196,16 @@ CML_HIDEF void cml_CMRGBToXYZ_SB(const CMLColorMachine* cm, float* buf, size_t c
   cml_RGBToXYZ_SB(buf, count, floatAlign, cm->rgbSpace.matrix, cm->rgbSpace.responseR.backwardFunc, cm->rgbSpace.responseG.backwardFunc, cm->rgbSpace.responseB.backwardFunc);
 }
 CML_HIDEF void cml_CMRGBToYCbCr(const CMLColorMachine* cm, float* CML_RESTRICT ycbcr, const float* CML_RESTRICT rgb, size_t count){
-  cml_RGBToYCbCr(ycbcr, rgb, count, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceInverseWhitePointXYZ(cm));
+  cml_RGBToYCbCr(ycbcr, rgb, count, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceWhitePointXYZInverse(cm));
 }
 CML_HIDEF void cml_CMRGBToYCbCr_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  cml_RGBToYCbCr_SB(buf, count, floatAlign, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceInverseWhitePointXYZ(cm));
+  cml_RGBToYCbCr_SB(buf, count, floatAlign, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceWhitePointXYZInverse(cm));
 }
 CML_HIDEF void cml_CMYCbCrToRGB(const CMLColorMachine* cm, float* CML_RESTRICT rgb, const float* CML_RESTRICT ycbcr, size_t count){
-  cml_YCbCrToRGB(rgb, ycbcr, count, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceInverseWhitePointXYZ(cm));
+  cml_YCbCrToRGB(rgb, ycbcr, count, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceWhitePointXYZInverse(cm));
 }
 CML_HIDEF void cml_CMYCbCrToRGB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  cml_YCbCrToRGB_SB(buf, count, floatAlign, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceInverseWhitePointXYZ(cm));
+  cml_YCbCrToRGB_SB(buf, count, floatAlign, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[2], cmlGetReferenceWhitePointXYZInverse(cm));
 }
 CML_HIDEF void cml_CMRGBToHSV(const CMLColorMachine* cm, float* CML_RESTRICT hsv, const float* CML_RESTRICT rgb, size_t count){
   cm = cm; cml_RGBToHSV(hsv, rgb, count);

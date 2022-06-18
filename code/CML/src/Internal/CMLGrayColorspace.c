@@ -51,11 +51,6 @@ CML_DEF void cmlSetGrayComputationType(CMLColorMachine* cm, CMLGrayComputationTy
 
 
 
-//CMLBool              ColorMachine::getGrayChannelInterpretation() const                            {return (s->graySpace.interpretation == CML_MAX_IS_WHITE);}
-//void              ColorMachine::setGrayChannelInterpretation(CMLChannelInterpretationType newinterpretation)  {s->graySpace.interpretation = newinterpretation;}
-
-
-
 // This is free and unencumbered software released into the public domain.
 
 // Anyone is free to copy, modify, publish, use, compile, sell, or

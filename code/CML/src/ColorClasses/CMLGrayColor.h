@@ -2,8 +2,6 @@
 // GrayColor is a 1-dimensional value
 // Range: (0,1)
 // The bounds are defined as constants in CMLConstants.h
-// The interpretation of this value depends on the interpretation setting of the
-// ColorMachine, default is: 0 represents white, 1 represents black.
 
 class GrayColor : public Color{
   float color[1];

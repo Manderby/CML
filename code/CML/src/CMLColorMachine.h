@@ -67,7 +67,7 @@ CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, 
 CML_API CMLIlluminationType   cmlGetReferenceIlluminationType(const CMLColorMachine* cm);
 CML_API const CMLFunction*    cmlGetReferenceIlluminationSpectrum(const CMLColorMachine* cm);
 CML_API const float*          cmlGetReferenceWhitePointXYZ(const CMLColorMachine* cm);
-CML_API const float*          cmlGetReferenceInverseWhitePointXYZ(const CMLColorMachine* cm);
+CML_API const float*          cmlGetReferenceWhitePointXYZInverse(const CMLColorMachine* cm);
 CML_API const float*          cmlGetReferenceWhitePointYxy(const CMLColorMachine* cm);
 CML_API const float*          cmlGetReferenceWhitePointYupvp(const CMLColorMachine* cm);
 

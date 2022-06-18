@@ -62,14 +62,11 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   cm->integration.method = CML_DEFAULT_INTEGRATION_METHOD;
   cm->integration.stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;
 
-  CMLIllumination* referenceIllumination = cml_Malloc(sizeof(CMLIllumination));
-  cml_InitIlluminationWithType(referenceIllumination, CML_ILLUMINATION_D65, 0);
   cml_InitObserver(
     &(cm->observer),
     CML_OBSERVER_2DEG_CIE_1931,
-    referenceIllumination,
-    &(cm->integration),
-    1.f);
+    1.f,
+    &(cm->integration));
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
@@ -131,8 +128,10 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
   cm->recomputationLockCount --;
   if(cm->recomputationLockCount){return;}
   
-  if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){cml_recomputeObserver(cm);
-  }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){cml_recomputeIllumination(cm);
+  if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){
+    cml_recomputeObserver(cm);
+  }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){
+    cml_recomputeIllumination(cm);
   }else{
     // note that the following recomputations may occur independant of each
     // other.

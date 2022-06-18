@@ -84,17 +84,18 @@ CML_DEF void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
 
 
 CML_HDEF void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm){
-  float Ka;
-  float Kb;
+  if(cm->recomputationLockCount){
+    cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY;
+    return;
+  }
+  
   const float* whitePointXYZ;
-
-  if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY; return;}
 
   switch(cm->labSpace.state){
   case CML_LAB_HUNTER_APPROXIMATE:
     whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
-    Ka = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_K * (whitePointXYZ[0] + whitePointXYZ[1]);
-    Kb = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_KE * (whitePointXYZ[1] + whitePointXYZ[2]);
+    float Ka = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_K * (whitePointXYZ[0] + whitePointXYZ[1]);
+    float Kb = CML_ADAMS_CHROMATICITY_HUNTER_APPROX_KE * (whitePointXYZ[1] + whitePointXYZ[2]);
     cm->labSpace.adamsChromaticityValenceK = Ka;
     cm->labSpace.adamsChromaticityValenceke = Kb / Ka;
     break;

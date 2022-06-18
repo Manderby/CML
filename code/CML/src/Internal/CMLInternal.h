@@ -36,13 +36,16 @@ struct CMLObserver{
   CMLObserverType               type;
   CMLFunction*                  specDistFunctions[3];
   CMLIllumination               illumination;
+  float                         colorimetricBase;
   float                         radiometricScale;
   CMLVec3                       whitePointXYZ;
-  CMLVec3                       inverseWhitePointXYZ;
+  CMLVec3                       whitePointXYZInverse;
   CMLVec3                       whitePointYxy;
   CMLVec3                       whitePointYupvp;
 };
 
+
+CML_HAPI void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLObserver* observer);
 
 // type:                  Defines, what spectral distribution functions to use.
 // illumination:          The spectrum function of the desired reference
@@ -54,9 +57,12 @@ struct CMLObserver{
 CML_HAPI void cml_InitObserver(
   CMLObserver* observer,
   CMLObserverType type,
-  CMLIllumination* illumination,
-  const CMLIntegration* integration,
-  float colorimetricBase);
+  float colorimetricBase,
+  const CMLIntegration* integration);
+
+CML_HAPI void cml_SetObserverIllumination(
+  CMLObserver* observer,
+  CMLIllumination* illumination);
 
 CML_HAPI void cml_ClearObserver(CMLObserver* observer);
 
@@ -64,12 +70,13 @@ CML_HAPI CMLObserverType cml_GetObserverType(const CMLObserver* observer);
 CML_HAPI float cml_GetObserverRadiometricScale(const CMLObserver* observer);
 CML_HAPI float cml_GetObserverColorimetricBase(const CMLObserver* observer);
 
+CML_HAPI CMLFunction* const * cml_GetObserverSpecDistFunctions(const CMLObserver* observer);
 CML_HAPI const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, size_t index);
 
 
 CML_HAPI void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
-CML_HAPI void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature);
-CML_HAPI void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, const CMLObserver* observer, const CMLIntegration* integration);
+CML_HAPI void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature, CMLFunction* const * specDistFuncs, const CMLIntegration* integration);
+CML_HAPI void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, CMLFunction* const * specDistFuncs, const CMLIntegration* integration);
 CML_HAPI void cml_InitIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
 
 CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
@@ -77,7 +84,7 @@ CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
 CML_HAPI CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
 CML_HAPI const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
 CML_HAPI float cml_GetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
-CML_HAPI void cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination, float* dest, const CMLObserver* observer, const CMLIntegration* integration);
+CML_HAPI const float* cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination);
 
 
 
@@ -531,30 +538,30 @@ CML_HIDEF void cml_RGBToXYZ_SB(float* buf, size_t count, size_t floatAlign, cons
 // RGB to YCbCr
 // ////////////////////////////////////
 
-#define cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ) \
-  float Kr = redPrimaryYxy[0] * inverseWhitePointXYZ[1];\
-  float Kb = bluePrimaryYxy[0] * inverseWhitePointXYZ[1];\
+#define cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse) \
+  float Kr = redPrimaryYxy[0] * whitePointXYZInverse[1];\
+  float Kb = bluePrimaryYxy[0] * whitePointXYZInverse[1];\
   float Y = Kr * in[0] + (1.f - Kr - Kb) * in[1] + Kb * in[2];\
   out[1] = .5f * (in[2] - Y) / (1.f - Kb);\
   out[2] = .5f * (in[0] - Y) / (1.f - Kr);\
   out[0] = Y;
 
-CML_HIDEF void cml_OneRGBToYCbCr(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneRGBToYCbCr(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
+  cml_ConvertRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
 }
-CML_HIDEF void cml_OneRGBToYCbCr_SB(float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertRGBToYCbCr(buf, buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneRGBToYCbCr_SB(float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
+  cml_ConvertRGBToYCbCr(buf, buf, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
 }
 
-CML_HIDEF void cml_RGBToYCbCr(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_RGBToYCbCr(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
   cml__START_COUNT_LOOP(count);
-  cml_OneRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+  cml_OneRGBToYCbCr(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
   cml__END_COUNT_LOOP(CML_YCbCr_NUMCHANNELS, CML_RGB_NUMCHANNELS);
 }
 
-CML_HIDEF void cml_RGBToYCbCr_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_RGBToYCbCr_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
   cml__START_COUNT_LOOP(count);
-  cml_OneRGBToYCbCr_SB(buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+  cml_OneRGBToYCbCr_SB(buf, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -628,31 +635,31 @@ CML_HIDEF void cml_LchToLab_SB(float* buf, size_t count, size_t floatAlign){
 // YCbCr to RGB
 // ////////////////////////////////////
 
-#define cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ) \
-  float Kr = redPrimaryYxy[0] * inverseWhitePointXYZ[1];\
-  float Kb = bluePrimaryYxy[0] * inverseWhitePointXYZ[1];\
+#define cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse) \
+  float Kr = redPrimaryYxy[0] * whitePointXYZInverse[1];\
+  float Kb = bluePrimaryYxy[0] * whitePointXYZInverse[1];\
   float Y = in[0];\
   out[0] = 2.f * in[2] * (1.f - Kr) + Y;\
   out[2] = 2.f * in[1] * (1.f - Kb) + Y;\
   out[1] = (Y - Kr * out[0] - Kb * out[2]) / (1.f - Kr - Kb);
 
 
-CML_HIDEF void cml_OneYCbCrToRGB(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneYCbCrToRGB(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
+  cml_ConvertYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
 }
-CML_HIDEF void cml_OneYCbCrToRGB_SB(float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
-  cml_ConvertYCbCrToRGB(buf, buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+CML_HIDEF void cml_OneYCbCrToRGB_SB(float* buf, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
+  cml_ConvertYCbCrToRGB(buf, buf, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
 }
 
-CML_HIDEF void cml_YCbCrToRGB(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_YCbCrToRGB(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
   cml__START_COUNT_LOOP(count);
-  cml_OneYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+  cml_OneYCbCrToRGB(out, in, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
   cml__END_COUNT_LOOP(CML_RGB_NUMCHANNELS, CML_YCbCr_NUMCHANNELS);
 }
 
-CML_HIDEF void cml_YCbCrToRGB_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 inverseWhitePointXYZ){
+CML_HIDEF void cml_YCbCrToRGB_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 redPrimaryYxy, const CMLVec3 bluePrimaryYxy, const CMLVec3 whitePointXYZInverse){
   cml__START_COUNT_LOOP(count);
-  cml_OneYCbCrToRGB_SB(buf, redPrimaryYxy, bluePrimaryYxy, inverseWhitePointXYZ);
+  cml_OneYCbCrToRGB_SB(buf, redPrimaryYxy, bluePrimaryYxy, whitePointXYZInverse);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -808,10 +815,10 @@ CML_HIDEF float cml_fytoLr(float fy){
 // XYZ to CIELAB
 // ////////////////////////////////////
 
-#define cml_ConvertXYZToCIELAB(out, in, inverseWhitePointXYZ, LineartoLResponse) \
-  float xr = in[0] * inverseWhitePointXYZ[0];\
-  float yr = in[1] * inverseWhitePointXYZ[1];\
-  float zr = in[2] * inverseWhitePointXYZ[2];\
+#define cml_ConvertXYZToCIELAB(out, in, whitePointXYZInverse, LineartoLResponse) \
+  float xr = in[0] * whitePointXYZInverse[0];\
+  float yr = in[1] * whitePointXYZInverse[1];\
+  float zr = in[2] * whitePointXYZInverse[2];\
   float fx = cml_Lrtofy(cml_Eval(LineartoLResponse, xr));\
   float fy = cml_Lrtofy(cml_Eval(LineartoLResponse, yr));\
   float fz = cml_Lrtofy(cml_Eval(LineartoLResponse, zr));\
@@ -820,22 +827,22 @@ CML_HIDEF float cml_fytoLr(float fy){
   out[2] = (fy - fz) * 200.f;
 
 
-CML_HIDEF void cml_OneXYZToCIELAB(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 inverseWhitePointXYZ, const CMLFunction* LineartoLResponse){
-  cml_ConvertXYZToCIELAB(out, in, inverseWhitePointXYZ, LineartoLResponse);
+CML_HIDEF void cml_OneXYZToCIELAB(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointXYZInverse, const CMLFunction* LineartoLResponse){
+  cml_ConvertXYZToCIELAB(out, in, whitePointXYZInverse, LineartoLResponse);
 }
-CML_HIDEF void cml_OneXYZToCIELAB_SB(float* buf, const CMLVec3 inverseWhitePointXYZ, const CMLFunction* LineartoLResponse){
-  cml_ConvertXYZToCIELAB(buf, buf, inverseWhitePointXYZ, LineartoLResponse);
+CML_HIDEF void cml_OneXYZToCIELAB_SB(float* buf, const CMLVec3 whitePointXYZInverse, const CMLFunction* LineartoLResponse){
+  cml_ConvertXYZToCIELAB(buf, buf, whitePointXYZInverse, LineartoLResponse);
 }
 
-CML_HIDEF void cml_XYZToCIELAB(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 inverseWhitePointXYZ, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cml_XYZToCIELAB(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count, const CMLVec3 whitePointXYZInverse, const CMLFunction* LineartoLResponse){
   cml__START_COUNT_LOOP(count);
-  cml_OneXYZToCIELAB(out, in, inverseWhitePointXYZ, LineartoLResponse);
+  cml_OneXYZToCIELAB(out, in, whitePointXYZInverse, LineartoLResponse);
   cml__END_COUNT_LOOP(CML_Lab_NUMCHANNELS, CML_XYZ_NUMCHANNELS);
 }
 
-CML_HIDEF void cml_XYZToCIELAB_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 inverseWhitePointXYZ, const CMLFunction* LineartoLResponse){
+CML_HIDEF void cml_XYZToCIELAB_SB(float* buf, size_t count, size_t floatAlign, const CMLVec3 whitePointXYZInverse, const CMLFunction* LineartoLResponse){
   cml__START_COUNT_LOOP(count);
-  cml_OneXYZToCIELAB_SB(buf, inverseWhitePointXYZ, LineartoLResponse);
+  cml_OneXYZToCIELAB_SB(buf, whitePointXYZInverse, LineartoLResponse);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
 
@@ -884,19 +891,20 @@ CML_HIDEF void cml_CIELABToXYZ_SB(float* buf, size_t count, size_t floatAlign, c
 // Spectrum to XYZ
 // ////////////////////////////////////
 
-#define cml_ConvertSpectrumToXYZ(out, in, observer, integration) \
-  out[0] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 0), integration);\
-  out[1] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 1), integration);\
-  out[2] = cmlFilterFunction(in, cml_GetObserverSpecDistFunction(observer, 2), integration);\
-  cmlMul3(out, cml_GetObserverRadiometricScale(observer));    
+#define cml_ConvertSpectrumToXYZ(out, in, specDistFuncs, radiometricScale, integration) \
+  out[0] = cmlFilterFunction(in, specDistFuncs[0], integration);\
+  out[1] = cmlFilterFunction(in, specDistFuncs[1], integration);\
+  out[2] = cmlFilterFunction(in, specDistFuncs[2], integration);\
+  cmlMul3(out, radiometricScale);    
 
 CML_HIDEF void cml_OneIlluminationSpectrumToXYZ(
   CMLVec3 out,
   const CMLFunction* in,
-  const CMLObserver* observer,
+  CMLFunction* const * specDistFuncs,
+  float radiometricScale,
   const CMLIntegration* integration)
 {
-  cml_ConvertSpectrumToXYZ(out, in, observer, integration);
+  cml_ConvertSpectrumToXYZ(out, in, specDistFuncs, radiometricScale, integration);
 }
 
 CML_HIDEF void cml_IlluminationSpectrumToXYZ(
@@ -908,7 +916,7 @@ CML_HIDEF void cml_IlluminationSpectrumToXYZ(
   const CMLIntegration* integration)
 {
   cml__START_COUNT_LOOP(count);
-  cml_OneIlluminationSpectrumToXYZ(out, in, observer, integration);
+  cml_OneIlluminationSpectrumToXYZ(out, in, cml_GetObserverSpecDistFunctions(observer), cml_GetObserverRadiometricScale(observer), integration);
   cml__END_COUNT_LOOP(floatAlign, 1);
 }
 
@@ -920,7 +928,7 @@ CML_HIDEF void cml_OneRemissionSpectrumToXYZ(
   const CMLIntegration* integration)
 {
   CMLFunction* remIllFunction = cmlCreateFunctionMulFunction(in, specIll);
-  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, observer, integration);
+  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, cml_GetObserverSpecDistFunctions(observer), cml_GetObserverRadiometricScale(observer), integration);
   cmlReleaseFunction(remIllFunction);
 }
 

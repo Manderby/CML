@@ -5,8 +5,6 @@
 // Y-Range: (0,1), Yellow
 // K-Range: (0,1), blacK, Key
 // The bounds are defined as constants in CMLConstants.h
-// The interpretation of this value depends on the interpretation setting of the
-// ColorMachine, default is: 0 represents blank, 1 represents solid.
 
 class CMYKColor : public Color{
   float color[4];
