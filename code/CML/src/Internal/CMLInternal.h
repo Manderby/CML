@@ -29,23 +29,15 @@ struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
   float                         temperature;
-  CMLVec3                       radiometricXYZ;
 };
 
 struct CMLObserver{
   CMLObserverType               type;
   CMLFunction*                  specDistFunctions[3];
-  CMLIllumination               illumination;
-  float                         colorimetricBase;
-  float                         radiometricScale;
-  CMLVec3                       whitePointXYZ;
-  CMLVec3                       whitePointXYZInverse;
-  CMLVec3                       whitePointYxy;
-  CMLVec3                       whitePointYupvp;
 };
 
 
-CML_HAPI void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLObserver* observer);
+CML_HAPI void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLColorMachine* cm);
 
 // type:                  Defines, what spectral distribution functions to use.
 // illumination:          The spectrum function of the desired reference
@@ -55,28 +47,27 @@ CML_HAPI void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLObserver* obs
 //                        In colorimetry, this is usually 1 or 100.
 //                        If you use 0, computation is radiometric.
 CML_HAPI void cml_InitObserver(
+  CMLColorMachine* cm,
   CMLObserver* observer,
   CMLObserverType type,
-  float colorimetricBase,
   const CMLIntegration* integration);
 
 CML_HAPI void cml_SetObserverIllumination(
+  CMLColorMachine* cm,
   CMLObserver* observer,
   CMLIllumination* illumination);
 
-CML_HAPI void cml_ClearObserver(CMLObserver* observer);
+CML_HAPI void cml_ClearObserver(CMLColorMachine* cm, CMLObserver* observer);
 
 CML_HAPI CMLObserverType cml_GetObserverType(const CMLObserver* observer);
-CML_HAPI float cml_GetObserverRadiometricScale(const CMLObserver* observer);
-CML_HAPI float cml_GetObserverColorimetricBase(const CMLObserver* observer);
 
 CML_HAPI CMLFunction* const * cml_GetObserverSpecDistFunctions(const CMLObserver* observer);
 CML_HAPI const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, size_t index);
 
 
 CML_HAPI void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src);
-CML_HAPI void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature, CMLFunction* const * specDistFuncs, const CMLIntegration* integration);
-CML_HAPI void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, CMLFunction* const * specDistFuncs, const CMLIntegration* integration);
+CML_HAPI void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature, CMLFunction* const * specDistFuncs);
+CML_HAPI void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, CMLFunction* const * specDistFuncs);
 CML_HAPI void cml_InitIlluminationWithCustomWhitePoint(CMLIllumination* illumination, const CMLVec3 whitePointYxy);
 
 CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
@@ -84,7 +75,6 @@ CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
 CML_HAPI CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
 CML_HAPI const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
 CML_HAPI float cml_GetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
-CML_HAPI const float* cml_GetIlluminationRadiometricXYZ(const CMLIllumination* illumination);
 
 
 
@@ -913,10 +903,11 @@ CML_HIDEF void cml_IlluminationSpectrumToXYZ(
   size_t count,
   size_t floatAlign,
   const CMLObserver* observer,
+  float radiometricScale,
   const CMLIntegration* integration)
 {
   cml__START_COUNT_LOOP(count);
-  cml_OneIlluminationSpectrumToXYZ(out, in, cml_GetObserverSpecDistFunctions(observer), cml_GetObserverRadiometricScale(observer), integration);
+  cml_OneIlluminationSpectrumToXYZ(out, in, cml_GetObserverSpecDistFunctions(observer), radiometricScale, integration);
   cml__END_COUNT_LOOP(floatAlign, 1);
 }
 
@@ -925,10 +916,11 @@ CML_HIDEF void cml_OneRemissionSpectrumToXYZ(
   const CMLFunction* in,
   const CMLFunction* specIll,
   const CMLObserver* observer,
+  float radiometricScale,
   const CMLIntegration* integration)
 {
   CMLFunction* remIllFunction = cmlCreateFunctionMulFunction(in, specIll);
-  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, cml_GetObserverSpecDistFunctions(observer), cml_GetObserverRadiometricScale(observer), integration);
+  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, cml_GetObserverSpecDistFunctions(observer),  radiometricScale, integration);
   cmlReleaseFunction(remIllFunction);
 }
 
@@ -939,14 +931,15 @@ CML_HIDEF void cml_RemissionSpectrumToXYZ(
   size_t floatAlign,
   const CMLFunction* specIll,
   const CMLObserver* observer,
+  float radiometricScale,
   const CMLIntegration* integration)
 {
   if(specIll){
     cml__START_COUNT_LOOP(count);
-    cml_OneRemissionSpectrumToXYZ(out, in, specIll, observer, integration);
+    cml_OneRemissionSpectrumToXYZ(out, in, specIll, observer, radiometricScale, integration);
     cml__END_COUNT_LOOP(floatAlign, 1);
   }else{
-    float base = cml_GetObserverColorimetricBase(observer) * .5f;
+    float base = radiometricScale * .5f;
     cml__START_COUNT_LOOP(count);
     cmlSet3(out, base, base, base);
     cml__END_COUNT_LOOP(floatAlign, 1);

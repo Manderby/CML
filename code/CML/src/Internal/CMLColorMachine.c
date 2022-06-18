@@ -63,12 +63,12 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
   cm->integration.stepSize = CML_DEFAULT_INTEGRATION_STEPSIZE;
 
   cml_InitObserver(
+    cm,
     &(cm->observer),
     CML_OBSERVER_2DEG_CIE_1931,
-    1.f,
     &(cm->integration));
 
-//  cmlSetRadiometricComputation(cm, CML_FALSE);
+  cm->colorimetricBase = 1.f;
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
@@ -105,7 +105,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
 
 
 CML_DEF void cmlReleaseColorMachine(CMLColorMachine* cm){
-  cml_ClearObserver(&(cm->observer));
+  cml_ClearObserver(cm, &(cm->observer));
   cmlClearResponseCurve(&(cm->rgbSpace.responseR));
   cmlClearResponseCurve(&(cm->rgbSpace.responseG));
   cmlClearResponseCurve(&(cm->rgbSpace.responseB));
@@ -128,8 +128,8 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
   
   if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){
     cml_recomputeObserver(cm);
-  }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_ILLUMINATION){
-    cml_recomputeIllumination(cm);
+  }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_REFERENCE_ILLUMINATION){
+    cml_recomputeReferenceIllumination(cm);
   }else{
     // note that the following recomputations may occur independant of each
     // other.
@@ -144,6 +144,12 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
 
 CML_DEF CMLIntegrationMethod cmlGetIntegrationMethod(const CMLColorMachine* cm){
   return cm->integration.method;
+}
+
+
+
+CML_DEF const float* cml_GetColorMachineReferenceXYZ(const CMLColorMachine* cm){
+  return cm->referenceXYZ;
 }
 
 

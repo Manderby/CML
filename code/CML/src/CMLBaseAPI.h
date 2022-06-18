@@ -163,6 +163,7 @@ CML_API void cmlConvertIlluminationSpectrumToXYZ(
   CMLVec3 xyz,
   const CMLFunction* specIll,
   const CMLObserver* observer,
+  float radiometricScale,
   const CMLIntegration* integration);
 
 // This method always returns a radiometric result. If you would like to have
@@ -173,6 +174,7 @@ CML_API void cmlConvertRemissionSpectrumToXYZ(
   const CMLFunction* specRem,
   const CMLFunction* specIll,
   const CMLObserver* observer,
+  float radiometricScale,
   const CMLIntegration* integration);
 
 

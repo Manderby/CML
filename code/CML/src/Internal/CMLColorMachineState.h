@@ -7,12 +7,12 @@
 // Enumeration for internal recomputation consistency. Will be used with the
 // calls to lockRecomputation and releaseRecomputation.
 typedef enum{
-  CML_COLORMACHINE_RECOMPUTE_RGB                 = 0x01,
-  CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES       = 0x02,
-  CML_COLORMACHINE_RECOMPUTE_LAB                 = 0x04,
-  CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY  = 0x08,
-  CML_COLORMACHINE_RECOMPUTE_ILLUMINATION        = 0x10,
-  CML_COLORMACHINE_RECOMPUTE_OBSERVER            = 0x20
+  CML_COLORMACHINE_RECOMPUTE_RGB                    = 0x01,
+  CML_COLORMACHINE_RECOMPUTE_RGB_RESPONSES          = 0x02,
+  CML_COLORMACHINE_RECOMPUTE_LAB                    = 0x04,
+  CML_COLORMACHINE_RECOMPUTE_ADAMS_CHROMATICITY     = 0x08,
+  CML_COLORMACHINE_RECOMPUTE_REFERENCE_ILLUMINATION = 0x10,
+  CML_COLORMACHINE_RECOMPUTE_OBSERVER               = 0x20
 } ColorMachineRecomputation;
 
 
@@ -20,7 +20,7 @@ typedef enum{
 struct CMLColorMachine{
 
   size_t recomputationLockCount;
-  uint8 recomputationMask;
+  uint16 recomputationMask;
 
   CMLIntegration integration;
 
@@ -32,7 +32,16 @@ struct CMLColorMachine{
     float                         range16Bit [CML_MAX_NUMBER_OF_CHANNELS];
   } serialization;
   
-  CMLObserver observer;
+  CMLObserver                     observer;
+  CMLIllumination                 referenceIllumination;
+  
+  float                           colorimetricBase;
+  float                           radiometricScale;
+  CMLVec3                         referenceXYZ;
+  CMLVec3                         whitePointXYZ;
+  CMLVec3                         whitePointXYZInverse;
+  CMLVec3                         whitePointYxy;
+  CMLVec3                         whitePointYupvp;
   
   struct rgbSpace_struct{
     CMLRGBColorSpaceType          type;
@@ -117,7 +126,7 @@ CML_HAPI void cml_CMYKToRGBUCR(const CMLColorMachine* cm, float* CML_RESTRICT ou
 CML_HAPI void cml_CMYKToRGBUCR_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign);
  
 CML_HAPI void cml_recomputeObserver(CMLColorMachine* cm);
-CML_HAPI void cml_recomputeIllumination(CMLColorMachine* cm);
+CML_HAPI void cml_recomputeReferenceIllumination(CMLColorMachine* cm);
 CML_HAPI void cml_recomputeLabColorSpace(CMLColorMachine* cm);
 CML_HAPI void cml_recomputeAdamsChromaticityValenceSpace(CMLColorMachine* cm);
 CML_HAPI void cml_recomputeRGBResponses(CMLColorMachine* cm);
@@ -234,12 +243,12 @@ CML_HIDEF void cml_CMHSLToHSV_SB(const CMLColorMachine* cm, float* buf, size_t c
 
 
 CML_HIDEF void cml_CMIlluminationSpectrumToXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz, const CMLFunction* CML_RESTRICT specIll, size_t count, size_t floatAlign){
-  cml_IlluminationSpectrumToXYZ(xyz, specIll, count, floatAlign, &(cm->observer), &(cm->integration));
+  cml_IlluminationSpectrumToXYZ(xyz, specIll, count, floatAlign, &(cm->observer), cm->radiometricScale, &(cm->integration));
 }
 
 CML_HIDEF void cml_CMRemissionSpectrumToXYZ(const CMLColorMachine* cm, float* CML_RESTRICT xyz, const CMLFunction* CML_RESTRICT specRem, size_t count, size_t floatAlign){
   const CMLFunction* spec = cmlGetReferenceIlluminationSpectrum(cm);
-  cml_RemissionSpectrumToXYZ(xyz, specRem, count, floatAlign, spec, &(cm->observer), &(cm->integration));
+  cml_RemissionSpectrumToXYZ(xyz, specRem, count, floatAlign, spec, &(cm->observer), cm->radiometricScale, &(cm->integration));
 }
 
 

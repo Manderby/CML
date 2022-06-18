@@ -35,6 +35,8 @@ CML_API void                  cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIn
 CML_API float                 cmlGetIntegrationStepSize(const CMLColorMachine* cm);
 CML_API void                  cmlSetIntegrationStepSize(CMLColorMachine* cm, float stepSize);
 
+CML_API const float* cml_GetColorMachineReferenceXYZ(const CMLColorMachine* cm);
+
 // The integer mapping defines, how floats are mapped to integers.
 // Additionally, integers can have lower and upper cutoffs. This means that
 // the minimal float values are mapped to the lower cutoffs and the maximal
@@ -47,12 +49,6 @@ CML_API void                  cmlGet8BitCutoffs(const CMLColorMachine* cm, uint8
 CML_API void                  cmlSet8BitCutoffs(CMLColorMachine* cm, uint8 min, uint8 max, size_t channel);
 CML_API void                  cmlGet16BitCutoffs(const CMLColorMachine* cm, uint16* min, uint16* max, size_t channel);
 CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min, uint16 max, size_t channel);
-
-// The radiometric computation flag defines if spectral data shall be converted
-// without or with normalization to Y=1. Set CML_TRUE for radiometric and
-// CML_FALSE for colorimetric. Default is colorimetric.
-//CML_API CMLBool               cmlGetRadiometricComputation(CMLColorMachine* cm);
-//CML_API void                  cmlSetRadiometricComputation(CMLColorMachine* cm, CMLBool radiometric);
 
 // The observer defines if the 2 degree or the 10 degree model and what data
 // set is used. Initial setting is 2 degrees of CIE recommendation.
