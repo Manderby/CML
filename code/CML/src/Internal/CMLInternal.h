@@ -28,6 +28,7 @@ typedef struct CMLIllumination  CMLIllumination;
 struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
+  CMLVec3                       customWhitePointYxy;
   float                         temperature;
 };
 
@@ -36,8 +37,6 @@ struct CMLObserver{
   CMLFunction*                  specDistFunctions[3];
 };
 
-
-CML_HAPI void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLColorMachine* cm);
 
 // type:                  Defines, what spectral distribution functions to use.
 // illumination:          The spectrum function of the desired reference
@@ -52,9 +51,8 @@ CML_HAPI void cml_InitObserver(
   CMLObserverType type,
   const CMLIntegration* integration);
 
-CML_HAPI void cml_SetObserverIllumination(
+CML_HAPI void cml_SetReferenceIllumination(
   CMLColorMachine* cm,
-  CMLObserver* observer,
   CMLIllumination* illumination);
 
 CML_HAPI void cml_ClearObserver(CMLColorMachine* cm, CMLObserver* observer);

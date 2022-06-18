@@ -35,8 +35,6 @@ CML_API void                  cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIn
 CML_API float                 cmlGetIntegrationStepSize(const CMLColorMachine* cm);
 CML_API void                  cmlSetIntegrationStepSize(CMLColorMachine* cm, float stepSize);
 
-CML_API const float* cml_GetColorMachineReferenceXYZ(const CMLColorMachine* cm);
-
 // The integer mapping defines, how floats are mapped to integers.
 // Additionally, integers can have lower and upper cutoffs. This means that
 // the minimal float values are mapped to the lower cutoffs and the maximal

@@ -148,12 +148,6 @@ CML_DEF CMLIntegrationMethod cmlGetIntegrationMethod(const CMLColorMachine* cm){
 
 
 
-CML_DEF const float* cml_GetColorMachineReferenceXYZ(const CMLColorMachine* cm){
-  return cm->referenceXYZ;
-}
-
-
-
 CML_DEF void cmlSetIntegrationMethod(CMLColorMachine* cm, CMLIntegrationMethod integrationMethod){
   cm->integration.method = integrationMethod;
   cml_recomputeObserver(cm);

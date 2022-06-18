@@ -464,7 +464,6 @@ CML_DEF void cmlSetObserverType(CMLColorMachine* cm, CMLObserverType type){
   cmlCreateSpecDistFunctions(cm->observer.specDistFunctions, cm->observer.type);
     
   cml_recomputeReferenceIllumination(cm);
-  cml_ComputeObserverWhitepointsAndRadiometricScale(cm);
 }
 
 
@@ -480,29 +479,6 @@ CML_DEF void cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, floa
       cml_Eval(cmlGetSpecDistFunction(cm, 1), lambda),
       cml_Eval(cmlGetSpecDistFunction(cm, 2), lambda));
   }
-}
-
-
-
-CML_HDEF void cml_ComputeObserverWhitepointsAndRadiometricScale(CMLColorMachine* cm){
-  cmlCpy3(cm->whitePointXYZ, cm->referenceXYZ);
-
-  cm->radiometricScale = 0.;
-  if(cm->colorimetricBase){
-    cm->radiometricScale = cm->colorimetricBase / cm->whitePointXYZ[1];
-    cmlSet3(cm->whitePointXYZ,
-      cm->whitePointXYZ[0] * cm->radiometricScale,
-      cm->colorimetricBase,
-      cm->whitePointXYZ[2] * cm->radiometricScale);
-  }
-
-  cmlSet3(
-    cm->whitePointXYZInverse,
-    cmlInverse(cm->whitePointXYZ[0]),
-    cmlInverse(cm->whitePointXYZ[1]),
-    cmlInverse(cm->whitePointXYZ[2]));
-  cml_OneXYZToYxy(cm->whitePointYxy, cm->whitePointXYZ, CML_NULL);
-  cml_OneYxyToYupvp(cm->whitePointYupvp, cm->whitePointYxy, CML_NULL);
 }
 
 
@@ -524,13 +500,11 @@ CML_HDEF void cml_InitObserver(
     cml_GetObserverSpecDistFunctions(observer));
 
   cml_recomputeReferenceIllumination(cm);
-
-  cml_ComputeObserverWhitepointsAndRadiometricScale(cm);
 }
 
 
 
-CML_HDEF void cml_SetObserverIllumination(CMLColorMachine* cm, CMLObserver* observer, CMLIllumination* illumination){
+CML_HDEF void cml_SetReferenceIllumination(CMLColorMachine* cm, CMLIllumination* illumination){
   #if CML_DEBUG
     if(!illumination)
       cmlError("Illumination must not be Null.");
@@ -539,7 +513,7 @@ CML_HDEF void cml_SetObserverIllumination(CMLColorMachine* cm, CMLObserver* obse
   cml_ClearIllumination(&(cm->referenceIllumination));
   cml_InitIlluminationDuplicate(&(cm->referenceIllumination), illumination);
 
-  cml_ComputeObserverWhitepointsAndRadiometricScale(cm);
+  cml_recomputeReferenceIllumination(cm);
 }
 
 

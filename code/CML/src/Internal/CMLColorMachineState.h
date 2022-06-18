@@ -37,7 +37,6 @@ struct CMLColorMachine{
   
   float                           colorimetricBase;
   float                           radiometricScale;
-  CMLVec3                         referenceXYZ;
   CMLVec3                         whitePointXYZ;
   CMLVec3                         whitePointXYZInverse;
   CMLVec3                         whitePointYxy;
