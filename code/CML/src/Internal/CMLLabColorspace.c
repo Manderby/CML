@@ -69,17 +69,9 @@ CML_DEF const CMLResponseCurve* cmlGetResponseL(CMLColorMachine* cm){
 }
 
 
-//CML_DEF CMLResponseCurveType cmlGetLabResponseCurveFunctionType(const CMLColorMachine* cm){
-//  return cm->labSpace.responseL.type;
-//}
-
-
 CML_DEF void cmlSetResponseL(CMLColorMachine* cm, CMLResponseCurve* response){
   cmlClearResponseCurve(&(cm->labSpace.responseL));
   cmlInitResponseCurveWithCopy((&cm->labSpace.responseL), response);
-//  cm->labSpace.responseL.forwardFunc = cmlDuplicateFunction(response->forwardFunc);
-//  cm->labSpace.responseL.backwardFunc = cmlDuplicateFunction(response->backwardFunc);
-//  cml_CreateResponseCurveWithParamFunction(&(cm->labSpace.responseL), type, param0, param1, param2, param3);
 }
 
 
@@ -119,11 +111,9 @@ CML_HDEF void cml_recomputeLabColorSpace(CMLColorMachine* cm){
     cm->XYZToLab_SB = &cml_XYZToLabCIELAB_SB;
     cm->LabToXYZ = &cml_LabToXYZCIELAB;
     cm->LabToXYZ_SB = &cml_LabToXYZCIELAB_SB;
-//    cmlClearResponseCurve(&(cm->labSpace.responseL));
     cmlInitResponseCurveWithType(&responseL, CML_RESPONSE_LSTAR);
     cmlSetResponseL(cm, &responseL);
     cmlClearResponseCurve(&responseL);
-//    cml_setResponseL(cm, CML_RESPONSE_LSTAR, 0.f, 0.f, 0.f);
     break;
   case CML_LAB_CUSTOM_L:
     cm->XYZToLab =    &cml_XYZToLabCIELAB;
@@ -164,7 +154,6 @@ CML_HDEF void cml_recomputeLabColorSpace(CMLColorMachine* cm){
     #endif
     break;
   }
-
 }
 
 

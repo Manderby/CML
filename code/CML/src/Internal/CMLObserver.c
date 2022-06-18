@@ -476,41 +476,26 @@ CML_DEF void cmlCreateSpecDistFunctions(CMLFunction* functions[3], CMLObserverTy
 
 
 CML_DEF void cmlSetObserverType(CMLColorMachine* cm, CMLObserverType type){
-
+  cm->observer.type = type;
   cmlCreateSpecDistFunctions(cm->observer.specDistFunctions, cm->observer.type);
     
+  cml_recomputeIllumination(cm);
   cml_ComputeObserverWhitepointsAndRadiometricScale(&(cm->observer));
 }
 
 
-//CML_DEF void cmlSetSpecDistFunctions(CMLColorMachine* cm, const CMLFunction* observer[3]){
-//  CMLFunction* tmpfun;
-//  cm->observer.state = CML_OBSERVER_CUSTOM;
-//  tmpfun = cm->observer.functions[0];
-//  cm->observer.functions[0] = cmlDuplicateFunction(observer[0]);
-//  cmlReleaseFunction(tmpfun);
-//  tmpfun = cm->observer.functions[1];
-//  cm->observer.functions[1] = cmlDuplicateFunction(observer[1]);
-//  cmlReleaseFunction(tmpfun);
-//  tmpfun = cm->observer.functions[2];
-//  cm->observer.functions[2] = cmlDuplicateFunction(observer[2]);
-//  cmlReleaseFunction(tmpfun);
-//  cml_recomputeObserver(cm);
-//}
-
-
 CML_DEF void cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda){
-//  if(!(cm->observer.functions[0])){
-//    #if CML_DEBUG
-//      cmlError("Spectral distribution function unavailable.");
-//    #endif
-//    cmlSet3(xyz, 0.f, 0.f, 0.f);
-//  }else{
-    cmlSet3(  xyz,
-              cml_Eval(cmlGetSpecDistFunction(cm, 0), lambda),
-              cml_Eval(cmlGetSpecDistFunction(cm, 1), lambda),
-              cml_Eval(cmlGetSpecDistFunction(cm, 2), lambda));
-//  }
+  if(!(cm->observer.specDistFunctions[0])){
+    #if CML_DEBUG
+      cmlError("Spectral distribution function unavailable.");
+    #endif
+    cmlSet3(xyz, 0.f, 0.f, 0.f);
+  }else{
+    cmlSet3(xyz,
+      cml_Eval(cmlGetSpecDistFunction(cm, 0), lambda),
+      cml_Eval(cmlGetSpecDistFunction(cm, 1), lambda),
+      cml_Eval(cmlGetSpecDistFunction(cm, 2), lambda));
+  }
 }
 
 

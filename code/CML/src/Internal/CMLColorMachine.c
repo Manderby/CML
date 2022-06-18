@@ -68,6 +68,8 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
     1.f,
     &(cm->integration));
 
+//  cmlSetRadiometricComputation(cm, CML_FALSE);
+
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
   for(size_t i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
@@ -77,10 +79,6 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
     cm->serialization.range16Bit[i]  = (float)(CML_DEFAULT_16BIT_CEIL_CUTOFF - CML_DEFAULT_16BIT_FLOOR_CUTOFF);
   }
   
-  // Set the default observer.
-  cmlSetObserverType(cm, CML_DEFAULT_2DEG_OBSERVER);
-//  cmlSetRadiometricComputation(cm, CML_FALSE);
-
   // Set the default RGB space and the according default illumination.
   cmlSetRGBLUTSize(cm, CML_DEFAULT_RGB_LUT_SIZE);
   cmlSetRGBColorSpaceType(cm, CML_DEFAULT_RGB_COLORSPACE);
