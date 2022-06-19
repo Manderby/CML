@@ -104,6 +104,7 @@ CML_DEF float cmlGetFunctionMaxValue(const CMLFunction* func, const CMLIntegrati
 // the smallest useful definitionRange based on that.
 CML_HIDEF CMLDefinitionRange cml_GetDefinitionRangeOfTwoFunctions(const CMLFunction* func1, const CMLFunction* func2, CMLBool multiplicative){
   CMLDefinitionRange newRange;
+  newRange.stepSize = 0.f;
   
   // Set the desired stepSize which is the smaller of the two functions
   // in case they are both discrete. If only one is descrete, that stepsize

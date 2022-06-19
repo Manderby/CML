@@ -539,6 +539,11 @@ CML_DEF float cmlGetColorimetricBase(const CMLColorMachine* cm){
   return cm->colorimetricBase;
 }
 
+CML_DEF void cmlSetColorimetricBase(CMLColorMachine* cm, float colorimetricBase)
+{
+  cm->colorimetricBase = colorimetricBase;
+  cml_recomputeObserver(cm);
+}
 
 
 CML_HDEF CMLFunction* const * cml_GetObserverSpecDistFunctions(const CMLObserver* observer)

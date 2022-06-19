@@ -53,6 +53,7 @@ CML_API void                  cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min
 CML_API CMLObserverType       cmlGetObserverType(const CMLColorMachine* cm);
 CML_API float                 cmlGetRadiometricScale(const CMLColorMachine* cm);
 CML_API float                 cmlGetColorimetricBase(const CMLColorMachine* cm);
+CML_API void                  cmlSetColorimetricBase(CMLColorMachine* cm, float colorimetricBase);
 CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserverType type);
 CML_API const CMLFunction*    cmlGetSpecDistFunction(const CMLColorMachine* cm, int index);
 CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda);
