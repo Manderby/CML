@@ -29,7 +29,7 @@ struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
   CMLVec3                       customWhitePointYxy;
-  float                         temperature;
+  double                        temperature;
 };
 
 struct CMLObserver{
@@ -72,7 +72,7 @@ CML_HAPI void cml_ClearIllumination(CMLIllumination* illumination);
 
 CML_HAPI CMLIlluminationType cml_GetIlluminationType(const CMLIllumination* illumination);
 CML_HAPI const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* illumination);
-CML_HAPI float cml_GetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination);
+CML_HAPI float cml_GetIlluminationColorTemperature(const CMLIllumination* illumination);
 
 
 

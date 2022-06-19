@@ -34,7 +34,7 @@ struct CMLColorMachine{
   
   CMLObserver                     observer;
   CMLIllumination                 referenceIllumination;
-  
+
   float                           colorimetricBase;
   float                           radiometricScale;
   CMLVec3                         whitePointXYZ;

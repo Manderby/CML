@@ -72,11 +72,14 @@ CML_API const float*          cmlGetReferenceWhitePointYupvp(const CMLColorMachi
 // Note that the setIlluminationTemperature method will only take effect with
 // the Blackbody and custom D illuminant. Otherwise, the input is ignored.
 CML_API void                  cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType illuminationType);
+// Returns the stored temperature for all standard illuminations, D illuminants
+// and blackbody curves. Retuns 0 for custom spectra and custom whitepoint. Use
+// cmlGetCorrelatedColorTemperature to compute the correlated temperature using
+// the Robertos method.
 CML_API float                 cmlGetIlluminationTemperature(const CMLColorMachine* cm);
 CML_API void                  cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp);
 CML_API void                  cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* spectrum);
-CML_API void                  cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYxy);
-CML_API void                  cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy);
+CML_API void                  cmlSetReferenceWhitePointYxy(CMLColorMachine* cm, const float* yxy);
 
 // These functions set the computation of the Lab space. Default is CIELAB.
 // The functions setting K and ke will only take effect if the

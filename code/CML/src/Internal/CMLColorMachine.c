@@ -68,6 +68,14 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
     CML_OBSERVER_2DEG_CIE_1931,
     &(cm->integration));
 
+  cml_InitIlluminationWithType(
+    &(cm->referenceIllumination),
+    CML_ILLUMINATION_D65,
+    0,
+    cml_GetObserverSpecDistFunctions(&(cm->observer)));
+
+  cml_recomputeObserver(cm);
+
   cm->colorimetricBase = 1.f;
 
   // Set the default for the integer mapping

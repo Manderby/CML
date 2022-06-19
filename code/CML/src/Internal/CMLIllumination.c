@@ -368,7 +368,7 @@ CML_HDEF void cml_recomputeReferenceIllumination(CMLColorMachine* cm){
   cmlCpy3(cm->whitePointXYZ, referenceXYZ);
 
   // Scale the whitePointXYZ according to the colorimetric Base.
-  cm->radiometricScale = 0.;
+  cm->radiometricScale = 1.;
   if(cm->colorimetricBase){
     cm->radiometricScale = cm->colorimetricBase / cm->whitePointXYZ[1];
     cmlSet3(cm->whitePointXYZ,
@@ -408,8 +408,7 @@ CML_DEF void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType ill
 
 
 CML_DEF float cmlGetIlluminationTemperature(const CMLColorMachine* cm){
-  return cml_GetIlluminationCorrelatedColorTemperature(&(cm->referenceIllumination));
-//  return cm->illumination.temperature;
+  return cml_GetIlluminationColorTemperature(&(cm->referenceIllumination));
 }
 
 CML_DEF void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
@@ -444,12 +443,7 @@ CML_DEF void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* 
 }
 
 
-CML_DEF void cmlGetWhitePointYxy(const CMLColorMachine* cm, CMLVec3 whitePointYxy){
-  cmlCpy3(whitePointYxy, cmlGetReferenceWhitePointYxy(cm));
-}
-
-
-CML_DEF void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
+CML_DEF void cmlSetReferenceWhitePointYxy(CMLColorMachine* cm, const float* yxy){
   CMLIllumination newIllumination;
   cml_InitIlluminationWithCustomWhitePoint(&newIllumination, yxy);
   cml_SetReferenceIllumination(cm, &newIllumination);
@@ -459,29 +453,29 @@ CML_DEF void cmlSetWhitePointYxy(CMLColorMachine* cm, const float* yxy){
   cml_recomputeReferenceIllumination(cm);
 }
 
+
+
 CML_HDEF void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
   illumination->type = src->type;
-  illumination->temperature = src->temperature;
   if(src->spectrum){
     illumination->spectrum = cmlDuplicateFunction(src->spectrum);
+    cmlSet3(illumination->customWhitePointYxy, 0.f, 0.f, 0.f);
   }else{
     illumination->spectrum = CML_NULL;
     cmlCpy3(illumination->customWhitePointYxy, src->customWhitePointYxy);
   }
+  illumination->temperature = src->temperature;
 }
 
 
 CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature, CMLFunction* const * specDistFuncs){
   #if CML_DEBUG
-    if(type != CML_ILLUMINATION_BLACKBODY &&
-      type != CML_ILLUMINATION_D_ILLUMINANT &&
-      type != CML_ILLUMINATION_D50 &&
-      type != CML_ILLUMINATION_D55 &&
-      type != CML_ILLUMINATION_D65 &&
-      type != CML_ILLUMINATION_D75 &&
-      type != CML_ILLUMINATION_D93 &&
-      temperature != 0)
+    if((type != CML_ILLUMINATION_BLACKBODY && type != CML_ILLUMINATION_D_ILLUMINANT) && temperature != 0.f)
       cmlError("Temperature should be zero except for blackbody or D illuminant type.");
+    if((type == CML_ILLUMINATION_BLACKBODY || type == CML_ILLUMINATION_D_ILLUMINANT) && temperature <= 0.f)
+      cmlError("Temperature must be greater than zero for blackbody or D illuminant type.");
+    if(type == CML_ILLUMINATION_CUSTOM_WHITEPOINT)
+      cmlError("Use cml_InitIlluminationWithCustomWhitePoint. This will not initialize the member properly.");
   #endif
 
   illumination->type = type;
@@ -522,12 +516,7 @@ CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIll
     break;
   default:
     // Any other illumination is computed using Robertson
-    {
-      illumination->temperature = 0.f;
-//      CMLVec3 whitePointYuv;
-//      cml_OneYupvpToYuv(whitePointYuv, cm->illumination.whitePointYupvp);
-//      cm->illumination.temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
-    }
+    illumination->temperature = 0.f;
     break;
   }
 }
@@ -535,16 +524,9 @@ CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIll
 
 CML_HDEF void cml_InitIlluminationWithCustomSpectrum(CMLIllumination* illumination, const CMLFunction* spectrum, CMLFunction* const * specDistFuncs){
   illumination->type = CML_ILLUMINATION_CUSTOM_SPECTRUM;
-  illumination->temperature = 0.f;
   illumination->spectrum = cmlDuplicateFunction(spectrum);
-
-//  CMLVec3 whitePointYxy;
-//  CMLVec3 whitePointYupvp;
-//  CMLVec3 whitePointYuv;
-//  cml_OneXYZToYxy(whitePointYxy, illumination->radiometricXYZ, CML_NULL);
-//  cml_OneYxyToYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
-//  cml_OneYupvpToYuv(whitePointYuv, whitePointYupvp);
-//  illumination->temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
+  cmlSet3(illumination->customWhitePointYxy, 0.f, 0.f, 0.f);
+  illumination->temperature = 0.f;
 }
 
 
@@ -552,12 +534,7 @@ CML_HDEF void cml_InitIlluminationWithCustomWhitePoint(CMLIllumination* illumina
   illumination->type = CML_ILLUMINATION_CUSTOM_WHITEPOINT;
   illumination->spectrum = NULL;
   cmlCpy3(illumination->customWhitePointYxy, whitePointYxy);
-
-  CMLVec3 whitePointYupvp;
-  CMLVec3 whitePointYuv;
-  cml_OneYxyToYupvp(whitePointYupvp, whitePointYxy, CML_NULL);
-  cml_OneYupvpToYuv(whitePointYuv, whitePointYupvp);
-  illumination->temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
+  illumination->temperature = 0.f;
 }
 
 
@@ -577,15 +554,7 @@ CML_HDEF const CMLFunction* cml_GetIlluminationSpectrum(const CMLIllumination* i
 }
 
 
-CML_HDEF float cml_GetIlluminationCorrelatedColorTemperature(const CMLIllumination* illumination){
-//  if(!illumination->temperature){
-//    // Computation takes long. Compute on demand.
-//    return 0.f;
-////    CMLVec3 whitePointYuv;
-////    cml_OneYupvpToYuv(whitePointYuv, cm->illumination.whitePointYupvp);
-////    cm->illumination.temperature = cmlGetCorrelatedColorTemperature(whitePointYuv);
-//  }
-  if(!illumination->temperature){return CML_TEMPERATURE_D65;}
+CML_HDEF float cml_GetIlluminationColorTemperature(const CMLIllumination* illumination){
   return illumination->temperature;
 }
 
