@@ -1,6 +1,7 @@
 
 #include "../CML.h"
 #include "CMLColorMachineState.h"
+#include "NAMathOperators.h"
 
 
 CML_DEF CMLIntegration cmlMakeDefaultIntegration(){
@@ -179,6 +180,7 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
     break; }
     
   case CML_INTEGRATION_BINARY_PAIRS: {
+  
     // This is a highly efficient and accurate integration method developed by
     // Tobias Stamm. It even outperforms a simple for loop by using the memory
     // cache and is much more accurate for well-behaving sampling functions as
