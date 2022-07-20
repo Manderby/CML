@@ -181,11 +181,11 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
     
   case CML_INTEGRATION_BINARY_PAIRS: {
   
-    // This is a highly efficient and accurate integration method developed by
-    // Tobias Stamm. It even outperforms a simple for loop by using the memory
-    // cache and is much more accurate for well-behaving sampling functions as
-    // it combines neighboring values and hence loses much fewer floating point
-    // accuracy when summing these up.
+  // This is a highly efficient and accurate integration method developed by
+  // Tobias Stamm. It might even outperform a simple for loop by using the
+  // memory cache more efficiently but overall is much more accurate for
+  // well-behaving value sequences as it combines neighboring values and hence
+  // loses much fewer floating point accuracy when summing these up.
     
     float tmpSums[8 * sizeof(size_t)];  // 8 denotes bits per Byte
     memset(tmpSums, 0, sizeof(float) * (8 * sizeof(size_t))); // nullify.
