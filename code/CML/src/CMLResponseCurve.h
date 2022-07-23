@@ -27,7 +27,7 @@ CML_API void cmlInitResponseCurve(CMLResponseCurve* curve);
 // Initializes the response curve with the values of the src.
 CML_API void cmlInitResponseCurveWithCopy(
   CMLResponseCurve* dstCurve,
-  CMLResponseCurve* srcCurve);
+  const CMLResponseCurve* srcCurve);
 
 // Initializes the response curve with the predefined values defined by type.
 CML_API void cmlInitResponseCurveWithType(

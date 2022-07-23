@@ -17,7 +17,7 @@ CML_DEF void cmlInitResponseCurve(CMLResponseCurve* curve){
 
 
 
-CML_DEF void cmlInitResponseCurveWithCopy(CMLResponseCurve* dstCurve, CMLResponseCurve* srcCurve){
+CML_DEF void cmlInitResponseCurveWithCopy(CMLResponseCurve* dstCurve, const CMLResponseCurve* srcCurve){
   dstCurve->forwardFunc = cmlDuplicateFunction(srcCurve->forwardFunc);
   dstCurve->backwardFunc = cmlDuplicateFunction(srcCurve->backwardFunc);
   dstCurve->responseType = srcCurve->responseType;
@@ -132,8 +132,8 @@ CML_DEF void cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveT
   CMLRGBColorSpaceType rgbType = cmlGetRGBColorSpaceType(cm);
   if(rgbType == CML_RGB_CUSTOM){
     types[0] = cmlGetResponseCurveType(&cm->rgbSpace.responseR);
-    types[0] = cmlGetResponseCurveType(&cm->rgbSpace.responseG);
-    types[0] = cmlGetResponseCurveType(&cm->rgbSpace.responseB);
+    types[1] = cmlGetResponseCurveType(&cm->rgbSpace.responseG);
+    types[2] = cmlGetResponseCurveType(&cm->rgbSpace.responseB);
   }else{
     CMLResponseCurveType responseType = cmlGetRGBColorSpaceResponseCurveType(rgbType);;
     types[0] = responseType;
