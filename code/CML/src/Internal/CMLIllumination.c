@@ -470,8 +470,6 @@ CML_HDEF void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const
 
 CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIlluminationType type, float temperature, CMLFunction* const * specDistFuncs){
   #if CML_DEBUG
-    if((type != CML_ILLUMINATION_BLACKBODY && type != CML_ILLUMINATION_D_ILLUMINANT) && temperature != 0.f)
-      cmlError("Temperature should be zero except for blackbody or D illuminant type.");
     if((type == CML_ILLUMINATION_BLACKBODY || type == CML_ILLUMINATION_D_ILLUMINANT) && temperature <= 0.f)
       cmlError("Temperature must be greater than zero for blackbody or D illuminant type.");
     if(type == CML_ILLUMINATION_CUSTOM_WHITEPOINT)
