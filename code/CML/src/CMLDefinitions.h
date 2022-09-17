@@ -101,7 +101,6 @@ typedef enum{
   CML_ILLUMINATION_B,
   CML_ILLUMINATION_C,
   CML_ILLUMINATION_D_ILLUMINANT,
-  CML_ILLUMINATION_D50_ISO,
   CML_ILLUMINATION_D50,
   CML_ILLUMINATION_D55,
   CML_ILLUMINATION_D65,
@@ -457,15 +456,19 @@ struct CMLIntegration{
 // precisely to 5000 K but rather more to approximately 5003 K. Use the
 // following multiplication constants to correct the temperatures.
 //
-// The ISO correction factor is a factor which corresponds to the physical
-// constants used for the publication of ISO-3664 of 1931. 
+// The official correction factor for the D illuminant is 1.438e-2f. But by
+// comparing the CIE values for D illuminations D50 and D65 with the official
+// tabulated values, a more accurate correction factor has been determined.
+//
+// For reference, the following two correction factors have been determined
+// and the resulting factor is the average of those two:
+// D50: 0.0143814240220373000
+// D65: 0.0143813942536130000
 #define CML_A_TEMPERATURE_CORRECTION_FACTOR (CML_SECOND_RAD / 1.435e-2f)
-#define CML_D_TEMPERATURE_CORRECTION_FACTOR (CML_SECOND_RAD / 1.438e-2f)
-#define CML_D_TEMPERATURE_ISO_CORRECTION_FACTOR (CML_SECOND_RAD / 0.0143814240220373000)
+#define CML_D_TEMPERATURE_CORRECTION_FACTOR (CML_SECOND_RAD / 1.438141e-2f)
 
 // Or simply use the following constants of some well known illuminations:
 #define CML_TEMPERATURE_A        (2848.f * CML_A_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D50_ISO  (5000.f * CML_D_TEMPERATURE_ISO_CORRECTION_FACTOR)
 #define CML_TEMPERATURE_D50      (5000.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
 #define CML_TEMPERATURE_D55      (5500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
 #define CML_TEMPERATURE_D65      (6500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)

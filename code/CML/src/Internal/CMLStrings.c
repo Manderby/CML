@@ -49,7 +49,6 @@ CML_HDEF const char* illuminationStrings[CML_ILLUMINATION_COUNT] = {
   "B",                                // CML_ILLUMINATION_B
   "C",                                // CML_ILLUMINATION_C
   "D Illuminant",                     // CML_ILLUMINATION_D_ILLUMINANT
-  "D50 ISO-3664",                     // CML_ILLUMINATION_D50_ISO
   "D50",                              // CML_ILLUMINATION_D50
   "D55",                              // CML_ILLUMINATION_D55
   "D65",                              // CML_ILLUMINATION_D65
