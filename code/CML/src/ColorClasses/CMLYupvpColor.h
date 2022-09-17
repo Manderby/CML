@@ -9,7 +9,7 @@
 // Note that V-Values close to or equal to 0.5 may lead to strong
 // fluctuations
 
-class YupvpColor : public Color{
+class CML_API YupvpColor : public Color{
   float color[3];
 public:
 

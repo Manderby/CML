@@ -6,7 +6,7 @@
 // The bounds are defined as constants in CMLConstants.h
 
 
-class LchColor : public Color{
+class CML_API LchColor : public Color{
   float color[3];
 public:
 

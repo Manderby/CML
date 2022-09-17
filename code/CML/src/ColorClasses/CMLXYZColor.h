@@ -7,7 +7,7 @@
 //
 // Be aware that the Y component is defined to be based on 1, not 100.
 
-class XYZColor : public Color{
+class CML_API XYZColor : public Color{
   float color[3];
 public:
 

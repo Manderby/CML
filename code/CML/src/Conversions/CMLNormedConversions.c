@@ -319,7 +319,7 @@ CML_DEF void cmlHSLToNormedCartesianOutput(CMLOutput output, CMLInput hsl, size_
 
 
 
-CMLOutput cmlCreateNormedGamutSlice(
+CML_DEF CMLOutput cmlCreateNormedGamutSlice(
   CMLColorType colorSpace,
   const size_t dimensions[CML_MAX_NUMBER_OF_CHANNELS],
   const CMLVec4 origin,

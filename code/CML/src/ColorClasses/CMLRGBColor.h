@@ -5,7 +5,7 @@
 // B-Range: (0,1), 0 represents no blue, 1 represents full blue
 // The bounds are defined as constants in CMLConstants.h
 
-class RGBColor : public Color{
+class CML_API RGBColor : public Color{
   float color[3];
 public:
 

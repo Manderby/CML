@@ -40,7 +40,7 @@ class SpectralColor;
 
 // The machine which is needed for the color classes:
 extern CMLColorMachine* cmlcm;
-void cmlSetMachineForColorClasses(CMLColorMachine* cm);
+CML_API void cmlSetMachineForColorClasses(CMLColorMachine* cm);
 
 
 // Base class for all Colors
@@ -58,7 +58,7 @@ void cmlSetMachineForColorClasses(CMLColorMachine* cm);
 // ColorMachine directly. This is what these classes will do in the end anyway.
 // The Color classes are much more comfortable to use for quick coding though.
 
-class Color{
+class CML_API Color{
 public:
 
   Color();

@@ -5,7 +5,7 @@
 // Cr-Range: (-.5,.5),   Cr-Component
 // The bounds are defined as constants in CMLConstants.h
 
-class YCbCrColor : public Color{
+class CML_API YCbCrColor : public Color{
   float color[3];
 public:
 

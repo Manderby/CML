@@ -6,7 +6,7 @@
 // K-Range: (0,1), blacK, Key
 // The bounds are defined as constants in CMLConstants.h
 
-class CMYKColor : public Color{
+class CML_API CMYKColor : public Color{
   float color[4];
 public:
 

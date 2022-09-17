@@ -5,7 +5,7 @@
 // v-Range: (-100,100), v-Axis
 // The bounds are defined as constants in CMLConstants.h
 
-class LuvColor : public Color{
+class CML_API LuvColor : public Color{
   float color[3];
 public:
 

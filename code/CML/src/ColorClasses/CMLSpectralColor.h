@@ -4,7 +4,7 @@
 
 
 
-class SpectralColor : public Color{
+class CML_API SpectralColor : public Color{
 
   CMLFunction* spectrum;
   CMLBool bodycolor;

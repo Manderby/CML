@@ -5,7 +5,7 @@
 // V-Range: (0,1),   value
 // The bounds are defined as constants in CMLConstants.h
 
-class HSVColor : public Color{
+class CML_API HSVColor : public Color{
   float color[3];
 public:
 

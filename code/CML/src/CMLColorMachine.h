@@ -663,7 +663,7 @@ CML_API void cmlHSLToNormedCartesianOutput  (CMLOutput output, CMLInput hsl, siz
 // This function does only work with channeled color types. Any other
 // colorspace will return NULL.
 
-CMLOutput cmlCreateNormedGamutSlice(
+CML_API CMLOutput cmlCreateNormedGamutSlice(
   CMLColorType colorspace,
   const size_t dimensions[CML_MAX_NUMBER_OF_CHANNELS],
   const CMLVec4 origin,

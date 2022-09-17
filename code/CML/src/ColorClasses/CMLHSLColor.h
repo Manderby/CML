@@ -5,7 +5,7 @@
 // L-Range: (0,1),   luminance
 // The bounds are defined as constants in CMLConstants.h
 
-class HSLColor : public Color{
+class CML_API HSLColor : public Color{
   float color[3];
 public:
 

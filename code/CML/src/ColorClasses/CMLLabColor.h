@@ -5,7 +5,7 @@
 // b-Range: (-128,128), b-Axis
 // The bounds are defined as constants in CMLConstants.h
 
-class LabColor : public Color{
+class CML_API LabColor : public Color{
   float color[3];
 public:
 

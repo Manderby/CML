@@ -3,7 +3,7 @@
 // Range: (0,1)
 // The bounds are defined as constants in CMLConstants.h
 
-class GrayColor : public Color{
+class CML_API GrayColor : public Color{
   float color[1];
 public:
   
