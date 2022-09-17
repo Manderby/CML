@@ -234,6 +234,9 @@ CML_DEF CMLFunction* cmlCreateIlluminationSpectrum(CMLIlluminationType illuminat
   case CML_ILLUMINATION_D_ILLUMINANT:
     return cmlCreateCIEDIlluminant(temperature);
     break;
+  case CML_ILLUMINATION_D50_ISO:
+    return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D50_ISO);
+    break;
   case CML_ILLUMINATION_D50:
     return cmlCreateCIEDIlluminant(CML_TEMPERATURE_D50);
     break;
@@ -496,6 +499,9 @@ CML_HDEF void cml_InitIlluminationWithType(CMLIllumination* illumination, CMLIll
   case CML_ILLUMINATION_D_ILLUMINANT:
     // temperature is already set.
     if(!illumination->temperature){illumination->temperature = CML_TEMPERATURE_D65;}
+    break;
+  case CML_ILLUMINATION_D50_ISO:
+    illumination->temperature = CML_TEMPERATURE_D50_ISO;
     break;
   case CML_ILLUMINATION_D50:
     illumination->temperature = CML_TEMPERATURE_D50;

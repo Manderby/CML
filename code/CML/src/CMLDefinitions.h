@@ -101,6 +101,7 @@ typedef enum{
   CML_ILLUMINATION_B,
   CML_ILLUMINATION_C,
   CML_ILLUMINATION_D_ILLUMINANT,
+  CML_ILLUMINATION_D50_ISO,
   CML_ILLUMINATION_D50,
   CML_ILLUMINATION_D55,
   CML_ILLUMINATION_D65,
@@ -455,16 +456,21 @@ struct CMLIntegration{
 // different value. Therefore, a D-Illuminant like D50 does not corresponds
 // precisely to 5000 K but rather more to approximately 5003 K. Use the
 // following multiplication constants to correct the temperatures.
+//
+// The ISO correction factor is a factor which corresponds to the physical
+// constants used for the publication of ISO-3664 of 1931. 
 #define CML_A_TEMPERATURE_CORRECTION_FACTOR (CML_SECOND_RAD / 1.435e-2f)
 #define CML_D_TEMPERATURE_CORRECTION_FACTOR (CML_SECOND_RAD / 1.438e-2f)
+#define CML_D_TEMPERATURE_ISO_CORRECTION_FACTOR (CML_SECOND_RAD / 0.0143814461427923000)
 
 // Or simply use the following constants of some well known illuminations:
-#define CML_TEMPERATURE_A     (2848.f * CML_A_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D50   (5000.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D55   (5500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D65   (6500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D75   (7500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
-#define CML_TEMPERATURE_D93   (9300.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_A        (2848.f * CML_A_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D50_ISO  (5000.f * CML_D_TEMPERATURE_ISO_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D50      (5000.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D55      (5500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D65      (6500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D75      (7500.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
+#define CML_TEMPERATURE_D93      (9300.f * CML_D_TEMPERATURE_CORRECTION_FACTOR)
 
 // In CML, all D illuminants are computed with the official datasets of CIE.
 // The datasets are normalized at the following wavelengths:
