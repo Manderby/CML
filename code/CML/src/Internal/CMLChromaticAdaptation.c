@@ -7,7 +7,7 @@ CML_DEF void cmlComputeChromaticAdaptationMatrix(
   CMLMat33 matrix,
   CMLChromaticAdaptationType adaptationType,
   CMLVec3 adaptedWhitePointYxy,
-  CMLVec3 whitePointYxy)
+  const CMLVec3 whitePointYxy)
 {
   #if CML_DEBUG
     if(adaptationType != CML_CHROMATIC_ADAPTATION_NONE){

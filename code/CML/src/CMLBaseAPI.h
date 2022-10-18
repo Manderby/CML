@@ -188,7 +188,7 @@ CML_API void cmlComputeChromaticAdaptationMatrix(
   CMLMat33 matrix,
   CMLChromaticAdaptationType adaptationType,
   CMLVec3 adaptedWhitePointYxy,
-  CMLVec3 whitePointYxy);
+  const CMLVec3 whitePointYxy);
 
 // Convert xyz to the chromatic adapted adaptXYZ
 CML_API void cmlConvertXYZToChromaticAdaptedXYZ(
