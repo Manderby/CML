@@ -3,10 +3,10 @@
 #include "CMLColorMachineState.h"
 
 
-CML_DEF void cmlComputeChromaticAdaptationMatrix(
+CML_DEF void cmlFillChromaticAdaptationMatrix(
   CMLMat33 matrix,
   CMLChromaticAdaptationType adaptationType,
-  CMLVec3 adaptedWhitePointYxy,
+  const CMLVec3 adaptedWhitePointYxy,
   const CMLVec3 whitePointYxy)
 {
   #if CML_DEBUG

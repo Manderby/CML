@@ -184,10 +184,10 @@ CML_API void cmlConvertRemissionSpectrumToXYZ(
 // Computes a chromatic adaptation matrix and returns it in the first parameter.
 // Note that you can use the type CML_CHROMATIC_ADAPTATION_NONE to convert
 // between whitePoints with different radiometric Y values.
-CML_API void cmlComputeChromaticAdaptationMatrix(
+CML_API void cmlFillChromaticAdaptationMatrix(
   CMLMat33 matrix,
   CMLChromaticAdaptationType adaptationType,
-  CMLVec3 adaptedWhitePointYxy,
+  const CMLVec3 adaptedWhitePointYxy,
   const CMLVec3 whitePointYxy);
 
 // Convert xyz to the chromatic adapted adaptXYZ
@@ -257,7 +257,7 @@ CML_API CMLResponseCurveType cmlGetRGBColorSpaceResponseCurveType(
 // setting the Y component of the whitePoint to 1.
 // Also note that in order to get the inverse transformation matrix, simply
 // use the cmlInvertMat33 function.
-CML_API void cmlComputeRGBToXYZMatrix(
+CML_API void cmlFillRGBToXYZMatrix(
   CMLMat33 rgbToXyzMatrix,
   CMLVec3 primaryRYxy,
   CMLVec3 primaryGYxy,

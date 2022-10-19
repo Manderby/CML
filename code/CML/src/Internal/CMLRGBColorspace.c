@@ -121,7 +121,7 @@ CML_HDEF void cml_recomputeRGBColorSpace(CMLColorMachine* cm){
 //    normedWhitePointYxy[0] = 1.f;
 //  }
   
-  cmlComputeRGBToXYZMatrix(cm->rgbSpace.matrix, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2], normedWhitePointYxy);
+  cmlFillRGBToXYZMatrix(cm->rgbSpace.matrix, cm->rgbSpace.primariesYxy[0], cm->rgbSpace.primariesYxy[1], cm->rgbSpace.primariesYxy[2], normedWhitePointYxy);
   cmlInvertMat33(cm->rgbSpace.matrixInv, cm->rgbSpace.matrix);
   
   cml_recomputeRGBResponses(cm);
@@ -275,7 +275,7 @@ CML_DEF CMLResponseCurveType cmlGetRGBColorSpaceResponseCurveType(CMLRGBColorSpa
   }
 }
 
-CML_DEF void cmlComputeRGBToXYZMatrix(CMLMat33 rgbToXyzMatrix, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy, const CMLVec3 whitePointYxy){
+CML_DEF void cmlFillRGBToXYZMatrix(CMLMat33 rgbToXyzMatrix, CMLVec3 primaryRYxy, CMLVec3 primaryGYxy, CMLVec3 primaryBYxy, const CMLVec3 whitePointYxy){
   CMLVec3 redXYZ;
   CMLVec3 greenXYZ;
   CMLVec3 blueXYZ;
