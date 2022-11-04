@@ -318,6 +318,10 @@ typedef void (*CMLNormedConverter)(
   CMLInput,
   size_t);
 
+typedef void (*CMLColorMutator)(
+  CMLInputOutput,
+  size_t);
+
 typedef struct CMLIntegration CMLIntegration;
 struct CMLIntegration{
   CMLIntegrationMethod          method;

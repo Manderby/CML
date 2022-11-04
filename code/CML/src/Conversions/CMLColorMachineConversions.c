@@ -274,6 +274,144 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   return CML_NULL;
 }
 
+CML_DEF CMLColorConverter cmlGetData8InputConverter(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlData8ToGray;
+    case CML_COLOR_XYZ:   return &cmlData8ToXYZ;
+    case CML_COLOR_Yxy:   return &cmlData8ToYxy;
+    case CML_COLOR_Yuv:   return &cmlData8ToYuv;
+    case CML_COLOR_Yupvp: return &cmlData8ToYupvp;
+    case CML_COLOR_Lab:   return &cmlData8ToLab;
+    case CML_COLOR_Lch:   return &cmlData8ToLch;
+    case CML_COLOR_Luv:   return &cmlData8ToLuv;
+    case CML_COLOR_RGB:   return &cmlData8ToRGB;
+    case CML_COLOR_YCbCr: return &cmlData8ToYCbCr;
+    case CML_COLOR_HSV:   return &cmlData8ToHSV;
+    case CML_COLOR_HSL:   return &cmlData8ToHSL;
+    case CML_COLOR_CMYK:  return &cmlData8ToCMYK;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
+CML_DEF CMLColorConverter cmlGetData16InputConverter(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlData16ToGray;
+    case CML_COLOR_XYZ:   return &cmlData16ToXYZ;
+    case CML_COLOR_Yxy:   return &cmlData16ToYxy;
+    case CML_COLOR_Yuv:   return &cmlData16ToYuv;
+    case CML_COLOR_Yupvp: return &cmlData16ToYupvp;
+    case CML_COLOR_Lab:   return &cmlData16ToLab;
+    case CML_COLOR_Lch:   return &cmlData16ToLch;
+    case CML_COLOR_Luv:   return &cmlData16ToLuv;
+    case CML_COLOR_RGB:   return &cmlData16ToRGB;
+    case CML_COLOR_YCbCr: return &cmlData16ToYCbCr;
+    case CML_COLOR_HSV:   return &cmlData16ToHSV;
+    case CML_COLOR_HSL:   return &cmlData16ToHSL;
+    case CML_COLOR_CMYK:  return &cmlData16ToCMYK;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
+CML_DEF CMLColorConverter cmlGetData8OutputConverter(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlGrayToData8;
+    case CML_COLOR_XYZ:   return &cmlXYZToData8;
+    case CML_COLOR_Yxy:   return &cmlYxyToData8;
+    case CML_COLOR_Yuv:   return &cmlYuvToData8;
+    case CML_COLOR_Yupvp: return &cmlYupvpToData8;
+    case CML_COLOR_Lab:   return &cmlLabToData8;
+    case CML_COLOR_Lch:   return &cmlLchToData8;
+    case CML_COLOR_Luv:   return &cmlLuvToData8;
+    case CML_COLOR_RGB:   return &cmlRGBToData8;
+    case CML_COLOR_YCbCr: return &cmlYCbCrToData8;
+    case CML_COLOR_HSV:   return &cmlHSVToData8;
+    case CML_COLOR_HSL:   return &cmlHSLToData8;
+    case CML_COLOR_CMYK:  return &cmlCMYKToData8;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
+CML_DEF CMLColorConverter cmlGetData16OutputConverter(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlGrayToData16;
+    case CML_COLOR_XYZ:   return &cmlXYZToData16;
+    case CML_COLOR_Yxy:   return &cmlYxyToData16;
+    case CML_COLOR_Yuv:   return &cmlYuvToData16;
+    case CML_COLOR_Yupvp: return &cmlYupvpToData16;
+    case CML_COLOR_Lab:   return &cmlLabToData16;
+    case CML_COLOR_Lch:   return &cmlLchToData16;
+    case CML_COLOR_Luv:   return &cmlLuvToData16;
+    case CML_COLOR_RGB:   return &cmlRGBToData16;
+    case CML_COLOR_YCbCr: return &cmlYCbCrToData16;
+    case CML_COLOR_HSV:   return &cmlHSVToData16;
+    case CML_COLOR_HSL:   return &cmlHSLToData16;
+    case CML_COLOR_CMYK:  return &cmlCMYKToData16;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
+CML_DEF CMLColorMutator cmlGetInverter(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlInvertGray;
+    case CML_COLOR_XYZ:   return &cmlInvertXYZ;
+    case CML_COLOR_Yxy:   return &cmlInvertYxy;
+    case CML_COLOR_Yuv:   return &cmlInvertYuv;
+    case CML_COLOR_Yupvp: return &cmlInvertYupvp;
+    case CML_COLOR_Lab:   return &cmlInvertLab;
+    case CML_COLOR_Lch:   return &cmlInvertLch;
+    case CML_COLOR_Luv:   return &cmlInvertLuv;
+    case CML_COLOR_RGB:   return &cmlInvertRGB;
+    case CML_COLOR_YCbCr: return &cmlInvertYCbCr;
+    case CML_COLOR_HSV:   return &cmlInvertHSV;
+    case CML_COLOR_HSL:   return &cmlInvertHSL;
+    case CML_COLOR_CMYK:  return &cmlInvertCMYK;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
+CML_DEF CMLColorMutator cmlGetClamper(CMLColorType colorType){
+  switch(colorType){
+    case CML_COLOR_GRAY:  return &cmlClampGray;
+    case CML_COLOR_XYZ:   return &cmlClampXYZ;
+    case CML_COLOR_Yxy:   return &cmlClampYxy;
+    case CML_COLOR_Yuv:   return &cmlClampYuv;
+    case CML_COLOR_Yupvp: return &cmlClampYupvp;
+    case CML_COLOR_Lab:   return &cmlClampLab;
+    case CML_COLOR_Lch:   return &cmlClampLch;
+    case CML_COLOR_Luv:   return &cmlClampLuv;
+    case CML_COLOR_RGB:   return &cmlClampRGB;
+    case CML_COLOR_YCbCr: return &cmlClampYCbCr;
+    case CML_COLOR_HSV:   return &cmlClampHSV;
+    case CML_COLOR_HSL:   return &cmlClampHSL;
+    case CML_COLOR_CMYK:  return &cmlClampCMYK;
+    default: break;
+  }
+  #if CML_DEBUG
+    cmlError("ColorType unknown.");
+  #endif
+  return CML_NULL;
+}
+
 CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_GRAY:  return &cmlNormedInputToGray;
