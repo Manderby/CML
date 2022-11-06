@@ -495,11 +495,11 @@ CML_HIDEF void cml_YuvToYcd_SB(float* buf, size_t count, size_t floatAlign){
 #define cml_ConvertYcdToYuv(out, in) \
   float c = in[1];\
   float d = in[2];\
-  float divisor = 1.f / (1481.f * c - 1000.f * d + 16518.f);\
+  float divisor = 1.f / (1.481f * c - d + 16.518f);\
   out[0] = in[0];\
-  out[1] = (404.f * c - 4000.f * d + 10872.f) * divisor;\
-  out[2] = 5520.f * divisor;
-  
+  out[1] = (0.404f * c - 4.f * d + 10.872f) * divisor;\
+  out[2] = 5.520f * divisor;
+
 CML_HIDEF void cml_OneYcdToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in){
   cml_ConvertYcdToYuv(out, in);
 }
