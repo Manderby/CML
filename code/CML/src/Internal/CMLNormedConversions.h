@@ -1,40 +1,99 @@
 
-#define CML_Yuv_u_RANGE       (2.f / 3.f)
-#define CML_Yuv_u_INVRANGE    (3.f / 2.f)
-#define CML_Yuv_v_RANGE       (4.f / 9.f)
-#define CML_Yuv_v_INVRANGE    (9.f / 4.f)
+#define CML_GRAY_RANGE       (CML_GRAY_MAX - CML_GRAY_MIN)
+#define CML_GRAY_INVRANGE    (1.f / CML_GRAY_RANGE)
 
-#define CML_Yupvp_up_RANGE       (2.f / 3.f)
-#define CML_Yupvp_up_INVRANGE    (3.f / 2.f)
-#define CML_Yupvp_vp_RANGE       (2.f / 3.f)
-#define CML_Yupvp_vp_INVRANGE    (3.f / 2.f)
+#define CML_XYZ_X_RANGE       (CML_XYZ_X_MAX - CML_XYZ_X_MIN)
+#define CML_XYZ_X_INVRANGE    (1.f / CML_XYZ_X_RANGE)
+#define CML_XYZ_Y_RANGE       (CML_XYZ_Y_MAX - CML_XYZ_Y_MIN)
+#define CML_XYZ_Y_INVRANGE    (1.f / CML_XYZ_Y_RANGE)
+#define CML_XYZ_Z_RANGE       (CML_XYZ_Z_MAX - CML_XYZ_Z_MIN)
+#define CML_XYZ_Z_INVRANGE    (1.f / CML_XYZ_Z_RANGE)
 
-#define CML_Lab_L_RANGE       100.f
-#define CML_Lab_a_RANGE       256.f
-#define CML_Lab_b_RANGE       256.f
-#define CML_Lab_L_INVRANGE    0.01f
-#define CML_Lab_a_INVRANGE    0.00390625f // = 1/256
-#define CML_Lab_b_INVRANGE    0.00390625f // = 1/256
+#define CML_Yxy_Y_RANGE       (CML_Yxy_Y_MAX - CML_Yxy_Y_MIN)
+#define CML_Yxy_Y_INVRANGE    (1.f / CML_Yxy_Y_RANGE)
+#define CML_Yxy_x_RANGE       (CML_Yxy_x_MAX - CML_Yxy_x_MIN)
+#define CML_Yxy_x_INVRANGE    (1.f / CML_Yxy_x_RANGE)
+#define CML_Yxy_y_RANGE       (CML_Yxy_y_MAX - CML_Yxy_y_MIN)
+#define CML_Yxy_y_INVRANGE    (1.f / CML_Yxy_y_RANGE)
 
-#define CML_Lch_L_RANGE       100.f
-#define CML_Lch_c_RANGE       128.f
-#define CML_Lch_h_RANGE       360.f
-#define CML_Lch_L_INVRANGE    0.01f
-#define CML_Lch_c_INVRANGE    0.0078125f  // = 1/128
-#define CML_Lch_h_INVRANGE    (1.f / 360.f)
+#define CML_Yuv_Y_RANGE       (CML_Yuv_Y_MAX - CML_Yuv_Y_MIN)
+#define CML_Yuv_Y_INVRANGE    (1.f / CML_Yuv_Y_RANGE)
+#define CML_Yuv_u_RANGE       (CML_Yuv_u_MAX - CML_Yuv_u_MIN)
+#define CML_Yuv_u_INVRANGE    (1.f / CML_Yuv_u_RANGE)
+#define CML_Yuv_v_RANGE       (CML_Yuv_v_MAX - CML_Yuv_v_MIN)
+#define CML_Yuv_v_INVRANGE    (1.f / CML_Yuv_v_RANGE)
 
-#define CML_Luv_L_RANGE       100.f
-#define CML_Luv_u_RANGE       200.f
-#define CML_Luv_v_RANGE       200.f
-#define CML_Luv_L_INVRANGE    0.01f
-#define CML_Luv_u_INVRANGE    0.005f
-#define CML_Luv_v_INVRANGE    0.005f
+#define CML_Yupvp_Y_RANGE     (CML_Yupvp_Y_MAX - CML_Yupvp_Y_MIN)
+#define CML_Yupvp_Y_INVRANGE  (1.f / CML_Yupvp_Y_RANGE)
+#define CML_Yupvp_up_RANGE    (CML_Yupvp_up_MAX - CML_Yupvp_up_MIN)
+#define CML_Yupvp_up_INVRANGE (1.f / CML_Yupvp_vp_RANGE)
+#define CML_Yupvp_vp_RANGE    (CML_Yupvp_vp_MAX - CML_Yupvp_vp_MIN)
+#define CML_Yupvp_vp_INVRANGE (1.f / CML_Yupvp_up_RANGE)
 
-#define CML_HSV_H_RANGE       360.f
-#define CML_HSV_H_INVRANGE    (1.f / 360.f)
+#define CML_Ycd_Y_RANGE       (CML_Ycd_Y_MAX - CML_Ycd_Y_MIN)
+#define CML_Ycd_Y_INVRANGE    (1.f / CML_Ycd_Y_RANGE)
+#define CML_Ycd_c_RANGE       (CML_Ycd_c_MAX - CML_Ycd_c_MIN)
+#define CML_Ycd_c_INVRANGE    (1.f / CML_Ycd_c_RANGE)
+#define CML_Ycd_d_RANGE       (CML_Ycd_d_MAX - CML_Ycd_d_MIN)
+#define CML_Ycd_d_INVRANGE    (1.f / CML_Ycd_d_RANGE)
 
-#define CML_HSL_H_RANGE       360.f
-#define CML_HSL_H_INVRANGE    (1.f / 360.f)
+#define CML_Lab_L_RANGE       (CML_Lab_L_MAX - CML_Lab_L_MIN)
+#define CML_Lab_L_INVRANGE    (1.f / CML_Lab_L_RANGE)
+#define CML_Lab_a_RANGE       (CML_Lab_a_MAX - CML_Lab_a_MIN)
+#define CML_Lab_a_INVRANGE    (1.f / CML_Lab_a_RANGE)
+#define CML_Lab_b_RANGE       (CML_Lab_b_MAX - CML_Lab_b_MIN)
+#define CML_Lab_b_INVRANGE    (1.f / CML_Lab_b_RANGE)
+
+#define CML_Lch_L_RANGE       (CML_Lch_L_MAX - CML_Lch_L_MIN)
+#define CML_Lch_L_INVRANGE    (1.f / CML_Lch_L_RANGE)
+#define CML_Lch_c_RANGE       (CML_Lch_c_MAX - CML_Lch_c_MIN)
+#define CML_Lch_c_INVRANGE    (1.f / CML_Lch_c_RANGE)
+#define CML_Lch_h_RANGE       (CML_Lch_h_MAX - CML_Lch_h_MIN)
+#define CML_Lch_h_INVRANGE    (1.f / CML_Lch_h_RANGE)
+
+#define CML_Luv_L_RANGE       (CML_Luv_L_MAX - CML_Luv_L_MIN)
+#define CML_Luv_L_INVRANGE    (1.f / CML_Luv_L_RANGE)
+#define CML_Luv_u_RANGE       (CML_Luv_u_MAX - CML_Luv_u_MIN)
+#define CML_Luv_u_INVRANGE    (1.f / CML_Luv_u_RANGE)
+#define CML_Luv_v_RANGE       (CML_Luv_v_MAX - CML_Luv_v_MIN)
+#define CML_Luv_v_INVRANGE    (1.f / CML_Luv_v_RANGE)
+
+#define CML_RGB_R_RANGE       (CML_RGB_R_MAX - CML_RGB_R_MIN)
+#define CML_RGB_R_INVRANGE    (1.f / CML_RGB_R_RANGE)
+#define CML_RGB_G_RANGE       (CML_RGB_G_MAX - CML_RGB_G_MIN)
+#define CML_RGB_G_INVRANGE    (1.f / CML_RGB_G_RANGE)
+#define CML_RGB_B_RANGE       (CML_RGB_B_MAX - CML_RGB_B_MIN)
+#define CML_RGB_B_INVRANGE    (1.f / CML_RGB_B_RANGE)
+
+#define CML_YCbCr_Y_RANGE     (CML_YCbCr_Y_MAX - CML_YCbCr_Y_MIN)
+#define CML_YCbCr_Y_INVRANGE  (1.f / CML_YCbCr_Y_RANGE)
+#define CML_YCbCr_Cb_RANGE    (CML_YCbCr_Cb_MAX - CML_YCbCr_Cb_MIN)
+#define CML_YCbCr_Cb_INVRANGE (1.f / CML_YCbCr_Cb_RANGE)
+#define CML_YCbCr_Cr_RANGE    (CML_YCbCr_Cr_MAX - CML_YCbCr_Cr_MIN)
+#define CML_YCbCr_Cr_INVRANGE (1.f / CML_YCbCr_Cr_RANGE)
+
+#define CML_HSV_H_RANGE       (CML_HSV_H_MAX - CML_HSV_H_MIN)
+#define CML_HSV_H_INVRANGE    (1.f / CML_HSV_H_RANGE)
+#define CML_HSV_S_RANGE       (CML_HSV_S_MAX - CML_HSV_S_MIN)
+#define CML_HSV_S_INVRANGE    (1.f / CML_HSV_S_RANGE)
+#define CML_HSV_V_RANGE       (CML_HSV_V_MAX - CML_HSV_V_MIN)
+#define CML_HSV_V_INVRANGE    (1.f / CML_HSV_V_RANGE)
+
+#define CML_HSL_H_RANGE       (CML_HSL_H_MAX - CML_HSL_H_MIN)
+#define CML_HSL_H_INVRANGE    (1.f / CML_HSL_H_RANGE)
+#define CML_HSL_S_RANGE       (CML_HSL_S_MAX - CML_HSL_S_MIN)
+#define CML_HSL_S_INVRANGE    (1.f / CML_HSL_S_RANGE)
+#define CML_HSL_L_RANGE       (CML_HSL_L_MAX - CML_HSL_L_MIN)
+#define CML_HSL_L_INVRANGE    (1.f / CML_HSL_L_RANGE)
+
+#define CML_CMYK_C_RANGE       (CML_CMYK_C_MAX - CML_CMYK_C_MIN)
+#define CML_CMYK_C_INVRANGE    (1.f / CML_CMYK_C_RANGE)
+#define CML_CMYK_M_RANGE       (CML_CMYK_M_MAX - CML_CMYK_M_MIN)
+#define CML_CMYK_M_INVRANGE    (1.f / CML_CMYK_M_RANGE)
+#define CML_CMYK_Y_RANGE       (CML_CMYK_Y_MAX - CML_CMYK_Y_MIN)
+#define CML_CMYK_Y_INVRANGE    (1.f / CML_CMYK_Y_RANGE)
+#define CML_CMYK_K_RANGE       (CML_CMYK_K_MAX - CML_CMYK_K_MIN)
+#define CML_CMYK_K_INVRANGE    (1.f / CML_CMYK_K_RANGE)
 
 
 
@@ -47,80 +106,86 @@
 // It's not a good idea.  The compiler can not optimize this.
 
 CML_HIDEF void cml_NormedInputToGray(float* CML_RESTRICT gray, const float* CML_RESTRICT input){
-  gray[0] =                     input[0];
+  gray[0] = CML_GRAY_MIN      + input[0] * CML_GRAY_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToXYZ(float* CML_RESTRICT xyz, const float* CML_RESTRICT input){
-  xyz[0] =                      input[0];
-  xyz[1] =                      input[1];
-  xyz[2] =                      input[2];
+  xyz[0] = CML_XYZ_X_MIN      + input[0] * CML_XYZ_X_RANGE;
+  xyz[1] = CML_XYZ_Y_MIN      + input[1] * CML_XYZ_Y_RANGE;
+  xyz[2] = CML_XYZ_Z_MIN      + input[2] * CML_XYZ_Z_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToYxy(float* CML_RESTRICT yxy, const float* CML_RESTRICT input){
-  yxy[0] =                      input[0];
-  yxy[1] =                      input[1];
-  yxy[2] =                      input[2];
+  yxy[0] = CML_Yxy_Y_MIN      + input[0] * CML_Yxy_Y_RANGE;
+  yxy[1] = CML_Yxy_x_MIN      + input[1] * CML_Yxy_x_RANGE;
+  yxy[2] = CML_Yxy_y_MIN      + input[2] * CML_Yxy_y_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToYuv(float* CML_RESTRICT yuv, const float* CML_RESTRICT input){
-  yuv[0] =                      input[0];
-  yuv[1] =                      input[1] * CML_Yuv_u_RANGE;
-  yuv[2] =                      input[2] * CML_Yuv_v_RANGE;
+  yuv[0] = CML_Yuv_Y_MIN      + input[0] * CML_Yuv_Y_RANGE;
+  yuv[1] = CML_Yuv_u_MIN      + input[1] * CML_Yuv_u_RANGE;
+  yuv[2] = CML_Yuv_v_MIN      + input[2] * CML_Yuv_v_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToYupvp(float* CML_RESTRICT yupvp, const float* CML_RESTRICT input){
-  yupvp[0] =                    input[0];
-  yupvp[1] =                    input[1] * CML_Yupvp_up_RANGE;
-  yupvp[2] =                    input[2] * CML_Yupvp_vp_RANGE;
+  yupvp[0] = CML_Yupvp_Y_MIN  + input[0] * CML_Yupvp_Y_RANGE;
+  yupvp[1] = CML_Yupvp_up_MIN + input[1] * CML_Yupvp_up_RANGE;
+  yupvp[2] = CML_Yupvp_vp_MIN + input[2] * CML_Yupvp_vp_RANGE;
+}
+
+CML_HIDEF void cml_NormedInputToYcd(float* CML_RESTRICT ycd, const float* CML_RESTRICT input){
+  ycd[0] = CML_Ycd_Y_MIN      + input[0] * CML_Ycd_Y_RANGE;
+  ycd[1] = CML_Ycd_c_MIN      + input[1] * CML_Ycd_c_RANGE;
+  ycd[2] = CML_Ycd_d_MIN      + input[2] * CML_Ycd_d_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToLab(float* CML_RESTRICT lab, const float* CML_RESTRICT input){
-  lab[0] =                      input[0] * CML_Lab_L_RANGE;
+  lab[0] = CML_Lab_L_MIN      + input[0] * CML_Lab_L_RANGE;
   lab[1] = CML_Lab_a_MIN      + input[1] * CML_Lab_a_RANGE;
   lab[2] = CML_Lab_b_MIN      + input[2] * CML_Lab_b_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToLch(float* CML_RESTRICT lch, const float* CML_RESTRICT input){
-  lch[0] =                      input[0] * CML_Lch_L_RANGE;
-  lch[1] =                      input[1] * CML_Lch_c_RANGE;
-  lch[2] =                      input[2] * CML_Lch_h_RANGE;
+  lch[0] = CML_Lch_L_MIN      + input[0] * CML_Lch_L_RANGE;
+  lch[1] = CML_Lch_c_MIN      + input[1] * CML_Lch_c_RANGE;
+  lch[2] = CML_Lch_h_MIN      + input[2] * CML_Lch_h_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToLuv(float* CML_RESTRICT luv, const float* CML_RESTRICT input){
-  luv[0] =                      input[0] * CML_Luv_L_RANGE;
+  luv[0] = CML_Luv_L_MIN      + input[0] * CML_Luv_L_RANGE;
   luv[1] = CML_Luv_u_MIN      + input[1] * CML_Luv_u_RANGE;
   luv[2] = CML_Luv_v_MIN      + input[2] * CML_Luv_v_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToRGB(float* CML_RESTRICT rgb, const float* CML_RESTRICT input){
-  rgb[0] =                      input[0];
-  rgb[1] =                      input[1];
-  rgb[2] =                      input[2];
+  rgb[0] = CML_RGB_R_MIN      + input[0] * CML_RGB_R_RANGE;
+  rgb[1] = CML_RGB_G_MIN      + input[1] * CML_RGB_G_RANGE;
+  rgb[2] = CML_RGB_B_MIN      + input[2] * CML_RGB_B_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToYCbCr(float* CML_RESTRICT ycbcr, const float* CML_RESTRICT input){
-  ycbcr[0] =                    input[0];
-  ycbcr[1] = CML_YCbCr_Cb_MIN + input[1];
-  ycbcr[2] = CML_YCbCr_Cr_MIN + input[2];
+  ycbcr[0] = CML_YCbCr_Y_MIN  + input[0] * CML_YCbCr_Y_RANGE;
+  ycbcr[1] = CML_YCbCr_Cb_MIN + input[1] * CML_YCbCr_Cb_RANGE;
+  ycbcr[2] = CML_YCbCr_Cr_MIN + input[2] * CML_YCbCr_Cr_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToHSV(float* CML_RESTRICT hsv, const float* CML_RESTRICT input){
-  hsv[0] =                      input[0] * CML_HSV_H_RANGE;
-  hsv[1] =                      input[1];
-  hsv[2] =                      input[2];
+  hsv[0] = CML_HSV_H_MIN      + input[0] * CML_HSV_H_RANGE;
+  hsv[1] = CML_HSV_S_MIN      + input[1] * CML_HSV_S_RANGE;
+  hsv[2] = CML_HSV_V_MIN      + input[2] * CML_HSV_V_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToHSL(float* CML_RESTRICT hsl, const float* CML_RESTRICT input){
-  hsl[0] =                      input[0] * CML_HSL_H_RANGE;
-  hsl[1] =                      input[1];
-  hsl[2] =                      input[2];
+  hsl[0] = CML_HSL_H_MIN      + input[0] * CML_HSL_H_RANGE;
+  hsl[1] = CML_HSL_S_MIN      + input[1] * CML_HSL_S_RANGE;
+  hsl[2] = CML_HSL_L_MIN      + input[2] * CML_HSL_L_RANGE;
 }
 
 CML_HIDEF void cml_NormedInputToCMYK(float* CML_RESTRICT cmyk, const float* CML_RESTRICT input){
-  cmyk[0] =                     input[0];
-  cmyk[1] =                     input[1];
-  cmyk[2] =                     input[2];
-  cmyk[3] =                     input[3];
+  cmyk[0] = CML_CMYK_C_MIN    + input[0] * CML_CMYK_C_RANGE;
+  cmyk[1] = CML_CMYK_M_MIN    + input[1] * CML_CMYK_M_RANGE;
+  cmyk[2] = CML_CMYK_Y_MIN    + input[2] * CML_CMYK_Y_RANGE;
+  cmyk[3] = CML_CMYK_K_MIN    + input[3] * CML_CMYK_K_RANGE;
 }
 
 
@@ -130,80 +195,86 @@ CML_HIDEF void cml_NormedInputToCMYK(float* CML_RESTRICT cmyk, const float* CML_
 // //////////////////////////
 
 CML_HIDEF void cml_GrayToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT gray){
-  output[0] = gray[0];
+  output[0] = (gray[0] - CML_GRAY_MIN) * CML_GRAY_INVRANGE;
 }
 
 CML_HIDEF void cml_XYZToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT xyz){
-  output[0] = xyz[0];
-  output[1] = xyz[1];
-  output[2] = xyz[2];
+  output[0] = (xyz[0] - CML_XYZ_X_MIN) * CML_XYZ_X_INVRANGE;
+  output[1] = (xyz[1] - CML_XYZ_Y_MIN) * CML_XYZ_Y_INVRANGE;
+  output[2] = (xyz[2] - CML_XYZ_Z_MIN) * CML_XYZ_Z_INVRANGE;
 }
 
 CML_HIDEF void cml_YxyToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT yxy){
-  output[0] = yxy[0];
-  output[1] = yxy[1];
-  output[2] = yxy[2];
+  output[0] = (yxy[0] - CML_Yxy_Y_MIN) * CML_Yxy_Y_INVRANGE;
+  output[1] = (yxy[1] - CML_Yxy_x_MIN) * CML_Yxy_x_INVRANGE;
+  output[2] = (yxy[2] - CML_Yxy_y_MIN) * CML_Yxy_y_INVRANGE;
 }
 
 CML_HIDEF void cml_YuvToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT yuv){
-  output[0] = yuv[0];
-  output[1] = yuv[1] * CML_Yuv_u_INVRANGE;
-  output[2] = yuv[2] * CML_Yuv_v_INVRANGE;
+  output[0] = (yuv[0] - CML_Yuv_Y_MIN) * CML_Yuv_Y_INVRANGE;
+  output[1] = (yuv[1] - CML_Yuv_u_MIN) * CML_Yuv_u_INVRANGE;
+  output[2] = (yuv[2] - CML_Yuv_v_MIN) * CML_Yuv_v_INVRANGE;
 }
 
 CML_HIDEF void cml_YupvpToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT yupvp){
-  output[0] = yupvp[0];
-  output[1] = yupvp[1] * CML_Yupvp_up_INVRANGE;
-  output[2] = yupvp[2] * CML_Yupvp_vp_INVRANGE;
+  output[0] = (yupvp[0] - CML_Yupvp_Y_MIN) * CML_Yupvp_Y_INVRANGE;
+  output[1] = (yupvp[1] - CML_Yupvp_up_MIN) * CML_Yupvp_up_INVRANGE;
+  output[2] = (yupvp[2] - CML_Yupvp_vp_MIN) * CML_Yupvp_vp_INVRANGE;
+}
+
+CML_HIDEF void cml_YcdToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT ycd){
+  output[0] = (ycd[0] - CML_Ycd_Y_MIN) * CML_Ycd_Y_INVRANGE;
+  output[1] = (ycd[1] - CML_Ycd_c_MIN) * CML_Ycd_c_INVRANGE;
+  output[2] = (ycd[2] - CML_Ycd_d_MIN) * CML_Ycd_d_INVRANGE;
 }
 
 CML_HIDEF void cml_LabToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT lab){
-  output[0] = (lab[0]) * CML_Lab_L_INVRANGE;
+  output[0] = (lab[0] - CML_Lab_L_MIN) * CML_Lab_L_INVRANGE;
   output[1] = (lab[1] - CML_Lab_a_MIN) * CML_Lab_a_INVRANGE;
   output[2] = (lab[2] - CML_Lab_b_MIN) * CML_Lab_b_INVRANGE;
 }
 
 CML_HIDEF void cml_LchToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT lch){
-  output[0] = (lch[0]) * CML_Lch_L_INVRANGE;
-  output[1] = (lch[1]) * CML_Lch_c_INVRANGE;
-  output[2] = (lch[2]) * CML_Lch_h_INVRANGE;
+  output[0] = (lch[0] - CML_Lch_L_MIN) * CML_Lch_L_INVRANGE;
+  output[1] = (lch[1] - CML_Lch_c_MIN) * CML_Lch_c_INVRANGE;
+  output[2] = (lch[2] - CML_Lch_h_MIN) * CML_Lch_h_INVRANGE;
 }
 
 CML_HIDEF void cml_LuvToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT luv){
-  output[0] =  luv[0]                  * CML_Luv_L_INVRANGE;
+  output[0] = (luv[0] - CML_Luv_L_MIN) * CML_Luv_L_INVRANGE;
   output[1] = (luv[1] - CML_Luv_u_MIN) * CML_Luv_u_INVRANGE;
   output[2] = (luv[2] - CML_Luv_v_MIN) * CML_Luv_v_INVRANGE;
 }
 
 CML_HIDEF void cml_RGBToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT rgb){
-  output[0] = rgb[0];
-  output[1] = rgb[1];
-  output[2] = rgb[2];
+  output[0] = (rgb[0] - CML_RGB_R_MIN) * CML_RGB_R_INVRANGE;
+  output[1] = (rgb[1] - CML_RGB_G_MIN) * CML_RGB_G_INVRANGE;
+  output[2] = (rgb[2] - CML_RGB_B_MIN) * CML_RGB_B_INVRANGE;
 }
 
 CML_HIDEF void cml_YCbCrToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT ycbcr){
-  output[0] =  ycbcr[0];
-  output[1] = (ycbcr[1] - CML_YCbCr_Cb_MIN);
-  output[2] = (ycbcr[2] - CML_YCbCr_Cr_MIN);
+  output[0] = (ycbcr[0] - CML_YCbCr_Y_MIN) * CML_YCbCr_Y_INVRANGE;
+  output[1] = (ycbcr[1] - CML_YCbCr_Cb_MIN) * CML_YCbCr_Cb_INVRANGE;
+  output[2] = (ycbcr[2] - CML_YCbCr_Cr_MIN) * CML_YCbCr_Cr_INVRANGE;
 }
 
 CML_HIDEF void cml_HSVToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT hsv){
-  output[0] =  hsv[0] * CML_HSV_H_INVRANGE;
-  output[1] =  hsv[1];
-  output[2] =  hsv[2];
+  output[0] =  (hsv[0] - CML_HSV_H_MIN) * CML_HSV_H_INVRANGE;
+  output[1] =  (hsv[1] - CML_HSV_S_MIN) * CML_HSV_S_INVRANGE;
+  output[2] =  (hsv[2] - CML_HSV_V_MIN) * CML_HSV_V_INVRANGE;
 }
 
 CML_HIDEF void cml_HSLToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT hsl){
-  output[0] =  hsl[0] * CML_HSL_H_INVRANGE;
-  output[1] =  hsl[1];
-  output[2] =  hsl[2];
+  output[0] =  (hsl[0] - CML_HSL_H_MIN) * CML_HSL_H_INVRANGE;
+  output[1] =  (hsl[1] - CML_HSL_S_MIN) * CML_HSL_S_INVRANGE;
+  output[2] =  (hsl[2] - CML_HSL_L_MIN) * CML_HSL_L_INVRANGE;
 }
 
 CML_HIDEF void cml_CMYKToNormedOutput(float* CML_RESTRICT output, const float* CML_RESTRICT cmyk){
-  output[0] = cmyk[0];
-  output[1] = cmyk[1];
-  output[2] = cmyk[2];
-  output[3] = cmyk[3];
+  output[0] = (cmyk[0] - CML_CMYK_C_MIN) * CML_CMYK_C_INVRANGE;
+  output[1] = (cmyk[1] - CML_CMYK_M_MIN) * CML_CMYK_M_INVRANGE;
+  output[2] = (cmyk[2] - CML_CMYK_Y_MIN) * CML_CMYK_Y_INVRANGE;
+  output[3] = (cmyk[3] - CML_CMYK_K_MIN) * CML_CMYK_K_INVRANGE;
 }
 
 

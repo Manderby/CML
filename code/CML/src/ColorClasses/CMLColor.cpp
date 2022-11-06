@@ -45,6 +45,7 @@ void Color::fromBuffer(const float* src, CMLColorType inputtype){
   case CML_COLOR_Yxy:   fromYxyBuffer(src); break;
   case CML_COLOR_Yuv:   fromYuvBuffer(src); break;
   case CML_COLOR_Yupvp: fromYupvpBuffer(src); break;
+  case CML_COLOR_Ycd:   fromYcdBuffer(src); break;
   case CML_COLOR_Lab:   fromLabBuffer(src); break;
   case CML_COLOR_Lch:   fromLchBuffer(src); break;
   case CML_COLOR_Luv:   fromLuvBuffer(src); break;
@@ -68,6 +69,7 @@ void Color::toBuffer(float* dest, CMLColorType outputtype) const{
   case CML_COLOR_Yxy:   toYxyBuffer(dest); break;
   case CML_COLOR_Yuv:   toYuvBuffer(dest); break;
   case CML_COLOR_Yupvp: toYupvpBuffer(dest); break;
+  case CML_COLOR_Ycd:   toYcdBuffer(dest); break;
   case CML_COLOR_Lab:   toLabBuffer(dest); break;
   case CML_COLOR_Lch:   toLchBuffer(dest); break;
   case CML_COLOR_Luv:   toLuvBuffer(dest); break;

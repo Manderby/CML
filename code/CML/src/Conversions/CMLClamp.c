@@ -38,6 +38,12 @@ CML_HIDEF void cml_ClampYupvp(float* yuv){
   cml_ClampToRange(&(yuv[2]), CML_Yupvp_vp_MIN, CML_Yupvp_vp_MAX);
 }
 
+CML_HIDEF void cml_ClampYcd(float* ycd){
+  cml_ClampToRange(&(ycd[0]), CML_Ycd_Y_MIN, CML_Ycd_Y_MAX);
+  cml_ClampToRange(&(ycd[1]), CML_Ycd_c_MIN, CML_Ycd_c_MAX);
+  cml_ClampToRange(&(ycd[2]), CML_Ycd_d_MIN, CML_Ycd_d_MAX);
+}
+
 CML_HIDEF void cml_ClampLab(float* lab){
   cml_ClampToRange(&(lab[0]), CML_Lab_L_MIN, CML_Lab_L_MAX);
   cml_ClampToRange(&(lab[1]), CML_Lab_a_MIN, CML_Lab_a_MAX);
@@ -129,6 +135,14 @@ CML_DEF void cmlClampYupvp(CMLInputOutput yupvp, size_t count){
   float* inout = (float*)yupvp;
   for(size_t i = 0; i < count; i++){
     cml_ClampYupvp(inout);
+    inout += 3;
+  }
+}
+
+CML_DEF void cmlClampYcd(CMLInputOutput ycd, size_t count){
+  float* inout = (float*)ycd;
+  for(size_t i = 0; i < count; i++){
+    cml_ClampYcd(inout);
     inout += 3;
   }
 }

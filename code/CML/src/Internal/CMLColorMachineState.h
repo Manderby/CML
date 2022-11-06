@@ -173,6 +173,18 @@ CML_HIDEF void cml_CMYupvpToLuv(const CMLColorMachine* cm, float* CML_RESTRICT l
 CML_HIDEF void cml_CMYupvpToLuv_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   cml_YupvpToLuv_SB(buf, count, floatAlign, cmlGetReferenceWhitePointYupvp(cm), cm->labSpace.responseLStar.forwardFunc);
 }
+CML_HIDEF void cml_CMYuvToYcd(const CMLColorMachine* cm, float* CML_RESTRICT ycd, const float* CML_RESTRICT yuv, size_t count){
+  cml_YuvToYcd(ycd, yuv, count);
+}
+CML_HIDEF void cml_CMYuvToYcd_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+  cm = cm; cml_YuvToYcd_SB(buf, count, floatAlign);
+}
+CML_HIDEF void cml_CMYcdToYuv(const CMLColorMachine* cm, float* CML_RESTRICT yuv, const float* CML_RESTRICT ycd, size_t count){
+  cml_YcdToYuv(yuv, ycd, count);
+}
+CML_HIDEF void cml_CMYcdToYuv_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+  cm = cm; cml_YcdToYuv_SB(buf, count, floatAlign);
+}
 CML_HIDEF void cml_CMLuvToYupvp(const CMLColorMachine* cm, float* CML_RESTRICT yupvp, const float* CML_RESTRICT luv, size_t count){
   cml_LuvToYupvp(yupvp, luv, count, cmlGetReferenceWhitePointYupvp(cm), cm->labSpace.responseLStar.backwardFunc);
 }

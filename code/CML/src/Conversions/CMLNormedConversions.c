@@ -52,6 +52,15 @@ CML_DEF void cmlNormedInputToYupvp(CMLOutput yupvp, CMLInput input, size_t count
     in += 3;
   }
 }
+CML_DEF void cmlNormedInputToYcd(CMLOutput ycd, CMLInput input, size_t count){
+  const float* in  = (float*)input;
+  float* out = (float*)ycd;
+  for(size_t i = 0; i < count; i++){
+    cml_NormedInputToYcd(out, in);
+    out += 3;
+    in += 3;
+  }
+}
 CML_DEF void cmlNormedInputToLab(CMLOutput lab, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)lab;
@@ -172,6 +181,15 @@ CML_DEF void cmlYupvpToNormedOutput(CMLOutput output, CMLInput yupvp, size_t cou
   float* out = (float*)output;
   for(size_t i = 0; i < count; i++){
     cml_YupvpToNormedOutput(out, in);
+    out += 3;
+    in += 3;
+  }
+}
+CML_DEF void cmlYcdToNormedOutput(CMLOutput output, CMLInput ycd, size_t count){
+  const float* in  = (float*)ycd;
+  float* out = (float*)output;
+  for(size_t i = 0; i < count; i++){
+    cml_YcdToNormedOutput(out, in);
     out += 3;
     in += 3;
   }

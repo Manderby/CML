@@ -398,7 +398,7 @@ CML_HIDEF void cml_YupvpToLuv_SB(float* buf, size_t count, size_t floatAlign, co
 
 
 // ////////////////////////////////////
-// Yupvp to Luv
+// Yupvp to Yuv
 // ////////////////////////////////////
 
 #define cml_ConvertYuvToYupvp(out, in) \
@@ -427,7 +427,7 @@ CML_HIDEF void cml_YuvToYupvp_SB(float* buf, size_t count, size_t floatAlign){
 
 
 // ////////////////////////////////////
-// Luv to Yupvp
+// Yuv to Yupvp
 // ////////////////////////////////////
 
 #define cml_ConvertYupvpToYuv(out, in) \
@@ -453,6 +453,72 @@ CML_HIDEF void cml_YupvpToYuv_SB(float* buf, size_t count, size_t floatAlign){
   cml_OneYupvpToYuv_SB(buf);
   cml__END_COUNT_LOOP_SB(floatAlign);
 }
+
+
+
+// ////////////////////////////////////
+// Yuv to Ycd
+// ////////////////////////////////////
+
+#define cml_ConvertYuvToYcd(out, in) \
+  float u = in[1];\
+  float v = in[2];\
+  out[0] = in[0];\
+  out[1] = (4.f - u - 10.f * v) / v;\
+  out[2] = (1.708f * v + 0.404f - 1.481f * u) / v;
+
+CML_HIDEF void cml_OneYuvToYcd(float* CML_RESTRICT out, const float* CML_RESTRICT in){
+  cml_ConvertYuvToYcd(out, in);
+}
+CML_HIDEF void cml_OneYuvToYcd_SB(float* buf){
+  cml_ConvertYuvToYcd(buf, buf);
+}
+
+CML_HIDEF void cml_YuvToYcd(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYuvToYcd(out, in);
+  cml__END_COUNT_LOOP(CML_Yuv_NUMCHANNELS, CML_Ycd_NUMCHANNELS);
+}
+
+CML_HIDEF void cml_YuvToYcd_SB(float* buf, size_t count, size_t floatAlign){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYuvToYcd_SB(buf);
+  cml__END_COUNT_LOOP_SB(floatAlign);
+}
+
+
+
+// ////////////////////////////////////
+// Ycd to Yuv
+// ////////////////////////////////////
+
+#define cml_ConvertYcdToYuv(out, in) \
+  float c = in[1];\
+  float d = in[2];\
+  float divisor = 1.f / (1481.f * c - 1000.f * d + 16518.f);\
+  out[0] = in[0];\
+  out[1] = (404.f * c - 4000.f * d + 10872.f) * divisor;\
+  out[2] = 5520.f * divisor;
+  
+CML_HIDEF void cml_OneYcdToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in){
+  cml_ConvertYcdToYuv(out, in);
+}
+CML_HIDEF void cml_OneYcdToYuv_SB(float* buf){
+  cml_ConvertYcdToYuv(buf, buf);
+}
+
+CML_HIDEF void cml_YcdToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYcdToYuv(out, in);
+  cml__END_COUNT_LOOP(CML_Ycd_NUMCHANNELS, CML_Yuv_NUMCHANNELS);
+}
+
+CML_HIDEF void cml_YcdToYuv_SB(float* buf, size_t count, size_t floatAlign){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYcdToYuv_SB(buf);
+  cml__END_COUNT_LOOP_SB(floatAlign);
+}
+
 
 
 // ////////////////////////////////////

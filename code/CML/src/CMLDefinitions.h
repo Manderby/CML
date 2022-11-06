@@ -6,6 +6,7 @@ typedef enum{
   CML_COLOR_Yxy,
   CML_COLOR_Yuv,    // CIE 1960 (UCS)
   CML_COLOR_Yupvp,  // CIE 1976
+  CML_COLOR_Ycd,
   CML_COLOR_Lab,
   CML_COLOR_Lch,
   CML_COLOR_Luv,    // CIE 1976
@@ -376,17 +377,25 @@ struct CMLIntegration{
 #define CML_Yuv_Y_MIN       0.f
 #define CML_Yuv_Y_MAX       1.f
 #define CML_Yuv_u_MIN       0.f
-#define CML_Yuv_u_MAX       (2.f/3.f)
+#define CML_Yuv_u_MAX       (2.f / 3.f)
 #define CML_Yuv_v_MIN       0.f
-#define CML_Yuv_v_MAX       (4.f/9.f)
+#define CML_Yuv_v_MAX       (4.f / 9.f)
 
 #define CML_Yupvp_NUMCHANNELS 3
 #define CML_Yupvp_Y_MIN     0.f
 #define CML_Yupvp_Y_MAX     1.f
 #define CML_Yupvp_up_MIN    0.f
-#define CML_Yupvp_up_MAX    (2.f/3.f)
+#define CML_Yupvp_up_MAX    (2.f / 3.f)
 #define CML_Yupvp_vp_MIN    0.f
-#define CML_Yupvp_vp_MAX    (2.f/3.f)
+#define CML_Yupvp_vp_MAX    (2.f / 3.f)
+
+#define CML_Ycd_NUMCHANNELS 3
+#define CML_Ycd_Y_MIN       0.f
+#define CML_Ycd_Y_MAX       1.f
+#define CML_Ycd_c_MIN       0.f
+#define CML_Ycd_c_MAX       30.f
+#define CML_Ycd_d_MIN       0.f
+#define CML_Ycd_d_MAX       4.f
 
 #define CML_Lab_NUMCHANNELS 3
 #define CML_Lab_L_MIN       0.f
@@ -460,7 +469,7 @@ struct CMLIntegration{
 // precisely to 5000 K but rather more to approximately 5003 K. Use the
 // following multiplication constants to correct the temperatures.
 //
-// The official correction factor for the D illuminant is 1.438e-2f. But by
+// The official correction factor for the D illuminant is 0.01438 But by
 // comparing the CIE values for D illuminations D50 and D65 with the official
 // tabulated values, a more accurate correction factor has been determined.
 //

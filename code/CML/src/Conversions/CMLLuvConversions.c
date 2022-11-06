@@ -45,6 +45,13 @@ CML_API void cmlLuvToYupvp(const CMLColorMachine* cm, CMLOutput yupvp, CMLInput 
   CML_CONVERTER_FIRST_STEP(cml_CMLuvToYupvp);
 }
 
+CML_API void cmlLuvToYcd(const CMLColorMachine* cm, CMLOutput ycd, CMLInput luv, size_t count){
+  CML_CONVERTER_INOUT_PARAMETER(ycd, luv, CML_Ycd_NUMCHANNELS, CML_Luv_NUMCHANNELS);
+  CML_CONVERTER_FIRST_STEP(cml_CMLuvToYupvp);
+  cml_CMYupvpToYuv_SB(cm, out, count, floatAlign);
+  cml_CMYuvToYcd_SB(cm, out, count, floatAlign);
+}
+
 CML_API void cmlLuvToLab(const CMLColorMachine* cm, CMLOutput lab, CMLInput luv, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(lab, luv, CML_Lab_NUMCHANNELS, CML_Luv_NUMCHANNELS);
   CML_CONVERTER_FIRST_STEP(cml_CMLuvToYupvp);

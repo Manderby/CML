@@ -8,6 +8,7 @@ CML_HDEF const char* colorTypeStrings[CML_COLOR_COUNT] = {
   "Yxy",
   "Yuv",
   "Yu\'v\'",
+  "Ycd",
   "Lab",
   "Lch",
   "Luv",

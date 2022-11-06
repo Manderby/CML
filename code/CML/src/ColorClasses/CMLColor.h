@@ -90,6 +90,7 @@ public:
   virtual void fromXYZBuffer  (const float* src) = 0;
   virtual void fromYuvBuffer  (const float* src) = 0;
   virtual void fromYupvpBuffer(const float* src) = 0;
+  virtual void fromYcdBuffer  (const float* src){}
   virtual void fromYxyBuffer  (const float* src) = 0;
   virtual void fromLabBuffer  (const float* src) = 0;
   virtual void fromLchBuffer  (const float* src) = 0;
@@ -106,6 +107,7 @@ public:
   virtual void toXYZBuffer  (float* dest)   const = 0;
   virtual void toYuvBuffer  (float* dest)   const = 0;
   virtual void toYupvpBuffer(float* dest)   const = 0;
+  virtual void toYcdBuffer  (float* dest)   const{}
   virtual void toYxyBuffer  (float* dest)   const = 0;
   virtual void toLabBuffer  (float* dest)   const = 0;
   virtual void toLchBuffer  (float* dest)   const = 0;

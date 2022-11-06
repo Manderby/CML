@@ -32,6 +32,12 @@ CML_HIDEF void cml_InvertYupvp(float* yupvp){
   yupvp[2] = CML_Yupvp_vp_MAX - yupvp[2];
 }
 
+CML_HIDEF void cml_InvertYcd(float* ycd){
+  ycd[0] = CML_Ycd_Y_MAX - ycd[0];
+  ycd[1] = CML_Ycd_c_MAX - ycd[1];
+  ycd[2] = CML_Ycd_d_MAX - ycd[2];
+}
+
 CML_HIDEF void cml_InvertLab(float* lab){
   lab[0] = CML_Lab_L_MAX - lab[0];
   lab[1] = -lab[1];
@@ -122,6 +128,14 @@ CML_DEF void cmlInvertYupvp(CMLInputOutput yupvp, size_t count){
   float* inout = (float*)yupvp;
   for(size_t i = 0; i < count; i++){
     cml_InvertYupvp(inout);
+    inout += 3;
+  }
+}
+
+CML_DEF void cmlInvertYcd(CMLInputOutput ycd, size_t count){
+  float* inout = (float*)ycd;
+  for(size_t i = 0; i < count; i++){
+    cml_InvertYcd(inout);
     inout += 3;
   }
 }

@@ -58,6 +58,16 @@ CML_API void cmlConvertYuvToYupvp(
   const CMLVec3 yuv);
 
 
+// Convert between Yuv and Ycd.
+CML_API void cmlConvertYuvToYcd(
+  CMLVec3 ycd,
+  const CMLVec3 yuv);
+
+CML_API void cmlConvertYcdToYuv(
+  CMLVec3 yuv,
+  const CMLVec3 ycd);
+
+
 
 // Convert between Yupvp and Luv.
 CML_API void cmlConvertYupvpToLuv(
