@@ -3,22 +3,22 @@
 #include "CMLInternal.h"
 
 CML_HDEF const char* colorTypeStrings[CML_COLOR_COUNT] = {
+  "CMYK",
   "Gray",
-  "XYZ",
-  "Yxy",
-  "Yuv",
-  "Yu\'v\'",
-  "Ycd",
+  "HSL",
+  "HSV",
   "Lab",
   "Lch",
   "Luv",
   "RGB",
-  "YCbCr",
-  "HSV",
-  "HSL",
-  "CMYK",
   "Illumination Spectrum",
-  "Remission Spectrum"
+  "Remission Spectrum",
+  "XYZ",
+  "YCbCr",
+  "Ycd",
+  "Yu\'v\'",
+  "Yuv",
+  "Yxy",
 };
 
 CML_HDEF const char* integrationMethodStrings[CML_INTEGRATION_COUNT] = {

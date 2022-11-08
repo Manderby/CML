@@ -346,7 +346,7 @@ CML_DEF CMLOutput cmlCreateNormedGamutSlice(
   const CMLVec4 range2,
   const CMLVec4 range3){
   
-  if(colorSpace > CML_COLOR_CMYK){return NULL;}
+  if(colorSpace >= CML_COLOR_COUNT){return NULL;}
   
   size_t numChannels = cmlGetNumChannels(colorSpace);
 
