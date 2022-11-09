@@ -327,7 +327,7 @@ CML_DEF float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
   float temperature = 0.f;
   float dm = 0.f;
 
-  for(size_t i = 0; i < CML_ROBERTSON_SAMPLECOUNT; i++) {
+  for(size_t i = 0; i < CML_ROBERTSON_SAMPLECOUNT; ++i) {
     float di = (whitePointYuv[2] - robertsonv[i]) - robertsont[i] * (whitePointYuv[1] - robertsonu[i]);
     if ((i > 0) && (di * dm < 0.f)){
       float p;

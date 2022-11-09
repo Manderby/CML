@@ -111,8 +111,8 @@ CML_HDEF void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML
       out[2] = (yr - zr) * cm->labSpace.adamsChromaticityValenceK * cm->labSpace.adamsChromaticityValenceke * CML_Lab_L_MAX * fyinverse;
     }
 
-    in += CML_XYZ_NUMCHANNELS;
-    out += CML_Lab_NUMCHANNELS;
+    in += CML_XYZ_CHANNEL_COUNT;
+    out += CML_Lab_CHANNEL_COUNT;
     count--;
   }
 }
@@ -175,8 +175,8 @@ CML_HDEF void cml_LabToXYZChromaticValence(const CMLColorMachine* cm, float* CML
     out[1] = yr * whitePointXYZ[1];
     out[2] = zr * whitePointXYZ[2];
 
-    in += CML_Lab_NUMCHANNELS;
-    out += CML_XYZ_NUMCHANNELS;
+    in += CML_Lab_CHANNEL_COUNT;
+    out += CML_XYZ_CHANNEL_COUNT;
     count--;
   }
 }
@@ -218,8 +218,8 @@ CML_HDEF void cml_RGBToCMYKStandard(const CMLColorMachine* cm, float* CML_RESTRI
     out[2] = 1.f - in[2];
     out[3] = 0.f;
 
-    in += CML_RGB_NUMCHANNELS;
-    out += CML_CMYK_NUMCHANNELS;
+    in += CML_RGB_CHANNEL_COUNT;
+    out += CML_CMYK_CHANNEL_COUNT;
     count--;
   }
 }
@@ -254,8 +254,8 @@ CML_HDEF void cml_RGBToCMYKUCR(const CMLColorMachine* cm, float* CML_RESTRICT ou
     out[1] -= out[3];
     out[2] -= out[3];
 
-    in += CML_RGB_NUMCHANNELS;
-    out += CML_CMYK_NUMCHANNELS;
+    in += CML_RGB_CHANNEL_COUNT;
+    out += CML_CMYK_CHANNEL_COUNT;
     count--;
   }
 }
@@ -289,8 +289,8 @@ CML_HDEF void cml_CMYKToRGBStandard(const CMLColorMachine* cm, float* CML_RESTRI
     out[1] = 1.f - in[1];
     out[2] = 1.f - in[2];
 
-    in += CML_CMYK_NUMCHANNELS;
-    out += CML_RGB_NUMCHANNELS;
+    in += CML_CMYK_CHANNEL_COUNT;
+    out += CML_RGB_CHANNEL_COUNT;
     count--;
   }
 }
@@ -318,8 +318,8 @@ CML_HDEF void cml_CMYKToRGBUCR(const CMLColorMachine* cm, float* CML_RESTRICT ou
     out[1] = 1.f - (in[1]+in[3]);
     out[2] = 1.f - (in[2]+in[3]);
 
-    in += CML_CMYK_NUMCHANNELS;
-    out += CML_RGB_NUMCHANNELS;
+    in += CML_CMYK_CHANNEL_COUNT;
+    out += CML_RGB_CHANNEL_COUNT;
     count--;
   }
 }

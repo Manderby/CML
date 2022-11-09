@@ -221,7 +221,7 @@ CML_DEF float cmlFilterFunction(const CMLFunction* func, const CMLFunction* filt
     
     // Finally, go though all temp sums and add those to the final sum where
     // sampleCount has a binary 1
-    for(size_t i = 0; i < 8 * sizeof(size_t); i++){
+    for(size_t i = 0; i < 8 * sizeof(size_t); ++i){
       if(sampleCount & ((size_t)1 << i)){
         sum += tmpSums[i];
       }
@@ -532,7 +532,7 @@ CML_DEF CMLFunction* cmlCreateArrayFunction(CMLArrayFunctionInput input){
 
 CML_DEF CMLFunction* cmlSampleArrayFunction(const CMLFunction* func, CMLArrayFunctionSettings settings){
   float* buffer = (float*)cml_Malloc(sizeof(float) * settings.entryCount);
-  for(size_t i = 0; i < settings.entryCount; i++){
+  for(size_t i = 0; i < settings.entryCount; ++i){
     float coord = settings.minimalCoord + ((float)i / (float)(settings.entryCount-1)) * (settings.maximalCoord - settings.minimalCoord);
     buffer[i] = cml_Eval(func, coord);
   }

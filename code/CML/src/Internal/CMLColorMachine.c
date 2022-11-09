@@ -80,7 +80,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
 
   // Set the default for the integer mapping
   cmlSetIntegerMappingType(cm, CML_DEFAULT_INTEGER_MAPPING);
-  for(size_t i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; i++){
+  for(size_t i = 0; i < CML_MAX_NUMBER_OF_CHANNELS; ++i){
     cm->serialization.offset8Bit[i]  = CML_DEFAULT_8BIT_FLOOR_CUTOFF;
     cm->serialization.range8Bit[i]   = (float)(CML_DEFAULT_8BIT_CEIL_CUTOFF - CML_DEFAULT_8BIT_FLOOR_CUTOFF);
     cm->serialization.offset16Bit[i] = CML_DEFAULT_16BIT_FLOOR_CUTOFF;

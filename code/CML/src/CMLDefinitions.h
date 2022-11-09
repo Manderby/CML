@@ -354,107 +354,7 @@ struct CMLIntegration{
 #define CML_DEFAULT_INTEGRATION_STEPSIZE        1.f
 
 // Definitions of the properties of the colorspaces.
-#define CML_GRAY_NUMCHANNELS  1
-#define CML_GRAY_MIN          0.f
-#define CML_GRAY_MAX          1.f
-
-#define CML_XYZ_NUMCHANNELS 3
-#define CML_XYZ_X_MIN       0.f
-#define CML_XYZ_X_MAX       1.f
-#define CML_XYZ_Y_MIN       0.f
-#define CML_XYZ_Y_MAX       1.f
-#define CML_XYZ_Z_MIN       0.f
-#define CML_XYZ_Z_MAX       1.f
-
-#define CML_Yxy_NUMCHANNELS 3
-#define CML_Yxy_Y_MIN       0.f
-#define CML_Yxy_Y_MAX       1.f
-#define CML_Yxy_x_MIN       0.f
-#define CML_Yxy_x_MAX       1.f
-#define CML_Yxy_y_MIN       0.f
-#define CML_Yxy_y_MAX       1.f
-
-#define CML_Yuv_NUMCHANNELS 3
-#define CML_Yuv_Y_MIN       0.f
-#define CML_Yuv_Y_MAX       1.f
-#define CML_Yuv_u_MIN       0.f
-#define CML_Yuv_u_MAX       (2.f / 3.f)
-#define CML_Yuv_v_MIN       0.f
-#define CML_Yuv_v_MAX       (4.f / 9.f)
-
-#define CML_Yupvp_NUMCHANNELS 3
-#define CML_Yupvp_Y_MIN     0.f
-#define CML_Yupvp_Y_MAX     1.f
-#define CML_Yupvp_up_MIN    0.f
-#define CML_Yupvp_up_MAX    (2.f / 3.f)
-#define CML_Yupvp_vp_MIN    0.f
-#define CML_Yupvp_vp_MAX    (2.f / 3.f)
-
-#define CML_Ycd_NUMCHANNELS 3
-#define CML_Ycd_Y_MIN       0.f
-#define CML_Ycd_Y_MAX       1.f
-#define CML_Ycd_c_MIN       0.f
-#define CML_Ycd_c_MAX       30.f
-#define CML_Ycd_d_MIN       0.f
-#define CML_Ycd_d_MAX       4.f
-
-#define CML_Lab_NUMCHANNELS 3
-#define CML_Lab_L_MIN       0.f
-#define CML_Lab_L_MAX       100.f
-#define CML_Lab_a_MIN       -128.f
-#define CML_Lab_a_MAX       128.f
-#define CML_Lab_b_MIN       -128.f
-#define CML_Lab_b_MAX       128.f
-
-#define CML_Lch_NUMCHANNELS 3
-#define CML_Lch_L_MIN       0.f
-#define CML_Lch_L_MAX       100.f
-#define CML_Lch_c_MIN       0.f
-#define CML_Lch_c_MAX       128.f
-#define CML_Lch_h_MIN       0.f
-#define CML_Lch_h_MAX       360.f
-
-#define CML_Luv_NUMCHANNELS 3
-#define CML_Luv_L_MIN       0.f
-#define CML_Luv_L_MAX       100.f
-#define CML_Luv_u_MIN       -100.f
-#define CML_Luv_u_MAX       100.f
-#define CML_Luv_v_MIN       -100.f
-#define CML_Luv_v_MAX       100.f
-
-#define CML_RGB_NUMCHANNELS 3
-#define CML_RGB_R_MIN       0.f
-#define CML_RGB_R_MAX       1.f
-#define CML_RGB_G_MIN       0.f
-#define CML_RGB_G_MAX       1.f
-#define CML_RGB_B_MIN       0.f
-#define CML_RGB_B_MAX       1.f
-
-#define CML_YCbCr_NUMCHANNELS 3
-#define CML_YCbCr_Y_MIN     0.f
-#define CML_YCbCr_Y_MAX     1.f
-#define CML_YCbCr_Cb_MIN    -0.5f
-#define CML_YCbCr_Cb_MAX    0.5f
-#define CML_YCbCr_Cr_MIN    -0.5f
-#define CML_YCbCr_Cr_MAX    0.5f
-
-#define CML_HSV_NUMCHANNELS 3
-#define CML_HSV_H_MIN       0.f
-#define CML_HSV_H_MAX       360.f
-#define CML_HSV_S_MIN       0.f
-#define CML_HSV_S_MAX       1.f
-#define CML_HSV_V_MIN       0.f
-#define CML_HSV_V_MAX       1.f
-
-#define CML_HSL_NUMCHANNELS 3
-#define CML_HSL_H_MIN       0.f
-#define CML_HSL_H_MAX       360.f
-#define CML_HSL_S_MIN       0.f
-#define CML_HSL_S_MAX       1.f
-#define CML_HSL_L_MIN       0.f
-#define CML_HSL_L_MAX       1.f
-
-#define CML_CMYK_NUMCHANNELS 4
+#define CML_CMYK_CHANNEL_COUNT 4
 #define CML_CMYK_C_MIN       0.f
 #define CML_CMYK_C_MAX       1.f
 #define CML_CMYK_M_MIN       0.f
@@ -463,6 +363,107 @@ struct CMLIntegration{
 #define CML_CMYK_Y_MAX       1.f
 #define CML_CMYK_K_MIN       0.f
 #define CML_CMYK_K_MAX       1.f
+
+#define CML_GRAY_CHANNEL_COUNT  1
+#define CML_GRAY_MIN          0.f
+#define CML_GRAY_MAX          1.f
+
+#define CML_HSL_CHANNEL_COUNT 3
+#define CML_HSL_H_MIN       0.f
+#define CML_HSL_H_MAX       360.f
+#define CML_HSL_S_MIN       0.f
+#define CML_HSL_S_MAX       1.f
+#define CML_HSL_L_MIN       0.f
+#define CML_HSL_L_MAX       1.f
+
+#define CML_HSV_CHANNEL_COUNT 3
+#define CML_HSV_H_MIN       0.f
+#define CML_HSV_H_MAX       360.f
+#define CML_HSV_S_MIN       0.f
+#define CML_HSV_S_MAX       1.f
+#define CML_HSV_V_MIN       0.f
+#define CML_HSV_V_MAX       1.f
+
+#define CML_Lab_CHANNEL_COUNT 3
+#define CML_Lab_L_MIN       0.f
+#define CML_Lab_L_MAX       100.f
+#define CML_Lab_a_MIN       -128.f
+#define CML_Lab_a_MAX       128.f
+#define CML_Lab_b_MIN       -128.f
+#define CML_Lab_b_MAX       128.f
+
+#define CML_Lch_CHANNEL_COUNT 3
+#define CML_Lch_L_MIN       0.f
+#define CML_Lch_L_MAX       100.f
+#define CML_Lch_c_MIN       0.f
+#define CML_Lch_c_MAX       128.f
+#define CML_Lch_h_MIN       0.f
+#define CML_Lch_h_MAX       360.f
+
+#define CML_Luv_CHANNEL_COUNT 3
+#define CML_Luv_L_MIN       0.f
+#define CML_Luv_L_MAX       100.f
+#define CML_Luv_u_MIN       -100.f
+#define CML_Luv_u_MAX       100.f
+#define CML_Luv_v_MIN       -100.f
+#define CML_Luv_v_MAX       100.f
+
+#define CML_RGB_CHANNEL_COUNT 3
+#define CML_RGB_R_MIN       0.f
+#define CML_RGB_R_MAX       1.f
+#define CML_RGB_G_MIN       0.f
+#define CML_RGB_G_MAX       1.f
+#define CML_RGB_B_MIN       0.f
+#define CML_RGB_B_MAX       1.f
+
+#define CML_XYZ_CHANNEL_COUNT 3
+#define CML_XYZ_X_MIN       0.f
+#define CML_XYZ_X_MAX       1.f
+#define CML_XYZ_Y_MIN       0.f
+#define CML_XYZ_Y_MAX       1.f
+#define CML_XYZ_Z_MIN       0.f
+#define CML_XYZ_Z_MAX       1.f
+
+#define CML_YCbCr_CHANNEL_COUNT 3
+#define CML_YCbCr_Y_MIN     0.f
+#define CML_YCbCr_Y_MAX     1.f
+#define CML_YCbCr_Cb_MIN    -0.5f
+#define CML_YCbCr_Cb_MAX    0.5f
+#define CML_YCbCr_Cr_MIN    -0.5f
+#define CML_YCbCr_Cr_MAX    0.5f
+
+#define CML_Ycd_CHANNEL_COUNT 3
+#define CML_Ycd_Y_MIN       0.f
+#define CML_Ycd_Y_MAX       1.f
+#define CML_Ycd_c_MIN       0.f
+#define CML_Ycd_c_MAX       30.f
+#define CML_Ycd_d_MIN       0.f
+#define CML_Ycd_d_MAX       4.f
+
+#define CML_Yupvp_CHANNEL_COUNT 3
+#define CML_Yupvp_Y_MIN     0.f
+#define CML_Yupvp_Y_MAX     1.f
+#define CML_Yupvp_up_MIN    0.f
+#define CML_Yupvp_up_MAX    (2.f / 3.f)
+#define CML_Yupvp_vp_MIN    0.f
+#define CML_Yupvp_vp_MAX    (2.f / 3.f)
+
+#define CML_Yuv_CHANNEL_COUNT 3
+#define CML_Yuv_Y_MIN       0.f
+#define CML_Yuv_Y_MAX       1.f
+#define CML_Yuv_u_MIN       0.f
+#define CML_Yuv_u_MAX       (2.f / 3.f)
+#define CML_Yuv_v_MIN       0.f
+#define CML_Yuv_v_MAX       (4.f / 9.f)
+
+#define CML_Yxy_CHANNEL_COUNT 3
+#define CML_Yxy_Y_MIN       0.f
+#define CML_Yxy_Y_MAX       1.f
+#define CML_Yxy_x_MIN       0.f
+#define CML_Yxy_x_MAX       1.f
+#define CML_Yxy_y_MIN       0.f
+#define CML_Yxy_y_MAX       1.f
+
 
 
 // When standardizing the A, B, C and D illuminants, CML_SECOND_RAD had a

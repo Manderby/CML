@@ -132,10 +132,10 @@
   CMLBool sameBuffer;\
   float* xyzbuf;\
   size_t floatAlign;\
-  if(outchannels < CML_XYZ_NUMCHANNELS){\
-    xyzbuf = (float*)cml_Malloc(count * CML_XYZ_NUMCHANNELS * sizeof(float));\
+  if(outchannels < CML_XYZ_CHANNEL_COUNT){\
+    xyzbuf = (float*)cml_Malloc(count * CML_XYZ_CHANNEL_COUNT * sizeof(float));\
     sameBuffer = CML_FALSE;\
-    floatAlign = CML_XYZ_NUMCHANNELS;\
+    floatAlign = CML_XYZ_CHANNEL_COUNT;\
   }else{\
     xyzbuf = out;\
     sameBuffer = CML_TRUE;\
