@@ -50,9 +50,9 @@ typedef enum{
 //
 // When mapping from floats to integers on the other hand, the conversion is
 // not straight forward. In the following diagram, three methods are shown.
-// - A (Floor),
+// - F (Floor),
 // - B (Box)
-// - C (Interval)
+// - I (Interval)
 //
 // Floor (F): intValue = floor(v * maxIntValue)
 // The most common method. With this method, only the input value 1 will be
@@ -87,10 +87,10 @@ typedef enum{
 typedef enum{
   CML_OBSERVER_2DEG_CIE_1931 = 0,
   CML_OBSERVER_10DEG_CIE_1964,
-//  CML_OBSERVER_2DEG_ISO_13655,
+  CML_OBSERVER_2DEG_ISO_13655,
   CML_OBSERVER_2DEG_JUDD_1951,
   CML_OBSERVER_2DEG_JUDD_VOS_1978,
-//  CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997,
+  CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997,
   CML_OBSERVER_CUSTOM,
   CML_OBSERVER_COUNT
 } CMLObserverType;

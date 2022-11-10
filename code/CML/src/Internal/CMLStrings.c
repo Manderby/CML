@@ -33,14 +33,13 @@ CML_HDEF const char* integerMappingStrings[CML_INTEGER_MAPPING_COUNT] = {
 };
 
 CML_HDEF const char* observerStrings[CML_OBSERVER_COUNT] = {
-  "CIE 1931 2 deg",                           // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
-  "CIE 1964 10 deg",                          // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
-//  "ISO-13655 2 deg",                          // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
-  "Judd 1951 2 deg",                          // CML_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
-  "Judd Vos 1978 2 deg",                      // CML_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
-//  "Stiles Burch 1955 2 deg (5 nm steps)",     // CML_OBSERVER_2DEG_STILES_BURCH_1955
-//  "Shaw Fairchild 1997 2 deg (5 nm steps)",   // CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997
-  "Custom Observer",                          // CML_OBSERVER_CUSTOM
+  "CIE 1931 2 deg",              // CML_OBSERVER_2DEG_CIE_1931 (5 nm steps)
+  "CIE 1964 10 deg",             // CML_OBSERVER_10DEG_CIE_1964 (5 nm steps)
+  "ISO-13655 2 deg",             // CML_OBSERVER_2DEG_ISO_13655 (10 nm steps)
+  "Judd 1951 2 deg",             // CML_OBSERVER_2DEG_JUDD_1951 (10 nm steps)
+  "Judd Vos 1978 2 deg",         // CML_OBSERVER_2DEG_JUDD_VOS_1978 (5 nm steps)
+  "Shaw Fairchild 1997 2 deg",   // CML_OBSERVER_2DEG_SHAW_FAIRCHILD_1997 (5 nm steps)
+  "Custom Observer",             // CML_OBSERVER_CUSTOM
 };
 
 CML_HDEF const char* illuminationStrings[CML_ILLUMINATION_COUNT] = {
