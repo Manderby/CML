@@ -111,12 +111,12 @@ CML_HDEF void cml_recomputeRGBResponses(CMLColorMachine* cm){
 CML_HDEF void cml_recomputeRGBColorSpace(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_RGB; return;}
 
-  if(cmlGetReferenceIlluminationType(cm) != rgbSpaceIlluminations[cm->rgbSpace.type]){
+  if(cmlGetIlluminationType(cm) != rgbSpaceIlluminations[cm->rgbSpace.type]){
     cm->rgbSpace.type = CML_RGB_CUSTOM;
   }
 
   CMLVec3 normedWhitePointYxy;
-  cmlCpy3(normedWhitePointYxy, cmlGetReferenceWhitePointYxy(cm));
+  cmlCpy3(normedWhitePointYxy, cmlGetWhitePointYxy(cm));
 //  if(!cm->observer.radiometric){
 //    normedWhitePointYxy[0] = 1.f;
 //  }

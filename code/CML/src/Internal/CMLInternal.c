@@ -37,7 +37,7 @@ CML_HDEF void cml_GrayToChanneledBufferL(const CMLColorMachine* cm, float* CML_R
 }
 CML_HDEF void cml_GrayToChanneledBufferY(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
   float luminance = 1.f - *gray;
-  const float* whitePointYxy = cmlGetReferenceWhitePointYxy(cm);
+  const float* whitePointYxy = cmlGetWhitePointYxy(cm);
   cmlSet3(buffer, CML_XYZ_Y_MAX * luminance, whitePointYxy[1], whitePointYxy[2]);
 }
 CML_HDEF void cml_GrayToChanneledBufferYPrime(const CMLColorMachine* cm, float* CML_RESTRICT buffer, const float* CML_RESTRICT gray){
@@ -83,16 +83,16 @@ CML_HDEF void cml_ChanneledBufferToGrayYPrime(const CMLColorMachine* cm, float* 
 
 
 CML_HDEF void cml_XYZToLabCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  cml_XYZToCIELAB(out, in, count, cmlGetReferenceWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
+  cml_XYZToCIELAB(out, in, count, cmlGetWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
 }
 
 CML_HDEF void cml_XYZToLabCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
+  cml_XYZToCIELAB_SB(buf, count, floatAlign, cmlGetWhitePointXYZInverse(cm), cm->labSpace.responseL.forwardFunc);
 }
 
 
 CML_HDEF void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  const float* whitePointXYZInverse = cmlGetReferenceWhitePointXYZInverse(cm);
+  const float* whitePointXYZInverse = cmlGetWhitePointXYZInverse(cm);
   while(count){
 
     float xr = in[0] * whitePointXYZInverse[0];
@@ -118,7 +118,7 @@ CML_HDEF void cml_XYZToLabChromaticValence(const CMLColorMachine* cm, float* CML
 }
 
 CML_HDEF void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  const float* whitePointXYZInverse = cmlGetReferenceWhitePointXYZInverse(cm);
+  const float* whitePointXYZInverse = cmlGetWhitePointXYZInverse(cm);
   while(count){
 
     float xr = buf[0] * whitePointXYZInverse[0];
@@ -144,18 +144,18 @@ CML_HDEF void cml_XYZToLabChromaticValence_SB(const CMLColorMachine* cm, float* 
 
 
 CML_HDEF void cml_LabToXYZCIELAB(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  cml_CIELABToXYZ(out, in, count, cmlGetReferenceWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
+  cml_CIELABToXYZ(out, in, count, cmlGetWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
 }
 
 
 CML_HDEF void cml_LabToXYZCIELAB_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  cml_CIELABToXYZ_SB(buf, count, floatAlign, cmlGetReferenceWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
+  cml_CIELABToXYZ_SB(buf, count, floatAlign, cmlGetWhitePointXYZ(cm), cm->labSpace.responseL.backwardFunc);
 }
 
 
 
 CML_HDEF void cml_LabToXYZChromaticValence(const CMLColorMachine* cm, float* CML_RESTRICT out, const float* CML_RESTRICT in, size_t count){
-  const float* whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
+  const float* whitePointXYZ = cmlGetWhitePointXYZ(cm);
   while(count){
 
     float xr, yr, zr;
@@ -183,7 +183,7 @@ CML_HDEF void cml_LabToXYZChromaticValence(const CMLColorMachine* cm, float* CML
 
 
 CML_HDEF void cml_LabToXYZChromaticValence_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
-  const float* whitePointXYZ = cmlGetReferenceWhitePointXYZ(cm);
+  const float* whitePointXYZ = cmlGetWhitePointXYZ(cm);
   while(count){
 
     float xr, yr, zr;

@@ -283,7 +283,7 @@ CML_HDEF void cml_recomputeObserver(CMLColorMachine* cm){
   
   // Future-Note: Add Photopic and Scotopic.
   
-  cml_recomputeReferenceIllumination(cm);
+  cml_recomputeIllumination(cm);
 }
 
 
@@ -531,14 +531,14 @@ CML_HDEF void cml_InitObserver(
 
 
 
-CML_HDEF void cml_SetReferenceIllumination(CMLColorMachine* cm, CMLIllumination* illumination){
+CML_HDEF void cml_SetIllumination(CMLColorMachine* cm, CMLIllumination* illumination){
   #if CML_DEBUG
     if(!illumination)
       cmlError("Illumination must not be Null.");
   #endif
   
-  cml_ClearIllumination(&(cm->referenceIllumination));
-  cml_InitIlluminationDuplicate(&(cm->referenceIllumination), illumination);
+  cml_ClearIllumination(&(cm->illumination));
+  cml_InitIlluminationDuplicate(&(cm->illumination), illumination);
 
   cml_recomputeObserver(cm);
 }
@@ -549,7 +549,7 @@ CML_HDEF void cml_ClearObserver(CMLColorMachine* cm, CMLObserver* observer){
   cmlReleaseFunction(observer->specDistFunctions[0]);
   cmlReleaseFunction(observer->specDistFunctions[1]);
   cmlReleaseFunction(observer->specDistFunctions[2]);
-  cml_ClearIllumination(&(cm->referenceIllumination));
+  cml_ClearIllumination(&(cm->illumination));
 }
 
 
@@ -595,27 +595,27 @@ CML_DEF const CMLFunction* cmlGetSpecDistFunction(const CMLColorMachine* cm, int
 
 
 
-CML_DEF CMLIlluminationType cmlGetReferenceIlluminationType(const CMLColorMachine* cm){
-  return cml_GetIlluminationType(&(cm->referenceIllumination));
+CML_DEF CMLIlluminationType cmlGetIlluminationType(const CMLColorMachine* cm){
+  return cml_GetIlluminationType(&(cm->illumination));
 }
 
-CML_DEF const CMLFunction* cmlGetReferenceIlluminationSpectrum(const CMLColorMachine* cm){
-  return cml_GetIlluminationSpectrum(&(cm->referenceIllumination));
+CML_DEF const CMLFunction* cmlGetIlluminationSpectrum(const CMLColorMachine* cm){
+  return cml_GetIlluminationSpectrum(&(cm->illumination));
 }
 
-CML_DEF const float* cmlGetReferenceWhitePointXYZ(const CMLColorMachine* cm){
+CML_DEF const float* cmlGetWhitePointXYZ(const CMLColorMachine* cm){
   return cm->whitePointXYZ;
 }
 
-CML_DEF const float* cmlGetReferenceWhitePointXYZInverse(const CMLColorMachine* cm){
+CML_DEF const float* cmlGetWhitePointXYZInverse(const CMLColorMachine* cm){
   return cm->whitePointXYZInverse;
 }
 
-CML_DEF const float* cmlGetReferenceWhitePointYxy(const CMLColorMachine* cm){
+CML_DEF const float* cmlGetWhitePointYxy(const CMLColorMachine* cm){
   return cm->whitePointYxy;
 }
 
-CML_DEF const float* cmlGetReferenceWhitePointYupvp(const CMLColorMachine* cm){
+CML_DEF const float* cmlGetWhitePointYupvp(const CMLColorMachine* cm){
   return cm->whitePointYupvp;
 }
 

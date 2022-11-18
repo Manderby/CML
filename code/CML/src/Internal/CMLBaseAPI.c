@@ -122,7 +122,7 @@ CML_DEF void cmlConvertXYZToChromaticAdaptedXYZ(CMLVec3 adaptXYZ, const CMLVec3 
 CML_DEF size_t cmlGetNumChannels(CMLColorType colorType){
   switch(colorType){
   case CML_COLOR_CMYK:  return CML_CMYK_CHANNEL_COUNT;  break;
-  case CML_COLOR_GRAY:  return CML_GRAY_CHANNEL_COUNT;  break;
+  case CML_COLOR_Gray:  return CML_GRAY_CHANNEL_COUNT;  break;
   case CML_COLOR_HSL:   return CML_HSL_CHANNEL_COUNT;   break;
   case CML_COLOR_HSV:   return CML_HSV_CHANNEL_COUNT;   break;
   case CML_COLOR_Lab:   return CML_Lab_CHANNEL_COUNT;   break;
@@ -149,7 +149,7 @@ CML_DEF size_t cmlGetNumChannels(CMLColorType colorType){
 CML_DEF void cmlGetMinBounds(float* buffer, CMLColorType colorType){
   switch(colorType){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MIN,  CML_CMYK_M_MIN,   CML_CMYK_Y_MIN, CML_CMYK_K_MIN); break;
-  case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MIN); break;
+  case CML_COLOR_Gray:  cmlSet1(buffer, CML_GRAY_MIN); break;
   case CML_COLOR_HSL:   cmlSet3(buffer, CML_HSL_H_MIN,   CML_HSL_S_MIN,    CML_HSL_L_MIN);    break;
   case CML_COLOR_HSV:   cmlSet3(buffer, CML_HSV_H_MIN,   CML_HSV_S_MIN,    CML_HSV_V_MIN);    break;
   case CML_COLOR_Lab:   cmlSet3(buffer, CML_Lab_L_MIN,   CML_Lab_a_MIN,    CML_Lab_b_MIN);    break;
@@ -175,7 +175,7 @@ CML_DEF void cmlGetMinBounds(float* buffer, CMLColorType colorType){
 CML_DEF void cmlGetMaxBounds(float* buffer, CMLColorType colorType){
   switch(colorType){
   case CML_COLOR_CMYK:  cmlSet4(buffer, CML_CMYK_C_MAX,  CML_CMYK_M_MAX,   CML_CMYK_Y_MAX, CML_CMYK_K_MAX); break;
-  case CML_COLOR_GRAY:  cmlSet1(buffer, CML_GRAY_MAX); break;
+  case CML_COLOR_Gray:  cmlSet1(buffer, CML_GRAY_MAX); break;
   case CML_COLOR_HSL:   cmlSet3(buffer, CML_HSL_H_MAX,   CML_HSL_S_MAX,    CML_HSL_L_MAX);    break;
   case CML_COLOR_HSV:   cmlSet3(buffer, CML_HSV_H_MAX,   CML_HSV_S_MAX,    CML_HSV_V_MAX);    break;
   case CML_COLOR_Lab:   cmlSet3(buffer, CML_Lab_L_MAX,   CML_Lab_a_MAX,    CML_Lab_b_MAX);    break;

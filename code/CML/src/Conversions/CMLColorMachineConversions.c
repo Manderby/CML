@@ -6,10 +6,10 @@
 
 CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLColorType inputSystem){
   switch(inputSystem){
-  case CML_COLOR_GRAY:
+  case CML_COLOR_Gray:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlGrayToCMYK;
-      case CML_COLOR_GRAY:  return &cmlGrayToGray;
+      case CML_COLOR_Gray:  return &cmlGrayToGray;
       case CML_COLOR_HSL:   return &cmlGrayToHSL;
       case CML_COLOR_HSV:   return &cmlGrayToHSV;
       case CML_COLOR_Lab:   return &cmlGrayToLab;
@@ -27,7 +27,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_XYZ:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlXYZToCMYK;
-      case CML_COLOR_GRAY:  return &cmlXYZToGray;
+      case CML_COLOR_Gray:  return &cmlXYZToGray;
       case CML_COLOR_HSL:   return &cmlXYZToHSL;
       case CML_COLOR_HSV:   return &cmlXYZToHSV;
       case CML_COLOR_Lab:   return &cmlXYZToLab;
@@ -45,7 +45,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_Yxy:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlYxyToCMYK;
-      case CML_COLOR_GRAY:  return &cmlYxyToGray;
+      case CML_COLOR_Gray:  return &cmlYxyToGray;
       case CML_COLOR_HSL:   return &cmlYxyToHSL;
       case CML_COLOR_HSV:   return &cmlYxyToHSV;
       case CML_COLOR_Lab:   return &cmlYxyToLab;
@@ -63,7 +63,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_Yuv:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlYuvToCMYK;
-      case CML_COLOR_GRAY:  return &cmlYuvToGray;
+      case CML_COLOR_Gray:  return &cmlYuvToGray;
       case CML_COLOR_HSL:   return &cmlYuvToHSL;
       case CML_COLOR_HSV:   return &cmlYuvToHSV;
       case CML_COLOR_Lab:   return &cmlYuvToLab;
@@ -80,7 +80,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
     }
   case CML_COLOR_Yupvp:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &cmlYupvpToGray;
+      case CML_COLOR_Gray:  return &cmlYupvpToGray;
       case CML_COLOR_CMYK:  return &cmlYupvpToCMYK;
       case CML_COLOR_HSL:   return &cmlYupvpToHSL;
       case CML_COLOR_HSV:   return &cmlYupvpToHSV;
@@ -98,7 +98,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
     }
   case CML_COLOR_Ycd:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &cmlYcdToGray;
+      case CML_COLOR_Gray:  return &cmlYcdToGray;
       case CML_COLOR_CMYK:  return &cmlYcdToCMYK;
       case CML_COLOR_HSL:   return &cmlYcdToHSL;
       case CML_COLOR_HSV:   return &cmlYcdToHSV;
@@ -116,7 +116,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
     }
   case CML_COLOR_Lab:
     switch(outputSystem){
-      case CML_COLOR_GRAY:  return &cmlLabToGray;
+      case CML_COLOR_Gray:  return &cmlLabToGray;
       case CML_COLOR_CMYK:  return &cmlLabToCMYK;
       case CML_COLOR_HSL:   return &cmlLabToHSL;
       case CML_COLOR_HSV:   return &cmlLabToHSV;
@@ -135,7 +135,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_Lch:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlLchToCMYK;
-      case CML_COLOR_GRAY:  return &cmlLchToGray;
+      case CML_COLOR_Gray:  return &cmlLchToGray;
       case CML_COLOR_HSL:   return &cmlLchToHSL;
       case CML_COLOR_HSV:   return &cmlLchToHSV;
       case CML_COLOR_Lab:   return &cmlLchToLab;
@@ -153,7 +153,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_Luv:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlLuvToCMYK;
-      case CML_COLOR_GRAY:  return &cmlLuvToGray;
+      case CML_COLOR_Gray:  return &cmlLuvToGray;
       case CML_COLOR_HSL:   return &cmlLuvToHSL;
       case CML_COLOR_HSV:   return &cmlLuvToHSV;
       case CML_COLOR_Lab:   return &cmlLuvToLab;
@@ -171,7 +171,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_RGB:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlRGBToCMYK;
-      case CML_COLOR_GRAY:  return &cmlRGBToGray;
+      case CML_COLOR_Gray:  return &cmlRGBToGray;
       case CML_COLOR_HSL:   return &cmlRGBToHSL;
       case CML_COLOR_HSV:   return &cmlRGBToHSV;
       case CML_COLOR_Lab:   return &cmlRGBToLab;
@@ -189,7 +189,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_YCbCr:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlYCbCrToCMYK;
-      case CML_COLOR_GRAY:  return &cmlYCbCrToGray;
+      case CML_COLOR_Gray:  return &cmlYCbCrToGray;
       case CML_COLOR_HSL:   return &cmlYCbCrToHSL;
       case CML_COLOR_HSV:   return &cmlYCbCrToHSV;
       case CML_COLOR_Lab:   return &cmlYCbCrToLab;
@@ -207,7 +207,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_HSV:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlHSVToCMYK;
-      case CML_COLOR_GRAY:  return &cmlHSVToGray;
+      case CML_COLOR_Gray:  return &cmlHSVToGray;
       case CML_COLOR_HSL:   return &cmlHSVToHSL;
       case CML_COLOR_HSV:   return &cmlHSVToHSV;
       case CML_COLOR_Lab:   return &cmlHSVToLab;
@@ -225,7 +225,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_HSL:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlHSLToCMYK;
-      case CML_COLOR_GRAY:  return &cmlHSLToGray;
+      case CML_COLOR_Gray:  return &cmlHSLToGray;
       case CML_COLOR_HSL:   return &cmlHSLToHSL;
       case CML_COLOR_HSV:   return &cmlHSLToHSV;
       case CML_COLOR_Lab:   return &cmlHSLToLab;
@@ -243,7 +243,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_CMYK:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlCMYKToCMYK;
-      case CML_COLOR_GRAY:  return &cmlCMYKToGray;
+      case CML_COLOR_Gray:  return &cmlCMYKToGray;
       case CML_COLOR_HSL:   return &cmlCMYKToHSL;
       case CML_COLOR_HSV:   return &cmlCMYKToHSV;
       case CML_COLOR_Lab:   return &cmlCMYKToLab;
@@ -261,7 +261,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_SPECTRUM_ILLUMINATION:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlSpectrumIlluminationToCMYK;
-      case CML_COLOR_GRAY:  return &cmlSpectrumIlluminationToGray;
+      case CML_COLOR_Gray:  return &cmlSpectrumIlluminationToGray;
       case CML_COLOR_HSL:   return &cmlSpectrumIlluminationToHSL;
       case CML_COLOR_HSV:   return &cmlSpectrumIlluminationToHSV;
       case CML_COLOR_Lab:   return &cmlSpectrumIlluminationToLab;
@@ -279,7 +279,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
   case CML_COLOR_SPECTRUM_REMISSION:
     switch(outputSystem){
       case CML_COLOR_CMYK:  return &cmlSpectrumRemissionToCMYK;
-      case CML_COLOR_GRAY:  return &cmlSpectrumRemissionToGray;
+      case CML_COLOR_Gray:  return &cmlSpectrumRemissionToGray;
       case CML_COLOR_HSL:   return &cmlSpectrumRemissionToHSL;
       case CML_COLOR_HSV:   return &cmlSpectrumRemissionToHSV;
       case CML_COLOR_Lab:   return &cmlSpectrumRemissionToLab;
@@ -310,7 +310,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
 CML_DEF CMLColorConverter cmlGetData8InputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlData8ToCMYK;
-    case CML_COLOR_GRAY:  return &cmlData8ToGray;
+    case CML_COLOR_Gray:  return &cmlData8ToGray;
     case CML_COLOR_HSL:   return &cmlData8ToHSL;
     case CML_COLOR_HSV:   return &cmlData8ToHSV;
     case CML_COLOR_Lab:   return &cmlData8ToLab;
@@ -334,7 +334,7 @@ CML_DEF CMLColorConverter cmlGetData8InputConverter(CMLColorType colorType){
 CML_DEF CMLColorConverter cmlGetData16InputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlData16ToCMYK;
-    case CML_COLOR_GRAY:  return &cmlData16ToGray;
+    case CML_COLOR_Gray:  return &cmlData16ToGray;
     case CML_COLOR_HSL:   return &cmlData16ToHSL;
     case CML_COLOR_HSV:   return &cmlData16ToHSV;
     case CML_COLOR_Lab:   return &cmlData16ToLab;
@@ -358,7 +358,7 @@ CML_DEF CMLColorConverter cmlGetData16InputConverter(CMLColorType colorType){
 CML_DEF CMLColorConverter cmlGetData8OutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlCMYKToData8;
-    case CML_COLOR_GRAY:  return &cmlGrayToData8;
+    case CML_COLOR_Gray:  return &cmlGrayToData8;
     case CML_COLOR_HSL:   return &cmlHSLToData8;
     case CML_COLOR_HSV:   return &cmlHSVToData8;
     case CML_COLOR_Lab:   return &cmlLabToData8;
@@ -382,7 +382,7 @@ CML_DEF CMLColorConverter cmlGetData8OutputConverter(CMLColorType colorType){
 CML_DEF CMLColorConverter cmlGetData16OutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlCMYKToData16;
-    case CML_COLOR_GRAY:  return &cmlGrayToData16;
+    case CML_COLOR_Gray:  return &cmlGrayToData16;
     case CML_COLOR_HSL:   return &cmlHSLToData16;
     case CML_COLOR_HSV:   return &cmlHSVToData16;
     case CML_COLOR_Lab:   return &cmlLabToData16;
@@ -406,7 +406,7 @@ CML_DEF CMLColorConverter cmlGetData16OutputConverter(CMLColorType colorType){
 CML_DEF CMLColorMutator cmlGetInverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlInvertCMYK;
-    case CML_COLOR_GRAY:  return &cmlInvertGray;
+    case CML_COLOR_Gray:  return &cmlInvertGray;
     case CML_COLOR_HSL:   return &cmlInvertHSL;
     case CML_COLOR_HSV:   return &cmlInvertHSV;
     case CML_COLOR_Lab:   return &cmlInvertLab;
@@ -430,7 +430,7 @@ CML_DEF CMLColorMutator cmlGetInverter(CMLColorType colorType){
 CML_DEF CMLColorMutator cmlGetClamper(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlClampCMYK;
-    case CML_COLOR_GRAY:  return &cmlClampGray;
+    case CML_COLOR_Gray:  return &cmlClampGray;
     case CML_COLOR_HSL:   return &cmlClampHSL;
     case CML_COLOR_HSV:   return &cmlClampHSV;
     case CML_COLOR_Lab:   return &cmlClampLab;
@@ -454,7 +454,7 @@ CML_DEF CMLColorMutator cmlGetClamper(CMLColorType colorType){
 CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
-    case CML_COLOR_GRAY:  return &cmlNormedInputToGray;
+    case CML_COLOR_Gray:  return &cmlNormedInputToGray;
     case CML_COLOR_HSL:   return &cmlNormedInputToHSL;
     case CML_COLOR_HSV:   return &cmlNormedInputToHSV;
     case CML_COLOR_Lab:   return &cmlNormedInputToLab;
@@ -478,7 +478,7 @@ CML_DEF CMLNormedConverter cmlGetNormedInputConverter(CMLColorType colorType){
 CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
-    case CML_COLOR_GRAY:  return &cmlGrayToNormedOutput;
+    case CML_COLOR_Gray:  return &cmlGrayToNormedOutput;
     case CML_COLOR_HSL:   return &cmlHSLToNormedOutput;
     case CML_COLOR_HSV:   return &cmlHSVToNormedOutput;
     case CML_COLOR_Lab:   return &cmlLabToNormedOutput;
@@ -502,7 +502,7 @@ CML_DEF CMLNormedConverter cmlGetNormedOutputConverter(CMLColorType colorType){
 CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlNormedInputToCMYK;
-    case CML_COLOR_GRAY:  return &cmlNormedInputToGray;
+    case CML_COLOR_Gray:  return &cmlNormedInputToGray;
     case CML_COLOR_HSL:   return &cmlNormedCartesianInputToHSL;
     case CML_COLOR_HSV:   return &cmlNormedCartesianInputToHSV;
     case CML_COLOR_Lab:   return &cmlNormedInputToLab;
@@ -526,7 +526,7 @@ CML_DEF CMLNormedConverter cmlGetNormedCartesianInputConverter(CMLColorType colo
 CML_DEF CMLNormedConverter cmlGetNormedCartesianOutputConverter(CMLColorType colorType){
   switch(colorType){
     case CML_COLOR_CMYK:  return &cmlCMYKToNormedOutput;
-    case CML_COLOR_GRAY:  return &cmlGrayToNormedOutput;
+    case CML_COLOR_Gray:  return &cmlGrayToNormedOutput;
     case CML_COLOR_HSL:   return &cmlHSLToNormedCartesianOutput;
     case CML_COLOR_HSV:   return &cmlHSVToNormedCartesianOutput;
     case CML_COLOR_Lab:   return &cmlLabToNormedOutput;

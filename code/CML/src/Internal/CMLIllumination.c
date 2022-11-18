@@ -346,21 +346,21 @@ CML_DEF float cmlGetCorrelatedColorTemperature(const CMLVec3 whitePointYuv){
 
 
 
-CML_HDEF void cml_recomputeReferenceIllumination(CMLColorMachine* cm){
+CML_HDEF void cml_recomputeIllumination(CMLColorMachine* cm){
   if(cm->recomputationLockCount){cm->recomputationMask |= CML_COLORMACHINE_RECOMPUTE_REFERENCE_ILLUMINATION; return;}
 
   // First, compute the referenceXYZ out of the illumination spectrum.
   CMLVec3 referenceXYZ;
-  if(cm->referenceIllumination.spectrum){
+  if(cm->illumination.spectrum){
     cml_OneIlluminationSpectrumToXYZ(
       referenceXYZ,
-      cm->referenceIllumination.spectrum,
+      cm->illumination.spectrum,
       cm->observer.specDistFunctions,
       1.f,  // Always use multiplicator 1, because this must be the reference.
       &(cm->integration));
   }else{
     // If no illumination spectrum is availabe, use the custom whitepoint.
-    const float* customWhitePointYxy = cm->referenceIllumination.customWhitePointYxy;
+    const float* customWhitePointYxy = cm->illumination.customWhitePointYxy;
     cml_OneYxyToXYZ(referenceXYZ, customWhitePointYxy, CML_NULL);
   }
 
@@ -399,30 +399,30 @@ CML_DEF void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType ill
 
   CMLIllumination newIllumination;
   cml_InitIlluminationWithType(&newIllumination, illuminationType, cmlGetIlluminationTemperature(cm), cml_GetObserverSpecDistFunctions(&(cm->observer)));
-  cml_SetReferenceIllumination(cm, &newIllumination);
+  cml_SetIllumination(cm, &newIllumination);
   cml_ClearIllumination(&newIllumination);
 
   // Recompute all which is dependent on the illumination
-  cml_recomputeReferenceIllumination(cm);
+  cml_recomputeIllumination(cm);
 }
 
 
 CML_DEF float cmlGetIlluminationTemperature(const CMLColorMachine* cm){
-  return cml_GetIlluminationColorTemperature(&(cm->referenceIllumination));
+  return cml_GetIlluminationColorTemperature(&(cm->illumination));
 }
 
 CML_DEF void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
-  CMLIlluminationType illuminationType = cmlGetReferenceIlluminationType(cm);
+  CMLIlluminationType illuminationType = cmlGetIlluminationType(cm);
   if(  (illuminationType == CML_ILLUMINATION_BLACKBODY)
     || (illuminationType == CML_ILLUMINATION_D_ILLUMINANT)){
 
     CMLIllumination newIllumination;
     cml_InitIlluminationWithType(&newIllumination, illuminationType, temp, cml_GetObserverSpecDistFunctions(&(cm->observer)));
-    cml_SetReferenceIllumination(cm, &newIllumination);
+    cml_SetIllumination(cm, &newIllumination);
     cml_ClearIllumination(&newIllumination);
 
   // Recompute all which is dependent on the illumination
-    cml_recomputeReferenceIllumination(cm);
+    cml_recomputeIllumination(cm);
   #if CML_DEBUG
   }else{
     cmlError("Call only effective for Blackbody and custom D illuminants.");
@@ -435,22 +435,22 @@ CML_DEF void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* 
 
   CMLIllumination newIllumination;
   cml_InitIlluminationWithCustomSpectrum(&newIllumination, newSpectrum, cml_GetObserverSpecDistFunctions(&(cm->observer)));
-  cml_SetReferenceIllumination(cm, &newIllumination);
+  cml_SetIllumination(cm, &newIllumination);
   cml_ClearIllumination(&newIllumination);
 
   // Recompute all which is dependent on the illumination
-  cml_recomputeReferenceIllumination(cm);
+  cml_recomputeIllumination(cm);
 }
 
 
 CML_DEF void cmlSetReferenceWhitePointYxy(CMLColorMachine* cm, const float* yxy){
   CMLIllumination newIllumination;
   cml_InitIlluminationWithCustomWhitePoint(&newIllumination, yxy);
-  cml_SetReferenceIllumination(cm, &newIllumination);
+  cml_SetIllumination(cm, &newIllumination);
   cml_ClearIllumination(&newIllumination);
 
   // Recompute all which is dependent on the illumination
-  cml_recomputeReferenceIllumination(cm);
+  cml_recomputeIllumination(cm);
 }
 
 

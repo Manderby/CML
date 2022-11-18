@@ -40,7 +40,7 @@ SpectralColor Color::toSpectral() const  {
 
 void Color::fromBuffer(const float* src, CMLColorType inputtype){
   switch(inputtype){
-  case CML_COLOR_GRAY:  fromGrayBuffer(src); break;
+  case CML_COLOR_Gray:  fromGrayBuffer(src); break;
   case CML_COLOR_XYZ:   fromXYZBuffer(src); break;
   case CML_COLOR_Yxy:   fromYxyBuffer(src); break;
   case CML_COLOR_Yuv:   fromYuvBuffer(src); break;
@@ -64,7 +64,7 @@ void Color::fromBuffer(const float* src, CMLColorType inputtype){
 
 void Color::toBuffer(float* dest, CMLColorType outputtype) const{
   switch(outputtype){
-  case CML_COLOR_GRAY:  toGrayBuffer(dest); break;
+  case CML_COLOR_Gray:  toGrayBuffer(dest); break;
   case CML_COLOR_XYZ:   toXYZBuffer(dest); break;
   case CML_COLOR_Yxy:   toYxyBuffer(dest); break;
   case CML_COLOR_Yuv:   toYuvBuffer(dest); break;

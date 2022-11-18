@@ -140,7 +140,7 @@ size_t GrayColor::getNumChannels() const {return 1;}
 // ///////////////////////////////////////
 
 CMLColorType GrayColor::getColorType() const{
-  return CML_COLOR_GRAY;
+  return CML_COLOR_Gray;
 }
 
 void GrayColor::from8BitBuffer(const uint8* input){

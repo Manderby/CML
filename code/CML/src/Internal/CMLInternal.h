@@ -51,7 +51,7 @@ CML_HAPI void cml_InitObserver(
   CMLObserverType type,
   const CMLIntegration* integration);
 
-CML_HAPI void cml_SetReferenceIllumination(
+CML_HAPI void cml_SetIllumination(
   CMLColorMachine* cm,
   CMLIllumination* illumination);
 

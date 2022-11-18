@@ -69,7 +69,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
     &(cm->integration));
 
   cml_InitIlluminationWithType(
-    &(cm->referenceIllumination),
+    &(cm->illumination),
     CML_ILLUMINATION_D65,
     0,
     cml_GetObserverSpecDistFunctions(&(cm->observer)));
@@ -137,7 +137,7 @@ CML_DEF void cmlReleaseRecomputation(CMLColorMachine* cm){
   if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_OBSERVER){
     cml_recomputeObserver(cm);
   }else if(cm->recomputationMask & CML_COLORMACHINE_RECOMPUTE_REFERENCE_ILLUMINATION){
-    cml_recomputeReferenceIllumination(cm);
+    cml_recomputeIllumination(cm);
   }else{
     // note that the following recomputations may occur independant of each
     // other.

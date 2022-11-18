@@ -2,7 +2,7 @@
 // Enumerates the predefined color types
 typedef enum{
   CML_COLOR_CMYK,
-  CML_COLOR_GRAY,
+  CML_COLOR_Gray,
   CML_COLOR_HSL,
   CML_COLOR_HSV,
   CML_COLOR_Lab,

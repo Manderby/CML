@@ -58,12 +58,12 @@ CML_API void                  cmlSetObserverType(CMLColorMachine* cm, CMLObserve
 CML_API const CMLFunction*    cmlGetSpecDistFunction(const CMLColorMachine* cm, int index);
 CML_API void                  cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, float lambda);
 
-CML_API CMLIlluminationType   cmlGetReferenceIlluminationType(const CMLColorMachine* cm);
-CML_API const CMLFunction*    cmlGetReferenceIlluminationSpectrum(const CMLColorMachine* cm);
-CML_API const float*          cmlGetReferenceWhitePointXYZ(const CMLColorMachine* cm);
-CML_API const float*          cmlGetReferenceWhitePointXYZInverse(const CMLColorMachine* cm);
-CML_API const float*          cmlGetReferenceWhitePointYxy(const CMLColorMachine* cm);
-CML_API const float*          cmlGetReferenceWhitePointYupvp(const CMLColorMachine* cm);
+CML_API CMLIlluminationType   cmlGetIlluminationType(const CMLColorMachine* cm);
+CML_API const CMLFunction*    cmlGetIlluminationSpectrum(const CMLColorMachine* cm);
+CML_API const float*          cmlGetWhitePointXYZ(const CMLColorMachine* cm);
+CML_API const float*          cmlGetWhitePointXYZInverse(const CMLColorMachine* cm);
+CML_API const float*          cmlGetWhitePointYxy(const CMLColorMachine* cm);
+CML_API const float*          cmlGetWhitePointYupvp(const CMLColorMachine* cm);
 
 // The illumination defines the current illumination assumed. This includes
 // the whitePoint. Initial setting is the standard illumination of the
