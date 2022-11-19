@@ -86,37 +86,39 @@ public:
 
   // Converts the buffer from the given space to the color class.
   virtual void fromBuffer(const float* src, CMLColorType inputtype);
+  virtual void fromCMYKBuffer (const float* src) = 0;
   virtual void fromGrayBuffer (const float* src) = 0;
-  virtual void fromXYZBuffer  (const float* src) = 0;
-  virtual void fromYuvBuffer  (const float* src) = 0;
-  virtual void fromYupvpBuffer(const float* src) = 0;
-  virtual void fromYcdBuffer  (const float* src){}
-  virtual void fromYxyBuffer  (const float* src) = 0;
+  virtual void fromHSLBuffer  (const float* src) = 0;
+  virtual void fromHSVBuffer  (const float* src) = 0;
   virtual void fromLabBuffer  (const float* src) = 0;
   virtual void fromLchBuffer  (const float* src) = 0;
   virtual void fromLuvBuffer  (const float* src) = 0;
   virtual void fromRGBBuffer  (const float* src) = 0;
+  virtual void fromUVWBuffer  (const float* src){}
+  virtual void fromXYZBuffer  (const float* src) = 0;
   virtual void fromYCbCrBuffer(const float* src) = 0;
-  virtual void fromHSVBuffer  (const float* src) = 0;
-  virtual void fromHSLBuffer  (const float* src) = 0;
-  virtual void fromCMYKBuffer (const float* src) = 0;
+  virtual void fromYcdBuffer  (const float* src){}
+  virtual void fromYupvpBuffer(const float* src) = 0;
+  virtual void fromYuvBuffer  (const float* src) = 0;
+  virtual void fromYxyBuffer  (const float* src) = 0;
 
   // Converts the color to the desired space and puts the result in an array.
   virtual void toBuffer(float* dest, CMLColorType outputtype) const;
+  virtual void toCMYKBuffer (float* dest)   const = 0;
   virtual void toGrayBuffer (float* dest)   const = 0;
-  virtual void toXYZBuffer  (float* dest)   const = 0;
-  virtual void toYuvBuffer  (float* dest)   const = 0;
-  virtual void toYupvpBuffer(float* dest)   const = 0;
-  virtual void toYcdBuffer  (float* dest)   const{}
-  virtual void toYxyBuffer  (float* dest)   const = 0;
+  virtual void toHSLBuffer  (float* dest)   const = 0;
+  virtual void toHSVBuffer  (float* dest)   const = 0;
   virtual void toLabBuffer  (float* dest)   const = 0;
   virtual void toLchBuffer  (float* dest)   const = 0;
   virtual void toLuvBuffer  (float* dest)   const = 0;
   virtual void toRGBBuffer  (float* dest)   const = 0;
+  virtual void toUVWBuffer  (float* dest)   const{}
+  virtual void toXYZBuffer  (float* dest)   const = 0;
   virtual void toYCbCrBuffer(float* dest)   const = 0;
-  virtual void toHSVBuffer  (float* dest)   const = 0;
-  virtual void toHSLBuffer  (float* dest)   const = 0;
-  virtual void toCMYKBuffer (float* dest)   const = 0;
+  virtual void toYcdBuffer  (float* dest)   const{}
+  virtual void toYupvpBuffer(float* dest)   const = 0;
+  virtual void toYuvBuffer  (float* dest)   const = 0;
+  virtual void toYxyBuffer  (float* dest)   const = 0;
 
   
   // Converting from or to input-output buffers.

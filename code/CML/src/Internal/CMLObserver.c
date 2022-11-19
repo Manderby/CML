@@ -619,6 +619,10 @@ CML_DEF const float* cmlGetWhitePointYupvp(const CMLColorMachine* cm){
   return cm->whitePointYupvp;
 }
 
+CML_DEF const float* cmlGetWhitePointYuv(const CMLColorMachine* cm){
+  return cm->whitePointYuv;
+}
+
 
 // This is free and unencumbered software released into the public domain.
 

@@ -13,6 +13,7 @@ CML_HDEF const char* colorTypeStrings[CML_COLOR_COUNT] = {
   "RGB",
   "Illumination Spectrum",
   "Remission Spectrum",
+  "UVW",
   "XYZ",
   "YCbCr",
   "Ycd",

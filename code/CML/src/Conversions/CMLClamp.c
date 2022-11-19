@@ -61,6 +61,12 @@ CML_HIDEF void cml_ClampOneRGB(float* rgb){
   cml_ClampToRange(&(rgb[2]), CML_RGB_B_MIN, CML_RGB_B_MAX);
 }
 
+CML_HIDEF void cml_ClampOneUVW(float* uvw){
+  cml_ClampToRange(&(uvw[0]), CML_UVW_U_MIN, CML_UVW_U_MAX);
+  cml_ClampToRange(&(uvw[1]), CML_UVW_V_MIN, CML_UVW_V_MAX);
+  cml_ClampToRange(&(uvw[2]), CML_UVW_W_MIN, CML_UVW_W_MAX);
+}
+
 CML_HIDEF void cml_ClampOneXYZ(float* xyz){
   cml_ClampToRange(&(xyz[0]), CML_XYZ_X_MIN, CML_XYZ_X_MAX);
   cml_ClampToRange(&(xyz[1]), CML_XYZ_Y_MIN, CML_XYZ_Y_MAX);
@@ -160,6 +166,14 @@ CML_DEF void cmlClampRGB(CMLInputOutput rgb, size_t count){
   for(size_t i = 0; i < count; ++i){
     cml_ClampOneRGB(inout);
     inout += CML_RGB_CHANNEL_COUNT;
+  }
+}
+
+CML_DEF void cmlClampUVW(CMLInputOutput uvw, size_t count){
+  float* inout = (float*)uvw;
+  for(size_t i = 0; i < count; ++i){
+    cml_ClampOneUVW(inout);
+    inout += CML_UVW_CHANNEL_COUNT;
   }
 }
 

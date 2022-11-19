@@ -385,6 +385,7 @@ CML_HDEF void cml_recomputeIllumination(CMLColorMachine* cm){
     cmlInverse(cm->whitePointXYZ[2]));
   cml_OneXYZToYxy(cm->whitePointYxy, cm->whitePointXYZ, CML_NULL);
   cml_OneYxyToYupvp(cm->whitePointYupvp, cm->whitePointYxy, CML_NULL);
+  cml_OneYupvpToYuv(cm->whitePointYuv, cm->whitePointYupvp);
 
   // Update all dependent values.
   cml_recomputeLabColorSpace(cm);

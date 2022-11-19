@@ -54,6 +54,12 @@ CML_HIDEF void cml_InvertOneRGB(float* rgb){
   rgb[2] = CML_RGB_B_MAX - rgb[2];
 }
 
+CML_HIDEF void cml_InvertOneUVW(float* uvw){
+  uvw[0] = CML_UVW_U_MAX - uvw[0];
+  uvw[1] = CML_UVW_V_MAX - uvw[1];
+  uvw[2] = CML_UVW_W_MAX - uvw[2];
+}
+
 CML_HIDEF void cml_InvertOneXYZ(float* xyz){
   xyz[0] = CML_XYZ_X_MAX - xyz[0];
   xyz[1] = CML_XYZ_Y_MAX - xyz[1];
@@ -155,6 +161,14 @@ CML_DEF void cmlInvertRGB(CMLInputOutput rgb, size_t count){
   for(size_t i = 0; i < count; ++i){
     cml_InvertOneRGB(inout);
     inout += CML_RGB_CHANNEL_COUNT;
+  }
+}
+
+CML_DEF void cmlInvertUVW(CMLInputOutput uvw, size_t count){
+  float* inout = (float*)uvw;
+  for(size_t i = 0; i < count; ++i){
+    cml_InvertOneUVW(inout);
+    inout += CML_UVW_CHANNEL_COUNT;
   }
 }
 

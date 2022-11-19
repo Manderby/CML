@@ -80,6 +80,15 @@ CML_DEF void cmlNormedInputToRGB(CMLOutput rgb, CMLInput input, size_t count){
     in += CML_RGB_CHANNEL_COUNT;
   }
 }
+CML_DEF void cmlNormedInputToUVW(CMLOutput uvw, CMLInput input, size_t count){
+  const float* in  = (float*)input;
+  float* out = (float*)uvw;
+  for(size_t i = 0; i < count; ++i){
+    cml_OneNormedInputToUVW(out, in);
+    out += CML_UVW_CHANNEL_COUNT;
+    in += CML_UVW_CHANNEL_COUNT;
+  }
+}
 CML_DEF void cmlNormedInputToXYZ(CMLOutput xyz, CMLInput input, size_t count){
   const float* in  = (float*)input;
   float* out = (float*)xyz;
@@ -211,6 +220,15 @@ CML_DEF void cmlRGBToNormedOutput(CMLOutput output, CMLInput rgb, size_t count){
     cml_OneRGBToNormedOutput(out, in);
     out += CML_RGB_CHANNEL_COUNT;
     in += CML_RGB_CHANNEL_COUNT;
+  }
+}
+CML_DEF void cmlUVWToNormedOutput(CMLOutput output, CMLInput uvw, size_t count){
+  const float* in  = (float*)uvw;
+  float* out = (float*)output;
+  for(size_t i = 0; i < count; ++i){
+    cml_OneUVWToNormedOutput(out, in);
+    out += CML_UVW_CHANNEL_COUNT;
+    in += CML_UVW_CHANNEL_COUNT;
   }
 }
 CML_DEF void cmlXYZToNormedOutput(CMLOutput output, CMLInput xyz, size_t count){

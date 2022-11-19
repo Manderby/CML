@@ -28,6 +28,14 @@ CML_DEF void cmlConvertYuvToYupvp(CMLVec3 yupvp, const CMLVec3 yuv){
   cml_OneYuvToYupvp(yupvp, yuv);
 }
 
+CML_DEF void cmlConvertYuvToUVW(CMLVec3 uvw, const CMLVec3 yuv, const CMLVec3 whitePointYuv){
+  cml_OneYuvToUVW(uvw, yuv, whitePointYuv);
+}
+
+CML_DEF void cmlConvertUVWToYuv(CMLVec3 yuv, const CMLVec3 uvw, const CMLVec3 whitePointYuv){
+  cml_OneYuvToUVW(yuv, uvw, whitePointYuv);
+}
+
 CML_DEF void cmlConvertYuvToYcd(CMLVec3 ycd, const CMLVec3 yuv){
   cml_OneYuvToYcd(ycd, yuv);
 }
@@ -129,6 +137,7 @@ CML_DEF size_t cmlGetNumChannels(CMLColorType colorType){
   case CML_COLOR_Lch:   return CML_Lch_CHANNEL_COUNT;   break;
   case CML_COLOR_Luv:   return CML_Luv_CHANNEL_COUNT;   break;
   case CML_COLOR_RGB:   return CML_RGB_CHANNEL_COUNT;   break;
+  case CML_COLOR_UVW:   return CML_UVW_CHANNEL_COUNT;   break;
   case CML_COLOR_XYZ:   return CML_XYZ_CHANNEL_COUNT;   break;
   case CML_COLOR_YCbCr: return CML_YCbCr_CHANNEL_COUNT; break;
   case CML_COLOR_Ycd:   return CML_Ycd_CHANNEL_COUNT;   break;
@@ -156,6 +165,7 @@ CML_DEF void cmlGetMinBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_Lch:   cmlSet3(buffer, CML_Lch_L_MIN,   CML_Lch_c_MIN,    CML_Lch_h_MIN);    break;
   case CML_COLOR_Luv:   cmlSet3(buffer, CML_Luv_L_MIN,   CML_Luv_u_MIN,    CML_Luv_v_MIN);    break;
   case CML_COLOR_RGB:   cmlSet3(buffer, CML_RGB_R_MIN,   CML_RGB_G_MIN,    CML_RGB_B_MIN);    break;
+  case CML_COLOR_UVW:   cmlSet3(buffer, CML_UVW_U_MIN,   CML_UVW_V_MIN,    CML_UVW_W_MIN);    break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MIN,   CML_XYZ_Y_MIN,    CML_XYZ_Z_MIN);    break;
   case CML_COLOR_YCbCr: cmlSet3(buffer, CML_YCbCr_Y_MIN, CML_YCbCr_Cb_MIN, CML_YCbCr_Cr_MIN); break;
   case CML_COLOR_Ycd:   cmlSet3(buffer, CML_Ycd_Y_MIN,   CML_Ycd_c_MIN,    CML_Ycd_d_MIN);    break;
@@ -182,6 +192,7 @@ CML_DEF void cmlGetMaxBounds(float* buffer, CMLColorType colorType){
   case CML_COLOR_Lch:   cmlSet3(buffer, CML_Lch_L_MAX,   CML_Lch_c_MAX,    CML_Lch_h_MAX);    break;
   case CML_COLOR_Luv:   cmlSet3(buffer, CML_Luv_L_MAX,   CML_Luv_u_MAX,    CML_Luv_v_MAX);    break;
   case CML_COLOR_RGB:   cmlSet3(buffer, CML_RGB_R_MAX,   CML_RGB_G_MAX,    CML_RGB_B_MAX);    break;
+  case CML_COLOR_UVW:   cmlSet3(buffer, CML_UVW_U_MAX,   CML_UVW_V_MAX,    CML_UVW_W_MAX);    break;
   case CML_COLOR_XYZ:   cmlSet3(buffer, CML_XYZ_X_MAX,   CML_XYZ_Y_MAX,    CML_XYZ_Z_MAX);    break;
   case CML_COLOR_YCbCr: cmlSet3(buffer, CML_YCbCr_Y_MAX, CML_YCbCr_Cb_MAX, CML_YCbCr_Cr_MAX); break;
   case CML_COLOR_Ycd:   cmlSet3(buffer, CML_Ycd_Y_MAX,   CML_Ycd_c_MAX,    CML_Ycd_d_MAX);    break;

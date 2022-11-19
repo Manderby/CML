@@ -40,20 +40,21 @@ SpectralColor Color::toSpectral() const  {
 
 void Color::fromBuffer(const float* src, CMLColorType inputtype){
   switch(inputtype){
+  case CML_COLOR_CMYK:  fromCMYKBuffer(src); break;
   case CML_COLOR_Gray:  fromGrayBuffer(src); break;
-  case CML_COLOR_XYZ:   fromXYZBuffer(src); break;
-  case CML_COLOR_Yxy:   fromYxyBuffer(src); break;
-  case CML_COLOR_Yuv:   fromYuvBuffer(src); break;
-  case CML_COLOR_Yupvp: fromYupvpBuffer(src); break;
-  case CML_COLOR_Ycd:   fromYcdBuffer(src); break;
+  case CML_COLOR_HSL:   fromHSLBuffer(src); break;
+  case CML_COLOR_HSV:   fromHSVBuffer(src); break;
   case CML_COLOR_Lab:   fromLabBuffer(src); break;
   case CML_COLOR_Lch:   fromLchBuffer(src); break;
   case CML_COLOR_Luv:   fromLuvBuffer(src); break;
   case CML_COLOR_RGB:   fromRGBBuffer(src); break;
+  case CML_COLOR_UVW:   fromUVWBuffer(src); break;
+  case CML_COLOR_XYZ:   fromXYZBuffer(src); break;
   case CML_COLOR_YCbCr: fromYCbCrBuffer(src); break;
-  case CML_COLOR_HSV:   fromHSVBuffer(src); break;
-  case CML_COLOR_HSL:   fromHSLBuffer(src); break;
-  case CML_COLOR_CMYK:  fromCMYKBuffer(src); break;
+  case CML_COLOR_Ycd:   fromYcdBuffer(src); break;
+  case CML_COLOR_Yupvp: fromYupvpBuffer(src); break;
+  case CML_COLOR_Yuv:   fromYuvBuffer(src); break;
+  case CML_COLOR_Yxy:   fromYxyBuffer(src); break;
   default:
     #if CML_DEBUG
       cmlError("Undefined ColorSpace.");
@@ -64,20 +65,21 @@ void Color::fromBuffer(const float* src, CMLColorType inputtype){
 
 void Color::toBuffer(float* dest, CMLColorType outputtype) const{
   switch(outputtype){
+  case CML_COLOR_CMYK:  toCMYKBuffer(dest); break;
   case CML_COLOR_Gray:  toGrayBuffer(dest); break;
-  case CML_COLOR_XYZ:   toXYZBuffer(dest); break;
-  case CML_COLOR_Yxy:   toYxyBuffer(dest); break;
-  case CML_COLOR_Yuv:   toYuvBuffer(dest); break;
-  case CML_COLOR_Yupvp: toYupvpBuffer(dest); break;
-  case CML_COLOR_Ycd:   toYcdBuffer(dest); break;
+  case CML_COLOR_HSL:   toHSLBuffer(dest); break;
+  case CML_COLOR_HSV:   toHSVBuffer(dest); break;
   case CML_COLOR_Lab:   toLabBuffer(dest); break;
   case CML_COLOR_Lch:   toLchBuffer(dest); break;
   case CML_COLOR_Luv:   toLuvBuffer(dest); break;
   case CML_COLOR_RGB:   toRGBBuffer(dest); break;
+  case CML_COLOR_UVW:   toUVWBuffer(dest); break;
+  case CML_COLOR_XYZ:   toXYZBuffer(dest); break;
   case CML_COLOR_YCbCr: toYCbCrBuffer(dest); break;
-  case CML_COLOR_HSV:   toHSVBuffer(dest); break;
-  case CML_COLOR_HSL:   toHSLBuffer(dest); break;
-  case CML_COLOR_CMYK:  toCMYKBuffer(dest); break;
+  case CML_COLOR_Ycd:   toYcdBuffer(dest); break;
+  case CML_COLOR_Yupvp: toYupvpBuffer(dest); break;
+  case CML_COLOR_Yuv:   toYuvBuffer(dest); break;
+  case CML_COLOR_Yxy:   toYxyBuffer(dest); break;
   default:
     #if CML_DEBUG
       cmlError("Undefined ColorSpace.");

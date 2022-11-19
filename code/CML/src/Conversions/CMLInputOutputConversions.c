@@ -145,6 +145,18 @@ CML_DEF void cmlData8ToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput in
   }
 }
 
+CML_DEF void cmlData8ToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput input, size_t count){
+  const uint8* in  = (uint8*)input;
+  float* out = (float*)uvw;
+  for(size_t i = 0; i < count; ++i){
+    float tmp[CML_UVW_CHANNEL_COUNT];
+    cml_Data8ToFloat3(cm, tmp, in);
+    cml_OneNormedInputToUVW(out, tmp);
+    out += CML_UVW_CHANNEL_COUNT;
+    in += CML_UVW_CHANNEL_COUNT;
+  }
+}
+
 CML_DEF void cmlData8ToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput input, size_t count){
   const uint8* in  = (uint8*)input;
   float* out = (float*)xyz;
@@ -316,6 +328,18 @@ CML_DEF void cmlData16ToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput i
     cml_OneNormedInputToRGB(out, tmp);
     out += CML_RGB_CHANNEL_COUNT;
     in += CML_RGB_CHANNEL_COUNT;
+  }
+}
+
+CML_DEF void cmlData16ToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput input, size_t count){
+  const uint16* in  = (uint16*)input;
+  float* out = (float*)uvw;
+  for(size_t i = 0; i < count; ++i){
+    float tmp[CML_UVW_CHANNEL_COUNT];
+    cml_Data16ToFloat3(cm, tmp, in);
+    cml_OneNormedInputToUVW(out, tmp);
+    out += CML_UVW_CHANNEL_COUNT;
+    in += CML_UVW_CHANNEL_COUNT;
   }
 }
 
@@ -498,6 +522,18 @@ CML_DEF void cmlRGBToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput
   }
 }
 
+CML_DEF void cmlUVWToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput uvw, size_t count){
+  const float* in  = (float*)uvw;
+  uint8* out = (uint8*)output;
+  for(size_t i = 0; i < count; ++i){
+    float tmp[CML_UVW_CHANNEL_COUNT];
+    cml_OneUVWToNormedOutput(tmp, in);
+    (*cm->Float3ToData8)(cm, out, tmp);
+    in += CML_UVW_CHANNEL_COUNT;
+    out += CML_UVW_CHANNEL_COUNT;
+  }
+}
+
 CML_DEF void cmlXYZToData8(const CMLColorMachine* cm, CMLOutput output, CMLInput xyz, size_t count){
   const float* in  = (float*)xyz;
   uint8* out = (uint8*)output;
@@ -671,6 +707,18 @@ CML_DEF void cmlRGBToData16(const CMLColorMachine* cm, CMLOutput output, CMLInpu
     (*cm->Float3ToData16)(cm, out, tmp);
     in += CML_RGB_CHANNEL_COUNT;
     out += CML_RGB_CHANNEL_COUNT;
+  }
+}
+
+CML_DEF void cmlUVWToData16(const CMLColorMachine* cm, CMLOutput output, CMLInput uvw, size_t count){
+  const float* in  = (float*)uvw;
+  uint16* out = (uint16*)output;
+  for(size_t i = 0; i < count; ++i){
+    float tmp[CML_UVW_CHANNEL_COUNT];
+    cml_OneUVWToNormedOutput(tmp, in);
+    (*cm->Float3ToData16)(cm, out, tmp);
+    in += CML_UVW_CHANNEL_COUNT;
+    out += CML_UVW_CHANNEL_COUNT;
   }
 }
 

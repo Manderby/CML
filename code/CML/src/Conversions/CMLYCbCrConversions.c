@@ -69,6 +69,16 @@ CML_API void cmlYCbCrToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput yc
   CML_CONVERTER_FIRST_STEP(cml_CMYCbCrToRGB);
 }
 
+CML_API void cmlYCbCrToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput ycbcr, size_t count){
+  CML_CONVERTER_INOUT_PARAMETER(uvw, ycbcr, CML_Yuv_CHANNEL_COUNT, CML_YCbCr_CHANNEL_COUNT);
+  CML_CONVERTER_FIRST_STEP(cml_CMYCbCrToRGB);
+  cml_CMRGBToXYZ_SB(cm, out, count, floatAlign);
+  cml_CMXYZToYxy_SB(cm, out, count, floatAlign);
+  cml_CMYxyToYupvp_SB(cm, out, count, floatAlign);
+  cml_CMYupvpToYuv_SB(cm, out, count, floatAlign);
+  cml_CMYuvToUVW_SB(cm, out, count, floatAlign);
+}
+
 CML_API void cmlYCbCrToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput ycbcr, size_t count){
   CML_CONVERTER_INOUT_PARAMETER(xyz, ycbcr, CML_XYZ_CHANNEL_COUNT, CML_YCbCr_CHANNEL_COUNT);
   CML_CONVERTER_FIRST_STEP(cml_CMYCbCrToRGB);

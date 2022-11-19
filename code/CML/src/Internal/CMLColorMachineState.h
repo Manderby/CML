@@ -41,6 +41,7 @@ struct CMLColorMachine{
   CMLVec3                         whitePointXYZInverse;
   CMLVec3                         whitePointYxy;
   CMLVec3                         whitePointYupvp;
+  CMLVec3                         whitePointYuv;
   
   struct rgbSpace_struct{
     CMLRGBColorSpaceType          type;
@@ -184,6 +185,18 @@ CML_HIDEF void cml_CMYcdToYuv(const CMLColorMachine* cm, float* CML_RESTRICT yuv
 }
 CML_HIDEF void cml_CMYcdToYuv_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
   cm = cm; cml_YcdToYuv_SB(buf, count, floatAlign);
+}
+CML_HIDEF void cml_CMYuvToUVW(const CMLColorMachine* cm, float* CML_RESTRICT uvw, const float* CML_RESTRICT yuv, size_t count){
+  cml_YuvToUVW(uvw, yuv, cmlGetWhitePointYuv(cm), count);
+}
+CML_HIDEF void cml_CMYuvToUVW_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+  cm = cm; cml_YuvToUVW_SB(buf, cmlGetWhitePointYuv(cm), count, floatAlign);
+}
+CML_HIDEF void cml_CMUVWToYuv(const CMLColorMachine* cm, float* CML_RESTRICT yuv, const float* CML_RESTRICT uvw, size_t count){
+  cml_UVWToYuv(yuv, uvw, cmlGetWhitePointYuv(cm), count);
+}
+CML_HIDEF void cml_CMUVWToYuv_SB(const CMLColorMachine* cm, float* buf, size_t count, size_t floatAlign){
+  cm = cm; cml_UVWToYuv_SB(buf, cmlGetWhitePointYuv(cm), count, floatAlign);
 }
 CML_HIDEF void cml_CMLuvToYupvp(const CMLColorMachine* cm, float* CML_RESTRICT yupvp, const float* CML_RESTRICT luv, size_t count){
   cml_LuvToYupvp(yupvp, luv, count, cmlGetWhitePointYupvp(cm), cm->labSpace.responseLStar.backwardFunc);

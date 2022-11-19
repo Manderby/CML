@@ -522,6 +522,70 @@ CML_HIDEF void cml_YcdToYuv_SB(float* buf, size_t count, size_t floatAlign){
 
 
 // ////////////////////////////////////
+// Yuv to UVW
+// ////////////////////////////////////
+
+#define cml_ConvertYuvToUVW(out, in, whitePointYuv) \
+  float w = 25.f * cmlCbrt(in[0] * 100.f) - 17.f;\
+  float factor = 13.f * w;\
+  out[0] = factor * (in[1] - whitePointYuv[1]);\
+  out[1] = factor * (in[2] - whitePointYuv[2]);\
+  out[2] = w;
+
+CML_HIDEF void cml_OneYuvToUVW(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv){
+  cml_ConvertYuvToUVW(out, in, whitePointYuv);
+}
+CML_HIDEF void cml_OneYuvToUVW_SB(float* buf, const CMLVec3 whitePointYuv){
+  cml_ConvertYuvToUVW(buf, buf, whitePointYuv);
+}
+
+CML_HIDEF void cml_YuvToUVW(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv, size_t count){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYuvToUVW(out, in, whitePointYuv);
+  cml__END_COUNT_LOOP(CML_Yuv_CHANNEL_COUNT, CML_UVW_CHANNEL_COUNT);
+}
+
+CML_HIDEF void cml_YuvToUVW_SB(float* buf, const CMLVec3 whitePointYuv, size_t count, size_t floatAlign){
+  cml__START_COUNT_LOOP(count);
+  cml_OneYuvToUVW_SB(buf, whitePointYuv);
+  cml__END_COUNT_LOOP_SB(floatAlign);
+}
+
+
+
+// ////////////////////////////////////
+// UVW to Yuv
+// ////////////////////////////////////
+
+#define cml_ConvertUVWToYuv(out, in, whitePointYuv) \
+  float L = powf((in[2] + 17.f) / 25.f, 3.f) / 100.f;\
+  float divisor = 1.f / (13.f * in[2]);\
+  out[2] = in[1] * divisor + whitePointYuv[2];\
+  out[1] = in[0] * divisor + whitePointYuv[1];\
+  out[0] = L;
+
+CML_HIDEF void cml_OneUVWToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv){
+  cml_ConvertUVWToYuv(out, in, whitePointYuv);
+}
+CML_HIDEF void cml_OneUVWToYuv_SB(float* buf, const CMLVec3 whitePointYuv){
+  cml_ConvertUVWToYuv(buf, buf, whitePointYuv);
+}
+
+CML_HIDEF void cml_UVWToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv, size_t count){
+  cml__START_COUNT_LOOP(count);
+  cml_OneUVWToYuv(out, in, whitePointYuv);
+  cml__END_COUNT_LOOP(CML_UVW_CHANNEL_COUNT, CML_Yuv_CHANNEL_COUNT);
+}
+
+CML_HIDEF void cml_UVWToYuv_SB(float* buf, const CMLVec3 whitePointYuv, size_t count, size_t floatAlign){
+  cml__START_COUNT_LOOP(count);
+  cml_OneUVWToYuv_SB(buf, whitePointYuv);
+  cml__END_COUNT_LOOP_SB(floatAlign);
+}
+
+
+
+// ////////////////////////////////////
 // Lab to Lch
 // ////////////////////////////////////
 

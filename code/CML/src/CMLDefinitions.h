@@ -11,6 +11,7 @@ typedef enum{
   CML_COLOR_RGB,
   CML_COLOR_SPECTRUM_ILLUMINATION,
   CML_COLOR_SPECTRUM_REMISSION,
+  CML_COLOR_UVW,    // CIE 1964
   CML_COLOR_XYZ,    // CIE 1931
   CML_COLOR_YCbCr,
   CML_COLOR_Ycd,
@@ -415,6 +416,14 @@ struct CMLIntegration{
 #define CML_RGB_G_MAX       1.f
 #define CML_RGB_B_MIN       0.f
 #define CML_RGB_B_MAX       1.f
+
+#define CML_UVW_CHANNEL_COUNT 3
+#define CML_UVW_U_MIN       -200.f
+#define CML_UVW_U_MAX       200.f
+#define CML_UVW_V_MIN       -100.f
+#define CML_UVW_V_MAX       100.f
+#define CML_UVW_W_MIN       0.f
+#define CML_UVW_W_MAX       100.f
 
 #define CML_XYZ_CHANNEL_COUNT 3
 #define CML_XYZ_X_MIN       0.f

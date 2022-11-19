@@ -94,6 +94,10 @@ CML_API void cmlGrayToRGB(const CMLColorMachine* cm, CMLOutput rgb, CMLInput gra
   cml_ConvertGrayToColorSpace(cm, (float*)rgb, (float*)gray, count, CML_COLOR_RGB, CML_RGB_CHANNEL_COUNT);
 }
 
+CML_API void cmlGrayToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput gray, size_t count){
+  cml_ConvertGrayToColorSpace(cm, (float*)uvw, (float*)gray, count, CML_COLOR_UVW, CML_UVW_CHANNEL_COUNT);
+}
+
 CML_API void cmlGrayToXYZ(const CMLColorMachine* cm, CMLOutput xyz, CMLInput gray, size_t count){
   cml_ConvertGrayToColorSpace(cm, (float*)xyz, (float*)gray, count, CML_COLOR_XYZ, CML_XYZ_CHANNEL_COUNT);
 }
@@ -188,6 +192,10 @@ CML_API void cmlSpectrumRemissionToGray(const CMLColorMachine* cm, CMLOutput gra
     in += 1;
     out += CML_GRAY_CHANNEL_COUNT;
   }
+}
+
+CML_API void cmlUVWToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput uvw, size_t count){
+  cml_ConvertColorSpaceToGray(cm, (float*)gray, (float*)uvw, count, CML_COLOR_XYZ, CML_UVW_CHANNEL_COUNT);
 }
 
 CML_API void cmlXYZToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput xyz, size_t count){
