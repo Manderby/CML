@@ -530,7 +530,7 @@ CML_HIDEF void cml_YcdToYuv_SB(float* buf, size_t count, size_t floatAlign){
   float factor = 13.f * w;\
   out[0] = factor * (in[1] - whitePointYuv[1]);\
   out[1] = factor * (in[2] - whitePointYuv[2]);\
-  out[2] = w;
+  out[2] = w;\
 
 CML_HIDEF void cml_OneYuvToUVW(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv){
   cml_ConvertYuvToUVW(out, in, whitePointYuv);
