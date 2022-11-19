@@ -525,6 +525,12 @@ CML_HIDEF void cml_YcdToYuv_SB(float* buf, size_t count, size_t floatAlign){
 // Yuv to UVW
 // ////////////////////////////////////
 
+// ISO 3664 states in formula D.14 the computation 6X/(X+15Y+3Z). I'm
+// pretty sure, they meant  6Y/(X+15Y+3Z) which is according to
+// CIE 1960 UCS. This also corresponds to the fact that UVW is based on UCS.
+// In CML, this is Yuv.
+// UVW is CIE 1964.
+
 #define cml_ConvertYuvToUVW(out, in, whitePointYuv) \
   float w = 25.f * cmlCbrt(in[0] * 100.f) - 17.f;\
   float factor = 13.f * w;\

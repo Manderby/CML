@@ -195,7 +195,7 @@ CML_API void cmlSpectrumRemissionToGray(const CMLColorMachine* cm, CMLOutput gra
 }
 
 CML_API void cmlUVWToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput uvw, size_t count){
-  cml_ConvertColorSpaceToGray(cm, (float*)gray, (float*)uvw, count, CML_COLOR_XYZ, CML_UVW_CHANNEL_COUNT);
+  cml_ConvertColorSpaceToGray(cm, (float*)gray, (float*)uvw, count, CML_COLOR_UVW, CML_UVW_CHANNEL_COUNT);
 }
 
 CML_API void cmlXYZToGray(const CMLColorMachine* cm, CMLOutput gray, CMLInput xyz, size_t count){

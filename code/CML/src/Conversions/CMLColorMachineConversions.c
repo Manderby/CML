@@ -54,6 +54,7 @@ CML_DEF CMLColorConverter cmlGetColorConverter(CMLColorType outputSystem, CMLCol
       case CML_COLOR_Lch:   return &cmlXYZToLch;
       case CML_COLOR_Luv:   return &cmlXYZToLuv;
       case CML_COLOR_RGB:   return &cmlXYZToRGB;
+      case CML_COLOR_UVW:   return &cmlXYZToUVW;
       case CML_COLOR_XYZ:   return &cmlXYZToXYZ;
       case CML_COLOR_YCbCr: return &cmlXYZToYCbCr;
       case CML_COLOR_Ycd:   return &cmlXYZToYcd;
