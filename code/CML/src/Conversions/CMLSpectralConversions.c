@@ -61,6 +61,7 @@ CML_API void cmlSpectrumIlluminationToRGB(const CMLColorMachine* cm, CMLOutput r
 CML_API void cmlSpectrumIlluminationToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput specIll, size_t count){
   CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(uvw, specIll, CML_UVW_CHANNEL_COUNT);
   cml_CMIlluminationSpectrumToXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToUVW(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
@@ -165,6 +166,7 @@ CML_API void cmlSpectrumRemissionToRGB(const CMLColorMachine* cm, CMLOutput rgb,
 CML_API void cmlSpectrumRemissionToUVW(const CMLColorMachine* cm, CMLOutput uvw, CMLInput specRem, size_t count){
   CML_CONVERTER_SPECTRUM_INOUT_PARAMETER(uvw, specRem, CML_UVW_CHANNEL_COUNT);
   cml_CMRemissionSpectrumToXYZ(cm, xyzbuf, in, count, floatAlign);
+  cmlXYZToUVW(cm, out, xyzbuf, count);
   CML_CONVERTER_SPECTRUM_RETURN;
 }
 
