@@ -73,7 +73,7 @@ CML_HDEF const char* illuminationStrings[CML_ILLUMINATION_COUNT] = {
   "Custom Spectrum",                  // CML_ILLUMINATION_CUSTOM_SPECTRUM
 };
 
-CML_HDEF const char* rgbSpaceStrings[CML_RGB_COUNT] = {
+CML_HDEF const char* rgbColorSpaceStrings[CML_RGB_COUNT] = {
   "Adobe 98",             // CML_RGB_ADOBE_98
   "Apple",                // CML_RGB_APPLE
   "Best",                 // CML_RGB_BEST
@@ -100,7 +100,7 @@ CML_HDEF const char* rgbSpaceStrings[CML_RGB_COUNT] = {
   "Custom",               // CML_RGB_WIDE_GAMUT
 };
 
-CML_HDEF const char* labSpaceStrings[CML_LAB_COUNT] = {
+CML_HDEF const char* labColorSpaceStrings[CML_LAB_COUNT] = {
   "CIELAB L*a*b* 1976",           // CML_LAB_CIELAB
   "Custom L",                     // CML_LAB_CUSTOM_L
   "Hunter Lab 1948 Approximated", // CML_LAB_HUNTER_APPROXIMATE
@@ -179,8 +179,8 @@ CML_DEF const char* cmlGetIlluminationTypeString(CMLIlluminationType illuminatio
 CML_DEF const char* cmlGetChromaticAdaptationTypeString(CMLChromaticAdaptationType chromaticAdaptationType){
   return chromaticAdaptationStrings[chromaticAdaptationType];
 }
-CML_DEF const char* cmlGetLabSpaceTypeString(CMLLabColorSpaceType labSpaceType){
-  return labSpaceStrings[labSpaceType];
+CML_DEF const char* cmlGetLabColorSpaceTypeString(CMLLabColorSpaceType type){
+  return labColorSpaceStrings[type];
 }
 CML_DEF const char* cmlGetRGBResponseTypeString(CMLResponseCurveType type){
   return rgbResponseTypeStrings[type];
@@ -189,7 +189,7 @@ CML_DEF const char* cmlGetFunctionTypeString(CMLFunctionType functionType){
   return functionTypeStrings[functionType];
 }
 CML_DEF const char* cmlGetRGBColorSpaceTypeString(CMLRGBColorSpaceType type){
-  return rgbSpaceStrings[type];
+  return rgbColorSpaceStrings[type];
 }
 CML_DEF const char* cmlGetCMYKTransformTypeString(cml_CMYKTransformType transformType){
   return cmykTransformStrings[transformType];

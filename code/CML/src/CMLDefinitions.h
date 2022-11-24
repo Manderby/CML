@@ -290,7 +290,7 @@ CML_API const char* cmlGetIntegerMappingString          (CMLIntegerMappingType i
 CML_API const char* cmlGetObserverTypeString            (CMLObserverType observerType);
 CML_API const char* cmlGetIlluminationTypeString        (CMLIlluminationType illuminationType);
 CML_API const char* cmlGetRGBColorSpaceTypeString       (CMLRGBColorSpaceType type);
-CML_API const char* cmlGetLabSpaceTypeString            (CMLLabColorSpaceType labSpaceType);
+CML_API const char* cmlGetLabColorSpaceTypeString       (CMLLabColorSpaceType type);
 CML_API const char* cmlGetRGBResponseTypeString         (CMLResponseCurveType type);
 CML_API const char* cmlGetFunctionTypeString            (CMLFunctionType functionType);
 CML_API const char* cmlGetGrayComputationTypeString     (CMLGrayComputationType computationType);
