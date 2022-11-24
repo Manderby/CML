@@ -31,7 +31,7 @@ typedef enum{
 //   it combines neighboring values and hence loses much fewer floating point
 //   accuracy when summing these up.
 typedef enum{
-  CML_INTEGRATION_SIMPLE = 0,
+  CML_INTEGRATION_SIMPLE,
   CML_INTEGRATION_BINARY_PAIRS,
   CML_INTEGRATION_COUNT
 } CMLIntegrationMethod;
@@ -78,7 +78,7 @@ typedef enum{
 // I |        0        |        1        |        2        |        3        |
 //   +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 typedef enum{
-  CML_INTEGER_MAPPING_FLOOR = 0,
+  CML_INTEGER_MAPPING_FLOOR,
   CML_INTEGER_MAPPING_BOX,
   CML_INTEGER_MAPPING_INTERVAL,
   CML_INTEGER_MAPPING_COUNT
@@ -86,7 +86,7 @@ typedef enum{
 
 // Enumerates the predefined observers
 typedef enum{
-  CML_OBSERVER_2DEG_CIE_1931 = 0,
+  CML_OBSERVER_2DEG_CIE_1931,
   CML_OBSERVER_10DEG_CIE_1964,
   CML_OBSERVER_2DEG_ISO_13655,
   CML_OBSERVER_2DEG_JUDD_1951,
@@ -98,7 +98,7 @@ typedef enum{
 
 // Enumerates the predefined illuminations
 typedef enum{
-  CML_ILLUMINATION_BLACKBODY = 0,
+  CML_ILLUMINATION_BLACKBODY,
   CML_ILLUMINATION_A_CIE,
   CML_ILLUMINATION_A_EXACT,
   CML_ILLUMINATION_B,
@@ -130,7 +130,7 @@ typedef enum{
 
 // Enumerates the predefined RGB colorspaces
 typedef enum{
-  CML_RGB_ADOBE_98 = 0,
+  CML_RGB_ADOBE_98,
   CML_RGB_APPLE,
   CML_RGB_BEST,
   CML_RGB_BETA,
@@ -159,7 +159,7 @@ typedef enum{
 
 // Enumerates the predefined Lab colorspaces
 typedef enum{
-  CML_LAB_CIELAB = 0,
+  CML_LAB_CIELAB,
   CML_LAB_CUSTOM_L,
   CML_LAB_HUNTER_APPROXIMATE,
   CML_LAB_HUNTER_ORIGINAL,
@@ -206,7 +206,7 @@ typedef enum{
 
 // Enumerates the predefined Gray computations.
 typedef enum{
-  CML_GRAY_FROM_HSL = 0,  // HSL
+  CML_GRAY_FROM_HSL,      // HSL
   CML_GRAY_FROM_HSV,      // HSV
   CML_GRAY_FROM_G,        // RGB
   CML_GRAY_FROM_LSTAR,    // CIELAB, Luv
@@ -218,14 +218,14 @@ typedef enum{
 
 // Enumerates the predefined RGB to CMYK conversions
 typedef enum{
-  CML_CMYK_STANDARD_TRANSFORM = 0,
+  CML_CMYK_STANDARD_TRANSFORM,
   CML_CMYK_UCR_TRANSFORM,
   CML_CMYK_COUNT
 } cml_CMYKTransformType;
 
 // Enumerates the predefined chromatic adaptations
 typedef enum{
-  CML_CHROMATIC_ADAPTATION_NONE = 0,
+  CML_CHROMATIC_ADAPTATION_NONE,
   CML_CHROMATIC_ADAPTATION_XYZ_SCALING,
   CML_CHROMATIC_ADAPTATION_BRADFORD,
   CML_CHROMATIC_ADAPTATION_VON_KRIES,
@@ -249,7 +249,7 @@ typedef enum{
 // Interval:     out   out   1.00  1.00  1.00  2.00  out   out   out
 // Linear:       out   out   1.00  1.49  1.50  2.00  out   out   out
 typedef enum{
-  CML_INTERPOLATION_NONE = 0,
+  CML_INTERPOLATION_NONE,
   CML_INTERPOLATION_FLOOR,
   CML_INTERPOLATION_BOX,
   CML_INTERPOLATION_INTERVAL,
@@ -273,7 +273,7 @@ typedef enum{
 // Clamp Value:  1.00  2.00  2.00  2.00  2.00  2.00  2.00
 // Gradient:     1.00  2.00  2.25  2.50  2.75  3.00  3.25
 typedef enum{
-  CML_EXTRAPOLATION_CLAMP_ZERO = 0, // 0 outside definition
+  CML_EXTRAPOLATION_CLAMP_ZERO,     // 0 outside definition
   CML_EXTRAPOLATION_LINEAR_ZERO,    // linear to 0 in one stepSize, then 0
   CML_EXTRAPOLATION_CLAMP_VALUE,    // last value repeating
   CML_EXTRAPOLATION_GRADIENT        // last gradient repeating
