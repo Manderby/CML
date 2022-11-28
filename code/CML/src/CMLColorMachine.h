@@ -130,6 +130,7 @@ CML_API CMLRGBColorSpaceType    cmlGetRGBColorSpaceType(const CMLColorMachine* c
 CML_API void                    cmlSetRGBColorSpaceType(CMLColorMachine* cm, CMLRGBColorSpaceType type);
 CML_API void                    cmlGetRGBPrimariesYxy(const CMLColorMachine* cm, CMLVec3 primaries[3]);
 CML_API void                    cmlSetRGBPrimariesYxy(CMLColorMachine* cm, CMLVec3 primaries[3]);
+CML_DEF void                    cmlGetCustomGammaLinearParametersRGB(CMLColorMachine* cm, GammaLinearInputParameters parameters[3]);
 CML_API void                    cmlSetCustomGammaLinearParametersRGB(CMLColorMachine* cm, const GammaLinearInputParameters* parameters);
 CML_API void                    cmlGetRGBResponseTypes(const CMLColorMachine* cm, CMLResponseCurveType types[3]);
 CML_API const CMLResponseCurve* cmlGetResponseR(CMLColorMachine* cm);
