@@ -32,7 +32,7 @@
 #ifndef HUGE_VALF
   #define HUGE_VALF         ((float)(HUGE_VAL))
 #endif
-#define CML_INFINITY        HUGE_VALF
+#define CML_INFINITY        ((float)HUGE_VALF)
 
 
 

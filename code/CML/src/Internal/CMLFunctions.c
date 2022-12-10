@@ -1,7 +1,6 @@
 
 #include "../CML.h"
 #include "CMLColorMachineState.h"
-#include "NAMathOperators.h"
 
 
 CML_DEF CMLIntegration cmlMakeDefaultIntegration(){

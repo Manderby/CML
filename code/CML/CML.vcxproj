@@ -216,8 +216,10 @@
     <ClCompile Include="src\Conversions\CMLNormedConversions.c" />
     <ClCompile Include="src\Conversions\CMLRGBConversions.c" />
     <ClCompile Include="src\Conversions\CMLSpectralConversions.c" />
+    <ClCompile Include="src\Conversions\CMLUVWConversions.c" />
     <ClCompile Include="src\Conversions\CMLXYZConversions.c" />
     <ClCompile Include="src\Conversions\CMLYCbCrConversions.c" />
+    <ClCompile Include="src\Conversions\CMLYcdConversions.c" />
     <ClCompile Include="src\Conversions\CMLYupvpConversions.c" />
     <ClCompile Include="src\Conversions\CMLYuvConversions.c" />
     <ClCompile Include="src\Conversions\CMLYxyConversions.c" />
