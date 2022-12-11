@@ -116,7 +116,11 @@ typedef int           CMLBool;
   // and prefixes the function the error occured in.
   #define cmlError(text)\
     cml_Error(CML_DEBUG_FUNCTIONSYMBOL, text)
-    
+
+#else
+
+  #define cmlError(text)
+
 #endif
 
 

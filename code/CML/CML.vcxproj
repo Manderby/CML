@@ -227,7 +227,6 @@
     <ClCompile Include="src\Internal\CMLChromaticAdaptation.c" />
     <ClCompile Include="src\Internal\CMLCMYKColorspace.c" />
     <ClCompile Include="src\Internal\CMLColorMachine.c" />
-    <ClCompile Include="src\Internal\CMLColorMachineState.c" />
     <ClCompile Include="src\Internal\CMLFunctions.c" />
     <ClCompile Include="src\Internal\CMLGrayColorspace.c" />
     <ClCompile Include="src\Internal\CMLIllumination.c" />

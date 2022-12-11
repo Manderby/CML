@@ -217,6 +217,18 @@ CML_DEF void cmlSet16BitCutoffs(CMLColorMachine* cm, uint16 min, uint16 max, siz
 }
 
 
+//  // Create LUT if needed.
+//  if(lutSize < 32){
+//    CMLFunction* toxyzfunction = cmlSampleArrayFunction(*toxyzfunc, 0.f, 1.f, 1 << (uint8)lutSize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//    CMLFunction* fromxyzfunction = cmlSampleArrayFunction(*fromxyzfunc, 0.f, 1.f, 1 << (uint8)lutSize, CML_INTERPOLATION_INTERVAL, CML_EXTRAPOLATION_CLAMP_VALUE, CML_EXTRAPOLATION_CLAMP_VALUE);
+//    cmlReleaseFunction(*toxyzfunc);
+//    cmlReleaseFunction(*fromxyzfunc);
+//    *toxyzfunc = toxyzfunction;
+//    *fromxyzfunc = fromxyzfunction;
+//  }
+//}
+
+
 
 // This is free and unencumbered software released into the public domain.
 

@@ -29,7 +29,7 @@ struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
   CMLVec3                       customWhitePointYxy;
-  double                        temperature;
+  float                         temperature;
 };
 
 struct CMLObserver{

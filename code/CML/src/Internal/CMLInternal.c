@@ -52,31 +52,31 @@ CML_HDEF void cml_GrayToChanneledBufferYPrime(const CMLColorMachine* cm, float* 
 
 CML_HDEF void cml_ChanneledBufferToGrayHSL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[2] * (1. / CML_HSL_L_MAX));
+  *gray = 1.f - (buffer[2] * (1.f / CML_HSL_L_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayHSV(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[2] * (1. / CML_HSV_V_MAX));
+  *gray = 1.f - (buffer[2] * (1.f / CML_HSV_V_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayG(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[1] * (1. / CML_RGB_G_MAX));
+  *gray = 1.f - (buffer[1] * (1.f / CML_RGB_G_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayLStar(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[0] * (1. / CML_Luv_L_MAX));
+  *gray = 1.f - (buffer[0] * (1.f / CML_Luv_L_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayL(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[0] * (1. / CML_Lab_L_MAX));
+  *gray = 1.f - (buffer[0] * (1.f / CML_Lab_L_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayY(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[0] * (1. / CML_XYZ_Y_MAX));
+  *gray = 1.f - (buffer[0] * (1.f / CML_XYZ_Y_MAX));
 }
 CML_HDEF void cml_ChanneledBufferToGrayYPrime(const CMLColorMachine* cm, float* CML_RESTRICT gray, const float* CML_RESTRICT buffer){
   CML_UNUSED(cm);
-  *gray = 1.f - (buffer[0] * (1. / CML_YCbCr_Y_MAX));
+  *gray = 1.f - (buffer[0] * (1.f / CML_YCbCr_Y_MAX));
 }
 
 
