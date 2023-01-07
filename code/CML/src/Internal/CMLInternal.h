@@ -290,13 +290,15 @@ CML_HIDEF void cml_YupvpToYxy_SB(float* buf, const CMLVec3 whitePointYxy, size_t
   yr = cml_Eval(LtoLinearResponse, in[0] * .01f);\
   divisor = 13.f * in[0];\
   out[0] = yr * whitePointYupvp[0];\
-  if(divisor == 0.f){\
-    out[1] = whitePointYupvp[1];\
-    out[2] = whitePointYupvp[2];\
-  }else{\
+  out[1] = whitePointYupvp[1];\
+  out[2] = whitePointYupvp[2];\
+  if(divisor != 0.f){\
     float factor = cmlInverse(divisor);\
-    out[1] = (in[1] * factor) + whitePointYupvp[1];\
-    out[2] = (in[2] * factor) + whitePointYupvp[2];\
+    float out2 = out[2] + (in[2] * factor);\
+    if(out2 > 0.){\
+      out[1] += (in[1] * factor);\
+      out[2] = out2;\
+    }\
   }
 
 CML_HIDEF void cml_OneLuvToYupvp(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp, const CMLFunction* LtoLinearResponse){
@@ -373,8 +375,13 @@ CML_HIDEF void cml_YxyToYupvp_SB(float* buf, const CMLVec3 whitePointYupvp, size
   float yr = in[0] / whitePointYupvp[0];\
   float fy = cml_Eval(LineartoLResponse, yr);\
   out[0] = 100.f * fy;\
-  out[1] = 13.f * out[0] * (in[1] - whitePointYupvp[1]);\
-  out[2] = 13.f * out[0] * (in[2] - whitePointYupvp[2]);
+  if(in[2] <= 0.){\
+    out[1] = 13.f;\
+    out[2] = 13.f;\
+  }else{\
+    out[1] = 13.f * out[0] * (in[1] - whitePointYupvp[1]);\
+    out[2] = 13.f * out[0] * (in[2] - whitePointYupvp[2]);\
+  }
 
 CML_HIDEF void cml_OneYupvpToLuv(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYupvp, const CMLFunction* LineartoLResponse){
   cml_ConvertYupvpToLuv(out, in, whitePointYupvp, LineartoLResponse);
@@ -534,9 +541,15 @@ CML_HIDEF void cml_YcdToYuv_SB(float* buf, size_t count, size_t floatAlign){
 #define cml_ConvertYuvToUVW(out, in, whitePointYuv) \
   float w = 25.f * cmlCbrt(in[0] * 100.f) - 17.f;\
   float factor = 13.f * w;\
-  out[0] = factor * (in[1] - whitePointYuv[1]);\
-  out[1] = factor * (in[2] - whitePointYuv[2]);\
-  out[2] = w;\
+  if(in[2] <= 0.){\
+    out[0] = factor * - whitePointYuv[1];\
+    out[1] = factor * - whitePointYuv[2];\
+    out[2] = -17.;\
+  }else{\
+    out[0] = factor * (in[1] - whitePointYuv[1]);\
+    out[1] = factor * (in[2] - whitePointYuv[2]);\
+    out[2] = w;\
+  }
 
 CML_HIDEF void cml_OneYuvToUVW(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv){
   cml_ConvertYuvToUVW(out, in, whitePointYuv);
@@ -568,7 +581,11 @@ CML_HIDEF void cml_YuvToUVW_SB(float* buf, const CMLVec3 whitePointYuv, size_t c
   float divisor = 1.f / (13.f * in[2]);\
   out[2] = in[1] * divisor + whitePointYuv[2];\
   out[1] = in[0] * divisor + whitePointYuv[1];\
-  out[0] = L;
+  out[0] = L;\
+  if(out[2] <= 0.){\
+    out[1] = whitePointYuv[1];\
+    out[2] = whitePointYuv[2];\
+  }
 
 CML_HIDEF void cml_OneUVWToYuv(float* CML_RESTRICT out, const float* CML_RESTRICT in, const CMLVec3 whitePointYuv){
   cml_ConvertUVWToYuv(out, in, whitePointYuv);
