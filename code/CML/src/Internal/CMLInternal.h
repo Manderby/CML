@@ -290,14 +290,18 @@ CML_HIDEF void cml_YupvpToYxy_SB(float* buf, const CMLVec3 whitePointYxy, size_t
   yr = cml_Eval(LtoLinearResponse, in[0] * .01f);\
   divisor = 13.f * in[0];\
   out[0] = yr * whitePointYupvp[0];\
-  out[1] = whitePointYupvp[1];\
-  out[2] = whitePointYupvp[2];\
-  if(divisor != 0.f){\
+  if(divisor == 0.f){\
+    out[1] = whitePointYupvp[1];\
+    out[2] = whitePointYupvp[2];\
+  }else{\
     float factor = cmlInverse(divisor);\
-    float out2 = out[2] + (in[2] * factor);\
+    float out2 = whitePointYupvp[2] + (in[2] * factor);\
     if(out2 > 0.){\
-      out[1] += (in[1] * factor);\
+      out[1] = whitePointYupvp[1] + (in[1] * factor);\
       out[2] = out2;\
+    }else{\
+      out[1] = whitePointYupvp[1];\
+      out[2] = whitePointYupvp[2];\
     }\
   }
 
