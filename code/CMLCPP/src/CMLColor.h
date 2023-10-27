@@ -1,7 +1,7 @@
 
 // CML Color implementation.
 
-#include "../CML.h"
+#include "CML.h"
 
 #if CML_COMPILE_ON_WINDOWS
   // Disabling the warning about uninitialized members. Because that is how CML

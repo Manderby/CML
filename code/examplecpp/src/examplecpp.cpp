@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include <ColorClasses/CMLColor.h>
+#include "CMLColor.h"
 
 
 int main(){
