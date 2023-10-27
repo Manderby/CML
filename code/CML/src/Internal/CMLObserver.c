@@ -518,6 +518,22 @@ CML_DEF void cmlGetSpectralXYZColor(const CMLColorMachine* cm, CMLVec3 xyz, floa
 
 
 
+CML_DEF CMLObserver* cmlAllocObserver(CMLObserverType type){
+  CMLObserver* observer = cml_Malloc(sizeof(CMLObserver));
+  observer->type = type;
+  cmlCreateSpecDistFunctions(observer->specDistFunctions, observer->type);
+
+  return observer;
+}
+
+CML_DEF void cmlDeallocObserver(CMLObserver* observer){
+  cmlReleaseFunction(observer->specDistFunctions[0]);
+  cmlReleaseFunction(observer->specDistFunctions[1]);
+  cmlReleaseFunction(observer->specDistFunctions[2]);
+
+  free(observer);
+}
+
 CML_HDEF void cml_InitObserver(
   CMLColorMachine* cm,
   CMLObserver* observer,
@@ -581,7 +597,7 @@ CML_DEF void cmlSetColorimetricBase(CMLColorMachine* cm, float colorimetricBase)
 }
 
 
-CML_HDEF CMLFunction* const * cml_GetObserverSpecDistFunctions(const CMLObserver* observer)
+CML_DEF CMLFunction* const * cmlGetObserverSpecDistFunctions(const CMLObserver* observer)
 {
   return observer->specDistFunctions;
 }

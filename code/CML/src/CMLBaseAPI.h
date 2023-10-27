@@ -180,6 +180,17 @@ CML_API void cmlConvertHSLToHSV(
 
 
 
+CML_API CMLObserver* cmlAllocObserver(CMLObserverType type);
+CML_API void cmlDeallocObserver(CMLObserver* observer);
+CML_API CMLFunction* const * cmlGetObserverSpecDistFunctions(const CMLObserver* observer);
+
+CML_API CMLIllumination* cmlAllocIllumination(
+  CMLIlluminationType type,
+  float temperature,
+  CMLFunction* const * specDistFuncs);
+CML_API void cmlDeallocIllumination(CMLIllumination* illumination);
+CML_API const CMLFunction* cmlGetIlluminationSpectralFunction(const CMLIllumination* illumination);
+
 // Betwen Spectrum and XYZ.
 // This method always returns a radiometric result. If you would like to have
 // a colorimetric result, you need to divide the result by its Y component.

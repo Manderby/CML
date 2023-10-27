@@ -72,7 +72,7 @@ CML_DEF CMLColorMachine* cmlCreateColorMachine(){
     &(cm->illumination),
     CML_ILLUMINATION_D65,
     0,
-    cml_GetObserverSpecDistFunctions(&(cm->observer)));
+    cmlGetObserverSpecDistFunctions(&(cm->observer)));
 
   cml_recomputeObserver(cm);
 

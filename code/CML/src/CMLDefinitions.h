@@ -302,6 +302,7 @@ CML_API const char* cmlGetChromaticAdaptationTypeString (CMLChromaticAdaptationT
 // Some typedefs which are used later in the API:
 typedef struct CMLColorMachine    CMLColorMachine;
 typedef struct CMLFunction        CMLFunction;
+typedef struct CMLIllumination    CMLIllumination;
 typedef struct CMLObserver        CMLObserver;
 typedef struct CMLResponseCurve   CMLResponseCurve;
 typedef struct CMLDefinitionRange CMLDefinitionRange;

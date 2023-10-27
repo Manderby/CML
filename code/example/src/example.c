@@ -117,8 +117,7 @@ int main(){
   // After setting the state of the machine, several states can be read out.
   // For example:
 
-  CMLVec3 wpYxy;
-  cmlGetWhitePointYxy(cm, wpYxy);
+  const float* wpYxy = cmlGetWhitePointYxy(cm);
   printf("Current whitepoint: %f, %f, %f\n", wpYxy[0], wpYxy[1], wpYxy[2]);
   
   // Note that cmlGetWhitePointYxy will always return a radiometric Yxy color.
@@ -261,9 +260,10 @@ int main(){
   // Let's assume you have an array of float values, filled with the spectral
   // sampling points of a light source. Additionally, you know the wavelengths
   // of the minimal and maximal sampling point.
-  const CMLuint32 dataCount = 10; 
-  float luminanceData[10] = { 22.f,  74.f, 280.f, 506.f, 638.f,
-                             477.f, 361.f, 164.f,  63.f,  13.f};
+  size_t dataCount = 10; 
+  float luminanceData[10] = {
+    22.f,  74.f, 280.f, 506.f, 638.f,
+    477.f, 361.f, 164.f,  63.f,  13.f};
   float minLambda = 400.f;
   float maxLambda = 800.f;
 
@@ -308,15 +308,16 @@ int main(){
   // filter. In mathematical terms, this is an integral over the product of
   // two functions.
   CMLFunction* dirac = cmlCreateDiracFilter(500.f);
+  CMLIntegration integration = cmlMakeDefaultIntegration();
   printf("Dirac filter at 500 nm: %f\n",
-      cmlFilterFunction(luminanceFunction, dirac));
+    cmlFilterFunction(luminanceFunction, dirac, &integration));
   cmlReleaseFunction(dirac);
   
   // You can use a CMLFunction for example, to set this spectrum as the
   // illumination spectrum of the machine:
 
   cmlSetIlluminationSpectrum(cm3, luminanceFunction);
-  cmlGetWhitePointYxy(cm3, wpYxy);
+  wpYxy = cmlGetWhitePointYxy(cm3);
   printf("New whitepoint: %f, %f, %f\n", wpYxy[0], wpYxy[1], wpYxy[2]);
 
   // Remember that the Y component of the whitepoint returned by the
@@ -324,8 +325,9 @@ int main(){
 
   // Now we create a remission color:
   
-  float remissionData[10] = {  .2f, .3f, .6f, .7f, 1.f,
-                              1.2f, .9f, .6f, .2f, .0f};
+  float remissionData[10] = {
+    .2f, .3f, .6f, .7f, 1.f,
+    1.2f, .9f, .6f, .2f, .0f};
 
   CMLArrayFunctionInput remissionFuncInput = {
     remissionData,
@@ -387,7 +389,7 @@ int main(){
 
 
 
-  printf("\nWorking without the use of ColorMachines: The BaseAPI:\n");
+  printf("\nWorking without the use of ColorMachines:\n");
 
   // ///////////////////////////////////////////////////////////////////////
   // Using the Base API
@@ -420,21 +422,25 @@ int main(){
 
   // Get all needed information for sRGB:
   CMLVec3 primariesYxy[3];
-  CMLIlluminationType illuminationtype =
+  CMLIlluminationType illuminationType =
     cmlGetRGBColorSpaceIlluminationType(CML_RGB_SRGB);
   cmlGetRGBColorSpacePrimaries(CML_RGB_SRGB,
     primariesYxy[0], primariesYxy[1], primariesYxy[2]);
 
   // Compute the colorimetric whitepoint:
-  CMLIllumination* illumination = cmlCreateIlluminationWithType(
-    CML_NULL, illuminationtype, 0);
-  CMLObserver* observer = cmlCreateObserver(
-    CML_NULL, CML_OBSERVER_2DEG_CIE_1931, illumination, 100.f);
-  const float* sRGBwp = cmlGetReferenceWhitePointYxy(observer);
+  CMLObserver* observer = cmlAllocObserver(CML_OBSERVER_2DEG_CIE_1931);
+  CMLIntegration defaultIntegration = cmlMakeDefaultIntegration();
+  CMLIllumination* illumination = cmlAllocIllumination(
+    illuminationType, 0, cmlGetObserverSpecDistFunctions(observer));
+  CMLVec3 sRGBwpXYZ;
+  cmlConvertIlluminationSpectrumToXYZ(sRGBwpXYZ, cmlGetIlluminationSpectralFunction(illumination), observer, 1.f, &defaultIntegration);
+  cmlDiv3(sRGBwpXYZ, sRGBwpXYZ[1]);
+  CMLVec3 sRGBwpYxy;
+  cmlConvertXYZToYxy(sRGBwpYxy, sRGBwpXYZ, CML_NULL);
   
   // Compute the matrix and prepare the response curve:
   CMLMat33 RGBToXYZMatrix;
-  cmlComputeRGBToXYZMatrix(RGBToXYZMatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], sRGBwp);
+  cmlFillRGBToXYZMatrix(RGBToXYZMatrix, primariesYxy[0], primariesYxy[1], primariesYxy[2], sRGBwpYxy);
   CMLFunction* sRGBResponse = cmlCreatesRGBToXYZResponse();
   
   // Convert the color:
@@ -443,8 +449,8 @@ int main(){
 
   // Release all functions.
   cmlReleaseFunction(sRGBResponse);
-  cmlDestroyIllumination(illumination);
-  cmlDestroyObserver(observer);
+  cmlDeallocIllumination(illumination);
+  cmlDeallocObserver(observer);
   
   // As you can see, such conversions get very complicated very quickly. You
   // CAN do everything manually with the BaseAPI as just shown ...

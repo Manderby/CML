@@ -29,6 +29,5 @@ Email: CML@manderc.com
 Follow on Twitter for latest developments: @Manderby52
 
 Versions will be made available in time as tags and downloadable items.
-Currently working on Version 2.
 
 License: Public Domain

@@ -114,7 +114,7 @@ CML_DEF void cmlConvertHSLToHSV(CMLVec3 hsv, const CMLVec3 hsl){
 }
 
 CML_DEF void cmlConvertIlluminationSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specIll, const CMLObserver* observer, float radiometricScale, const CMLIntegration* integration){
-  cml_OneIlluminationSpectrumToXYZ(xyz, specIll, cml_GetObserverSpecDistFunctions(observer), radiometricScale, integration);
+  cml_OneIlluminationSpectrumToXYZ(xyz, specIll, cmlGetObserverSpecDistFunctions(observer), radiometricScale, integration);
 }
 
 CML_DEF void cmlConvertRemissionSpectrumToXYZ(CMLVec3 xyz, const CMLFunction* specRem, const CMLFunction* specIll, const CMLObserver* observer, float radiometricScale, const CMLIntegration* integration){

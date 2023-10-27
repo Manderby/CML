@@ -24,7 +24,6 @@ struct CMLResponseCurve{
 };
 
 
-typedef struct CMLIllumination  CMLIllumination;
 struct CMLIllumination{
   CMLIlluminationType           type;
   CMLFunction*                  spectrum;
@@ -59,7 +58,6 @@ CML_HAPI void cml_ClearObserver(CMLColorMachine* cm, CMLObserver* observer);
 
 CML_HAPI CMLObserverType cml_GetObserverType(const CMLObserver* observer);
 
-CML_HAPI CMLFunction* const * cml_GetObserverSpecDistFunctions(const CMLObserver* observer);
 CML_HAPI const CMLFunction* cml_GetObserverSpecDistFunction(const CMLObserver* observer, size_t index);
 
 
@@ -1062,7 +1060,7 @@ CML_HIDEF void cml_IlluminationSpectrumToXYZ(
   const CMLIntegration* integration)
 {
   cml__START_COUNT_LOOP(count);
-  cml_OneIlluminationSpectrumToXYZ(out, in, cml_GetObserverSpecDistFunctions(observer), radiometricScale, integration);
+  cml_OneIlluminationSpectrumToXYZ(out, in, cmlGetObserverSpecDistFunctions(observer), radiometricScale, integration);
   cml__END_COUNT_LOOP(floatAlign, 1);
 }
 
@@ -1075,7 +1073,7 @@ CML_HIDEF void cml_OneRemissionSpectrumToXYZ(
   const CMLIntegration* integration)
 {
   CMLFunction* remIllFunction = cmlCreateFunctionMulFunction(in, specIll);
-  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, cml_GetObserverSpecDistFunctions(observer),  radiometricScale, integration);
+  cml_OneIlluminationSpectrumToXYZ(out, remIllFunction, cmlGetObserverSpecDistFunctions(observer),  radiometricScale, integration);
   cmlReleaseFunction(remIllFunction);
 }
 

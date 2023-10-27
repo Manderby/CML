@@ -399,7 +399,7 @@ CML_DEF void cmlSetIlluminationType(CMLColorMachine* cm, CMLIlluminationType ill
   if(illuminationType == CML_ILLUMINATION_CUSTOM_SPECTRUM){return;}
 
   CMLIllumination newIllumination;
-  cml_InitIlluminationWithType(&newIllumination, illuminationType, cmlGetIlluminationTemperature(cm), cml_GetObserverSpecDistFunctions(&(cm->observer)));
+  cml_InitIlluminationWithType(&newIllumination, illuminationType, cmlGetIlluminationTemperature(cm), cmlGetObserverSpecDistFunctions(&(cm->observer)));
   cml_SetIllumination(cm, &newIllumination);
   cml_ClearIllumination(&newIllumination);
 
@@ -418,7 +418,7 @@ CML_DEF void cmlSetIlluminationTemperature(CMLColorMachine* cm, float temp){
     || (illuminationType == CML_ILLUMINATION_D_ILLUMINANT)){
 
     CMLIllumination newIllumination;
-    cml_InitIlluminationWithType(&newIllumination, illuminationType, temp, cml_GetObserverSpecDistFunctions(&(cm->observer)));
+    cml_InitIlluminationWithType(&newIllumination, illuminationType, temp, cmlGetObserverSpecDistFunctions(&(cm->observer)));
     cml_SetIllumination(cm, &newIllumination);
     cml_ClearIllumination(&newIllumination);
 
@@ -435,7 +435,7 @@ CML_DEF void cmlSetIlluminationSpectrum(CMLColorMachine* cm, const CMLFunction* 
   if(!newSpectrum){return;}
 
   CMLIllumination newIllumination;
-  cml_InitIlluminationWithCustomSpectrum(&newIllumination, newSpectrum, cml_GetObserverSpecDistFunctions(&(cm->observer)));
+  cml_InitIlluminationWithCustomSpectrum(&newIllumination, newSpectrum, cmlGetObserverSpecDistFunctions(&(cm->observer)));
   cml_SetIllumination(cm, &newIllumination);
   cml_ClearIllumination(&newIllumination);
 
@@ -455,6 +455,25 @@ CML_DEF void cmlSetReferenceWhitePointYxy(CMLColorMachine* cm, const float* yxy)
 }
 
 
+
+CML_DEF CMLIllumination* cmlAllocIllumination(
+  CMLIlluminationType type,
+  float temperature,
+  CMLFunction* const * specDistFuncs)
+{
+  CMLIllumination* illumination = cml_Malloc(sizeof(CMLIllumination));
+  cml_InitIlluminationWithType(illumination, type, temperature, specDistFuncs);
+  return illumination;
+}
+
+CML_DEF void cmlDeallocIllumination(CMLIllumination* illumination){
+  cmlReleaseFunction(illumination->spectrum);
+  free(illumination);
+}
+
+CML_DEF const CMLFunction* cmlGetIlluminationSpectralFunction(const CMLIllumination* illumination){
+  return illumination->spectrum;
+}
 
 CML_HDEF void cml_InitIlluminationDuplicate(CMLIllumination* illumination, const CMLIllumination* src){
   illumination->type = src->type;
